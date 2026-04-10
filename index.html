@@ -225,14 +225,6 @@
       z-index: 2;
       pointer-events: none;
     }
-    .pedestal img {
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 18px 28px rgba(0,0,0,.34));
-    }
-    .pedestal-fallback { display: none; width: 100%; }
-    .pedestal.fallback img { display: none; }
-    .pedestal.fallback .pedestal-fallback { display: block; }
     .pedestal-top {
       height: 62px;
       border-radius: 999px;
@@ -416,13 +408,10 @@
           <div id="heroStageVisual" class="stage-character">
             <img src="./ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_51_01.png" alt="Baby TungTungcitos on stage" />
           </div>
-          <div id="pedestal" class="pedestal" aria-hidden="true">
-            <img id="stageAsset" src="./babyt-stage.png" alt="BabyT stage" />
-            <div class="pedestal-fallback">
-              <div class="pedestal-top"></div>
-              <div class="pedestal-body"></div>
-              <div class="pedestal-label">BabyT</div>
-            </div>
+          <div class="pedestal" aria-hidden="true">
+            <div class="pedestal-top"></div>
+            <div class="pedestal-body"></div>
+            <div class="pedestal-label">BabyT</div>
           </div>
         </section>
       </div>
@@ -448,21 +437,6 @@
     const heroMarketCap = document.getElementById('heroMarketCap');
     const buyLink = document.getElementById('buyLink');
     const stageGrid = document.getElementById('stageGrid');
-    const pedestal = document.getElementById('pedestal');
-    const stageAsset = document.getElementById('stageAsset');
-
-    if (stageAsset) {
-      stageAsset.addEventListener('error', () => {
-        pedestal.classList.add('fallback');
-      });
-      stageAsset.addEventListener('load', () => {
-        if (stageAsset.naturalWidth > 10 && stageAsset.naturalHeight > 10) {
-          pedestal.classList.remove('fallback');
-        } else {
-          pedestal.classList.add('fallback');
-        }
-      });
-    }
 
     const stages = [
       {
