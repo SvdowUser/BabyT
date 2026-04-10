@@ -230,6 +230,39 @@
       height: auto;
       filter: drop-shadow(0 18px 28px rgba(0,0,0,.34));
     }
+    .pedestal-fallback { display: none; width: 100%; }
+    .pedestal.fallback img { display: none; }
+    .pedestal.fallback .pedestal-fallback { display: block; }
+    .pedestal-top {
+      height: 62px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 35%, #8b5b31 0%, #6a3f22 52%, #2b170d 100%);
+      border: 2px solid rgba(240,211,153,.28);
+      box-shadow: inset 0 8px 18px rgba(255,230,187,.14), 0 18px 28px rgba(0,0,0,.28);
+    }
+    .pedestal-body {
+      width: 88%;
+      height: 46px;
+      margin: -8px auto 0;
+      border-radius: 0 0 28px 28px;
+      background: linear-gradient(180deg, #4a2916, #24130b);
+      border: 1px solid rgba(240,211,153,.14);
+      box-shadow: 0 10px 20px rgba(0,0,0,.24);
+    }
+    .pedestal-label {
+      width: fit-content;
+      margin: 12px auto 0;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: rgba(43, 23, 13, 0.94);
+      border: 1px solid rgba(240,211,153,.18);
+      color: var(--gold2);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      box-shadow: 0 12px 20px rgba(0,0,0,.22);
+    }
 
     .season-wrap { padding: 0 24px 56px; }
     .season, .faq-card {
@@ -319,23 +352,12 @@
     @media (max-width: 820px) {
       .nav-links { display: none; }
       .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .showcase {
-        min-height: 520px;
-        margin-top: 10px;
-      }
-      .stage-character {
-        min-height: 420px;
-        padding-bottom: 108px;
-      }
-      .stage-character img {
-        max-height: 430px;
-      }
+      .showcase { min-height: 520px; margin-top: 10px; }
+      .stage-character { min-height: 420px; padding-bottom: 108px; }
+      .stage-character img { max-height: 430px; }
       .pedestal { width: min(100%, 390px); }
       .stage-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .stage-card {
-        min-height: 220px;
-        padding: 14px;
-      }
+      .stage-card { min-height: 220px; padding: 14px; }
       .stage-thumb { min-height: 130px; }
       .stage-thumb img { max-height: 112px; }
     }
@@ -394,8 +416,13 @@
           <div id="heroStageVisual" class="stage-character">
             <img src="./ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_51_01.png" alt="Baby TungTungcitos on stage" />
           </div>
-          <div class="pedestal" aria-hidden="true">
-            <img src="./babyt-stage.png" alt="BabyT stage" />
+          <div id="pedestal" class="pedestal" aria-hidden="true">
+            <img id="stageAsset" src="./babyt-stage.png" alt="BabyT stage" />
+            <div class="pedestal-fallback">
+              <div class="pedestal-top"></div>
+              <div class="pedestal-body"></div>
+              <div class="pedestal-label">BabyT</div>
+            </div>
           </div>
         </section>
       </div>
@@ -421,6 +448,21 @@
     const heroMarketCap = document.getElementById('heroMarketCap');
     const buyLink = document.getElementById('buyLink');
     const stageGrid = document.getElementById('stageGrid');
+    const pedestal = document.getElementById('pedestal');
+    const stageAsset = document.getElementById('stageAsset');
+
+    if (stageAsset) {
+      stageAsset.addEventListener('error', () => {
+        pedestal.classList.add('fallback');
+      });
+      stageAsset.addEventListener('load', () => {
+        if (stageAsset.naturalWidth > 10 && stageAsset.naturalHeight > 10) {
+          pedestal.classList.remove('fallback');
+        } else {
+          pedestal.classList.add('fallback');
+        }
+      });
+    }
 
     const stages = [
       {
