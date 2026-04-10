@@ -16,8 +16,8 @@
       --text: #f8ecd7;
       --muted: #d6bea2;
       --line: rgba(214, 171, 104, 0.24);
-      --panel: rgba(29, 17, 12, 0.78);
-      --panel2: rgba(23, 13, 9, 0.86);
+      --panel: rgba(23, 13, 9, 0.84);
+      --panel-soft: rgba(29, 17, 12, 0.72);
       --bg: #0b0705;
     }
     * { box-sizing: border-box; }
@@ -28,9 +28,11 @@
 
     .hero {
       min-height: 100vh;
-      background: linear-gradient(180deg, rgba(7, 5, 4, 0.38), rgba(7, 5, 4, 0.76)), url('https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png') center/cover no-repeat;
-      position: relative;
+      background:
+        linear-gradient(180deg, rgba(7, 5, 4, 0.36), rgba(7, 5, 4, 0.80)),
+        url('https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png') center/cover no-repeat;
       overflow: hidden;
+      position: relative;
     }
     .nav {
       position: sticky;
@@ -40,7 +42,10 @@
       background: linear-gradient(180deg, rgba(24, 13, 8, 0.96), rgba(24, 13, 8, 0.84));
       border-bottom: 1px solid var(--line);
     }
-    .nav-inner, .shell, .bottom, .faq { max-width: 1380px; margin: 0 auto; }
+    .nav-inner, .shell, .season-wrap, .faq {
+      max-width: 1380px;
+      margin: 0 auto;
+    }
     .nav-inner {
       padding: 16px 24px;
       display: flex;
@@ -74,20 +79,20 @@
       white-space: nowrap;
     }
 
-    .shell { padding: 36px 24px 54px; }
+    .shell { padding: 30px 24px 42px; }
     .hero-layout {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 28px;
-      align-items: center;
-      min-height: calc(100vh - 112px);
+      grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+      gap: 32px;
+      align-items: end;
+      min-height: calc(100vh - 110px);
     }
     .copy {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 720px;
-      padding: 20px 0 24px;
+      max-width: 760px;
+      padding: 18px 0 24px;
     }
     .eyebrow {
       display: inline-flex;
@@ -111,10 +116,10 @@
     }
     h1 .accent { color: var(--accent); }
     .lead {
-      max-width: 600px;
+      max-width: 620px;
       margin-top: 18px;
       color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-size: clamp(1rem, 2vw, 1.12rem);
       line-height: 1.75;
       text-shadow: 0 2px 20px rgba(0,0,0,.35);
     }
@@ -139,13 +144,13 @@
     .btn-secondary { background: rgba(29,17,12,.72); border-color: var(--line); color: var(--text); }
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-top: 34px;
       max-width: 920px;
     }
     .card {
-      background: var(--panel);
+      background: var(--panel-soft);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 18px;
@@ -173,16 +178,16 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      min-height: 760px;
-      padding-bottom: 18px;
+      min-height: 790px;
+      padding-bottom: 10px;
     }
     .showcase::before {
       content: "";
       position: absolute;
-      inset: 10% 8% 18%;
+      inset: 10% 6% 18%;
       border-radius: 50%;
       background: radial-gradient(circle at center, rgba(255,232,189,.20), rgba(255,232,189,0));
-      filter: blur(10px);
+      filter: blur(14px);
       pointer-events: none;
     }
     .stage-character {
@@ -192,11 +197,11 @@
       align-items: flex-end;
       justify-content: center;
       width: 100%;
-      min-height: 560px;
-      padding-bottom: 26px;
+      min-height: 620px;
+      padding-bottom: 118px;
     }
     .stage-character img {
-      max-height: 560px;
+      max-height: 660px;
       max-width: 100%;
       object-fit: contain;
       filter: drop-shadow(0 26px 32px rgba(0,0,0,.38));
@@ -210,11 +215,11 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: min(92%, 430px);
+      width: min(92%, 480px);
       z-index: 2;
     }
     .pedestal-top {
-      height: 56px;
+      height: 62px;
       border-radius: 999px;
       background: radial-gradient(circle at 50% 35%, #8b5b31 0%, #6a3f22 52%, #2b170d 100%);
       border: 2px solid rgba(240,211,153,.28);
@@ -222,7 +227,7 @@
     }
     .pedestal-body {
       width: 88%;
-      height: 42px;
+      height: 46px;
       margin: -8px auto 0;
       border-radius: 0 0 28px 28px;
       background: linear-gradient(180deg, #4a2916, #24130b);
@@ -244,19 +249,14 @@
       box-shadow: 0 12px 20px rgba(0,0,0,.22);
     }
 
-    .tokenomics, .season, .faq-card {
-      background: var(--panel2);
+    .season-wrap { padding: 0 24px 56px; }
+    .season, .faq-card {
+      background: var(--panel);
       color: var(--text);
       border-radius: 24px;
       padding: 24px;
       box-shadow: 0 25px 60px rgba(0,0,0,.28);
       border: 1px solid var(--line);
-    }
-    .bottom {
-      padding: 0 24px 56px;
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
     }
     .section-title {
       margin: 0 0 18px;
@@ -265,37 +265,24 @@
       color: var(--gold2);
       letter-spacing: .02em;
     }
-    .token-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px 24px;
-    }
-    .token-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(214,171,104,.12);
-      color: var(--muted);
-      font-weight: 700;
-    }
-    .token-row strong { color: var(--text); }
     .stage-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
-      gap: 12px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
     }
     .stage-card {
-      min-height: 220px;
+      min-height: 240px;
       border-radius: 18px;
       border: 1px solid rgba(214,171,104,.14);
       background: rgba(255,255,255,.03);
-      padding: 14px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 12px;
       overflow: hidden;
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      text-align: center;
     }
     .stage-card.unlocked { border-color: rgba(214,171,104,.36); }
     .stage-card.active {
@@ -304,56 +291,93 @@
       background: linear-gradient(180deg, rgba(241,211,153,.96), rgba(199,139,70,.96));
       color: #23150d;
     }
-    .stage-card.active .stage-threshold, .stage-card.active .stage-desc { color: rgba(35,21,13,.82); }
+    .stage-card.active .stage-threshold { color: rgba(35,21,13,.78); }
     .stage-thumb {
+      width: 100%;
       display: grid;
       place-items: center;
       border-radius: 14px;
       background: rgba(255,255,255,.03);
       border: 1px dashed rgba(214,171,104,.14);
-      min-height: 160px;
-      padding: 10px;
+      min-height: 148px;
+      padding: 12px;
     }
     .stage-thumb img {
       max-width: 100%;
-      max-height: 180px;
+      max-height: 132px;
       object-fit: contain;
       filter: drop-shadow(0 12px 20px rgba(0,0,0,.24));
     }
-    .stage-name { font-weight: 900; font-size: .98rem; line-height: 1.15; }
     .stage-threshold {
-      font-size: .78rem;
+      font-size: .8rem;
       color: var(--gold2);
       text-transform: uppercase;
       letter-spacing: .08em;
       font-weight: 800;
+      margin-top: 2px;
+      white-space: nowrap;
     }
-    .stage-desc { font-size: .84rem; color: var(--muted); line-height: 1.45; }
+    .stage-name {
+      font-weight: 900;
+      font-size: 1rem;
+      line-height: 1.15;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
     .placeholder { font-size: 3.4rem; color: rgba(240,211,153,.72); }
     .faq { padding: 0 24px 64px; }
     .faq-card { color: var(--muted); line-height: 1.75; }
     .faq-card strong { color: var(--gold2); }
 
     @media (max-width: 1180px) {
-      .hero-layout, .bottom { grid-template-columns: 1fr; }
-      .showcase { min-height: 600px; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .showcase { min-height: 660px; }
       .stage-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
     @media (max-width: 820px) {
-      .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .token-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .showcase { min-height: 480px; }
+      .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .showcase {
+        min-height: 520px;
+        margin-top: 10px;
+      }
+      .stage-character {
+        min-height: 420px;
+        padding-bottom: 86px;
+      }
+      .stage-character img {
+        max-height: 430px;
+      }
+      .pedestal { width: min(100%, 360px); }
+      .pedestal-top { height: 52px; }
+      .pedestal-body { height: 38px; }
+      .stage-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .stage-card {
+        min-height: 220px;
+        padding: 14px;
+      }
+      .stage-thumb { min-height: 130px; }
+      .stage-thumb img { max-height: 112px; }
     }
     @media (max-width: 640px) {
       .nav-inner { padding: 14px 16px; }
-      .shell { padding: 24px 16px 40px; }
-      .bottom, .faq { padding-left: 16px; padding-right: 16px; }
-      .stage-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .shell, .season-wrap, .faq { padding-left: 16px; padding-right: 16px; }
+      .shell { padding-top: 24px; padding-bottom: 34px; }
       h1 { font-size: 2.7rem; }
-      .showcase { min-height: 410px; }
-      .stage-character img { max-height: 340px; }
-      .pedestal { width: min(100%, 320px); }
+      .lead { font-size: .98rem; }
+      .showcase { min-height: 430px; }
+      .stage-character { min-height: 340px; padding-bottom: 74px; }
+      .stage-character img { max-height: 300px; }
+      .pedestal { width: min(100%, 300px); }
+      .pedestal-top { height: 44px; }
+      .pedestal-body { height: 32px; }
+      .pedestal-label { font-size: .74rem; padding: 8px 14px; }
+      .stage-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+      .stage-card { min-height: 200px; }
+      .stage-thumb { min-height: 108px; }
+      .stage-thumb img { max-height: 92px; }
+      .stage-threshold { font-size: .74rem; }
+      .stage-name { font-size: .92rem; }
     }
   </style>
 </head>
@@ -364,7 +388,6 @@
         <div class="brand">TungTungcitos</div>
         <nav class="nav-links">
           <a href="#story">Story</a>
-          <a href="#tokenomics">Tokenomics</a>
           <a href="#seasons">Seasons</a>
           <a href="#faq">FAQ</a>
         </nav>
@@ -386,7 +409,7 @@
             <div class="card"><strong>0%</strong><span>Taxes</span></div>
             <div class="card"><strong>LP</strong><span>Burnt</span></div>
             <div class="card"><strong>100%</strong><span>Community</span></div>
-            <div class="card"><strong id="heroMarketCap">Waiting</strong><span>Market Cap</span></div>
+            <div class="card"><strong id="heroMarketCap">$0</strong><span>Market Cap</span></div>
           </div>
         </section>
 
@@ -404,19 +427,8 @@
     </div>
   </div>
 
-  <section class="bottom">
-    <div class="tokenomics" id="tokenomics">
-      <h2 class="section-title">Tokenomics</h2>
-      <div class="token-grid">
-        <div class="token-row"><span>Total Supply</span><strong>1,000,000,000</strong></div>
-        <div class="token-row"><span>Liquidity</span><strong>100% on Pump.fun</strong></div>
-        <div class="token-row"><span>Tax Buy</span><strong>0%</strong></div>
-        <div class="token-row"><span>Tax Sell</span><strong>0%</strong></div>
-        <div class="token-row"><span>Contract</span><strong>Renounced</strong></div>
-      </div>
-    </div>
-
-    <div class="season" id="seasons">
+  <section class="season-wrap" id="seasons">
+    <div class="season">
       <h2 class="section-title">Season Evolution</h2>
       <div id="stageGrid" class="stage-grid"></div>
     </div>
@@ -439,19 +451,15 @@
       {
         id: 'baby',
         threshold: 0,
-        label: '0 → 99k',
-        name: 'Baby TungTungcitos',
-        desc: 'The launch form. Small drum. Big legacy.',
-        lore: 'The first form of the legend. Small drum. Big legacy.',
+        label: '0–99k',
+        name: 'Baby TungTung',
         image: './ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_51_01.png'
       },
       {
         id: 'street',
         threshold: 100000,
         label: '100k+',
-        name: 'Street Rookie Form',
-        desc: 'The first standing form unlocks at 100k market cap.',
-        lore: 'Unlocked at 100k market cap. The legend stands up and starts marching.',
+        name: 'Street Rookie',
         image: './ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_29_06.png'
       },
       {
@@ -459,8 +467,6 @@
         threshold: 500000,
         label: '500k+',
         name: '500k Form',
-        desc: 'Reserved for the next custom evolution.',
-        lore: 'Coming soon. This slot is ready for your next character design.',
         image: null,
         placeholder: '؟'
       },
@@ -469,8 +475,6 @@
         threshold: 1000000,
         label: '1M+',
         name: '1M Form',
-        desc: 'Reserved for the million market cap evolution.',
-        lore: 'Coming soon. This slot is ready for the 1M transformation.',
         image: null,
         placeholder: '؟'
       },
@@ -478,16 +482,14 @@
         id: 'final',
         threshold: 10000000,
         label: '10M+',
-        name: 'Final Unknown Form',
-        desc: 'Hidden until the final milestone.',
-        lore: 'Final form unknown. Reveal the last evolution at 10M market cap.',
+        name: 'Final Form',
         image: null,
         placeholder: '?'
       }
     ];
 
     function formatMarketCap(value) {
-      if (value == null || Number.isNaN(value)) return 'Waiting';
+      if (value == null || Number.isNaN(value)) return '$0';
       if (value >= 1000000) return `$${(value / 1000000).toFixed(2)}M`;
       if (value >= 1000) return `$${(value / 1000).toFixed(0)}K`;
       return `$${Math.round(value)}`;
@@ -527,7 +529,6 @@
             ${thumb}
             <div class="stage-threshold">${stage.label}</div>
             <div class="stage-name">${stage.name}</div>
-            <div class="stage-desc">${stage.desc}</div>
           </article>`;
       }).join('');
     }
