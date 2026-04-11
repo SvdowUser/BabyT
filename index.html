@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Baby Sahur</title>
+
   <link rel="icon" href="./favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
   <meta name="description" content="Baby Sahur memecoin landing page">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#0b0705;
@@ -457,7 +460,6 @@
       color:var(--gold-2);
     }
 
-    /* SOCIALS OHNE AUSSENKASTEN */
     .socials{
       padding-top:4px;
     }
@@ -517,13 +519,11 @@
     }
 
     .social-btn.dex svg{
-      width:32px;
-      height:32px;
-      fill:none;
-      stroke:#f1e4d1;
-      stroke-width:1.95;
-      stroke-linecap:round;
-      stroke-linejoin:round;
+      width:34px;
+      height:34px;
+      fill:#f1e4d1;
+      stroke:none;
+      transform:translateY(.5px);
     }
 
     @media (max-width:1180px){
@@ -754,8 +754,8 @@
       }
 
       .social-btn.dex svg{
-        width:27px;
-        height:27px;
+        width:29px;
+        height:29px;
       }
     }
 
@@ -874,9 +874,8 @@
 
       <a class="social-btn dex" href="https://dexscreener.com" target="_blank" rel="noreferrer" aria-label="DexScreener">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 18.5h16"></path>
-          <path d="M6.5 14.8l3.1-3.1 2.3 2.3 5-5"></path>
-          <path d="M14.9 7.7H17.2V10"></path>
+          <path fill="currentColor" d="M12 2.8 18.9 6v12L12 21.2 5.1 18V6L12 2.8Zm0 2.05L6.9 7.5v9l5.1 2.65 5.1-2.65v-9L12 4.85Z"/>
+          <path fill="currentColor" d="M9.15 8.1h2.9c3.15 0 5.2 1.7 5.2 4.8s-2.05 4.8-5.2 4.8h-2.9V8.1Zm2.75 7.45c1.9 0 3.12-.95 3.12-2.65s-1.22-2.65-3.12-2.65h-.62v5.3h.62Z"/>
         </svg>
       </a>
     </div>
@@ -885,11 +884,13 @@
   <script>
     const PLACEHOLDER_CA = "PASTE_CA_HERE";
     const FALLBACK_PUMP_URL = "https://pump.fun";
+    const FALLBACK_DEX_URL = "https://dexscreener.com";
 
     const body = document.body;
     const marketCapValue = document.getElementById("marketCapValue");
     const buyLink = document.getElementById("buyLink");
     const buyButtons = document.querySelectorAll(".buy-btn");
+    const dexButton = document.querySelector(".social-btn.dex");
     const stageGrid = document.getElementById("stageGrid");
     const heroCharacter = document.getElementById("heroCharacter");
     const heroCharacterMobile = document.getElementById("heroCharacterMobile");
@@ -976,13 +977,18 @@
       return linkMint || null;
     }
 
-    function syncBuyLinks(){
+    function syncLinks(){
       const mint = getConfiguredMint();
-      const href = mint ? `https://pump.fun/coin/${mint}` : FALLBACK_PUMP_URL;
+      const pumpHref = mint ? `https://pump.fun/coin/${mint}` : FALLBACK_PUMP_URL;
+      const dexHref = mint ? `https://dexscreener.com/solana/${mint}` : FALLBACK_DEX_URL;
 
       buyButtons.forEach(button => {
-        button.href = href;
+        button.href = pumpHref;
       });
+
+      if(dexButton){
+        dexButton.href = dexHref;
+      }
     }
 
     function updateContractUi(){
@@ -996,7 +1002,7 @@
         copyCaBtn.disabled = true;
       }
 
-      syncBuyLinks();
+      syncLinks();
     }
 
     async function copyContract(){
