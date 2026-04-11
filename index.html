@@ -111,6 +111,7 @@
       grid-area:copy;
       padding:10px 0 6px;
       max-width:740px;
+      overflow:visible;
     }
 
     .show-desktop{
@@ -452,13 +453,18 @@
       color:var(--gold-2);
     }
 
+    .social-card{
+      padding:20px 24px;
+    }
+
     .socials-wrap{
       display:flex;
       justify-content:center;
       align-items:center;
       gap:14px;
       width:100%;
-      min-height:82px;
+      min-height:0;
+      padding:2px 0;
     }
 
     .social-btn{
@@ -501,6 +507,16 @@
       fill:#eadcc6;
       transform:translate(-1px,1px) scale(1.06);
       transform-origin:center;
+    }
+
+    .social-btn.dex svg{
+      width:34px;
+      height:34px;
+      fill:none;
+      stroke:#f1e4d1;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
     }
 
     @media (max-width:1180px){
@@ -557,14 +573,15 @@
 
       .mobile-show{
         display:flex;
-        min-height:290px;
-        margin:14px 0 4px;
-        padding-bottom:0;
+        min-height:292px;
+        margin:14px 0 6px;
+        padding-bottom:16px;
+        overflow:visible;
       }
 
       .mobile-show .char{
         min-height:228px;
-        padding-bottom:46px;
+        padding-bottom:56px;
       }
 
       .mobile-show .char img{
@@ -578,7 +595,7 @@
 
       .mobile-show .ped{
         width:min(100%,252px);
-        bottom:6px;
+        bottom:14px;
       }
 
       h1{
@@ -703,31 +720,41 @@
         border-radius:22px;
       }
 
+      .social-card{
+        padding:16px 18px;
+      }
+
       .title{
         font-size:1.3rem;
       }
 
       .socials-wrap{
-        min-height:64px;
-        gap:14px;
+        min-height:0;
+        gap:12px;
+        padding:0;
       }
 
       .social-btn{
-        width:70px;
-        height:70px;
-        min-height:70px;
+        width:68px;
+        height:68px;
+        min-height:68px;
         border-radius:20px;
       }
 
       .social-btn svg{
-        width:29px;
-        height:29px;
+        width:28px;
+        height:28px;
       }
 
       .social-btn.tiktok svg{
-        width:27px;
-        height:27px;
-        transform:translate(-1px,1px) scale(1.08);
+        width:26px;
+        height:26px;
+        transform:translate(-1px,1px) scale(1.1);
+      }
+
+      .social-btn.dex svg{
+        width:28px;
+        height:28px;
       }
     }
 
@@ -831,8 +858,7 @@
   </section>
 
   <section class="socials" id="socials">
-    <div class="faq-card">
-      <h2 class="title">Socials</h2>
+    <div class="faq-card social-card" aria-label="Social links">
       <div class="socials-wrap">
         <a class="social-btn x" href="https://x.com/PASTE_X_LINK_HERE" target="_blank" rel="noreferrer" aria-label="X">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -843,6 +869,14 @@
         <a class="social-btn tiktok" href="https://www.tiktok.com/@PASTE_TIKTOK_LINK_HERE" target="_blank" rel="noreferrer" aria-label="TikTok">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
+          </svg>
+        </a>
+
+        <a class="social-btn dex" href="https://dexscreener.com" target="_blank" rel="noreferrer" aria-label="DexScreener">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 18.5h16"></path>
+            <path d="M6 15l3.2-3.2 2.4 2.4 5.4-6"></path>
+            <path d="M14.7 8.2H17v2.3"></path>
           </svg>
         </a>
       </div>
