@@ -90,7 +90,7 @@
     const streetImg="https://raw.githubusercontent.com/SvdowUser/BabyT/main/ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_29_06.png";
     const goldenImg="./golden-sahua.png";
     const godImg="./god-sahua.png";
-    const stages=[{id:"baby",threshold:0,label:"0–99k",name:"Baby TungTung",image:babyImg},{id:"street",threshold:100000,label:"100k+",name:"Tungtungsitus",image:streetImg},{id:"golden",threshold:500000,label:"500k+",name:"Golden Sahua",image:goldenImg},{id:"god",threshold:1000000,label:"1M+",name:"God Sahua",image:godImg},{id:"final",threshold:10000000,label:"10M+",name:"Final Form",image:null,placeholder:"?"}];
+    const stages=[{id:"baby",threshold:0,label:"0–99k",name:"Baby TungTung",image:babyImg},{id:"street",threshold:100000,label:"100k+",name:"Tungtungtungcitos",image:streetImg},{id:"golden",threshold:500000,label:"500k+",name:"Golden Sahur",image:goldenImg},{id:"god",threshold:1000000,label:"1M+",name:"God Sahur",image:godImg},{id:"final",threshold:10000000,label:"10M+",name:"Final Form",image:null,placeholder:"?"}];
     function formatMarketCap(v){if(v==null||Number.isNaN(v))return "$0";if(v>=1000000)return "$"+(v/1000000).toFixed(2)+"M";if(v>=1000)return "$"+(v/1000).toFixed(0)+"K";return "$"+Math.round(v)}
     function extractMintFromString(v){if(!v)return null;const m=v.match(/\b[1-9A-HJ-NP-Za-km-z]{32,44}\b/);return m?m[0]:null}
     function getConfiguredContractAddress(){const v=(body.dataset.contractAddress||"").trim();return !v||v==="PASTE_CONTRACT_HERE"||v==="CA COMING SOON"?"":v}
