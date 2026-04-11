@@ -453,18 +453,21 @@
       color:var(--gold-2);
     }
 
-    .social-card{
-      padding:20px 24px;
+    /* SOCIALS OHNE AUSSENKASTEN */
+    .socials{
+      padding-top:4px;
     }
 
-    .socials-wrap{
+    .social-strip{
       display:flex;
       justify-content:center;
       align-items:center;
       gap:14px;
       width:100%;
-      min-height:0;
-      padding:2px 0;
+      padding:0;
+      background:transparent;
+      border:none;
+      box-shadow:none;
     }
 
     .social-btn{
@@ -502,19 +505,19 @@
     }
 
     .social-btn.tiktok svg{
-      width:31px;
-      height:31px;
+      width:34px;
+      height:34px;
       fill:#eadcc6;
-      transform:translate(-1px,1px) scale(1.06);
+      transform:translate(-1px,1px) scale(1.12);
       transform-origin:center;
     }
 
     .social-btn.dex svg{
-      width:34px;
-      height:34px;
+      width:32px;
+      height:32px;
       fill:none;
       stroke:#f1e4d1;
-      stroke-width:1.9;
+      stroke-width:1.95;
       stroke-linecap:round;
       stroke-linejoin:round;
     }
@@ -605,7 +608,7 @@
 
       .actions{
         gap:10px;
-        margin-top:18px;
+        margin-top:24px;
       }
 
       .btn{
@@ -720,18 +723,12 @@
         border-radius:22px;
       }
 
-      .social-card{
-        padding:16px 18px;
-      }
-
       .title{
         font-size:1.3rem;
       }
 
-      .socials-wrap{
-        min-height:0;
+      .social-strip{
         gap:12px;
-        padding:0;
       }
 
       .social-btn{
@@ -747,14 +744,14 @@
       }
 
       .social-btn.tiktok svg{
-        width:26px;
-        height:26px;
-        transform:translate(-1px,1px) scale(1.1);
+        width:30px;
+        height:30px;
+        transform:translate(-1px,1px) scale(1.12);
       }
 
       .social-btn.dex svg{
-        width:28px;
-        height:28px;
+        width:27px;
+        height:27px;
       }
     }
 
@@ -857,29 +854,27 @@
     </div>
   </section>
 
-  <section class="socials" id="socials">
-    <div class="faq-card social-card" aria-label="Social links">
-      <div class="socials-wrap">
-        <a class="social-btn x" href="https://x.com/PASTE_X_LINK_HERE" target="_blank" rel="noreferrer" aria-label="X">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M18.244 2H21.5l-7.11 8.127L22.75 22h-6.544l-5.123-6.697L5.223 22H1.964l7.604-8.692L1.55 2h6.71l4.63 6.109L18.244 2Zm-1.147 18h1.804L7.278 3.895H5.342L17.097 20Z"/>
-          </svg>
-        </a>
+  <section class="socials" id="socials" aria-label="Social links">
+    <div class="social-strip">
+      <a class="social-btn x" href="https://x.com/PASTE_X_LINK_HERE" target="_blank" rel="noreferrer" aria-label="X">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.244 2H21.5l-7.11 8.127L22.75 22h-6.544l-5.123-6.697L5.223 22H1.964l7.604-8.692L1.55 2h6.71l4.63 6.109L18.244 2Zm-1.147 18h1.804L7.278 3.895H5.342L17.097 20Z"/>
+        </svg>
+      </a>
 
-        <a class="social-btn tiktok" href="https://www.tiktok.com/@PASTE_TIKTOK_LINK_HERE" target="_blank" rel="noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
-          </svg>
-        </a>
+      <a class="social-btn tiktok" href="https://www.tiktok.com/@PASTE_TIKTOK_LINK_HERE" target="_blank" rel="noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
+        </svg>
+      </a>
 
-        <a class="social-btn dex" href="https://dexscreener.com" target="_blank" rel="noreferrer" aria-label="DexScreener">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 18.5h16"></path>
-            <path d="M6 15l3.2-3.2 2.4 2.4 5.4-6"></path>
-            <path d="M14.7 8.2H17v2.3"></path>
-          </svg>
-        </a>
-      </div>
+      <a class="social-btn dex" href="https://dexscreener.com" target="_blank" rel="noreferrer" aria-label="DexScreener">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 18.5h16"></path>
+          <path d="M6.5 14.8l3.1-3.1 2.3 2.3 5-5"></path>
+          <path d="M14.9 7.7H17.2V10"></path>
+        </svg>
+      </a>
     </div>
   </section>
 
