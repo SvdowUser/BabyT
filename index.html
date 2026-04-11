@@ -94,7 +94,9 @@
       white-space:nowrap;
     }
 
-    .shell{padding:24px 24px 40px}
+    .shell{
+      padding:24px 24px 40px;
+    }
 
     .grid{
       display:grid;
@@ -111,7 +113,9 @@
       max-width:740px;
     }
 
-    .show-desktop{grid-area:show}
+    .show-desktop{
+      grid-area:show;
+    }
 
     .eyebrow{
       display:inline-flex;
@@ -136,8 +140,6 @@
     }
 
     .accent{color:var(--accent)}
-
-    .mobile-show{display:none}
 
     .actions{
       display:flex;
@@ -238,6 +240,7 @@
       cursor:pointer;
       background:linear-gradient(180deg,#d6a35f,#a66c34);
       color:#23150d;
+      flex:0 0 auto;
     }
 
     .copy-btn:disabled{
@@ -245,20 +248,26 @@
       opacity:.55;
     }
 
-    .show,.mobile-show{
+    .show,
+    .mobile-show{
       position:relative;
-      display:flex;
       align-items:flex-end;
       justify-content:center;
       overflow:hidden;
     }
 
     .show{
+      display:flex;
       min-height:760px;
       padding-bottom:12px;
     }
 
-    .show::before,.mobile-show::before{
+    .mobile-show{
+      display:none;
+    }
+
+    .show::before,
+    .mobile-show::before{
       content:"";
       position:absolute;
       inset:12% 8% 16%;
@@ -316,7 +325,9 @@
       50%{transform:translateY(-12px)}
     }
 
-    .seasons,.faq,.socials{padding:0 24px 64px}
+    .seasons,.faq,.socials{
+      padding:0 24px 64px;
+    }
 
     .panel,.faq-card{
       background:rgba(23,13,9,.84);
@@ -404,7 +415,9 @@
       font-weight:900;
     }
 
-    .stage.active .placeholder{color:rgba(35,21,13,.74)}
+    .stage.active .placeholder{
+      color:rgba(35,21,13,.74);
+    }
 
     .th{
       margin-top:10px;
@@ -416,7 +429,9 @@
       white-space:nowrap;
     }
 
-    .stage.active .th{color:rgba(35,21,13,.76)}
+    .stage.active .th{
+      color:rgba(35,21,13,.76);
+    }
 
     .nm{
       margin-top:8px;
@@ -433,21 +448,23 @@
       line-height:1.78;
     }
 
-    .faq-card strong{color:var(--gold-2)}
+    .faq-card strong{
+      color:var(--gold-2);
+    }
 
     .socials-wrap{
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:18px;
+      gap:14px;
       width:100%;
-      min-height:110px;
+      min-height:82px;
     }
 
     .social-btn{
-      width:84px;
-      height:84px;
-      min-height:84px;
+      width:82px;
+      height:82px;
+      min-height:82px;
       padding:0;
       border-radius:22px;
       background:linear-gradient(180deg,rgba(47,29,20,.88),rgba(24,13,8,.92));
@@ -467,13 +484,24 @@
     }
 
     .social-btn svg{
-      width:34px;
-      height:34px;
+      width:33px;
+      height:33px;
       fill:#f1e4d1;
       display:block;
+      flex:none;
     }
 
-    .social-btn.tiktok svg{fill:#eadcc6}
+    .social-btn.x svg{
+      transform:translateY(1px);
+    }
+
+    .social-btn.tiktok svg{
+      width:31px;
+      height:31px;
+      fill:#eadcc6;
+      transform:translate(-1px,1px) scale(1.06);
+      transform-origin:center;
+    }
 
     @media (max-width:1180px){
       .grid{
@@ -481,19 +509,29 @@
         grid-template-areas:"copy" "show";
       }
 
-      .copy{max-width:820px}
-      .show{min-height:620px}
+      .copy{
+        max-width:820px;
+      }
+
+      .show{
+        min-height:620px;
+      }
     }
 
     @media (max-width:820px){
-      .links{display:none}
+      .links{
+        display:none;
+      }
 
       .nav-inner{
         padding:14px 16px;
         gap:12px;
       }
 
-      .brand{font-size:1rem}
+      .brand{
+        font-size:1rem;
+      }
+
       .cta{
         padding:10px 14px;
         font-size:.98rem;
@@ -504,24 +542,33 @@
         padding-right:16px;
       }
 
-      .shell{padding-top:18px}
-      .grid{display:block;min-height:auto}
-      .show-desktop{display:none}
+      .shell{
+        padding-top:18px;
+      }
+
+      .grid{
+        display:block;
+        min-height:auto;
+      }
+
+      .show-desktop{
+        display:none;
+      }
 
       .mobile-show{
         display:flex;
-        min-height:300px;
-        margin:16px 0 6px;
+        min-height:290px;
+        margin:14px 0 4px;
         padding-bottom:0;
       }
 
       .mobile-show .char{
-        min-height:240px;
-        padding-bottom:66px;
+        min-height:228px;
+        padding-bottom:46px;
       }
 
       .mobile-show .char img{
-        max-height:190px;
+        max-height:188px;
         object-fit:contain;
         filter:
           drop-shadow(0 0 12px rgba(255,210,120,.20))
@@ -530,8 +577,8 @@
       }
 
       .mobile-show .ped{
-        width:min(100%,250px);
-        bottom:8px;
+        width:min(100%,252px);
+        bottom:6px;
       }
 
       h1{
@@ -562,7 +609,9 @@
         border-radius:14px;
       }
 
-      .card strong{font-size:1.08rem}
+      .card strong{
+        font-size:1.08rem;
+      }
 
       .card span{
         margin-top:6px;
@@ -571,14 +620,29 @@
       }
 
       .ca-box{
+        display:grid;
+        grid-template-columns:1fr;
+        align-items:stretch;
         padding:12px;
         gap:10px;
         margin-top:14px;
       }
 
-      .ca-label{width:100%}
-      .ca-value{width:100%;font-size:.98rem}
-      .copy-btn{width:100%;min-height:52px;font-size:1rem}
+      .ca-label,
+      .ca-value,
+      .copy-btn{
+        width:100%;
+      }
+
+      .ca-value{
+        min-width:0;
+        font-size:.98rem;
+      }
+
+      .copy-btn{
+        min-height:52px;
+        font-size:1rem;
+      }
 
       .stagegrid{
         display:flex;
@@ -589,7 +653,10 @@
         padding-bottom:8px;
       }
 
-      .stagegrid::-webkit-scrollbar{height:8px}
+      .stagegrid::-webkit-scrollbar{
+        height:8px;
+      }
+
       .stagegrid::-webkit-scrollbar-thumb{
         background:rgba(214,171,104,.34);
         border-radius:999px;
@@ -608,8 +675,13 @@
         padding:8px;
       }
 
-      .thumb img{height:92px}
-      .thumb.locked::after{font-size:2.6rem}
+      .thumb img{
+        height:92px;
+      }
+
+      .thumb.locked::after{
+        font-size:2.6rem;
+      }
 
       .th{
         margin-top:8px;
@@ -625,36 +697,58 @@
         overflow-wrap:anywhere;
       }
 
-      .faq-card,.panel{
+      .faq-card,
+      .panel{
         padding:20px;
         border-radius:22px;
       }
 
-      .title{font-size:1.3rem}
+      .title{
+        font-size:1.3rem;
+      }
 
       .socials-wrap{
-        min-height:86px;
-        gap:12px;
+        min-height:64px;
+        gap:14px;
       }
 
       .social-btn{
-        width:68px;
-        height:68px;
-        min-height:68px;
+        width:70px;
+        height:70px;
+        min-height:70px;
         border-radius:20px;
       }
 
       .social-btn svg{
-        width:28px;
-        height:28px;
+        width:29px;
+        height:29px;
+      }
+
+      .social-btn.tiktok svg{
+        width:27px;
+        height:27px;
+        transform:translate(-1px,1px) scale(1.08);
       }
     }
 
     @media (max-width:640px){
-      h1{font-size:2.35rem}
-      .eyebrow{font-size:.95rem;padding:8px 12px}
-      .nav-inner{align-items:center}
-      .cta{min-height:44px;font-size:.95rem}
+      h1{
+        font-size:2.35rem;
+      }
+
+      .eyebrow{
+        font-size:.95rem;
+        padding:8px 12px;
+      }
+
+      .nav-inner{
+        align-items:center;
+      }
+
+      .cta{
+        min-height:44px;
+        font-size:.95rem;
+      }
     }
   </style>
 </head>
@@ -786,7 +880,7 @@
         id: "street",
         threshold: 100000,
         label: "100k+",
-        name: "Tungtungcitos",
+        name: "TungTungTungcitos",
         image: streetImg
       },
       {
@@ -852,6 +946,7 @@
     function syncBuyLinks(){
       const mint = getConfiguredMint();
       const href = mint ? `https://pump.fun/coin/${mint}` : FALLBACK_PUMP_URL;
+
       buyButtons.forEach(button => {
         button.href = href;
       });
