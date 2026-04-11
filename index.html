@@ -26,6 +26,14 @@
       --accent:#f1cf69;
       --text:#f8ecd7;
       --muted:#d6bea2;
+
+      /* leicht anpassbar */
+      --brand-icon-size:28px;
+      --buy-icon-size:22px;
+      --buy-label-size:1.08rem;
+      --buy-label-size-nav:1.02rem;
+      --buy-label-size-mobile:0.96rem;
+      --buy-label-size-mobile-nav:0.92rem;
     }
 
     *{box-sizing:border-box}
@@ -70,12 +78,29 @@
     }
 
     .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       font-weight:900;
       color:var(--gold-2);
       font-size:clamp(1.2rem,2vw,1.7rem);
       text-transform:uppercase;
       letter-spacing:.02em;
       white-space:nowrap;
+      min-width:0;
+    }
+
+    .brand-icon{
+      width:var(--brand-icon-size);
+      height:var(--brand-icon-size);
+      flex:0 0 var(--brand-icon-size);
+      object-fit:contain;
+      display:block;
+    }
+
+    .brand-text{
+      white-space:nowrap;
+      line-height:1;
     }
 
     .links{
@@ -161,6 +186,7 @@
       padding:0 24px;
       border:1px solid transparent;
       box-shadow:0 10px 24px rgba(0,0,0,.24);
+      white-space:nowrap;
     }
 
     .primary{
@@ -174,18 +200,31 @@
       color:var(--text);
     }
 
-    /* BUY BUTTONS: logo links + helle Schrift wie Headline */
+    /* BUY BUTTONS */
     .buy-btn{
       color:var(--text) !important;
-      gap:10px;
+      gap:12px;
+      white-space:nowrap;
     }
 
     .buy-btn .buy-icon{
-      width:18px;
-      height:18px;
+      width:var(--buy-icon-size);
+      height:var(--buy-icon-size);
       object-fit:contain;
-      flex:0 0 18px;
+      flex:0 0 var(--buy-icon-size);
       display:block;
+    }
+
+    .buy-btn .buy-label{
+      display:inline-block;
+      font-weight:900;
+      line-height:1;
+      white-space:nowrap;
+      font-size:var(--buy-label-size);
+    }
+
+    .cta.buy-btn .buy-label{
+      font-size:var(--buy-label-size-nav);
     }
 
     .stats{
@@ -357,7 +396,6 @@
       padding:24px;
     }
 
-    /* TITLES jetzt gleiche helle Farbe wie Main Headline */
     .title{
       margin:0 0 18px;
       font-size:1.5rem;
@@ -568,7 +606,14 @@
       }
 
       .brand{
+        gap:8px;
         font-size:1rem;
+      }
+
+      .brand-icon{
+        width:22px;
+        height:22px;
+        flex:0 0 22px;
       }
 
       .cta{
@@ -581,9 +626,13 @@
       }
 
       .buy-btn .buy-icon{
-        width:16px;
-        height:16px;
-        flex:0 0 16px;
+        width:18px;
+        height:18px;
+        flex:0 0 18px;
+      }
+
+      .cta.buy-btn .buy-label{
+        font-size:var(--buy-label-size-mobile-nav);
       }
 
       .shell,.seasons,.faq,.socials{
@@ -637,15 +686,28 @@
       }
 
       .actions{
+        display:grid;
+        grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);
         gap:10px;
         margin-top:24px;
       }
 
       .btn{
-        flex:1 1 calc(50% - 5px);
+        width:100%;
+        min-width:0;
         min-height:54px;
-        padding:0 16px;
-        font-size:1rem;
+        padding:0 14px;
+        font-size:.98rem;
+      }
+
+      .actions .buy-btn .buy-label{
+        font-size:var(--buy-label-size-mobile);
+      }
+
+      .actions .secondary{
+        justify-content:center;
+        padding-left:12px;
+        padding-right:12px;
       }
 
       .stats{
@@ -810,7 +872,10 @@
   <div class="hero">
     <header class="nav">
       <div class="nav-inner">
-        <div class="brand">Baby Sahur</div>
+        <div class="brand">
+          <img class="brand-icon" src="./favicon-32x32.png" alt="" aria-hidden="true">
+          <span class="brand-text">Baby Sahur</span>
+        </div>
 
         <nav class="links">
           <a href="#story">About</a>
@@ -820,7 +885,7 @@
 
         <a id="buyLink" class="cta buy-btn" href="https://pump.fun" target="_blank" rel="noreferrer">
           <img class="buy-icon" src="./pumpfun-logo.png" alt="" aria-hidden="true">
-          Buy on Pump.fun
+          <span class="buy-label">Buy on Pump.fun</span>
         </a>
       </div>
     </header>
@@ -843,7 +908,7 @@
           <div class="actions">
             <a class="btn primary buy-btn" href="https://pump.fun" target="_blank" rel="noreferrer">
               <img class="buy-icon" src="./pumpfun-logo.png" alt="" aria-hidden="true">
-              Buy on Pump.fun
+              <span class="buy-label">Buy on Pump.fun</span>
             </a>
             <a class="btn secondary" href="#seasons">See Evolution</a>
           </div>
