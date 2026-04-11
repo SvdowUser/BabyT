@@ -1,4 +1,4 @@
-<!doctype html>
+l<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -203,7 +203,7 @@
     /* BUY BUTTONS */
     .buy-btn{
       color:var(--text) !important;
-      gap:12px;
+      gap:6px;
       white-space:nowrap;
     }
 
@@ -225,6 +225,12 @@
 
     .cta.buy-btn .buy-label{
       font-size:var(--buy-label-size-nav);
+    }
+
+    .actions .buy-btn{
+      justify-content:flex-start;
+      padding-left:18px;
+      padding-right:14px;
     }
 
     .stats{
@@ -622,7 +628,7 @@
       }
 
       .buy-btn{
-        gap:8px;
+        gap:5px;
       }
 
       .buy-btn .buy-icon{
@@ -687,7 +693,7 @@
 
       .actions{
         display:grid;
-        grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);
+        grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);
         gap:10px;
         margin-top:24px;
       }
@@ -700,14 +706,20 @@
         font-size:.98rem;
       }
 
+      .actions .buy-btn{
+        justify-content:flex-start;
+        padding-left:14px;
+        padding-right:12px;
+      }
+
       .actions .buy-btn .buy-label{
         font-size:var(--buy-label-size-mobile);
       }
 
       .actions .secondary{
         justify-content:center;
-        padding-left:12px;
-        padding-right:12px;
+        padding-left:10px;
+        padding-right:10px;
       }
 
       .stats{
