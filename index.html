@@ -1087,7 +1087,7 @@
 
     function getConfiguredContractAddress(){
       const value = (body.dataset.contractAddress || "").trim();
-      if(!value || value === PLACEHOLDER_CA || value === "CA COMING SOON") return "";
+      if(!value || value === PLACEHOLDER_CA || value === "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump") return "";
       return value;
     }
 
@@ -1129,7 +1129,7 @@
         caValue.textContent = contract;
         copyCaBtn.disabled = false;
       } else {
-        caValue.textContent = "CA COMING SOON";
+        caValue.textContent = "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
         copyCaBtn.disabled = true;
       }
 
