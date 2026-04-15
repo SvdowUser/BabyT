@@ -1013,7 +1013,7 @@
   </section>
 
   <script>
-    const PLACEHOLDER_CA = "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
+    const PLACEHOLDER_CA = "PASTE_CA_HERE";
     const FALLBACK_PUMP_URL = "https://pump.fun";
     const FALLBACK_DEX_URL = "https://dexscreener.com";
 
@@ -1086,10 +1086,10 @@
     }
 
     function getConfiguredContractAddress(){
-      const value = (body.dataset.contractAddress || "").trim();
-      if(!value || value === PLACEHOLDER_CA || value === "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump") return "";
-      return value;
-    }
+  const value = (body.dataset.contractAddress || "").trim();
+  if(!value || value === PLACEHOLDER_CA || value === "CA COMING SOON") return "";
+  return value;
+}
 
     function getConfiguredTokenAddress(){
       const value = (body.dataset.tokenAddress || "").trim();
@@ -1129,9 +1129,9 @@
         caValue.textContent = contract;
         copyCaBtn.disabled = false;
       } else {
-        caValue.textContent = "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
-        copyCaBtn.disabled = true;
-      }
+  caValue.textContent = "CA COMING SOON";
+  copyCaBtn.disabled = true;
+}
 
       syncLinks();
     }
