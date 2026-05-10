@@ -561,6 +561,7 @@
       background:transparent;
       border:none;
       box-shadow:none;
+      flex-wrap:wrap;
     }
 
     .social-btn{
@@ -611,6 +612,20 @@
       display:block;
       object-fit:contain;
       transform:translateY(.5px);
+    }
+
+    .social-btn.gecko .gt-logo{
+      width:39px;
+      height:39px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:linear-gradient(180deg,#9b6cff,#6f42d8);
+      color:#fff;
+      font-weight:900;
+      font-size:.95rem;
+      letter-spacing:-.04em;
+      box-shadow:0 8px 18px rgba(111,66,216,.28);
     }
 
     @media (max-width:1180px){
@@ -884,6 +899,13 @@
         width:36px;
         height:36px;
       }
+
+      .social-btn.gecko .gt-logo{
+        width:36px;
+        height:36px;
+        font-size:.88rem;
+        border-radius:11px;
+      }
     }
 
     @media (max-width:640px){
@@ -907,7 +929,8 @@
     }
   </style>
 </head>
-<body data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"data-token-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump">
+
+<body data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" data-token-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump">
   <div class="hero">
     <header class="nav">
       <div class="nav-inner">
@@ -1000,14 +1023,18 @@
         </svg>
       </a>
 
-      <a class="social-btn tiktok" href="https://www.tiktok.com/@mythosmonday" target="_blank" rel="noreferrer" aria-label="TikTok">
+      <a class="social-btn tiktok" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
         </svg>
       </a>
 
-      <a class="social-btn dex" href="https://dexscreener.com/" target="_blank" rel="noreferrer" aria-label="DexScreener">
+      <a class="social-btn dex" href="https://dexscreener.com/solana/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="DexScreener">
         <img src="./dexscreener-logo.png" alt="DexScreener">
+      </a>
+
+      <a class="social-btn gecko" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
+        <span class="gt-logo">GT</span>
       </a>
     </div>
   </section>
@@ -1016,12 +1043,14 @@
     const PLACEHOLDER_CA = "PASTE_CA_HERE";
     const FALLBACK_PUMP_URL = "https://pump.fun";
     const FALLBACK_DEX_URL = "https://dexscreener.com";
+    const FALLBACK_GECKO_URL = "https://www.geckoterminal.com";
 
     const body = document.body;
     const marketCapValue = document.getElementById("marketCapValue");
     const buyLink = document.getElementById("buyLink");
     const buyButtons = document.querySelectorAll(".buy-btn");
     const dexButton = document.querySelector(".social-btn.dex");
+    const geckoButton = document.querySelector(".social-btn.gecko");
     const stageGrid = document.getElementById("stageGrid");
     const heroCharacter = document.getElementById("heroCharacter");
     const heroCharacterMobile = document.getElementById("heroCharacterMobile");
@@ -1086,10 +1115,10 @@
     }
 
     function getConfiguredContractAddress(){
-  const value = (body.dataset.contractAddress || "").trim();
-  if(!value || value === PLACEHOLDER_CA || value === "CA COMING SOON") return "";
-  return value;
-}
+      const value = (body.dataset.contractAddress || "").trim();
+      if(!value || value === PLACEHOLDER_CA || value === "CA COMING SOON") return "";
+      return value;
+    }
 
     function getConfiguredTokenAddress(){
       const value = (body.dataset.tokenAddress || "").trim();
@@ -1112,6 +1141,7 @@
       const mint = getConfiguredMint();
       const pumpHref = mint ? `https://pump.fun/coin/${mint}` : FALLBACK_PUMP_URL;
       const dexHref = mint ? `https://dexscreener.com/solana/${mint}` : FALLBACK_DEX_URL;
+      const geckoHref = mint ? `https://www.geckoterminal.com/solana/tokens/${mint}` : FALLBACK_GECKO_URL;
 
       buyButtons.forEach(button => {
         button.href = pumpHref;
@@ -1119,6 +1149,10 @@
 
       if(dexButton){
         dexButton.href = dexHref;
+      }
+
+      if(geckoButton){
+        geckoButton.href = geckoHref;
       }
     }
 
@@ -1129,9 +1163,9 @@
         caValue.textContent = contract;
         copyCaBtn.disabled = false;
       } else {
-  caValue.textContent = "CA COMING SOON";
-  copyCaBtn.disabled = true;
-}
+        caValue.textContent = "CA COMING SOON";
+        copyCaBtn.disabled = true;
+      }
 
       syncLinks();
     }
