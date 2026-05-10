@@ -614,19 +614,13 @@
       transform:translateY(.5px);
     }
 
-    .social-btn.gecko .gt-logo{
-      width:39px;
-      height:39px;
-      display:grid;
-      place-items:center;
-      border-radius:12px;
-      background:linear-gradient(180deg,#9b6cff,#6f42d8);
-      color:#fff;
-      font-weight:900;
-      font-size:.95rem;
-      letter-spacing:-.04em;
-      box-shadow:0 8px 18px rgba(111,66,216,.28);
-    }
+    .social-btn.gecko img{
+  width:39px;
+  height:39px;
+  display:block;
+  object-fit:contain;
+  transform:translateY(.5px);
+}
 
     @media (max-width:1180px){
       .grid{
@@ -900,12 +894,10 @@
         height:36px;
       }
 
-      .social-btn.gecko .gt-logo{
-        width:36px;
-        height:36px;
-        font-size:.88rem;
-        border-radius:11px;
-      }
+  .social-btn.gecko img{
+  width:36px;
+  height:36px;
+}
     }
 
     @media (max-width:640px){
@@ -1033,9 +1025,9 @@
         <img src="./dexscreener-logo.png" alt="DexScreener">
       </a>
 
-      <a class="social-btn gecko" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
-        <span class="gt-logo">GT</span>
-      </a>
+    <a class="social-btn gecko" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
+  <img src="./geckoterminal-logo.png" alt="GeckoTerminal">
+</a>
     </div>
   </section>
 
