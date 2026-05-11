@@ -21,8 +21,6 @@
   <meta property="og:title" content="Baby Sahur">
   <meta property="og:description" content="The son of Tung Tung Tung Sahur. He grows with the chart.">
   <meta property="og:url" content="https://babytungtung.com/">
-
-  <!-- Übergangsweise apple-touch-icon als Vorschau -->
   <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
   <meta property="og:image:secure_url" content="https://babytungtung.com/apple-touch-icon.png?v=2">
   <meta property="og:image:type" content="image/png">
@@ -58,10 +56,10 @@
       --buy-label-size-mobile:0.96rem;
       --buy-label-size-mobile-nav:0.92rem;
 
-      --stage-width-desktop: 720px;
-      --stage-bottom-desktop: 72px;
-      --stage-width-mobile: 278px;
-      --stage-bottom-mobile: 20px;
+      --stage-width-desktop:720px;
+      --stage-bottom-desktop:72px;
+      --stage-width-mobile:278px;
+      --stage-bottom-mobile:20px;
     }
 
     *{box-sizing:border-box}
@@ -606,6 +604,22 @@
       transform-origin:center;
     }
 
+    .social-btn.pump img{
+      width:43px;
+      height:43px;
+      object-fit:contain;
+      display:block;
+      transform:translateY(.5px);
+    }
+
+    .social-btn.jupiter svg{
+      width:43px;
+      height:43px;
+      display:block;
+      flex:none;
+      filter:drop-shadow(0 0 12px rgba(188,245,93,.16));
+    }
+
     .social-btn.dex img{
       width:49px;
       height:49px;
@@ -615,12 +629,12 @@
     }
 
     .social-btn.gecko img{
-  width:44px;
-  height:44px;
-  display:block;
-  object-fit:contain;
-  transform:translateY(.5px);
-}
+      width:44px;
+      height:44px;
+      display:block;
+      object-fit:contain;
+      transform:translateY(.5px);
+    }
 
     @media (max-width:1180px){
       .grid{
@@ -868,14 +882,14 @@
       }
 
       .social-strip{
-        gap:12px;
+        gap:10px;
       }
 
       .social-btn{
-        width:68px;
-        height:68px;
-        min-height:68px;
-        border-radius:20px;
+        width:64px;
+        height:64px;
+        min-height:64px;
+        border-radius:19px;
       }
 
       .social-btn svg{
@@ -889,15 +903,25 @@
         transform:translate(-1px,4px) scale(1.12);
       }
 
+      .social-btn.pump img{
+        width:34px;
+        height:34px;
+      }
+
+      .social-btn.jupiter svg{
+        width:34px;
+        height:34px;
+      }
+
       .social-btn.dex img{
         width:36px;
         height:36px;
       }
 
-  .social-btn.gecko img{
-  width:32px;
-  height:32px;
-}
+      .social-btn.gecko img{
+        width:32px;
+        height:32px;
+      }
     }
 
     @media (max-width:640px){
@@ -1009,7 +1033,8 @@
 
   <section class="socials" id="socials" aria-label="Social links">
     <div class="social-strip">
-      <a class="social-btn x" href="https://x.com/i/communities/2035322391526551861" target="_blank" rel="noreferrer" aria-label="X">
+
+      <a class="social-btn x" href="https://x.com/i/communities/2035322391526551861" target="_blank" rel="noreferrer" aria-label="X Community">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M18.244 2H21.5l-7.11 8.127L22.75 22h-6.544l-5.123-6.697L5.223 22H1.964l7.604-8.692L1.55 2h6.71l4.63 6.109L18.244 2Zm-1.147 18h1.804L7.278 3.895H5.342L17.097 20Z"/>
         </svg>
@@ -1021,19 +1046,41 @@
         </svg>
       </a>
 
-      <a class="social-btn dex" href="https://dexscreener.com/solana/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="DexScreener">
-        <img src="./dexscreener-logo.png" alt="DexScreener">
+      <a class="social-btn pump" href="https://pump.fun/coin/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Pump.fun">
+        <img src="./pumpfun-logo.png" alt="Pump.fun">
       </a>
 
-    <a class="social-btn gecko" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
-  <img src="./geckoterminal-logo.png" alt="GeckoTerminal">
-</a>
+      <a class="social-btn jupiter" href="https://jup.ag/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Jupiter">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="jupGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#bdf56b"/>
+              <stop offset="48%" stop-color="#55d6c2"/>
+              <stop offset="100%" stop-color="#7f7cff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="27" fill="rgba(255,255,255,.04)" stroke="url(#jupGradient)" stroke-width="4"/>
+          <path d="M14 24c8-7 20-7 28 0 3 3 6 4 10 4" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M12 34c9-6 19-6 29 0 4 3 7 4 12 3" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M16 44c8-4 17-4 25 0 4 2 7 3 11 2" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <a class="social-btn dex" href="https://dexscreener.com/solana/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="DEXScreener">
+        <img src="./dexscreener-logo.png" alt="DEXScreener">
+      </a>
+
+      <a class="social-btn gecko" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
+        <img src="./geckoterminal-logo.png" alt="GeckoTerminal">
+      </a>
+
     </div>
   </section>
 
   <script>
     const PLACEHOLDER_CA = "PASTE_CA_HERE";
     const FALLBACK_PUMP_URL = "https://pump.fun";
+    const FALLBACK_JUPITER_URL = "https://jup.ag";
     const FALLBACK_DEX_URL = "https://dexscreener.com";
     const FALLBACK_GECKO_URL = "https://www.geckoterminal.com";
 
@@ -1041,6 +1088,8 @@
     const marketCapValue = document.getElementById("marketCapValue");
     const buyLink = document.getElementById("buyLink");
     const buyButtons = document.querySelectorAll(".buy-btn");
+    const pumpButton = document.querySelector(".social-btn.pump");
+    const jupiterButton = document.querySelector(".social-btn.jupiter");
     const dexButton = document.querySelector(".social-btn.dex");
     const geckoButton = document.querySelector(".social-btn.gecko");
     const stageGrid = document.getElementById("stageGrid");
@@ -1131,13 +1180,23 @@
 
     function syncLinks(){
       const mint = getConfiguredMint();
+
       const pumpHref = mint ? `https://pump.fun/coin/${mint}` : FALLBACK_PUMP_URL;
+      const jupiterHref = mint ? `https://jup.ag/tokens/${mint}` : FALLBACK_JUPITER_URL;
       const dexHref = mint ? `https://dexscreener.com/solana/${mint}` : FALLBACK_DEX_URL;
       const geckoHref = mint ? `https://www.geckoterminal.com/solana/tokens/${mint}` : FALLBACK_GECKO_URL;
 
       buyButtons.forEach(button => {
         button.href = pumpHref;
       });
+
+      if(pumpButton){
+        pumpButton.href = pumpHref;
+      }
+
+      if(jupiterButton){
+        jupiterButton.href = jupiterHref;
+      }
 
       if(dexButton){
         dexButton.href = dexHref;
