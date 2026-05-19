@@ -314,7 +314,7 @@
       line-height:1.62;
     }
 
-    .panel,.wallet-card,.funding-card,.footer-note{
+    .panel,.progress-card,.roadmap-card,.footer-note{
       background:var(--panel-soft);
       border:1px solid var(--line);
       border-radius:20px;
@@ -602,117 +602,87 @@
       color:rgba(35,21,13,.78);
     }
 
-    .wallet-grid{
+    .production-grid{
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(300px,.85fr);
+      grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);
       gap:18px;
-      align-items:stretch;
+      align-items:start;
       margin-top:18px;
     }
 
-    .wallet-card,.funding-card{
+    .progress-card,.roadmap-card{
       padding:22px;
       background:
         radial-gradient(circle at 20% 10%,rgba(241,207,105,.1),transparent 34%),
         rgba(23,13,9,.88);
     }
 
-    .wallet-card h3,.funding-card h3{
-      margin:0 0 8px;
-      font-size:1.16rem;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.03em;
-    }
-
-    .wallet-card p,.funding-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.96rem;
-    }
-
-    .support-note{
-      margin-top:14px;
-      padding:13px 14px;
-      border-radius:15px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.16);
-      color:var(--text);
-      font-weight:700;
-      line-height:1.48;
-    }
-
-    .wallet-warning{
-      margin-top:12px;
-      padding:13px 14px;
-      border-radius:15px;
-      background:rgba(241,207,105,.1);
+    .progress-kicker{
+      display:inline-flex;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(241,207,105,.11);
       border:1px solid rgba(241,207,105,.2);
       color:var(--gold);
-      font-weight:800;
-      line-height:1.48;
-    }
-
-    .wallet-address-box{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:10px;
-      align-items:center;
-    }
-
-    .wallet-stats{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .wallet-mini{
-      padding:14px;
-      border-radius:15px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.16);
-    }
-
-    .wallet-mini strong{
-      display:block;
-      color:var(--gold);
-      font-size:1.18rem;
-      line-height:1.1;
-    }
-
-    .wallet-mini span{
-      display:block;
-      margin-top:6px;
-      color:var(--muted);
-      font-size:.7rem;
-      font-weight:800;
+      font-size:.78rem;
+      font-weight:900;
       text-transform:uppercase;
       letter-spacing:.08em;
+      margin-bottom:14px;
     }
 
-    .goal-box{
-      margin-top:14px;
-      padding:16px;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.16);
-    }
-
-    .goal-top{
+    .progress-head{
       display:flex;
       justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:10px;
+      gap:18px;
+      align-items:flex-start;
+      margin-bottom:16px;
+    }
+
+    .progress-title{
+      margin:0;
+      font-size:1.35rem;
+      line-height:1.08;
+      color:var(--text);
+      text-transform:uppercase;
+      letter-spacing:-.02em;
+    }
+
+    .progress-percent{
+      min-width:72px;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:16px;
+      background:rgba(241,207,105,.11);
+      border:1px solid rgba(241,207,105,.2);
       color:var(--gold);
       font-weight:900;
     }
 
+    .progress-money{
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+
+    .progress-money strong{
+      display:block;
+      color:var(--gold);
+      font-size:clamp(2.35rem,5vw,3.45rem);
+      line-height:.95;
+      letter-spacing:-.04em;
+    }
+
+    .progress-money span{
+      color:var(--muted);
+      font-weight:800;
+      margin-bottom:5px;
+    }
+
     .progress-track{
-      height:14px;
+      height:16px;
       border-radius:999px;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(214,171,104,.15);
@@ -727,26 +697,167 @@
       transition:width .35s ease;
     }
 
-    .funding-list{
-      display:grid;
-      gap:10px;
-      margin-top:14px;
+    .progress-note{
+      margin:14px 0 0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.96rem;
     }
 
-    .funding-item{
-      padding:13px;
+    .wallet-mini-line{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:14px;
+      padding:13px 14px;
       border-radius:15px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(214,171,104,.16);
+    }
+
+    .wallet-mini-line strong{
+      color:var(--gold);
+      font-size:1.08rem;
+    }
+
+    .wallet-mini-line span{
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .wallet-details{
+      margin-top:14px;
+      border-radius:16px;
+      border:1px solid rgba(214,171,104,.16);
+      background:rgba(255,255,255,.025);
+      overflow:hidden;
+    }
+
+    .wallet-details summary{
+      cursor:pointer;
+      list-style:none;
+      padding:14px 15px;
+      color:var(--gold);
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .wallet-details summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .wallet-details summary::after{
+      content:"+";
+      font-size:1.3rem;
+      line-height:1;
+      color:var(--gold);
+    }
+
+    .wallet-details[open] summary::after{
+      content:"–";
+    }
+
+    .wallet-inner{
+      padding:0 15px 15px;
+    }
+
+    .wallet-warning{
+      margin-top:12px;
+      padding:12px 13px;
+      border-radius:14px;
+      background:rgba(241,207,105,.1);
+      border:1px solid rgba(241,207,105,.2);
+      color:var(--gold);
+      font-weight:800;
+      line-height:1.45;
+      font-size:.92rem;
+    }
+
+    .wallet-address-box{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:10px;
+      align-items:center;
+    }
+
+    .roadmap-card h3{
+      margin:0 0 8px;
+      color:var(--gold);
+      font-size:1.22rem;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+
+    .roadmap-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.96rem;
+    }
+
+    .roadmap-road{
+      position:relative;
+      margin-top:22px;
+      display:grid;
+      gap:18px;
+      padding-left:34px;
+    }
+
+    .roadmap-road::before{
+      content:"";
+      position:absolute;
+      top:10px;
+      bottom:10px;
+      left:13px;
+      width:2px;
+      background:repeating-linear-gradient(
+        to bottom,
+        rgba(241,207,105,.65) 0 10px,
+        transparent 10px 20px
+      );
+      opacity:.7;
+    }
+
+    .road-step{
+      position:relative;
+      padding:15px;
+      border-radius:17px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.14);
     }
 
-    .funding-item strong{
-      display:block;
-      color:var(--text);
-      margin-bottom:4px;
+    .road-step::before{
+      content:attr(data-step);
+      position:absolute;
+      left:-42px;
+      top:15px;
+      width:30px;
+      height:30px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:linear-gradient(180deg,#d7a363,#a66b33);
+      color:#23150d;
+      font-weight:900;
+      font-size:.78rem;
+      box-shadow:0 10px 22px rgba(0,0,0,.25);
     }
 
-    .funding-item span{
+    .road-step strong{
+      display:block;
+      color:var(--text);
+      margin-bottom:5px;
+      font-size:1rem;
+    }
+
+    .road-step span{
       display:block;
       color:var(--muted);
       line-height:1.45;
@@ -803,7 +914,7 @@
 
     @media (max-width:1000px){
       .unlock-top,
-      .wallet-grid{
+      .production-grid{
         grid-template-columns:1fr;
       }
 
@@ -989,16 +1100,34 @@
         font-size:2.65rem;
       }
 
-      .wallet-card,.funding-card{
+      .progress-card,.roadmap-card{
         padding:18px;
+      }
+
+      .progress-head{
+        display:block;
+      }
+
+      .progress-percent{
+        display:inline-flex;
+        margin-top:12px;
+      }
+
+      .progress-money strong{
+        font-size:2.6rem;
       }
 
       .wallet-address-box{
         grid-template-columns:1fr;
       }
 
-      .wallet-stats{
-        grid-template-columns:1fr;
+      .wallet-mini-line{
+        display:block;
+      }
+
+      .wallet-mini-line span{
+        display:block;
+        margin-top:5px;
       }
 
       .social-btn{
@@ -1121,73 +1250,68 @@
         BabyT is building toward real plush samples, blind box packaging and possible future community giveaways.
       </p>
 
-      <div class="wallet-grid">
-        <div class="wallet-card">
-          <h3>Production Wallet</h3>
-          <p>
-            Transparent SOL wallet for BabyT sample tests, packaging prototypes and production setup.
+      <div class="production-grid">
+        <div class="progress-card">
+          <div class="progress-kicker">First Plush Goal</div>
+
+          <div class="progress-head">
+            <h3 class="progress-title">Sample & Packaging Fund</h3>
+            <div id="progressPercent" class="progress-percent">0%</div>
+          </div>
+
+          <div class="progress-money">
+            <strong id="walletUsdValue">$--</strong>
+            <span>of <b id="productionGoalText">$10,000</b></span>
+          </div>
+
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+
+          <p class="progress-note">
+            First target for BabyT plush samples, blind box packaging tests and supplier setup.
           </p>
 
-          <div class="support-note">
-            Project-related fees, content revenue and optional community support can be added here to help fund the BabyT plush goal.
+          <div class="wallet-mini-line">
+            <strong id="walletSolValue">-- SOL</strong>
+            <span>currently tracked</span>
           </div>
 
-          <div class="wallet-warning">
-            Please only send SOL to this wallet. This is a Solana wallet.
-          </div>
+          <details class="wallet-details">
+            <summary>View SOL support wallet</summary>
 
-          <div class="wallet-address-box">
-            <div id="walletValue" class="wallet-address">6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd</div>
-            <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
-          </div>
+            <div class="wallet-inner">
+              <div class="wallet-address-box">
+                <div id="walletValue" class="wallet-address">6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd</div>
+                <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
+              </div>
 
-          <div class="wallet-stats">
-            <div class="wallet-mini">
-              <strong id="walletSolValue">-- SOL</strong>
-              <span>Wallet Balance</span>
+              <div class="wallet-warning">
+                SOL only. This is a Solana wallet. Optional support is not a purchase and does not guarantee rewards.
+              </div>
             </div>
-
-            <div class="wallet-mini">
-              <strong id="walletUsdValue">$--</strong>
-              <span>USD Value</span>
-            </div>
-          </div>
-
-          <div class="goal-box">
-            <div class="goal-top">
-              <span>Goal: <span id="productionGoalText">$10,000</span></span>
-              <span id="progressPercent">0%</span>
-            </div>
-
-            <div class="progress-track">
-              <div id="progressFill" class="progress-fill"></div>
-            </div>
-
-            <p style="margin-top:10px">
-              First target for plush samples, packaging tests and supplier setup.
-            </p>
-          </div>
+          </details>
         </div>
 
-        <div class="funding-card">
+        <div class="roadmap-card">
           <h3>Support Roadmap</h3>
           <p>
-            The goal is simple: make BabyT feel like a real collectible brand, not just another chart.
+            A simple path from BabyT concept art to real collectible samples.
           </p>
 
-          <div class="funding-list">
-            <div class="funding-item">
-              <strong>1. Plush Samples</strong>
-              <span>Test real BabyT plush versions before any production step.</span>
+          <div class="roadmap-road">
+            <div class="road-step" data-step="01">
+              <strong>Plush Samples</strong>
+              <span>Test the first real BabyT plush versions.</span>
             </div>
 
-            <div class="funding-item">
-              <strong>2. Blind Box Packaging</strong>
-              <span>Build a clean collectible box style around the BabyT universe.</span>
+            <div class="road-step" data-step="02">
+              <strong>Blind Box Packaging</strong>
+              <span>Create a clean collectible box experience.</span>
             </div>
 
-            <div class="funding-item">
-              <strong>3. Community Rewards</strong>
+            <div class="road-step" data-step="03">
+              <strong>Community Rewards</strong>
               <span>Prepare future giveaways if production becomes possible.</span>
             </div>
           </div>
