@@ -67,17 +67,38 @@
     button{font-family:inherit}
 
     .hero{
-      min-height:100vh;
+      position:relative;
+      min-height:100svh;
+      overflow:hidden;
+      margin-bottom:-1px;
       background:
         radial-gradient(circle at 50% 32%, rgba(241,207,105,.13), transparent 32%),
         linear-gradient(180deg,rgba(7,5,4,.16),rgba(7,5,4,.96)),
         var(--hero-bg) center/cover no-repeat;
     }
 
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:130px;
+      pointer-events:none;
+      background:linear-gradient(180deg,transparent,rgba(11,7,5,.88),var(--bg));
+      z-index:0;
+    }
+
+    .hero > *{
+      position:relative;
+      z-index:1;
+    }
+
     .underground-wrap{
       position:relative;
       overflow:hidden;
       background:var(--bg);
+      margin-top:-1px;
     }
 
     .underground-bg-stack{
@@ -106,32 +127,32 @@
       position:absolute;
       left:0;
       right:0;
-      height:230px;
+      height:150px;
       pointer-events:none;
     }
 
     .underground-bg-piece::before{
       top:0;
-      background:linear-gradient(180deg,var(--bg),rgba(11,7,5,.72),transparent);
+      background:linear-gradient(180deg,var(--bg),rgba(11,7,5,.48),transparent);
     }
 
     .underground-bg-piece::after{
       bottom:0;
-      background:linear-gradient(0deg,var(--bg),rgba(11,7,5,.72),transparent);
+      background:linear-gradient(0deg,var(--bg),rgba(11,7,5,.65),transparent);
     }
 
     .underground-bg-1{
-      top:0;
+      top:-120px;
       background-image:var(--underground-bg-1);
     }
 
     .underground-bg-2{
-      top:900px;
+      top:820px;
       background-image:var(--underground-bg-2);
     }
 
     .underground-bg-3{
-      top:1800px;
+      top:1760px;
       background-image:var(--underground-bg-3);
     }
 
@@ -218,7 +239,7 @@
     }
 
     .hero-center{
-      min-height:calc(100vh - 72px);
+      min-height:calc(100svh - 72px);
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
@@ -372,6 +393,10 @@
 
     section{
       padding:54px 24px;
+    }
+
+    .underground-wrap section:first-of-type{
+      padding-top:34px;
     }
 
     .section-title{
@@ -1037,6 +1062,14 @@
     }
 
     @media (max-width:760px){
+      .hero{
+        min-height:auto;
+      }
+
+      .hero::after{
+        height:82px;
+      }
+
       .underground-bg-piece{
         height:960px;
         opacity:.72;
@@ -1045,13 +1078,13 @@
 
       .underground-bg-piece::before,
       .underground-bg-piece::after{
-        height:180px;
+        height:90px;
       }
 
-      .underground-bg-1{top:0}
-      .underground-bg-2{top:720px}
-      .underground-bg-3{top:1440px}
-      .underground-bg-4{top:2160px}
+      .underground-bg-1{top:-80px}
+      .underground-bg-2{top:650px}
+      .underground-bg-3{top:1380px}
+      .underground-bg-4{top:2110px}
 
       .links{
         display:none;
@@ -1086,7 +1119,7 @@
 
       .hero-center{
         min-height:auto;
-        padding:26px 0 44px;
+        padding:26px 0 22px;
       }
 
       .eyebrow{
@@ -1124,6 +1157,7 @@
       .ca-box{
         display:grid;
         grid-template-columns:1fr;
+        margin-top:18px;
       }
 
       .ca-label,.ca-value,.copy-btn{
@@ -1133,6 +1167,10 @@
 
       section{
         padding:38px 16px;
+      }
+
+      .underground-wrap section:first-of-type{
+        padding-top:28px;
       }
 
       .section-title{
@@ -1478,6 +1516,12 @@
           <a class="social-btn" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
+            </svg>
+          </a>
+
+          <a class="social-btn" href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.944 4.88c.273-1.138-.654-1.6-1.58-1.217L2.93 10.75c-1.19.477-1.174 1.135-.205 1.433l4.47 1.396 1.71 5.24c.22.61.112.854.755.854.496 0 .715-.227.993-.496l2.383-2.318 4.956 3.66c.913.503 1.57.242 1.797-.846L21.944 4.88ZM8.02 12.944l10.22-6.445c.51-.31.978-.143.594.198l-8.75 7.897-.34 3.64-1.724-5.29Z"/>
             </svg>
           </a>
 
