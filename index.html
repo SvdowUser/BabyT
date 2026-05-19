@@ -45,11 +45,9 @@
       --brown:#9b6638;
       --cream:#fff5e5;
       --green:#98e27a;
-      --danger:#ff6b6b;
     }
 
     *{box-sizing:border-box}
-
     html{scroll-behavior:smooth}
 
     body{
@@ -67,7 +65,7 @@
       min-height:100vh;
       background:
         radial-gradient(circle at 72% 40%, rgba(240,211,153,.16), transparent 34%),
-        linear-gradient(180deg,rgba(7,5,4,.2),rgba(7,5,4,.94)),
+        linear-gradient(180deg,rgba(7,5,4,.18),rgba(7,5,4,.94)),
         url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png") center/cover no-repeat;
     }
 
@@ -140,19 +138,16 @@
     }
 
     .shell{
-      padding:28px 24px 52px;
+      padding:38px 24px 62px;
     }
 
-    .grid{
-      min-height:calc(100vh - 96px);
-      display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(340px,.86fr);
-      gap:36px;
+    .hero-center{
+      min-height:calc(100vh - 110px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
       align-items:center;
-    }
-
-    .copy{
-      max-width:850px;
+      text-align:center;
     }
 
     .eyebrow{
@@ -170,18 +165,38 @@
       margin:0;
       line-height:.94;
       font-weight:900;
-      font-size:clamp(2.75rem,5.4vw,5.35rem);
+      font-size:clamp(2.75rem,7vw,5.65rem);
       text-transform:uppercase;
       letter-spacing:-.045em;
       text-shadow:0 9px 34px rgba(0,0,0,.4);
-      max-width:880px;
+      max-width:980px;
     }
 
     .accent{color:var(--gold-strong)}
 
+    .hero-blindbox{
+      width:min(92vw,430px);
+      margin:32px auto 20px;
+      animation:floatBox 4.2s ease-in-out infinite;
+      filter:
+        drop-shadow(0 0 24px rgba(241,207,105,.12))
+        drop-shadow(0 26px 34px rgba(0,0,0,.38));
+    }
+
+    .hero-blindbox img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+    }
+
+    @keyframes floatBox{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-14px)}
+    }
+
     .hero-text{
-      margin:22px 0 0;
-      max-width:680px;
+      margin:0 auto;
+      max-width:720px;
       font-size:clamp(1rem,1.45vw,1.18rem);
       line-height:1.65;
       color:#ead6b8;
@@ -191,6 +206,7 @@
     .actions{
       display:flex;
       flex-wrap:wrap;
+      justify-content:center;
       gap:14px;
       margin-top:28px;
     }
@@ -219,50 +235,19 @@
       color:var(--text);
     }
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:12px;
-      margin-top:34px;
-      max-width:920px;
-    }
-
-    .stat,.ca-box,.panel,.info-card,.plush-card,.footer-note,.hero-visual-card,.wallet-card,.funding-card{
-      background:var(--panel-soft);
-      border:1px solid var(--line);
-      border-radius:20px;
-      box-shadow:0 18px 50px rgba(0,0,0,.22);
-    }
-
-    .stat{
-      padding:18px;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:1.65rem;
-      color:var(--gold);
-      line-height:1;
-    }
-
-    .stat span{
-      display:block;
-      margin-top:8px;
-      font-size:.78rem;
-      font-weight:800;
-      text-transform:uppercase;
-      color:var(--muted);
-      letter-spacing:.08em;
-    }
-
     .ca-box{
-      margin-top:18px;
+      margin-top:24px;
       display:flex;
       align-items:center;
       gap:12px;
       padding:13px;
       max-width:920px;
+      width:100%;
       backdrop-filter:blur(8px);
+      background:var(--panel-soft);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 18px 50px rgba(0,0,0,.22);
     }
 
     .ca-label{
@@ -286,6 +271,7 @@
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
+      text-align:left;
     }
 
     .copy-btn{
@@ -298,113 +284,6 @@
       color:#23150d;
       font-weight:900;
       flex:0 0 auto;
-    }
-
-    .show{
-      position:relative;
-      min-height:620px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      overflow:visible;
-    }
-
-    .hero-visual-card{
-      width:min(100%,500px);
-      padding:24px;
-      border-radius:32px;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(241,207,105,.15), transparent 42%),
-        linear-gradient(180deg,rgba(35,21,15,.94),rgba(18,10,7,.97));
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-visual-card::before{
-      content:"";
-      position:absolute;
-      inset:-90px;
-      background:radial-gradient(circle,rgba(240,211,153,.1),transparent 55%);
-      animation:glowMove 5s ease-in-out infinite;
-    }
-
-    @keyframes glowMove{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(18px)}
-    }
-
-    .live-badge{
-      position:relative;
-      z-index:2;
-      display:inline-flex;
-      padding:9px 14px;
-      border-radius:999px;
-      background:rgba(241,207,105,.13);
-      border:1px solid rgba(241,207,105,.22);
-      color:var(--gold);
-      font-weight:900;
-      margin-bottom:16px;
-    }
-
-    .hero-visual-card h2{
-      position:relative;
-      z-index:2;
-      margin:0;
-      font-size:2.15rem;
-      line-height:1;
-      text-transform:uppercase;
-      letter-spacing:-.04em;
-    }
-
-    .hero-visual-card p{
-      position:relative;
-      z-index:2;
-      margin:12px auto 0;
-      max-width:360px;
-      color:var(--muted);
-      line-height:1.65;
-      font-weight:600;
-    }
-
-    .hero-blindbox-frame{
-      position:relative;
-      z-index:2;
-      margin:20px auto 0;
-      min-height:330px;
-      border-radius:26px;
-      background:
-        radial-gradient(circle at 50% 48%,rgba(255,250,238,.94),rgba(236,215,185,.42) 68%,rgba(255,255,255,.03) 100%);
-      border:1px solid rgba(214,171,104,.2);
-      display:grid;
-      place-items:center;
-      padding:18px;
-      overflow:hidden;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.2),
-        0 22px 44px rgba(0,0,0,.28);
-    }
-
-    .hero-blindbox-frame img{
-      width:100%;
-      max-height:310px;
-      object-fit:contain;
-      filter:
-        drop-shadow(0 18px 24px rgba(90,55,26,.18))
-        drop-shadow(0 0 20px rgba(241,207,105,.12));
-    }
-
-    .hero-blindbox-frame.image-missing img{
-      display:none;
-    }
-
-    .hero-blindbox-frame.image-missing::after{
-      content:"Upload blindbox-preview.png";
-      color:#7b4e2a;
-      font-weight:900;
-      font-size:1.2rem;
-      text-align:center;
-      opacity:.8;
     }
 
     section{
@@ -429,10 +308,48 @@
       line-height:1.75;
     }
 
+    .panel,.info-card,.footer-note,.wallet-card,.funding-card{
+      background:var(--panel-soft);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 18px 50px rgba(0,0,0,.22);
+    }
+
     .panel{
       background:rgba(23,13,9,.88);
       border-radius:26px;
       padding:28px;
+    }
+
+    .evolution-top{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(220px,300px);
+      gap:20px;
+      align-items:start;
+    }
+
+    .market-card{
+      padding:18px;
+      border-radius:20px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(214,171,104,.18);
+    }
+
+    .market-card strong{
+      display:block;
+      font-size:2rem;
+      color:var(--gold);
+      line-height:1;
+    }
+
+    .market-card span{
+      display:block;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:.82rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
     .live-unlock-panel{
@@ -490,56 +407,17 @@
       padding:18px;
     }
 
-    .single-mystery{
-      position:relative;
-      width:155px;
-      height:195px;
-      border-radius:48% 48% 42% 42%;
-      background:linear-gradient(180deg,#2b1b13,#130b08);
-      border:1px solid rgba(240,211,153,.2);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.03),
-        0 0 40px rgba(241,207,105,.18),
-        0 24px 44px rgba(0,0,0,.45);
-    }
-
-    .single-mystery::before{
-      content:"";
-      position:absolute;
-      top:-30px;
-      left:50%;
-      width:52px;
-      height:52px;
-      transform:translateX(-50%);
-      border-radius:50%;
-      border:9px solid #d5a363;
-      background:transparent;
-      box-shadow:0 10px 24px rgba(0,0,0,.2);
-    }
-
-    .single-mystery::after{
-      content:"?";
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      color:var(--gold);
-      font-size:5rem;
-      font-weight:900;
-      text-shadow:0 12px 28px rgba(0,0,0,.5);
-    }
-
     .unlocked-row{
       width:100%;
       display:flex;
       align-items:flex-end;
       justify-content:center;
-      gap:10px;
+      gap:12px;
       flex-wrap:nowrap;
     }
 
     .unlocked-plush{
-      width:86px;
+      width:90px;
       min-width:0;
       display:flex;
       align-items:flex-end;
@@ -563,24 +441,31 @@
         drop-shadow(0 20px 24px rgba(0,0,0,.34));
     }
 
-    .unlocked-plush.missing{
-      width:70px;
-      height:120px;
+    .locked-preview{
       position:relative;
-      border-radius:48% 48% 42% 42%;
-      background:linear-gradient(180deg,#2b1b13,#130b08);
-      opacity:.9;
+      width:130px;
+      height:185px;
+      display:grid;
+      place-items:center;
     }
 
-    .unlocked-plush.missing::after{
+    .locked-preview img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      filter:brightness(0) grayscale(1) contrast(1.2) opacity(.7);
+    }
+
+    .locked-preview::after{
       content:"?";
       position:absolute;
       inset:0;
       display:grid;
       place-items:center;
       color:var(--gold);
-      font-size:2.2rem;
+      font-size:4.2rem;
       font-weight:900;
+      text-shadow:0 12px 28px rgba(0,0,0,.7);
     }
 
     @keyframes bob{
@@ -669,7 +554,7 @@
       content:"";
       width:86px;
       height:112px;
-      border-radius:48% 48% 42% 42%;
+      border-radius:30px;
       background:linear-gradient(180deg,#24150f,#0f0907);
       opacity:.78;
       box-shadow:0 14px 25px rgba(0,0,0,.28);
@@ -717,87 +602,6 @@
       color:rgba(35,21,13,.78);
     }
 
-    .plush-wrap{
-      display:grid;
-      grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr);
-      gap:26px;
-      align-items:center;
-    }
-
-    .plush-card{
-      padding:24px;
-      background:
-        radial-gradient(circle at 50% 50%,rgba(255,255,255,.62),transparent 54%),
-        linear-gradient(180deg,#fff2dd,#dfc8a6);
-      color:#2a1a10;
-      overflow:hidden;
-      border-radius:30px;
-    }
-
-    .plush-badge{
-      display:inline-flex;
-      padding:9px 14px;
-      border-radius:999px;
-      background:rgba(155,102,56,.13);
-      color:#7b4e2a;
-      font-weight:900;
-      margin-bottom:14px;
-      font-size:.9rem;
-    }
-
-    .plush-card h3{
-      margin:0 0 10px;
-      font-size:clamp(1.85rem,3vw,2.9rem);
-      line-height:.98;
-      letter-spacing:-.04em;
-      text-transform:uppercase;
-    }
-
-    .plush-card p{
-      margin:0;
-      color:#60452e;
-      line-height:1.7;
-      font-weight:700;
-    }
-
-    .blindbox-frame{
-      margin-top:20px;
-      min-height:360px;
-      border-radius:26px;
-      background:
-        radial-gradient(circle at 50% 45%,#fffdf8 0%,#fff8ef 42%,#efe0ca 100%);
-      border:1px solid rgba(112,73,41,.12);
-      padding:22px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.8),
-        0 20px 50px rgba(85,52,25,.16);
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .blindbox-frame img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      border-radius:18px;
-      filter:drop-shadow(0 18px 24px rgba(90,55,26,.12));
-    }
-
-    .blindbox-frame.image-missing img{
-      display:none;
-    }
-
-    .blindbox-frame.image-missing::after{
-      content:"Upload blindbox-preview.png";
-      color:#7b4e2a;
-      font-weight:900;
-      font-size:1.4rem;
-      text-align:center;
-      opacity:.72;
-    }
-
     .wallet-grid{
       display:grid;
       grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);
@@ -813,7 +617,8 @@
         rgba(23,13,9,.88);
     }
 
-    .wallet-card h3{
+    .wallet-card h3,
+    .funding-card h3{
       margin:0 0 10px;
       font-size:1.35rem;
       color:var(--gold);
@@ -821,10 +626,22 @@
       letter-spacing:.03em;
     }
 
-    .wallet-card p{
+    .wallet-card p,
+    .funding-card p{
       margin:0;
       color:var(--muted);
       line-height:1.65;
+    }
+
+    .wallet-warning{
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(241,207,105,.1);
+      border:1px solid rgba(241,207,105,.2);
+      color:var(--gold);
+      font-weight:800;
+      line-height:1.55;
     }
 
     .wallet-address-box{
@@ -850,7 +667,7 @@
 
     .wallet-stats{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:12px;
       margin-top:18px;
     }
@@ -918,14 +735,6 @@
       background:
         radial-gradient(circle at 70% 20%,rgba(241,207,105,.1),transparent 38%),
         rgba(23,13,9,.88);
-    }
-
-    .funding-card h3{
-      margin:0 0 10px;
-      font-size:1.35rem;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.03em;
     }
 
     .funding-list{
@@ -1028,20 +837,7 @@
     }
 
     @media (max-width:1000px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .show{
-        min-height:420px;
-      }
-
-      .hero-visual-card{
-        width:min(100%,470px);
-        margin:0 auto;
-      }
-
-      .plush-wrap,
+      .evolution-top,
       .wallet-grid{
         grid-template-columns:1fr;
       }
@@ -1084,7 +880,7 @@
       }
 
       .shell{
-        padding:22px 16px 42px;
+        padding:24px 16px 44px;
       }
 
       h1{
@@ -1099,32 +895,13 @@
         display:grid;
         grid-template-columns:1fr 1fr;
         gap:10px;
+        width:100%;
       }
 
       .btn{
         min-height:54px;
         padding:0 14px;
         font-size:.92rem;
-      }
-
-      .stats{
-        grid-template-columns:repeat(4,minmax(0,1fr));
-        gap:8px;
-        margin-top:22px;
-      }
-
-      .stat{
-        padding:12px 8px;
-        border-radius:15px;
-      }
-
-      .stat strong{
-        font-size:1.05rem;
-      }
-
-      .stat span{
-        font-size:.55rem;
-        line-height:1.15;
       }
 
       .ca-box{
@@ -1144,11 +921,6 @@
         padding:20px;
       }
 
-      .hero-blindbox-frame{
-        min-height:260px;
-        padding:14px;
-      }
-
       .live-unlock-top{
         display:block;
       }
@@ -1162,7 +934,7 @@
       }
 
       .unlocked-row{
-        gap:4px;
+        gap:5px;
       }
 
       .unlocked-plush{
@@ -1171,6 +943,11 @@
 
       .unlocked-plush img{
         height:145px;
+      }
+
+      .locked-preview{
+        width:110px;
+        height:160px;
       }
 
       .stagegrid{
@@ -1198,17 +975,6 @@
 
       .question-mark{
         font-size:2.8rem;
-      }
-
-      .plush-card{
-        padding:20px;
-        border-radius:26px;
-      }
-
-      .blindbox-frame{
-        min-height:260px;
-        padding:14px;
-        border-radius:22px;
       }
 
       .wallet-address-box{
@@ -1241,7 +1007,7 @@
 <body
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
   data-production-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
-  data-production-goal-eur="10000"
+  data-production-goal-usd="10000"
 >
 
   <div class="hero">
@@ -1255,7 +1021,6 @@
         <nav class="links" aria-label="Navigation">
           <a href="#about">About</a>
           <a href="#evolution">Unlocks</a>
-          <a href="#blindbox">Blind Box</a>
           <a href="#production">Production</a>
           <a href="#socials">Socials</a>
         </nav>
@@ -1268,60 +1033,52 @@
     </header>
 
     <main class="shell" id="top">
-      <div class="grid">
-        <section class="copy" id="about">
-          <div class="eyebrow">Mystery Plush Evolution</div>
+      <section class="hero-center" id="about">
+        <div class="eyebrow">Mystery Plush Evolution</div>
 
-          <h1>
-            BabyT grows into a
-            <span class="accent">collectible plush universe.</span>
-          </h1>
+        <h1>
+          BabyT grows into a
+          <span class="accent">collectible plush universe.</span>
+        </h1>
 
-          <p class="hero-text">
-            BabyT is a community-driven character project. Mystery plush concepts unlock step by step as the project reaches new milestones.
-          </p>
+        <div class="hero-blindbox">
+          <img src="./blindbox-preview.png" alt="BabyT blind box preview">
+        </div>
 
-          <div class="actions">
-            <a class="btn primary" href="#evolution">See Unlocks</a>
-            <a class="btn secondary" href="#blindbox">Blind Box Preview</a>
-          </div>
+        <p class="hero-text">
+          BabyT is a community-driven character project. Mystery plush concepts unlock step by step as the project reaches new milestones.
+        </p>
 
-          <div class="stats">
-            <div class="stat"><strong>0%</strong><span>Taxes</span></div>
-            <div class="stat"><strong>LP</strong><span>Burnt</span></div>
-            <div class="stat"><strong>100%</strong><span>Community</span></div>
-            <div class="stat"><strong id="marketCapValue">$0</strong><span>Market Cap</span></div>
-          </div>
+        <div class="actions">
+          <a class="btn primary" href="#evolution">See Unlocks</a>
+          <a class="btn secondary" href="#production">Production Goal</a>
+        </div>
 
-          <div class="ca-box" id="contract">
-            <div class="ca-label">Contract Address</div>
-            <div id="caValue" class="ca-value">FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump</div>
-            <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
-          </div>
-        </section>
-
-        <section class="show" aria-label="BabyT blind box preview">
-          <div class="hero-visual-card">
-            <div class="live-badge">Blind Box Concept</div>
-            <h2>Mystery Plush Unbox</h2>
-            <p>A clean preview of the BabyT blind box direction and future collectible plush lineup.</p>
-
-            <div class="hero-blindbox-frame" id="heroBlindBoxFrame">
-              <img src="./blindbox-preview.png" alt="BabyT blind box preview" onerror="document.getElementById('heroBlindBoxFrame').classList.add('image-missing')">
-            </div>
-          </div>
-        </section>
-      </div>
+        <div class="ca-box" id="contract">
+          <div class="ca-label">Contract Address</div>
+          <div id="caValue" class="ca-value">FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump</div>
+          <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
+        </div>
+      </section>
     </main>
   </div>
 
   <section id="evolution">
     <div class="section-inner">
       <div class="panel">
-        <h2 class="section-title">Mystery Plush Unlocks</h2>
-        <p class="section-sub">
-          No plush is unlocked at the beginning. Each milestone reveals one new BabyT mystery plush. Once unlocked, the plush appears in the live unlock board.
-        </p>
+        <div class="evolution-top">
+          <div>
+            <h2 class="section-title">Mystery Plush Unlocks</h2>
+            <p class="section-sub">
+              No plush is unlocked at the beginning. Each milestone reveals one new BabyT mystery plush. Once unlocked, the plush appears in the live unlock board.
+            </p>
+          </div>
+
+          <div class="market-card">
+            <strong id="marketCapValue">$0</strong>
+            <span>Live Market Cap</span>
+          </div>
+        </div>
 
         <div class="live-unlock-panel">
           <div class="live-unlock-top">
@@ -1333,53 +1090,13 @@
           </div>
 
           <div id="heroUnlockDisplay" class="hero-unlock-display">
-            <div class="single-mystery" aria-hidden="true"></div>
+            <div class="locked-preview">
+              <img src="./unlock-01.png" alt="Locked BabyT plush preview">
+            </div>
           </div>
         </div>
 
         <div id="stageGrid" class="stagegrid"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="blindbox">
-    <div class="section-inner">
-      <div class="plush-wrap">
-        <div>
-          <h2 class="section-title">Blind Box Preview</h2>
-          <p class="section-sub">
-            The blind box is the visual direction for the future BabyT collectible concept. The final product design can still change before production.
-          </p>
-
-          <div class="info-grid">
-            <div class="info-card">
-              <h3>Mystery System</h3>
-              <p>Each unlock can become part of the BabyT collectible plush universe.</p>
-            </div>
-
-            <div class="info-card">
-              <h3>Special Editions</h3>
-              <p>Rare styles and special designs can be added later without changing the whole website.</p>
-            </div>
-
-            <div class="info-card">
-              <h3>Giveaway Goal</h3>
-              <p>If production becomes possible, the goal is to reward real supporters with giveaways.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="plush-card">
-          <span class="plush-badge">Concept Preview</span>
-          <h3>BabyT Blind Box</h3>
-          <p>
-            A clean preview area for the future blind box design and collectible plush lineup.
-          </p>
-
-          <div class="blindbox-frame" id="blindboxFrame">
-            <img src="./blindbox-preview.png" alt="BabyT blind box preview" onerror="document.getElementById('blindboxFrame').classList.add('image-missing')">
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1398,6 +1115,10 @@
             This wallet is used as the transparent BabyT production support wallet. Funds can help with sample creation, packaging, testing and future giveaway preparation.
           </p>
 
+          <div class="wallet-warning">
+            Please only send SOL to this wallet. This is a Solana wallet. Do not send funds from other chains.
+          </div>
+
           <div class="wallet-address-box">
             <div id="walletValue" class="wallet-address">6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd</div>
             <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
@@ -1413,11 +1134,6 @@
               <strong id="walletUsdValue">$--</strong>
               <span>USD Value</span>
             </div>
-
-            <div class="wallet-mini">
-              <strong id="walletEurValue">€--</strong>
-              <span>EUR Value</span>
-            </div>
           </div>
 
           <div class="goal-box">
@@ -1431,7 +1147,7 @@
             </div>
 
             <p style="margin-top:12px">
-              Goal: <strong id="productionGoalText">€10,000</strong> for first production planning, samples and packaging.
+              Goal: <strong id="productionGoalText">$10,000</strong> for first samples, packaging tests and production planning.
             </p>
           </div>
         </div>
@@ -1550,7 +1266,7 @@
   <script>
     const CONTRACT_ADDRESS = document.body.dataset.contractAddress || "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
     const PRODUCTION_WALLET = document.body.dataset.productionWallet || "6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd";
-    const PRODUCTION_GOAL_EUR = Number(document.body.dataset.productionGoalEur || 10000);
+    const PRODUCTION_GOAL_USD = Number(document.body.dataset.productionGoalUsd || 10000);
 
     const marketCapValue = document.getElementById("marketCapValue");
     const caValue = document.getElementById("caValue");
@@ -1566,7 +1282,6 @@
     const copyWalletBtn = document.getElementById("copyWalletBtn");
     const walletSolValue = document.getElementById("walletSolValue");
     const walletUsdValue = document.getElementById("walletUsdValue");
-    const walletEurValue = document.getElementById("walletEurValue");
     const progressFill = document.getElementById("progressFill");
     const progressPercent = document.getElementById("progressPercent");
     const productionGoalText = document.getElementById("productionGoalText");
@@ -1612,7 +1327,7 @@
         threshold: 5000000,
         label: "5M+",
         name: "Legendary Mystery",
-        image: "./unlock-06.png"
+        image: "./unlock-01.png"
       }
     ];
 
@@ -1623,12 +1338,12 @@
       return "$" + Math.round(value);
     }
 
-    function formatCurrency(value, currency){
-      if(value == null || Number.isNaN(value)) return currency === "EUR" ? "€--" : "$--";
+    function formatCurrency(value){
+      if(value == null || Number.isNaN(value)) return "$--";
 
       return new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency,
+        currency: "USD",
         maximumFractionDigits: value >= 1000 ? 0 : 2
       }).format(value);
     }
@@ -1672,7 +1387,12 @@
       const nextStage = getNextStage(marketCap);
 
       if(!unlocked.length){
-        heroUnlockDisplay.innerHTML = `<div class="single-mystery" aria-hidden="true"></div>`;
+        heroUnlockDisplay.innerHTML = `
+          <div class="locked-preview">
+            <img src="${stages[0].image}" alt="Locked BabyT plush preview">
+          </div>
+        `;
+
         heroUnlockTitle.textContent = "Live Unlock Board";
         heroUnlockText.textContent = "Unlocked BabyT plush concepts will appear here side by side as each milestone is reached.";
       } else {
@@ -1683,7 +1403,7 @@
                 <img
                   src="${stage.image}"
                   alt="${stage.name}"
-                  onerror="this.parentElement.classList.add('missing'); this.remove();"
+                  onerror="this.parentElement.innerHTML='?'"
                 >
               </div>
             `).join("")}
@@ -1746,15 +1466,12 @@
     }
 
     async function fetchSolPrice(){
-      const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd,eur");
+      const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
       if(!response.ok) throw new Error("Price request failed");
 
       const data = await response.json();
 
-      return {
-        usd: Number(data?.solana?.usd || 0),
-        eur: Number(data?.solana?.eur || 0)
-      };
+      return Number(data?.solana?.usd || 0);
     }
 
     async function fetchWalletSolBalance(){
@@ -1779,14 +1496,12 @@
       return lamports / 1000000000;
     }
 
-    function updateWalletUi(solBalance, solPrice){
-      const usdValue = solBalance * solPrice.usd;
-      const eurValue = solBalance * solPrice.eur;
-      const progress = Math.max(0, Math.min(100, (eurValue / PRODUCTION_GOAL_EUR) * 100));
+    function updateWalletUi(solBalance, solUsdPrice){
+      const usdValue = solBalance * solUsdPrice;
+      const progress = Math.max(0, Math.min(100, (usdValue / PRODUCTION_GOAL_USD) * 100));
 
       walletSolValue.textContent = formatSol(solBalance);
-      walletUsdValue.textContent = formatCurrency(usdValue, "USD");
-      walletEurValue.textContent = formatCurrency(eurValue, "EUR");
+      walletUsdValue.textContent = formatCurrency(usdValue);
 
       progressFill.style.width = progress.toFixed(2) + "%";
       progressPercent.textContent = progress.toFixed(1) + "%";
@@ -1795,19 +1510,18 @@
     function setWalletUnavailable(){
       walletSolValue.textContent = "-- SOL";
       walletUsdValue.textContent = "$--";
-      walletEurValue.textContent = "€--";
       progressFill.style.width = "0%";
       progressPercent.textContent = "0%";
     }
 
     async function fetchWalletTracker(){
       try{
-        const [solBalance, solPrice] = await Promise.all([
+        const [solBalance, solUsdPrice] = await Promise.all([
           fetchWalletSolBalance(),
           fetchSolPrice()
         ]);
 
-        updateWalletUi(solBalance, solPrice);
+        updateWalletUi(solBalance, solUsdPrice);
       }catch(error){
         setWalletUnavailable();
       }
@@ -1841,7 +1555,7 @@
 
     caValue.textContent = CONTRACT_ADDRESS;
     walletValue.textContent = PRODUCTION_WALLET;
-    productionGoalText.textContent = formatCurrency(PRODUCTION_GOAL_EUR, "EUR");
+    productionGoalText.textContent = formatCurrency(PRODUCTION_GOAL_USD);
 
     copyCaBtn.addEventListener("click", () => {
       copyText(CONTRACT_ADDRESS, copyCaBtn, "Copy CA");
