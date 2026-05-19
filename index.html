@@ -43,6 +43,13 @@
       --muted:#d6bea2;
       --dark:#170d09;
       --green:#98e27a;
+
+      --hero-bg:url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png");
+
+      --underground-bg-1:url("./bg-underground-01.png");
+      --underground-bg-2:url("./bg-underground-02.png");
+      --underground-bg-3:url("./bg-underground-03.png");
+      --underground-bg-4:url("./bg-underground-04.png");
     }
 
     *{box-sizing:border-box}
@@ -64,7 +71,78 @@
       background:
         radial-gradient(circle at 50% 32%, rgba(241,207,105,.13), transparent 32%),
         linear-gradient(180deg,rgba(7,5,4,.16),rgba(7,5,4,.96)),
-        url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png") center/cover no-repeat;
+        var(--hero-bg) center/cover no-repeat;
+    }
+
+    .underground-wrap{
+      position:relative;
+      overflow:hidden;
+      background:var(--bg);
+    }
+
+    .underground-bg-stack{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .underground-bg-piece{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:1180px;
+      background-position:center top;
+      background-size:cover;
+      background-repeat:no-repeat;
+      opacity:.78;
+      filter:saturate(1.05) contrast(1.04);
+    }
+
+    .underground-bg-piece::before,
+    .underground-bg-piece::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      height:230px;
+      pointer-events:none;
+    }
+
+    .underground-bg-piece::before{
+      top:0;
+      background:linear-gradient(180deg,var(--bg),rgba(11,7,5,.72),transparent);
+    }
+
+    .underground-bg-piece::after{
+      bottom:0;
+      background:linear-gradient(0deg,var(--bg),rgba(11,7,5,.72),transparent);
+    }
+
+    .underground-bg-1{
+      top:0;
+      background-image:var(--underground-bg-1);
+    }
+
+    .underground-bg-2{
+      top:900px;
+      background-image:var(--underground-bg-2);
+    }
+
+    .underground-bg-3{
+      top:1800px;
+      background-image:var(--underground-bg-3);
+    }
+
+    .underground-bg-4{
+      top:2700px;
+      background-image:var(--underground-bg-4);
+    }
+
+    .underground-wrap section{
+      position:relative;
+      z-index:1;
     }
 
     .nav{
@@ -325,6 +403,7 @@
       background:rgba(23,13,9,.88);
       border-radius:26px;
       padding:26px;
+      backdrop-filter:blur(4px);
     }
 
     .unlock-top{
@@ -647,6 +726,7 @@
       background:
         radial-gradient(circle at 20% 10%,rgba(241,207,105,.1),transparent 34%),
         rgba(23,13,9,.88);
+      backdrop-filter:blur(4px);
     }
 
     .progress-kicker{
@@ -942,6 +1022,7 @@
       font-size:.9rem;
       line-height:1.6;
       text-align:center;
+      backdrop-filter:blur(4px);
     }
 
     @media (max-width:1000px){
@@ -956,6 +1037,22 @@
     }
 
     @media (max-width:760px){
+      .underground-bg-piece{
+        height:960px;
+        opacity:.72;
+        background-size:cover;
+      }
+
+      .underground-bg-piece::before,
+      .underground-bg-piece::after{
+        height:180px;
+      }
+
+      .underground-bg-1{top:0}
+      .underground-bg-2{top:720px}
+      .underground-bg-3{top:1440px}
+      .underground-bg-4{top:2160px}
+
       .links{
         display:none;
       }
@@ -1240,177 +1337,186 @@
     </main>
   </div>
 
-  <section id="unlocks">
-    <div class="section-inner">
-      <div class="panel">
-        <div class="unlock-top">
-          <div>
-            <h2 class="section-title">Plush Unlocks</h2>
-            <p class="section-sub">
-              Each milestone reveals one new BabyT mystery plush.
+  <div class="underground-wrap">
+    <div class="underground-bg-stack" aria-hidden="true">
+      <div class="underground-bg-piece underground-bg-1"></div>
+      <div class="underground-bg-piece underground-bg-2"></div>
+      <div class="underground-bg-piece underground-bg-3"></div>
+      <div class="underground-bg-piece underground-bg-4"></div>
+    </div>
+
+    <section id="unlocks">
+      <div class="section-inner">
+        <div class="panel">
+          <div class="unlock-top">
+            <div>
+              <h2 class="section-title">Plush Unlocks</h2>
+              <p class="section-sub">
+                Each milestone reveals one new BabyT mystery plush.
+              </p>
+            </div>
+
+            <div class="unlock-progress-card">
+              <div class="unlock-progress-label">Next plush progress</div>
+              <strong id="marketCapValue">$0</strong>
+              <span id="currentProgressText">toward 50K+ unlock</span>
+              <div class="mini-progress-track">
+                <div id="unlockProgressFill" class="mini-progress-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="live-unlock-panel">
+            <div class="live-unlock-top">
+              <h3 id="heroUnlockTitle">Current Reveal</h3>
+              <div id="nextUnlockPill" class="unlock-pill">Next plush: 50K+</div>
+            </div>
+
+            <div id="heroUnlockDisplay" class="hero-unlock-display">
+              <div class="locked-preview">
+                <img src="./unlock-01.png" alt="Locked BabyT plush preview">
+              </div>
+            </div>
+          </div>
+
+          <div id="stageGrid" class="stagegrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="production">
+      <div class="section-inner">
+        <h2 class="section-title">Production Goal</h2>
+        <p class="section-sub">
+          BabyT is building toward real plush samples, blind box packaging and possible future community giveaways.
+        </p>
+
+        <div class="production-grid">
+          <div class="progress-card">
+            <div class="progress-kicker">First Plush Goal</div>
+
+            <div class="progress-head">
+              <h3 class="progress-title">Sample & Packaging Tracker</h3>
+              <div id="progressPercent" class="progress-percent">0%</div>
+            </div>
+
+            <div class="progress-money">
+              <strong id="walletUsdValue">$--</strong>
+              <span>of <b id="productionGoalText">$10,000</b></span>
+            </div>
+
+            <div class="progress-track">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+
+            <p class="progress-note">
+              A transparent tracker for BabyT plush samples, blind box tests and supplier setup.
             </p>
-          </div>
 
-          <div class="unlock-progress-card">
-            <div class="unlock-progress-label">Next plush progress</div>
-            <strong id="marketCapValue">$0</strong>
-            <span id="currentProgressText">toward 50K+ unlock</span>
-            <div class="mini-progress-track">
-              <div id="unlockProgressFill" class="mini-progress-fill"></div>
+            <div class="wallet-mini-line">
+              <strong id="walletSolValue">-- SOL</strong>
+              <span>currently tracked</span>
             </div>
-          </div>
-        </div>
 
-        <div class="live-unlock-panel">
-          <div class="live-unlock-top">
-            <h3 id="heroUnlockTitle">Current Reveal</h3>
-            <div id="nextUnlockPill" class="unlock-pill">Next plush: 50K+</div>
-          </div>
+            <details class="wallet-details">
+              <summary>View SOL support wallet</summary>
 
-          <div id="heroUnlockDisplay" class="hero-unlock-display">
-            <div class="locked-preview">
-              <img src="./unlock-01.png" alt="Locked BabyT plush preview">
-            </div>
-          </div>
-        </div>
+              <div class="wallet-inner">
+                <div class="wallet-address-box">
+                  <div id="walletValue" class="wallet-address">6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd</div>
+                  <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
+                </div>
 
-        <div id="stageGrid" class="stagegrid"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="production">
-    <div class="section-inner">
-      <h2 class="section-title">Production Goal</h2>
-      <p class="section-sub">
-        BabyT is building toward real plush samples, blind box packaging and possible future community giveaways.
-      </p>
-
-      <div class="production-grid">
-        <div class="progress-card">
-          <div class="progress-kicker">First Plush Goal</div>
-
-          <div class="progress-head">
-            <h3 class="progress-title">Sample & Packaging Tracker</h3>
-            <div id="progressPercent" class="progress-percent">0%</div>
+                <div class="wallet-warning">
+                  SOL only. This is a Solana wallet. Optional support is not a purchase and does not guarantee rewards.
+                </div>
+              </div>
+            </details>
           </div>
 
-          <div class="progress-money">
-            <strong id="walletUsdValue">$--</strong>
-            <span>of <b id="productionGoalText">$10,000</b></span>
-          </div>
+          <div class="roadmap-card">
+            <h3>Support Roadmap</h3>
+            <p>
+              A simple path from BabyT concept art to real collectible samples.
+            </p>
 
-          <div class="progress-track">
-            <div id="progressFill" class="progress-fill"></div>
-          </div>
-
-          <p class="progress-note">
-            A transparent tracker for BabyT plush samples, blind box tests and supplier setup.
-          </p>
-
-          <div class="wallet-mini-line">
-            <strong id="walletSolValue">-- SOL</strong>
-            <span>currently tracked</span>
-          </div>
-
-          <details class="wallet-details">
-            <summary>View SOL support wallet</summary>
-
-            <div class="wallet-inner">
-              <div class="wallet-address-box">
-                <div id="walletValue" class="wallet-address">6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd</div>
-                <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
+            <div class="roadmap-road">
+              <div class="road-step" data-step="01">
+                <strong>Plush Samples</strong>
+                <span>Test the first real BabyT plush versions.</span>
               </div>
 
-              <div class="wallet-warning">
-                SOL only. This is a Solana wallet. Optional support is not a purchase and does not guarantee rewards.
+              <div class="road-step" data-step="02">
+                <strong>Blind Box Packaging</strong>
+                <span>Create a clean collectible box experience.</span>
               </div>
-            </div>
-          </details>
-        </div>
 
-        <div class="roadmap-card">
-          <h3>Support Roadmap</h3>
-          <p>
-            A simple path from BabyT concept art to real collectible samples.
-          </p>
-
-          <div class="roadmap-road">
-            <div class="road-step" data-step="01">
-              <strong>Plush Samples</strong>
-              <span>Test the first real BabyT plush versions.</span>
-            </div>
-
-            <div class="road-step" data-step="02">
-              <strong>Blind Box Packaging</strong>
-              <span>Create a clean collectible box experience.</span>
-            </div>
-
-            <div class="road-step" data-step="03">
-              <strong>Community Rewards</strong>
-              <span>Prepare future giveaways if production becomes possible.</span>
+              <div class="road-step" data-step="03">
+                <strong>Community Rewards</strong>
+                <span>Prepare future giveaways if production becomes possible.</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="socials">
-    <div class="section-inner">
-      <h2 class="section-title" style="text-align:center">Join BabyT</h2>
-      <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">
-        Follow the official channels for unlocks, concepts and community posts.
-      </p>
+    <section id="socials">
+      <div class="section-inner">
+        <h2 class="section-title" style="text-align:center">Join BabyT</h2>
+        <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">
+          Follow the official channels for unlocks, concepts and community posts.
+        </p>
 
-      <div class="social-strip">
-        <a class="social-btn" href="https://x.com/babytcoinsol" target="_blank" rel="noreferrer" aria-label="X">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M18.244 2H21.5l-7.11 8.127L22.75 22h-6.544l-5.123-6.697L5.223 22H1.964l7.604-8.692L1.55 2h6.71l4.63 6.109L18.244 2Zm-1.147 18h1.804L7.278 3.895H5.342L17.097 20Z"/>
-          </svg>
-        </a>
+        <div class="social-strip">
+          <a class="social-btn" href="https://x.com/babytcoinsol" target="_blank" rel="noreferrer" aria-label="X">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 2H21.5l-7.11 8.127L22.75 22h-6.544l-5.123-6.697L5.223 22H1.964l7.604-8.692L1.55 2h6.71l4.63 6.109L18.244 2Zm-1.147 18h1.804L7.278 3.895H5.342L17.097 20Z"/>
+            </svg>
+          </a>
 
-        <a class="social-btn" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
-          </svg>
-        </a>
+          <a class="social-btn" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
+            </svg>
+          </a>
 
-        <a class="social-btn buy-link" href="https://pump.fun/coin/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Pump.fun">
-          <img src="./pumpfun-logo.png" alt="">
-        </a>
+          <a class="social-btn buy-link" href="https://pump.fun/coin/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Pump.fun">
+            <img src="./pumpfun-logo.png" alt="">
+          </a>
 
-        <a class="social-btn" id="jupiterLink" href="https://jup.ag/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Jupiter">
-          <svg viewBox="0 0 64 64" aria-hidden="true">
-            <defs>
-              <linearGradient id="jupGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#bdf56b"/>
-                <stop offset="48%" stop-color="#55d6c2"/>
-                <stop offset="100%" stop-color="#7f7cff"/>
-              </linearGradient>
-            </defs>
-            <circle cx="32" cy="32" r="27" fill="rgba(255,255,255,.04)" stroke="url(#jupGradient)" stroke-width="4"/>
-            <path d="M14 24c8-7 20-7 28 0 3 3 6 4 10 4" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
-            <path d="M12 34c9-6 19-6 29 0 4 3 7 4 12 3" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
-            <path d="M16 44c8-4 17-4 25 0 4 2 7 3 11 2" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-        </a>
+          <a class="social-btn" id="jupiterLink" href="https://jup.ag/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Jupiter">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <defs>
+                <linearGradient id="jupGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#bdf56b"/>
+                  <stop offset="48%" stop-color="#55d6c2"/>
+                  <stop offset="100%" stop-color="#7f7cff"/>
+                </linearGradient>
+              </defs>
+              <circle cx="32" cy="32" r="27" fill="rgba(255,255,255,.04)" stroke="url(#jupGradient)" stroke-width="4"/>
+              <path d="M14 24c8-7 20-7 28 0 3 3 6 4 10 4" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
+              <path d="M12 34c9-6 19-6 29 0 4 3 7 4 12 3" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
+              <path d="M16 44c8-4 17-4 25 0 4 2 7 3 11 2" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </a>
 
-        <a class="social-btn" id="dexLink" href="https://dexscreener.com/solana/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="DEXScreener">
-          <img src="./dexscreener-logo.png" alt="">
-        </a>
+          <a class="social-btn" id="dexLink" href="https://dexscreener.com/solana/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="DEXScreener">
+            <img src="./dexscreener-logo.png" alt="">
+          </a>
 
-        <a class="social-btn" id="geckoLink" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
-          <img src="./geckoterminal-logo.png" alt="">
-        </a>
+          <a class="social-btn" id="geckoLink" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
+            <img src="./geckoterminal-logo.png" alt="">
+          </a>
+        </div>
+
+        <div class="footer-note">
+          BabyT is a community meme character project. Plush designs shown are early concept previews only and are not available for sale yet.
+          Optional wallet support is not a purchase and does not guarantee rewards, plushies or financial returns. Always do your own research.
+        </div>
       </div>
-
-      <div class="footer-note">
-        BabyT is a community meme character project. Plush designs shown are early concept previews only and are not available for sale yet.
-        Optional wallet support is not a purchase and does not guarantee rewards, plushies or financial returns. Always do your own research.
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <script>
     const CONTRACT_ADDRESS = document.body.dataset.contractAddress || "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
