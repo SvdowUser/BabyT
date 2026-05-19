@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>BabyT | Mystery Plush Unlocks</title>
+  <title>BabyT | Plush Project</title>
   <meta name="description" content="BabyT is a community character project with mystery plush unlocks, collectible concepts, production goals and future giveaways.">
   <meta name="theme-color" content="#0b0705">
   <link rel="canonical" href="https://babytungtung.com/">
@@ -16,13 +16,13 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
-  <meta property="og:title" content="BabyT | Mystery Plush Unlocks">
+  <meta property="og:title" content="BabyT | Plush Project">
   <meta property="og:description" content="A community character project with mystery plush unlocks and a future production goal.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BabyT | Mystery Plush Unlocks">
+  <meta name="twitter:title" content="BabyT | Plush Project">
   <meta name="twitter:description" content="A community character project with mystery plush unlocks and a future production goal.">
   <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
 
@@ -33,17 +33,15 @@
   <style>
     :root{
       --bg:#0b0705;
-      --panel:rgba(24,13,8,.88);
+      --panel:rgba(24,13,8,.9);
       --panel-soft:rgba(34,21,15,.78);
       --line:rgba(214,171,104,.26);
-      --line-soft:rgba(214,171,104,.13);
+      --line-soft:rgba(214,171,104,.14);
       --gold:#f0d399;
       --gold-strong:#f1cf69;
       --text:#f8ecd7;
       --muted:#d6bea2;
       --dark:#170d09;
-      --brown:#9b6638;
-      --cream:#fff5e5;
       --green:#98e27a;
     }
 
@@ -64,8 +62,8 @@
     .hero{
       min-height:100vh;
       background:
-        radial-gradient(circle at 72% 40%, rgba(240,211,153,.16), transparent 34%),
-        linear-gradient(180deg,rgba(7,5,4,.18),rgba(7,5,4,.94)),
+        radial-gradient(circle at 50% 32%, rgba(241,207,105,.13), transparent 32%),
+        linear-gradient(180deg,rgba(7,5,4,.16),rgba(7,5,4,.96)),
         url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png") center/cover no-repeat;
     }
 
@@ -74,7 +72,7 @@
       top:0;
       z-index:50;
       backdrop-filter:blur(12px);
-      background:rgba(21,12,8,.92);
+      background:rgba(21,12,8,.93);
       border-bottom:1px solid var(--line);
     }
 
@@ -138,16 +136,17 @@
     }
 
     .shell{
-      padding:38px 24px 62px;
+      padding:0 24px;
     }
 
     .hero-center{
-      min-height:calc(100vh - 110px);
+      min-height:calc(100vh - 72px);
       display:flex;
       flex-direction:column;
-      justify-content:center;
+      justify-content:flex-start;
       align-items:center;
       text-align:center;
+      padding:clamp(28px,5vh,58px) 0 54px;
     }
 
     .eyebrow{
@@ -158,29 +157,31 @@
       background:rgba(24,13,8,.64);
       color:var(--gold);
       font-weight:900;
-      margin-bottom:20px;
+      margin-bottom:16px;
     }
 
     h1{
       margin:0;
       line-height:.94;
       font-weight:900;
-      font-size:clamp(2.75rem,7vw,5.65rem);
+      font-size:clamp(2.55rem,6.6vw,5.35rem);
       text-transform:uppercase;
       letter-spacing:-.045em;
       text-shadow:0 9px 34px rgba(0,0,0,.4);
-      max-width:980px;
+      max-width:970px;
     }
 
     .accent{color:var(--gold-strong)}
 
     .hero-blindbox{
-      width:min(92vw,430px);
-      margin:32px auto 20px;
-      animation:floatBox 4.2s ease-in-out infinite;
+      width:min(82vw,360px);
+      margin:18px auto 14px;
+      animation:boxWiggle 3.4s ease-in-out infinite;
+      transform-origin:50% 72%;
       filter:
         drop-shadow(0 0 24px rgba(241,207,105,.12))
-        drop-shadow(0 26px 34px rgba(0,0,0,.38));
+        drop-shadow(0 24px 32px rgba(0,0,0,.38));
+      will-change:transform;
     }
 
     .hero-blindbox img{
@@ -189,16 +190,20 @@
       object-fit:contain;
     }
 
-    @keyframes floatBox{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-14px)}
+    @keyframes boxWiggle{
+      0%,100%{transform:translateY(0) rotate(0deg)}
+      34%{transform:translateY(-10px) rotate(0deg)}
+      42%{transform:translateY(-10px) rotate(-1.2deg)}
+      50%{transform:translateY(-11px) rotate(1.2deg)}
+      58%{transform:translateY(-10px) rotate(-.8deg)}
+      66%{transform:translateY(-9px) rotate(.7deg)}
     }
 
     .hero-text{
       margin:0 auto;
-      max-width:720px;
-      font-size:clamp(1rem,1.45vw,1.18rem);
-      line-height:1.65;
+      max-width:710px;
+      font-size:clamp(1rem,1.45vw,1.16rem);
+      line-height:1.58;
       color:#ead6b8;
       font-weight:500;
     }
@@ -208,14 +213,14 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:14px;
-      margin-top:28px;
+      margin-top:22px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:58px;
+      min-height:56px;
       padding:0 24px;
       border-radius:17px;
       font-weight:900;
@@ -236,12 +241,12 @@
     }
 
     .ca-box{
-      margin-top:24px;
+      margin-top:20px;
       display:flex;
       align-items:center;
       gap:12px;
       padding:13px;
-      max-width:920px;
+      max-width:900px;
       width:100%;
       backdrop-filter:blur(8px);
       background:var(--panel-soft);
@@ -259,7 +264,7 @@
       white-space:nowrap;
     }
 
-    .ca-value{
+    .ca-value,.wallet-address{
       flex:1;
       min-width:0;
       padding:14px 16px;
@@ -287,12 +292,12 @@
     }
 
     section{
-      padding:64px 24px;
+      padding:54px 24px;
     }
 
     .section-title{
-      margin:0 0 14px;
-      font-size:clamp(2rem,4vw,3.3rem);
+      margin:0 0 12px;
+      font-size:clamp(1.9rem,3.2vw,2.75rem);
       line-height:1;
       text-transform:uppercase;
       letter-spacing:-.035em;
@@ -301,14 +306,14 @@
     }
 
     .section-sub{
-      max-width:850px;
-      margin:0 0 26px;
+      max-width:780px;
+      margin:0 0 22px;
       color:var(--muted);
-      font-size:1.05rem;
-      line-height:1.75;
+      font-size:1rem;
+      line-height:1.62;
     }
 
-    .panel,.info-card,.footer-note,.wallet-card,.funding-card{
+    .panel,.wallet-card,.funding-card,.footer-note{
       background:var(--panel-soft);
       border:1px solid var(--line);
       border-radius:20px;
@@ -318,46 +323,46 @@
     .panel{
       background:rgba(23,13,9,.88);
       border-radius:26px;
-      padding:28px;
+      padding:26px;
     }
 
     .evolution-top{
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(220px,300px);
-      gap:20px;
+      grid-template-columns:minmax(0,1fr) minmax(180px,240px);
+      gap:16px;
       align-items:start;
     }
 
     .market-card{
-      padding:18px;
-      border-radius:20px;
+      padding:16px;
+      border-radius:18px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.18);
     }
 
     .market-card strong{
       display:block;
-      font-size:2rem;
+      font-size:1.55rem;
       color:var(--gold);
       line-height:1;
     }
 
     .market-card span{
       display:block;
-      margin-top:8px;
+      margin-top:7px;
       color:var(--muted);
-      font-size:.82rem;
+      font-size:.72rem;
       font-weight:900;
       text-transform:uppercase;
       letter-spacing:.08em;
     }
 
     .live-unlock-panel{
-      margin:24px 0 26px;
-      padding:24px;
-      border-radius:26px;
+      margin:20px 0 22px;
+      padding:20px;
+      border-radius:24px;
       background:
-        radial-gradient(circle at 50% 20%, rgba(241,207,105,.12), transparent 42%),
+        radial-gradient(circle at 50% 16%, rgba(241,207,105,.1), transparent 38%),
         rgba(255,255,255,.025);
       border:1px solid rgba(214,171,104,.18);
     }
@@ -365,46 +370,48 @@
     .live-unlock-top{
       display:flex;
       justify-content:space-between;
-      gap:16px;
+      gap:14px;
       align-items:flex-start;
-      margin-bottom:18px;
+      margin-bottom:16px;
     }
 
     .live-unlock-top h3{
       margin:0;
-      font-size:1.6rem;
+      font-size:1.2rem;
       text-transform:uppercase;
-      letter-spacing:-.025em;
+      letter-spacing:-.015em;
     }
 
     .live-unlock-top p{
-      margin:8px 0 0;
+      margin:6px 0 0;
       color:var(--muted);
-      line-height:1.55;
-      max-width:680px;
+      line-height:1.5;
+      max-width:650px;
+      font-size:.96rem;
     }
 
     .unlock-pill{
       display:inline-flex;
-      padding:10px 14px;
+      padding:9px 13px;
       border-radius:999px;
       background:rgba(241,207,105,.14);
       border:1px solid rgba(241,207,105,.22);
       color:var(--gold);
       font-weight:900;
       white-space:nowrap;
+      font-size:.92rem;
     }
 
     .hero-unlock-display{
-      min-height:230px;
+      min-height:190px;
       display:flex;
       align-items:center;
       justify-content:center;
-      border-radius:22px;
+      border-radius:20px;
       background:rgba(255,255,255,.025);
       border:1px dashed rgba(214,171,104,.18);
       overflow:hidden;
-      padding:18px;
+      padding:16px;
     }
 
     .unlocked-row{
@@ -417,7 +424,7 @@
     }
 
     .unlocked-plush{
-      width:90px;
+      width:92px;
       min-width:0;
       display:flex;
       align-items:flex-end;
@@ -433,18 +440,18 @@
 
     .unlocked-plush img{
       width:100%;
-      height:185px;
+      height:170px;
       object-fit:contain;
       object-position:center bottom;
       filter:
         drop-shadow(0 0 18px rgba(241,207,105,.18))
-        drop-shadow(0 20px 24px rgba(0,0,0,.34));
+        drop-shadow(0 18px 22px rgba(0,0,0,.34));
     }
 
     .locked-preview{
       position:relative;
-      width:130px;
-      height:185px;
+      width:138px;
+      height:178px;
       display:grid;
       place-items:center;
     }
@@ -453,7 +460,7 @@
       width:100%;
       height:100%;
       object-fit:contain;
-      filter:brightness(0) grayscale(1) contrast(1.2) opacity(.7);
+      filter:brightness(0) grayscale(1) contrast(1.2) opacity(.72);
     }
 
     .locked-preview::after{
@@ -463,31 +470,31 @@
       display:grid;
       place-items:center;
       color:var(--gold);
-      font-size:4.2rem;
+      font-size:4rem;
       font-weight:900;
       text-shadow:0 12px 28px rgba(0,0,0,.7);
     }
 
     @keyframes bob{
       0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-8px)}
+      50%{transform:translateY(-7px)}
     }
 
     .stagegrid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
-      margin-top:22px;
+      gap:14px;
+      margin-top:18px;
     }
 
     .stage{
-      min-height:280px;
-      border-radius:22px;
+      min-height:240px;
+      border-radius:20px;
       border:1px solid rgba(214,171,104,.15);
       background:
-        radial-gradient(circle at 50% 28%,rgba(240,211,153,.08),transparent 42%),
+        radial-gradient(circle at 50% 24%,rgba(240,211,153,.07),transparent 40%),
         rgba(255,255,255,.035);
-      padding:16px;
+      padding:14px;
       text-align:center;
       overflow:hidden;
       transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
@@ -496,7 +503,7 @@
     .stage.active{
       background:linear-gradient(180deg,rgba(241,211,153,.96),rgba(199,139,70,.96));
       color:#23150d;
-      transform:translateY(-4px);
+      transform:translateY(-3px);
       box-shadow:0 18px 34px rgba(0,0,0,.24);
     }
 
@@ -508,19 +515,19 @@
     .thumb{
       position:relative;
       width:100%;
-      min-height:164px;
+      min-height:138px;
       display:grid;
       place-items:center;
-      border-radius:18px;
+      border-radius:16px;
       background:rgba(255,255,255,.035);
       border:1px dashed rgba(214,171,104,.18);
-      padding:12px;
+      padding:10px;
       overflow:hidden;
     }
 
     .thumb img{
       width:100%;
-      height:142px;
+      height:122px;
       object-fit:contain;
       object-position:center bottom;
       filter:drop-shadow(0 12px 20px rgba(0,0,0,.26));
@@ -528,7 +535,7 @@
     }
 
     .thumb.locked img{
-      filter:brightness(0) grayscale(1) contrast(1.15) opacity(.62);
+      filter:brightness(0) grayscale(1) contrast(1.15) opacity(.64);
     }
 
     .question-mark{
@@ -537,7 +544,7 @@
       inset:0;
       place-items:center;
       color:rgba(248,236,215,.96);
-      font-size:3.4rem;
+      font-size:3rem;
       font-weight:900;
       text-shadow:0 10px 28px rgba(0,0,0,.58);
     }
@@ -552,8 +559,8 @@
 
     .thumb.missing-image::before{
       content:"";
-      width:86px;
-      height:112px;
+      width:80px;
+      height:108px;
       border-radius:30px;
       background:linear-gradient(180deg,#24150f,#0f0907);
       opacity:.78;
@@ -572,8 +579,8 @@
     }
 
     .stage-label{
-      margin-top:12px;
-      font-size:.78rem;
+      margin-top:10px;
+      font-size:.74rem;
       font-weight:900;
       color:var(--gold);
       text-transform:uppercase;
@@ -585,15 +592,15 @@
     }
 
     .stage-name{
-      margin-top:8px;
-      font-size:1.08rem;
+      margin-top:7px;
+      font-size:.98rem;
       font-weight:900;
       line-height:1.14;
     }
 
     .stage-status{
-      margin-top:8px;
-      font-size:.82rem;
+      margin-top:7px;
+      font-size:.78rem;
       color:var(--muted);
       font-weight:700;
     }
@@ -604,77 +611,63 @@
 
     .wallet-grid{
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);
-      gap:22px;
+      grid-template-columns:minmax(0,1fr) minmax(300px,.85fr);
+      gap:18px;
       align-items:stretch;
-      margin-top:22px;
+      margin-top:18px;
     }
 
-    .wallet-card{
-      padding:24px;
+    .wallet-card,.funding-card{
+      padding:22px;
       background:
-        radial-gradient(circle at 20% 10%,rgba(241,207,105,.11),transparent 36%),
+        radial-gradient(circle at 20% 10%,rgba(241,207,105,.1),transparent 34%),
         rgba(23,13,9,.88);
     }
 
-    .wallet-card h3,
-    .funding-card h3{
-      margin:0 0 10px;
-      font-size:1.35rem;
+    .wallet-card h3,.funding-card h3{
+      margin:0 0 8px;
+      font-size:1.16rem;
       color:var(--gold);
       text-transform:uppercase;
       letter-spacing:.03em;
     }
 
-    .wallet-card p,
-    .funding-card p{
+    .wallet-card p,.funding-card p{
       margin:0;
       color:var(--muted);
-      line-height:1.65;
+      line-height:1.55;
+      font-size:.96rem;
     }
 
     .wallet-warning{
-      margin-top:16px;
-      padding:14px 16px;
-      border-radius:16px;
+      margin-top:14px;
+      padding:13px 14px;
+      border-radius:15px;
       background:rgba(241,207,105,.1);
       border:1px solid rgba(241,207,105,.2);
       color:var(--gold);
       font-weight:800;
-      line-height:1.55;
+      line-height:1.48;
     }
 
     .wallet-address-box{
-      margin-top:16px;
+      margin-top:14px;
       display:grid;
       grid-template-columns:1fr auto;
       gap:10px;
       align-items:center;
     }
 
-    .wallet-address{
-      min-width:0;
-      padding:14px 16px;
-      border-radius:14px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.18);
-      color:var(--text);
-      font-weight:800;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
-
     .wallet-stats{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
-      margin-top:18px;
+      gap:10px;
+      margin-top:14px;
     }
 
     .wallet-mini{
-      padding:15px;
-      border-radius:16px;
+      padding:14px;
+      border-radius:15px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.16);
     }
@@ -682,7 +675,7 @@
     .wallet-mini strong{
       display:block;
       color:var(--gold);
-      font-size:1.35rem;
+      font-size:1.18rem;
       line-height:1.1;
     }
 
@@ -690,16 +683,16 @@
       display:block;
       margin-top:6px;
       color:var(--muted);
-      font-size:.75rem;
+      font-size:.7rem;
       font-weight:800;
       text-transform:uppercase;
       letter-spacing:.08em;
     }
 
     .goal-box{
-      margin-top:18px;
-      padding:18px;
-      border-radius:18px;
+      margin-top:14px;
+      padding:16px;
+      border-radius:16px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.16);
     }
@@ -709,13 +702,13 @@
       justify-content:space-between;
       align-items:center;
       gap:12px;
-      margin-bottom:12px;
+      margin-bottom:10px;
       color:var(--gold);
       font-weight:900;
     }
 
     .progress-track{
-      height:16px;
+      height:14px;
       border-radius:999px;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(214,171,104,.15);
@@ -730,22 +723,15 @@
       transition:width .35s ease;
     }
 
-    .funding-card{
-      padding:24px;
-      background:
-        radial-gradient(circle at 70% 20%,rgba(241,207,105,.1),transparent 38%),
-        rgba(23,13,9,.88);
-    }
-
     .funding-list{
       display:grid;
-      gap:12px;
-      margin-top:18px;
+      gap:10px;
+      margin-top:14px;
     }
 
     .funding-item{
-      padding:15px;
-      border-radius:16px;
+      padding:13px;
+      border-radius:15px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.14);
     }
@@ -753,39 +739,14 @@
     .funding-item strong{
       display:block;
       color:var(--text);
-      margin-bottom:5px;
+      margin-bottom:4px;
     }
 
     .funding-item span{
       display:block;
       color:var(--muted);
-      line-height:1.5;
-      font-size:.95rem;
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
-      margin-top:22px;
-    }
-
-    .info-card{
-      padding:22px;
-    }
-
-    .info-card h3{
-      margin:0 0 10px;
-      font-size:1.15rem;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.04em;
-    }
-
-    .info-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
+      line-height:1.45;
+      font-size:.92rem;
     }
 
     .social-strip{
@@ -828,11 +789,11 @@
     }
 
     .footer-note{
-      margin-top:32px;
+      margin-top:28px;
       padding:18px 20px;
       color:var(--muted);
-      font-size:.92rem;
-      line-height:1.65;
+      font-size:.9rem;
+      line-height:1.6;
       text-align:center;
     }
 
@@ -844,10 +805,6 @@
 
       .stagegrid{
         grid-template-columns:repeat(2,minmax(0,1fr));
-      }
-
-      .info-grid{
-        grid-template-columns:1fr;
       }
     }
 
@@ -880,15 +837,30 @@
       }
 
       .shell{
-        padding:24px 16px 44px;
+        padding:0 16px;
+      }
+
+      .hero-center{
+        min-height:auto;
+        padding:26px 0 44px;
+      }
+
+      .eyebrow{
+        margin-bottom:13px;
       }
 
       h1{
-        font-size:clamp(2.25rem,11vw,3.85rem);
+        font-size:clamp(2.2rem,10.2vw,3.65rem);
+      }
+
+      .hero-blindbox{
+        width:min(80vw,300px);
+        margin:14px auto 12px;
       }
 
       .hero-text{
         font-size:1rem;
+        line-height:1.55;
       }
 
       .actions{
@@ -896,12 +868,13 @@
         grid-template-columns:1fr 1fr;
         gap:10px;
         width:100%;
+        margin-top:20px;
       }
 
       .btn{
         min-height:54px;
-        padding:0 14px;
-        font-size:.92rem;
+        padding:0 12px;
+        font-size:.9rem;
       }
 
       .ca-box{
@@ -911,26 +884,63 @@
 
       .ca-label,.ca-value,.copy-btn{
         width:100%;
+        text-align:center;
       }
 
       section{
-        padding:46px 16px;
+        padding:38px 16px;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+      .section-sub{
+        font-size:.98rem;
       }
 
       .panel{
         padding:20px;
+        border-radius:24px;
+      }
+
+      .market-card{
+        padding:14px;
+      }
+
+      .market-card strong{
+        font-size:1.35rem;
+      }
+
+      .live-unlock-panel{
+        padding:16px;
+        border-radius:22px;
       }
 
       .live-unlock-top{
         display:block;
       }
 
+      .live-unlock-top h3{
+        font-size:1.05rem;
+      }
+
       .unlock-pill{
-        margin-top:14px;
+        margin-top:12px;
       }
 
       .hero-unlock-display{
-        min-height:210px;
+        min-height:168px;
+        padding:14px;
+      }
+
+      .locked-preview{
+        width:112px;
+        height:146px;
+      }
+
+      .locked-preview::after{
+        font-size:3.3rem;
       }
 
       .unlocked-row{
@@ -942,12 +952,7 @@
       }
 
       .unlocked-plush img{
-        height:145px;
-      }
-
-      .locked-preview{
-        width:110px;
-        height:160px;
+        height:138px;
       }
 
       .stagegrid{
@@ -959,22 +964,26 @@
       }
 
       .stage{
-        flex:0 0 172px;
-        min-width:172px;
-        min-height:230px;
+        flex:0 0 160px;
+        min-width:160px;
+        min-height:218px;
         scroll-snap-align:start;
       }
 
       .thumb{
-        min-height:118px;
+        min-height:112px;
       }
 
       .thumb img{
-        height:96px;
+        height:92px;
       }
 
       .question-mark{
-        font-size:2.8rem;
+        font-size:2.65rem;
+      }
+
+      .wallet-card,.funding-card{
+        padding:18px;
       }
 
       .wallet-address-box{
@@ -1034,7 +1043,7 @@
 
     <main class="shell" id="top">
       <section class="hero-center" id="about">
-        <div class="eyebrow">Mystery Plush Evolution</div>
+        <div class="eyebrow">BabyT Plush Project</div>
 
         <h1>
           BabyT grows into a
@@ -1046,7 +1055,7 @@
         </div>
 
         <p class="hero-text">
-          BabyT is a community-driven character project. Mystery plush concepts unlock step by step as the project reaches new milestones.
+          Mystery plush concepts unlock step by step as the BabyT community reaches new milestones.
         </p>
 
         <div class="actions">
@@ -1068,9 +1077,9 @@
       <div class="panel">
         <div class="evolution-top">
           <div>
-            <h2 class="section-title">Mystery Plush Unlocks</h2>
+            <h2 class="section-title">Plush Unlocks</h2>
             <p class="section-sub">
-              No plush is unlocked at the beginning. Each milestone reveals one new BabyT mystery plush. Once unlocked, the plush appears in the live unlock board.
+              Every milestone unlocks one new BabyT mystery plush. Locked plushies stay hidden as silhouettes until the market cap milestone is reached.
             </p>
           </div>
 
@@ -1084,7 +1093,7 @@
           <div class="live-unlock-top">
             <div>
               <h3 id="heroUnlockTitle">Live Unlock Board</h3>
-              <p id="heroUnlockText">Unlocked BabyT plush concepts will appear here side by side as each milestone is reached.</p>
+              <p id="heroUnlockText">Unlocked BabyT plush concepts appear here side by side.</p>
             </div>
             <div id="nextUnlockPill" class="unlock-pill">Next unlock: 50K+</div>
           </div>
@@ -1105,18 +1114,16 @@
     <div class="section-inner">
       <h2 class="section-title">Production Goal</h2>
       <p class="section-sub">
-        BabyT is building toward real-world plush samples, packaging tests and possible future giveaways. The production wallet below tracks optional community support toward the first production goal.
+        The long-term goal is to test real BabyT plush samples, blind box packaging and future community giveaways.
       </p>
 
       <div class="wallet-grid">
         <div class="wallet-card">
           <h3>Production Wallet</h3>
-          <p>
-            This wallet is used as the transparent BabyT production support wallet. Funds can help with sample creation, packaging, testing and future giveaway preparation.
-          </p>
+          <p>Transparent support wallet for samples, packaging tests and production planning.</p>
 
           <div class="wallet-warning">
-            Please only send SOL to this wallet. This is a Solana wallet. Do not send funds from other chains.
+            Please only send SOL to this wallet. This is a Solana wallet.
           </div>
 
           <div class="wallet-address-box">
@@ -1138,7 +1145,7 @@
 
           <div class="goal-box">
             <div class="goal-top">
-              <span>Production Goal</span>
+              <span>Goal: <span id="productionGoalText">$10,000</span></span>
               <span id="progressPercent">0%</span>
             </div>
 
@@ -1146,61 +1153,31 @@
               <div id="progressFill" class="progress-fill"></div>
             </div>
 
-            <p style="margin-top:12px">
-              Goal: <strong id="productionGoalText">$10,000</strong> for first samples, packaging tests and production planning.
+            <p style="margin-top:10px">
+              First target for plush samples, packaging tests and supplier setup.
             </p>
           </div>
         </div>
 
         <div class="funding-card">
-          <h3>What the project supports</h3>
-          <p>
-            BabyT is designed around a character, content and collectible ideas. The token and optional community support can help finance the parts that TikTok content alone does not cover.
-          </p>
+          <h3>What this supports</h3>
+          <p>BabyT is built around character content, collectibles and community hype.</p>
 
           <div class="funding-list">
             <div class="funding-item">
-              <strong>Concept Art</strong>
-              <span>New BabyT forms, plush concepts, packaging visuals and story ideas.</span>
+              <strong>Plush Samples</strong>
+              <span>Testing real BabyT plush versions before any production step.</span>
             </div>
 
             <div class="funding-item">
-              <strong>Samples & Packaging</strong>
-              <span>Testing real plush samples, blind box designs and supplier options.</span>
+              <strong>Blind Box Packaging</strong>
+              <span>Designing and testing the collectible box look.</span>
             </div>
 
             <div class="funding-item">
-              <strong>Community Giveaways</strong>
-              <span>If production becomes possible, the goal is to give back to real supporters.</span>
+              <strong>Giveaway Prep</strong>
+              <span>Preparing future rewards for real supporters if production becomes possible.</span>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="how">
-    <div class="section-inner">
-      <div class="panel">
-        <h2 class="section-title">How it works</h2>
-        <p class="section-sub">
-          BabyT combines meme culture, character evolution and collectible plush concepts. The website checks the live market cap and updates which mystery plush stages are unlocked.
-        </p>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>1. Grow</h3>
-            <p>The community grows the project and helps bring more attention to BabyT.</p>
-          </div>
-
-          <div class="info-card">
-            <h3>2. Unlock</h3>
-            <p>Each milestone unlocks a new mystery plush stage on the website.</p>
-          </div>
-
-          <div class="info-card">
-            <h3>3. Reveal</h3>
-            <p>Unlocked stages can later be revealed as concept designs and giveaway ideas.</p>
           </div>
         </div>
       </div>
@@ -1211,7 +1188,7 @@
     <div class="section-inner">
       <h2 class="section-title" style="text-align:center">Join BabyT</h2>
       <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">
-        Follow the official channels for updates, unlocks, concepts and community posts.
+        Follow the official channels for unlocks, concepts and community posts.
       </p>
 
       <div class="social-strip">
@@ -1327,7 +1304,8 @@
         threshold: 5000000,
         label: "5M+",
         name: "Legendary Mystery",
-        image: "./unlock-01.png"
+        image: "./unlock-06.png",
+        fallbackImage: "./unlock-01.png"
       }
     ];
 
@@ -1350,10 +1328,19 @@
 
     function formatSol(value){
       if(value == null || Number.isNaN(value)) return "-- SOL";
+
       return value.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 4
+        minimumFractionDigits: value < 0.01 ? 4 : 2,
+        maximumFractionDigits: value < 0.01 ? 6 : 4
       }) + " SOL";
+    }
+
+    function withTimeout(promise, ms = 9000){
+      const timeout = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error("Timeout")), ms);
+      });
+
+      return Promise.race([promise, timeout]);
     }
 
     function getUnlockedStages(marketCap){
@@ -1369,13 +1356,21 @@
       return stages.find(stage => marketCap < stage.threshold) || null;
     }
 
+    function imageOnError(stage){
+      if(stage.fallbackImage){
+        return `this.onerror=null; this.src='${stage.fallbackImage}';`;
+      }
+
+      return "this.parentElement.classList.add('missing-image'); this.remove();";
+    }
+
     function stageImageHtml(stage, isUnlocked){
       return `
         <div class="thumb ${isUnlocked ? "revealed" : "locked"}">
           <img
             src="${stage.image}"
             alt="${stage.name}"
-            onerror="this.parentElement.classList.add('missing-image'); this.remove();"
+            onerror="${imageOnError(stage)}"
           >
           <div class="question-mark">?</div>
         </div>
@@ -1394,7 +1389,7 @@
         `;
 
         heroUnlockTitle.textContent = "Live Unlock Board";
-        heroUnlockText.textContent = "Unlocked BabyT plush concepts will appear here side by side as each milestone is reached.";
+        heroUnlockText.textContent = "Unlocked BabyT plush concepts appear here side by side.";
       } else {
         heroUnlockDisplay.innerHTML = `
           <div class="unlocked-row">
@@ -1403,7 +1398,7 @@
                 <img
                   src="${stage.image}"
                   alt="${stage.name}"
-                  onerror="this.parentElement.innerHTML='?'"
+                  onerror="${stage.fallbackImage ? `this.onerror=null; this.src='${stage.fallbackImage}';` : `this.parentElement.innerHTML='?'`}"
                 >
               </div>
             `).join("")}
@@ -1411,16 +1406,16 @@
         `;
 
         heroUnlockTitle.textContent = unlocked.length === 1
-          ? "1 plush unlocked"
-          : `${unlocked.length} plushies unlocked`;
+          ? "1 Plush Unlocked"
+          : `${unlocked.length} Plushies Unlocked`;
 
-        heroUnlockText.textContent = "Unlocked BabyT plush concepts are now visible in the live board.";
+        heroUnlockText.textContent = "Unlocked BabyT plush concepts are now visible.";
       }
 
       if(nextStage){
         nextUnlockPill.textContent = `Next unlock: ${nextStage.label}`;
       } else {
-        nextUnlockPill.textContent = "All mystery stages unlocked";
+        nextUnlockPill.textContent = "All stages unlocked";
       }
     }
 
@@ -1450,7 +1445,7 @@
 
     async function fetchMarketCap(){
       try{
-        const response = await fetch(`https://api.dexscreener.com/token-pairs/v1/solana/${CONTRACT_ADDRESS}`);
+        const response = await withTimeout(fetch(`https://api.dexscreener.com/token-pairs/v1/solana/${CONTRACT_ADDRESS}`));
         if(!response.ok) throw new Error("Request failed");
 
         const pairs = await response.json();
@@ -1466,64 +1461,103 @@
     }
 
     async function fetchSolPrice(){
-      const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
-      if(!response.ok) throw new Error("Price request failed");
+      const priceFetchers = [
+        async () => {
+          const response = await withTimeout(fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"));
+          const data = await response.json();
+          return Number(data?.price || 0);
+        },
+        async () => {
+          const response = await withTimeout(fetch("https://api.coinbase.com/v2/exchange-rates?currency=SOL"));
+          const data = await response.json();
+          return Number(data?.data?.rates?.USD || 0);
+        },
+        async () => {
+          const response = await withTimeout(fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd"));
+          const data = await response.json();
+          return Number(data?.solana?.usd || 0);
+        }
+      ];
 
-      const data = await response.json();
+      for(const fetchPrice of priceFetchers){
+        try{
+          const price = await fetchPrice();
+          if(price > 0) return price;
+        }catch(error){}
+      }
 
-      return Number(data?.solana?.usd || 0);
+      return null;
     }
 
     async function fetchWalletSolBalance(){
-      const response = await fetch("https://api.mainnet-beta.solana.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          id: 1,
-          method: "getBalance",
-          params: [PRODUCTION_WALLET]
-        })
+      const rpcEndpoints = [
+        "https://api.mainnet-beta.solana.com",
+        "https://solana-rpc.publicnode.com",
+        "https://rpc.ankr.com/solana"
+      ];
+
+      const body = JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getBalance",
+        params: [PRODUCTION_WALLET]
       });
 
-      if(!response.ok) throw new Error("Wallet request failed");
+      for(const endpoint of rpcEndpoints){
+        try{
+          const response = await withTimeout(fetch(endpoint, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body
+          }));
 
-      const data = await response.json();
-      const lamports = Number(data?.result?.value || 0);
+          if(!response.ok) throw new Error("Wallet request failed");
 
-      return lamports / 1000000000;
+          const data = await response.json();
+          const lamports = Number(data?.result?.value);
+
+          if(!Number.isNaN(lamports)){
+            return lamports / 1000000000;
+          }
+        }catch(error){}
+      }
+
+      return null;
     }
 
     function updateWalletUi(solBalance, solUsdPrice){
+      if(solBalance == null || Number.isNaN(solBalance)){
+        walletSolValue.textContent = "-- SOL";
+        walletUsdValue.textContent = "$--";
+        progressFill.style.width = "0%";
+        progressPercent.textContent = "0%";
+        return;
+      }
+
+      walletSolValue.textContent = formatSol(solBalance);
+
+      if(solUsdPrice == null || Number.isNaN(solUsdPrice)){
+        walletUsdValue.textContent = "$--";
+        progressFill.style.width = "0%";
+        progressPercent.textContent = "0%";
+        return;
+      }
+
       const usdValue = solBalance * solUsdPrice;
       const progress = Math.max(0, Math.min(100, (usdValue / PRODUCTION_GOAL_USD) * 100));
 
-      walletSolValue.textContent = formatSol(solBalance);
       walletUsdValue.textContent = formatCurrency(usdValue);
-
       progressFill.style.width = progress.toFixed(2) + "%";
       progressPercent.textContent = progress.toFixed(1) + "%";
     }
 
-    function setWalletUnavailable(){
-      walletSolValue.textContent = "-- SOL";
-      walletUsdValue.textContent = "$--";
-      progressFill.style.width = "0%";
-      progressPercent.textContent = "0%";
-    }
-
     async function fetchWalletTracker(){
       try{
-        const [solBalance, solUsdPrice] = await Promise.all([
-          fetchWalletSolBalance(),
-          fetchSolPrice()
-        ]);
-
+        const solBalance = await fetchWalletSolBalance();
+        const solUsdPrice = await fetchSolPrice();
         updateWalletUi(solBalance, solUsdPrice);
       }catch(error){
-        setWalletUnavailable();
+        updateWalletUi(null, null);
       }
     }
 
