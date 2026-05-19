@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>BabyT | Plush Evolution Project</title>
-  <meta name="description" content="BabyT is a community character project with mystery plush unlocks, special edition concepts and future giveaways.">
+  <title>BabyT | Mystery Plush Unlocks</title>
+  <meta name="description" content="BabyT is a community character project with mystery plush unlocks, collectible concepts and future giveaways.">
   <meta name="theme-color" content="#0b0705">
   <link rel="canonical" href="https://babytungtung.com/">
 
@@ -16,13 +16,13 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
-  <meta property="og:title" content="BabyT | Plush Evolution Project">
+  <meta property="og:title" content="BabyT | Mystery Plush Unlocks">
   <meta property="og:description" content="A community character project with mystery plush unlocks and collectible concepts.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BabyT | Plush Evolution Project">
+  <meta name="twitter:title" content="BabyT | Mystery Plush Unlocks">
   <meta name="twitter:description" content="A community character project with mystery plush unlocks and collectible concepts.">
   <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
 
@@ -34,8 +34,9 @@
     :root{
       --bg:#0b0705;
       --panel:rgba(24,13,8,.88);
-      --panel-soft:rgba(34,21,15,.76);
-      --line:rgba(214,171,104,.25);
+      --panel-soft:rgba(34,21,15,.78);
+      --line:rgba(214,171,104,.26);
+      --line-soft:rgba(214,171,104,.13);
       --gold:#f0d399;
       --gold-strong:#f1cf69;
       --text:#f8ecd7;
@@ -46,7 +47,9 @@
     }
 
     *{box-sizing:border-box}
+
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter,Arial,sans-serif;
@@ -61,7 +64,7 @@
       min-height:100vh;
       background:
         radial-gradient(circle at 72% 40%, rgba(240,211,153,.16), transparent 34%),
-        linear-gradient(180deg,rgba(7,5,4,.22),rgba(7,5,4,.92)),
+        linear-gradient(180deg,rgba(7,5,4,.2),rgba(7,5,4,.94)),
         url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png") center/cover no-repeat;
     }
 
@@ -70,7 +73,7 @@
       top:0;
       z-index:50;
       backdrop-filter:blur(12px);
-      background:rgba(21,12,8,.9);
+      background:rgba(21,12,8,.92);
       border-bottom:1px solid var(--line);
     }
 
@@ -140,7 +143,7 @@
     .grid{
       min-height:calc(100vh - 96px);
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(330px,.86fr);
+      grid-template-columns:minmax(0,1fr) minmax(340px,.86fr);
       gap:36px;
       align-items:center;
     }
@@ -304,12 +307,12 @@
     }
 
     .hero-reveal-card{
-      width:min(100%,430px);
+      width:min(100%,470px);
       padding:24px;
-      border-radius:30px;
+      border-radius:32px;
       background:
-        radial-gradient(circle at 50% 28%, rgba(241,207,105,.18), transparent 38%),
-        linear-gradient(180deg,rgba(35,21,15,.92),rgba(18,10,7,.96));
+        radial-gradient(circle at 50% 30%, rgba(241,207,105,.18), transparent 42%),
+        linear-gradient(180deg,rgba(35,21,15,.94),rgba(18,10,7,.97));
       text-align:center;
       position:relative;
       overflow:hidden;
@@ -319,7 +322,7 @@
       content:"";
       position:absolute;
       inset:-80px;
-      background:radial-gradient(circle,rgba(240,211,153,.1),transparent 55%);
+      background:radial-gradient(circle,rgba(240,211,153,.11),transparent 55%);
       animation:glowMove 5s ease-in-out infinite;
     }
 
@@ -328,12 +331,33 @@
       50%{transform:translateY(18px)}
     }
 
-    .mystery-plush{
+    .live-badge{
       position:relative;
       z-index:2;
-      width:220px;
-      height:270px;
-      margin:24px auto 18px;
+      display:inline-flex;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(241,207,105,.13);
+      border:1px solid rgba(241,207,105,.22);
+      color:var(--gold);
+      font-weight:900;
+      margin-bottom:16px;
+    }
+
+    .hero-unlock-display{
+      position:relative;
+      z-index:2;
+      min-height:260px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:10px 0 18px;
+    }
+
+    .single-mystery{
+      position:relative;
+      width:210px;
+      height:260px;
       border-radius:48% 48% 42% 42%;
       background:linear-gradient(180deg,#2b1b13,#130b08);
       border:1px solid rgba(240,211,153,.2);
@@ -343,13 +367,13 @@
         0 24px 44px rgba(0,0,0,.45);
     }
 
-    .mystery-plush::before{
+    .single-mystery::before{
       content:"";
       position:absolute;
-      top:-34px;
+      top:-32px;
       left:50%;
-      width:58px;
-      height:58px;
+      width:56px;
+      height:56px;
       transform:translateX(-50%);
       border-radius:50%;
       border:10px solid #d5a363;
@@ -357,7 +381,7 @@
       box-shadow:0 10px 24px rgba(0,0,0,.2);
     }
 
-    .mystery-plush::after{
+    .single-mystery::after{
       content:"?";
       position:absolute;
       inset:0;
@@ -369,11 +393,51 @@
       text-shadow:0 12px 28px rgba(0,0,0,.5);
     }
 
+    .unlocked-row{
+      width:100%;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:nowrap;
+      padding:10px 0 0;
+    }
+
+    .unlocked-plush{
+      width:70px;
+      min-width:0;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      animation:bob 4s ease-in-out infinite;
+    }
+
+    .unlocked-plush:nth-child(2){animation-delay:.15s}
+    .unlocked-plush:nth-child(3){animation-delay:.3s}
+    .unlocked-plush:nth-child(4){animation-delay:.45s}
+    .unlocked-plush:nth-child(5){animation-delay:.6s}
+    .unlocked-plush:nth-child(6){animation-delay:.75s}
+
+    .unlocked-plush img{
+      width:100%;
+      height:180px;
+      object-fit:contain;
+      object-position:center bottom;
+      filter:
+        drop-shadow(0 0 18px rgba(241,207,105,.18))
+        drop-shadow(0 20px 24px rgba(0,0,0,.34));
+    }
+
+    @keyframes bob{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+
     .hero-reveal-card h2{
       position:relative;
       z-index:2;
       margin:0;
-      font-size:2.1rem;
+      font-size:2.05rem;
       line-height:1;
       text-transform:uppercase;
       letter-spacing:-.04em;
@@ -383,7 +447,7 @@
       position:relative;
       z-index:2;
       margin:12px auto 0;
-      max-width:330px;
+      max-width:350px;
       color:var(--muted);
       line-height:1.65;
       font-weight:600;
@@ -438,7 +502,7 @@
     }
 
     .stage{
-      min-height:260px;
+      min-height:280px;
       border-radius:22px;
       border:1px solid rgba(214,171,104,.15);
       background:
@@ -465,7 +529,7 @@
     .thumb{
       position:relative;
       width:100%;
-      min-height:152px;
+      min-height:164px;
       display:grid;
       place-items:center;
       border-radius:18px;
@@ -473,6 +537,14 @@
       border:1px dashed rgba(214,171,104,.18);
       padding:12px;
       overflow:hidden;
+    }
+
+    .thumb img{
+      width:100%;
+      height:142px;
+      object-fit:contain;
+      object-position:center bottom;
+      filter:drop-shadow(0 12px 20px rgba(0,0,0,.26));
     }
 
     .mini-mystery{
@@ -593,8 +665,9 @@
       font-weight:700;
     }
 
-    .plush-image-frame{
+    .blindbox-frame{
       margin-top:20px;
+      min-height:360px;
       border-radius:26px;
       background:
         radial-gradient(circle at 50% 45%,#fffdf8 0%,#fff8ef 42%,#efe0ca 100%);
@@ -603,14 +676,31 @@
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.8),
         0 20px 50px rgba(85,52,25,.16);
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
     }
 
-    .plush-image-frame img{
+    .blindbox-frame img{
       width:100%;
       height:auto;
       object-fit:contain;
       border-radius:18px;
       filter:drop-shadow(0 18px 24px rgba(90,55,26,.12));
+    }
+
+    .blindbox-frame.image-missing img{
+      display:none;
+    }
+
+    .blindbox-frame.image-missing::after{
+      content:"Blind Box Preview Coming Soon";
+      color:#7b4e2a;
+      font-weight:900;
+      font-size:1.4rem;
+      text-align:center;
+      opacity:.72;
     }
 
     .info-grid{
@@ -696,10 +786,10 @@
       }
 
       .hero-reveal-card{
-        width:min(100%,390px);
+        width:min(100%,430px);
       }
 
-      .mystery-plush{
+      .single-mystery{
         width:180px;
         height:225px;
       }
@@ -806,6 +896,22 @@
         padding:20px;
       }
 
+      .hero-unlock-display{
+        min-height:230px;
+      }
+
+      .unlocked-row{
+        gap:4px;
+      }
+
+      .unlocked-plush{
+        width:54px;
+      }
+
+      .unlocked-plush img{
+        height:145px;
+      }
+
       .stagegrid{
         display:flex;
         overflow-x:auto;
@@ -825,6 +931,10 @@
         min-height:118px;
       }
 
+      .thumb img{
+        height:96px;
+      }
+
       .mini-mystery{
         width:74px;
         height:98px;
@@ -835,7 +945,8 @@
         border-radius:26px;
       }
 
-      .plush-image-frame{
+      .blindbox-frame{
+        min-height:260px;
         padding:14px;
         border-radius:22px;
       }
@@ -871,8 +982,8 @@
 
         <nav class="links" aria-label="Navigation">
           <a href="#about">About</a>
-          <a href="#plush">Samples</a>
           <a href="#evolution">Unlocks</a>
+          <a href="#blindbox">Blind Box</a>
           <a href="#socials">Socials</a>
         </nav>
 
@@ -894,13 +1005,12 @@
           </h1>
 
           <p class="hero-text">
-            BabyT is a community-driven character project. The goal is to unlock mystery plush concepts,
-            special editions and future giveaways as the community grows.
+            BabyT is a community-driven character project. Mystery plush concepts unlock step by step as the project reaches new milestones.
           </p>
 
           <div class="actions">
             <a class="btn primary" href="#evolution">See Unlocks</a>
-            <a class="btn secondary" href="#plush">Special Samples</a>
+            <a class="btn secondary" href="#blindbox">Blind Box Preview</a>
           </div>
 
           <div class="stats">
@@ -917,37 +1027,54 @@
           </div>
         </section>
 
-        <section class="show" aria-label="Mystery plush unlock">
+        <section class="show" aria-label="Mystery plush unlock board">
           <div class="hero-reveal-card">
-            <div class="mystery-plush" aria-hidden="true"></div>
-            <h2>First plush unlock</h2>
-            <p>The first official BabyT mystery plush concept unlocks when the project reaches the first milestone.</p>
-            <div id="nextUnlockPill" class="unlock-pill">Unlocks at 50K</div>
+            <div class="live-badge">Live Unlock Board</div>
+
+            <div id="heroUnlockDisplay" class="hero-unlock-display">
+              <div class="single-mystery" aria-hidden="true"></div>
+            </div>
+
+            <h2 id="heroUnlockTitle">First plush unlock</h2>
+            <p id="heroUnlockText">The first BabyT mystery plush concept unlocks when the project reaches the first milestone.</p>
+            <div id="nextUnlockPill" class="unlock-pill">Next unlock: 50K+</div>
           </div>
         </section>
       </div>
     </main>
   </div>
 
-  <section id="plush">
+  <section id="evolution">
+    <div class="section-inner">
+      <div class="panel">
+        <h2 class="section-title">Mystery Plush Unlocks</h2>
+        <p class="section-sub">
+          No plush is unlocked at the beginning. Each milestone reveals one new BabyT mystery plush. Once unlocked, the plush appears in the live unlock board above.
+        </p>
+
+        <div id="stageGrid" class="stagegrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blindbox">
     <div class="section-inner">
       <div class="plush-wrap">
         <div>
-          <h2 class="section-title">Special Edition Samples</h2>
+          <h2 class="section-title">Blind Box Preview</h2>
           <p class="section-sub">
-            These are early sample concepts to show the possible BabyT plush direction.
-            They are not the final unlock order and are not available for sale yet.
+            This section can show the future BabyT blind box concept. Upload your finished blind box image as <strong>blindbox-preview.png</strong>.
           </p>
 
           <div class="info-grid">
             <div class="info-card">
-              <h3>Sample Concepts</h3>
-              <p>The designs shown here are visual ideas for possible future special editions.</p>
+              <h3>Mystery System</h3>
+              <p>Each unlock can become part of the BabyT collectible plush universe.</p>
             </div>
 
             <div class="info-card">
-              <h3>Mystery Unlocks</h3>
-              <p>The real plush stages stay hidden until their community milestone is reached.</p>
+              <h3>Special Editions</h3>
+              <p>Rare styles and special designs can be added later without changing the whole website.</p>
             </div>
 
             <div class="info-card">
@@ -958,29 +1085,16 @@
         </div>
 
         <div class="plush-card">
-          <span class="plush-badge">Early Sample Board</span>
-          <h3>Possible special editions</h3>
+          <span class="plush-badge">Concept Preview</span>
+          <h3>BabyT Blind Box</h3>
           <p>
-            A preview of what BabyT collectible plush concepts could look like in the future.
+            A clean preview area for the future blind box design and collectible plush lineup.
           </p>
 
-          <div class="plush-image-frame">
-            <img src="./babyt-plush-thumb.png" alt="BabyT special edition plush sample concepts">
+          <div class="blindbox-frame" id="blindboxFrame">
+            <img src="./blindbox-preview.png" alt="BabyT blind box preview" onerror="document.getElementById('blindboxFrame').classList.add('image-missing')">
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="evolution">
-    <div class="section-inner">
-      <div class="panel">
-        <h2 class="section-title">Mystery Plush Unlocks</h2>
-        <p class="section-sub">
-          No plush is unlocked at the beginning. Each milestone reveals the next BabyT mystery plush concept.
-        </p>
-
-        <div id="stageGrid" class="stagegrid"></div>
       </div>
     </div>
   </section>
@@ -990,8 +1104,7 @@
       <div class="panel">
         <h2 class="section-title">How it works</h2>
         <p class="section-sub">
-          BabyT combines meme culture, character evolution and collectible plush concepts.
-          The website checks the live market cap and updates which mystery plush stages are unlocked.
+          BabyT combines meme culture, character evolution and collectible plush concepts. The website checks the live market cap and updates which mystery plush stages are unlocked.
         </p>
 
         <div class="info-grid">
@@ -1007,7 +1120,7 @@
 
           <div class="info-card">
             <h3>3. Reveal</h3>
-            <p>Unlocked stages can later be revealed as real concept designs and giveaway ideas.</p>
+            <p>Unlocked stages can later be revealed as concept designs and giveaway ideas.</p>
           </div>
         </div>
       </div>
@@ -1018,7 +1131,7 @@
     <div class="section-inner">
       <h2 class="section-title" style="text-align:center">Join BabyT</h2>
       <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">
-        Follow the official channels for updates, concepts, unlocks and community posts.
+        Follow the official channels for updates, unlocks, concepts and community posts.
       </p>
 
       <div class="social-strip">
@@ -1064,7 +1177,7 @@
       </div>
 
       <div class="footer-note">
-        BabyT is a community meme character project. Plush designs shown are early concept samples only and are not available for sale yet.
+        BabyT is a community meme character project. Plush designs shown are early concept previews only and are not available for sale yet.
         Always do your own research.
       </div>
     </div>
@@ -1078,43 +1191,52 @@
     const copyCaBtn = document.getElementById("copyCaBtn");
     const stageGrid = document.getElementById("stageGrid");
     const nextUnlockPill = document.getElementById("nextUnlockPill");
+    const heroUnlockDisplay = document.getElementById("heroUnlockDisplay");
+    const heroUnlockTitle = document.getElementById("heroUnlockTitle");
+    const heroUnlockText = document.getElementById("heroUnlockText");
 
     const stages = [
       {
-        id: "mystery-01",
+        id: "unlock-01",
         threshold: 50000,
         label: "50K+",
-        name: "Mystery Plush 01"
+        name: "Mystery Plush 01",
+        image: "./unlock-01.png"
       },
       {
-        id: "mystery-02",
+        id: "unlock-02",
         threshold: 150000,
         label: "150K+",
-        name: "Mystery Plush 02"
+        name: "Mystery Plush 02",
+        image: "./unlock-02.png"
       },
       {
-        id: "mystery-03",
+        id: "unlock-03",
         threshold: 300000,
         label: "300K+",
-        name: "Mystery Plush 03"
+        name: "Mystery Plush 03",
+        image: "./unlock-03.png"
       },
       {
-        id: "special-01",
+        id: "unlock-04",
         threshold: 500000,
         label: "500K+",
-        name: "Special Edition"
+        name: "Special Plush",
+        image: "./unlock-04.png"
       },
       {
-        id: "rare-01",
+        id: "unlock-05",
         threshold: 1000000,
         label: "1M+",
-        name: "Rare Mystery"
+        name: "Rare Plush",
+        image: "./unlock-05.png"
       },
       {
-        id: "legendary-01",
+        id: "unlock-06",
         threshold: 5000000,
         label: "5M+",
-        name: "Legendary Mystery"
+        name: "Legendary Mystery",
+        image: "./unlock-06.png"
       }
     ];
 
@@ -1125,20 +1247,64 @@
       return "$" + Math.round(value);
     }
 
+    function getUnlockedStages(marketCap){
+      return stages.filter(stage => marketCap >= stage.threshold);
+    }
+
     function getCurrentStage(marketCap){
-      let current = null;
-
-      for(const stage of stages){
-        if(marketCap >= stage.threshold){
-          current = stage;
-        }
-      }
-
-      return current;
+      const unlocked = getUnlockedStages(marketCap);
+      return unlocked.length ? unlocked[unlocked.length - 1] : null;
     }
 
     function getNextStage(marketCap){
       return stages.find(stage => marketCap < stage.threshold) || null;
+    }
+
+    function stageImageHtml(stage){
+      return `
+        <img
+          src="${stage.image}"
+          alt="${stage.name}"
+          onerror="this.parentElement.innerHTML='<div class=&quot;mini-mystery&quot; aria-hidden=&quot;true&quot;></div>'"
+        >
+      `;
+    }
+
+    function renderHeroUnlocks(marketCap){
+      const unlocked = getUnlockedStages(marketCap);
+      const nextStage = getNextStage(marketCap);
+
+      if(!unlocked.length){
+        heroUnlockDisplay.innerHTML = `<div class="single-mystery" aria-hidden="true"></div>`;
+        heroUnlockTitle.textContent = "First plush unlock";
+        heroUnlockText.textContent = "The first BabyT mystery plush concept unlocks when the project reaches the first milestone.";
+      } else {
+        heroUnlockDisplay.innerHTML = `
+          <div class="unlocked-row">
+            ${unlocked.map(stage => `
+              <div class="unlocked-plush">
+                <img
+                  src="${stage.image}"
+                  alt="${stage.name}"
+                  onerror="this.parentElement.innerHTML='<div class=&quot;mini-mystery&quot; aria-hidden=&quot;true&quot;></div>'"
+                >
+              </div>
+            `).join("")}
+          </div>
+        `;
+
+        heroUnlockTitle.textContent = unlocked.length === 1
+          ? "1 plush unlocked"
+          : `${unlocked.length} plushies unlocked`;
+
+        heroUnlockText.textContent = "Unlocked BabyT plush concepts appear here as the community reaches each milestone.";
+      }
+
+      if(nextStage){
+        nextUnlockPill.textContent = `Next unlock: ${nextStage.label}`;
+      } else {
+        nextUnlockPill.textContent = "All mystery stages unlocked";
+      }
     }
 
     function renderStages(currentId, marketCap){
@@ -1149,7 +1315,7 @@
         return `
           <article class="stage ${isActive ? "active" : ""} ${isUnlocked ? "unlocked" : ""}">
             <div class="thumb">
-              <div class="mini-mystery" aria-hidden="true"></div>
+              ${isUnlocked ? stageImageHtml(stage) : `<div class="mini-mystery" aria-hidden="true"></div>`}
             </div>
             <div class="stage-label">${stage.label}</div>
             <div class="stage-name">${stage.name}</div>
@@ -1161,16 +1327,10 @@
 
     function updateEvolutionUi(marketCap){
       const currentStage = getCurrentStage(marketCap);
-      const nextStage = getNextStage(marketCap);
 
       marketCapValue.textContent = formatMarketCap(marketCap);
       renderStages(currentStage ? currentStage.id : null, marketCap);
-
-      if(nextStage){
-        nextUnlockPill.textContent = `Next unlock: ${nextStage.label}`;
-      } else {
-        nextUnlockPill.textContent = "All mystery stages unlocked";
-      }
+      renderHeroUnlocks(marketCap);
     }
 
     async function fetchMarketCap(){
