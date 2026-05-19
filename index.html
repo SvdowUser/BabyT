@@ -175,9 +175,9 @@
 
     .hero-blindbox{
       width:min(82vw,360px);
-      margin:18px auto 14px;
-      animation:boxWiggle 3.4s ease-in-out infinite;
-      transform-origin:50% 72%;
+      margin:16px auto 6px;
+      animation:boxWiggle 3.2s ease-in-out infinite;
+      transform-origin:50% 78%;
       filter:
         drop-shadow(0 0 24px rgba(241,207,105,.12))
         drop-shadow(0 24px 32px rgba(0,0,0,.38));
@@ -192,18 +192,19 @@
 
     @keyframes boxWiggle{
       0%,100%{transform:translateY(0) rotate(0deg)}
-      34%{transform:translateY(-10px) rotate(0deg)}
-      42%{transform:translateY(-10px) rotate(-1.2deg)}
-      50%{transform:translateY(-11px) rotate(1.2deg)}
-      58%{transform:translateY(-10px) rotate(-.8deg)}
-      66%{transform:translateY(-9px) rotate(.7deg)}
+      24%{transform:translateY(-7px) rotate(0deg)}
+      34%{transform:translateY(-10px) rotate(-1.4deg)}
+      43%{transform:translateY(-11px) rotate(1.4deg)}
+      52%{transform:translateY(-10px) rotate(-1deg)}
+      61%{transform:translateY(-9px) rotate(.8deg)}
+      72%{transform:translateY(-5px) rotate(0deg)}
     }
 
     .hero-text{
       margin:0 auto;
       max-width:710px;
       font-size:clamp(1rem,1.45vw,1.16rem);
-      line-height:1.58;
+      line-height:1.55;
       color:#ead6b8;
       font-weight:500;
     }
@@ -326,15 +327,15 @@
       padding:26px;
     }
 
-    .evolution-top{
+    .unlock-top{
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(180px,240px);
+      grid-template-columns:minmax(0,1fr) minmax(170px,230px);
       gap:16px;
       align-items:start;
     }
 
     .market-card{
-      padding:16px;
+      padding:15px;
       border-radius:18px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.18);
@@ -342,7 +343,7 @@
 
     .market-card strong{
       display:block;
-      font-size:1.55rem;
+      font-size:1.42rem;
       color:var(--gold);
       line-height:1;
     }
@@ -351,7 +352,7 @@
       display:block;
       margin-top:7px;
       color:var(--muted);
-      font-size:.72rem;
+      font-size:.7rem;
       font-weight:900;
       text-transform:uppercase;
       letter-spacing:.08em;
@@ -359,7 +360,7 @@
 
     .live-unlock-panel{
       margin:20px 0 22px;
-      padding:20px;
+      padding:18px;
       border-radius:24px;
       background:
         radial-gradient(circle at 50% 16%, rgba(241,207,105,.1), transparent 38%),
@@ -371,23 +372,15 @@
       display:flex;
       justify-content:space-between;
       gap:14px;
-      align-items:flex-start;
-      margin-bottom:16px;
+      align-items:center;
+      margin-bottom:14px;
     }
 
     .live-unlock-top h3{
       margin:0;
-      font-size:1.2rem;
+      font-size:1.08rem;
       text-transform:uppercase;
-      letter-spacing:-.015em;
-    }
-
-    .live-unlock-top p{
-      margin:6px 0 0;
-      color:var(--muted);
-      line-height:1.5;
-      max-width:650px;
-      font-size:.96rem;
+      letter-spacing:-.01em;
     }
 
     .unlock-pill{
@@ -403,7 +396,7 @@
     }
 
     .hero-unlock-display{
-      min-height:190px;
+      min-height:198px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -424,7 +417,7 @@
     }
 
     .unlocked-plush{
-      width:92px;
+      width:94px;
       min-width:0;
       display:flex;
       align-items:flex-end;
@@ -440,7 +433,7 @@
 
     .unlocked-plush img{
       width:100%;
-      height:170px;
+      height:172px;
       object-fit:contain;
       object-position:center bottom;
       filter:
@@ -450,8 +443,8 @@
 
     .locked-preview{
       position:relative;
-      width:138px;
-      height:178px;
+      width:155px;
+      height:198px;
       display:grid;
       place-items:center;
     }
@@ -470,7 +463,7 @@
       display:grid;
       place-items:center;
       color:var(--gold);
-      font-size:4rem;
+      font-size:4.25rem;
       font-weight:900;
       text-shadow:0 12px 28px rgba(0,0,0,.7);
     }
@@ -639,8 +632,19 @@
       font-size:.96rem;
     }
 
-    .wallet-warning{
+    .support-note{
       margin-top:14px;
+      padding:13px 14px;
+      border-radius:15px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(214,171,104,.16);
+      color:var(--text);
+      font-weight:700;
+      line-height:1.48;
+    }
+
+    .wallet-warning{
+      margin-top:12px;
       padding:13px 14px;
       border-radius:15px;
       background:rgba(241,207,105,.1);
@@ -798,7 +802,7 @@
     }
 
     @media (max-width:1000px){
-      .evolution-top,
+      .unlock-top,
       .wallet-grid{
         grid-template-columns:1fr;
       }
@@ -855,12 +859,12 @@
 
       .hero-blindbox{
         width:min(80vw,300px);
-        margin:14px auto 12px;
+        margin:12px auto 6px;
       }
 
       .hero-text{
         font-size:1rem;
-        line-height:1.55;
+        line-height:1.52;
       }
 
       .actions{
@@ -909,7 +913,7 @@
       }
 
       .market-card strong{
-        font-size:1.35rem;
+        font-size:1.3rem;
       }
 
       .live-unlock-panel{
@@ -918,29 +922,32 @@
       }
 
       .live-unlock-top{
-        display:block;
+        display:flex;
+        align-items:center;
+        gap:10px;
       }
 
       .live-unlock-top h3{
-        font-size:1.05rem;
+        font-size:1rem;
       }
 
       .unlock-pill{
-        margin-top:12px;
+        font-size:.86rem;
+        padding:8px 11px;
       }
 
       .hero-unlock-display{
-        min-height:168px;
+        min-height:180px;
         padding:14px;
       }
 
       .locked-preview{
-        width:112px;
-        height:146px;
+        width:130px;
+        height:166px;
       }
 
       .locked-preview::after{
-        font-size:3.3rem;
+        font-size:3.7rem;
       }
 
       .unlocked-row{
@@ -948,11 +955,11 @@
       }
 
       .unlocked-plush{
-        width:54px;
+        width:56px;
       }
 
       .unlocked-plush img{
-        height:138px;
+        height:140px;
       }
 
       .stagegrid{
@@ -1029,7 +1036,7 @@
 
         <nav class="links" aria-label="Navigation">
           <a href="#about">About</a>
-          <a href="#evolution">Unlocks</a>
+          <a href="#unlocks">Unlocks</a>
           <a href="#production">Production</a>
           <a href="#socials">Socials</a>
         </nav>
@@ -1055,11 +1062,11 @@
         </div>
 
         <p class="hero-text">
-          Mystery plush concepts unlock step by step as the BabyT community reaches new milestones.
+          A tiny meme character turning into mystery plushies, blind boxes and future community rewards.
         </p>
 
         <div class="actions">
-          <a class="btn primary" href="#evolution">See Unlocks</a>
+          <a class="btn primary" href="#unlocks">See Unlocks</a>
           <a class="btn secondary" href="#production">Production Goal</a>
         </div>
 
@@ -1072,14 +1079,14 @@
     </main>
   </div>
 
-  <section id="evolution">
+  <section id="unlocks">
     <div class="section-inner">
       <div class="panel">
-        <div class="evolution-top">
+        <div class="unlock-top">
           <div>
-            <h2 class="section-title">Plush Unlocks</h2>
+            <h2 class="section-title">Milestone Plush Unlocks</h2>
             <p class="section-sub">
-              Every milestone unlocks one new BabyT mystery plush. Locked plushies stay hidden as silhouettes until the market cap milestone is reached.
+              Each market cap milestone reveals one new BabyT mystery plush. Locked plushies stay hidden as silhouettes until their unlock is reached.
             </p>
           </div>
 
@@ -1091,10 +1098,7 @@
 
         <div class="live-unlock-panel">
           <div class="live-unlock-top">
-            <div>
-              <h3 id="heroUnlockTitle">Live Unlock Board</h3>
-              <p id="heroUnlockText">Unlocked BabyT plush concepts appear here side by side.</p>
-            </div>
+            <h3 id="heroUnlockTitle">Live Unlock Board</h3>
             <div id="nextUnlockPill" class="unlock-pill">Next unlock: 50K+</div>
           </div>
 
@@ -1114,13 +1118,19 @@
     <div class="section-inner">
       <h2 class="section-title">Production Goal</h2>
       <p class="section-sub">
-        The long-term goal is to test real BabyT plush samples, blind box packaging and future community giveaways.
+        BabyT is building toward real plush samples, blind box packaging and possible future community giveaways.
       </p>
 
       <div class="wallet-grid">
         <div class="wallet-card">
           <h3>Production Wallet</h3>
-          <p>Transparent support wallet for samples, packaging tests and production planning.</p>
+          <p>
+            Transparent SOL wallet for BabyT sample tests, packaging prototypes and production setup.
+          </p>
+
+          <div class="support-note">
+            Project-related fees, content revenue and optional community support can be added here to help fund the BabyT plush goal.
+          </div>
 
           <div class="wallet-warning">
             Please only send SOL to this wallet. This is a Solana wallet.
@@ -1160,23 +1170,25 @@
         </div>
 
         <div class="funding-card">
-          <h3>What this supports</h3>
-          <p>BabyT is built around character content, collectibles and community hype.</p>
+          <h3>Support Roadmap</h3>
+          <p>
+            The goal is simple: make BabyT feel like a real collectible brand, not just another chart.
+          </p>
 
           <div class="funding-list">
             <div class="funding-item">
-              <strong>Plush Samples</strong>
-              <span>Testing real BabyT plush versions before any production step.</span>
+              <strong>1. Plush Samples</strong>
+              <span>Test real BabyT plush versions before any production step.</span>
             </div>
 
             <div class="funding-item">
-              <strong>Blind Box Packaging</strong>
-              <span>Designing and testing the collectible box look.</span>
+              <strong>2. Blind Box Packaging</strong>
+              <span>Build a clean collectible box style around the BabyT universe.</span>
             </div>
 
             <div class="funding-item">
-              <strong>Giveaway Prep</strong>
-              <span>Preparing future rewards for real supporters if production becomes possible.</span>
+              <strong>3. Community Rewards</strong>
+              <span>Prepare future giveaways if production becomes possible.</span>
             </div>
           </div>
         </div>
@@ -1253,7 +1265,6 @@
     const nextUnlockPill = document.getElementById("nextUnlockPill");
     const heroUnlockDisplay = document.getElementById("heroUnlockDisplay");
     const heroUnlockTitle = document.getElementById("heroUnlockTitle");
-    const heroUnlockText = document.getElementById("heroUnlockText");
 
     const walletValue = document.getElementById("walletValue");
     const copyWalletBtn = document.getElementById("copyWalletBtn");
@@ -1389,7 +1400,6 @@
         `;
 
         heroUnlockTitle.textContent = "Live Unlock Board";
-        heroUnlockText.textContent = "Unlocked BabyT plush concepts appear here side by side.";
       } else {
         heroUnlockDisplay.innerHTML = `
           <div class="unlocked-row">
@@ -1408,8 +1418,6 @@
         heroUnlockTitle.textContent = unlocked.length === 1
           ? "1 Plush Unlocked"
           : `${unlocked.length} Plushies Unlocked`;
-
-        heroUnlockText.textContent = "Unlocked BabyT plush concepts are now visible.";
       }
 
       if(nextStage){
@@ -1435,7 +1443,7 @@
       }).join("");
     }
 
-    function updateEvolutionUi(marketCap){
+    function updateUnlockUi(marketCap){
       const currentStage = getCurrentStage(marketCap);
 
       marketCapValue.textContent = formatMarketCap(marketCap);
@@ -1454,9 +1462,9 @@
         const bestPair = [...pairs].sort((a, b) => (b?.liquidity?.usd || 0) - (a?.liquidity?.usd || 0))[0];
         const marketCap = Number(bestPair.marketCap || bestPair.fdv || 0);
 
-        updateEvolutionUi(marketCap || 0);
+        updateUnlockUi(marketCap || 0);
       }catch(error){
-        updateEvolutionUi(0);
+        updateUnlockUi(0);
       }
     }
 
@@ -1600,7 +1608,7 @@
     });
 
     syncLinks();
-    updateEvolutionUi(0);
+    updateUnlockUi(0);
     fetchMarketCap();
     fetchWalletTracker();
 
