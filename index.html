@@ -329,33 +329,65 @@
 
     .unlock-top{
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(170px,230px);
+      grid-template-columns:minmax(0,1fr) minmax(220px,290px);
       gap:16px;
       align-items:start;
     }
 
-    .market-card{
-      padding:15px;
-      border-radius:18px;
-      background:rgba(255,255,255,.035);
+    .unlock-progress-card{
+      padding:16px;
+      border-radius:20px;
+      background:
+        radial-gradient(circle at 20% 0%,rgba(241,207,105,.12),transparent 42%),
+        rgba(255,255,255,.035);
       border:1px solid rgba(214,171,104,.18);
     }
 
-    .market-card strong{
+    .unlock-progress-card strong{
       display:block;
-      font-size:1.42rem;
+      font-size:1.5rem;
       color:var(--gold);
       line-height:1;
+      margin-top:8px;
     }
 
-    .market-card span{
-      display:block;
-      margin-top:7px;
-      color:var(--muted);
-      font-size:.7rem;
+    .unlock-progress-label{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(241,207,105,.1);
+      border:1px solid rgba(241,207,105,.18);
+      color:var(--gold);
+      font-size:.68rem;
       font-weight:900;
       text-transform:uppercase;
       letter-spacing:.08em;
+    }
+
+    .unlock-progress-card span{
+      display:block;
+      margin-top:7px;
+      color:var(--muted);
+      font-size:.8rem;
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .mini-progress-track{
+      margin-top:12px;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(214,171,104,.14);
+      overflow:hidden;
+    }
+
+    .mini-progress-fill{
+      width:0%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,#d7a363,#f1cf69);
+      transition:width .35s ease;
     }
 
     .live-unlock-panel{
@@ -1019,11 +1051,11 @@
         border-radius:24px;
       }
 
-      .market-card{
+      .unlock-progress-card{
         padding:14px;
       }
 
-      .market-card strong{
+      .unlock-progress-card strong{
         font-size:1.3rem;
       }
 
@@ -1213,22 +1245,26 @@
       <div class="panel">
         <div class="unlock-top">
           <div>
-            <h2 class="section-title">Milestone Plush Unlocks</h2>
+            <h2 class="section-title">Plush Unlocks</h2>
             <p class="section-sub">
-              Each market cap milestone reveals one new BabyT mystery plush.
+              Each milestone reveals one new BabyT mystery plush.
             </p>
           </div>
 
-          <div class="market-card">
+          <div class="unlock-progress-card">
+            <div class="unlock-progress-label">Next plush progress</div>
             <strong id="marketCapValue">$0</strong>
-            <span>Live Market Cap</span>
+            <span id="currentProgressText">toward 50K+ unlock</span>
+            <div class="mini-progress-track">
+              <div id="unlockProgressFill" class="mini-progress-fill"></div>
+            </div>
           </div>
         </div>
 
         <div class="live-unlock-panel">
           <div class="live-unlock-top">
-            <h3 id="heroUnlockTitle">Live Unlock Board</h3>
-            <div id="nextUnlockPill" class="unlock-pill">Next unlock: 50K+</div>
+            <h3 id="heroUnlockTitle">Current Reveal</h3>
+            <div id="nextUnlockPill" class="unlock-pill">Next plush: 50K+</div>
           </div>
 
           <div id="heroUnlockDisplay" class="hero-unlock-display">
@@ -1255,7 +1291,7 @@
           <div class="progress-kicker">First Plush Goal</div>
 
           <div class="progress-head">
-            <h3 class="progress-title">Sample & Packaging Fund</h3>
+            <h3 class="progress-title">Sample & Packaging Tracker</h3>
             <div id="progressPercent" class="progress-percent">0%</div>
           </div>
 
@@ -1269,7 +1305,7 @@
           </div>
 
           <p class="progress-note">
-            First target for BabyT plush samples, blind box packaging tests and supplier setup.
+            A transparent tracker for BabyT plush samples, blind box tests and supplier setup.
           </p>
 
           <div class="wallet-mini-line">
@@ -1382,6 +1418,9 @@
     const PRODUCTION_GOAL_USD = Number(document.body.dataset.productionGoalUsd || 10000);
 
     const marketCapValue = document.getElementById("marketCapValue");
+    const currentProgressText = document.getElementById("currentProgressText");
+    const unlockProgressFill = document.getElementById("unlockProgressFill");
+
     const caValue = document.getElementById("caValue");
     const copyCaBtn = document.getElementById("copyCaBtn");
 
@@ -1512,6 +1551,25 @@
       `;
     }
 
+    function updateUnlockProgress(marketCap){
+      const nextStage = getNextStage(marketCap);
+
+      marketCapValue.textContent = formatMarketCap(marketCap);
+
+      if(!nextStage){
+        currentProgressText.textContent = "all mystery plushies unlocked";
+        unlockProgressFill.style.width = "100%";
+        return;
+      }
+
+      const nextIndex = stages.findIndex(stage => stage.id === nextStage.id);
+      const previousThreshold = nextIndex > 0 ? stages[nextIndex - 1].threshold : 0;
+      const progress = Math.max(0, Math.min(100, ((marketCap - previousThreshold) / (nextStage.threshold - previousThreshold)) * 100));
+
+      currentProgressText.textContent = `toward ${nextStage.label} unlock`;
+      unlockProgressFill.style.width = progress.toFixed(2) + "%";
+    }
+
     function renderHeroUnlocks(marketCap){
       const unlocked = getUnlockedStages(marketCap);
       const nextStage = getNextStage(marketCap);
@@ -1523,7 +1581,7 @@
           </div>
         `;
 
-        heroUnlockTitle.textContent = "Live Unlock Board";
+        heroUnlockTitle.textContent = "Current Reveal";
       } else {
         heroUnlockDisplay.innerHTML = `
           <div class="unlocked-row">
@@ -1545,9 +1603,9 @@
       }
 
       if(nextStage){
-        nextUnlockPill.textContent = `Next unlock: ${nextStage.label}`;
+        nextUnlockPill.textContent = `Next plush: ${nextStage.label}`;
       } else {
-        nextUnlockPill.textContent = "All stages unlocked";
+        nextUnlockPill.textContent = "All plushies unlocked";
       }
     }
 
@@ -1570,7 +1628,7 @@
     function updateUnlockUi(marketCap){
       const currentStage = getCurrentStage(marketCap);
 
-      marketCapValue.textContent = formatMarketCap(marketCap);
+      updateUnlockProgress(marketCap);
       renderStages(currentStage ? currentStage.id : null, marketCap);
       renderHeroUnlocks(marketCap);
     }
