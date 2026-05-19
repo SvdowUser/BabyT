@@ -72,7 +72,7 @@
       overflow:hidden;
       background:
         radial-gradient(circle at 50% 32%, rgba(241,207,105,.13), transparent 32%),
-        linear-gradient(180deg,rgba(7,5,4,.16),rgba(7,5,4,.96)),
+        linear-gradient(180deg,rgba(7,5,4,.12),rgba(7,5,4,.86)),
         var(--hero-bg) center/cover no-repeat;
     }
 
@@ -82,14 +82,14 @@
       left:0;
       right:0;
       bottom:0;
-      height:190px;
+      height:88px;
       pointer-events:none;
       background:linear-gradient(
         180deg,
         transparent 0%,
-        rgba(11,7,5,.32) 34%,
-        rgba(11,7,5,.78) 68%,
-        var(--bg) 100%
+        rgba(11,7,5,.20) 42%,
+        rgba(11,7,5,.52) 76%,
+        rgba(11,7,5,.92) 100%
       );
       z-index:2;
     }
@@ -103,7 +103,7 @@
       position:relative;
       overflow:hidden;
       background:var(--bg);
-      margin-top:0;
+      margin-top:-38px;
     }
 
     .underground-wrap::before{
@@ -112,14 +112,13 @@
       top:0;
       left:0;
       right:0;
-      height:140px;
+      height:62px;
       z-index:1;
       pointer-events:none;
       background:linear-gradient(
         180deg,
-        rgba(11,7,5,1) 0%,
-        rgba(11,7,5,.86) 30%,
-        rgba(11,7,5,.45) 67%,
+        rgba(11,7,5,.86) 0%,
+        rgba(11,7,5,.42) 54%,
         transparent 100%
       );
     }
@@ -140,7 +139,7 @@
       background-position:center top;
       background-size:cover;
       background-repeat:no-repeat;
-      opacity:.78;
+      opacity:.80;
       filter:saturate(1.05) contrast(1.04);
     }
 
@@ -150,37 +149,37 @@
       position:absolute;
       left:0;
       right:0;
-      height:140px;
+      height:82px;
       pointer-events:none;
     }
 
     .underground-bg-piece::before{
       top:0;
-      background:linear-gradient(180deg,var(--bg),rgba(11,7,5,.38),transparent);
+      background:linear-gradient(180deg,rgba(11,7,5,.58),rgba(11,7,5,.20),transparent);
     }
 
     .underground-bg-piece::after{
       bottom:0;
-      background:linear-gradient(0deg,var(--bg),rgba(11,7,5,.65),transparent);
+      background:linear-gradient(0deg,var(--bg),rgba(11,7,5,.54),transparent);
     }
 
     .underground-bg-1{
-      top:0;
+      top:-24px;
       background-image:var(--underground-bg-1);
     }
 
     .underground-bg-2{
-      top:900px;
+      top:850px;
       background-image:var(--underground-bg-2);
     }
 
     .underground-bg-3{
-      top:1800px;
+      top:1740px;
       background-image:var(--underground-bg-3);
     }
 
     .underground-bg-4{
-      top:2700px;
+      top:2630px;
       background-image:var(--underground-bg-4);
     }
 
@@ -268,7 +267,7 @@
       justify-content:flex-start;
       align-items:center;
       text-align:center;
-      padding:clamp(28px,5vh,58px) 0 54px;
+      padding:clamp(28px,5vh,58px) 0 44px;
     }
 
     .eyebrow{
@@ -419,7 +418,7 @@
     }
 
     .underground-wrap section:first-of-type{
-      padding-top:52px;
+      padding-top:28px;
     }
 
     .section-title{
@@ -1090,28 +1089,45 @@
       }
 
       .hero::after{
-        height:118px;
+        height:62px;
+        background:linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(11,7,5,.20) 42%,
+          rgba(11,7,5,.54) 78%,
+          rgba(11,7,5,.92) 100%
+        );
+      }
+
+      .underground-wrap{
+        margin-top:-30px;
       }
 
       .underground-wrap::before{
-        height:105px;
+        height:48px;
+        background:linear-gradient(
+          180deg,
+          rgba(11,7,5,.78) 0%,
+          rgba(11,7,5,.34) 58%,
+          transparent 100%
+        );
       }
 
       .underground-bg-piece{
         height:960px;
-        opacity:.72;
+        opacity:.74;
         background-size:cover;
       }
 
       .underground-bg-piece::before,
       .underground-bg-piece::after{
-        height:92px;
+        height:58px;
       }
 
-      .underground-bg-1{top:0}
-      .underground-bg-2{top:760px}
-      .underground-bg-3{top:1520px}
-      .underground-bg-4{top:2280px}
+      .underground-bg-1{top:-18px}
+      .underground-bg-2{top:735px}
+      .underground-bg-3{top:1490px}
+      .underground-bg-4{top:2245px}
 
       .links{
         display:none;
@@ -1146,7 +1162,7 @@
 
       .hero-center{
         min-height:auto;
-        padding:26px 0 26px;
+        padding:26px 0 16px;
       }
 
       .eyebrow{
@@ -1197,7 +1213,7 @@
       }
 
       .underground-wrap section:first-of-type{
-        padding-top:46px;
+        padding-top:20px;
       }
 
       .section-title{
