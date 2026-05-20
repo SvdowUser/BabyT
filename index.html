@@ -101,8 +101,11 @@
     .underground-wrap{
       position:relative;
       overflow:hidden;
-      background:var(--bg);
       margin-top:-18px;
+      background:
+        linear-gradient(180deg, rgba(11,7,5,.30) 0%, transparent 260px),
+        var(--underground-bg-3) center bottom/cover no-repeat,
+        var(--bg);
     }
 
     .underground-wrap::before{
@@ -124,7 +127,10 @@
 
     .underground-bg-stack{
       position:absolute;
-      inset:0;
+      top:0;
+      left:0;
+      right:0;
+      bottom:-380px;
       z-index:0;
       pointer-events:none;
       overflow:hidden;
@@ -166,8 +172,8 @@
       bottom:0;
       background:linear-gradient(
         0deg,
-        rgba(11,7,5,.82) 0%,
-        rgba(11,7,5,.36) 55%,
+        rgba(11,7,5,.72) 0%,
+        rgba(11,7,5,.30) 55%,
         transparent 100%
       );
     }
@@ -186,8 +192,8 @@
 
     .underground-bg-3{
       top:1680px;
-      bottom:0;
-      min-height:1500px;
+      bottom:-380px;
+      min-height:1950px;
       height:auto;
       background-image:var(--underground-bg-3);
       background-position:center top;
@@ -437,7 +443,7 @@
     }
 
     #socials{
-      padding-bottom:70px;
+      padding-bottom:34px;
     }
 
     .section-title{
@@ -1120,6 +1126,10 @@
 
       .underground-wrap{
         margin-top:-14px;
+        background:
+          linear-gradient(180deg, rgba(11,7,5,.24) 0%, transparent 220px),
+          var(--underground-bg-3) center bottom/cover no-repeat,
+          var(--bg);
       }
 
       .underground-wrap::before{
@@ -1130,6 +1140,10 @@
           rgba(11,7,5,.24) 58%,
           transparent 100%
         );
+      }
+
+      .underground-bg-stack{
+        bottom:-430px;
       }
 
       .underground-bg-piece{
@@ -1153,9 +1167,9 @@
       }
 
       .underground-bg-3{
-        top:1490px;
-        bottom:0;
-        min-height:1650px;
+        top:1430px;
+        bottom:-430px;
+        min-height:2100px;
         height:auto;
         background-position:center top;
       }
@@ -1248,7 +1262,7 @@
       }
 
       #socials{
-        padding-bottom:58px;
+        padding-bottom:24px;
       }
 
       .section-title{
