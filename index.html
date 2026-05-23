@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Live Board">
-  <meta property="og:description" content="Track BabyT market data, fee wallet, marketing wallet and public proof.">
+  <meta property="og:description" content="Live BabyT market data, fee wallet, marketing wallet and public receipts.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/babyt-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Live Board">
-  <meta name="twitter:description" content="Track BabyT market data, fee wallet, marketing wallet and public proof.">
+  <meta name="twitter:description" content="Live BabyT market data, fee wallet, marketing wallet and public receipts.">
   <meta name="twitter:image" content="https://babytungtung.com/babyt-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,6 @@
   <style>
     :root{
       --bg:#0b0302;
-      --bg2:#180904;
       --panel:rgba(34,15,8,.88);
       --panel2:rgba(54,25,13,.9);
       --line:rgba(255,194,91,.28);
@@ -528,7 +527,7 @@
 
     .wallet-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(5,minmax(0,1fr));
       gap:14px;
       margin-top:16px;
     }
@@ -552,8 +551,9 @@
 
     .wallet-metric strong{
       color:var(--gold);
-      font-size:clamp(1.35rem,3vw,2rem);
+      font-size:clamp(1.15rem,2.4vw,1.75rem);
       line-height:1;
+      word-break:break-word;
     }
 
     .split{
@@ -852,16 +852,16 @@
         <div>
           <div class="eyebrow">
             <span class="pulse"></span>
-            <span>BabyT live</span>
+            <span>BabyT live board</span>
           </div>
 
           <h1>
-            Track the wallet.
-            <span class="accent">Check the burn.</span>
+            BabyT keeps it
+            <span class="accent">public.</span>
           </h1>
 
           <p class="hero-text">
-            Market data, fee wallet, marketing wallet and proof links in one simple BabyT board.
+            Tiny token. Public receipts. Live market data, fee wallet, marketing wallet and burn proof in one simple BabyT board.
           </p>
 
           <div class="hero-actions">
@@ -962,33 +962,28 @@
 
         <div class="wallet-grid">
           <div class="wallet-metric">
-            <span>Received found</span>
+            <span>Total Fees Detected</span>
             <strong id="claimedSolValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Marketing balance</span>
+            <span>Marketing Wallet</span>
             <strong id="marketingWalletBalanceValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Sent to marketing</span>
+            <span>Sent to Marketing</span>
             <strong id="marketingSentValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Burn / buyback out</span>
+            <span>Buyback / Burn Out</span>
             <strong id="burnOutSolValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>BabyT burned found</span>
+            <span>BabyT Burned</span>
             <strong id="burnedTokenValue">-- BabyT</strong>
-          </div>
-
-          <div class="wallet-metric">
-            <span>Scanned TXs</span>
-            <strong id="scannedTxValue">--</strong>
           </div>
         </div>
 
@@ -1013,7 +1008,7 @@
     <div class="section-inner">
       <h2 class="section-title">Proof Log</h2>
       <p class="section-sub">
-        Detected wallet activity and manual receipts can appear here with Solscan links.
+        Public receipts for marketing sends, buybacks and burns.
       </p>
 
       <div class="proof-grid">
@@ -1147,7 +1142,6 @@
     const marketingSentValue = el("marketingSentValue");
     const burnOutSolValue = el("burnOutSolValue");
     const burnedTokenValue = el("burnedTokenValue");
-    const scannedTxValue = el("scannedTxValue");
 
     const buybackShare = el("buybackShare");
     const marketingShare = el("marketingShare");
@@ -1226,8 +1220,15 @@
       }) + " SOL";
     }
 
+    function formatActionSol(value){
+      if(value == null || Number.isNaN(value)) return "-- SOL";
+      if(Math.abs(value) < 0.000001) return "No action yet";
+      return formatSol(value);
+    }
+
     function formatBabyT(value){
       if(value == null || Number.isNaN(value)) return "-- BabyT";
+      if(value <= 0) return "No burn yet";
 
       if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B BabyT";
       if(value >= 1000000) return (value / 1000000).toFixed(2) + "M BabyT";
@@ -1464,8 +1465,8 @@
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
-              <strong>No wallet activity found yet.</strong><br>
-              New fee wallet transactions will appear here after the next scan.
+              <strong>No fee-wallet transactions yet.</strong><br>
+              New public wallet activity will appear here after the next scan.
             </div>
           </div>
         `;
@@ -1507,7 +1508,8 @@
       if(!entries.length){
         historyList.innerHTML = `
           <div class="proof-item">
-            No receipt posted yet. Marketing sends, buybacks and burns will show here when detected or added manually.
+            <strong>No public receipts yet.</strong><br>
+            Buybacks, burns and marketing sends will appear here once detected or added manually.
           </div>
         `;
         return;
@@ -1555,17 +1557,16 @@
 
         const buybackBurnOut = Math.max(0, totalOutgoing - totalMarketingSent);
 
-        claimedSolValue.textContent = formatSol(totalIncoming);
-        marketingSentValue.textContent = formatSol(totalMarketingSent);
-        burnOutSolValue.textContent = formatSol(buybackBurnOut);
-        scannedTxValue.textContent = String(txs.length);
+        claimedSolValue.textContent = formatActionSol(totalIncoming);
+        marketingSentValue.textContent = formatActionSol(totalMarketingSent);
+        burnOutSolValue.textContent = formatActionSol(buybackBurnOut);
 
         latestAutoProof = [];
 
         if(totalMarketingSent > 0){
           latestAutoProof.push({
             date:"Auto scan",
-            title:"Marketing transfer found",
+            title:"Marketing send detected",
             text:`${formatSol(totalMarketingSent)} sent from the fee wallet to the marketing wallet in scanned transactions.`,
             url:`https://solscan.io/account/${MARKETING_WALLET}`
           });
@@ -1574,7 +1575,7 @@
         if(buybackBurnOut > 0){
           latestAutoProof.push({
             date:"Auto scan",
-            title:"Buyback / burn outflow found",
+            title:"Buyback / burn outflow detected",
             text:`${formatSol(buybackBurnOut)} moved out of the fee wallet excluding detected marketing transfers.`,
             url:`https://solscan.io/account/${FEE_WALLET}`
           });
@@ -1586,7 +1587,6 @@
         claimedSolValue.textContent = "-- SOL";
         marketingSentValue.textContent = "-- SOL";
         burnOutSolValue.textContent = "-- SOL";
-        scannedTxValue.textContent = "--";
 
         latestTxList.innerHTML = `
           <div class="tx-item">
