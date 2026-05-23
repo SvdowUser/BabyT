@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>BabyT | Live Board</title>
-  <meta name="description" content="BabyT public board for live market data, wallets and proof links.">
+  <meta name="description" content="BabyT public board for live market data, claims, marketing sends and burn proof.">
   <meta name="theme-color" content="#120705">
   <link rel="canonical" href="https://babytungtung.com/">
 
@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Live Board">
-  <meta property="og:description" content="Live BabyT board for market data, public wallets and proof links.">
+  <meta property="og:description" content="Live BabyT board for market data, claims, marketing sends and burn proof.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/babyt-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Live Board">
-  <meta name="twitter:description" content="Live BabyT board for market data, public wallets and proof links.">
+  <meta name="twitter:description" content="Live BabyT board for market data, claims, marketing sends and burn proof.">
   <meta name="twitter:image" content="https://babytungtung.com/babyt-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -302,7 +302,7 @@
     .hero-character{
       position:absolute;
       z-index:3;
-      left:50%;
+      left:48.6%;
       bottom:72px;
       width:min(275px,64%);
       max-height:305px;
@@ -317,7 +317,7 @@
     .hero-stage-img{
       position:absolute;
       z-index:2;
-      left:50%;
+      left:50.8%;
       bottom:28px;
       width:min(390px,82%);
       transform:translateX(-50%);
@@ -342,15 +342,6 @@
     @keyframes floatOnStage{
       0%,100%{transform:translateX(-50%) translateY(0) rotate(-1deg)}
       50%{transform:translateX(-50%) translateY(-11px) rotate(1.5deg)}
-    }
-
-    .hero-text{
-      max-width:620px;
-      margin:16px 0 0;
-      color:var(--muted);
-      font-size:clamp(1rem,1.35vw,1.12rem);
-      line-height:1.55;
-      font-weight:800;
     }
 
     .box,
@@ -767,12 +758,14 @@
       }
 
       .hero-character{
+        left:48%;
         width:min(235px,66%);
         max-height:255px;
         bottom:58px;
       }
 
       .hero-stage-img{
+        left:51%;
         width:min(335px,84%);
         bottom:24px;
       }
@@ -781,10 +774,6 @@
         bottom:94px;
         width:230px;
         height:230px;
-      }
-
-      .hero-text{
-        font-size:1rem;
       }
 
       .copy-row{
@@ -938,12 +927,12 @@
 
 <body
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
-  data-fee-wallet="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
+  data-claim-wallets="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
   data-marketing-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
   data-buyback-share="85"
   data-marketing-share="15"
-  data-tx-scan-limit="500"
-  data-burn-scan-limit="500"
+  data-tx-scan-limit="900"
+  data-burn-scan-limit="1200"
 >
   <header class="nav">
     <div class="nav-inner">
@@ -994,10 +983,6 @@
           >
         </div>
 
-        <p class="hero-text">
-          Chart stats, wallet moves and proof links in one place. BabyT stays simple to check.
-        </p>
-
         <div class="box">
           <div class="label">Contract Address</div>
           <div class="copy-row">
@@ -1026,9 +1011,9 @@
           </div>
 
           <div class="card">
-            <div class="stat-title">Claim Wallet</div>
-            <div id="claimWalletUsdValueTop" class="stat-value">$--</div>
-            <div id="claimWalletNote" class="stat-note">Loading balance...</div>
+            <div class="stat-title">Claimed</div>
+            <div id="claimedUsdValueTop" class="stat-value">$--</div>
+            <div id="claimedNote" class="stat-note">Detected total.</div>
           </div>
         </div>
 
@@ -1042,7 +1027,7 @@
       <div class="section-inner">
         <h2 class="section-title">Wallets</h2>
         <p class="section-sub">
-          Public balances and detected burns. Values are shown in USD.
+          Detected claims, marketing sends and burns. Values are shown in USD.
         </p>
 
         <div class="panel">
@@ -1053,20 +1038,20 @@
             </div>
 
             <div class="wallet-links">
-              <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Claim Wallet</a>
+              <a id="claimWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Claim TXs</a>
               <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing</a>
             </div>
           </div>
 
           <div class="wallet-grid">
             <div class="wallet-metric">
-              <span>Claim Wallet</span>
-              <strong id="claimWalletUsdValue">$--</strong>
+              <span>Claimed</span>
+              <strong id="claimedUsdValue">$--</strong>
             </div>
 
             <div class="wallet-metric">
-              <span>Marketing Wallet</span>
-              <strong id="marketingWalletUsdValue">$--</strong>
+              <span>Marketing Sent</span>
+              <strong id="marketingSentUsdValue">$--</strong>
             </div>
 
             <div class="wallet-metric">
@@ -1179,15 +1164,21 @@
 
   <script>
     const CONTRACT_ADDRESS = document.body.dataset.contractAddress;
-    const FEE_WALLET = document.body.dataset.feeWallet;
+    const CLAIM_WALLETS = (document.body.dataset.claimWallets || document.body.dataset.feeWallet || "")
+      .split(",")
+      .map(item => item.trim())
+      .filter(Boolean);
+    const PRIMARY_CLAIM_WALLET = CLAIM_WALLETS[0] || "";
     const MARKETING_WALLET = document.body.dataset.marketingWallet;
 
     const BUYBACK_SHARE = Number(document.body.dataset.buybackShare || 85);
     const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 15);
 
-    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 500);
-    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 500);
+    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 900);
+    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 1200);
     const REFRESH_MS = 300000;
+
+    const INCINERATOR_ADDRESS = "1nc1nerator11111111111111111111111111111111";
 
     const RPC_ENDPOINTS = [
       "https://api.mainnet-beta.solana.com",
@@ -1217,11 +1208,11 @@
     const liquidityValue = el("liquidityValue");
     const volumeValue = el("volumeValue");
 
-    const claimWalletUsdValueTop = el("claimWalletUsdValueTop");
-    const claimWalletNote = el("claimWalletNote");
+    const claimedUsdValueTop = el("claimedUsdValueTop");
+    const claimedNote = el("claimedNote");
 
-    const claimWalletUsdValue = el("claimWalletUsdValue");
-    const marketingWalletUsdValue = el("marketingWalletUsdValue");
+    const claimedUsdValue = el("claimedUsdValue");
+    const marketingSentUsdValue = el("marketingSentUsdValue");
     const burnedUsdValue = el("burnedUsdValue");
 
     const buybackShare = el("buybackShare");
@@ -1231,10 +1222,11 @@
     const latestTxList = el("latestTxList");
     const lastUpdated = el("lastUpdated");
 
-    const feeWalletSolscanLink = el("feeWalletSolscanLink");
+    const claimWalletSolscanLink = el("claimWalletSolscanLink");
     const marketingWalletSolscanLink = el("marketingWalletSolscanLink");
 
-    let latestAutoProof = [];
+    let walletProofEntries = [];
+    let burnProofEntries = [];
     let currentSolPriceUsd = null;
     let currentTokenPriceUsd = null;
 
@@ -1300,6 +1292,11 @@
       return solAmount * currentSolPriceUsd;
     }
 
+    function tokenToUsd(tokenAmount){
+      if(tokenAmount == null || Number.isNaN(tokenAmount) || currentTokenPriceUsd == null) return null;
+      return tokenAmount * currentTokenPriceUsd;
+    }
+
     function formatActionUsd(solAmount, emptyText){
       if(solAmount == null || Number.isNaN(solAmount)) return "$--";
       if(Math.abs(solAmount) < 0.000001) return emptyText;
@@ -1311,9 +1308,9 @@
     function formatBurnUsd(tokenAmount){
       if(tokenAmount == null || Number.isNaN(tokenAmount)) return "$--";
       if(tokenAmount <= 0) return "No burn found";
-      if(currentTokenPriceUsd == null) return "$--";
 
-      return formatUsdLong(tokenAmount * currentTokenPriceUsd);
+      const usdValue = tokenToUsd(tokenAmount);
+      return usdValue == null ? "$--" : formatUsdLong(usdValue);
     }
 
     function formatDeltaUsd(solDelta){
@@ -1391,19 +1388,6 @@
       }
 
       return null;
-    }
-
-    async function fetchSolBalance(address){
-      const result = await rpc("getBalance", [
-        address,
-        {commitment:"confirmed"}
-      ]);
-
-      const lamports = Number(result?.value);
-
-      if(Number.isNaN(lamports)) return null;
-
-      return lamports / 1000000000;
     }
 
     async function fetchSignatures(address, maxLimit){
@@ -1519,16 +1503,7 @@
       return 6;
     }
 
-    function readBurnAmount(instruction, decimals){
-      const parsed = instruction?.parsed;
-      if(!parsed) return 0;
-
-      const type = parsed.type;
-      if(type !== "burn" && type !== "burnChecked") return 0;
-
-      const info = parsed.info || {};
-      if(info.mint !== CONTRACT_ADDRESS) return 0;
-
+    function readTokenAmount(info, decimals){
       if(info.tokenAmount?.uiAmountString){
         const value = Number(info.tokenAmount.uiAmountString);
         return Number.isNaN(value) ? 0 : value;
@@ -1545,6 +1520,28 @@
       return raw / Math.pow(10, decimals);
     }
 
+    function readBurnAmount(instruction, decimals){
+      const parsed = instruction?.parsed;
+      if(!parsed) return 0;
+
+      const type = parsed.type;
+      const info = parsed.info || {};
+
+      if((type === "burn" || type === "burnChecked") && info.mint === CONTRACT_ADDRESS){
+        return readTokenAmount(info, decimals);
+      }
+
+      if(
+        (type === "transferChecked" || type === "transfer") &&
+        info.mint === CONTRACT_ADDRESS &&
+        info.destination === INCINERATOR_ADDRESS
+      ){
+        return readTokenAmount(info, decimals);
+      }
+
+      return 0;
+    }
+
     function renderLatestTxs(items){
       if(!items.length){
         latestTxList.innerHTML = `
@@ -1558,7 +1555,9 @@
         return;
       }
 
-      latestTxList.innerHTML = items.slice(0, 5).map(item => {
+      const sorted = [...items].sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
+
+      latestTxList.innerHTML = sorted.slice(0, 5).map(item => {
         const isOut = item.delta < 0;
         const date = item.blockTime
           ? new Date(item.blockTime * 1000).toLocaleString()
@@ -1587,13 +1586,13 @@
         url:item.url || ""
       }));
 
-      const entries = [...latestAutoProof, ...manual];
+      const entries = [...burnProofEntries, ...walletProofEntries, ...manual];
 
       if(!entries.length){
         historyList.innerHTML = `
           <div class="proof-item">
             <strong>No receipts posted yet.</strong><br>
-            When a burn or marketing send happens, add the transaction link here.
+            When a burn or marketing send happens, the transaction link appears here.
           </div>
         `;
         return;
@@ -1608,60 +1607,63 @@
       `).join("");
     }
 
-    async function scanFeeWalletActivity(){
+    async function scanClaimWalletActivity(){
       try{
-        const sigInfo = await fetchSignatures(FEE_WALLET, TX_SCAN_LIMIT);
-        const signatures = sigInfo.map(item => item.signature);
-        const txs = await fetchParsedTransactions(signatures);
-
-        let totalOutgoing = 0;
+        let totalClaimed = 0;
         let totalMarketingSent = 0;
         const latestTxs = [];
 
-        txs.forEach(tx => {
-          const signature = tx?.transaction?.signatures?.[0];
-          const delta = getSolDelta(tx, FEE_WALLET);
+        for(const wallet of CLAIM_WALLETS){
+          const sigInfo = await fetchSignatures(wallet, TX_SCAN_LIMIT);
+          const signatures = sigInfo.map(item => item.signature);
+          const txs = await fetchParsedTransactions(signatures);
 
-          if(Math.abs(delta) > 0.000001 && signature){
-            latestTxs.push({
-              signature,
-              delta,
-              blockTime:tx.blockTime || null
+          txs.forEach(tx => {
+            const signature = tx?.transaction?.signatures?.[0];
+            const delta = getSolDelta(tx, wallet);
+
+            if(Math.abs(delta) > 0.000001 && signature){
+              latestTxs.push({
+                signature,
+                delta,
+                blockTime:tx.blockTime || null
+              });
+            }
+
+            if(delta > 0.000001){
+              totalClaimed += delta;
+            }
+
+            collectInstructions(tx).forEach(instruction => {
+              totalMarketingSent += getSystemTransferSol(instruction, wallet, MARKETING_WALLET);
             });
-          }
-
-          if(delta < -0.000001) totalOutgoing += Math.abs(delta);
-
-          collectInstructions(tx).forEach(instruction => {
-            totalMarketingSent += getSystemTransferSol(instruction, FEE_WALLET, MARKETING_WALLET);
-          });
-        });
-
-        const burnOutflow = Math.max(0, totalOutgoing - totalMarketingSent);
-
-        latestAutoProof = [];
-
-        if(totalMarketingSent > 0){
-          latestAutoProof.push({
-            date:"Auto scan",
-            title:"Marketing send detected",
-            text:`${formatActionUsd(totalMarketingSent, "$0.00")} sent from the claim wallet to the marketing wallet.`,
-            url:`https://solscan.io/account/${MARKETING_WALLET}`
           });
         }
 
-        if(burnOutflow > 0){
-          latestAutoProof.push({
+        claimedUsdValueTop.textContent = formatActionUsd(totalClaimed, "$0.00");
+        claimedUsdValue.textContent = formatActionUsd(totalClaimed, "$0.00");
+        marketingSentUsdValue.textContent = formatActionUsd(totalMarketingSent, "$0.00");
+        claimedNote.textContent = "Detected total.";
+
+        walletProofEntries = [];
+
+        if(totalMarketingSent > 0){
+          walletProofEntries.push({
             date:"Auto scan",
-            title:"Burn outflow detected",
-            text:`${formatActionUsd(burnOutflow, "$0.00")} moved out of the claim wallet outside marketing transfers.`,
-            url:`https://solscan.io/account/${FEE_WALLET}`
+            title:"Marketing send detected",
+            text:`${formatActionUsd(totalMarketingSent, "$0.00")} sent to the marketing wallet.`,
+            url:`https://solscan.io/account/${MARKETING_WALLET}`
           });
         }
 
         renderLatestTxs(latestTxs);
         renderProof();
       }catch(error){
+        claimedUsdValueTop.textContent = "$--";
+        claimedUsdValue.textContent = "$--";
+        marketingSentUsdValue.textContent = "$--";
+        claimedNote.textContent = "Scan unavailable.";
+
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
@@ -1691,9 +1693,10 @@
         });
 
         burnedUsdValue.textContent = formatBurnUsd(burned);
+        burnProofEntries = [];
 
         if(burned > 0){
-          latestAutoProof.unshift({
+          burnProofEntries.push({
             date:"Auto scan",
             title:"BabyT burn detected",
             text:`${formatBurnUsd(burned)} worth of BabyT burned in scanned token transactions.`,
@@ -1707,31 +1710,11 @@
       }
     }
 
-    async function fetchWalletBalances(){
+    async function preparePrices(){
       try{
-        const [solPrice, feeBalance, marketingBalance] = await Promise.all([
-          fetchSolPrice(),
-          fetchSolBalance(FEE_WALLET),
-          fetchSolBalance(MARKETING_WALLET)
-        ]);
-
-        currentSolPriceUsd = solPrice;
-
-        const claimUsd = solToUsd(feeBalance);
-        const marketingUsd = solToUsd(marketingBalance);
-
-        claimWalletUsdValueTop.textContent = claimUsd == null ? "$--" : formatUsdLong(claimUsd);
-        claimWalletUsdValue.textContent = claimUsd == null ? "$--" : formatUsdLong(claimUsd);
-        marketingWalletUsdValue.textContent = marketingUsd == null ? "$--" : formatUsdLong(marketingUsd);
-
-        claimWalletNote.textContent = claimUsd == null ? "USD unavailable." : "Current balance.";
-
-        setUpdatedText();
+        currentSolPriceUsd = await fetchSolPrice();
       }catch(error){
-        claimWalletUsdValueTop.textContent = "$--";
-        claimWalletUsdValue.textContent = "$--";
-        marketingWalletUsdValue.textContent = "$--";
-        claimWalletNote.textContent = "Balance could not be loaded.";
+        currentSolPriceUsd = null;
       }
     }
 
@@ -1747,7 +1730,10 @@
       el("dexLink").href = dexUrl;
       el("geckoLink").href = geckoUrl;
 
-      feeWalletSolscanLink.href = `https://solscan.io/account/${FEE_WALLET}`;
+      claimWalletSolscanLink.href = PRIMARY_CLAIM_WALLET
+        ? `https://solscan.io/account/${PRIMARY_CLAIM_WALLET}`
+        : `https://solscan.io/token/${CONTRACT_ADDRESS}`;
+
       marketingWalletSolscanLink.href = `https://solscan.io/account/${MARKETING_WALLET}`;
     }
 
@@ -1778,11 +1764,11 @@
     async function refreshAll(){
       await Promise.allSettled([
         fetchMarketData(),
-        fetchWalletBalances()
+        preparePrices()
       ]);
 
       await Promise.allSettled([
-        scanFeeWalletActivity(),
+        scanClaimWalletActivity(),
         scanTokenBurns()
       ]);
 
