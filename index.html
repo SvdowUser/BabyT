@@ -296,7 +296,7 @@
       position:relative;
       height:355px;
       width:min(560px,100%);
-      margin:18px auto 12px;
+      margin:18px auto 0;
     }
 
     .hero-character{
@@ -318,7 +318,7 @@
       position:absolute;
       z-index:2;
       left:49.5%;
-      bottom:48px;
+      bottom:36px;
       width:min(390px,82%);
       transform:translateX(-50%);
       filter:
@@ -358,7 +358,7 @@
     }
 
     .box{
-      margin-top:22px;
+      margin-top:6px;
       padding:16px;
       border-radius:24px;
     }
@@ -535,27 +535,35 @@
     }
 
     .wallet-metric{
+      min-height:112px;
       padding:16px;
       border-radius:20px;
       background:rgba(255,255,255,.04);
       box-shadow:none;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
     }
 
     .wallet-metric span{
       display:block;
+      min-height:2.25em;
       color:var(--muted);
       font-size:.66rem;
       font-weight:900;
       text-transform:uppercase;
       letter-spacing:.08em;
+      line-height:1.15;
       margin-bottom:8px;
     }
 
     .wallet-metric strong{
+      display:block;
       color:var(--gold);
       font-size:clamp(1rem,2.2vw,1.45rem);
       line-height:1.05;
       word-break:break-word;
+      margin-top:0;
     }
 
     .split{
@@ -754,7 +762,7 @@
 
       .hero-stage{
         height:320px;
-        margin:14px auto 10px;
+        margin:14px auto 0;
       }
 
       .hero-character{
@@ -767,7 +775,7 @@
       .hero-stage-img{
         left:49.4%;
         width:min(335px,84%);
-        bottom:46px;
+        bottom:34px;
       }
 
       .hero-glow{
@@ -775,6 +783,10 @@
         bottom:118px;
         width:230px;
         height:230px;
+      }
+
+      .box{
+        margin-top:4px;
       }
 
       .copy-row{
@@ -865,6 +877,7 @@
       }
 
       .wallet-metric span{
+        min-height:2.35em;
         font-size:.56rem;
         margin-bottom:7px;
       }
@@ -922,6 +935,10 @@
       .wallet-metric{
         min-height:82px;
         padding:10px;
+      }
+
+      .wallet-metric span{
+        min-height:2.4em;
       }
 
       .wallet-metric strong{
@@ -1049,7 +1066,7 @@
 
             <div class="wallet-links">
               <a id="claimWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Claim TXs</a>
-              <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing</a>
+              <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing Wallet</a>
             </div>
           </div>
 
