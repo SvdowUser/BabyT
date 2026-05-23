@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>BabyT | Live Board</title>
-  <meta name="description" content="BabyT public board for market data, fee wallet, marketing wallet and proof links.">
+  <meta name="description" content="BabyT public board for live market data, fee wallet, marketing wallet and proof links.">
   <meta name="theme-color" content="#120705">
   <link rel="canonical" href="https://babytungtung.com/">
 
@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Live Board">
-  <meta property="og:description" content="Public BabyT board for wallets, market data and proof links.">
+  <meta property="og:description" content="Live BabyT board for public wallets, market data and proof links.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/babyt-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Live Board">
-  <meta name="twitter:description" content="Public BabyT board for wallets, market data and proof links.">
+  <meta name="twitter:description" content="Live BabyT board for public wallets, market data and proof links.">
   <meta name="twitter:image" content="https://babytungtung.com/babyt-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,7 +183,7 @@
       inset:0;
       z-index:-2;
       background:
-        linear-gradient(180deg,rgba(9,3,2,.28),rgba(9,3,2,.84) 72%,rgba(9,3,2,.98) 100%),
+        linear-gradient(180deg,rgba(9,3,2,.26),rgba(9,3,2,.84) 72%,rgba(9,3,2,.98) 100%),
         radial-gradient(circle at 50% 24%,rgba(255,213,83,.12),transparent 36%),
         var(--scene-bg) center/cover no-repeat;
       opacity:.42;
@@ -256,7 +256,7 @@
     }
 
     .hero-text{
-      max-width:640px;
+      max-width:620px;
       margin:17px 0 0;
       color:var(--muted);
       font-size:clamp(1rem,1.35vw,1.12rem);
@@ -390,7 +390,10 @@
     .panel,
     .proof-item,
     .tx-item,
-    .footer-note{
+    .footer-note,
+    .wallet-address-card,
+    .wallet-metric,
+    .split-card{
       background:var(--panel);
       border:1px solid var(--line);
       box-shadow:var(--shadow);
@@ -548,6 +551,12 @@
       box-shadow:0 0 14px rgba(140,255,127,.65);
     }
 
+    .wallet-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
     .small-link{
       min-height:40px;
       padding:0 12px;
@@ -560,70 +569,100 @@
       box-shadow:none;
     }
 
+    .wallet-addresses{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .wallet-address-card{
+      padding:16px;
+      border-radius:22px;
+      background:rgba(18,7,4,.48);
+    }
+
+    .address-line{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:10px;
+      align-items:center;
+    }
+
+    .address-line .value{
+      padding:13px 14px;
+      font-size:.92rem;
+    }
+
+    .address-line .copy-btn{
+      min-height:46px;
+      padding:0 15px;
+    }
+
     .wallet-grid{
       display:grid;
       grid-template-columns:repeat(5,minmax(0,1fr));
-      gap:14px;
-      margin-top:16px;
+      gap:12px;
+      margin-top:14px;
     }
 
     .wallet-metric{
-      padding:18px;
-      border-radius:22px;
+      padding:14px;
+      border-radius:18px;
       background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,194,91,.16);
+      box-shadow:none;
     }
 
     .wallet-metric span{
       display:block;
       color:var(--muted);
-      font-size:.72rem;
+      font-size:.66rem;
       font-weight:900;
       text-transform:uppercase;
-      letter-spacing:.09em;
+      letter-spacing:.08em;
       margin-bottom:8px;
     }
 
     .wallet-metric strong{
       color:var(--gold);
-      font-size:clamp(1.1rem,2.4vw,1.72rem);
-      line-height:1;
+      font-size:clamp(1rem,2.2vw,1.45rem);
+      line-height:1.05;
       word-break:break-word;
     }
 
     .split{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:16px;
+      gap:12px;
+      margin-top:14px;
     }
 
     .split-card{
-      padding:18px;
-      border-radius:22px;
+      padding:16px;
+      border-radius:20px;
       background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,194,91,.16);
+      box-shadow:none;
     }
 
     .percent{
       color:var(--gold);
-      font-size:2.55rem;
+      font-size:2.25rem;
       font-weight:900;
       line-height:1;
       margin-bottom:8px;
     }
 
     .split-card h3{
-      margin:0 0 8px;
-      font-size:1rem;
+      margin:0 0 7px;
+      font-size:.95rem;
       text-transform:uppercase;
     }
 
     .split-card p{
       margin:0;
       color:var(--muted);
-      line-height:1.45;
-      font-size:.9rem;
+      line-height:1.4;
+      font-size:.86rem;
       font-weight:800;
     }
 
@@ -737,9 +776,12 @@
         margin:0 auto;
       }
 
-      .stats,
-      .wallet-grid{
+      .stats{
         grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .wallet-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
       }
     }
 
@@ -809,22 +851,35 @@
         grid-template-columns:1fr;
       }
 
-      .value,
-      .copy-btn,
-      .small-link{
+      .box .value,
+      .box .copy-btn{
         width:100%;
         text-align:center;
       }
 
-      .stats,
-      .wallet-grid,
-      .split{
-        grid-template-columns:1fr;
-        gap:12px;
+      .stats{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
       }
 
       .card{
-        min-height:112px;
+        min-height:104px;
+        padding:15px;
+        border-radius:20px;
+      }
+
+      .stat-title{
+        font-size:.63rem;
+        margin-bottom:8px;
+      }
+
+      .stat-value{
+        font-size:clamp(1.25rem,7vw,1.75rem);
+      }
+
+      .stat-note{
+        margin-top:8px;
+        font-size:.76rem;
       }
 
       section{
@@ -835,8 +890,99 @@
         font-size:2.65rem;
       }
 
+      .section-sub{
+        font-size:.98rem;
+      }
+
       .panel{
-        padding:18px;
+        padding:16px;
+        border-radius:24px;
+      }
+
+      .wallet-head{
+        align-items:flex-start;
+      }
+
+      .wallet-links{
+        width:100%;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+      }
+
+      .small-link{
+        width:100%;
+        min-height:38px;
+        padding:0 8px;
+        font-size:.84rem;
+        text-align:center;
+      }
+
+      .wallet-addresses{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .wallet-address-card{
+        padding:13px;
+        border-radius:19px;
+      }
+
+      .address-line{
+        grid-template-columns:minmax(0,1fr) 70px;
+      }
+
+      .address-line .value{
+        padding:12px;
+        font-size:.84rem;
+      }
+
+      .address-line .copy-btn{
+        min-height:43px;
+        padding:0 10px;
+        font-size:.82rem;
+      }
+
+      .wallet-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+      }
+
+      .wallet-metric{
+        min-height:92px;
+        padding:13px;
+        border-radius:18px;
+      }
+
+      .wallet-metric span{
+        font-size:.6rem;
+        margin-bottom:7px;
+      }
+
+      .wallet-metric strong{
+        font-size:1rem;
+      }
+
+      .split{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+
+      .split-card{
+        padding:14px;
+        border-radius:18px;
+      }
+
+      .percent{
+        font-size:2rem;
+      }
+
+      .split-card h3{
+        font-size:.82rem;
+      }
+
+      .split-card p{
+        font-size:.78rem;
       }
 
       .tx-item{
@@ -847,6 +993,28 @@
         width:60px;
         height:60px;
         border-radius:18px;
+      }
+    }
+
+    @media(max-width:430px){
+      .stats{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .stat-note{
+        display:none;
+      }
+
+      .card{
+        min-height:92px;
+      }
+
+      .wallet-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .wallet-metric strong{
+        font-size:.95rem;
       }
     }
   </style>
@@ -888,17 +1056,16 @@
           <div>
             <div class="eyebrow">
               <span class="pulse"></span>
-              <span>$BabyT public tracker</span>
+              <span>$BabyT public board</span>
             </div>
 
             <h1>
-              $BabyT
+              BabyT
               <span class="accent">Live Board.</span>
             </h1>
 
             <p class="hero-text">
-              Market stats from the live pair. Wallet balances from Solana. When funds move for marketing,
-              buybacks or burns, the proof belongs here with a public transaction link.
+              Live pair stats, public wallets and receipts. Fee claims, 15% marketing sends and burns should be checkable with Solscan links.
             </p>
 
             <div class="hero-actions">
@@ -937,7 +1104,7 @@
           <div class="card hot">
             <div class="stat-title">Market Cap</div>
             <div id="marketCapValue" class="stat-value">$--</div>
-            <div class="stat-note">From current pair data.</div>
+            <div class="stat-note">Current pair data.</div>
           </div>
 
           <div class="card">
@@ -949,7 +1116,7 @@
           <div class="card">
             <div class="stat-title">24H Volume</div>
             <div id="volumeValue" class="stat-value">$--</div>
-            <div class="stat-note">Last 24h trading volume.</div>
+            <div class="stat-note">Last 24h volume.</div>
           </div>
 
           <div class="card">
@@ -968,59 +1135,63 @@
     <div class="section-inner">
       <h2 class="section-title">Wallets</h2>
       <p class="section-sub">
-        The fee wallet is the public claim wallet. The marketing wallet is separate, so every 15% transfer can be checked on-chain.
+        Fee wallet = claimed SOL. Marketing wallet = separate 15% wallet.
       </p>
 
       <div class="panel">
         <div class="wallet-head">
           <div class="status">
             <span class="dot"></span>
-            <span>Reading public data</span>
+            <span>Public data</span>
           </div>
 
-          <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Fee Wallet on Solscan</a>
-          <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing on Solscan</a>
-        </div>
-
-        <div class="box" style="margin-top:0">
-          <div class="label">Fee / Claim Wallet</div>
-          <div class="copy-row">
-            <div id="feeWalletValue" class="value"></div>
-            <button id="copyFeeWalletBtn" class="copy-btn" type="button">Copy</button>
+          <div class="wallet-links">
+            <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Fee Wallet</a>
+            <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing</a>
           </div>
         </div>
 
-        <div class="box">
-          <div class="label">Marketing Wallet</div>
-          <div class="copy-row">
-            <div id="marketingWalletValue" class="value"></div>
-            <button id="copyMarketingWalletBtn" class="copy-btn" type="button">Copy</button>
+        <div class="wallet-addresses">
+          <div class="wallet-address-card">
+            <div class="label">Fee / Claim Wallet</div>
+            <div class="address-line">
+              <div id="feeWalletValue" class="value"></div>
+              <button id="copyFeeWalletBtn" class="copy-btn" type="button">Copy</button>
+            </div>
+          </div>
+
+          <div class="wallet-address-card">
+            <div class="label">Marketing Wallet</div>
+            <div class="address-line">
+              <div id="marketingWalletValue" class="value"></div>
+              <button id="copyMarketingWalletBtn" class="copy-btn" type="button">Copy</button>
+            </div>
           </div>
         </div>
 
         <div class="wallet-grid">
           <div class="wallet-metric">
-            <span>Claimed SOL found</span>
+            <span>Claimed SOL</span>
             <strong id="claimedSolValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Marketing balance</span>
+            <span>Marketing</span>
             <strong id="marketingWalletBalanceValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Sent to marketing</span>
+            <span>Sent to Marketing</span>
             <strong id="marketingSentValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Buyback / burn out</span>
+            <span>Buyback / Burn Out</span>
             <strong id="burnOutSolValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>BabyT burned</span>
+            <span>BabyT Burned</span>
             <strong id="burnedTokenValue">-- BabyT</strong>
           </div>
         </div>
@@ -1029,13 +1200,13 @@
           <div class="split-card">
             <div id="buybackShare" class="percent">85%</div>
             <h3>Buyback / Burn</h3>
-            <p>Planned main share. Any real action should be visible later with a transaction link.</p>
+            <p>Main share. Real actions need a public TX.</p>
           </div>
 
           <div class="split-card">
             <div id="marketingShare" class="percent">15%</div>
-            <h3>Marketing Wallet</h3>
-            <p>Side wallet for visibility pushes, content, posts and project costs.</p>
+            <h3>Marketing</h3>
+            <p>Side wallet for posts, pushes and project costs.</p>
           </div>
         </div>
       </div>
@@ -1046,7 +1217,7 @@
     <div class="section-inner">
       <h2 class="section-title">Proof Log</h2>
       <p class="section-sub">
-        This is where visible actions should land: marketing sends, buybacks and burns with Solscan links.
+        Receipts for marketing sends, buybacks and burns.
       </p>
 
       <div class="proof-grid">
@@ -1504,7 +1675,7 @@
           <div class="tx-item">
             <div>
               <strong>No recent fee-wallet transaction found.</strong><br>
-              The current wallet balance is still shown above. New public wallet activity will appear here after the next scan.
+              New public wallet activity will appear here after the next scan.
             </div>
           </div>
         `;
@@ -1595,9 +1766,9 @@
 
         const buybackBurnOut = Math.max(0, totalOutgoing - totalMarketingSent);
 
-        claimedSolValue.textContent = formatActionSol(totalIncoming, "No claim tx found");
-        marketingSentValue.textContent = formatActionSol(totalMarketingSent, "No transfer found");
-        burnOutSolValue.textContent = formatActionSol(buybackBurnOut, "No burn out found");
+        claimedSolValue.textContent = formatActionSol(totalIncoming, "No claim tx");
+        marketingSentValue.textContent = formatActionSol(totalMarketingSent, "No transfer");
+        burnOutSolValue.textContent = formatActionSol(buybackBurnOut, "No burn out");
 
         latestAutoProof = [];
 
