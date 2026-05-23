@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>BabyT | Live Board</title>
-  <meta name="description" content="BabyT live board with market data, fee wallet, marketing wallet and public proof.">
+  <meta name="description" content="BabyT public board for market data, fee wallet, marketing wallet and proof links.">
   <meta name="theme-color" content="#120705">
   <link rel="canonical" href="https://babytungtung.com/">
 
@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Live Board">
-  <meta property="og:description" content="Live BabyT market data, fee wallet, marketing wallet and public receipts.">
+  <meta property="og:description" content="Public BabyT board for wallets, market data and proof links.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/babyt-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Live Board">
-  <meta name="twitter:description" content="Live BabyT market data, fee wallet, marketing wallet and public receipts.">
+  <meta name="twitter:description" content="Public BabyT board for wallets, market data and proof links.">
   <meta name="twitter:image" content="https://babytungtung.com/babyt-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,9 +30,9 @@
 
   <style>
     :root{
-      --bg:#0b0302;
-      --panel:rgba(34,15,8,.88);
-      --panel2:rgba(54,25,13,.9);
+      --bg:#090302;
+      --panel:rgba(32,14,8,.88);
+      --panel2:rgba(52,25,13,.9);
       --line:rgba(255,194,91,.28);
       --line2:rgba(255,213,83,.48);
       --text:#fff1d8;
@@ -41,7 +41,10 @@
       --orange:#f39a2e;
       --green:#8cff7f;
       --red:#ff8a72;
-      --shadow:0 18px 42px rgba(0,0,0,.32);
+      --shadow:0 18px 42px rgba(0,0,0,.34);
+
+      --scene-bg:url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png");
+      --ground-bg:url("./bg-underground-01.png");
     }
 
     *{box-sizing:border-box}
@@ -56,9 +59,9 @@
       color:var(--text);
       font-family:Inter,Arial,sans-serif;
       background:
-        radial-gradient(circle at 45% -10%,rgba(255,213,83,.18),transparent 34%),
-        radial-gradient(circle at 8% 18%,rgba(243,154,46,.14),transparent 28%),
-        linear-gradient(180deg,#1b0904 0%,#100503 52%,#050101 100%);
+        linear-gradient(180deg,rgba(9,3,2,.86) 0%,rgba(9,3,2,.98) 46%,#050101 100%),
+        var(--ground-bg) center 740px/cover repeat-y,
+        #090302;
       overflow-x:hidden;
     }
 
@@ -69,10 +72,12 @@
       z-index:-1;
       pointer-events:none;
       background:
+        radial-gradient(circle at 45% -10%,rgba(255,213,83,.16),transparent 34%),
+        radial-gradient(circle at 8% 18%,rgba(243,154,46,.13),transparent 28%),
         linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),
         linear-gradient(0deg,rgba(255,255,255,.012) 1px,transparent 1px);
-      background-size:78px 78px;
-      opacity:.52;
+      background-size:auto,auto,78px 78px,78px 78px;
+      opacity:.9;
     }
 
     a{text-decoration:none;color:inherit}
@@ -83,7 +88,7 @@
       position:sticky;
       top:0;
       z-index:20;
-      background:rgba(13,5,2,.9);
+      background:rgba(13,5,2,.91);
       backdrop-filter:blur(14px);
       border-bottom:1px solid var(--line);
     }
@@ -165,8 +170,38 @@
       padding:0 20px;
     }
 
+    .hero-scene{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,194,91,.18);
+    }
+
+    .hero-scene::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      background:
+        linear-gradient(180deg,rgba(9,3,2,.28),rgba(9,3,2,.84) 72%,rgba(9,3,2,.98) 100%),
+        radial-gradient(circle at 50% 24%,rgba(255,213,83,.12),transparent 36%),
+        var(--scene-bg) center/cover no-repeat;
+      opacity:.42;
+      filter:saturate(1.05) contrast(1.05);
+    }
+
+    .hero-scene::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:90px;
+      z-index:-1;
+      background:linear-gradient(180deg,transparent,rgba(9,3,2,.96));
+      pointer-events:none;
+    }
+
     .hero{
-      padding:44px 0 26px;
+      padding:52px 0 30px;
     }
 
     .hero-grid{
@@ -211,7 +246,7 @@
     }
 
     h1{
-      max-width:680px;
+      max-width:720px;
       font-size:clamp(3rem,8.2vw,5.9rem);
       line-height:.9;
     }
@@ -221,7 +256,7 @@
     }
 
     .hero-text{
-      max-width:600px;
+      max-width:640px;
       margin:17px 0 0;
       color:var(--muted);
       font-size:clamp(1rem,1.35vw,1.12rem);
@@ -455,7 +490,7 @@
     }
 
     section{
-      padding:32px 20px;
+      padding:36px 20px;
     }
 
     .section-title{
@@ -465,7 +500,7 @@
     }
 
     .section-sub{
-      max-width:720px;
+      max-width:760px;
       margin:0 0 20px;
       color:var(--muted);
       line-height:1.55;
@@ -551,7 +586,7 @@
 
     .wallet-metric strong{
       color:var(--gold);
-      font-size:clamp(1.15rem,2.4vw,1.75rem);
+      font-size:clamp(1.1rem,2.4vw,1.72rem);
       line-height:1;
       word-break:break-word;
     }
@@ -737,7 +772,7 @@
       }
 
       .hero{
-        padding:34px 0 22px;
+        padding:40px 0 24px;
       }
 
       h1{
@@ -793,7 +828,7 @@
       }
 
       section{
-        padding:30px 16px;
+        padding:32px 16px;
       }
 
       .section-title{
@@ -823,8 +858,8 @@
   data-marketing-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
   data-buyback-share="85"
   data-marketing-share="15"
-  data-tx-scan-limit="160"
-  data-burn-scan-limit="80"
+  data-tx-scan-limit="300"
+  data-burn-scan-limit="120"
 >
   <header class="nav">
     <div class="nav-inner">
@@ -846,102 +881,105 @@
     </div>
   </header>
 
-  <main class="shell" id="top">
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">
-            <span class="pulse"></span>
-            <span>BabyT live board</span>
-          </div>
+  <main class="hero-scene" id="top">
+    <div class="shell">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="pulse"></span>
+              <span>$BabyT public tracker</span>
+            </div>
 
-          <h1>
-            BabyT keeps it
-            <span class="accent">public.</span>
-          </h1>
+            <h1>
+              $BabyT
+              <span class="accent">Live Board.</span>
+            </h1>
 
-          <p class="hero-text">
-            Tiny token. Public receipts. Live market data, fee wallet, marketing wallet and burn proof in one simple BabyT board.
-          </p>
+            <p class="hero-text">
+              Market stats from the live pair. Wallet balances from Solana. When funds move for marketing,
+              buybacks or burns, the proof belongs here with a public transaction link.
+            </p>
 
-          <div class="hero-actions">
-            <a class="btn" href="#wallets">View Wallets</a>
-            <a class="btn secondary" href="#proof">Proof Log</a>
-          </div>
+            <div class="hero-actions">
+              <a class="btn" href="#wallets">View Wallets</a>
+              <a class="btn secondary" href="#proof">Proof Log</a>
+            </div>
 
-          <div class="box">
-            <div class="label">Contract Address</div>
-            <div class="copy-row">
-              <div id="caValue" class="value"></div>
-              <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
+            <div class="box">
+              <div class="label">Contract Address</div>
+              <div class="copy-row">
+                <div id="caValue" class="value"></div>
+                <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
+              </div>
             </div>
           </div>
+
+          <aside class="mascot-box" aria-label="BabyT live mascot">
+            <div class="tag">public</div>
+            <img class="mascot-img" src="https://babytungtung.com/babyt-logo.png" alt="BabyT mascot">
+            <div class="mascot-bg">BABYT</div>
+
+            <div class="mini-board">
+              <div class="mini">
+                <span>Market Cap</span>
+                <strong id="heroMarketCap">$--</strong>
+              </div>
+              <div class="mini">
+                <span>Fee Wallet</span>
+                <strong id="heroFeeWalletSol">-- SOL</strong>
+              </div>
+            </div>
+          </aside>
         </div>
 
-        <aside class="mascot-box" aria-label="BabyT live mascot">
-          <div class="tag">live</div>
-          <img class="mascot-img" src="https://babytungtung.com/babyt-logo.png" alt="BabyT mascot">
-          <div class="mascot-bg">BABYT</div>
-
-          <div class="mini-board">
-            <div class="mini">
-              <span>Market Cap</span>
-              <strong id="heroMarketCap">$--</strong>
-            </div>
-            <div class="mini">
-              <span>Fee Wallet</span>
-              <strong id="heroFeeWalletSol">-- SOL</strong>
-            </div>
+        <div class="stats">
+          <div class="card hot">
+            <div class="stat-title">Market Cap</div>
+            <div id="marketCapValue" class="stat-value">$--</div>
+            <div class="stat-note">From current pair data.</div>
           </div>
-        </aside>
-      </div>
 
-      <div class="stats">
-        <div class="card hot">
-          <div class="stat-title">Market Cap</div>
-          <div id="marketCapValue" class="stat-value">$--</div>
-          <div class="stat-note">Live pair data.</div>
+          <div class="card">
+            <div class="stat-title">Liquidity</div>
+            <div id="liquidityValue" class="stat-value">$--</div>
+            <div class="stat-note">Main pair liquidity.</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-title">24H Volume</div>
+            <div id="volumeValue" class="stat-value">$--</div>
+            <div class="stat-note">Last 24h trading volume.</div>
+          </div>
+
+          <div class="card">
+            <div class="stat-title">Fee Wallet</div>
+            <div id="feeWalletSolValue" class="stat-value">-- SOL</div>
+            <div id="feeWalletUsdValue" class="stat-note">Loading balance...</div>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="stat-title">Liquidity</div>
-          <div id="liquidityValue" class="stat-value">$--</div>
-          <div class="stat-note">Main pair liquidity.</div>
-        </div>
-
-        <div class="card">
-          <div class="stat-title">24H Volume</div>
-          <div id="volumeValue" class="stat-value">$--</div>
-          <div class="stat-note">Latest trading volume.</div>
-        </div>
-
-        <div class="card">
-          <div class="stat-title">Fee Wallet</div>
-          <div id="feeWalletSolValue" class="stat-value">-- SOL</div>
-          <div id="feeWalletUsdValue" class="stat-note">Loading balance...</div>
-        </div>
-      </div>
-
-      <div id="lastUpdated" class="updated">Updating live board...</div>
-    </section>
+        <div id="lastUpdated" class="updated">Updating live board...</div>
+      </section>
+    </div>
   </main>
 
   <section id="wallets">
     <div class="section-inner">
       <h2 class="section-title">Wallets</h2>
       <p class="section-sub">
-        The fee wallet tracks claimed SOL. The marketing wallet tracks the 15% side wallet.
+        The fee wallet is the public claim wallet. The marketing wallet is separate, so every 15% transfer can be checked on-chain.
       </p>
 
       <div class="panel">
         <div class="wallet-head">
           <div class="status">
             <span class="dot"></span>
-            <span>Live scan</span>
+            <span>Reading public data</span>
           </div>
 
-          <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Fee Wallet</a>
-          <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing Wallet</a>
+          <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Fee Wallet on Solscan</a>
+          <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing on Solscan</a>
         </div>
 
         <div class="box" style="margin-top:0">
@@ -962,27 +1000,27 @@
 
         <div class="wallet-grid">
           <div class="wallet-metric">
-            <span>Total Fees Detected</span>
+            <span>Claimed SOL found</span>
             <strong id="claimedSolValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Marketing Wallet</span>
+            <span>Marketing balance</span>
             <strong id="marketingWalletBalanceValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Sent to Marketing</span>
+            <span>Sent to marketing</span>
             <strong id="marketingSentValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Buyback / Burn Out</span>
+            <span>Buyback / burn out</span>
             <strong id="burnOutSolValue">-- SOL</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>BabyT Burned</span>
+            <span>BabyT burned</span>
             <strong id="burnedTokenValue">-- BabyT</strong>
           </div>
         </div>
@@ -991,13 +1029,13 @@
           <div class="split-card">
             <div id="buybackShare" class="percent">85%</div>
             <h3>Buyback / Burn</h3>
-            <p>Used for BabyT buybacks and burns when the amount makes sense.</p>
+            <p>Planned main share. Any real action should be visible later with a transaction link.</p>
           </div>
 
           <div class="split-card">
             <div id="marketingShare" class="percent">15%</div>
-            <h3>Marketing</h3>
-            <p>Sent to the marketing wallet for posts, pushes and growth.</p>
+            <h3>Marketing Wallet</h3>
+            <p>Side wallet for visibility pushes, content, posts and project costs.</p>
           </div>
         </div>
       </div>
@@ -1008,7 +1046,7 @@
     <div class="section-inner">
       <h2 class="section-title">Proof Log</h2>
       <p class="section-sub">
-        Public receipts for marketing sends, buybacks and burns.
+        This is where visible actions should land: marketing sends, buybacks and burns with Solscan links.
       </p>
 
       <div class="proof-grid">
@@ -1081,7 +1119,7 @@
       </div>
 
       <div class="footer-note">
-        <strong>Not financial advice.</strong> BabyT is a community meme token project.
+        <strong>Not financial advice.</strong> BabyT is a community meme character token.
         This page is read-only and informational. Crypto is risky. Nothing here promises profits,
         rewards or financial returns. Always do your own research.
       </div>
@@ -1096,8 +1134,8 @@
     const BUYBACK_SHARE = Number(document.body.dataset.buybackShare || 85);
     const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 15);
 
-    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 160);
-    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 80);
+    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 300);
+    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 120);
 
     const RPC_ENDPOINTS = [
       "https://api.mainnet-beta.solana.com",
@@ -1220,15 +1258,15 @@
       }) + " SOL";
     }
 
-    function formatActionSol(value){
+    function formatActionSol(value, emptyText){
       if(value == null || Number.isNaN(value)) return "-- SOL";
-      if(Math.abs(value) < 0.000001) return "No action yet";
+      if(Math.abs(value) < 0.000001) return emptyText;
       return formatSol(value);
     }
 
     function formatBabyT(value){
       if(value == null || Number.isNaN(value)) return "-- BabyT";
-      if(value <= 0) return "No burn yet";
+      if(value <= 0) return "No burn found";
 
       if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B BabyT";
       if(value >= 1000000) return (value / 1000000).toFixed(2) + "M BabyT";
@@ -1465,8 +1503,8 @@
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
-              <strong>No fee-wallet transactions yet.</strong><br>
-              New public wallet activity will appear here after the next scan.
+              <strong>No recent fee-wallet transaction found.</strong><br>
+              The current wallet balance is still shown above. New public wallet activity will appear here after the next scan.
             </div>
           </div>
         `;
@@ -1508,8 +1546,8 @@
       if(!entries.length){
         historyList.innerHTML = `
           <div class="proof-item">
-            <strong>No public receipts yet.</strong><br>
-            Buybacks, burns and marketing sends will appear here once detected or added manually.
+            <strong>No receipts posted yet.</strong><br>
+            When a buyback, burn or marketing send happens, add the transaction link here.
           </div>
         `;
         return;
@@ -1557,9 +1595,9 @@
 
         const buybackBurnOut = Math.max(0, totalOutgoing - totalMarketingSent);
 
-        claimedSolValue.textContent = formatActionSol(totalIncoming);
-        marketingSentValue.textContent = formatActionSol(totalMarketingSent);
-        burnOutSolValue.textContent = formatActionSol(buybackBurnOut);
+        claimedSolValue.textContent = formatActionSol(totalIncoming, "No claim tx found");
+        marketingSentValue.textContent = formatActionSol(totalMarketingSent, "No transfer found");
+        burnOutSolValue.textContent = formatActionSol(buybackBurnOut, "No burn out found");
 
         latestAutoProof = [];
 
