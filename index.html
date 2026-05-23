@@ -140,7 +140,6 @@
     }
 
     .top-btn,
-    .btn,
     .copy-btn,
     .small-link{
       border:0;
@@ -249,13 +248,6 @@
       padding:52px 0 30px;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
-      gap:24px;
-      align-items:center;
-    }
-
     .eyebrow{
       display:inline-flex;
       align-items:center;
@@ -300,143 +292,65 @@
       color:var(--gold);
     }
 
-    .hero-text{
-      max-width:600px;
-      margin:17px 0 0;
-      color:var(--muted);
-      font-size:clamp(1rem,1.35vw,1.12rem);
-      line-height:1.55;
-      font-weight:800;
-    }
-
-    .hero-actions{
-      margin-top:22px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .btn{
-      min-height:54px;
-      padding:0 20px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .btn.secondary{
-      background:rgba(34,15,8,.82);
-      color:var(--text);
-      border:1px solid var(--line);
-    }
-
-    .mascot-box{
+    .hero-stage{
       position:relative;
-      min-height:430px;
-      border-radius:32px;
-      padding:22px;
-      background:
-        radial-gradient(circle at 50% 24%,rgba(255,213,83,.16),transparent 36%),
-        linear-gradient(180deg,rgba(25,9,5,.78),rgba(8,2,1,.95));
-      border:1px solid var(--line2);
-      box-shadow:var(--shadow);
-      overflow:hidden;
+      height:360px;
+      width:min(560px,100%);
+      margin:18px auto 12px;
     }
 
-    .mascot-box::before{
-      content:"";
-      position:absolute;
-      inset:14px;
-      border-radius:24px;
-      border:1px dashed rgba(255,213,83,.2);
-      pointer-events:none;
-    }
-
-    .mascot-bg{
-      position:absolute;
-      left:-10px;
-      bottom:78px;
-      font-family:"Lilita One",Inter,Arial,sans-serif;
-      font-size:5rem;
-      color:rgba(255,241,216,.04);
-      line-height:.82;
-      pointer-events:none;
-    }
-
-    .stage-scene{
-      position:relative;
-      z-index:2;
-      height:310px;
-      margin:0 0 14px;
-    }
-
-    .mascot-character{
+    .hero-character{
       position:absolute;
       z-index:3;
       left:50%;
-      bottom:54px;
-      width:min(260px,68%);
-      max-height:275px;
+      bottom:72px;
+      width:min(275px,64%);
+      max-height:305px;
       object-fit:contain;
       transform:translateX(-50%);
       filter:
-        drop-shadow(0 24px 28px rgba(0,0,0,.48))
-        drop-shadow(0 0 28px rgba(255,213,83,.16));
+        drop-shadow(0 28px 30px rgba(0,0,0,.54))
+        drop-shadow(0 0 35px rgba(255,213,83,.18));
       animation:floatOnStage 4.2s ease-in-out infinite;
     }
 
-    .stage-img{
+    .hero-stage-img{
       position:absolute;
       z-index:2;
       left:50%;
-      bottom:12px;
-      width:min(360px,88%);
+      bottom:28px;
+      width:min(390px,82%);
       transform:translateX(-50%);
       filter:
-        drop-shadow(0 18px 26px rgba(0,0,0,.48))
+        drop-shadow(0 18px 26px rgba(0,0,0,.52))
         drop-shadow(0 0 18px rgba(255,213,83,.12));
+    }
+
+    .hero-glow{
+      position:absolute;
+      z-index:1;
+      left:50%;
+      bottom:115px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      transform:translateX(-50%);
+      background:radial-gradient(circle,rgba(255,213,83,.2),transparent 68%);
+      pointer-events:none;
     }
 
     @keyframes floatOnStage{
       0%,100%{transform:translateX(-50%) translateY(0) rotate(-1deg)}
-      50%{transform:translateX(-50%) translateY(-10px) rotate(1.5deg)}
+      50%{transform:translateX(-50%) translateY(-11px) rotate(1.5deg)}
     }
 
-    .mini-board{
-      position:relative;
-      z-index:3;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:8px;
-    }
-
-    .mini{
-      padding:12px;
-      border-radius:17px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,194,91,.18);
-      min-width:0;
-    }
-
-    .mini span{
-      display:block;
+    .hero-text{
+      max-width:620px;
+      margin:16px 0 0;
       color:var(--muted);
-      font-size:.7rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:7px;
-    }
-
-    .mini strong{
-      display:block;
-      color:var(--gold);
-      font-weight:900;
-      font-size:1.1rem;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
+      font-size:clamp(1rem,1.35vw,1.12rem);
+      line-height:1.55;
+      font-weight:800;
     }
 
     .box,
@@ -445,7 +359,6 @@
     .proof-item,
     .tx-item,
     .footer-note,
-    .wallet-address-card,
     .wallet-metric,
     .split-card{
       background:var(--panel);
@@ -623,36 +536,6 @@
       box-shadow:none;
     }
 
-    .wallet-addresses{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:14px;
-    }
-
-    .wallet-address-card{
-      padding:16px;
-      border-radius:22px;
-      background:rgba(18,7,4,.48);
-    }
-
-    .address-line{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) auto;
-      gap:10px;
-      align-items:center;
-    }
-
-    .address-line .value{
-      padding:13px 14px;
-      font-size:.92rem;
-    }
-
-    .address-line .copy-btn{
-      min-height:46px;
-      padding:0 15px;
-    }
-
     .wallet-grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -661,8 +544,8 @@
     }
 
     .wallet-metric{
-      padding:14px;
-      border-radius:18px;
+      padding:16px;
+      border-radius:20px;
       background:rgba(255,255,255,.04);
       box-shadow:none;
     }
@@ -820,14 +703,8 @@
     }
 
     @media(max-width:980px){
-      .hero-grid,
       .proof-grid{
         grid-template-columns:1fr;
-      }
-
-      .mascot-box{
-        max-width:520px;
-        margin:0 auto;
       }
 
       .stats{
@@ -884,45 +761,30 @@
         font-size:clamp(2.85rem,14vw,4.35rem);
       }
 
+      .hero-stage{
+        height:300px;
+        margin:14px auto 10px;
+      }
+
+      .hero-character{
+        width:min(235px,66%);
+        max-height:255px;
+        bottom:58px;
+      }
+
+      .hero-stage-img{
+        width:min(335px,84%);
+        bottom:24px;
+      }
+
+      .hero-glow{
+        bottom:94px;
+        width:230px;
+        height:230px;
+      }
+
       .hero-text{
         font-size:1rem;
-      }
-
-      .hero-actions{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-      }
-
-      .btn{
-        min-height:52px;
-        padding:0 12px;
-        font-size:.9rem;
-      }
-
-      .mascot-box{
-        min-height:375px;
-        padding:18px;
-        border-radius:28px;
-      }
-
-      .stage-scene{
-        height:260px;
-      }
-
-      .mascot-character{
-        width:min(230px,68%);
-        max-height:235px;
-        bottom:46px;
-      }
-
-      .stage-img{
-        width:min(320px,88%);
-        bottom:10px;
-      }
-
-      .mascot-bg{
-        bottom:72px;
       }
 
       .copy-row{
@@ -994,31 +856,6 @@
         padding:0 8px;
         font-size:.84rem;
         text-align:center;
-      }
-
-      .wallet-addresses{
-        grid-template-columns:1fr;
-        gap:10px;
-      }
-
-      .wallet-address-card{
-        padding:13px;
-        border-radius:19px;
-      }
-
-      .address-line{
-        grid-template-columns:minmax(0,1fr) 70px;
-      }
-
-      .address-line .value{
-        padding:12px;
-        font-size:.84rem;
-      }
-
-      .address-line .copy-btn{
-        min-height:43px;
-        padding:0 10px;
-        font-size:.82rem;
       }
 
       .wallet-grid{
@@ -1105,8 +942,8 @@
   data-marketing-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
   data-buyback-share="85"
   data-marketing-share="15"
-  data-tx-scan-limit="300"
-  data-burn-scan-limit="120"
+  data-tx-scan-limit="500"
+  data-burn-scan-limit="500"
 >
   <header class="nav">
     <div class="nav-inner">
@@ -1131,65 +968,42 @@
   <main class="hero-scene" id="top">
     <div class="shell">
       <section class="hero">
-        <div class="hero-grid">
-          <div>
-            <div class="eyebrow">
-              <span class="pulse"></span>
-              <span>$BabyT board</span>
-            </div>
+        <div class="eyebrow">
+          <span class="pulse"></span>
+          <span>$BabyT board</span>
+        </div>
 
-            <h1>
-              BabyT
-              <span class="accent">Live Board.</span>
-            </h1>
+        <h1>
+          BabyT
+          <span class="accent">Live Board.</span>
+        </h1>
 
-            <p class="hero-text">
-              Chart stats, wallets and proof links in one place. Claims, marketing moves and burns stay easy to check.
-            </p>
+        <div class="hero-stage" aria-label="BabyT stage">
+          <div class="hero-glow"></div>
+          <img
+            class="hero-character"
+            src="./ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_29_06.png"
+            onerror="this.src='https://babytungtung.com/babyt-logo.png'"
+            alt="BabyT character"
+          >
+          <img
+            class="hero-stage-img"
+            src="./babyt-stage-fixed.png"
+            alt=""
+            aria-hidden="true"
+          >
+        </div>
 
-            <div class="hero-actions">
-              <a class="btn" href="#wallets">View Wallets</a>
-              <a class="btn secondary" href="#proof">Proof Log</a>
-            </div>
+        <p class="hero-text">
+          Chart stats, wallet moves and proof links in one place. BabyT stays simple to check.
+        </p>
 
-            <div class="box">
-              <div class="label">Contract Address</div>
-              <div class="copy-row">
-                <div id="caValue" class="value"></div>
-                <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
-              </div>
-            </div>
+        <div class="box">
+          <div class="label">Contract Address</div>
+          <div class="copy-row">
+            <div id="caValue" class="value"></div>
+            <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
           </div>
-
-          <aside class="mascot-box" aria-label="BabyT live mascot">
-            <div class="mascot-bg">BABYT</div>
-
-            <div class="stage-scene">
-              <img
-                class="mascot-character"
-                src="./ChatGPT Image 10. Apr. 2026, 01_29_06.png"
-                onerror="this.src='https://babytungtung.com/babyt-logo.png'"
-                alt="BabyT character"
-              >
-              <img
-                class="stage-img"
-                src="./babyt-stage-fixed.png"
-                alt=""
-                aria-hidden="true"
-              >
-            </div>
-
-            <div class="mini-board">
-              <div class="mini">
-                <span>Market Cap</span>
-                <strong id="heroMarketCap">$--</strong>
-              </div>
-              <div class="mini">
-                <span>Fee Wallet</span>
-                <strong id="heroFeeWalletUsd">$--</strong>
-              </div>
-            </div>
-          </aside>
         </div>
 
         <div class="stats">
@@ -1212,9 +1026,9 @@
           </div>
 
           <div class="card">
-            <div class="stat-title">Fee Wallet</div>
-            <div id="feeWalletUsdValue" class="stat-value">$--</div>
-            <div id="feeWalletNote" class="stat-note">Loading balance...</div>
+            <div class="stat-title">Claim Wallet</div>
+            <div id="claimWalletUsdValueTop" class="stat-value">$--</div>
+            <div id="claimWalletNote" class="stat-note">Loading balance...</div>
           </div>
         </div>
 
@@ -1228,7 +1042,7 @@
       <div class="section-inner">
         <h2 class="section-title">Wallets</h2>
         <p class="section-sub">
-          Fee wallet, marketing wallet and burned value. Amounts are shown in USD.
+          Public balances and detected burns. Values are shown in USD.
         </p>
 
         <div class="panel">
@@ -1239,33 +1053,15 @@
             </div>
 
             <div class="wallet-links">
-              <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Fee Wallet</a>
+              <a id="feeWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Claim Wallet</a>
               <a id="marketingWalletSolscanLink" class="small-link" target="_blank" rel="noreferrer">Marketing</a>
-            </div>
-          </div>
-
-          <div class="wallet-addresses">
-            <div class="wallet-address-card">
-              <div class="label">Fee / Claim Wallet</div>
-              <div class="address-line">
-                <div id="feeWalletValue" class="value"></div>
-                <button id="copyFeeWalletBtn" class="copy-btn" type="button">Copy</button>
-              </div>
-            </div>
-
-            <div class="wallet-address-card">
-              <div class="label">Marketing Wallet</div>
-              <div class="address-line">
-                <div id="marketingWalletValue" class="value"></div>
-                <button id="copyMarketingWalletBtn" class="copy-btn" type="button">Copy</button>
-              </div>
             </div>
           </div>
 
           <div class="wallet-grid">
             <div class="wallet-metric">
-              <span>Claims Found</span>
-              <strong id="claimedUsdValue">$--</strong>
+              <span>Claim Wallet</span>
+              <strong id="claimWalletUsdValue">$--</strong>
             </div>
 
             <div class="wallet-metric">
@@ -1274,7 +1070,7 @@
             </div>
 
             <div class="wallet-metric">
-              <span>Burned</span>
+              <span>BabyT Burned</span>
               <strong id="burnedUsdValue">$--</strong>
             </div>
           </div>
@@ -1310,7 +1106,7 @@
           </div>
 
           <div class="panel">
-            <div class="label">Latest Fee Wallet TXs</div>
+            <div class="label">Latest Wallet TXs</div>
             <div id="latestTxList" class="tx-list"></div>
           </div>
         </div>
@@ -1389,8 +1185,9 @@
     const BUYBACK_SHARE = Number(document.body.dataset.buybackShare || 85);
     const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 15);
 
-    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 300);
-    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 120);
+    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 500);
+    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 500);
+    const REFRESH_MS = 300000;
 
     const RPC_ENDPOINTS = [
       "https://api.mainnet-beta.solana.com",
@@ -1416,21 +1213,14 @@
     const caValue = el("caValue");
     const copyCaBtn = el("copyCaBtn");
 
-    const feeWalletValue = el("feeWalletValue");
-    const marketingWalletValue = el("marketingWalletValue");
-    const copyFeeWalletBtn = el("copyFeeWalletBtn");
-    const copyMarketingWalletBtn = el("copyMarketingWalletBtn");
-
     const marketCapValue = el("marketCapValue");
     const liquidityValue = el("liquidityValue");
     const volumeValue = el("volumeValue");
-    const feeWalletUsdValue = el("feeWalletUsdValue");
-    const feeWalletNote = el("feeWalletNote");
 
-    const heroMarketCap = el("heroMarketCap");
-    const heroFeeWalletUsd = el("heroFeeWalletUsd");
+    const claimWalletUsdValueTop = el("claimWalletUsdValueTop");
+    const claimWalletNote = el("claimWalletNote");
 
-    const claimedUsdValue = el("claimedUsdValue");
+    const claimWalletUsdValue = el("claimWalletUsdValue");
     const marketingWalletUsdValue = el("marketingWalletUsdValue");
     const burnedUsdValue = el("burnedUsdValue");
 
@@ -1565,14 +1355,12 @@
         marketCapValue.textContent = formatUsd(marketCap);
         liquidityValue.textContent = formatUsd(liquidity);
         volumeValue.textContent = formatUsd(volume24h);
-        heroMarketCap.textContent = formatUsd(marketCap);
 
         setUpdatedText();
       }catch(error){
         marketCapValue.textContent = "$--";
         liquidityValue.textContent = "$--";
         volumeValue.textContent = "$--";
-        heroMarketCap.textContent = "$--";
       }
     }
 
@@ -1762,7 +1550,7 @@
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
-              <strong>No recent fee-wallet transaction found.</strong><br>
+              <strong>No recent wallet transaction found.</strong><br>
               New public wallet activity will appear here after the next scan.
             </div>
           </div>
@@ -1826,7 +1614,6 @@
         const signatures = sigInfo.map(item => item.signature);
         const txs = await fetchParsedTransactions(signatures);
 
-        let totalIncoming = 0;
         let totalOutgoing = 0;
         let totalMarketingSent = 0;
         const latestTxs = [];
@@ -1843,7 +1630,6 @@
             });
           }
 
-          if(delta > 0.000001) totalIncoming += delta;
           if(delta < -0.000001) totalOutgoing += Math.abs(delta);
 
           collectInstructions(tx).forEach(instruction => {
@@ -1853,15 +1639,13 @@
 
         const burnOutflow = Math.max(0, totalOutgoing - totalMarketingSent);
 
-        claimedUsdValue.textContent = formatActionUsd(totalIncoming, "No claim tx");
-
         latestAutoProof = [];
 
         if(totalMarketingSent > 0){
           latestAutoProof.push({
             date:"Auto scan",
             title:"Marketing send detected",
-            text:`${formatActionUsd(totalMarketingSent, "$0.00")} sent from the fee wallet to the marketing wallet.`,
+            text:`${formatActionUsd(totalMarketingSent, "$0.00")} sent from the claim wallet to the marketing wallet.`,
             url:`https://solscan.io/account/${MARKETING_WALLET}`
           });
         }
@@ -1870,7 +1654,7 @@
           latestAutoProof.push({
             date:"Auto scan",
             title:"Burn outflow detected",
-            text:`${formatActionUsd(burnOutflow, "$0.00")} moved out of the fee wallet outside marketing transfers.`,
+            text:`${formatActionUsd(burnOutflow, "$0.00")} moved out of the claim wallet outside marketing transfers.`,
             url:`https://solscan.io/account/${FEE_WALLET}`
           });
         }
@@ -1878,13 +1662,11 @@
         renderLatestTxs(latestTxs);
         renderProof();
       }catch(error){
-        claimedUsdValue.textContent = "$--";
-
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
               <strong>Wallet scan failed.</strong><br>
-              Public RPC may be rate limited. Try refreshing in a minute.
+              Public RPC may be rate limited. The board will try again on the next update.
             </div>
           </div>
         `;
@@ -1935,21 +1717,21 @@
 
         currentSolPriceUsd = solPrice;
 
-        const feeUsd = solToUsd(feeBalance);
+        const claimUsd = solToUsd(feeBalance);
         const marketingUsd = solToUsd(marketingBalance);
 
-        feeWalletUsdValue.textContent = feeUsd == null ? "$--" : formatUsdLong(feeUsd);
-        heroFeeWalletUsd.textContent = feeUsd == null ? "$--" : formatUsdLong(feeUsd);
+        claimWalletUsdValueTop.textContent = claimUsd == null ? "$--" : formatUsdLong(claimUsd);
+        claimWalletUsdValue.textContent = claimUsd == null ? "$--" : formatUsdLong(claimUsd);
         marketingWalletUsdValue.textContent = marketingUsd == null ? "$--" : formatUsdLong(marketingUsd);
 
-        feeWalletNote.textContent = feeUsd == null ? "USD unavailable." : "Fee wallet value.";
+        claimWalletNote.textContent = claimUsd == null ? "USD unavailable." : "Current balance.";
 
         setUpdatedText();
       }catch(error){
-        feeWalletUsdValue.textContent = "$--";
-        heroFeeWalletUsd.textContent = "$--";
+        claimWalletUsdValueTop.textContent = "$--";
+        claimWalletUsdValue.textContent = "$--";
         marketingWalletUsdValue.textContent = "$--";
-        feeWalletNote.textContent = "Balance could not be loaded.";
+        claimWalletNote.textContent = "Balance could not be loaded.";
       }
     }
 
@@ -1982,15 +1764,11 @@
 
     function initStaticText(){
       caValue.textContent = CONTRACT_ADDRESS;
-      feeWalletValue.textContent = FEE_WALLET;
-      marketingWalletValue.textContent = MARKETING_WALLET;
 
       buybackShare.textContent = BUYBACK_SHARE + "%";
       marketingShare.textContent = MARKETING_SHARE + "%";
 
       copyCaBtn.addEventListener("click", () => copyText(CONTRACT_ADDRESS, copyCaBtn, "Copy CA"));
-      copyFeeWalletBtn.addEventListener("click", () => copyText(FEE_WALLET, copyFeeWalletBtn, "Copy"));
-      copyMarketingWalletBtn.addEventListener("click", () => copyText(MARKETING_WALLET, copyMarketingWalletBtn, "Copy"));
 
       syncLinks();
       renderProof();
@@ -2014,7 +1792,7 @@
     initStaticText();
     refreshAll();
 
-    setInterval(refreshAll, 120000);
+    setInterval(refreshAll, REFRESH_MS);
   </script>
 </body>
 </html>
