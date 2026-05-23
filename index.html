@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>BabyT | Live Tracker</title>
-  <meta name="description" content="BabyT live market tracker, fee wallet and public proof board.">
-  <meta name="theme-color" content="#0b0705">
+  <title>BabyT | Live Treasury</title>
+  <meta name="description" content="BabyT live treasury board with market data, fee wallet, buybacks, burns, marketing allocation and public proof.">
+  <meta name="theme-color" content="#eaf3fb">
   <link rel="canonical" href="https://babytungtung.com/">
 
   <link rel="icon" href="./favicon.ico" sizes="any">
@@ -16,35 +16,38 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
-  <meta property="og:title" content="BabyT | Live Tracker">
-  <meta property="og:description" content="Live market data, fee wallet and public proof board.">
+  <meta property="og:title" content="BabyT | Live Treasury">
+  <meta property="og:description" content="Market data, fee wallet, buybacks, burns, marketing allocation and public proof.">
   <meta property="og:url" content="https://babytungtung.com/">
-  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=5">
+  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=6">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BabyT | Live Tracker">
-  <meta name="twitter:description" content="Live market data, fee wallet and public proof board.">
-  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=5">
+  <meta name="twitter:title" content="BabyT | Live Treasury">
+  <meta name="twitter:description" content="Market data, fee wallet, buybacks, burns, marketing allocation and public proof.">
+  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=6">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#090504;
-      --panel:#1a0f0a;
-      --panel2:#24160f;
-      --panel3:#2d1c13;
-      --line:rgba(216,164,88,.28);
-      --line2:rgba(216,164,88,.46);
-      --gold:#f4d69b;
-      --gold2:#ffd85a;
-      --text:#fff1dc;
-      --muted:#d9bea0;
-      --green:#98e27a;
-      --brown:#b87534;
-      --shadow:0 18px 46px rgba(0,0,0,.26);
+      --bg:#eaf3fb;
+      --bg2:#f7fbff;
+      --ink:#0b3557;
+      --ink2:#143f63;
+      --blue:#2d7dcc;
+      --blue2:#0f4f86;
+      --soft:#d9eaf7;
+      --line:#9bc4e6;
+      --card:#f7fbff;
+      --white:#ffffff;
+      --muted:#60778b;
+      --mono:#718292;
+      --green:#3fcf8e;
+      --gold:#d9a34f;
+      --red:#df5b57;
+      --shadow:0 20px 55px rgba(38,92,137,.13);
     }
 
     *{box-sizing:border-box}
@@ -56,12 +59,12 @@
 
     body{
       margin:0;
-      color:var(--text);
+      color:var(--ink);
       font-family:Inter,Arial,sans-serif;
       background:
-        radial-gradient(circle at 48% 0%,rgba(255,216,90,.14),transparent 30%),
-        radial-gradient(circle at 10% 18%,rgba(184,117,52,.15),transparent 24%),
-        linear-gradient(180deg,#170b06 0%,#0b0503 52%,#050202 100%);
+        radial-gradient(circle at 50% -10%, rgba(45,125,204,.15), transparent 34%),
+        radial-gradient(circle at 12% 18%, rgba(155,196,230,.28), transparent 28%),
+        linear-gradient(180deg,#eaf3fb 0%,#f7fbff 52%,#eaf3fb 100%);
       overflow-x:hidden;
     }
 
@@ -71,22 +74,11 @@
       inset:0;
       pointer-events:none;
       z-index:-1;
+      opacity:.45;
       background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,.018) 0,
-          rgba(255,255,255,.018) 1px,
-          transparent 1px,
-          transparent 86px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,.012) 0,
-          rgba(255,255,255,.012) 1px,
-          transparent 1px,
-          transparent 86px
-        );
-      opacity:.58;
+        linear-gradient(90deg, rgba(45,125,204,.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(45,125,204,.025) 1px, transparent 1px);
+      background-size:72px 72px;
     }
 
     a{
@@ -107,35 +99,38 @@
       position:sticky;
       top:0;
       z-index:50;
-      background:rgba(13,6,3,.92);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
+      background:rgba(234,243,251,.88);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(45,125,204,.22);
     }
 
     .nav-inner,
     .shell,
     .section-inner{
-      width:min(1100px,100%);
+      width:min(1120px,100%);
       margin:0 auto;
     }
 
     .nav-inner{
-      padding:14px 20px;
+      min-height:72px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:16px;
+      padding:14px 22px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:900;
-      color:var(--gold);
+      font-family:Cormorant Garamond,serif;
+      font-size:1.8rem;
+      line-height:1;
+      font-weight:700;
+      letter-spacing:.08em;
+      color:var(--ink);
       text-transform:uppercase;
-      letter-spacing:.02em;
-      font-size:1.06rem;
       white-space:nowrap;
     }
 
@@ -144,37 +139,33 @@
       height:30px;
       object-fit:contain;
       transform:rotate(-8deg);
-      filter:drop-shadow(0 8px 12px rgba(0,0,0,.35));
+      filter:drop-shadow(0 7px 10px rgba(13,53,87,.18));
     }
 
     .links{
       display:flex;
       align-items:center;
-      gap:18px;
-      color:#ead7bb;
-      font-size:.9rem;
-      font-weight:900;
-    }
-
-    .top-btn,
-    .btn,
-    .copy-btn{
-      border:0;
-      border-radius:16px;
-      background:linear-gradient(180deg,#e0a45d,#a96831);
-      color:#211109;
-      font-weight:900;
-      cursor:pointer;
-      box-shadow:0 12px 26px rgba(0,0,0,.24);
+      gap:22px;
+      font-size:.86rem;
+      font-weight:800;
+      color:var(--ink2);
+      text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
     .top-btn{
       min-height:44px;
       padding:0 16px;
+      border-radius:999px;
+      border:1px solid rgba(45,125,204,.28);
+      background:var(--white);
+      color:var(--ink);
       display:flex;
       align-items:center;
       justify-content:center;
       gap:8px;
+      font-weight:900;
+      box-shadow:0 10px 30px rgba(38,92,137,.12);
       white-space:nowrap;
     }
 
@@ -185,254 +176,156 @@
     }
 
     .shell{
-      padding:0 20px;
+      padding:0 22px;
     }
 
     .hero{
-      padding:44px 0 26px;
+      padding:54px 0 34px;
+      text-align:center;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);
-      gap:24px;
-      align-items:center;
+    .bank-icon{
+      width:min(420px,78vw);
+      margin:0 auto 32px;
+      color:var(--blue);
+      filter:drop-shadow(0 22px 35px rgba(45,125,204,.12));
+    }
+
+    .bank-icon svg{
+      width:100%;
+      height:auto;
+      display:block;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:8px 13px;
+      justify-content:center;
+      gap:12px;
+      margin:0 auto 18px;
+      padding:8px 16px;
       border-radius:999px;
-      border:1px solid var(--line2);
-      background:rgba(27,16,11,.76);
-      color:var(--gold);
-      font-size:.9rem;
-      font-weight:900;
-      margin-bottom:16px;
-      box-shadow:0 10px 26px rgba(0,0,0,.2);
+      border:1px solid rgba(45,125,204,.22);
+      background:rgba(255,255,255,.58);
+      color:var(--blue2);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.78rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.26em;
     }
 
-    .pulse{
+    .live-dot{
       width:8px;
       height:8px;
-      border-radius:99px;
+      border-radius:50%;
       background:var(--green);
-      box-shadow:0 0 15px rgba(152,226,122,.7);
+      box-shadow:0 0 0 6px rgba(63,207,142,.13), 0 0 18px rgba(63,207,142,.75);
     }
 
     h1,
     .section-title{
-      font-family:"Bowlby One SC",Inter,Arial,sans-serif;
-      font-weight:400;
-      text-transform:uppercase;
-      letter-spacing:-.045em;
+      margin:0;
+      font-family:Cormorant Garamond,serif;
+      color:var(--ink);
+      font-weight:700;
+      line-height:.95;
+      letter-spacing:-.025em;
     }
 
     h1{
-      margin:0;
-      max-width:720px;
-      font-size:clamp(3rem,8vw,5.9rem);
-      line-height:.91;
-      text-shadow:0 13px 34px rgba(0,0,0,.36);
-    }
-
-    .accent{
-      color:var(--gold2);
+      font-size:clamp(4.2rem,11vw,8.2rem);
+      text-transform:uppercase;
     }
 
     .hero-text{
-      max-width:650px;
-      margin:18px 0 0;
-      color:var(--muted);
-      font-size:clamp(1rem,1.4vw,1.12rem);
-      line-height:1.55;
-      font-weight:700;
+      max-width:660px;
+      margin:20px auto 0;
+      color:#2a4b65;
+      font-family:Cormorant Garamond,serif;
+      font-size:clamp(1.45rem,3.2vw,2rem);
+      line-height:1.28;
+      font-weight:600;
+    }
+
+    .tagline{
+      margin:24px auto 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.82rem;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+    }
+
+    .tagline span{
+      display:inline-flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .tagline span::after{
+      content:"•";
+      color:var(--blue);
+    }
+
+    .tagline span:last-child::after{
+      display:none;
     }
 
     .hero-actions{
+      margin-top:28px;
       display:flex;
-      flex-wrap:wrap;
+      justify-content:center;
       gap:12px;
-      margin-top:22px;
+      flex-wrap:wrap;
     }
 
-    .btn{
-      min-height:54px;
-      padding:0 20px;
+    .btn,
+    .copy-btn{
+      min-height:50px;
+      border-radius:14px;
+      border:1px solid rgba(45,125,204,.25);
+      cursor:pointer;
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      font-weight:900;
+    }
+
+    .btn{
+      padding:0 22px;
+      background:linear-gradient(180deg,#3f95df,#226caf);
+      color:#fff;
+      box-shadow:0 14px 34px rgba(45,125,204,.2);
     }
 
     .btn.secondary{
-      background:rgba(27,16,11,.82);
-      color:var(--text);
-      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      color:var(--ink);
+      box-shadow:none;
     }
 
-    .mascot-card{
-      position:relative;
-      min-height:360px;
-      padding:24px;
-      border-radius:32px;
-      background:
-        radial-gradient(circle at 52% 24%,rgba(255,216,90,.2),transparent 34%),
-        linear-gradient(180deg,rgba(45,28,19,.92),rgba(18,9,5,.92));
-      border:1px solid var(--line2);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .mascot-card::before{
-      content:"";
-      position:absolute;
-      inset:16px;
-      border:1px dashed rgba(244,214,155,.22);
-      border-radius:24px;
-      pointer-events:none;
-    }
-
-    .mascot-card::after{
-      content:"BABYT";
-      position:absolute;
-      left:-12px;
-      bottom:12px;
-      color:rgba(255,241,220,.045);
-      font-family:"Bowlby One SC",Inter,Arial,sans-serif;
-      font-size:5rem;
-      letter-spacing:-.05em;
-      line-height:1;
-    }
-
-    .mascot-img{
-      position:relative;
-      z-index:2;
-      width:min(230px,70%);
-      margin:16px auto 8px;
-      transform:rotate(-4deg);
-      filter:
-        drop-shadow(0 20px 30px rgba(0,0,0,.38))
-        drop-shadow(0 0 28px rgba(255,216,90,.16));
-      animation:floaty 4.5s ease-in-out infinite;
-    }
-
-    @keyframes floaty{
-      0%,100%{transform:translateY(0) rotate(-4deg)}
-      50%{transform:translateY(-8px) rotate(3deg)}
-    }
-
-    .sticker{
-      position:absolute;
-      z-index:3;
-      padding:10px 12px;
-      border-radius:16px;
-      background:var(--gold2);
-      color:#211109;
-      font-weight:900;
-      box-shadow:0 12px 24px rgba(0,0,0,.26);
-      border:2px solid rgba(33,17,9,.18);
-    }
-
-    .sticker.one{
-      top:22px;
-      right:18px;
-      transform:rotate(5deg);
-    }
-
-    .sticker.two{
-      left:18px;
-      bottom:22px;
-      transform:rotate(-5deg);
-      background:#fff1dc;
-    }
-
-    .mini-board{
-      position:relative;
-      z-index:2;
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-    }
-
-    .mini{
-      padding:12px;
-      border-radius:17px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(216,164,88,.18);
-    }
-
-    .mini span{
-      display:block;
-      color:var(--muted);
-      font-size:.72rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:6px;
-    }
-
-    .mini strong{
-      display:block;
-      color:var(--gold);
-      font-size:1.2rem;
-      line-height:1;
-      font-weight:900;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
-
-    .ticker{
-      margin-top:26px;
-      border-block:1px solid var(--line);
-      background:rgba(27,16,11,.56);
-      overflow:hidden;
-      border-radius:18px;
-    }
-
-    .ticker-track{
-      display:flex;
-      width:max-content;
-      animation:ticker 26s linear infinite;
-    }
-
-    .ticker-track span{
-      padding:13px 18px;
-      color:var(--gold);
-      font-weight:900;
-      text-transform:uppercase;
-      white-space:nowrap;
-    }
-
-    @keyframes ticker{
-      0%{transform:translateX(0)}
-      100%{transform:translateX(-50%)}
-    }
-
-    .box,
-    .card,
-    .panel,
-    .proof-item,
-    .footer-note{
-      background:rgba(27,16,11,.82);
-      border:1px solid var(--line);
+    .copy-box{
+      width:min(760px,100%);
+      margin:28px auto 0;
+      padding:14px;
+      border-radius:20px;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(45,125,204,.22);
       box-shadow:var(--shadow);
     }
 
-    .box{
-      margin-top:22px;
-      padding:16px;
-      border-radius:24px;
-    }
-
-    .label{
-      color:var(--gold);
-      font-size:.74rem;
-      font-weight:900;
-      letter-spacing:.1em;
+    .copy-label{
+      color:var(--blue2);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.22em;
       text-transform:uppercase;
       margin-bottom:10px;
     }
@@ -444,264 +337,557 @@
       align-items:center;
     }
 
-    .value{
+    .copy-value{
       min-width:0;
-      padding:14px 15px;
-      border-radius:15px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(216,164,88,.16);
+      padding:14px 16px;
+      border-radius:14px;
+      background:rgba(247,251,255,.86);
+      border:1px solid rgba(45,125,204,.18);
+      color:var(--ink);
+      font-family:IBM Plex Mono,monospace;
+      font-weight:700;
+      white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      white-space:nowrap;
-      font-weight:900;
       text-align:left;
-      color:var(--text);
     }
 
     .copy-btn{
-      min-height:50px;
       padding:0 18px;
-      white-space:nowrap;
+      background:rgba(255,255,255,.92);
+      color:var(--blue2);
+      font-family:IBM Plex Mono,monospace;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
 
     .stats{
       display:grid;
       grid-template-columns:repeat(4,minmax(0,1fr));
       gap:14px;
-      margin-top:20px;
+      margin-top:26px;
     }
 
-    .card{
-      min-height:138px;
-      padding:20px;
-      border-radius:24px;
-      background:
-        radial-gradient(circle at 22% 0%,rgba(255,216,90,.10),transparent 40%),
-        rgba(27,16,11,.80);
+    .stat-card{
+      min-height:152px;
+      padding:22px;
+      border-radius:22px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(45,125,204,.16);
+      box-shadow:var(--shadow);
+      text-align:left;
     }
 
-    .stat-title{
-      color:var(--muted);
-      font-size:.72rem;
-      font-weight:900;
-      letter-spacing:.09em;
+    .stat-card.dark{
+      background:linear-gradient(180deg,#124a7a,#0b3557);
+      border-color:rgba(255,255,255,.12);
+      color:#fff;
+    }
+
+    .stat-label{
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.22em;
       text-transform:uppercase;
-      margin-bottom:10px;
+      margin-bottom:14px;
+    }
+
+    .dark .stat-label{
+      color:rgba(219,237,250,.72);
     }
 
     .stat-value{
-      color:var(--gold);
-      font-size:clamp(1.55rem,3vw,2.28rem);
-      line-height:1;
-      font-weight:900;
-      letter-spacing:-.04em;
+      color:var(--ink);
+      font-family:Cormorant Garamond,serif;
+      font-size:clamp(2.4rem,4vw,3.25rem);
+      line-height:.9;
+      font-weight:700;
+      letter-spacing:-.02em;
+    }
+
+    .dark .stat-value{
+      color:#fff;
     }
 
     .stat-note{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:.88rem;
-      line-height:1.4;
-      font-weight:700;
+      margin-top:12px;
+      color:#5e7487;
+      line-height:1.45;
+      font-size:.94rem;
+      font-weight:600;
+    }
+
+    .dark .stat-note{
+      color:rgba(219,237,250,.72);
     }
 
     .updated{
-      margin-top:14px;
-      color:rgba(217,190,160,.78);
-      font-size:.82rem;
+      margin-top:18px;
       text-align:center;
-      font-weight:800;
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.78rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
 
     section{
-      padding:34px 20px;
+      padding:54px 22px;
+    }
+
+    .section-inner{
+      position:relative;
+    }
+
+    .divider{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:18px;
+      margin-bottom:34px;
+    }
+
+    .divider::before,
+    .divider::after{
+      content:"";
+      height:1px;
+      background:rgba(45,125,204,.35);
+    }
+
+    .divider-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--blue);
+      box-shadow:0 0 0 8px rgba(45,125,204,.08);
     }
 
     .section-title{
-      margin:0 0 10px;
-      font-size:clamp(2.35rem,5vw,4.2rem);
-      line-height:.92;
+      font-size:clamp(3.1rem,7vw,5.7rem);
+      text-align:center;
     }
 
     .section-sub{
       max-width:720px;
-      margin:0 0 20px;
-      color:var(--muted);
-      line-height:1.55;
-      font-weight:700;
+      margin:18px auto 0;
+      color:#2a4b65;
+      text-align:center;
+      font-family:Cormorant Garamond,serif;
+      font-size:clamp(1.35rem,2.8vw,1.82rem);
+      line-height:1.32;
+      font-weight:600;
+    }
+
+    .treasury-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(300px,.8fr);
+      gap:22px;
+      align-items:stretch;
+      margin-top:34px;
     }
 
     .panel{
-      padding:22px;
-      border-radius:28px;
-      background:
-        radial-gradient(circle at 80% 0%,rgba(255,216,90,.10),transparent 34%),
-        rgba(27,16,11,.84);
+      border-radius:26px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(45,125,204,.16);
+      box-shadow:var(--shadow);
+      overflow:hidden;
     }
 
-    .wallet-top{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) auto;
-      gap:14px;
+    .panel-head{
+      padding:22px;
+      border-bottom:1px solid rgba(45,125,204,.14);
+      display:flex;
       align-items:center;
-      margin-bottom:16px;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .panel-title{
+      margin:0;
+      color:var(--ink);
+      font-family:Cormorant Garamond,serif;
+      font-size:2.25rem;
+      line-height:1;
+      font-weight:700;
     }
 
     .status{
       display:inline-flex;
-      width:max-content;
       align-items:center;
-      gap:8px;
+      gap:9px;
       padding:8px 12px;
       border-radius:999px;
-      background:rgba(152,226,122,.10);
-      border:1px solid rgba(152,226,122,.24);
-      color:var(--green);
-      font-weight:900;
-      font-size:.78rem;
-      letter-spacing:.07em;
+      background:rgba(63,207,142,.12);
+      border:1px solid rgba(63,207,142,.25);
+      color:#128653;
+      font-family:IBM Plex Mono,monospace;
+      font-size:.76rem;
+      font-weight:700;
       text-transform:uppercase;
+      letter-spacing:.16em;
     }
 
-    .dot{
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 14px rgba(152,226,122,.65);
+    .panel-body{
+      padding:22px;
     }
 
-    .solscan-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:40px;
-      padding:0 12px;
-      border-radius:13px;
-      border:1px solid var(--line);
-      color:var(--gold);
-      font-weight:900;
-      background:rgba(255,255,255,.035);
-    }
-
-    .split{
+    .wallet-balance{
       display:grid;
-      grid-template-columns:1.25fr .9fr .9fr;
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:14px;
-      margin-top:16px;
+      margin-top:18px;
     }
 
-    .split-card{
+    .mini-card{
       padding:18px;
-      border-radius:22px;
-      background:rgba(255,255,255,.038);
-      border:1px solid rgba(216,164,88,.16);
+      border-radius:18px;
+      background:rgba(247,251,255,.86);
+      border:1px solid rgba(45,125,204,.14);
     }
 
-    .percent{
-      color:var(--gold2);
-      font-size:2.6rem;
-      font-weight:900;
-      letter-spacing:-.055em;
-      line-height:1;
+    .mini-label{
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.72rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.18em;
       margin-bottom:10px;
     }
 
-    .split-card h3,
-    .step h3{
-      margin:0 0 8px;
-      font-size:1.02rem;
-      text-transform:uppercase;
-      font-weight:900;
+    .mini-value{
+      color:var(--ink);
+      font-family:Cormorant Garamond,serif;
+      font-size:2.25rem;
+      line-height:.95;
+      font-weight:700;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .split-card p,
-    .step p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.45;
-      font-size:.92rem;
+    .mini-note{
+      margin-top:8px;
+      color:#63798b;
+      font-size:.9rem;
+      line-height:1.35;
+      font-weight:600;
+    }
+
+    .allocation{
+      display:grid;
+      place-items:center;
+      min-height:100%;
+      padding:26px 20px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(45,125,204,.1), transparent 48%),
+        rgba(255,255,255,.55);
+    }
+
+    .donut-wrap{
+      position:relative;
+      width:min(320px,100%);
+      aspect-ratio:1;
+      display:grid;
+      place-items:center;
+    }
+
+    .donut{
+      width:100%;
+      height:100%;
+      transform:rotate(-90deg);
+      overflow:visible;
+    }
+
+    .donut circle{
+      fill:none;
+      stroke-width:22;
+      stroke-linecap:round;
+    }
+
+    .donut-bg{
+      stroke:#d5e7f6;
+    }
+
+    .donut-buyback{
+      stroke:var(--blue);
+      transition:stroke-dasharray .35s ease, stroke-dashoffset .35s ease;
+    }
+
+    .donut-marketing{
+      stroke:var(--gold);
+      transition:stroke-dasharray .35s ease, stroke-dashoffset .35s ease;
+    }
+
+    .donut-center{
+      position:absolute;
+      text-align:center;
+    }
+
+    .donut-center strong{
+      display:block;
+      color:var(--ink);
+      font-family:Cormorant Garamond,serif;
+      font-size:3rem;
+      line-height:.9;
       font-weight:700;
+    }
+
+    .donut-center span{
+      display:block;
+      margin-top:8px;
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .legend{
+      width:100%;
+      display:grid;
+      gap:10px;
+      margin-top:22px;
+    }
+
+    .legend-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:13px 14px;
+      border-radius:16px;
+      background:rgba(247,251,255,.78);
+      border:1px solid rgba(45,125,204,.13);
+    }
+
+    .legend-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      color:var(--ink);
+    }
+
+    .legend-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:var(--blue);
+    }
+
+    .legend-dot.gold{
+      background:var(--gold);
+    }
+
+    .legend-value{
+      color:var(--ink);
+      font-family:IBM Plex Mono,monospace;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .wallet-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .small-link{
+      min-height:42px;
+      padding:0 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:13px;
+      border:1px solid rgba(45,125,204,.18);
+      background:rgba(247,251,255,.82);
+      color:var(--blue2);
+      font-weight:900;
     }
 
     .steps{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      margin-top:20px;
+      gap:16px;
+      margin-top:34px;
     }
 
     .step{
-      padding:20px;
+      padding:24px;
+      min-height:210px;
       border-radius:24px;
-      background:rgba(27,16,11,.76);
-      border:1px solid var(--line);
-      box-shadow:0 12px 30px rgba(0,0,0,.18);
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(45,125,204,.16);
+      box-shadow:var(--shadow);
     }
 
-    .num{
-      color:var(--gold2);
-      font-size:2rem;
-      font-weight:900;
-      line-height:1;
-      margin-bottom:12px;
-    }
-
-    .proof-list{
+    .step-num{
+      width:54px;
+      height:54px;
       display:grid;
-      gap:12px;
+      place-items:center;
+      border-radius:50%;
+      border:2px solid rgba(45,125,204,.28);
+      color:var(--blue);
+      font-family:Cormorant Garamond,serif;
+      font-size:2rem;
+      line-height:1;
+      font-weight:700;
+      margin-bottom:20px;
     }
 
-    .proof-item{
-      padding:16px;
-      border-radius:20px;
-      background:rgba(255,255,255,.035);
-      border:1px dashed rgba(216,164,88,.24);
-      color:var(--muted);
-      line-height:1.5;
+    .step h3{
+      margin:0 0 10px;
+      color:var(--ink);
+      font-family:Cormorant Garamond,serif;
+      font-size:2rem;
+      line-height:1;
       font-weight:700;
     }
 
-    .proof-item strong{
-      color:var(--text);
+    .step p{
+      margin:0;
+      color:#385b76;
+      line-height:1.5;
+      font-size:1rem;
+      font-weight:600;
     }
 
-    .proof-item a{
-      display:inline-flex;
-      margin-top:10px;
-      color:var(--gold2);
+    .proof-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(300px,.8fr);
+      gap:22px;
+      margin-top:34px;
+      align-items:start;
+    }
+
+    .table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    .table th,
+    .table td{
+      padding:14px 12px;
+      border-bottom:1px solid rgba(45,125,204,.13);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    .table th{
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.72rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    .table td{
+      color:#2a4b65;
+      font-size:.94rem;
+      line-height:1.35;
+      font-weight:600;
+    }
+
+    .table a{
+      color:var(--blue);
       font-weight:900;
+    }
+
+    .empty{
+      padding:22px;
+      border-radius:20px;
+      background:rgba(247,251,255,.76);
+      border:1px dashed rgba(45,125,204,.24);
+      color:#466982;
+      line-height:1.55;
+      font-weight:600;
+    }
+
+    .activity-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .activity-item{
+      padding:14px;
+      border-radius:16px;
+      background:rgba(247,251,255,.78);
+      border:1px solid rgba(45,125,204,.13);
+    }
+
+    .activity-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .activity-type{
+      color:var(--ink);
+      font-weight:900;
+    }
+
+    .activity-time{
+      color:var(--mono);
+      font-family:IBM Plex Mono,monospace;
+      font-size:.75rem;
+      white-space:nowrap;
+    }
+
+    .activity-hash{
+      color:#466982;
+      font-family:IBM Plex Mono,monospace;
+      font-size:.82rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .activity-hash a{
+      color:var(--blue);
+      font-weight:700;
     }
 
     .socials{
       display:flex;
       justify-content:center;
-      flex-wrap:wrap;
+      align-items:center;
       gap:13px;
-      margin-top:22px;
+      flex-wrap:wrap;
+      margin-top:28px;
     }
 
     .social{
       width:66px;
       height:66px;
-      border-radius:21px;
+      border-radius:18px;
       display:grid;
       place-items:center;
-      background:linear-gradient(180deg,rgba(47,29,20,.9),rgba(20,10,6,.95));
-      border:1px solid rgba(216,164,88,.3);
-      box-shadow:0 14px 30px rgba(0,0,0,.28);
-      transition:transform .18s ease,border-color .18s ease;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(45,125,204,.18);
+      box-shadow:var(--shadow);
+      transition:transform .18s ease, border-color .18s ease;
     }
 
     .social:hover{
-      transform:translateY(-3px) rotate(-1deg);
-      border-color:rgba(255,216,90,.52);
+      transform:translateY(-3px);
+      border-color:rgba(45,125,204,.4);
     }
 
     .social svg{
       width:30px;
       height:30px;
-      fill:#f1e4d1;
+      fill:var(--ink);
     }
 
     .social img{
@@ -711,52 +897,51 @@
     }
 
     .footer-note{
-      margin-top:26px;
-      padding:18px;
+      max-width:860px;
+      margin:28px auto 0;
+      padding:22px;
       border-radius:22px;
-      color:var(--muted);
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(45,125,204,.16);
+      color:#60778b;
+      line-height:1.6;
       text-align:center;
-      line-height:1.55;
-      font-size:.88rem;
-      font-weight:700;
+      font-weight:600;
+      box-shadow:var(--shadow);
     }
 
     .footer-note strong{
-      color:var(--gold);
+      color:var(--ink);
     }
 
-    @media(max-width:960px){
-      .hero-grid{
-        grid-template-columns:1fr;
-      }
-
-      .mascot-card{
-        max-width:540px;
-        width:100%;
-        margin:0 auto;
-      }
-
-      .stats{
+    @media(max-width:980px){
+      .stats,
+      .wallet-balance{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
-      .split,
+      .treasury-grid,
+      .proof-layout{
+        grid-template-columns:1fr;
+      }
+
       .steps{
         grid-template-columns:1fr;
       }
     }
 
-    @media(max-width:700px){
+    @media(max-width:720px){
       .links{
         display:none;
       }
 
       .nav-inner{
-        padding:14px 16px;
+        min-height:66px;
+        padding:12px 16px;
       }
 
       .brand{
-        font-size:1rem;
+        font-size:1.45rem;
       }
 
       .brand img{
@@ -775,15 +960,31 @@
       }
 
       .hero{
-        padding:36px 0 22px;
+        padding:38px 0 26px;
+      }
+
+      .bank-icon{
+        width:min(330px,86vw);
+        margin-bottom:26px;
+      }
+
+      .eyebrow{
+        font-size:.72rem;
+        letter-spacing:.18em;
       }
 
       h1{
-        font-size:clamp(2.65rem,14vw,4.25rem);
+        font-size:clamp(3.45rem,17vw,5.2rem);
       }
 
       .hero-text{
-        font-size:1rem;
+        font-size:1.42rem;
+      }
+
+      .tagline{
+        gap:8px;
+        font-size:.72rem;
+        letter-spacing:.18em;
       }
 
       .hero-actions{
@@ -793,86 +994,61 @@
       }
 
       .btn{
-        min-height:52px;
         padding:0 12px;
-        font-size:.9rem;
-      }
-
-      .mascot-card{
-        min-height:310px;
-        padding:18px;
-        border-radius:28px;
-      }
-
-      .mascot-img{
-        width:min(205px,68%);
-      }
-
-      .sticker{
-        font-size:.82rem;
-      }
-
-      .mini-board{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .box{
-        padding:14px;
       }
 
       .copy-row{
         grid-template-columns:1fr;
       }
 
-      .value,
+      .copy-value,
       .copy-btn{
         width:100%;
         text-align:center;
       }
 
-      .stats{
+      .stats,
+      .wallet-balance{
         grid-template-columns:1fr;
-        gap:12px;
       }
 
-      .card{
-        min-height:118px;
+      .stat-card{
+        min-height:126px;
       }
 
       section{
-        padding:30px 16px;
+        padding:42px 16px;
       }
 
       .section-title{
-        font-size:2.55rem;
+        font-size:clamp(3rem,15vw,4.4rem);
       }
 
-      .panel{
+      .section-sub{
+        font-size:1.35rem;
+      }
+
+      .panel-head,
+      .panel-body{
         padding:18px;
       }
 
-      .wallet-top{
-        grid-template-columns:1fr;
+      .panel-title{
+        font-size:1.9rem;
       }
 
-      .solscan-link{
-        width:100%;
+      .donut-wrap{
+        width:min(280px,100%);
+      }
+
+      .table th:nth-child(3),
+      .table td:nth-child(3){
+        display:none;
       }
 
       .social{
         width:62px;
         height:62px;
-        border-radius:19px;
-      }
-
-      .social svg{
-        width:28px;
-        height:28px;
-      }
-
-      .social img{
-        width:34px;
-        height:34px;
       }
     }
   </style>
@@ -882,8 +1058,9 @@
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
   data-fee-wallet="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
   data-buyback-share="85"
-  data-marketing-share="10"
-  data-tools-share="5"
+  data-marketing-share="15"
+  data-holder-fallback="--"
+  data-burned-tokens="0"
 >
   <header class="nav">
     <div class="nav-inner">
@@ -893,7 +1070,7 @@
       </a>
 
       <nav class="links" aria-label="Navigation">
-        <a href="#wallet">Wallet</a>
+        <a href="#treasury">Treasury</a>
         <a href="#proof">Proof</a>
         <a href="#socials">Links</a>
       </nav>
@@ -907,141 +1084,191 @@
 
   <main class="shell" id="top">
     <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">
-            <span class="pulse"></span>
-            <span>$BabyT live board</span>
-          </div>
-
-          <h1>
-            Watch the
-            <span class="accent">little guy.</span>
-          </h1>
-
-          <p class="hero-text">
-            Market, liquidity and fee wallet in one place. No roadmap theater. Just numbers, wallet and receipts.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#wallet">Fee Wallet</a>
-            <a class="btn secondary" href="#proof">Receipts</a>
-          </div>
-
-          <div class="box">
-            <div class="label">Contract Address</div>
-            <div class="copy-row">
-              <div id="caValue" class="value"></div>
-              <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
-            </div>
-          </div>
-        </div>
-
-        <aside class="mascot-card" aria-label="BabyT tracker card">
-          <div class="sticker one">live</div>
-          <img class="mascot-img" src="./apple-touch-icon.png" alt="BabyT">
-          <div class="sticker two">receipts only</div>
-
-          <div class="mini-board">
-            <div class="mini">
-              <span>Market Cap</span>
-              <strong id="heroMarketCap">$--</strong>
-            </div>
-            <div class="mini">
-              <span>Fee Wallet</span>
-              <strong id="heroWalletSol">-- SOL</strong>
-            </div>
-          </div>
-        </aside>
+      <div class="bank-icon" aria-hidden="true">
+        <svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M96 282H544V315H96V282Z" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M130 238H510V282H130V238Z" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M170 208H470V238H170V208Z" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M151 102H489V138H151V102Z" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M170 102L320 44L470 102" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M191 138H230V154H191V138Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M198 154H223V208H198V154Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M265 138H304V154H265V138Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M272 154H297V208H272V154Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M339 138H378V154H339V138Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M346 154H371V208H346V154Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M413 138H452V154H413V138Z" stroke="currentColor" stroke-width="8"/>
+          <path d="M420 154H445V208H420V154Z" stroke="currentColor" stroke-width="8"/>
+        </svg>
       </div>
 
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>$BabyT</span>
-          <span>live wallet</span>
-          <span>public proof</span>
-          <span>fee tracker</span>
-          <span>pump.fun</span>
-          <span>$BabyT</span>
-          <span>live wallet</span>
-          <span>public proof</span>
-          <span>fee tracker</span>
-          <span>pump.fun</span>
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        <span>Public BabyT Board</span>
+      </div>
+
+      <h1>Live Treasury</h1>
+
+      <p class="hero-text">
+        Fees in. Buybacks, burns and marketing out. Everything visible through the wallet and proof log.
+      </p>
+
+      <div class="tagline">
+        <span>Fee Wallet</span>
+        <span>85% Buyback / Burn</span>
+        <span>15% Marketing</span>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn" href="#treasury">View Wallet</a>
+        <a class="btn secondary" href="#proof">Proof Log</a>
+      </div>
+
+      <div class="copy-box">
+        <div class="copy-label">Contract Address</div>
+        <div class="copy-row">
+          <div id="caValue" class="copy-value"></div>
+          <button id="copyCaBtn" class="copy-btn" type="button">Copy</button>
         </div>
       </div>
 
       <div class="stats">
-        <div class="card">
-          <div class="stat-title">Market Cap</div>
+        <div class="stat-card dark">
+          <div class="stat-label">Market Cap</div>
           <div id="marketCapValue" class="stat-value">$--</div>
-          <div class="stat-note">Live pair data.</div>
+          <div class="stat-note">Live pair data</div>
         </div>
 
-        <div class="card">
-          <div class="stat-title">Liquidity</div>
+        <div class="stat-card">
+          <div class="stat-label">Liquidity</div>
           <div id="liquidityValue" class="stat-value">$--</div>
-          <div class="stat-note">Main pair liquidity.</div>
+          <div class="stat-note">Main pair liquidity</div>
         </div>
 
-        <div class="card">
-          <div class="stat-title">24H Volume</div>
+        <div class="stat-card">
+          <div class="stat-label">24H Volume</div>
           <div id="volumeValue" class="stat-value">$--</div>
-          <div class="stat-note">Latest 24h volume.</div>
+          <div class="stat-note">Latest trading volume</div>
         </div>
 
-        <div class="card">
-          <div class="stat-title">Fee Wallet</div>
-          <div id="walletSolValue" class="stat-value">-- SOL</div>
-          <div id="walletUsdValue" class="stat-note">Loading balance...</div>
+        <div class="stat-card">
+          <div class="stat-label">Holders</div>
+          <div id="holdersValue" class="stat-value">--</div>
+          <div class="stat-note">On-chain holder count</div>
         </div>
       </div>
 
-      <div id="lastUpdated" class="updated">Updating live data...</div>
+      <div id="lastUpdated" class="updated">Loading live data...</div>
     </section>
   </main>
 
-  <section id="wallet">
+  <section id="treasury">
     <div class="section-inner">
-      <h2 class="section-title">Fee Wallet</h2>
+      <div class="divider">
+        <span></span>
+        <div class="divider-dot"></div>
+        <span></span>
+      </div>
+
+      <h2 class="section-title">Treasury Split</h2>
       <p class="section-sub">
-        This is the public SOL wallet used to track available BabyT funds.
+        The fee wallet shows what is available before any BabyT action is posted as proof.
       </p>
 
-      <div class="panel">
-        <div class="wallet-top">
-          <div class="status">
-            <span class="dot"></span>
-            <span>Live balance</span>
+      <div class="treasury-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">Fee Wallet</h3>
+            <div class="status">
+              <span class="live-dot"></span>
+              <span>Live Balance</span>
+            </div>
           </div>
 
-          <a id="solscanWalletLink" class="solscan-link" target="_blank" rel="noreferrer">
-            View on Solscan
-          </a>
+          <div class="panel-body">
+            <div class="copy-row">
+              <div id="feeWalletValue" class="copy-value"></div>
+              <button id="copyWalletBtn" class="copy-btn" type="button">Copy</button>
+            </div>
+
+            <div class="wallet-actions">
+              <a id="solscanWalletLink" class="small-link" target="_blank" rel="noreferrer">View Wallet</a>
+              <a id="dexLinkText" class="small-link" target="_blank" rel="noreferrer">Chart</a>
+            </div>
+
+            <div class="wallet-balance">
+              <div class="mini-card">
+                <div class="mini-label">Available</div>
+                <div id="feeWalletSol" class="mini-value">-- SOL</div>
+                <div id="feeWalletUsd" class="mini-note">Approx. $--</div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-label">Buyback / Burn</div>
+                <div id="buybackSol" class="mini-value">-- SOL</div>
+                <div id="buybackUsd" class="mini-note">85% allocation</div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-label">Marketing</div>
+                <div id="marketingSol" class="mini-value">-- SOL</div>
+                <div id="marketingUsd" class="mini-note">15% allocation</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="copy-row">
-          <div id="feeWalletValue" class="value"></div>
-          <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
+        <div class="panel allocation">
+          <div class="donut-wrap">
+            <svg class="donut" viewBox="0 0 240 240" aria-label="Treasury allocation chart">
+              <circle class="donut-bg" cx="120" cy="120" r="82"></circle>
+              <circle id="donutBuyback" class="donut-buyback" cx="120" cy="120" r="82"></circle>
+              <circle id="donutMarketing" class="donut-marketing" cx="120" cy="120" r="82"></circle>
+            </svg>
+
+            <div class="donut-center">
+              <strong id="donutCenter">85/15</strong>
+              <span>Current Split</span>
+            </div>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-left">
+                <span class="legend-dot"></span>
+                <span>Buyback / Burn</span>
+              </div>
+              <div id="legendBuyback" class="legend-value">85%</div>
+            </div>
+
+            <div class="legend-item">
+              <div class="legend-left">
+                <span class="legend-dot gold"></span>
+                <span>Marketing Wallet</span>
+              </div>
+              <div id="legendMarketing" class="legend-value">15%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Collect</h3>
+          <p>Fees collect in the public wallet. Anyone can check the balance.</p>
         </div>
 
-        <div class="split">
-          <div class="split-card">
-            <div id="buybackShare" class="percent">85%</div>
-            <h3>Buybacks / Burns</h3>
-            <p>Used only when there is enough SOL to make it worth showing.</p>
-          </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Act</h3>
+          <p>Buybacks, burns or marketing actions happen only when the amount makes sense.</p>
+        </div>
 
-          <div class="split-card">
-            <div id="marketingShare" class="percent">10%</div>
-            <h3>Marketing</h3>
-            <p>Content, raids, posts and visibility pushes.</p>
-          </div>
-
-          <div class="split-card">
-            <div id="toolsShare" class="percent">5%</div>
-            <h3>Tools</h3>
-            <p>Website, tracker, stream setup and basic project costs.</p>
-          </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Prove</h3>
+          <p>Every important action can be added below with a Solscan transaction link.</p>
         </div>
       </div>
     </div>
@@ -1049,41 +1276,57 @@
 
   <section id="proof">
     <div class="section-inner">
-      <h2 class="section-title">Proof</h2>
-      <p class="section-sub">
-        Buybacks, burns, marketing actions and important updates can be posted here with Solscan links.
-      </p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="num">01</div>
-          <h3>Collect</h3>
-          <p>Funds land in the public wallet.</p>
-        </div>
-
-        <div class="step">
-          <div class="num">02</div>
-          <h3>Act</h3>
-          <p>Buyback, burn, marketing or tools.</p>
-        </div>
-
-        <div class="step">
-          <div class="num">03</div>
-          <h3>Post</h3>
-          <p>Receipts go here with transaction links.</p>
-        </div>
+      <div class="divider">
+        <span></span>
+        <div class="divider-dot"></div>
+        <span></span>
       </div>
 
-      <div class="panel" style="margin-top:18px">
-        <div id="historyList" class="proof-list"></div>
+      <h2 class="section-title">Proof Log</h2>
+      <p class="section-sub">
+        Burns, buybacks and marketing actions belong here. Short entry, date, transaction.
+      </p>
+
+      <div class="proof-layout">
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">Burn / Action History</h3>
+            <div class="status">
+              <span class="live-dot"></span>
+              <span>Public Log</span>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <div id="proofList"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">Latest Wallet TXs</h3>
+          </div>
+
+          <div class="panel-body">
+            <div id="activityList" class="activity-list">
+              <div class="empty">Loading latest wallet activity...</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="socials">
     <div class="section-inner">
-      <h2 class="section-title" style="text-align:center">Join BabyT</h2>
-      <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">
+      <div class="divider">
+        <span></span>
+        <div class="divider-dot"></div>
+        <span></span>
+      </div>
+
+      <h2 class="section-title">Join BabyT</h2>
+      <p class="section-sub">
         Official links, market pages and community channels.
       </p>
 
@@ -1136,8 +1379,8 @@
       </div>
 
       <div class="footer-note">
-        <strong>Not financial advice.</strong> BabyT is a community meme character project.
-        Crypto is risky. This website does not promise profits, rewards, tokens or financial returns.
+        <strong>Not financial advice.</strong> BabyT is a community meme token project.
+        This page is read-only, informational and does not promise profits, rewards or financial returns.
         Always do your own research.
       </div>
     </div>
@@ -1148,49 +1391,109 @@
     const FEE_WALLET = document.body.dataset.feeWallet;
 
     const BUYBACK_SHARE = Number(document.body.dataset.buybackShare || 85);
-    const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 10);
-    const TOOLS_SHARE = Number(document.body.dataset.toolsShare || 5);
+    const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 15);
+    const HOLDER_FALLBACK = document.body.dataset.holderFallback || "--";
+    const BURNED_TOKENS_FALLBACK = Number(document.body.dataset.burnedTokens || 0);
 
-    const ACTION_HISTORY = [
+    const TOKEN_PROGRAM_ID = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
+
+    const PROOF_HISTORY = [
       /*
-      Add proof entries here later, newest first:
+      Add real proof entries here, newest first:
 
       {
         date: "2026-05-23",
-        title: "Buyback completed",
-        text: "0.20 SOL used for BabyT buyback.",
+        type: "Burn",
+        title: "First BabyT burn",
+        text: "1,000,000 BabyT sent to burn.",
+        amountTokens: 1000000,
+        url: "https://solscan.io/tx/YOUR_TX"
+      },
+      {
+        date: "2026-05-23",
+        type: "Marketing",
+        title: "Creator post",
+        text: "15% marketing allocation used for creator visibility.",
         url: "https://solscan.io/tx/YOUR_TX"
       }
       */
     ];
 
-    const caValue = document.getElementById("caValue");
-    const copyCaBtn = document.getElementById("copyCaBtn");
+    const els = {
+      caValue: document.getElementById("caValue"),
+      copyCaBtn: document.getElementById("copyCaBtn"),
+      feeWalletValue: document.getElementById("feeWalletValue"),
+      copyWalletBtn: document.getElementById("copyWalletBtn"),
 
-    const feeWalletValue = document.getElementById("feeWalletValue");
-    const copyWalletBtn = document.getElementById("copyWalletBtn");
+      marketCapValue: document.getElementById("marketCapValue"),
+      liquidityValue: document.getElementById("liquidityValue"),
+      volumeValue: document.getElementById("volumeValue"),
+      holdersValue: document.getElementById("holdersValue"),
+      lastUpdated: document.getElementById("lastUpdated"),
 
-    const marketCapValue = document.getElementById("marketCapValue");
-    const liquidityValue = document.getElementById("liquidityValue");
-    const volumeValue = document.getElementById("volumeValue");
-    const walletSolValue = document.getElementById("walletSolValue");
-    const walletUsdValue = document.getElementById("walletUsdValue");
-    const heroMarketCap = document.getElementById("heroMarketCap");
-    const heroWalletSol = document.getElementById("heroWalletSol");
-    const lastUpdated = document.getElementById("lastUpdated");
+      feeWalletSol: document.getElementById("feeWalletSol"),
+      feeWalletUsd: document.getElementById("feeWalletUsd"),
+      buybackSol: document.getElementById("buybackSol"),
+      buybackUsd: document.getElementById("buybackUsd"),
+      marketingSol: document.getElementById("marketingSol"),
+      marketingUsd: document.getElementById("marketingUsd"),
 
-    const buybackShare = document.getElementById("buybackShare");
-    const marketingShare = document.getElementById("marketingShare");
-    const toolsShare = document.getElementById("toolsShare");
+      donutBuyback: document.getElementById("donutBuyback"),
+      donutMarketing: document.getElementById("donutMarketing"),
+      donutCenter: document.getElementById("donutCenter"),
+      legendBuyback: document.getElementById("legendBuyback"),
+      legendMarketing: document.getElementById("legendMarketing"),
 
-    const historyList = document.getElementById("historyList");
-    const solscanWalletLink = document.getElementById("solscanWalletLink");
+      proofList: document.getElementById("proofList"),
+      activityList: document.getElementById("activityList"),
+
+      solscanWalletLink: document.getElementById("solscanWalletLink"),
+      dexLinkText: document.getElementById("dexLinkText"),
+      jupiterLink: document.getElementById("jupiterLink"),
+      dexLink: document.getElementById("dexLink"),
+      geckoLink: document.getElementById("geckoLink")
+    };
+
+    const RPC_ENDPOINTS = [
+      "https://api.mainnet-beta.solana.com",
+      "https://solana-rpc.publicnode.com",
+      "https://rpc.ankr.com/solana"
+    ];
 
     function withTimeout(promise, ms = 9000){
       return Promise.race([
         promise,
         new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), ms))
       ]);
+    }
+
+    async function rpcCall(method, params){
+      const body = JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method,
+        params
+      });
+
+      for(const endpoint of RPC_ENDPOINTS){
+        try{
+          const res = await withTimeout(fetch(endpoint, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body
+          }));
+
+          if(!res.ok) throw new Error("RPC request failed");
+
+          const data = await res.json();
+
+          if(data.error) throw new Error(data.error.message || "RPC error");
+
+          return data.result;
+        }catch(error){}
+      }
+
+      return null;
     }
 
     function formatUsd(value){
@@ -1205,9 +1508,9 @@
       if(value == null || Number.isNaN(value)) return "$--";
 
       return new Intl.NumberFormat("en-US", {
-        style:"currency",
-        currency:"USD",
-        maximumFractionDigits:value >= 1000 ? 0 : 2
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: value >= 1000 ? 0 : 2
       }).format(value);
     }
 
@@ -1215,19 +1518,77 @@
       if(value == null || Number.isNaN(value)) return "-- SOL";
 
       return value.toLocaleString("en-US", {
-        minimumFractionDigits:value < 0.01 ? 4 : 2,
-        maximumFractionDigits:value < 0.01 ? 6 : 4
+        minimumFractionDigits: value < 0.01 ? 4 : 2,
+        maximumFractionDigits: value < 0.01 ? 6 : 4
       }) + " SOL";
+    }
+
+    function formatNumber(value){
+      if(value == null || Number.isNaN(value)) return "--";
+
+      return new Intl.NumberFormat("en-US", {
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function formatTokenAmount(value){
+      if(value == null || Number.isNaN(value)) return "--";
+      if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B";
+      if(value >= 1000000) return (value / 1000000).toFixed(2) + "M";
+      if(value >= 1000) return (value / 1000).toFixed(1) + "K";
+      return formatNumber(value);
+    }
+
+    function shortHash(value){
+      if(!value) return "";
+      if(value.length <= 14) return value;
+      return value.slice(0, 6) + "..." + value.slice(-6);
     }
 
     function setUpdatedText(){
       const now = new Date();
 
-      lastUpdated.textContent = "Last update: " + now.toLocaleTimeString([], {
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit"
+      els.lastUpdated.textContent = "Last update: " + now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
       });
+    }
+
+    function syncLinks(){
+      const pumpUrl = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
+      const jupiterUrl = `https://jup.ag/tokens/${CONTRACT_ADDRESS}`;
+      const dexUrl = `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`;
+      const geckoUrl = `https://www.geckoterminal.com/solana/tokens/${CONTRACT_ADDRESS}`;
+      const solscanWalletUrl = `https://solscan.io/account/${FEE_WALLET}`;
+
+      document.querySelectorAll(".buy-link").forEach(link => {
+        link.href = pumpUrl;
+      });
+
+      els.jupiterLink.href = jupiterUrl;
+      els.dexLink.href = dexUrl;
+      els.dexLinkText.href = dexUrl;
+      els.geckoLink.href = geckoUrl;
+      els.solscanWalletLink.href = solscanWalletUrl;
+    }
+
+    function updateDonut(){
+      const radius = 82;
+      const circumference = 2 * Math.PI * radius;
+
+      const buybackLength = circumference * (BUYBACK_SHARE / 100);
+      const marketingLength = circumference * (MARKETING_SHARE / 100);
+
+      els.donutBuyback.style.strokeDasharray = `${buybackLength} ${circumference - buybackLength}`;
+      els.donutBuyback.style.strokeDashoffset = "0";
+
+      els.donutMarketing.style.strokeDasharray = `${marketingLength} ${circumference - marketingLength}`;
+      els.donutMarketing.style.strokeDashoffset = String(-buybackLength);
+
+      els.donutCenter.textContent = `${BUYBACK_SHARE}/${MARKETING_SHARE}`;
+      els.legendBuyback.textContent = BUYBACK_SHARE + "%";
+      els.legendMarketing.textContent = MARKETING_SHARE + "%";
     }
 
     async function fetchMarketData(){
@@ -1240,7 +1601,7 @@
 
         if(!Array.isArray(pairs) || !pairs.length) throw new Error("No pairs found");
 
-        const pair = [...pairs].sort((a,b) => {
+        const pair = [...pairs].sort((a, b) => {
           return (b?.liquidity?.usd || 0) - (a?.liquidity?.usd || 0);
         })[0];
 
@@ -1248,17 +1609,15 @@
         const liquidity = Number(pair?.liquidity?.usd || 0);
         const volume24h = Number(pair?.volume?.h24 || 0);
 
-        marketCapValue.textContent = formatUsd(marketCap);
-        liquidityValue.textContent = formatUsd(liquidity);
-        volumeValue.textContent = formatUsd(volume24h);
-        heroMarketCap.textContent = formatUsd(marketCap);
+        els.marketCapValue.textContent = formatUsd(marketCap);
+        els.liquidityValue.textContent = formatUsd(liquidity);
+        els.volumeValue.textContent = formatUsd(volume24h);
 
         setUpdatedText();
-      }catch(e){
-        marketCapValue.textContent = "$--";
-        liquidityValue.textContent = "$--";
-        volumeValue.textContent = "$--";
-        heroMarketCap.textContent = "$--";
+      }catch(error){
+        els.marketCapValue.textContent = "$--";
+        els.liquidityValue.textContent = "$--";
+        els.volumeValue.textContent = "$--";
       }
     }
 
@@ -1285,132 +1644,246 @@
         try{
           const price = await source();
           if(price > 0) return price;
-        }catch(e){}
+        }catch(error){}
       }
 
       return null;
     }
 
     async function fetchWalletBalance(){
-      const endpoints = [
-        "https://api.mainnet-beta.solana.com",
-        "https://solana-rpc.publicnode.com",
-        "https://rpc.ankr.com/solana"
-      ];
+      const result = await rpcCall("getBalance", [FEE_WALLET]);
 
-      const body = JSON.stringify({
-        jsonrpc:"2.0",
-        id:1,
-        method:"getBalance",
-        params:[FEE_WALLET]
-      });
+      if(!result || typeof result.value !== "number") return null;
 
-      for(const endpoint of endpoints){
-        try{
-          const res = await withTimeout(fetch(endpoint,{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body
-          }));
-
-          if(!res.ok) throw new Error("RPC failed");
-
-          const data = await res.json();
-          const lamports = Number(data?.result?.value);
-
-          if(!Number.isNaN(lamports)){
-            return lamports / 1000000000;
-          }
-        }catch(e){}
-      }
-
-      return null;
+      return result.value / 1000000000;
     }
 
     async function fetchWalletTracker(){
       try{
         const sol = await fetchWalletBalance();
-        const price = await fetchSolPrice();
+        const solPrice = await fetchSolPrice();
 
-        walletSolValue.textContent = formatSol(sol);
-        heroWalletSol.textContent = formatSol(sol);
+        if(sol == null){
+          els.feeWalletSol.textContent = "-- SOL";
+          els.feeWalletUsd.textContent = "Balance unavailable";
+          els.buybackSol.textContent = "-- SOL";
+          els.buybackUsd.textContent = BUYBACK_SHARE + "% allocation";
+          els.marketingSol.textContent = "-- SOL";
+          els.marketingUsd.textContent = MARKETING_SHARE + "% allocation";
+          return;
+        }
 
-        if(sol != null && price != null){
-          walletUsdValue.textContent = "Approx. " + formatUsdLong(sol * price);
+        const buybackSol = sol * (BUYBACK_SHARE / 100);
+        const marketingSol = sol * (MARKETING_SHARE / 100);
+
+        els.feeWalletSol.textContent = formatSol(sol);
+        els.buybackSol.textContent = formatSol(buybackSol);
+        els.marketingSol.textContent = formatSol(marketingSol);
+
+        if(solPrice != null){
+          els.feeWalletUsd.textContent = "Approx. " + formatUsdLong(sol * solPrice);
+          els.buybackUsd.textContent = "Approx. " + formatUsdLong(buybackSol * solPrice);
+          els.marketingUsd.textContent = "Approx. " + formatUsdLong(marketingSol * solPrice);
         }else{
-          walletUsdValue.textContent = "Balance could not be loaded.";
+          els.feeWalletUsd.textContent = "USD price unavailable";
+          els.buybackUsd.textContent = BUYBACK_SHARE + "% allocation";
+          els.marketingUsd.textContent = MARKETING_SHARE + "% allocation";
         }
 
         setUpdatedText();
-      }catch(e){
-        walletSolValue.textContent = "-- SOL";
-        heroWalletSol.textContent = "-- SOL";
-        walletUsdValue.textContent = "Balance could not be loaded.";
+      }catch(error){
+        els.feeWalletSol.textContent = "-- SOL";
+        els.feeWalletUsd.textContent = "Balance unavailable";
       }
     }
 
-    function renderHistory(){
-      if(!ACTION_HISTORY.length){
-        historyList.innerHTML = `
-          <div class="proof-item">
-            No receipt posted yet. Buybacks, burns, marketing actions or other important updates can be added here later with transaction links.
+    function decodeLittleEndianU64FromBase64(base64Value){
+      const binary = atob(base64Value);
+      let value = 0n;
+
+      for(let i = 0; i < 8; i++){
+        value += BigInt(binary.charCodeAt(i)) << (8n * BigInt(i));
+      }
+
+      return value;
+    }
+
+    async function fetchHolderCount(){
+      try{
+        const result = await rpcCall("getProgramAccounts", [
+          TOKEN_PROGRAM_ID,
+          {
+            encoding: "base64",
+            dataSlice: {
+              offset: 64,
+              length: 8
+            },
+            filters: [
+              {
+                dataSize: 165
+              },
+              {
+                memcmp: {
+                  offset: 0,
+                  bytes: CONTRACT_ADDRESS
+                }
+              }
+            ]
+          }
+        ]);
+
+        if(!Array.isArray(result)) throw new Error("No token accounts returned");
+
+        let holders = 0;
+
+        for(const item of result){
+          const data = item?.account?.data;
+          const base64Value = Array.isArray(data) ? data[0] : data;
+
+          if(!base64Value) continue;
+
+          const amount = decodeLittleEndianU64FromBase64(base64Value);
+
+          if(amount > 0n) holders++;
+        }
+
+        els.holdersValue.textContent = formatNumber(holders);
+        setUpdatedText();
+      }catch(error){
+        els.holdersValue.textContent = HOLDER_FALLBACK;
+      }
+    }
+
+    async function fetchWalletActivity(){
+      try{
+        const signatures = await rpcCall("getSignaturesForAddress", [
+          FEE_WALLET,
+          {
+            limit: 6
+          }
+        ]);
+
+        if(!Array.isArray(signatures) || !signatures.length){
+          els.activityList.innerHTML = `<div class="empty">No wallet activity found yet.</div>`;
+          return;
+        }
+
+        els.activityList.innerHTML = signatures.map(item => {
+          const signature = item.signature || "";
+          const date = item.blockTime
+            ? new Date(item.blockTime * 1000).toLocaleString([], {
+                month: "short",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit"
+              })
+            : "Pending";
+
+          const status = item.err ? "Failed" : "Confirmed";
+          const url = `https://solscan.io/tx/${signature}`;
+
+          return `
+            <div class="activity-item">
+              <div class="activity-top">
+                <div class="activity-type">${status}</div>
+                <div class="activity-time">${date}</div>
+              </div>
+              <div class="activity-hash">
+                <a href="${url}" target="_blank" rel="noreferrer">${shortHash(signature)}</a>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }catch(error){
+        els.activityList.innerHTML = `<div class="empty">Wallet activity could not be loaded.</div>`;
+      }
+    }
+
+    function renderProofHistory(){
+      const burnedFromHistory = PROOF_HISTORY.reduce((sum, item) => {
+        if(String(item.type || "").toLowerCase() === "burn"){
+          return sum + Number(item.amountTokens || 0);
+        }
+
+        return sum;
+      }, 0);
+
+      const totalBurned = burnedFromHistory || BURNED_TOKENS_FALLBACK;
+
+      if(!PROOF_HISTORY.length){
+        els.proofList.innerHTML = `
+          <div class="empty">
+            No proof entries yet. Future burns, buybacks and marketing actions can be listed here with transaction links.
+            <br><br>
+            Burned shown for now: <strong>${formatTokenAmount(totalBurned)} BabyT</strong>
           </div>
         `;
         return;
       }
 
-      historyList.innerHTML = ACTION_HISTORY.map(item => `
-        <div class="proof-item">
-          <strong>${item.date || ""} — ${item.title || "Update"}</strong><br>
-          ${item.text || ""}
-          ${item.url ? `<br><a href="${item.url}" target="_blank" rel="noreferrer">View proof</a>` : ""}
-        </div>
-      `).join("");
-    }
-
-    function syncLinks(){
-      const pumpUrl = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
-      const jupiterUrl = `https://jup.ag/tokens/${CONTRACT_ADDRESS}`;
-      const dexUrl = `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`;
-      const geckoUrl = `https://www.geckoterminal.com/solana/tokens/${CONTRACT_ADDRESS}`;
-      const solscanWalletUrl = `https://solscan.io/account/${FEE_WALLET}`;
-
-      document.querySelectorAll(".buy-link").forEach(link => link.href = pumpUrl);
-
-      document.getElementById("jupiterLink").href = jupiterUrl;
-      document.getElementById("dexLink").href = dexUrl;
-      document.getElementById("geckoLink").href = geckoUrl;
-      solscanWalletLink.href = solscanWalletUrl;
+      els.proofList.innerHTML = `
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Action</th>
+              <th>Note</th>
+              <th>Proof</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${PROOF_HISTORY.map(item => `
+              <tr>
+                <td>${item.date || ""}</td>
+                <td><strong>${item.type || "Update"}</strong><br>${item.title || ""}</td>
+                <td>${item.text || ""}</td>
+                <td>
+                  ${item.url ? `<a href="${item.url}" target="_blank" rel="noreferrer">Solscan</a>` : "Manual"}
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
     }
 
     async function copyText(value, button, defaultText){
       try{
         await navigator.clipboard.writeText(value);
-        button.textContent = "Copied!";
-      }catch(e){
-        button.textContent = "Copy failed";
+        button.textContent = "Copied";
+      }catch(error){
+        button.textContent = "Failed";
       }
 
-      setTimeout(() => button.textContent = defaultText, 1400);
+      setTimeout(() => {
+        button.textContent = defaultText;
+      }, 1400);
     }
 
-    caValue.textContent = CONTRACT_ADDRESS;
-    feeWalletValue.textContent = FEE_WALLET;
+    els.caValue.textContent = CONTRACT_ADDRESS;
+    els.feeWalletValue.textContent = FEE_WALLET;
 
-    buybackShare.textContent = BUYBACK_SHARE + "%";
-    marketingShare.textContent = MARKETING_SHARE + "%";
-    toolsShare.textContent = TOOLS_SHARE + "%";
+    els.copyCaBtn.addEventListener("click", () => {
+      copyText(CONTRACT_ADDRESS, els.copyCaBtn, "Copy");
+    });
 
-    copyCaBtn.addEventListener("click", () => copyText(CONTRACT_ADDRESS, copyCaBtn, "Copy CA"));
-    copyWalletBtn.addEventListener("click", () => copyText(FEE_WALLET, copyWalletBtn, "Copy Wallet"));
+    els.copyWalletBtn.addEventListener("click", () => {
+      copyText(FEE_WALLET, els.copyWalletBtn, "Copy");
+    });
 
     syncLinks();
-    renderHistory();
+    updateDonut();
+    renderProofHistory();
+
     fetchMarketData();
     fetchWalletTracker();
+    fetchHolderCount();
+    fetchWalletActivity();
 
     setInterval(fetchMarketData, 120000);
     setInterval(fetchWalletTracker, 120000);
+    setInterval(fetchHolderCount, 300000);
+    setInterval(fetchWalletActivity, 180000);
   </script>
 </body>
 </html>
