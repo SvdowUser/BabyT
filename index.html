@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>BabyT | Live Board</title>
-  <meta name="description" content="BabyT public board for live market data, fee wallet, marketing wallet and proof links.">
+  <meta name="description" content="BabyT public board for live market data, wallets and proof links.">
   <meta name="theme-color" content="#120705">
   <link rel="canonical" href="https://babytungtung.com/">
 
@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Live Board">
-  <meta property="og:description" content="Live BabyT board for public wallets, market data and proof links.">
+  <meta property="og:description" content="Live BabyT board for market data, public wallets and proof links.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/babyt-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Live Board">
-  <meta name="twitter:description" content="Live BabyT board for public wallets, market data and proof links.">
+  <meta name="twitter:description" content="Live BabyT board for market data, public wallets and proof links.">
   <meta name="twitter:image" content="https://babytungtung.com/babyt-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,9 @@
       --shadow:0 18px 42px rgba(0,0,0,.34);
 
       --scene-bg:url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png");
-      --ground-bg:url("./bg-underground-01.png");
+      --ground-bg-1:url("./bg-underground-01.png");
+      --ground-bg-2:url("./bg-underground-02.png");
+      --ground-bg-3:url("./bg-underground-03.png");
     }
 
     *{box-sizing:border-box}
@@ -58,10 +60,27 @@
       margin:0;
       color:var(--text);
       font-family:Inter,Arial,sans-serif;
-      background:
-        linear-gradient(180deg,rgba(9,3,2,.86) 0%,rgba(9,3,2,.98) 46%,#050101 100%),
-        var(--ground-bg) center 740px/cover repeat-y,
-        #090302;
+      background-color:#090302;
+      background-image:
+        linear-gradient(180deg,rgba(9,3,2,.82) 0%,rgba(9,3,2,.95) 34%,rgba(9,3,2,.9) 70%,#050101 100%),
+        var(--ground-bg-1),
+        var(--ground-bg-2),
+        var(--ground-bg-3);
+      background-position:
+        top,
+        center 760px,
+        center 1650px,
+        center 2550px;
+      background-size:
+        auto,
+        cover,
+        cover,
+        cover;
+      background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        repeat-y;
       overflow-x:hidden;
     }
 
@@ -78,6 +97,15 @@
         linear-gradient(0deg,rgba(255,255,255,.012) 1px,transparent 1px);
       background-size:auto,auto,78px 78px,78px 78px;
       opacity:.9;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:linear-gradient(180deg,rgba(5,1,1,.08),rgba(5,1,1,.32));
     }
 
     a{text-decoration:none;color:inherit}
@@ -183,10 +211,10 @@
       inset:0;
       z-index:-2;
       background:
-        linear-gradient(180deg,rgba(9,3,2,.26),rgba(9,3,2,.84) 72%,rgba(9,3,2,.98) 100%),
+        linear-gradient(180deg,rgba(9,3,2,.25),rgba(9,3,2,.84) 72%,rgba(9,3,2,.98) 100%),
         radial-gradient(circle at 50% 24%,rgba(255,213,83,.12),transparent 36%),
         var(--scene-bg) center/cover no-repeat;
-      opacity:.42;
+      opacity:.43;
       filter:saturate(1.05) contrast(1.05);
     }
 
@@ -256,7 +284,7 @@
     }
 
     .hero-text{
-      max-width:620px;
+      max-width:600px;
       margin:17px 0 0;
       color:var(--muted);
       font-size:clamp(1rem,1.35vw,1.12rem);
@@ -601,7 +629,7 @@
 
     .wallet-grid{
       display:grid;
-      grid-template-columns:repeat(5,minmax(0,1fr));
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:12px;
       margin-top:14px;
     }
@@ -779,13 +807,22 @@
       .stats{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
-      .wallet-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-      }
     }
 
     @media(max-width:720px){
+      body{
+        background-position:
+          top,
+          center 660px,
+          center 1450px,
+          center 2350px;
+        background-size:
+          auto,
+          auto 820px,
+          auto 820px,
+          auto 900px;
+      }
+
       .links{
         display:none;
       }
@@ -944,23 +981,23 @@
       }
 
       .wallet-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:10px;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:9px;
       }
 
       .wallet-metric{
-        min-height:92px;
-        padding:13px;
-        border-radius:18px;
+        min-height:88px;
+        padding:12px;
+        border-radius:17px;
       }
 
       .wallet-metric span{
-        font-size:.6rem;
+        font-size:.56rem;
         margin-bottom:7px;
       }
 
       .wallet-metric strong{
-        font-size:1rem;
+        font-size:.9rem;
       }
 
       .split{
@@ -997,10 +1034,6 @@
     }
 
     @media(max-width:430px){
-      .stats{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
-
       .stat-note{
         display:none;
       }
@@ -1010,11 +1043,16 @@
       }
 
       .wallet-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+
+      .wallet-metric{
+        min-height:82px;
+        padding:10px;
       }
 
       .wallet-metric strong{
-        font-size:.95rem;
+        font-size:.82rem;
       }
     }
   </style>
@@ -1056,7 +1094,7 @@
           <div>
             <div class="eyebrow">
               <span class="pulse"></span>
-              <span>$BabyT public board</span>
+              <span>$BabyT board</span>
             </div>
 
             <h1>
@@ -1065,7 +1103,7 @@
             </h1>
 
             <p class="hero-text">
-              Live pair stats, public wallets and receipts. Fee claims, 15% marketing sends and burns should be checkable with Solscan links.
+              Chart stats, wallets and proof links in one place. Claims, marketing moves and burns stay easy to check.
             </p>
 
             <div class="hero-actions">
@@ -1094,7 +1132,7 @@
               </div>
               <div class="mini">
                 <span>Fee Wallet</span>
-                <strong id="heroFeeWalletSol">-- SOL</strong>
+                <strong id="heroFeeWalletUsd">$--</strong>
               </div>
             </div>
           </aside>
@@ -1121,8 +1159,8 @@
 
           <div class="card">
             <div class="stat-title">Fee Wallet</div>
-            <div id="feeWalletSolValue" class="stat-value">-- SOL</div>
-            <div id="feeWalletUsdValue" class="stat-note">Loading balance...</div>
+            <div id="feeWalletUsdValue" class="stat-value">$--</div>
+            <div id="feeWalletNote" class="stat-note">Loading balance...</div>
           </div>
         </div>
 
@@ -1135,7 +1173,7 @@
     <div class="section-inner">
       <h2 class="section-title">Wallets</h2>
       <p class="section-sub">
-        Fee wallet = claimed SOL. Marketing wallet = separate 15% wallet.
+        Fee wallet, marketing wallet and burned value. Amounts are shown in USD.
       </p>
 
       <div class="panel">
@@ -1171,36 +1209,26 @@
 
         <div class="wallet-grid">
           <div class="wallet-metric">
-            <span>Claimed SOL</span>
-            <strong id="claimedSolValue">-- SOL</strong>
+            <span>Claims Found</span>
+            <strong id="claimedUsdValue">$--</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Marketing</span>
-            <strong id="marketingWalletBalanceValue">-- SOL</strong>
+            <span>Marketing Wallet</span>
+            <strong id="marketingWalletUsdValue">$--</strong>
           </div>
 
           <div class="wallet-metric">
-            <span>Sent to Marketing</span>
-            <strong id="marketingSentValue">-- SOL</strong>
-          </div>
-
-          <div class="wallet-metric">
-            <span>Buyback / Burn Out</span>
-            <strong id="burnOutSolValue">-- SOL</strong>
-          </div>
-
-          <div class="wallet-metric">
-            <span>BabyT Burned</span>
-            <strong id="burnedTokenValue">-- BabyT</strong>
+            <span>Burned</span>
+            <strong id="burnedUsdValue">$--</strong>
           </div>
         </div>
 
         <div class="split">
           <div class="split-card">
             <div id="buybackShare" class="percent">85%</div>
-            <h3>Buyback / Burn</h3>
-            <p>Main share. Real actions need a public TX.</p>
+            <h3>Burn</h3>
+            <p>Main share. Real burns need a public TX.</p>
           </div>
 
           <div class="split-card">
@@ -1217,7 +1245,7 @@
     <div class="section-inner">
       <h2 class="section-title">Proof Log</h2>
       <p class="section-sub">
-        Receipts for marketing sends, buybacks and burns.
+        Receipts for marketing sends and burns.
       </p>
 
       <div class="proof-grid">
@@ -1320,8 +1348,8 @@
 
       {
         date: "2026-05-23",
-        title: "Buyback / burn completed",
-        text: "0.20 SOL used for a BabyT buyback and burn.",
+        title: "Burn completed",
+        text: "$20.00 worth of BabyT burned.",
         url: "https://solscan.io/tx/YOUR_TX"
       }
       */
@@ -1340,17 +1368,15 @@
     const marketCapValue = el("marketCapValue");
     const liquidityValue = el("liquidityValue");
     const volumeValue = el("volumeValue");
-    const feeWalletSolValue = el("feeWalletSolValue");
     const feeWalletUsdValue = el("feeWalletUsdValue");
+    const feeWalletNote = el("feeWalletNote");
 
     const heroMarketCap = el("heroMarketCap");
-    const heroFeeWalletSol = el("heroFeeWalletSol");
+    const heroFeeWalletUsd = el("heroFeeWalletUsd");
 
-    const claimedSolValue = el("claimedSolValue");
-    const marketingWalletBalanceValue = el("marketingWalletBalanceValue");
-    const marketingSentValue = el("marketingSentValue");
-    const burnOutSolValue = el("burnOutSolValue");
-    const burnedTokenValue = el("burnedTokenValue");
+    const claimedUsdValue = el("claimedUsdValue");
+    const marketingWalletUsdValue = el("marketingWalletUsdValue");
+    const burnedUsdValue = el("burnedUsdValue");
 
     const buybackShare = el("buybackShare");
     const marketingShare = el("marketingShare");
@@ -1363,6 +1389,8 @@
     const marketingWalletSolscanLink = el("marketingWalletSolscanLink");
 
     let latestAutoProof = [];
+    let currentSolPriceUsd = null;
+    let currentTokenPriceUsd = null;
 
     function withTimeout(promise, ms = 10000){
       return Promise.race([
@@ -1407,6 +1435,7 @@
       if(value >= 1000000000) return "$" + (value / 1000000000).toFixed(2) + "B";
       if(value >= 1000000) return "$" + (value / 1000000).toFixed(2) + "M";
       if(value >= 1000) return "$" + (value / 1000).toFixed(1) + "K";
+      if(value > 0 && value < 1) return "$" + value.toFixed(2);
       return "$" + Math.round(value);
     }
 
@@ -1420,32 +1449,32 @@
       }).format(value);
     }
 
-    function formatSol(value){
-      if(value == null || Number.isNaN(value)) return "-- SOL";
-
-      return value.toLocaleString("en-US", {
-        minimumFractionDigits:value < 0.01 ? 4 : 2,
-        maximumFractionDigits:value < 0.01 ? 6 : 4
-      }) + " SOL";
+    function solToUsd(solAmount){
+      if(solAmount == null || Number.isNaN(solAmount) || currentSolPriceUsd == null) return null;
+      return solAmount * currentSolPriceUsd;
     }
 
-    function formatActionSol(value, emptyText){
-      if(value == null || Number.isNaN(value)) return "-- SOL";
-      if(Math.abs(value) < 0.000001) return emptyText;
-      return formatSol(value);
+    function formatActionUsd(solAmount, emptyText){
+      if(solAmount == null || Number.isNaN(solAmount)) return "$--";
+      if(Math.abs(solAmount) < 0.000001) return emptyText;
+
+      const usdValue = solToUsd(solAmount);
+      return usdValue == null ? "$--" : formatUsdLong(usdValue);
     }
 
-    function formatBabyT(value){
-      if(value == null || Number.isNaN(value)) return "-- BabyT";
-      if(value <= 0) return "No burn found";
+    function formatBurnUsd(tokenAmount){
+      if(tokenAmount == null || Number.isNaN(tokenAmount)) return "$--";
+      if(tokenAmount <= 0) return "No burn found";
+      if(currentTokenPriceUsd == null) return "$--";
 
-      if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B BabyT";
-      if(value >= 1000000) return (value / 1000000).toFixed(2) + "M BabyT";
-      if(value >= 1000) return (value / 1000).toFixed(1) + "K BabyT";
+      return formatUsdLong(tokenAmount * currentTokenPriceUsd);
+    }
 
-      return value.toLocaleString("en-US", {
-        maximumFractionDigits:2
-      }) + " BabyT";
+    function formatDeltaUsd(solDelta){
+      const usdValue = solToUsd(solDelta);
+      if(usdValue == null) return "$--";
+
+      return (solDelta > 0 ? "+" : "") + formatUsdLong(usdValue);
     }
 
     function setUpdatedText(){
@@ -1473,6 +1502,9 @@
         const marketCap = Number(pair.marketCap || pair.fdv || 0);
         const liquidity = Number(pair?.liquidity?.usd || 0);
         const volume24h = Number(pair?.volume?.h24 || 0);
+        const tokenPrice = Number(pair?.priceUsd || 0);
+
+        currentTokenPriceUsd = tokenPrice > 0 ? tokenPrice : null;
 
         marketCapValue.textContent = formatUsd(marketCap);
         liquidityValue.textContent = formatUsd(liquidity);
@@ -1684,7 +1716,6 @@
 
       latestTxList.innerHTML = items.slice(0, 5).map(item => {
         const isOut = item.delta < 0;
-        const sign = item.delta > 0 ? "+" : "";
         const date = item.blockTime
           ? new Date(item.blockTime * 1000).toLocaleString()
           : "recent";
@@ -1697,7 +1728,7 @@
               <a href="https://solscan.io/tx/${item.signature}" target="_blank" rel="noreferrer">View TX</a>
             </div>
             <div class="tx-delta ${isOut ? "out" : ""}">
-              ${sign}${formatSol(item.delta)}
+              ${formatDeltaUsd(item.delta)}
             </div>
           </div>
         `;
@@ -1718,7 +1749,7 @@
         historyList.innerHTML = `
           <div class="proof-item">
             <strong>No receipts posted yet.</strong><br>
-            When a buyback, burn or marketing send happens, add the transaction link here.
+            When a burn or marketing send happens, add the transaction link here.
           </div>
         `;
         return;
@@ -1764,11 +1795,9 @@
           });
         });
 
-        const buybackBurnOut = Math.max(0, totalOutgoing - totalMarketingSent);
+        const burnOutflow = Math.max(0, totalOutgoing - totalMarketingSent);
 
-        claimedSolValue.textContent = formatActionSol(totalIncoming, "No claim tx");
-        marketingSentValue.textContent = formatActionSol(totalMarketingSent, "No transfer");
-        burnOutSolValue.textContent = formatActionSol(buybackBurnOut, "No burn out");
+        claimedUsdValue.textContent = formatActionUsd(totalIncoming, "No claim tx");
 
         latestAutoProof = [];
 
@@ -1776,16 +1805,16 @@
           latestAutoProof.push({
             date:"Auto scan",
             title:"Marketing send detected",
-            text:`${formatSol(totalMarketingSent)} sent from the fee wallet to the marketing wallet in scanned transactions.`,
+            text:`${formatActionUsd(totalMarketingSent, "$0.00")} sent from the fee wallet to the marketing wallet.`,
             url:`https://solscan.io/account/${MARKETING_WALLET}`
           });
         }
 
-        if(buybackBurnOut > 0){
+        if(burnOutflow > 0){
           latestAutoProof.push({
             date:"Auto scan",
-            title:"Buyback / burn outflow detected",
-            text:`${formatSol(buybackBurnOut)} moved out of the fee wallet excluding detected marketing transfers.`,
+            title:"Burn outflow detected",
+            text:`${formatActionUsd(burnOutflow, "$0.00")} moved out of the fee wallet outside marketing transfers.`,
             url:`https://solscan.io/account/${FEE_WALLET}`
           });
         }
@@ -1793,9 +1822,7 @@
         renderLatestTxs(latestTxs);
         renderProof();
       }catch(error){
-        claimedSolValue.textContent = "-- SOL";
-        marketingSentValue.textContent = "-- SOL";
-        burnOutSolValue.textContent = "-- SOL";
+        claimedUsdValue.textContent = "$--";
 
         latestTxList.innerHTML = `
           <div class="tx-item">
@@ -1825,20 +1852,20 @@
           });
         });
 
-        burnedTokenValue.textContent = formatBabyT(burned);
+        burnedUsdValue.textContent = formatBurnUsd(burned);
 
         if(burned > 0){
           latestAutoProof.unshift({
             date:"Auto scan",
             title:"BabyT burn detected",
-            text:`${formatBabyT(burned)} burned in scanned token transactions.`,
+            text:`${formatBurnUsd(burned)} worth of BabyT burned in scanned token transactions.`,
             url:`https://solscan.io/token/${CONTRACT_ADDRESS}`
           });
         }
 
         renderProof();
       }catch(error){
-        burnedTokenValue.textContent = "-- BabyT";
+        burnedUsdValue.textContent = "$--";
       }
     }
 
@@ -1850,22 +1877,23 @@
           fetchSolBalance(MARKETING_WALLET)
         ]);
 
-        feeWalletSolValue.textContent = formatSol(feeBalance);
-        heroFeeWalletSol.textContent = formatSol(feeBalance);
-        marketingWalletBalanceValue.textContent = formatSol(marketingBalance);
+        currentSolPriceUsd = solPrice;
 
-        if(feeBalance != null && solPrice != null){
-          feeWalletUsdValue.textContent = "Approx. " + formatUsdLong(feeBalance * solPrice);
-        }else{
-          feeWalletUsdValue.textContent = "Balance loaded. USD unavailable.";
-        }
+        const feeUsd = solToUsd(feeBalance);
+        const marketingUsd = solToUsd(marketingBalance);
+
+        feeWalletUsdValue.textContent = feeUsd == null ? "$--" : formatUsdLong(feeUsd);
+        heroFeeWalletUsd.textContent = feeUsd == null ? "$--" : formatUsdLong(feeUsd);
+        marketingWalletUsdValue.textContent = marketingUsd == null ? "$--" : formatUsdLong(marketingUsd);
+
+        feeWalletNote.textContent = feeUsd == null ? "USD unavailable." : "Fee wallet value.";
 
         setUpdatedText();
       }catch(error){
-        feeWalletSolValue.textContent = "-- SOL";
-        heroFeeWalletSol.textContent = "-- SOL";
-        marketingWalletBalanceValue.textContent = "-- SOL";
-        feeWalletUsdValue.textContent = "Balance could not be loaded.";
+        feeWalletUsdValue.textContent = "$--";
+        heroFeeWalletUsd.textContent = "$--";
+        marketingWalletUsdValue.textContent = "$--";
+        feeWalletNote.textContent = "Balance could not be loaded.";
       }
     }
 
@@ -1916,7 +1944,10 @@
     async function refreshAll(){
       await Promise.allSettled([
         fetchMarketData(),
-        fetchWalletBalances(),
+        fetchWalletBalances()
+      ]);
+
+      await Promise.allSettled([
         scanFeeWalletActivity(),
         scanTokenBurns()
       ]);
