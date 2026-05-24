@@ -947,13 +947,8 @@
 
 <body
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
-  data-claim-wallets="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
-  data-buyback-wallets="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
+  data-claim-wallet="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
   data-marketing-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
-  data-buyback-share="85"
-  data-marketing-share="15"
-  data-tx-scan-limit="400"
-  data-burn-scan-limit="500"
 >
   <header class="nav">
     <div class="nav-inner">
@@ -1038,7 +1033,7 @@
           </div>
         </div>
 
-        <div id="lastUpdated" class="updated">Updating live board...</div>
+        <div id="lastUpdated" class="updated">Loading live board...</div>
       </section>
     </div>
   </main>
@@ -1048,7 +1043,7 @@
       <div class="section-inner">
         <h2 class="section-title">Wallets</h2>
         <p class="section-sub">
-          Detected Pump.fun claims, buybacks, marketing sends and burns. Values are shown in USD or SOL if price data is unavailable.
+          Detected Pump.fun claims, buybacks, marketing sends and burns. Values are loaded from the public BabyT board database.
         </p>
 
         <div class="panel">
@@ -1189,49 +1184,11 @@
   </div>
 
   <script>
+    const API_URL = "https://babyt-board-api.mythos-mondays-contact.workers.dev/api/board";
     const CONTRACT_ADDRESS = document.body.dataset.contractAddress;
-
-    const CLAIM_WALLETS = (document.body.dataset.claimWallets || document.body.dataset.feeWallet || "")
-      .split(",")
-      .map(item => item.trim())
-      .filter(Boolean);
-
-    const BUYBACK_WALLETS = (document.body.dataset.buybackWallets || document.body.dataset.claimWallets || "")
-      .split(",")
-      .map(item => item.trim())
-      .filter(Boolean);
-
-    const PRIMARY_CLAIM_WALLET = CLAIM_WALLETS[0] || "";
+    const CLAIM_WALLET = document.body.dataset.claimWallet;
     const MARKETING_WALLET = document.body.dataset.marketingWallet;
-
-    const BUYBACK_SHARE = Number(document.body.dataset.buybackShare || 85);
-    const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 15);
-
-    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 400);
-    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 500);
-    const REFRESH_MS = 300000;
-
-    const INCINERATOR_ADDRESS = "1nc1nerator11111111111111111111111111111111";
-    const PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
-
-    const RPC_ENDPOINTS = [
-      "https://api.mainnet-beta.solana.com",
-      "https://solana-rpc.publicnode.com",
-      "https://rpc.ankr.com/solana"
-    ];
-
-    const ACTION_HISTORY = [
-      /*
-      Add manual proof entries here, newest first:
-
-      {
-        date: "2026-05-23",
-        title: "Burn completed",
-        text: "$20.00 worth of BabyT burned.",
-        url: "https://solscan.io/tx/YOUR_TX"
-      }
-      */
-    ];
+    const REFRESH_MS = 60000;
 
     const el = id => document.getElementById(id);
 
@@ -1243,7 +1200,6 @@
     const volumeValue = el("volumeValue");
 
     const claimedUsdValueTop = el("claimedUsdValueTop");
-
     const claimedUsdValue = el("claimedUsdValue");
     const buybackUsdValue = el("buybackUsdValue");
     const marketingSentUsdValue = el("marketingSentUsdValue");
@@ -1259,494 +1215,151 @@
     const claimWalletSolscanLink = el("claimWalletSolscanLink");
     const marketingWalletSolscanLink = el("marketingWalletSolscanLink");
 
-    let autoActionEntries = [];
-    let currentSolPriceUsd = null;
-    let currentTokenPriceUsd = null;
+    const ACTION_HISTORY = [
+      /*
+      Add manual proof entries here, newest first:
 
-    function unique(items){
-      return [...new Set(items.filter(Boolean))];
-    }
-
-    function wait(ms){
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    function withTimeout(promise, ms = 12000){
-      return Promise.race([
-        promise,
-        new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), ms))
-      ]);
-    }
-
-    async function rpc(method, params){
-      let lastError = null;
-
-      for(const endpoint of RPC_ENDPOINTS){
-        try{
-          const res = await withTimeout(fetch(endpoint, {
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({
-              jsonrpc:"2.0",
-              id:Date.now(),
-              method,
-              params
-            })
-          }));
-
-          if(!res.ok) throw new Error("RPC HTTP error");
-
-          const data = await res.json();
-
-          if(data.error) throw new Error(data.error.message || "RPC error");
-
-          return data.result;
-        }catch(error){
-          lastError = error;
-        }
+      {
+        date: "2026-05-23",
+        title: "Manual burn completed",
+        text: "$20.00 worth of BabyT burned.",
+        url: "https://solscan.io/tx/YOUR_TX"
       }
-
-      throw lastError || new Error("All RPC endpoints failed");
-    }
+      */
+    ];
 
     function formatUsd(value){
-      if(value == null || Number.isNaN(value)) return "$--";
-      if(value >= 1000000000) return "$" + (value / 1000000000).toFixed(2) + "B";
-      if(value >= 1000000) return "$" + (value / 1000000).toFixed(2) + "M";
-      if(value >= 1000) return "$" + (value / 1000).toFixed(1) + "K";
-      if(value > 0 && value < 1) return "$" + value.toFixed(2);
-      return "$" + Math.round(value);
-    }
+      const number = Number(value || 0);
 
-    function formatUsdLong(value){
-      if(value == null || Number.isNaN(value)) return "$--";
-
+      if(!number || Number.isNaN(number)) return "$0.00";
+      if(number >= 1000000000) return "$" + (number / 1000000000).toFixed(2) + "B";
+      if(number >= 1000000) return "$" + (number / 1000000).toFixed(2) + "M";
+      if(number >= 1000) return "$" + (number / 1000).toFixed(1) + "K";
       return new Intl.NumberFormat("en-US", {
         style:"currency",
         currency:"USD",
-        maximumFractionDigits:value >= 1000 ? 0 : 2
-      }).format(value);
-    }
-
-    function formatSol(value){
-      if(value == null || Number.isNaN(value)) return "-- SOL";
-      if(Math.abs(value) >= 1) return value.toFixed(3) + " SOL";
-      return value.toFixed(5) + " SOL";
+        maximumFractionDigits:2
+      }).format(number);
     }
 
     function formatTokenAmount(value){
-      if(value == null || Number.isNaN(value)) return "--";
-      if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B";
-      if(value >= 1000000) return (value / 1000000).toFixed(2) + "M";
-      if(value >= 1000) return (value / 1000).toFixed(1) + "K";
-      if(value > 0 && value < 1) return value.toFixed(4);
-      return Math.round(value).toLocaleString("en-US");
+      const number = Number(value || 0);
+
+      if(!number || Number.isNaN(number)) return "0";
+      if(number >= 1000000000) return (number / 1000000000).toFixed(2) + "B";
+      if(number >= 1000000) return (number / 1000000).toFixed(2) + "M";
+      if(number >= 1000) return (number / 1000).toFixed(1) + "K";
+      if(number > 0 && number < 1) return number.toFixed(4);
+
+      return Math.round(number).toLocaleString("en-US");
     }
 
-    function solToUsd(solAmount){
-      if(solAmount == null || Number.isNaN(solAmount) || currentSolPriceUsd == null) return null;
-      return solAmount * currentSolPriceUsd;
-    }
+    function formatDateFromBlockTime(blockTime){
+      const time = Number(blockTime || 0);
 
-    function tokenToUsd(tokenAmount){
-      if(tokenAmount == null || Number.isNaN(tokenAmount) || currentTokenPriceUsd == null) return null;
-      return tokenAmount * currentTokenPriceUsd;
-    }
+      if(!time) return "recent";
 
-    function formatSolUsd(solAmount, emptyText = "$0.00"){
-      if(solAmount == null || Number.isNaN(solAmount)) return "$--";
-      if(Math.abs(solAmount) < 0.000001) return emptyText;
-
-      const usdValue = solToUsd(solAmount);
-      return usdValue == null ? formatSol(solAmount) : formatUsdLong(usdValue);
-    }
-
-    function formatBurnUsd(tokenAmount){
-      if(tokenAmount == null || Number.isNaN(tokenAmount)) return "$--";
-      if(tokenAmount <= 0) return "No burn found";
-
-      const usdValue = tokenToUsd(tokenAmount);
-      return usdValue == null ? formatTokenAmount(tokenAmount) + " BabyT" : formatUsdLong(usdValue);
-    }
-
-    function setUpdatedText(){
-      const now = new Date();
-
-      lastUpdated.textContent = "Last update: " + now.toLocaleTimeString([], {
+      return new Date(time * 1000).toLocaleString([], {
+        year:"numeric",
+        month:"2-digit",
+        day:"2-digit",
         hour:"2-digit",
         minute:"2-digit",
         second:"2-digit"
       });
     }
 
-    async function fetchMarketData(){
-      try{
-        const res = await withTimeout(fetch(`https://api.dexscreener.com/token-pairs/v1/solana/${CONTRACT_ADDRESS}`));
-        if(!res.ok) throw new Error("DEX request failed");
+    function formatUpdatedTime(data){
+      const updatedAt = Number(data?.updatedAt || 0);
 
-        const pairs = await res.json();
-        if(!Array.isArray(pairs) || !pairs.length) throw new Error("No pairs found");
-
-        const pair = [...pairs].sort((a,b) => {
-          return (b?.liquidity?.usd || 0) - (a?.liquidity?.usd || 0);
-        })[0];
-
-        const marketCap = Number(pair.marketCap || pair.fdv || 0);
-        const liquidity = Number(pair?.liquidity?.usd || 0);
-        const volume24h = Number(pair?.volume?.h24 || 0);
-        const tokenPrice = Number(pair?.priceUsd || 0);
-
-        currentTokenPriceUsd = tokenPrice > 0 ? tokenPrice : null;
-
-        marketCapValue.textContent = formatUsd(marketCap);
-        liquidityValue.textContent = formatUsd(liquidity);
-        volumeValue.textContent = formatUsd(volume24h);
-
-        setUpdatedText();
-      }catch(error){
-        marketCapValue.textContent = "$--";
-        liquidityValue.textContent = "$--";
-        volumeValue.textContent = "$--";
-      }
-    }
-
-    async function fetchSolPrice(){
-      const sources = [
-        async () => {
-          const res = await withTimeout(fetch("https://api.coinbase.com/v2/exchange-rates?currency=SOL"));
-          const data = await res.json();
-          return Number(data?.data?.rates?.USD || 0);
-        },
-        async () => {
-          const res = await withTimeout(fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd"));
-          const data = await res.json();
-          return Number(data?.solana?.usd || 0);
-        },
-        async () => {
-          const res = await withTimeout(fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"));
-          const data = await res.json();
-          return Number(data?.price || 0);
-        }
-      ];
-
-      for(const source of sources){
-        try{
-          const price = await source();
-          if(price > 0) return price;
-        }catch(error){}
+      if(!updatedAt){
+        return "Live board loaded. Waiting for first database update.";
       }
 
-      return null;
-    }
-
-    async function fetchSignatures(address, maxLimit){
-      const all = [];
-      let before = null;
-
-      while(all.length < maxLimit){
-        const limit = Math.min(100, maxLimit - all.length);
-        const config = {
-          commitment:"confirmed",
-          limit
-        };
-
-        if(before) config.before = before;
-
-        const batch = await rpc("getSignaturesForAddress", [
-          address,
-          config
-        ]);
-
-        if(!Array.isArray(batch) || !batch.length) break;
-
-        const clean = batch.filter(item => !item.err);
-        all.push(...clean);
-
-        before = batch[batch.length - 1].signature;
-
-        if(batch.length < limit) break;
-      }
-
-      return all.slice(0, maxLimit);
-    }
-
-    async function fetchOneParsedTransaction(signature){
-      return await rpc("getTransaction", [
-        signature,
-        {
-          commitment:"confirmed",
-          encoding:"jsonParsed",
-          maxSupportedTransactionVersion:0
-        }
-      ]);
-    }
-
-    async function fetchParsedTransactions(signatures){
-      const output = [];
-      const cleanSignatures = unique(signatures);
-
-      for(let i = 0; i < cleanSignatures.length; i += 6){
-        const chunk = cleanSignatures.slice(i, i + 6);
-
-        const results = await Promise.allSettled(
-          chunk.map(signature => fetchOneParsedTransaction(signature))
-        );
-
-        results.forEach((result, index) => {
-          if(result.status === "fulfilled" && result.value){
-            output.push(result.value);
-          }else{
-            console.warn("Transaction read failed:", chunk[index], result.reason);
-          }
-        });
-
-        await wait(140);
-      }
-
-      return output;
-    }
-
-    function getAccountKeys(tx){
-      return tx?.transaction?.message?.accountKeys?.map(key => {
-        if(typeof key === "string") return key;
-        if(typeof key?.pubkey === "string") return key.pubkey;
-        if(key?.pubkey?.toString) return key.pubkey.toString();
-        return "";
-      }) || [];
-    }
-
-    function getLogs(tx){
-      return tx?.meta?.logMessages || [];
-    }
-
-    function txSignature(tx){
-      return tx?.transaction?.signatures?.[0] || "";
-    }
-
-    function txTouchesMint(tx){
-      const keys = getAccountKeys(tx);
-      const pre = tx?.meta?.preTokenBalances || [];
-      const post = tx?.meta?.postTokenBalances || [];
-
-      return (
-        keys.includes(CONTRACT_ADDRESS) ||
-        pre.some(item => item.mint === CONTRACT_ADDRESS) ||
-        post.some(item => item.mint === CONTRACT_ADDRESS)
-      );
-    }
-
-    function txText(tx){
-      const instructions = collectInstructions(tx).map(instruction => {
-        const parsed = instruction?.parsed;
-        const info = parsed?.info || {};
-        return [
-          instruction?.program || "",
-          instruction?.programId?.toString?.() || "",
-          parsed?.type || "",
-          info.instruction || "",
-          info.mint || "",
-          info.source || "",
-          info.destination || ""
-        ].join(" ");
+      return "Last update: " + new Date(updatedAt * 1000).toLocaleTimeString([], {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
       });
-
-      return [
-        ...getLogs(tx),
-        ...getAccountKeys(tx),
-        ...instructions
-      ].join(" ").toLowerCase();
     }
 
-    function isPumpFunTx(tx){
-      return txText(tx).includes(PUMP_FUN_PROGRAM.toLowerCase());
+    function getEventTitle(event){
+      if(event?.title) return event.title;
+
+      if(event?.type === "claim") return "Claim detected";
+      if(event?.type === "buyback") return "Buyback detected";
+      if(event?.type === "marketing") return "Marketing send detected";
+      if(event?.type === "burn") return "BabyT burn detected";
+
+      return "Wallet action detected";
     }
 
-    function isPumpClaimTx(tx){
-      if(!isPumpFunTx(tx)) return false;
+    function getEventText(event){
+      if(event?.text) return event.text;
 
-      const text = txText(tx);
+      if(event?.type === "claim") return "SOL received by the project wallet.";
+      if(event?.type === "buyback") return "SOL spent to buy BabyT.";
+      if(event?.type === "marketing") return "SOL sent to the marketing wallet.";
+      if(event?.type === "burn") return "BabyT burned or sent to the incinerator.";
 
-      const claimTerms = [
-        "collectcreatorfee",
-        "collect_creator",
-        "collect creator",
-        "claimcreator",
-        "claim creator",
-        "creator fee",
-        "creatorfee",
-        "instruction: collect",
-        "instruction: claim",
-        "instruction: withdraw",
-        "withdraw",
-        "rewards",
-        "reward"
-      ];
-
-      return claimTerms.some(term => text.includes(term));
+      return "Public transaction detected.";
     }
 
-    function getSolDelta(tx, address){
-      const keys = getAccountKeys(tx);
-      const index = keys.indexOf(address);
+    function getEventAmountText(event){
+      if(event?.amount_text) return event.amount_text;
+      if(event?.amountText) return event.amountText;
 
-      if(index < 0) return 0;
+      const usd = Number(event?.amount_usd || event?.amountUsd || 0);
+      const tokens = Number(event?.amount_tokens || event?.amountTokens || 0);
 
-      const pre = Number(tx?.meta?.preBalances?.[index] || 0);
-      const post = Number(tx?.meta?.postBalances?.[index] || 0);
+      if(usd > 0) return formatUsd(usd);
+      if(tokens > 0) return formatTokenAmount(tokens) + " BabyT";
 
-      return (post - pre) / 1000000000;
+      return "";
     }
 
-    function collectInstructions(tx){
-      const outer = tx?.transaction?.message?.instructions || [];
-      const innerGroups = tx?.meta?.innerInstructions || [];
-      const inner = innerGroups.flatMap(group => group.instructions || []);
-
-      return [...outer, ...inner];
+    function getEventUrl(event){
+      if(event?.url) return event.url;
+      if(event?.signature) return "https://solscan.io/tx/" + event.signature;
+      return "";
     }
 
-    function getSystemTransferSol(instruction, source, destination){
-      const parsed = instruction?.parsed;
-      if(!parsed || parsed.type !== "transfer") return 0;
+    function normalizeEvent(event){
+      const signature = event?.signature || "";
+      const blockTime = Number(event?.block_time || event?.blockTime || 0);
+      const isOut = Number(event?.is_out || event?.isOut || 0) === 1;
 
-      const info = parsed.info || {};
-      if(info.source !== source || info.destination !== destination) return 0;
-
-      const lamports = Number(info.lamports || 0);
-      if(lamports > 0) return lamports / 1000000000;
-
-      const sol = Number(info.amount || 0);
-      return sol > 0 ? sol : 0;
-    }
-
-    async function getTokenDecimals(){
-      try{
-        const result = await rpc("getParsedAccountInfo", [
-          CONTRACT_ADDRESS,
-          {encoding:"jsonParsed", commitment:"confirmed"}
-        ]);
-
-        const decimals = Number(result?.value?.data?.parsed?.info?.decimals);
-
-        if(!Number.isNaN(decimals)) return decimals;
-      }catch(error){}
-
-      return 6;
-    }
-
-    function readInstructionTokenAmount(info, decimals){
-      if(info.tokenAmount?.uiAmountString){
-        const value = Number(info.tokenAmount.uiAmountString);
-        return Number.isNaN(value) ? 0 : value;
-      }
-
-      if(info.tokenAmount?.uiAmount != null){
-        const value = Number(info.tokenAmount.uiAmount);
-        return Number.isNaN(value) ? 0 : value;
-      }
-
-      const raw = Number(info.amount || 0);
-      if(Number.isNaN(raw)) return 0;
-
-      return raw / Math.pow(10, decimals);
-    }
-
-    function getBurnedByInstruction(tx, decimals){
-      let burned = 0;
-
-      collectInstructions(tx).forEach(instruction => {
-        const parsed = instruction?.parsed;
-        if(!parsed) return;
-
-        const type = parsed.type;
-        const info = parsed.info || {};
-
-        if((type === "burn" || type === "burnChecked") && info.mint === CONTRACT_ADDRESS){
-          burned += readInstructionTokenAmount(info, decimals);
-        }
-
-        if(
-          (type === "transferChecked" || type === "transfer") &&
-          info.mint === CONTRACT_ADDRESS &&
-          info.destination === INCINERATOR_ADDRESS
-        ){
-          burned += readInstructionTokenAmount(info, decimals);
-        }
-      });
-
-      return burned;
-    }
-
-    function getTokenDeltaForOwner(tx, owner, mint){
-      const pre = tx?.meta?.preTokenBalances || [];
-      const post = tx?.meta?.postTokenBalances || [];
-
-      function amount(item){
-        const ui = item?.uiTokenAmount;
-        if(ui?.uiAmountString != null) return Number(ui.uiAmountString) || 0;
-        if(ui?.uiAmount != null) return Number(ui.uiAmount) || 0;
-        return 0;
-      }
-
-      function matches(item){
-        return item?.mint === mint && item?.owner === owner;
-      }
-
-      const before = pre.filter(matches).reduce((sum, item) => sum + amount(item), 0);
-      const after = post.filter(matches).reduce((sum, item) => sum + amount(item), 0);
-
-      return after - before;
-    }
-
-    function getIncineratorBurnAmount(tx){
-      const incineratorDelta = getTokenDeltaForOwner(tx, INCINERATOR_ADDRESS, CONTRACT_ADDRESS);
-      return incineratorDelta > 0 ? incineratorDelta : 0;
-    }
-
-    function makeDate(blockTime){
-      return blockTime
-        ? new Date(blockTime * 1000).toLocaleString()
-        : "recent";
-    }
-
-    function makeEvent({
-      type,
-      title,
-      text,
-      signature,
-      blockTime,
-      amountText,
-      isOut = false
-    }){
       return {
-        type,
-        title,
-        text,
+        type:event?.type || "event",
+        title:getEventTitle(event),
+        text:getEventText(event),
         signature,
-        blockTime:blockTime || 0,
-        date:makeDate(blockTime),
-        amountText,
+        date:formatDateFromBlockTime(blockTime),
+        blockTime,
+        amountText:getEventAmountText(event),
         isOut,
-        url:signature ? `https://solscan.io/tx/${signature}` : ""
+        url:getEventUrl(event)
       };
     }
 
-    function renderLatestTxs(items){
+    function renderLatestTxs(events){
+      const items = events.map(normalizeEvent)
+        .sort((a,b) => b.blockTime - a.blockTime)
+        .slice(0, 8);
+
       if(!items.length){
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
               <strong>No tracked wallet action found yet.</strong><br>
-              Claims, buybacks, marketing sends and burns will appear here after the next scan.
+              Claims, buybacks, marketing sends and burns will appear here after the database refresh.
             </div>
           </div>
         `;
         return;
       }
 
-      const sorted = [...items].sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
-
-      latestTxList.innerHTML = sorted.slice(0, 8).map(item => {
+      latestTxList.innerHTML = items.map(item => {
         const signatureText = item.signature
           ? `${item.signature.slice(0, 10)}...${item.signature.slice(-8)}`
           : "";
@@ -1767,17 +1380,23 @@
       }).join("");
     }
 
-    function renderProof(){
-      const manual = ACTION_HISTORY.map(item => ({
-        date:item.date || "",
+    function renderProof(events){
+      const apiEntries = events.map(normalizeEvent);
+
+      const manualEntries = ACTION_HISTORY.map(item => ({
         title:item.title || "Update",
         text:item.text || "",
+        date:item.date || "",
+        blockTime:0,
+        amountText:"",
+        isOut:false,
         url:item.url || "",
-        blockTime:0
+        signature:""
       }));
 
-      const entries = [...autoActionEntries, ...manual]
-        .sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
+      const entries = [...apiEntries, ...manualEntries]
+        .sort((a,b) => b.blockTime - a.blockTime)
+        .slice(0, 12);
 
       if(!entries.length){
         historyList.innerHTML = `
@@ -1789,7 +1408,7 @@
         return;
       }
 
-      historyList.innerHTML = entries.slice(0, 12).map(item => `
+      historyList.innerHTML = entries.map(item => `
         <div class="proof-item">
           <strong>${item.date ? item.date + " — " : ""}${item.title}</strong><br>
           ${item.text}
@@ -1798,165 +1417,88 @@
       `).join("");
     }
 
-    async function scanTrackedActivity(){
+    function renderBoard(data){
+      const market = data?.market || {};
+      const totals = data?.totals || {};
+      const shares = data?.shares || {};
+      const events = Array.isArray(data?.events) ? data.events : [];
+
+      marketCapValue.textContent = formatUsd(market.marketCapUsd);
+      liquidityValue.textContent = formatUsd(market.liquidityUsd);
+      volumeValue.textContent = formatUsd(market.volume24hUsd);
+
+      claimedUsdValueTop.textContent = formatUsd(totals.claimedUsd);
+      claimedUsdValue.textContent = formatUsd(totals.claimedUsd);
+      buybackUsdValue.textContent = formatUsd(totals.buybacksUsd);
+      marketingSentUsdValue.textContent = formatUsd(totals.marketingUsd);
+
+      if(Number(totals.burnedUsd || 0) > 0){
+        burnedUsdValue.textContent = formatUsd(totals.burnedUsd);
+      }else if(Number(totals.burnedTokens || 0) > 0){
+        burnedUsdValue.textContent = formatTokenAmount(totals.burnedTokens) + " BabyT";
+      }else{
+        burnedUsdValue.textContent = "$0.00";
+      }
+
+      buybackShare.textContent = Number(shares.buybackShare || 85) + "%";
+      marketingShare.textContent = Number(shares.marketingShare || 15) + "%";
+
+      renderLatestTxs(events);
+      renderProof(events);
+
+      lastUpdated.textContent = formatUpdatedTime(data);
+    }
+
+    async function loadBoard(){
       try{
-        const decimals = await getTokenDecimals();
-
-        const projectWallets = unique([
-          ...CLAIM_WALLETS,
-          ...BUYBACK_WALLETS
-        ]);
-
-        const scanAddresses = unique([
-          ...projectWallets,
-          MARKETING_WALLET,
-          CONTRACT_ADDRESS
-        ]);
-
-        const sigMap = new Map();
-
-        for(const address of scanAddresses){
-          const limit = address === CONTRACT_ADDRESS ? BURN_SCAN_LIMIT : TX_SCAN_LIMIT;
-          const sigInfo = await fetchSignatures(address, limit);
-
-          sigInfo.forEach(item => {
-            if(item?.signature && !sigMap.has(item.signature)){
-              sigMap.set(item.signature, item);
-            }
-          });
-        }
-
-        const signatures = [...sigMap.keys()];
-        const txs = await fetchParsedTransactions(signatures);
-
-        let totalClaimedSol = 0;
-        let totalBuybackSol = 0;
-        let totalMarketingSentSol = 0;
-        let totalBurnedTokens = 0;
-
-        const eventMap = new Map();
-
-        function addEvent(event){
-          const key = `${event.type}-${event.signature || event.title}-${event.amountText || ""}`;
-          if(!eventMap.has(key)){
-            eventMap.set(key, event);
-          }
-        }
-
-        txs.forEach(tx => {
-          const signature = txSignature(tx);
-          const blockTime = tx.blockTime || 0;
-
-          projectWallets.forEach(wallet => {
-            const solDelta = getSolDelta(tx, wallet);
-            const tokenDelta = getTokenDeltaForOwner(tx, wallet, CONTRACT_ADDRESS);
-
-            if(solDelta > 0.000001 && isPumpClaimTx(tx)){
-              totalClaimedSol += solDelta;
-
-              addEvent(makeEvent({
-                type:"claim",
-                title:"Pump.fun claim detected",
-                text:`${formatSolUsd(solDelta, "$0.00")} received from a Pump.fun creator reward claim.`,
-                signature,
-                blockTime,
-                amountText:"+" + formatSolUsd(solDelta, "$0.00"),
-                isOut:false
-              }));
-            }
-
-            if(tokenDelta > 0.000001 && solDelta < -0.000001 && txTouchesMint(tx)){
-              const spentSol = Math.abs(solDelta);
-              totalBuybackSol += spentSol;
-
-              addEvent(makeEvent({
-                type:"buyback",
-                title:"Buyback detected",
-                text:`${formatSolUsd(spentSol, "$0.00")} spent to buy ${formatTokenAmount(tokenDelta)} BabyT.`,
-                signature,
-                blockTime,
-                amountText:"-" + formatSolUsd(spentSol, "$0.00"),
-                isOut:true
-              }));
-            }
-
-            collectInstructions(tx).forEach(instruction => {
-              const sentToMarketing = getSystemTransferSol(instruction, wallet, MARKETING_WALLET);
-
-              if(sentToMarketing > 0.000001){
-                totalMarketingSentSol += sentToMarketing;
-
-                addEvent(makeEvent({
-                  type:"marketing",
-                  title:"Marketing send detected",
-                  text:`${formatSolUsd(sentToMarketing, "$0.00")} sent to the marketing wallet.`,
-                  signature,
-                  blockTime,
-                  amountText:"-" + formatSolUsd(sentToMarketing, "$0.00"),
-                  isOut:true
-                }));
-              }
-            });
-          });
-
-          const burnedByInstruction = getBurnedByInstruction(tx, decimals);
-          const burnedByIncinerator = getIncineratorBurnAmount(tx);
-          const burnedThisTx = burnedByInstruction + burnedByIncinerator;
-
-          if(burnedThisTx > 0.000001){
-            totalBurnedTokens += burnedThisTx;
-
-            addEvent(makeEvent({
-              type:"burn",
-              title:"BabyT burn detected",
-              text:`${formatBurnUsd(burnedThisTx)} worth of BabyT burned or sent to the incinerator.`,
-              signature,
-              blockTime,
-              amountText:formatBurnUsd(burnedThisTx),
-              isOut:true
-            }));
-          }
+        const res = await fetch(API_URL + "?t=" + Date.now(), {
+          method:"GET",
+          cache:"no-store"
         });
 
-        claimedUsdValueTop.textContent = formatSolUsd(totalClaimedSol, "$0.00");
-        claimedUsdValue.textContent = formatSolUsd(totalClaimedSol, "$0.00");
-        buybackUsdValue.textContent = formatSolUsd(totalBuybackSol, "$0.00");
-        marketingSentUsdValue.textContent = formatSolUsd(totalMarketingSentSol, "$0.00");
-        burnedUsdValue.textContent = formatBurnUsd(totalBurnedTokens);
+        if(!res.ok){
+          throw new Error("API request failed");
+        }
 
-        autoActionEntries = [...eventMap.values()]
-          .sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
+        const data = await res.json();
 
-        renderLatestTxs(autoActionEntries);
-        renderProof();
+        if(!data || data.ok === false){
+          throw new Error(data?.error || "API returned an error");
+        }
+
+        renderBoard(data);
       }catch(error){
-        console.warn("Tracked scan failed:", error);
+        console.warn("Board API failed:", error);
 
-        claimedUsdValueTop.textContent = "$--";
-        claimedUsdValue.textContent = "$--";
-        buybackUsdValue.textContent = "$--";
-        marketingSentUsdValue.textContent = "$--";
-        burnedUsdValue.textContent = "$--";
+        lastUpdated.textContent = "Live board unavailable. Please try again soon.";
+
+        historyList.innerHTML = `
+          <div class="proof-item">
+            <strong>API connection failed.</strong><br>
+            The Cloudflare board API is currently unavailable or still updating.
+          </div>
+        `;
 
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
-              <strong>Wallet scan failed.</strong><br>
-              Public RPC may be rate limited. The board will try again on the next update.
+              <strong>No API data loaded.</strong><br>
+              Reload the page or check the Worker API.
             </div>
           </div>
         `;
-
-        renderProof();
       }
     }
 
-    async function preparePrices(){
+    async function copyText(value, button, defaultText){
       try{
-        currentSolPriceUsd = await fetchSolPrice();
+        await navigator.clipboard.writeText(value);
+        button.textContent = "Copied!";
       }catch(error){
-        currentSolPriceUsd = null;
+        button.textContent = "Copy failed";
       }
+
+      setTimeout(() => button.textContent = defaultText, 1400);
     }
 
     function syncLinks(){
@@ -1971,52 +1513,26 @@
       el("dexLink").href = dexUrl;
       el("geckoLink").href = geckoUrl;
 
-      claimWalletSolscanLink.href = PRIMARY_CLAIM_WALLET
-        ? `https://solscan.io/account/${PRIMARY_CLAIM_WALLET}`
+      claimWalletSolscanLink.href = CLAIM_WALLET
+        ? `https://solscan.io/account/${CLAIM_WALLET}`
         : `https://solscan.io/token/${CONTRACT_ADDRESS}`;
 
       marketingWalletSolscanLink.href = `https://solscan.io/account/${MARKETING_WALLET}`;
     }
 
-    async function copyText(value, button, defaultText){
-      try{
-        await navigator.clipboard.writeText(value);
-        button.textContent = "Copied!";
-      }catch(error){
-        button.textContent = "Copy failed";
-      }
-
-      setTimeout(() => button.textContent = defaultText, 1400);
-    }
-
     function initStaticText(){
       caValue.textContent = CONTRACT_ADDRESS;
-
-      buybackShare.textContent = BUYBACK_SHARE + "%";
-      marketingShare.textContent = MARKETING_SHARE + "%";
-
       copyCaBtn.addEventListener("click", () => copyText(CONTRACT_ADDRESS, copyCaBtn, "Copy CA"));
 
       syncLinks();
-      renderProof();
+      renderProof([]);
       renderLatestTxs([]);
     }
 
-    async function refreshAll(){
-      await Promise.allSettled([
-        fetchMarketData(),
-        preparePrices()
-      ]);
-
-      await scanTrackedActivity();
-
-      setUpdatedText();
-    }
-
     initStaticText();
-    refreshAll();
+    loadBoard();
 
-    setInterval(refreshAll, REFRESH_MS);
+    setInterval(loadBoard, REFRESH_MS);
   </script>
 </body>
 </html>
