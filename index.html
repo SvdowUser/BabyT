@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>BabyT | Live Board</title>
-  <meta name="description" content="BabyT public board for live market data, claims, marketing sends and burn proof.">
+  <meta name="description" content="BabyT public board for live market data, claims, buybacks, marketing sends and burn proof.">
   <meta name="theme-color" content="#120705">
   <link rel="canonical" href="https://babytungtung.com/">
 
@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Live Board">
-  <meta property="og:description" content="Live BabyT board for market data, claims, marketing sends and burn proof.">
+  <meta property="og:description" content="Live BabyT board for market data, claims, buybacks, marketing sends and burn proof.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="./ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_29_06.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Live Board">
-  <meta name="twitter:description" content="Live BabyT board for market data, claims, marketing sends and burn proof.">
+  <meta name="twitter:description" content="Live BabyT board for market data, claims, buybacks, marketing sends and burn proof.">
   <meta name="twitter:image" content="./ChatGPT%20Image%2010.%20Apr.%202026%2C%2001_29_06.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -519,7 +519,7 @@
 
     .wallet-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:10px;
       margin-top:12px;
     }
@@ -639,6 +639,7 @@
       color:var(--green);
       font-weight:900;
       white-space:nowrap;
+      text-align:right;
     }
 
     .tx-delta.out{
@@ -697,6 +698,10 @@
       }
 
       .stats{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .wallet-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
     }
@@ -858,7 +863,7 @@
       }
 
       .wallet-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
+        grid-template-columns:repeat(2,minmax(0,1fr));
         gap:8px;
       }
 
@@ -904,6 +909,10 @@
         grid-template-columns:1fr;
       }
 
+      .tx-delta{
+        text-align:left;
+      }
+
       .social{
         width:60px;
         height:60px;
@@ -912,16 +921,12 @@
     }
 
     @media(max-width:430px){
-      .stat-note{
-        display:none;
-      }
-
       .card{
         min-height:88px;
       }
 
       .wallet-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
       .wallet-metric{
@@ -943,6 +948,7 @@
 <body
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
   data-claim-wallets="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
+  data-buyback-wallets="8Jf6SeCHUj1pAFQvgwGfk1NjSzR3nvCgPpHEKhWYgX2g"
   data-marketing-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
   data-buyback-share="85"
   data-marketing-share="15"
@@ -1042,7 +1048,7 @@
       <div class="section-inner">
         <h2 class="section-title">Wallets</h2>
         <p class="section-sub">
-          Detected claims, marketing sends and burns. Values are shown in USD.
+          Detected Pump.fun claims, buybacks, marketing sends and burns. Values are shown in USD.
         </p>
 
         <div class="panel">
@@ -1062,6 +1068,11 @@
             <div class="wallet-metric">
               <span>Claimed</span>
               <strong id="claimedUsdValue">$--</strong>
+            </div>
+
+            <div class="wallet-metric">
+              <span>Buybacks</span>
+              <strong id="buybackUsdValue">$--</strong>
             </div>
 
             <div class="wallet-metric">
@@ -1096,7 +1107,7 @@
       <div class="section-inner">
         <h2 class="section-title">Proof Log</h2>
         <p class="section-sub">
-          Receipts for marketing sends and burns.
+          Receipts for claims, buybacks, marketing sends and burns.
         </p>
 
         <div class="proof-grid">
@@ -1179,10 +1190,17 @@
 
   <script>
     const CONTRACT_ADDRESS = document.body.dataset.contractAddress;
+
     const CLAIM_WALLETS = (document.body.dataset.claimWallets || document.body.dataset.feeWallet || "")
       .split(",")
       .map(item => item.trim())
       .filter(Boolean);
+
+    const BUYBACK_WALLETS = (document.body.dataset.buybackWallets || document.body.dataset.claimWallets || "")
+      .split(",")
+      .map(item => item.trim())
+      .filter(Boolean);
+
     const PRIMARY_CLAIM_WALLET = CLAIM_WALLETS[0] || "";
     const MARKETING_WALLET = document.body.dataset.marketingWallet;
 
@@ -1194,6 +1212,17 @@
     const REFRESH_MS = 300000;
 
     const INCINERATOR_ADDRESS = "1nc1nerator11111111111111111111111111111111";
+    const PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
+
+    const DEX_PROGRAM_IDS = new Set([
+      "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
+      "JUP4Fb2cqiRUcaTHdrPC8h2gNsA2ETXiPDD33WcGuJB",
+      "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+      "CPMMoo8L3F4NKrJnTQ5BBtDqpBbZcCVXxjrcC2hFtmj",
+      "CAMMCzo5YL8w4VFF8KVHrK22GGUQk3b7Ec5TF4qnk1r",
+      "whirLbMiicVdio4qvUfM5KAg6CtGdDG7Khw2fYdV4",
+      "LBUZKhRxPF3XUpBCjpqQ3kWw1v3Gp3FH3ttdGfW8r3"
+    ]);
 
     const RPC_ENDPOINTS = [
       "https://api.mainnet-beta.solana.com",
@@ -1226,6 +1255,7 @@
     const claimedUsdValueTop = el("claimedUsdValueTop");
 
     const claimedUsdValue = el("claimedUsdValue");
+    const buybackUsdValue = el("buybackUsdValue");
     const marketingSentUsdValue = el("marketingSentUsdValue");
     const burnedUsdValue = el("burnedUsdValue");
 
@@ -1239,10 +1269,13 @@
     const claimWalletSolscanLink = el("claimWalletSolscanLink");
     const marketingWalletSolscanLink = el("marketingWalletSolscanLink");
 
-    let walletProofEntries = [];
-    let burnProofEntries = [];
+    let autoActionEntries = [];
     let currentSolPriceUsd = null;
     let currentTokenPriceUsd = null;
+
+    function unique(items){
+      return [...new Set(items.filter(Boolean))];
+    }
 
     function withTimeout(promise, ms = 10000){
       return Promise.race([
@@ -1301,6 +1334,15 @@
       }).format(value);
     }
 
+    function formatTokenAmount(value){
+      if(value == null || Number.isNaN(value)) return "--";
+      if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B";
+      if(value >= 1000000) return (value / 1000000).toFixed(2) + "M";
+      if(value >= 1000) return (value / 1000).toFixed(1) + "K";
+      if(value > 0 && value < 1) return value.toFixed(4);
+      return Math.round(value).toLocaleString("en-US");
+    }
+
     function solToUsd(solAmount){
       if(solAmount == null || Number.isNaN(solAmount) || currentSolPriceUsd == null) return null;
       return solAmount * currentSolPriceUsd;
@@ -1311,7 +1353,7 @@
       return tokenAmount * currentTokenPriceUsd;
     }
 
-    function formatActionUsd(solAmount, emptyText){
+    function formatSolUsd(solAmount, emptyText = "$0.00"){
       if(solAmount == null || Number.isNaN(solAmount)) return "$--";
       if(Math.abs(solAmount) < 0.000001) return emptyText;
 
@@ -1324,14 +1366,7 @@
       if(tokenAmount <= 0) return "No burn found";
 
       const usdValue = tokenToUsd(tokenAmount);
-      return usdValue == null ? "$--" : formatUsdLong(usdValue);
-    }
-
-    function formatDeltaUsd(solDelta){
-      const usdValue = solToUsd(solDelta);
-      if(usdValue == null) return "$--";
-
-      return (solDelta > 0 ? "+" : "") + formatUsdLong(usdValue);
+      return usdValue == null ? formatTokenAmount(tokenAmount) + " BabyT" : formatUsdLong(usdValue);
     }
 
     function setUpdatedText(){
@@ -1468,6 +1503,81 @@
       }) || [];
     }
 
+    function getLogs(tx){
+      return tx?.meta?.logMessages || [];
+    }
+
+    function txSignature(tx){
+      return tx?.transaction?.signatures?.[0] || "";
+    }
+
+    function getInstructionProgramId(instruction){
+      if(typeof instruction?.programId === "string") return instruction.programId;
+      if(instruction?.programId?.toString) return instruction.programId.toString();
+      return "";
+    }
+
+    function txHasProgram(tx, programId){
+      const keys = getAccountKeys(tx);
+      const logs = getLogs(tx);
+
+      return keys.includes(programId) || logs.some(log => log.includes(programId));
+    }
+
+    function txTouchesMint(tx){
+      const keys = getAccountKeys(tx);
+      const pre = tx?.meta?.preTokenBalances || [];
+      const post = tx?.meta?.postTokenBalances || [];
+
+      return (
+        keys.includes(CONTRACT_ADDRESS) ||
+        pre.some(item => item.mint === CONTRACT_ADDRESS) ||
+        post.some(item => item.mint === CONTRACT_ADDRESS)
+      );
+    }
+
+    function hasLogText(tx, searchText){
+      const needle = searchText.toLowerCase();
+      return getLogs(tx).some(log => String(log).toLowerCase().includes(needle));
+    }
+
+    function isPumpFunTx(tx){
+      return txHasProgram(tx, PUMP_FUN_PROGRAM);
+    }
+
+    function isPumpClaimTx(tx){
+      if(!isPumpFunTx(tx)) return false;
+
+      const logs = getLogs(tx).map(log => String(log).toLowerCase());
+      const hasClaimLikeInstruction = logs.some(log => {
+        return (
+          log.includes("instruction: sell") ||
+          log.includes("instruction: claim") ||
+          log.includes("claimcreator") ||
+          log.includes("claim creator") ||
+          log.includes("creator fee") ||
+          log.includes("withdraw")
+        );
+      });
+
+      return hasClaimLikeInstruction && txTouchesMint(tx);
+    }
+
+    function isPumpBuyTx(tx){
+      return isPumpFunTx(tx) && hasLogText(tx, "Instruction: Buy") && txTouchesMint(tx);
+    }
+
+    function isDexSwapTx(tx){
+      const keys = getAccountKeys(tx);
+      const hasKnownDex = keys.some(key => DEX_PROGRAM_IDS.has(key));
+      const hasSwapLog = getLogs(tx).some(log => {
+        const lower = String(log).toLowerCase();
+        return lower.includes("swap") || lower.includes("route") || lower.includes("exactin") || lower.includes("exactout");
+      });
+
+      return hasKnownDex || hasSwapLog || isPumpBuyTx(tx);
+    }
+
     function getSolDelta(tx, address){
       const keys = getAccountKeys(tx);
       const index = keys.indexOf(address);
@@ -1517,7 +1627,7 @@
       return 6;
     }
 
-    function readTokenAmount(info, decimals){
+    function readInstructionTokenAmount(info, decimals){
       if(info.tokenAmount?.uiAmountString){
         const value = Number(info.tokenAmount.uiAmountString);
         return Number.isNaN(value) ? 0 : value;
@@ -1534,26 +1644,76 @@
       return raw / Math.pow(10, decimals);
     }
 
-    function readBurnAmount(instruction, decimals){
-      const parsed = instruction?.parsed;
-      if(!parsed) return 0;
+    function getBurnedByInstruction(tx, decimals){
+      let burned = 0;
 
-      const type = parsed.type;
-      const info = parsed.info || {};
+      collectInstructions(tx).forEach(instruction => {
+        const parsed = instruction?.parsed;
+        if(!parsed) return;
 
-      if((type === "burn" || type === "burnChecked") && info.mint === CONTRACT_ADDRESS){
-        return readTokenAmount(info, decimals);
+        const type = parsed.type;
+        const info = parsed.info || {};
+
+        if((type === "burn" || type === "burnChecked") && info.mint === CONTRACT_ADDRESS){
+          burned += readInstructionTokenAmount(info, decimals);
+        }
+      });
+
+      return burned;
+    }
+
+    function getTokenDeltaForOwner(tx, owner, mint){
+      const pre = tx?.meta?.preTokenBalances || [];
+      const post = tx?.meta?.postTokenBalances || [];
+
+      function amount(item){
+        const ui = item?.uiTokenAmount;
+        if(ui?.uiAmountString != null) return Number(ui.uiAmountString) || 0;
+        if(ui?.uiAmount != null) return Number(ui.uiAmount) || 0;
+        return 0;
       }
 
-      if(
-        (type === "transferChecked" || type === "transfer") &&
-        info.mint === CONTRACT_ADDRESS &&
-        info.destination === INCINERATOR_ADDRESS
-      ){
-        return readTokenAmount(info, decimals);
+      function matches(item){
+        return item?.mint === mint && item?.owner === owner;
       }
 
-      return 0;
+      const before = pre.filter(matches).reduce((sum, item) => sum + amount(item), 0);
+      const after = post.filter(matches).reduce((sum, item) => sum + amount(item), 0);
+
+      return after - before;
+    }
+
+    function getIncineratorBurnAmount(tx){
+      const incineratorDelta = getTokenDeltaForOwner(tx, INCINERATOR_ADDRESS, CONTRACT_ADDRESS);
+      return incineratorDelta > 0 ? incineratorDelta : 0;
+    }
+
+    function makeDate(blockTime){
+      return blockTime
+        ? new Date(blockTime * 1000).toLocaleString()
+        : "recent";
+    }
+
+    function makeEvent({
+      type,
+      title,
+      text,
+      signature,
+      blockTime,
+      amountText,
+      isOut = false
+    }){
+      return {
+        type,
+        title,
+        text,
+        signature,
+        blockTime:blockTime || 0,
+        date:makeDate(blockTime),
+        amountText,
+        isOut,
+        url:signature ? `https://solscan.io/tx/${signature}` : ""
+      };
     }
 
     function renderLatestTxs(items){
@@ -1561,8 +1721,8 @@
         latestTxList.innerHTML = `
           <div class="tx-item">
             <div>
-              <strong>No recent wallet transaction found.</strong><br>
-              New public wallet activity will appear here after the next scan.
+              <strong>No tracked wallet action found yet.</strong><br>
+              Claims, buybacks, marketing sends and burns will appear here after the next scan.
             </div>
           </div>
         `;
@@ -1571,21 +1731,21 @@
 
       const sorted = [...items].sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
 
-      latestTxList.innerHTML = sorted.slice(0, 5).map(item => {
-        const isOut = item.delta < 0;
-        const date = item.blockTime
-          ? new Date(item.blockTime * 1000).toLocaleString()
-          : "recent";
+      latestTxList.innerHTML = sorted.slice(0, 6).map(item => {
+        const signatureText = item.signature
+          ? `${item.signature.slice(0, 10)}...${item.signature.slice(-8)}`
+          : "";
 
         return `
           <div class="tx-item">
             <div>
-              <strong>${date}</strong><br>
-              <span>${item.signature.slice(0, 10)}...${item.signature.slice(-8)}</span><br>
-              <a href="https://solscan.io/tx/${item.signature}" target="_blank" rel="noreferrer">View TX</a>
+              <strong>${item.title}</strong><br>
+              <span>${item.date}</span>
+              ${signatureText ? `<br><span>${signatureText}</span>` : ""}
+              ${item.url ? `<br><a href="${item.url}" target="_blank" rel="noreferrer">View TX</a>` : ""}
             </div>
-            <div class="tx-delta ${isOut ? "out" : ""}">
-              ${formatDeltaUsd(item.delta)}
+            <div class="tx-delta ${item.isOut ? "out" : ""}">
+              ${item.amountText || ""}
             </div>
           </div>
         `;
@@ -1597,22 +1757,24 @@
         date:item.date || "",
         title:item.title || "Update",
         text:item.text || "",
-        url:item.url || ""
+        url:item.url || "",
+        blockTime:0
       }));
 
-      const entries = [...burnProofEntries, ...walletProofEntries, ...manual];
+      const entries = [...autoActionEntries, ...manual]
+        .sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
 
       if(!entries.length){
         historyList.innerHTML = `
           <div class="proof-item">
             <strong>No receipts posted yet.</strong><br>
-            When a burn or marketing send happens, the transaction link appears here.
+            When a claim, buyback, burn or marketing send happens, the transaction link appears here.
           </div>
         `;
         return;
       }
 
-      historyList.innerHTML = entries.map(item => `
+      historyList.innerHTML = entries.slice(0, 10).map(item => `
         <div class="proof-item">
           <strong>${item.date ? item.date + " — " : ""}${item.title}</strong><br>
           ${item.text}
@@ -1621,60 +1783,146 @@
       `).join("");
     }
 
-    async function scanClaimWalletActivity(){
+    async function scanTrackedActivity(){
       try{
-        let totalClaimed = 0;
-        let totalMarketingSent = 0;
-        const latestTxs = [];
+        const decimals = await getTokenDecimals();
 
-        for(const wallet of CLAIM_WALLETS){
-          const sigInfo = await fetchSignatures(wallet, TX_SCAN_LIMIT);
-          const signatures = sigInfo.map(item => item.signature);
-          const txs = await fetchParsedTransactions(signatures);
+        const projectWallets = unique([
+          ...CLAIM_WALLETS,
+          ...BUYBACK_WALLETS
+        ]);
 
-          txs.forEach(tx => {
-            const signature = tx?.transaction?.signatures?.[0];
-            const delta = getSolDelta(tx, wallet);
+        const scanAddresses = unique([
+          ...projectWallets,
+          MARKETING_WALLET,
+          CONTRACT_ADDRESS
+        ]);
 
-            if(Math.abs(delta) > 0.000001 && signature){
-              latestTxs.push({
+        const sigMap = new Map();
+
+        for(const address of scanAddresses){
+          const limit = address === CONTRACT_ADDRESS ? BURN_SCAN_LIMIT : TX_SCAN_LIMIT;
+          const sigInfo = await fetchSignatures(address, limit);
+
+          sigInfo.forEach(item => {
+            if(item?.signature && !sigMap.has(item.signature)){
+              sigMap.set(item.signature, item);
+            }
+          });
+        }
+
+        const signatures = [...sigMap.keys()];
+        const txs = await fetchParsedTransactions(signatures);
+
+        let totalClaimedSol = 0;
+        let totalBuybackSol = 0;
+        let totalMarketingSentSol = 0;
+        let totalBurnedTokens = 0;
+
+        const eventMap = new Map();
+
+        function addEvent(event){
+          const key = `${event.type}-${event.signature || event.title}-${event.amountText || ""}`;
+          if(!eventMap.has(key)){
+            eventMap.set(key, event);
+          }
+        }
+
+        txs.forEach(tx => {
+          const signature = txSignature(tx);
+          const blockTime = tx.blockTime || 0;
+
+          const pumpClaim = isPumpClaimTx(tx);
+          const dexSwap = isDexSwapTx(tx);
+
+          projectWallets.forEach(wallet => {
+            const solDelta = getSolDelta(tx, wallet);
+            const tokenDelta = getTokenDeltaForOwner(tx, wallet, CONTRACT_ADDRESS);
+
+            if(solDelta > 0.000001 && pumpClaim){
+              totalClaimedSol += solDelta;
+
+              addEvent(makeEvent({
+                type:"claim",
+                title:"Pump.fun claim detected",
+                text:`${formatSolUsd(solDelta, "$0.00")} received from a Pump.fun claim or sell action.`,
                 signature,
-                delta,
-                blockTime:tx.blockTime || null
-              });
+                blockTime,
+                amountText:"+" + formatSolUsd(solDelta, "$0.00"),
+                isOut:false
+              }));
             }
 
-            if(delta > 0.000001){
-              totalClaimed += delta;
+            if(tokenDelta > 0.000001 && solDelta < -0.000001 && dexSwap){
+              const spentSol = Math.abs(solDelta);
+              totalBuybackSol += spentSol;
+
+              addEvent(makeEvent({
+                type:"buyback",
+                title:"Buyback detected",
+                text:`${formatSolUsd(spentSol, "$0.00")} spent to buy ${formatTokenAmount(tokenDelta)} BabyT.`,
+                signature,
+                blockTime,
+                amountText:"-" + formatSolUsd(spentSol, "$0.00"),
+                isOut:true
+              }));
             }
 
             collectInstructions(tx).forEach(instruction => {
-              totalMarketingSent += getSystemTransferSol(instruction, wallet, MARKETING_WALLET);
+              const sentToMarketing = getSystemTransferSol(instruction, wallet, MARKETING_WALLET);
+
+              if(sentToMarketing > 0.000001){
+                totalMarketingSentSol += sentToMarketing;
+
+                addEvent(makeEvent({
+                  type:"marketing",
+                  title:"Marketing send detected",
+                  text:`${formatSolUsd(sentToMarketing, "$0.00")} sent to the marketing wallet.`,
+                  signature,
+                  blockTime,
+                  amountText:"-" + formatSolUsd(sentToMarketing, "$0.00"),
+                  isOut:true
+                }));
+              }
             });
           });
-        }
 
-        claimedUsdValueTop.textContent = formatActionUsd(totalClaimed, "$0.00");
-        claimedUsdValue.textContent = formatActionUsd(totalClaimed, "$0.00");
-        marketingSentUsdValue.textContent = formatActionUsd(totalMarketingSent, "$0.00");
+          const burnedByInstruction = getBurnedByInstruction(tx, decimals);
+          const burnedByIncinerator = getIncineratorBurnAmount(tx);
+          const burnedThisTx = burnedByInstruction + burnedByIncinerator;
 
-        walletProofEntries = [];
+          if(burnedThisTx > 0.000001){
+            totalBurnedTokens += burnedThisTx;
 
-        if(totalMarketingSent > 0){
-          walletProofEntries.push({
-            date:"Auto scan",
-            title:"Marketing send detected",
-            text:`${formatActionUsd(totalMarketingSent, "$0.00")} sent to the marketing wallet.`,
-            url:`https://solscan.io/account/${MARKETING_WALLET}`
-          });
-        }
+            addEvent(makeEvent({
+              type:"burn",
+              title:"BabyT burn detected",
+              text:`${formatBurnUsd(burnedThisTx)} worth of BabyT burned or sent to the incinerator.`,
+              signature,
+              blockTime,
+              amountText:formatBurnUsd(burnedThisTx),
+              isOut:true
+            }));
+          }
+        });
 
-        renderLatestTxs(latestTxs);
+        claimedUsdValueTop.textContent = formatSolUsd(totalClaimedSol, "$0.00");
+        claimedUsdValue.textContent = formatSolUsd(totalClaimedSol, "$0.00");
+        buybackUsdValue.textContent = formatSolUsd(totalBuybackSol, "$0.00");
+        marketingSentUsdValue.textContent = formatSolUsd(totalMarketingSentSol, "$0.00");
+        burnedUsdValue.textContent = formatBurnUsd(totalBurnedTokens);
+
+        autoActionEntries = [...eventMap.values()]
+          .sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
+
+        renderLatestTxs(autoActionEntries);
         renderProof();
       }catch(error){
         claimedUsdValueTop.textContent = "$--";
         claimedUsdValue.textContent = "$--";
+        buybackUsdValue.textContent = "$--";
         marketingSentUsdValue.textContent = "$--";
+        burnedUsdValue.textContent = "$--";
 
         latestTxList.innerHTML = `
           <div class="tx-item">
@@ -1686,39 +1934,6 @@
         `;
 
         renderProof();
-      }
-    }
-
-    async function scanTokenBurns(){
-      try{
-        const decimals = await getTokenDecimals();
-        const sigInfo = await fetchSignatures(CONTRACT_ADDRESS, BURN_SCAN_LIMIT);
-        const signatures = sigInfo.map(item => item.signature);
-        const txs = await fetchParsedTransactions(signatures);
-
-        let burned = 0;
-
-        txs.forEach(tx => {
-          collectInstructions(tx).forEach(instruction => {
-            burned += readBurnAmount(instruction, decimals);
-          });
-        });
-
-        burnedUsdValue.textContent = formatBurnUsd(burned);
-        burnProofEntries = [];
-
-        if(burned > 0){
-          burnProofEntries.push({
-            date:"Auto scan",
-            title:"BabyT burn detected",
-            text:`${formatBurnUsd(burned)} worth of BabyT burned in scanned token transactions.`,
-            url:`https://solscan.io/token/${CONTRACT_ADDRESS}`
-          });
-        }
-
-        renderProof();
-      }catch(error){
-        burnedUsdValue.textContent = "$--";
       }
     }
 
@@ -1779,10 +1994,7 @@
         preparePrices()
       ]);
 
-      await Promise.allSettled([
-        scanClaimWalletActivity(),
-        scanTokenBurns()
-      ]);
+      await scanTrackedActivity();
 
       setUpdatedText();
     }
