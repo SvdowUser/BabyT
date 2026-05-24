@@ -952,8 +952,8 @@
   data-marketing-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
   data-buyback-share="85"
   data-marketing-share="15"
-  data-tx-scan-limit="900"
-  data-burn-scan-limit="1200"
+  data-tx-scan-limit="400"
+  data-burn-scan-limit="500"
 >
   <header class="nav">
     <div class="nav-inner">
@@ -1048,7 +1048,7 @@
       <div class="section-inner">
         <h2 class="section-title">Wallets</h2>
         <p class="section-sub">
-          Detected Pump.fun claims, buybacks, marketing sends and burns. Values are shown in USD.
+          Detected Pump.fun claims, buybacks, marketing sends and burns. Values are shown in USD or SOL if price data is unavailable.
         </p>
 
         <div class="panel">
@@ -1207,22 +1207,12 @@
     const BUYBACK_SHARE = Number(document.body.dataset.buybackShare || 85);
     const MARKETING_SHARE = Number(document.body.dataset.marketingShare || 15);
 
-    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 900);
-    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 1200);
+    const TX_SCAN_LIMIT = Number(document.body.dataset.txScanLimit || 400);
+    const BURN_SCAN_LIMIT = Number(document.body.dataset.burnScanLimit || 500);
     const REFRESH_MS = 300000;
 
     const INCINERATOR_ADDRESS = "1nc1nerator11111111111111111111111111111111";
     const PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
-
-    const DEX_PROGRAM_IDS = new Set([
-      "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
-      "JUP4Fb2cqiRUcaTHdrPC8h2gNsA2ETXiPDD33WcGuJB",
-      "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
-      "CPMMoo8L3F4NKrJnTQ5BBtDqpBbZcCVXxjrcC2hFtmj",
-      "CAMMCzo5YL8w4VFF8KVHrK22GGUQk3b7Ec5TF4qnk1r",
-      "whirLbMiicVdio4qvUfM5KAg6CtGdDG7Khw2fYdV4",
-      "LBUZKhRxPF3XUpBCjpqQ3kWw1v3Gp3FH3ttdGfW8r3"
-    ]);
 
     const RPC_ENDPOINTS = [
       "https://api.mainnet-beta.solana.com",
@@ -1277,7 +1267,11 @@
       return [...new Set(items.filter(Boolean))];
     }
 
-    function withTimeout(promise, ms = 10000){
+    function wait(ms){
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function withTimeout(promise, ms = 12000){
       return Promise.race([
         promise,
         new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), ms))
@@ -1334,6 +1328,12 @@
       }).format(value);
     }
 
+    function formatSol(value){
+      if(value == null || Number.isNaN(value)) return "-- SOL";
+      if(Math.abs(value) >= 1) return value.toFixed(3) + " SOL";
+      return value.toFixed(5) + " SOL";
+    }
+
     function formatTokenAmount(value){
       if(value == null || Number.isNaN(value)) return "--";
       if(value >= 1000000000) return (value / 1000000000).toFixed(2) + "B";
@@ -1358,7 +1358,7 @@
       if(Math.abs(solAmount) < 0.000001) return emptyText;
 
       const usdValue = solToUsd(solAmount);
-      return usdValue == null ? "$--" : formatUsdLong(usdValue);
+      return usdValue == null ? formatSol(solAmount) : formatUsdLong(usdValue);
     }
 
     function formatBurnUsd(tokenAmount){
@@ -1413,11 +1413,6 @@
     async function fetchSolPrice(){
       const sources = [
         async () => {
-          const res = await withTimeout(fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"));
-          const data = await res.json();
-          return Number(data?.price || 0);
-        },
-        async () => {
           const res = await withTimeout(fetch("https://api.coinbase.com/v2/exchange-rates?currency=SOL"));
           const data = await res.json();
           return Number(data?.data?.rates?.USD || 0);
@@ -1426,6 +1421,11 @@
           const res = await withTimeout(fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd"));
           const data = await res.json();
           return Number(data?.solana?.usd || 0);
+        },
+        async () => {
+          const res = await withTimeout(fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"));
+          const data = await res.json();
+          return Number(data?.price || 0);
         }
       ];
 
@@ -1470,25 +1470,37 @@
       return all.slice(0, maxLimit);
     }
 
+    async function fetchOneParsedTransaction(signature){
+      return await rpc("getTransaction", [
+        signature,
+        {
+          commitment:"confirmed",
+          encoding:"jsonParsed",
+          maxSupportedTransactionVersion:0
+        }
+      ]);
+    }
+
     async function fetchParsedTransactions(signatures){
       const output = [];
+      const cleanSignatures = unique(signatures);
 
-      for(let i = 0; i < signatures.length; i += 20){
-        const chunk = signatures.slice(i, i + 20);
+      for(let i = 0; i < cleanSignatures.length; i += 6){
+        const chunk = cleanSignatures.slice(i, i + 6);
 
-        try{
-          const txs = await rpc("getParsedTransactions", [
-            chunk,
-            {
-              commitment:"confirmed",
-              maxSupportedTransactionVersion:0
-            }
-          ]);
+        const results = await Promise.allSettled(
+          chunk.map(signature => fetchOneParsedTransaction(signature))
+        );
 
-          if(Array.isArray(txs)){
-            output.push(...txs.filter(Boolean));
+        results.forEach((result, index) => {
+          if(result.status === "fulfilled" && result.value){
+            output.push(result.value);
+          }else{
+            console.warn("Transaction read failed:", chunk[index], result.reason);
           }
-        }catch(error){}
+        });
+
+        await wait(140);
       }
 
       return output;
@@ -1511,19 +1523,6 @@
       return tx?.transaction?.signatures?.[0] || "";
     }
 
-    function getInstructionProgramId(instruction){
-      if(typeof instruction?.programId === "string") return instruction.programId;
-      if(instruction?.programId?.toString) return instruction.programId.toString();
-      return "";
-    }
-
-    function txHasProgram(tx, programId){
-      const keys = getAccountKeys(tx);
-      const logs = getLogs(tx);
-
-      return keys.includes(programId) || logs.some(log => log.includes(programId));
-    }
-
     function txTouchesMint(tx){
       const keys = getAccountKeys(tx);
       const pre = tx?.meta?.preTokenBalances || [];
@@ -1536,46 +1535,54 @@
       );
     }
 
-    function hasLogText(tx, searchText){
-      const needle = searchText.toLowerCase();
-      return getLogs(tx).some(log => String(log).toLowerCase().includes(needle));
+    function txText(tx){
+      const instructions = collectInstructions(tx).map(instruction => {
+        const parsed = instruction?.parsed;
+        const info = parsed?.info || {};
+        return [
+          instruction?.program || "",
+          instruction?.programId?.toString?.() || "",
+          parsed?.type || "",
+          info.instruction || "",
+          info.mint || "",
+          info.source || "",
+          info.destination || ""
+        ].join(" ");
+      });
+
+      return [
+        ...getLogs(tx),
+        ...getAccountKeys(tx),
+        ...instructions
+      ].join(" ").toLowerCase();
     }
 
     function isPumpFunTx(tx){
-      return txHasProgram(tx, PUMP_FUN_PROGRAM);
+      return txText(tx).includes(PUMP_FUN_PROGRAM.toLowerCase());
     }
 
     function isPumpClaimTx(tx){
       if(!isPumpFunTx(tx)) return false;
 
-      const logs = getLogs(tx).map(log => String(log).toLowerCase());
-      const hasClaimLikeInstruction = logs.some(log => {
-        return (
-          log.includes("instruction: sell") ||
-          log.includes("instruction: claim") ||
-          log.includes("claimcreator") ||
-          log.includes("claim creator") ||
-          log.includes("creator fee") ||
-          log.includes("withdraw")
-        );
-      });
+      const text = txText(tx);
 
-      return hasClaimLikeInstruction && txTouchesMint(tx);
-    }
+      const claimTerms = [
+        "collectcreatorfee",
+        "collect_creator",
+        "collect creator",
+        "claimcreator",
+        "claim creator",
+        "creator fee",
+        "creatorfee",
+        "instruction: collect",
+        "instruction: claim",
+        "instruction: withdraw",
+        "withdraw",
+        "rewards",
+        "reward"
+      ];
 
-    function isPumpBuyTx(tx){
-      return isPumpFunTx(tx) && hasLogText(tx, "Instruction: Buy") && txTouchesMint(tx);
-    }
-
-    function isDexSwapTx(tx){
-      const keys = getAccountKeys(tx);
-      const hasKnownDex = keys.some(key => DEX_PROGRAM_IDS.has(key));
-      const hasSwapLog = getLogs(tx).some(log => {
-        const lower = String(log).toLowerCase();
-        return lower.includes("swap") || lower.includes("route") || lower.includes("exactin") || lower.includes("exactout");
-      });
-
-      return hasKnownDex || hasSwapLog || isPumpBuyTx(tx);
+      return claimTerms.some(term => text.includes(term));
     }
 
     function getSolDelta(tx, address){
@@ -1657,6 +1664,14 @@
         if((type === "burn" || type === "burnChecked") && info.mint === CONTRACT_ADDRESS){
           burned += readInstructionTokenAmount(info, decimals);
         }
+
+        if(
+          (type === "transferChecked" || type === "transfer") &&
+          info.mint === CONTRACT_ADDRESS &&
+          info.destination === INCINERATOR_ADDRESS
+        ){
+          burned += readInstructionTokenAmount(info, decimals);
+        }
       });
 
       return burned;
@@ -1731,7 +1746,7 @@
 
       const sorted = [...items].sort((a,b) => (b.blockTime || 0) - (a.blockTime || 0));
 
-      latestTxList.innerHTML = sorted.slice(0, 6).map(item => {
+      latestTxList.innerHTML = sorted.slice(0, 8).map(item => {
         const signatureText = item.signature
           ? `${item.signature.slice(0, 10)}...${item.signature.slice(-8)}`
           : "";
@@ -1774,7 +1789,7 @@
         return;
       }
 
-      historyList.innerHTML = entries.slice(0, 10).map(item => `
+      historyList.innerHTML = entries.slice(0, 12).map(item => `
         <div class="proof-item">
           <strong>${item.date ? item.date + " — " : ""}${item.title}</strong><br>
           ${item.text}
@@ -1832,20 +1847,17 @@
           const signature = txSignature(tx);
           const blockTime = tx.blockTime || 0;
 
-          const pumpClaim = isPumpClaimTx(tx);
-          const dexSwap = isDexSwapTx(tx);
-
           projectWallets.forEach(wallet => {
             const solDelta = getSolDelta(tx, wallet);
             const tokenDelta = getTokenDeltaForOwner(tx, wallet, CONTRACT_ADDRESS);
 
-            if(solDelta > 0.000001 && pumpClaim){
+            if(solDelta > 0.000001 && isPumpClaimTx(tx)){
               totalClaimedSol += solDelta;
 
               addEvent(makeEvent({
                 type:"claim",
                 title:"Pump.fun claim detected",
-                text:`${formatSolUsd(solDelta, "$0.00")} received from a Pump.fun claim or sell action.`,
+                text:`${formatSolUsd(solDelta, "$0.00")} received from a Pump.fun creator reward claim.`,
                 signature,
                 blockTime,
                 amountText:"+" + formatSolUsd(solDelta, "$0.00"),
@@ -1853,7 +1865,7 @@
               }));
             }
 
-            if(tokenDelta > 0.000001 && solDelta < -0.000001 && dexSwap){
+            if(tokenDelta > 0.000001 && solDelta < -0.000001 && txTouchesMint(tx)){
               const spentSol = Math.abs(solDelta);
               totalBuybackSol += spentSol;
 
@@ -1918,6 +1930,8 @@
         renderLatestTxs(autoActionEntries);
         renderProof();
       }catch(error){
+        console.warn("Tracked scan failed:", error);
+
         claimedUsdValueTop.textContent = "$--";
         claimedUsdValue.textContent = "$--";
         buybackUsdValue.textContent = "$--";
@@ -2005,4 +2019,4 @@
     setInterval(refreshAll, REFRESH_MS);
   </script>
 </body>
-</html> 
+</html>
