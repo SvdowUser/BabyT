@@ -27,33 +27,33 @@
   <style id="playful-howto-fix">
     body #howToBuyTitle,
     body .buy-guide-section .section-title{
-      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Marker Felt",cursive!important;
+      font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif!important;
       font-weight:800!important;
-      letter-spacing:.035em!important;
+      letter-spacing:-.025em!important;
       line-height:.96!important;
       text-transform:uppercase!important;
-      transform:rotate(-1.1deg)!important;
+      transform:none!important;
       text-shadow:none!important;
     }
 
     body .buy-step-body h3{
-      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Marker Felt",cursive!important;
+      font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif!important;
       font-weight:800!important;
-      letter-spacing:.01em!important;
-      line-height:1.08!important;
+      letter-spacing:-.035em!important;
+      line-height:1.06!important;
       text-transform:uppercase!important;
-      transform:rotate(-.55deg)!important;
+      transform:none!important;
       transform-origin:left center!important;
     }
 
     body .buy-step-card:nth-of-type(even) .buy-step-body h3{
-      transform:rotate(.35deg)!important;
+      transform:none!important;
     }
 
     body .buy-step-body p{
-      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Trebuchet MS",system-ui,sans-serif!important;
+      font-family:"Trebuchet MS",Arial,system-ui,sans-serif!important;
       font-weight:500!important;
-      letter-spacing:.002em!important;
+      letter-spacing:-.006em!important;
     }
 
     body .window-dots{
@@ -64,20 +64,51 @@
       border-width:2px!important;
     }
 
+    body .about-story > .mini-label{
+      display:none!important;
+    }
+
+    body .about-side-character{
+      display:none;
+    }
+
     @media(min-width:901px){
       body #howToBuyTitle,
       body .buy-guide-section .section-title{
-        font-size:clamp(62px,6.4vw,96px)!important;
+        font-size:clamp(62px,6vw,88px)!important;
         margin-bottom:46px!important;
       }
 
       body .buy-step-body h3{
-        font-size:clamp(21px,1.8vw,28px)!important;
+        font-size:clamp(20px,1.72vw,26px)!important;
       }
 
       body .buy-step-body p{
         font-size:clamp(14px,1.15vw,16px)!important;
         line-height:1.48!important;
+      }
+
+      body .story-section .shell{
+        display:grid!important;
+        grid-template-columns:minmax(220px,.72fr) minmax(560px,1.28fr)!important;
+        align-items:center!important;
+        gap:clamp(34px,5vw,76px)!important;
+      }
+
+      body .about-side-character{
+        display:block!important;
+        width:min(330px,25vw)!important;
+        max-height:560px!important;
+        justify-self:center!important;
+        align-self:center!important;
+        object-fit:contain!important;
+        filter:drop-shadow(8px 10px 0 rgba(0,0,0,.16))!important;
+      }
+
+      body .about-story{
+        justify-self:start!important;
+        width:100%!important;
+        max-width:780px!important;
       }
     }
 
@@ -85,14 +116,14 @@
       body #howToBuyTitle,
       body .buy-guide-section .section-title{
         font-size:44px!important;
-        letter-spacing:.025em!important;
-        transform:rotate(-1.4deg)!important;
+        letter-spacing:-.025em!important;
+        transform:none!important;
       }
 
       body .buy-step-body h3{
-        font-size:23px!important;
+        font-size:22px!important;
         line-height:1.08!important;
-        letter-spacing:.005em!important;
+        letter-spacing:-.035em!important;
       }
 
       body .buy-step-body p{
@@ -238,8 +269,8 @@
 
     <section class="section-pad story-section" id="about" aria-labelledby="aboutTitle">
       <div class="shell">
+        <img class="about-side-character" src="./assets/characters/character-01-blue-sneakers.png" alt="" aria-hidden="true">
         <article class="black-panel about-story">
-          <span class="mini-label">Story</span>
           <h2 id="aboutTitle">About BabyT</h2>
           <p>BabyT is the baby version of Tung Tung Sahur — the wooden TikTok brainrot character that became instantly recognizable through short, chaotic meme videos.</p>
           <p>During the baby brainrot wave, BabyT turned that same wooden mascot energy into a smaller, cuter version built for profile pictures, edits and community memes. Now the BabyT meme lives on Solana: create your PFP, follow the official socials and keep the brainrot moving.</p>
