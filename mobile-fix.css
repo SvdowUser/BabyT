@@ -465,3 +465,28 @@ body #downloadBtn{
     font-weight:850!important;
   }
 }
+
+/* Desktop final How-to-buy spacing: bigger center mascot, title closer to the black panel. */
+@media(min-width:901px){
+  body .buy-guide-section .section-title,
+  body #howToBuyTitle{
+    margin-bottom:24px!important;
+  }
+
+  body .buy-floating-character{
+    width:min(450px,34vw)!important;
+    max-height:640px!important;
+  }
+}
+
+@media(min-width:901px) and (max-width:1080px){
+  body .buy-guide-section .section-title,
+  body #howToBuyTitle{
+    margin-bottom:22px!important;
+  }
+
+  body .buy-floating-character{
+    width:min(360px,34vw)!important;
+    max-height:600px!important;
+  }
+}
