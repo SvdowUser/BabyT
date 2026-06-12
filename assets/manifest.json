@@ -7,12 +7,7 @@
       "folder": "backgrounds",
       "z": 10,
       "options": [
-        { "id": "bg-01-valhalla-gold", "name": "Valhalla Gold", "file": "bg-01-valhalla-gold.png", "weight": 18, "fallback": "background", "colors": ["#f2b84b", "#9b4f22", "#111318"] },
-        { "id": "bg-02-solana-blue", "name": "Solana Blue", "file": "bg-02-solana-blue.png", "weight": 18, "fallback": "background", "colors": ["#8cecff", "#6257f6", "#090b16"] },
-        { "id": "bg-03-meme-green", "name": "Meme Green", "file": "bg-03-meme-green.png", "weight": 16, "fallback": "background", "colors": ["#a8ff7a", "#1d7f4e", "#07120d"] },
-        { "id": "bg-04-pink-chaos", "name": "Pink Chaos", "file": "bg-04-pink-chaos.png", "weight": 12, "fallback": "background", "colors": ["#ff5b8a", "#f2b84b", "#160a10"] },
-        { "id": "bg-05-night-mode", "name": "Night Mode", "file": "bg-05-night-mode.png", "weight": 20, "fallback": "background", "colors": ["#28283a", "#111116", "#060609"] },
-        { "id": "bg-06-clean-white", "name": "Clean White", "file": "bg-06-clean-white.png", "weight": 16, "fallback": "background", "colors": ["#ffffff", "#e7edf5", "#d6dde8"] }
+        { "id": "none", "name": "No Background", "file": null, "weight": 1 }
       ]
     },
     {
@@ -21,10 +16,10 @@
       "folder": "characters",
       "z": 20,
       "options": [
-        { "id": "character-01-blue-sneakers", "name": "Blue Sneakers", "file": "character-01-blue-sneakers.png", "weight": 30, "fallback": "character", "shoe": "#248bff" },
-        { "id": "character-02-red-sneakers", "name": "Red Sneakers", "file": "character-02-red-sneakers.png", "weight": 24, "fallback": "character", "shoe": "#ff3e3e" },
-        { "id": "character-03-black-sneakers", "name": "Black Sneakers", "file": "character-03-black-sneakers.png", "weight": 28, "fallback": "character", "shoe": "#111111" },
-        { "id": "character-04-gold-sneakers", "name": "Gold Sneakers", "file": "character-04-gold-sneakers.png", "weight": 18, "fallback": "character", "shoe": "#d89b27" }
+        { "id": "character-02-red-sneakers", "name": "Red Sneakers", "file": "character-02-red-sneakers.jpg.b64", "weight": 25 },
+        { "id": "character-03-black-sneakers", "name": "Black Sneakers", "file": "character-03-black-sneakers.jpg.b64", "weight": 25 },
+        { "id": "character-04-gold-sneakers", "name": "Gold Sneakers", "file": "character-04-gold-sneakers.jpg.b64", "weight": 20 },
+        { "id": "character-01-blue-sneakers", "name": "Blue Sneakers", "file": "character-01-blue-sneakers.jpg.b64", "weight": 30 }
       ]
     },
     {
@@ -33,11 +28,7 @@
       "folder": "shirts",
       "z": 30,
       "options": [
-        { "id": "none", "name": "None", "file": null, "weight": 28 },
-        { "id": "shirt-01-babyt-logo", "name": "BabyT Logo", "file": "shirt-01-babyt-logo.png", "weight": 32, "fallback": "shirt", "color": "#f7f2e8", "logo": "BT" },
-        { "id": "shirt-02-solana-tee", "name": "Solana Tee", "file": "shirt-02-solana-tee.png", "weight": 20, "fallback": "shirt", "color": "#191633", "logo": "SOL" },
-        { "id": "shirt-03-valhalla-tee", "name": "Valhalla Tee", "file": "shirt-03-valhalla-tee.png", "weight": 12, "fallback": "shirt", "color": "#7a4218", "logo": "V" },
-        { "id": "shirt-04-pink-hoodie", "name": "Pink Hoodie", "file": "shirt-04-pink-hoodie.png", "weight": 8, "fallback": "shirt", "color": "#ff5b8a", "logo": "BT" }
+        { "id": "none", "name": "None", "file": null, "weight": 1 }
       ]
     },
     {
@@ -46,11 +37,7 @@
       "folder": "glasses",
       "z": 40,
       "options": [
-        { "id": "none", "name": "None", "file": null, "weight": 30 },
-        { "id": "glasses-01-black-shades", "name": "Black Shades", "file": "glasses-01-black-shades.png", "weight": 24, "fallback": "glasses", "style": "black" },
-        { "id": "glasses-02-rainbow-visor", "name": "Rainbow Visor", "file": "glasses-02-rainbow-visor.png", "weight": 18, "fallback": "glasses", "style": "visor" },
-        { "id": "glasses-03-blue-round", "name": "Blue Round", "file": "glasses-03-blue-round.png", "weight": 16, "fallback": "glasses", "style": "round" },
-        { "id": "glasses-04-laser-mask", "name": "Laser Mask", "file": "glasses-04-laser-mask.png", "weight": 12, "fallback": "glasses", "style": "laser" }
+        { "id": "none", "name": "None", "file": null, "weight": 1 }
       ]
     },
     {
@@ -59,11 +46,7 @@
       "folder": "hand-accessories",
       "z": 50,
       "options": [
-        { "id": "none", "name": "None", "file": null, "weight": 32 },
-        { "id": "hand-01-baseball-bat", "name": "Baseball Bat", "file": "hand-01-baseball-bat.png", "weight": 24, "fallback": "hand", "style": "bat" },
-        { "id": "hand-02-solana-coin", "name": "Solana Coin", "file": "hand-02-solana-coin.png", "weight": 18, "fallback": "hand", "style": "coin" },
-        { "id": "hand-03-babyt-flag", "name": "BabyT Flag", "file": "hand-03-babyt-flag.png", "weight": 16, "fallback": "hand", "style": "flag" },
-        { "id": "hand-04-diamond-hands", "name": "Diamond Hands", "file": "hand-04-diamond-hands.png", "weight": 10, "fallback": "hand", "style": "diamond" }
+        { "id": "none", "name": "None", "file": null, "weight": 1 }
       ]
     },
     {
@@ -72,12 +55,10 @@
       "folder": "hats",
       "z": 60,
       "options": [
-        { "id": "none", "name": "None", "file": null, "weight": 28 },
-        { "id": "hat-01-viking", "name": "Viking Helmet", "file": "hat-01-viking.png", "weight": 24, "fallback": "hat", "style": "viking" },
-        { "id": "hat-02-solana-cap", "name": "Solana Cap", "file": "hat-02-solana-cap.png", "weight": 20, "fallback": "hat", "style": "cap" },
-        { "id": "hat-03-golden-crown", "name": "Golden Crown", "file": "hat-03-golden-crown.png", "weight": 12, "fallback": "hat", "style": "crown" },
-        { "id": "hat-04-halo", "name": "Halo", "file": "hat-04-halo.png", "weight": 10, "fallback": "hat", "style": "halo" },
-        { "id": "hat-05-beanie", "name": "Beanie", "file": "hat-05-beanie.png", "weight": 6, "fallback": "hat", "style": "beanie" }
+        { "id": "none", "name": "None", "file": null, "weight": 30 },
+        { "id": "hat-01-black-cap", "name": "Black Cap", "file": "hat-01-black-cap.png.b64", "weight": 24 },
+        { "id": "hat-02-blue-cap", "name": "Blue Cap", "file": "hat-02-blue-cap.png.b64", "weight": 24 },
+        { "id": "hat-03-red-cap", "name": "Red Cap", "file": "hat-03-red-cap.png.b64", "weight": 24 }
       ]
     }
   ]
