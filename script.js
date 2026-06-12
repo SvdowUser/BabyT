@@ -62,6 +62,19 @@ function setText(id, text) {
   if (element) element.textContent = text;
 }
 
+function updateAboutCopy() {
+  const about = document.querySelector('.about-story');
+  if (!about) return;
+
+  const paragraphs = about.querySelectorAll('p');
+  if (paragraphs[0]) {
+    paragraphs[0].textContent = 'BabyT is the baby version of Tung Tung Sahur, the wooden TikTok brainrot character that went viral on TikTok.';
+  }
+  if (paragraphs[1]) {
+    paragraphs[1].textContent = 'During the brainrot era, BabyT went viral as one of the first baby brainrots.';
+  }
+}
+
 function setupDesktopNav() {
   const nav = document.querySelector('.top-actions');
   if (!nav || nav.dataset.ready === 'true') return;
@@ -420,6 +433,7 @@ async function init() {
   setupDesktopNav();
   setHeaderScrollState();
   setLinks();
+  updateAboutCopy();
   initHeroMedia();
 
   const manifest = await loadManifest();
