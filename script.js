@@ -9,8 +9,8 @@ const SIZE = 1024;
 const imageCache = new Map();
 
 const CONTRACT_ADDRESS = document.body.dataset.contractAddress || '4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump';
-const TIKTOK_URL = document.body.dataset.tiktokUrl || 'https://vm.tiktok.com/ZGd9NYLDm/';
-const TIKTOK_HANDLE = document.body.dataset.tiktokHandle || 'BabyT TikTok video';
+const TIKTOK_URL = document.body.dataset.tiktokUrl || 'https://www.tiktok.com/@mythosmondays';
+const TIKTOK_HANDLE = document.body.dataset.tiktokHandle || '@mythosmondays';
 
 const links = {
   x: document.body.dataset.xUrl || 'https://x.com/babytung_sol',
@@ -62,6 +62,18 @@ function setText(id, text) {
   if (element) element.textContent = text;
 }
 
+function setHeaderScrollState() {
+  const update = () => {
+    const atTop = window.scrollY < 18;
+    document.body.classList.toggle('at-hero-top', atTop);
+    document.body.classList.toggle('header-scrolled', !atTop);
+  };
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+}
+
 function setLinks() {
   document.querySelectorAll('.buy-link').forEach(element => { element.href = links.pump; });
   setHref('xLink', links.x);
@@ -73,6 +85,13 @@ function setLinks() {
   setHref('openChartBtn', links.dex);
   setHref('dexHeroLink', links.dex);
   setHref('tiktokProfileCard', links.tiktok);
+  setHref('storyXLink', links.x);
+  setHref('storyTiktokLink', links.tiktok);
+  setHref('storyInstagramLink', links.instagram);
+  setHref('storyPumpLink', links.pump);
+  setHref('storyDexLink', links.dex);
+  setHref('storyJupiterLink', links.jupiter);
+  setHref('storyGeckoLink', links.gecko);
   setText('caValue', CONTRACT_ADDRESS);
 }
 
@@ -184,7 +203,7 @@ async function initHeroMedia() {
       source = await b64FileToDataUrl(candidate);
       if (!source) continue;
     } else {
-      source = `${candidate}?v=11`;
+      source = `${candidate}?v=12`;
     }
 
     const ok = await testImage(source);
@@ -369,6 +388,7 @@ async function copyText(value, button, label) {
 
 async function init() {
   preventMobileZoom();
+  setHeaderScrollState();
   setLinks();
   initHeroMedia();
   const manifest = await loadManifest();
@@ -384,7 +404,7 @@ async function init() {
   document.getElementById('resetBtn')?.addEventListener('click', reset);
   document.getElementById('downloadBtn')?.addEventListener('click', downloadPfp);
   document.getElementById('copyCaBtn')?.addEventListener('click', event => copyText(CONTRACT_ADDRESS, event.currentTarget, 'Copy'));
-  document.getElementById('copyCaBtn2')?.addEventListener('click', event => copyText(CONTRACT_ADDRESS, event.currentTarget, 'Copy contract'));
+  document.getElementById('copyCaBtn2')?.addEventListener('click', event => copyText(CONTRACT_ADDRESS, event.currentTarget, 'CA'));
 }
 
 init();
