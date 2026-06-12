@@ -380,3 +380,88 @@ body .buy-step-body p{
     font-weight:500!important;
   }
 }
+
+/* Studio readability polish: white buy button and cleaner, readable controls on desktop and mobile. */
+body .story-actions .buy-link,
+body .story-actions .comic-btn.white{
+  background:#fff!important;
+  background-color:#fff!important;
+  color:#000!important;
+  box-shadow:4px 5px 0 rgba(0,0,0,.18)!important;
+}
+
+body .story-actions .buy-link:hover,
+body .story-actions .comic-btn.white:hover{
+  background:#fff!important;
+  background-color:#fff!important;
+}
+
+body .studio-panel .trait-card span,
+body .studio-panel .trait-card strong,
+body .studio-panel .layer-tab,
+body .studio-panel .studio-actions .comic-btn,
+body #randomBtn,
+body #downloadBtn{
+  font-family:var(--body)!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  line-height:1.12!important;
+  font-stretch:normal!important;
+}
+
+body .studio-panel .trait-card span{
+  font-size:clamp(19px,1.7vw,24px)!important;
+  font-weight:900!important;
+}
+
+body .studio-panel .trait-card strong{
+  font-size:clamp(14px,1.35vw,18px)!important;
+  font-weight:750!important;
+}
+
+body .studio-panel .layer-tab{
+  min-height:40px!important;
+  padding:0 14px!important;
+  border-width:3px!important;
+  font-size:clamp(12px,1vw,14px)!important;
+  font-weight:850!important;
+}
+
+body .studio-panel .layer-tab.active{
+  font-weight:900!important;
+}
+
+body .studio-panel .studio-actions .comic-btn,
+body #randomBtn,
+body #downloadBtn{
+  min-height:50px!important;
+  border-width:3px!important;
+  font-size:clamp(14px,1.05vw,16px)!important;
+  font-weight:850!important;
+}
+
+@media(max-width:640px){
+  body .studio-panel .trait-card span{
+    font-size:26px!important;
+  }
+
+  body .studio-panel .trait-card strong{
+    font-size:17px!important;
+    font-weight:750!important;
+  }
+
+  body .studio-panel .layer-tab{
+    min-height:40px!important;
+    padding:0 13px!important;
+    font-size:14px!important;
+    font-weight:850!important;
+  }
+
+  body .studio-panel .studio-actions .comic-btn,
+  body #randomBtn,
+  body #downloadBtn{
+    min-height:54px!important;
+    font-size:17px!important;
+    font-weight:850!important;
+  }
+}
