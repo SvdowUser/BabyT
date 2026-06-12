@@ -3,1268 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>BabyT | Meme Coin PFP Generator</title>
-  <meta name="description" content="Create your BabyT profile picture with backgrounds, character layers, shirts, glasses, hats and hand accessories.">
-  <meta name="theme-color" content="#090816">
+  <title>BabyT | PFP Generator</title>
+  <meta name="description" content="Create a BabyT profile picture and follow the official BabyT links.">
+  <meta name="theme-color" content="#0b0b0e">
   <link rel="canonical" href="https://babytungtung.com/">
-
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | PFP Generator">
-  <meta property="og:description" content="Build your BabyT PFP. From TikTok brainrot to Valhalla.">
+  <meta property="og:description" content="Build your BabyT PFP. From TikTok to Solana.">
   <meta property="og:url" content="https://babytungtung.com/">
-  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=3">
-
+  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=4">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | PFP Generator">
-  <meta name="twitter:description" content="Build your BabyT PFP. From TikTok brainrot to Valhalla.">
-  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=3">
-
-  <style>
-    :root{
-      --bg:#080711;
-      --bg2:#120b21;
-      --panel:rgba(255,255,255,.075);
-      --panel-strong:rgba(255,255,255,.12);
-      --line:rgba(255,255,255,.16);
-      --line-strong:rgba(255,255,255,.28);
-      --text:#fff8e9;
-      --muted:#cfc4ea;
-      --gold:#ffd166;
-      --pink:#ff4fd8;
-      --cyan:#55f0ff;
-      --green:#93ff8f;
-      --dark:#0d0b18;
-      --shadow:0 28px 80px rgba(0,0,0,.38);
-      --radius:28px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 18% 12%, rgba(85,240,255,.24), transparent 28%),
-        radial-gradient(circle at 82% 4%, rgba(255,79,216,.22), transparent 26%),
-        radial-gradient(circle at 50% 82%, rgba(255,209,102,.17), transparent 38%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 48%, #06050d);
-      min-height:100vh;
-    }
-
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
-    img{display:block;max-width:100%}
-
-    .noise{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.13;
-      background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(180deg, black, transparent 78%);
-      z-index:0;
-    }
-
-    .page{position:relative;z-index:1}
-
-    .shell{
-      width:min(1180px, calc(100% - 34px));
-      margin:0 auto;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      backdrop-filter:blur(18px);
-      background:rgba(8,7,17,.72);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav-inner{
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-
-    .brand{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight:950;
-      letter-spacing:-.04em;
-      font-size:1.22rem;
-      white-space:nowrap;
-    }
-
-    .brand-mark{
-      width:36px;
-      height:36px;
-      display:grid;
-      place-items:center;
-      border-radius:14px;
-      background:linear-gradient(135deg, var(--gold), #ff9548 58%, var(--pink));
-      color:#251106;
-      box-shadow:0 12px 28px rgba(255,209,102,.2);
-      overflow:hidden;
-    }
-
-    .brand-mark img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      color:var(--muted);
-      font-size:.95rem;
-      font-weight:800;
-    }
-
-    .nav-links a:hover{color:var(--text)}
-
-    .nav-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:42px;
-      padding:0 15px;
-      border-radius:999px;
-      background:linear-gradient(135deg, var(--gold), #ff9d4d);
-      color:#251106;
-      font-weight:950;
-      box-shadow:0 14px 28px rgba(255,157,77,.18);
-    }
-
-    .hero{
-      padding:62px 0 32px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);
-      gap:34px;
-      align-items:center;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 13px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.07);
-      color:var(--gold);
-      font-size:.78rem;
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:17px;
-    }
-
-    h1{
-      margin:0;
-      font-size:clamp(3rem, 7vw, 6.9rem);
-      line-height:.88;
-      letter-spacing:-.08em;
-      font-weight:1000;
-      text-transform:uppercase;
-      text-wrap:balance;
-    }
-
-    .gradient-word{
-      color:transparent;
-      background:linear-gradient(100deg, var(--gold), var(--cyan) 45%, var(--pink));
-      -webkit-background-clip:text;
-      background-clip:text;
-    }
-
-    .hero-copy{
-      max-width:670px;
-      margin:22px 0 0;
-      color:var(--muted);
-      font-size:clamp(1rem, 1.5vw, 1.16rem);
-      line-height:1.62;
-      font-weight:650;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:24px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 20px;
-      border-radius:17px;
-      border:1px solid var(--line);
-      font-weight:950;
-      cursor:pointer;
-      color:var(--text);
-      background:rgba(255,255,255,.08);
-      transition:transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .btn:hover{transform:translateY(-2px);border-color:var(--line-strong)}
-    .btn.primary{background:linear-gradient(135deg, var(--gold), #ff9d4d);color:#241106;border-color:transparent}
-    .btn.pink{background:linear-gradient(135deg, var(--pink), #8758ff);border-color:transparent}
-    .btn.small{min-height:44px;padding:0 14px;border-radius:14px;font-size:.92rem}
-
-    .hero-card{
-      position:relative;
-      min-height:380px;
-      border-radius:var(--radius);
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 50% 20%, rgba(255,209,102,.24), transparent 42%),
-        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-      padding:26px;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background:conic-gradient(from 140deg, transparent, rgba(85,240,255,.18), transparent, rgba(255,79,216,.16), transparent);
-      animation:spin 13s linear infinite;
-    }
-
-    .hero-card-inner{
-      position:relative;
-      z-index:1;
-      text-align:center;
-      padding:26px;
-      border-radius:24px;
-      background:rgba(8,7,17,.66);
-      border:1px solid rgba(255,255,255,.16);
-      backdrop-filter:blur(10px);
-    }
-
-    .hero-card-title{
-      margin:0 0 8px;
-      font-size:clamp(1.55rem, 3vw, 2.45rem);
-      line-height:1;
-      letter-spacing:-.05em;
-      font-weight:1000;
-      text-transform:uppercase;
-    }
-
-    .hero-card p{
-      margin:0 auto;
-      max-width:350px;
-      color:var(--muted);
-      line-height:1.55;
-      font-weight:700;
-    }
-
-    .coin-orb{
-      width:138px;
-      height:138px;
-      margin:0 auto 20px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:
-        radial-gradient(circle at 35% 30%, #fff3be, transparent 26%),
-        linear-gradient(135deg, #ffd166, #ff9a3d 58%, #ff4fd8);
-      color:#241106;
-      font-size:4rem;
-      box-shadow:0 0 70px rgba(255,209,102,.32);
-      animation:float 4.5s ease-in-out infinite;
-    }
-
-    @keyframes spin{to{transform:rotate(360deg)}}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-    .contract-card{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns:auto minmax(0,1fr) auto;
-      gap:10px;
-      align-items:center;
-      padding:12px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:rgba(255,255,255,.07);
-      max-width:760px;
-    }
-
-    .contract-label{
-      color:var(--gold);
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      font-size:.74rem;
-    }
-
-    .contract-value{
-      min-width:0;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      padding:12px 14px;
-      border-radius:14px;
-      background:rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.12);
-      font-weight:850;
-      color:#fff;
-    }
-
-    section{padding:38px 0}
-
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:20px;
-      margin-bottom:18px;
-    }
-
-    .section-kicker{
-      color:var(--gold);
-      text-transform:uppercase;
-      font-size:.78rem;
-      letter-spacing:.1em;
-      font-weight:950;
-      margin-bottom:8px;
-    }
-
-    h2{
-      margin:0;
-      font-size:clamp(2rem, 4.4vw, 4rem);
-      line-height:.95;
-      letter-spacing:-.065em;
-      text-transform:uppercase;
-      font-weight:1000;
-    }
-
-    .section-text{
-      color:var(--muted);
-      line-height:1.6;
-      font-weight:650;
-      max-width:680px;
-      margin:10px 0 0;
-    }
-
-    .generator-card{
-      display:grid;
-      grid-template-columns:minmax(320px, 520px) minmax(0, 1fr);
-      gap:20px;
-      align-items:start;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:32px;
-      background:rgba(255,255,255,.07);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
-    }
-
-    .preview-wrap{
-      border-radius:26px;
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        linear-gradient(45deg, rgba(255,255,255,.08) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,.08) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(255,255,255,.08) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.08) 75%),
-        rgba(0,0,0,.18);
-      background-size:26px 26px;
-      background-position:0 0, 0 13px, 13px -13px, -13px 0;
-      overflow:hidden;
-      padding:12px;
-    }
-
-    canvas{
-      width:100%;
-      aspect-ratio:1/1;
-      height:auto;
-      border-radius:20px;
-      background:transparent;
-    }
-
-    .preview-footer{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:center;
-      margin-top:12px;
-      color:var(--muted);
-      font-size:.9rem;
-      font-weight:750;
-    }
-
-    .controls{
-      display:grid;
-      gap:12px;
-    }
-
-    .control-row{
-      display:grid;
-      grid-template-columns:44px minmax(0,1fr) 44px;
-      gap:10px;
-      align-items:center;
-      padding:12px;
-      border-radius:20px;
-      background:rgba(255,255,255,.065);
-      border:1px solid rgba(255,255,255,.13);
-    }
-
-    .arrow-btn{
-      width:44px;
-      height:44px;
-      border:0;
-      border-radius:14px;
-      background:rgba(255,255,255,.11);
-      color:var(--text);
-      cursor:pointer;
-      font-size:1.35rem;
-      font-weight:950;
-    }
-
-    .arrow-btn:hover{background:rgba(255,255,255,.18)}
-
-    .control-main{
-      min-width:0;
-    }
-
-    .control-title{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      color:var(--muted);
-      font-size:.74rem;
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.09em;
-      margin-bottom:5px;
-    }
-
-    .control-count{
-      color:rgba(255,255,255,.46);
-      font-size:.72rem;
-      white-space:nowrap;
-    }
-
-    .control-value{
-      min-width:0;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      color:#fff;
-      font-weight:950;
-      font-size:1.05rem;
-    }
-
-    .generator-actions{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:4px;
-    }
-
-    .asset-note{
-      margin-top:12px;
-      padding:13px 14px;
-      border-radius:18px;
-      background:rgba(255,209,102,.09);
-      border:1px solid rgba(255,209,102,.2);
-      color:#ffe7ae;
-      line-height:1.45;
-      font-size:.92rem;
-      font-weight:700;
-    }
-
-    .quick-links{
-      display:grid;
-      grid-template-columns:repeat(5, minmax(0,1fr));
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .quick-link{
-      min-height:74px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:12px;
-      border-radius:22px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.07);
-      color:#fff;
-      font-weight:950;
-      box-shadow:0 18px 42px rgba(0,0,0,.18);
-      transition:transform .18s ease, background .18s ease;
-    }
-
-    .quick-link:hover{transform:translateY(-3px);background:rgba(255,255,255,.11)}
-
-    .footer{
-      padding:34px 0 46px;
-      color:var(--muted);
-      text-align:center;
-      font-size:.93rem;
-      line-height:1.6;
-      font-weight:650;
-    }
-
-    .footer strong{color:var(--gold)}
-
-    @media (max-width:940px){
-      .hero-grid,.generator-card{grid-template-columns:1fr}
-      .quick-links{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .nav-links{display:none}
-    }
-
-    @media (max-width:620px){
-      .shell{width:min(100% - 24px, 1180px)}
-      .hero{padding-top:38px}
-      .hero-card{min-height:300px;padding:16px}
-      .contract-card{grid-template-columns:1fr}
-      .contract-label,.contract-value{text-align:center}
-      .generator-card{padding:12px;border-radius:24px}
-      .generator-actions{grid-template-columns:1fr}
-      .quick-links{grid-template-columns:1fr 1fr}
-      .nav-cta{display:none}
-    }
-  </style>
+  <meta name="twitter:description" content="Build your BabyT PFP. From TikTok to Solana.">
+  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=4">
+  <link rel="stylesheet" href="./style.css?v=4">
 </head>
-
 <body
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
   data-instagram-url="https://www.instagram.com/babytung_sol"
   data-x-url="https://x.com/babytcoinsol"
   data-tiktok-url="https://www.tiktok.com/@mythosmondays"
+  data-tiktok-handle="@mythosmondays"
   data-telegram-url="https://t.me/BabyTCommunity"
 >
-  <div class="noise" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="BabyT Home">
+        <span class="brand-mark"><img src="./favicon-32x32.png" alt=""></span>
+        <span>BabyT</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#generator">Generator</a>
+        <a href="#links">Links</a>
+        <a href="#chart">Chart</a>
+      </nav>
+      <a class="btn accent buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
+    </div>
+  </header>
 
-  <div class="page">
-    <header class="nav">
-      <div class="shell nav-inner">
-        <a class="brand" href="#top" aria-label="BabyT Home">
-          <span class="brand-mark"><img src="./favicon-32x32.png" alt="" onerror="this.remove(); this.parentElement.textContent='🪵';"></span>
-          <span>BabyT</span>
-        </a>
-
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="#generator">PFP Generator</a>
-          <a href="#contract">CA</a>
-          <a href="#socials">Socials</a>
-        </nav>
-
-        <a class="nav-cta buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
-      </div>
-    </header>
-
-    <main id="top">
-      <section class="hero">
-        <div class="shell hero-grid">
-          <div>
-            <div class="eyebrow">🪵 Official BabyT Meme Coin</div>
-            <h1>Build your <span class="gradient-word">BabyT</span> PFP.</h1>
-            <p class="hero-copy">
-              From TikTok brainrot to Valhalla. Pick a background, character, shirt, glasses, hand item and hat. Then download your profile picture.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn primary" href="#generator">Open Generator</a>
-              <a class="btn" href="#socials">Official Links</a>
-            </div>
-
-            <div class="contract-card" id="contract">
-              <div class="contract-label">CA</div>
-              <div class="contract-value" id="caValue">FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump</div>
-              <button class="btn small" id="copyCaBtn" type="button">Copy</button>
-            </div>
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">Solana meme coin</div>
+          <h1>BabyT PFP <span class="accent-word">Generator</span></h1>
+          <p class="lead">Build a clean BabyT profile picture from layered assets. Choose the background, full character, shirt, glasses, hand item and hat, then download the final PNG.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#generator">Create PFP</a>
+            <a class="btn ghost" href="#chart">View Chart</a>
+            <a class="btn ghost" href="#links">Official Links</a>
           </div>
-
-          <div class="hero-card" aria-label="BabyT meme coin card">
-            <div class="hero-card-inner">
-              <div class="coin-orb">🪵</div>
-              <h2 class="hero-card-title">Tiny wood.<br>Big meme.</h2>
-              <p>Official links only. Community first. Chaos always. NFA.</p>
-            </div>
+          <div class="ca-panel" id="contract">
+            <div class="ca-label">Contract</div>
+            <div class="ca-value" id="caValue">FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump</div>
+            <button class="btn" id="copyCaBtn" type="button">Copy</button>
           </div>
         </div>
-      </section>
 
-      <section id="generator">
-        <div class="shell">
-          <div class="section-head">
+        <div class="card studio" id="generator">
+          <div class="studio-top">
             <div>
-              <div class="section-kicker">BabyT Studio</div>
-              <h2>PFP Generator</h2>
-              <p class="section-text">
-                Use the arrows to switch each layer. Your PNG assets can be dropped into the folders listed below and the generator will use them automatically.
-              </p>
+              <h2 class="studio-title">PFP Studio</h2>
+              <p class="studio-sub">Use the arrows or generate a random combo.</p>
             </div>
+            <button class="btn ghost" id="resetBtn" type="button">Reset</button>
           </div>
-
-          <div class="generator-card">
+          <div class="studio-grid">
             <div>
-              <div class="preview-wrap">
-                <canvas id="pfpCanvas" width="1024" height="1024" aria-label="BabyT generated profile picture"></canvas>
-              </div>
-              <div class="preview-footer">
-                <span>Output: 1024 × 1024 PNG</span>
-                <span id="renderStatus">Ready</span>
+              <div class="preview">
+                <canvas id="pfpCanvas" width="1024" height="1024" aria-label="Generated BabyT profile picture"></canvas>
+                <div class="preview-meta"><span>1024×1024 PNG</span><span id="renderStatus">Ready</span></div>
               </div>
             </div>
-
             <div>
               <div id="controlStack" class="controls"></div>
-
-              <div class="generator-actions">
-                <button class="btn pink" id="randomBtn" type="button">Generate Random</button>
-                <button class="btn primary" id="downloadBtn" type="button">Download PNG</button>
+              <div class="studio-actions">
+                <button class="btn accent" id="randomBtn" type="button">Random</button>
+                <button class="btn primary" id="downloadBtn" type="button">Download</button>
               </div>
-
-              <div class="generator-actions">
-                <button class="btn" id="resetBtn" type="button">Reset</button>
-                <button class="btn" id="copyAssetGuideBtn" type="button">Copy File Names</button>
-              </div>
-
-              <div class="asset-note">
-                Layer order: background → full character/shoes → shirt → glasses/mask → hand accessory → hat. Use 1024 × 1024 PNGs. Transparent backgrounds are best for everything except backgrounds.
-              </div>
+              <p class="note">Final assets should be 1024×1024. Use transparent PNGs for shirts, glasses, hand items and hats.</p>
             </div>
           </div>
         </div>
-      </section>
-
-      <section id="socials">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Official Links</div>
-              <h2>Join BabyT</h2>
-              <p class="section-text">Use only the official links below. The generator is for community PFPs and meme content.</p>
-            </div>
-          </div>
-
-          <div class="quick-links">
-            <a class="quick-link" id="xLink" href="#" target="_blank" rel="noreferrer">X</a>
-            <a class="quick-link" id="instagramLink" href="#" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="quick-link" id="tiktokLink" href="#" target="_blank" rel="noreferrer">TikTok</a>
-            <a class="quick-link" id="telegramLink" href="#" target="_blank" rel="noreferrer">Telegram</a>
-            <a class="quick-link buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
-            <a class="quick-link" id="jupiterLink" href="#" target="_blank" rel="noreferrer">Jupiter</a>
-            <a class="quick-link" id="dexLink" href="#" target="_blank" rel="noreferrer">DEXScreener</a>
-            <a class="quick-link" id="geckoLink" href="#" target="_blank" rel="noreferrer">GeckoTerminal</a>
-            <button class="quick-link" id="copyCaBtn2" type="button">Copy CA</button>
-            <a class="quick-link" href="#generator">Create PFP</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="shell">
-        <strong>$BabyT on Solana.</strong> Meme coin community page. Nothing here is financial advice. Always do your own research.
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <script>
-    const CANVAS_SIZE = 1024;
-    const body = document.body;
-    const CONTRACT_ADDRESS = body.dataset.contractAddress || "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
+    <section id="links">
+      <div class="shell">
+        <div class="section-head"><div><div class="kicker">Official</div><h2>Links</h2><p class="section-copy">Use only the official BabyT links below.</p></div></div>
+        <div class="link-grid">
+          <a class="link-card" id="xLink" href="#" target="_blank" rel="noreferrer">X</a>
+          <a class="link-card" id="instagramLink" href="#" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="link-card" id="tiktokLink" href="#" target="_blank" rel="noreferrer">TikTok</a>
+          <a class="link-card" id="telegramLink" href="#" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="link-card buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
+          <a class="link-card" id="jupiterLink" href="#" target="_blank" rel="noreferrer">Jupiter</a>
+          <a class="link-card" id="dexLink" href="#" target="_blank" rel="noreferrer">DEXScreener</a>
+          <a class="link-card" id="geckoLink" href="#" target="_blank" rel="noreferrer">GeckoTerminal</a>
+          <button class="link-card" id="copyCaBtn2" type="button">Copy CA</button>
+          <a class="link-card" href="#generator">Create PFP</a>
+        </div>
+      </div>
+    </section>
 
-    const links = {
-      instagram: body.dataset.instagramUrl || "https://www.instagram.com/babytung_sol",
-      x: body.dataset.xUrl || "https://x.com/babytcoinsol",
-      tiktok: body.dataset.tiktokUrl || "https://www.tiktok.com/@mythosmondays",
-      telegram: body.dataset.telegramUrl || "https://t.me/BabyTCommunity",
-      pump: `https://pump.fun/coin/${CONTRACT_ADDRESS}`,
-      jupiter: `https://jup.ag/tokens/${CONTRACT_ADDRESS}`,
-      dex: `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`,
-      gecko: `https://www.geckoterminal.com/solana/tokens/${CONTRACT_ADDRESS}`
-    };
+    <section id="chart">
+      <div class="shell bottom-grid">
+        <div class="card info-card">
+          <div class="kicker">From TikTok</div>
+          <h2 class="info-title">Brainrot to Solana</h2>
+          <p class="info-text">BabyT starts with short-form meme energy and turns it into a community PFP identity. Follow the TikTok account and use the generator for your profile picture.</p>
+          <a class="tiktok-pill" id="tiktokProfileCard" href="#" target="_blank" rel="noreferrer">
+            <span class="tiktok-mark">♬</span>
+            <span class="tiktok-handle"><strong id="tiktokHandle">@mythosmondays</strong><span>Open TikTok profile</span></span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-head"><div><div class="kicker">Chart</div><h2 class="studio-title">DEXScreener</h2></div><a class="btn ghost" id="openChartBtn" href="#" target="_blank" rel="noreferrer">Open</a></div>
+          <div class="chart-frame" id="chartFrame"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    const layerConfig = [
-      {
-        key: "background",
-        title: "Background",
-        folder: "assets/backgrounds",
-        options: [
-          { name: "Valhalla Gold", src: "./assets/backgrounds/bg-01-valhalla-gold.png", fallback: "background", colors: ["#ffe08a", "#ff8f3f", "#19112a"] },
-          { name: "Solana Blue", src: "./assets/backgrounds/bg-02-solana-blue.png", fallback: "background", colors: ["#13f0ff", "#8758ff", "#070719"] },
-          { name: "Meme Green", src: "./assets/backgrounds/bg-03-meme-green.png", fallback: "background", colors: ["#95ff7a", "#28c76f", "#08160f"] },
-          { name: "Pink Chaos", src: "./assets/backgrounds/bg-04-pink-chaos.png", fallback: "background", colors: ["#ff4fd8", "#ff9d4d", "#170819"] },
-          { name: "Night Mode", src: "./assets/backgrounds/bg-05-night-mode.png", fallback: "background", colors: ["#20224b", "#111827", "#05060f"] },
-          { name: "Clean White", src: "./assets/backgrounds/bg-06-clean-white.png", fallback: "background", colors: ["#ffffff", "#dff7ff", "#f5efe4"] }
-        ]
-      },
-      {
-        key: "character",
-        title: "Character / Shoes",
-        folder: "assets/characters",
-        options: [
-          { name: "Blue Sneakers", src: "./assets/characters/character-01-blue-sneakers.png", fallback: "character", shoeColor: "#1e9bff" },
-          { name: "Red Sneakers", src: "./assets/characters/character-02-red-sneakers.png", fallback: "character", shoeColor: "#ff3b30" },
-          { name: "Black Sneakers", src: "./assets/characters/character-03-black-sneakers.png", fallback: "character", shoeColor: "#111111" },
-          { name: "Gold Sneakers", src: "./assets/characters/character-04-gold-sneakers.png", fallback: "character", shoeColor: "#d9a520" }
-        ]
-      },
-      {
-        key: "shirt",
-        title: "T-Shirt / Body",
-        folder: "assets/shirts",
-        options: [
-          { name: "None", type: "none" },
-          { name: "BabyT Logo Tee", src: "./assets/shirts/shirt-01-babyt-logo.png", fallback: "shirt", color: "#ffffff", logo: "$T" },
-          { name: "Solana Tee", src: "./assets/shirts/shirt-02-solana.png", fallback: "shirt", color: "#1d1b42", logo: "SOL" },
-          { name: "Valhalla Tee", src: "./assets/shirts/shirt-03-valhalla.png", fallback: "shirt", color: "#7b3f00", logo: "⚔" },
-          { name: "Pink Hoodie", src: "./assets/shirts/shirt-04-pink-hoodie.png", fallback: "shirt", color: "#ff4fd8", logo: "BT" }
-        ]
-      },
-      {
-        key: "glasses",
-        title: "Glasses / Mask",
-        folder: "assets/glasses",
-        options: [
-          { name: "None", type: "none" },
-          { name: "Black Shades", src: "./assets/glasses/glasses-01-black-shades.png", fallback: "glasses", style: "black" },
-          { name: "Rainbow Visor", src: "./assets/glasses/glasses-02-rainbow-visor.png", fallback: "glasses", style: "visor" },
-          { name: "Blue Round", src: "./assets/glasses/glasses-03-blue-round.png", fallback: "glasses", style: "round" },
-          { name: "Laser Eyes", src: "./assets/glasses/glasses-04-laser-eyes.png", fallback: "glasses", style: "laser" }
-        ]
-      },
-      {
-        key: "hand",
-        title: "Hand Accessory",
-        folder: "assets/hand-accessories",
-        options: [
-          { name: "None", type: "none" },
-          { name: "Baseball Bat", src: "./assets/hand-accessories/hand-01-baseball-bat.png", fallback: "hand", style: "bat" },
-          { name: "Solana Coin", src: "./assets/hand-accessories/hand-02-solana-coin.png", fallback: "hand", style: "coin" },
-          { name: "BabyT Flag", src: "./assets/hand-accessories/hand-03-babyt-flag.png", fallback: "hand", style: "flag" },
-          { name: "Diamond Hands", src: "./assets/hand-accessories/hand-04-diamond-hands.png", fallback: "hand", style: "diamond" }
-        ]
-      },
-      {
-        key: "hat",
-        title: "Hat / Headgear",
-        folder: "assets/hats",
-        options: [
-          { name: "None", type: "none" },
-          { name: "Viking Helmet", src: "./assets/hats/hat-01-viking.png", fallback: "hat", style: "viking" },
-          { name: "Solana Cap", src: "./assets/hats/hat-02-solana-cap.png", fallback: "hat", style: "cap" },
-          { name: "Golden Crown", src: "./assets/hats/hat-03-golden-crown.png", fallback: "hat", style: "crown" },
-          { name: "Halo", src: "./assets/hats/hat-04-halo.png", fallback: "hat", style: "halo" },
-          { name: "Beanie", src: "./assets/hats/hat-05-beanie.png", fallback: "hat", style: "beanie" }
-        ]
-      }
-    ];
-
-    const state = Object.fromEntries(layerConfig.map(layer => [layer.key, 0]));
-    const canvas = document.getElementById("pfpCanvas");
-    const ctx = canvas.getContext("2d");
-    const controlStack = document.getElementById("controlStack");
-    const renderStatus = document.getElementById("renderStatus");
-    const imageCache = new Map();
-    let renderId = 0;
-
-    function setLinks(){
-      document.querySelectorAll(".buy-link").forEach(link => link.href = links.pump);
-      document.getElementById("xLink").href = links.x;
-      document.getElementById("instagramLink").href = links.instagram;
-      document.getElementById("tiktokLink").href = links.tiktok;
-      document.getElementById("telegramLink").href = links.telegram;
-      document.getElementById("jupiterLink").href = links.jupiter;
-      document.getElementById("dexLink").href = links.dex;
-      document.getElementById("geckoLink").href = links.gecko;
-      document.getElementById("caValue").textContent = CONTRACT_ADDRESS;
-    }
-
-    function renderControls(){
-      controlStack.innerHTML = layerConfig.map(layer => {
-        const option = layer.options[state[layer.key]];
-        const index = state[layer.key] + 1;
-        return `
-          <div class="control-row" data-layer="${layer.key}">
-            <button class="arrow-btn" type="button" data-dir="-1" aria-label="Previous ${layer.title}">‹</button>
-            <div class="control-main">
-              <div class="control-title">
-                <span>${layer.title}</span>
-                <span class="control-count">${index}/${layer.options.length}</span>
-              </div>
-              <div class="control-value">${option.name}</div>
-            </div>
-            <button class="arrow-btn" type="button" data-dir="1" aria-label="Next ${layer.title}">›</button>
-          </div>
-        `;
-      }).join("");
-
-      controlStack.querySelectorAll(".control-row").forEach(row => {
-        const key = row.dataset.layer;
-        row.querySelectorAll("button").forEach(button => {
-          button.addEventListener("click", () => changeLayer(key, Number(button.dataset.dir)));
-        });
-      });
-    }
-
-    function changeLayer(key, direction){
-      const layer = layerConfig.find(item => item.key === key);
-      const total = layer.options.length;
-      state[key] = (state[key] + direction + total) % total;
-      renderControls();
-      drawPfp();
-    }
-
-    function randomizePfp(){
-      layerConfig.forEach(layer => {
-        state[layer.key] = Math.floor(Math.random() * layer.options.length);
-      });
-      renderControls();
-      drawPfp();
-    }
-
-    function resetPfp(){
-      layerConfig.forEach(layer => state[layer.key] = 0);
-      renderControls();
-      drawPfp();
-    }
-
-    function loadImage(src){
-      if(!src) return Promise.resolve(null);
-      if(imageCache.has(src)) return imageCache.get(src);
-
-      const promise = new Promise(resolve => {
-        const img = new Image();
-        img.decoding = "async";
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null);
-        img.src = src;
-      });
-
-      imageCache.set(src, promise);
-      return promise;
-    }
-
-    async function drawPfp(){
-      const currentRender = ++renderId;
-      renderStatus.textContent = "Rendering...";
-      ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-
-      for(const layer of layerConfig){
-        const option = layer.options[state[layer.key]];
-        if(option.type === "none") continue;
-
-        const img = await loadImage(option.src);
-        if(currentRender !== renderId) return;
-
-        if(img){
-          ctx.drawImage(img, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-        } else {
-          drawFallback(layer, option);
-        }
-      }
-
-      renderStatus.textContent = "Ready";
-    }
-
-    function drawFallback(layer, option){
-      if(option.fallback === "background") drawBackgroundFallback(option);
-      if(option.fallback === "character") drawCharacterFallback(option);
-      if(option.fallback === "shirt") drawShirtFallback(option);
-      if(option.fallback === "glasses") drawGlassesFallback(option);
-      if(option.fallback === "hand") drawHandFallback(option);
-      if(option.fallback === "hat") drawHatFallback(option);
-    }
-
-    function roundedRect(x, y, w, h, r){
-      const radius = Math.min(r, w / 2, h / 2);
-      ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.arcTo(x + w, y, x + w, y + h, radius);
-      ctx.arcTo(x + w, y + h, x, y + h, radius);
-      ctx.arcTo(x, y + h, x, y, radius);
-      ctx.arcTo(x, y, x + w, y, radius);
-      ctx.closePath();
-    }
-
-    function drawBackgroundFallback(option){
-      const colors = option.colors || ["#ffd166", "#ff4fd8", "#080711"];
-      const gradient = ctx.createRadialGradient(360, 280, 40, 540, 520, 850);
-      gradient.addColorStop(0, colors[0]);
-      gradient.addColorStop(.52, colors[1]);
-      gradient.addColorStop(1, colors[2]);
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-
-      ctx.globalAlpha = .28;
-      for(let i = 0; i < 9; i++){
-        ctx.beginPath();
-        ctx.arc(512, 512, 140 + i * 74, 0, Math.PI * 2);
-        ctx.strokeStyle = i % 2 ? "#ffffff" : "#000000";
-        ctx.lineWidth = 6;
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-    }
-
-    function woodGradient(){
-      const gradient = ctx.createLinearGradient(315, 240, 725, 830);
-      gradient.addColorStop(0, "#ffd18a");
-      gradient.addColorStop(.42, "#d9832e");
-      gradient.addColorStop(1, "#8e4a1d");
-      return gradient;
-    }
-
-    function drawCharacterFallback(option){
-      ctx.save();
-      ctx.shadowColor = "rgba(0,0,0,.28)";
-      ctx.shadowBlur = 30;
-      ctx.shadowOffsetY = 22;
-
-      ctx.strokeStyle = "rgba(83,41,13,.5)";
-      ctx.lineWidth = 20;
-      ctx.lineCap = "round";
-      ctx.beginPath();
-      ctx.moveTo(300, 498);
-      ctx.lineTo(190, 368);
-      ctx.stroke();
-
-      ctx.lineWidth = 42;
-      ctx.beginPath();
-      ctx.moveTo(228, 300);
-      ctx.lineTo(138, 450);
-      ctx.stroke();
-
-      ctx.lineWidth = 34;
-      ctx.beginPath();
-      ctx.moveTo(746, 510);
-      ctx.quadraticCurveTo(833, 575, 768, 650);
-      ctx.stroke();
-
-      roundedRect(322, 188, 390, 548, 84);
-      ctx.fillStyle = woodGradient();
-      ctx.fill();
-      ctx.strokeStyle = "rgba(88,42,14,.28)";
-      ctx.lineWidth = 3;
-      ctx.stroke();
-
-      ctx.globalAlpha = .22;
-      for(let x = 365; x <= 665; x += 48){
-        ctx.beginPath();
-        ctx.moveTo(x, 215);
-        ctx.bezierCurveTo(x - 16, 370, x + 16, 520, x - 5, 720);
-        ctx.strokeStyle = "#6f3511";
-        ctx.lineWidth = 4;
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-
-      ctx.shadowColor = "transparent";
-      ctx.fillStyle = "#050507";
-      ctx.beginPath(); ctx.ellipse(430, 395, 44, 58, 0, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.ellipse(600, 395, 44, 58, 0, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = "#ffffff";
-      ctx.beginPath(); ctx.arc(444, 370, 11, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(614, 370, 11, 0, Math.PI * 2); ctx.fill();
-
-      ctx.fillStyle = "#d9832e";
-      ctx.beginPath(); ctx.ellipse(516, 470, 52, 37, 0, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = "#321b11";
-      ctx.lineWidth = 7;
-      ctx.beginPath(); ctx.arc(515, 500, 110, .18 * Math.PI, .82 * Math.PI); ctx.stroke();
-
-      ctx.strokeStyle = "rgba(83,41,13,.55)";
-      ctx.lineWidth = 30;
-      ctx.beginPath(); ctx.moveTo(440, 728); ctx.lineTo(420, 845); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(594, 728); ctx.lineTo(620, 845); ctx.stroke();
-
-      drawShoe(360, 840, option.shoeColor || "#1e9bff", false);
-      drawShoe(565, 840, option.shoeColor || "#1e9bff", true);
-      ctx.restore();
-    }
-
-    function drawShoe(x, y, color, flip){
-      ctx.save();
-      if(flip){ ctx.translate(x + 146, 0); ctx.scale(-1, 1); x = 0; }
-      roundedRect(x, y, 155, 70, 32);
-      ctx.fillStyle = color;
-      ctx.fill();
-      ctx.fillStyle = "#fff7ef";
-      roundedRect(x + 8, y + 40, 158, 34, 18);
-      ctx.fill();
-      ctx.strokeStyle = "rgba(0,0,0,.22)";
-      ctx.lineWidth = 3;
-      ctx.stroke();
-      ctx.strokeStyle = "#fff7ef";
-      ctx.lineWidth = 8;
-      ctx.lineCap = "round";
-      ctx.beginPath(); ctx.moveTo(x + 52, y + 25); ctx.lineTo(x + 98, y + 41); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(x + 62, y + 14); ctx.lineTo(x + 112, y + 31); ctx.stroke();
-      ctx.restore();
-    }
-
-    function drawShirtFallback(option){
-      ctx.save();
-      ctx.globalAlpha = .94;
-      ctx.fillStyle = option.color || "#ffffff";
-      roundedRect(348, 540, 338, 190, 38);
-      ctx.fill();
-      ctx.strokeStyle = "rgba(0,0,0,.18)";
-      ctx.lineWidth = 6;
-      ctx.stroke();
-      ctx.fillStyle = option.color === "#ffffff" ? "#111827" : "#ffffff";
-      ctx.font = "900 62px Arial";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(option.logo || "BT", 518, 632);
-      ctx.restore();
-    }
-
-    function drawGlassesFallback(option){
-      ctx.save();
-      const style = option.style;
-      if(style === "laser"){
-        const gradient = ctx.createLinearGradient(336, 400, 700, 400);
-        gradient.addColorStop(0, "#ff1744");
-        gradient.addColorStop(1, "#ffea00");
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 18;
-        ctx.lineCap = "round";
-        ctx.beginPath(); ctx.moveTo(350, 392); ctx.lineTo(480, 410); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(560, 410); ctx.lineTo(690, 392); ctx.stroke();
-        ctx.restore();
-        return;
-      }
-
-      if(style === "visor"){
-        const gradient = ctx.createLinearGradient(330, 370, 705, 438);
-        gradient.addColorStop(0, "#ffe600");
-        gradient.addColorStop(.45, "#ff7a00");
-        gradient.addColorStop(1, "#00e5ff");
-        roundedRect(332, 350, 372, 118, 44);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-        ctx.strokeStyle = "#ff4fd8";
-        ctx.lineWidth = 12;
-        ctx.stroke();
-        ctx.fillStyle = "#ff4fd8";
-        roundedRect(438, 332, 160, 34, 11);
-        ctx.fill();
-        ctx.restore();
-        return;
-      }
-
-      if(style === "round"){
-        ctx.strokeStyle = "#1e9bff";
-        ctx.lineWidth = 16;
-        ctx.beginPath(); ctx.arc(430, 398, 62, 0, Math.PI * 2); ctx.stroke();
-        ctx.beginPath(); ctx.arc(600, 398, 62, 0, Math.PI * 2); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(492, 398); ctx.lineTo(538, 398); ctx.stroke();
-        ctx.restore();
-        return;
-      }
-
-      ctx.fillStyle = "#050505";
-      roundedRect(355, 360, 145, 86, 28);
-      ctx.fill();
-      roundedRect(535, 360, 145, 86, 28);
-      ctx.fill();
-      ctx.strokeStyle = "#050505";
-      ctx.lineWidth = 18;
-      ctx.beginPath(); ctx.moveTo(500, 394); ctx.lineTo(535, 394); ctx.stroke();
-      ctx.restore();
-    }
-
-    function drawHandFallback(option){
-      ctx.save();
-      const style = option.style;
-      if(style === "coin"){
-        const gradient = ctx.createRadialGradient(235, 560, 10, 235, 560, 85);
-        gradient.addColorStop(0, "#fff4b2");
-        gradient.addColorStop(1, "#f5a623");
-        ctx.fillStyle = gradient;
-        ctx.beginPath(); ctx.arc(235, 560, 78, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = "#1b1230";
-        ctx.font = "900 40px Arial";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText("SOL", 235, 562);
-      } else if(style === "flag"){
-        ctx.strokeStyle = "#3a2418";
-        ctx.lineWidth = 13;
-        ctx.beginPath(); ctx.moveTo(245, 360); ctx.lineTo(245, 660); ctx.stroke();
-        ctx.fillStyle = "#ff4fd8";
-        ctx.beginPath();
-        ctx.moveTo(252, 360);
-        ctx.lineTo(432, 410);
-        ctx.lineTo(252, 470);
-        ctx.closePath();
-        ctx.fill();
-        ctx.fillStyle = "#fff";
-        ctx.font = "900 32px Arial";
-        ctx.fillText("BT", 314, 420);
-      } else if(style === "diamond"){
-        ctx.fillStyle = "#aaf7ff";
-        ctx.beginPath();
-        ctx.moveTo(215, 560); ctx.lineTo(285, 510); ctx.lineTo(355, 560); ctx.lineTo(285, 650); ctx.closePath();
-        ctx.fill();
-        ctx.strokeStyle = "#fff";
-        ctx.lineWidth = 5;
-        ctx.stroke();
-      } else {
-        ctx.strokeStyle = "#9b5c25";
-        ctx.lineWidth = 54;
-        ctx.lineCap = "round";
-        ctx.beginPath(); ctx.moveTo(198, 315); ctx.lineTo(118, 620); ctx.stroke();
-      }
-      ctx.restore();
-    }
-
-    function drawHatFallback(option){
-      ctx.save();
-      const style = option.style;
-      if(style === "halo"){
-        ctx.strokeStyle = "#ffd166";
-        ctx.lineWidth = 20;
-        ctx.shadowColor = "#ffd166";
-        ctx.shadowBlur = 28;
-        ctx.beginPath(); ctx.ellipse(516, 176, 180, 38, 0, 0, Math.PI * 2); ctx.stroke();
-        ctx.restore();
-        return;
-      }
-
-      if(style === "crown"){
-        ctx.fillStyle = "#ffd166";
-        ctx.beginPath();
-        ctx.moveTo(355, 244);
-        ctx.lineTo(388, 128);
-        ctx.lineTo(468, 224);
-        ctx.lineTo(520, 118);
-        ctx.lineTo(576, 224);
-        ctx.lineTo(650, 128);
-        ctx.lineTo(682, 244);
-        ctx.closePath();
-        ctx.fill();
-        ctx.strokeStyle = "#9b5c25";
-        ctx.lineWidth = 8;
-        ctx.stroke();
-        ctx.restore();
-        return;
-      }
-
-      if(style === "viking"){
-        ctx.fillStyle = "#c5c9d3";
-        ctx.beginPath(); ctx.ellipse(518, 235, 210, 82, 0, Math.PI, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = "#d5a12f";
-        roundedRect(505, 150, 28, 95, 10);
-        ctx.fill();
-        ctx.fillStyle = "#fff6d6";
-        ctx.beginPath(); ctx.ellipse(315, 198, 80, 38, -.42, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(720, 198, 80, 38, .42, 0, Math.PI * 2); ctx.fill();
-        ctx.restore();
-        return;
-      }
-
-      if(style === "cap"){
-        ctx.fillStyle = "#16224a";
-        ctx.beginPath(); ctx.ellipse(520, 218, 210, 90, 0, Math.PI, Math.PI * 2); ctx.fill();
-        roundedRect(360, 180, 320, 90, 38);
-        ctx.fill();
-        ctx.beginPath(); ctx.ellipse(640, 258, 150, 35, .08, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = "#55f0ff";
-        ctx.font = "900 50px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText("S", 520, 245);
-        ctx.restore();
-        return;
-      }
-
-      ctx.fillStyle = "#4cc9f0";
-      roundedRect(352, 150, 335, 120, 55);
-      ctx.fill();
-      ctx.fillStyle = "#7b2cbf";
-      roundedRect(340, 232, 360, 58, 22);
-      ctx.fill();
-      ctx.beginPath(); ctx.arc(520, 132, 45, 0, Math.PI * 2); ctx.fill();
-      ctx.restore();
-    }
-
-    async function downloadPfp(){
-      await drawPfp();
-      canvas.toBlob(blob => {
-        if(!blob) return;
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "BabyT-PFP.png";
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        URL.revokeObjectURL(url);
-      }, "image/png");
-    }
-
-    async function copyText(value, button, defaultText){
-      try{
-        await navigator.clipboard.writeText(value);
-        button.textContent = "Copied!";
-      } catch(error){
-        const textarea = document.createElement("textarea");
-        textarea.value = value;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        textarea.remove();
-        button.textContent = "Copied!";
-      }
-      setTimeout(() => button.textContent = defaultText, 1300);
-    }
-
-    function buildAssetGuide(){
-      return layerConfig.map(layer => {
-        const files = layer.options
-          .filter(option => option.src)
-          .map(option => `${option.name}: ${option.src.replace("./", "")}`)
-          .join("\n");
-        return `${layer.title}\n${files}`;
-      }).join("\n\n");
-    }
-
-    setLinks();
-    renderControls();
-    drawPfp();
-
-    document.getElementById("randomBtn").addEventListener("click", randomizePfp);
-    document.getElementById("resetBtn").addEventListener("click", resetPfp);
-    document.getElementById("downloadBtn").addEventListener("click", downloadPfp);
-    document.getElementById("copyCaBtn").addEventListener("click", event => copyText(CONTRACT_ADDRESS, event.currentTarget, "Copy"));
-    document.getElementById("copyCaBtn2").addEventListener("click", event => copyText(CONTRACT_ADDRESS, event.currentTarget, "Copy CA"));
-    document.getElementById("copyAssetGuideBtn").addEventListener("click", event => copyText(buildAssetGuide(), event.currentTarget, "Copy File Names"));
-  </script>
+  <footer class="footer"><div class="shell">BabyT is a community meme page. PFP assets are for community identity and entertainment. NFA. DYOR.</div></footer>
+  <script src="./script.js?v=4"></script>
 </body>
 </html>
