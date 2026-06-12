@@ -100,8 +100,150 @@ body #renderStatus.status-done{
   background:#dff8d5!important;
 }
 
-body .buy-floating-character{
-  display:block!important;
+/* Desktop-only: make How to Buy match the Wojak-style layout: cards left/right, character centered. */
+@keyframes floatBabyTDesktop{
+  0%,100%{transform:translateY(-10px)}
+  50%{transform:translateY(-28px)}
+}
+
+@media(min-width:901px){
+  body .buy-guide-section{
+    padding-top:clamp(74px,8vw,112px)!important;
+    padding-bottom:clamp(74px,8vw,112px)!important;
+  }
+
+  body .buy-guide-section .section-title,
+  body #howToBuyTitle{
+    font-size:clamp(64px,7vw,102px)!important;
+    line-height:.9!important;
+    margin-bottom:48px!important;
+    text-shadow:none!important;
+  }
+
+  body .buy-guide-shell{
+    width:min(1180px,calc(100% - 48px))!important;
+  }
+
+  body .buy-guide-panel{
+    width:100%!important;
+    max-width:none!important;
+    margin:0 auto!important;
+    display:grid!important;
+    grid-template-columns:minmax(270px,1fr) minmax(230px,.82fr) minmax(270px,1fr)!important;
+    grid-template-rows:repeat(2,minmax(180px,auto))!important;
+    gap:32px 40px!important;
+    align-items:center!important;
+    justify-items:stretch!important;
+    padding:58px 50px!important;
+    min-height:560px!important;
+    border-radius:38px!important;
+    overflow:visible!important;
+  }
+
+  body .buy-step-card{
+    width:100%!important;
+    max-width:none!important;
+    min-height:178px!important;
+    margin:0!important;
+    align-self:center!important;
+    justify-self:stretch!important;
+    position:relative!important;
+    z-index:3!important;
+    border-width:3px!important;
+    border-radius:20px!important;
+  }
+
+  body .buy-step-card:nth-of-type(1){
+    grid-column:1!important;
+    grid-row:1!important;
+  }
+
+  body .buy-step-card:nth-of-type(2){
+    grid-column:1!important;
+    grid-row:2!important;
+  }
+
+  body .buy-step-card:nth-of-type(3){
+    grid-column:3!important;
+    grid-row:1!important;
+  }
+
+  body .buy-step-card:nth-of-type(4){
+    grid-column:3!important;
+    grid-row:2!important;
+  }
+
+  body .buy-floating-character{
+    display:block!important;
+    position:relative!important;
+    grid-column:2!important;
+    grid-row:1 / span 2!important;
+    place-self:center!important;
+    right:auto!important;
+    top:auto!important;
+    width:min(292px,23vw)!important;
+    max-width:100%!important;
+    max-height:500px!important;
+    z-index:4!important;
+    object-fit:contain!important;
+    filter:drop-shadow(9px 12px 0 rgba(0,0,0,.2))!important;
+    animation:floatBabyTDesktop 3.8s ease-in-out infinite!important;
+    pointer-events:none!important;
+  }
+
+  body .window-dots{
+    height:46px!important;
+    padding:0 24px!important;
+    gap:9px!important;
+    border-bottom-width:3px!important;
+  }
+
+  body .window-dots i{
+    width:14px!important;
+    height:14px!important;
+    border-width:2px!important;
+  }
+
+  body .buy-step-body{
+    padding:25px 26px 28px!important;
+  }
+
+  body .buy-step-body h3{
+    font-size:clamp(23px,2.25vw,31px)!important;
+    line-height:1.05!important;
+    margin-bottom:12px!important;
+    letter-spacing:.01em!important;
+  }
+
+  body .buy-step-body p{
+    font-size:clamp(15px,1.32vw,18px)!important;
+    line-height:1.42!important;
+  }
+}
+
+@media(min-width:901px) and (max-width:1080px){
+  body .buy-guide-shell{
+    width:min(100% - 34px,1040px)!important;
+  }
+
+  body .buy-guide-panel{
+    grid-template-columns:minmax(245px,1fr) minmax(190px,.7fr) minmax(245px,1fr)!important;
+    gap:24px 24px!important;
+    padding:46px 36px!important;
+    min-height:510px!important;
+  }
+
+  body .buy-floating-character{
+    width:min(220px,21vw)!important;
+  }
+
+  body .buy-step-body h3{
+    font-size:22px!important;
+  }
+
+  body .buy-step-body p{
+    font-size:15px!important;
+  }
 }
 
 @media(max-width:900px){
