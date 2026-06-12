@@ -16,10 +16,10 @@
       "folder": "characters",
       "z": 20,
       "options": [
-        { "id": "character-02-red-sneakers", "name": "Red Sneakers", "file": "character-02-red-sneakers.jpg.b64", "weight": 25 },
-        { "id": "character-03-black-sneakers", "name": "Black Sneakers", "file": "character-03-black-sneakers.jpg.b64", "weight": 25 },
-        { "id": "character-04-gold-sneakers", "name": "Gold Sneakers", "file": "character-04-gold-sneakers.jpg.b64", "weight": 20 },
-        { "id": "character-01-blue-sneakers", "name": "Blue Sneakers", "file": "character-01-blue-sneakers.jpg.b64", "weight": 30 }
+        { "id": "character-02-red-sneakers", "name": "Red Sneakers", "file": "character-02-red-sneakers.jpeg", "weight": 25 },
+        { "id": "character-03-black-sneakers", "name": "Black Sneakers", "file": "character-03-black-sneakers.jpeg", "weight": 25 },
+        { "id": "character-04-gold-sneakers", "name": "Gold Sneakers", "file": "character-04-gold-sneakers.jpeg", "weight": 20 },
+        { "id": "character-01-blue-sneakers", "name": "Blue Sneakers", "file": "character-01-blue-sneakers.jpeg", "weight": 30 }
       ]
     },
     {
@@ -56,9 +56,9 @@
       "z": 60,
       "options": [
         { "id": "none", "name": "None", "file": null, "weight": 30 },
-        { "id": "hat-01-black-cap", "name": "Black Cap", "file": "hat-01-black-cap.png.b64", "weight": 24 },
-        { "id": "hat-02-blue-cap", "name": "Blue Cap", "file": "hat-02-blue-cap.png.b64", "weight": 24 },
-        { "id": "hat-03-red-cap", "name": "Red Cap", "file": "hat-03-red-cap.png.b64", "weight": 24 }
+        { "id": "hat-01-black-cap", "name": "Black Cap", "file": "hat-01-black-cap.png", "weight": 24 },
+        { "id": "hat-02-blue-cap", "name": "Blue Cap", "file": "hat-02-blue-cap.png", "weight": 24 },
+        { "id": "hat-03-red-cap", "name": "Red Cap", "file": "hat-03-red-cap.png", "weight": 24 }
       ]
     }
   ]
