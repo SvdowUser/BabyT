@@ -16,12 +16,12 @@
   <meta property="og:title" content="BabyT | PFP Generator">
   <meta property="og:description" content="Build your BabyT. Pick layers. Download the meme.">
   <meta property="og:url" content="https://babytungtung.com/">
-  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=10">
+  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=11">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | PFP Generator">
   <meta name="twitter:description" content="Build your BabyT. Pick layers. Download the meme.">
-  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=10">
-  <link rel="stylesheet" href="./style.css?v=10">
+  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=11">
+  <link rel="stylesheet" href="./style.css?v=11">
 </head>
 <body
   data-contract-address="4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump"
@@ -47,7 +47,7 @@
 
   <main id="top">
     <section class="hero section-pad">
-      <img class="hero-bg-gif" src="./assets/hero/babyt-hero.gif?v=10" alt="" aria-hidden="true" loading="eager">
+      <img class="hero-bg-gif" alt="" aria-hidden="true" loading="eager" decoding="async">
 
       <div class="shell hero-inner">
         <div class="hero-art" aria-hidden="true">
@@ -91,6 +91,10 @@
 
               <div class="preview-frame">
                 <canvas id="pfpCanvas" width="1024" height="1024" aria-label="Generated BabyT profile picture"></canvas>
+                <div class="render-loader" id="renderLoader" aria-hidden="true">
+                  <span></span>
+                  <strong>Loading</strong>
+                </div>
                 <div class="empty-hint" id="emptyCanvasHint">
                   <strong>Upload assets</strong>
                   <span>1024x1024 PNG layers will appear here.</span>
@@ -141,17 +145,6 @@
       </div>
     </section>
 
-    <section class="section-pad how-section">
-      <div class="shell">
-        <h2 class="section-title">How to join</h2>
-        <div class="steps-grid">
-          <div class="step-card"><span>1</span><strong>Create your PFP</strong><p>Use the BabyT Studio and download your final image.</p></div>
-          <div class="step-card"><span>2</span><strong>Follow the meme</strong><p>Open the TikTok video and follow the official socials.</p></div>
-          <div class="step-card"><span>3</span><strong>Check the chart</strong><p>Use the CA and official chart links only. DYOR.</p></div>
-        </div>
-      </div>
-    </section>
-
     <section class="section-pad" id="links" aria-labelledby="linksTitle">
       <div class="shell">
         <div class="black-panel links-panel">
@@ -177,6 +170,6 @@
     <div class="shell">BabyT is a community meme page. PFP assets are for community identity and entertainment. Nothing here is financial advice.</div>
   </footer>
 
-  <script src="./script.js?v=9"></script>
+  <script src="./script.js?v=11"></script>
 </body>
 </html>
