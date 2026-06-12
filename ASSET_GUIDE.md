@@ -1,8 +1,8 @@
 # BabyT PFP Generator Asset Guide
 
-The BabyT page is now built like a meme-native mobile landing page with a real-asset-only PFP generator.
+The BabyT page is built like a meme-native mobile landing page with a real-asset-only PFP generator.
 
-Important: the generator no longer draws fake placeholder characters. If a PNG file is missing, that layer is skipped. The preview only shows assets that you upload into the folders below.
+Important: the generator does not draw fake placeholder characters. If a file is missing, that layer is skipped. The preview only shows assets that are uploaded into the folders below.
 
 ## Generator behavior
 
@@ -26,9 +26,8 @@ The canvas draws every selected asset in this order:
 ## Format rules
 
 - Master size: **1024x1024 px**
-- File type: **PNG**
-- Backgrounds: full 1:1 image, transparency optional
-- All other layers: transparent PNG
+- Backgrounds: full 1:1 image
+- Accessories: transparent PNG, 1024x1024 px
 - Never crop accessories tightly
 - Every file must keep the full 1024x1024 canvas
 - The object itself must already be positioned exactly where it belongs on BabyT
@@ -37,33 +36,9 @@ The canvas draws every selected asset in this order:
 
 The generator does not move or resize hats, glasses, shirts or items.
 
-It simply stacks 1024x1024 PNGs on top of each other.
+It simply stacks 1024x1024 assets on top of each other.
 
 That means every accessory file must have the same canvas size as the base character. Example: a glasses layer is still 1024x1024, with only the glasses visible and everything else transparent.
-
-## Recommended asset workflow
-
-1. Finalize the base BabyT character first.
-2. Export the base character as 1024x1024 PNG.
-3. Create every accessory on top of that exact same canvas.
-4. Hide the base character before exporting the accessory PNG.
-5. Upload the PNG using the exact filename from the manifest.
-
-## Basis character rule
-
-The master character should be final before you create many accessories:
-
-- same pose
-- same camera angle
-- same lighting
-- same body size
-- same shoe scale
-- no hats
-- no glasses
-- no shirt overlay
-- ideally no fixed hand item
-
-Important: if hand accessories should be interchangeable later, the base character should not already contain a fixed bat or object.
 
 ## File structure
 
@@ -101,13 +76,15 @@ Example:
 
 `name` is what users see on the website.
 
-`file` is the exact PNG file name.
+`file` is the exact asset filename.
 
 `weight` controls how often the trait appears when pressing Random.
 
 ## Current production filenames
 
 ### Backgrounds
+
+Scene backgrounds:
 
 ```text
 assets/backgrounds/bg-01-city-center.png
@@ -116,6 +93,20 @@ assets/backgrounds/bg-03-heaven.png
 assets/backgrounds/bg-04-sky.png
 assets/backgrounds/bg-05-studio-room.png
 assets/backgrounds/bg-06-wood-workshop.png
+```
+
+Color / comic backgrounds:
+
+```text
+assets/backgrounds/bg-07-comic-splash.webp.b64
+assets/backgrounds/bg-08-soft-blue.webp.b64
+assets/backgrounds/bg-09-soft-red.webp.b64
+assets/backgrounds/bg-10-soft-orange.webp.b64
+assets/backgrounds/bg-11-soft-yellow.webp.b64
+assets/backgrounds/bg-12-soft-green.webp.b64
+assets/backgrounds/bg-13-soft-purple.webp.b64
+assets/backgrounds/bg-14-soft-pink.webp.b64
+assets/backgrounds/bg-15-wood-tone.webp.b64
 ```
 
 ### Character / Shoes
@@ -168,11 +159,11 @@ assets/hats/hat-05-beanie.png
 
 ## Quality checklist
 
-Before uploading a PNG, check:
+Before uploading a PNG or B64 asset, check:
 
 - file is exactly 1024x1024 px
-- transparent space is really transparent
-- no unwanted background color
+- transparent space is really transparent where needed
+- no unwanted background color on accessory layers
 - no cropped edges
 - no extra shadows floating outside the object
 - no accidental edits to the BabyT body or face
