@@ -185,7 +185,6 @@ The site uses these values inside `index.html`:
 ```text
 Contract Address: 4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump
 Instagram: https://www.instagram.com/babytung_sol
-X: https://x.com/babytcoinsol
+X: https://x.com/babytung_sol
 TikTok Video: https://vm.tiktok.com/ZGd9NYLDm/
-Telegram: https://t.me/BabyTCommunity
 ```
