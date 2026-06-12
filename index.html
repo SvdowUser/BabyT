@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>BabyT | Plush Project</title>
-  <meta name="description" content="BabyT is a community character project with mystery plush unlocks, collectible concepts, production goals and future giveaways.">
-  <meta name="theme-color" content="#0b0705">
+  <title>BabyT | Meme Coin PFP Generator</title>
+  <meta name="description" content="Create your BabyT profile picture with backgrounds, character layers, shirts, glasses, hats and hand accessories.">
+  <meta name="theme-color" content="#090816">
   <link rel="canonical" href="https://babytungtung.com/">
 
   <link rel="icon" href="./favicon.ico" sizes="any">
@@ -16,2027 +16,1255 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
-  <meta property="og:title" content="BabyT | Plush Project">
-  <meta property="og:description" content="A community character project with mystery plush unlocks and a future production goal.">
+  <meta property="og:title" content="BabyT | PFP Generator">
+  <meta property="og:description" content="Build your BabyT PFP. From TikTok brainrot to Valhalla.">
   <meta property="og:url" content="https://babytungtung.com/">
-  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
+  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=3">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BabyT | Plush Project">
-  <meta name="twitter:description" content="A community character project with mystery plush unlocks and a future production goal.">
-  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=2">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <meta name="twitter:title" content="BabyT | PFP Generator">
+  <meta name="twitter:description" content="Build your BabyT PFP. From TikTok brainrot to Valhalla.">
+  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=3">
 
   <style>
     :root{
-      --bg:#0b0705;
-      --panel:rgba(24,13,8,.9);
-      --panel-soft:rgba(34,21,15,.78);
-      --line:rgba(214,171,104,.26);
-      --line-soft:rgba(214,171,104,.14);
-      --gold:#f0d399;
-      --gold-strong:#f1cf69;
-      --text:#f8ecd7;
-      --muted:#d6bea2;
-      --dark:#170d09;
-      --green:#98e27a;
-
-      --hero-bg:url("https://raw.githubusercontent.com/SvdowUser/BabyT/b7a2297c0de3aea674ed89ed42d26a693bd3b008/ChatGPT%20Image%2010.%20Apr.%202026%2C%2000_19_38.png");
-
-      --underground-bg-1:url("./bg-underground-01.png");
-      --underground-bg-2:url("./bg-underground-02.png");
-      --underground-bg-3:url("./bg-underground-03.png");
+      --bg:#080711;
+      --bg2:#120b21;
+      --panel:rgba(255,255,255,.075);
+      --panel-strong:rgba(255,255,255,.12);
+      --line:rgba(255,255,255,.16);
+      --line-strong:rgba(255,255,255,.28);
+      --text:#fff8e9;
+      --muted:#cfc4ea;
+      --gold:#ffd166;
+      --pink:#ff4fd8;
+      --cyan:#55f0ff;
+      --green:#93ff8f;
+      --dark:#0d0b18;
+      --shadow:0 28px 80px rgba(0,0,0,.38);
+      --radius:28px;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
     body{
       margin:0;
-      font-family:Inter,Arial,sans-serif;
-      background:var(--bg);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(85,240,255,.24), transparent 28%),
+        radial-gradient(circle at 82% 4%, rgba(255,79,216,.22), transparent 26%),
+        radial-gradient(circle at 50% 82%, rgba(255,209,102,.17), transparent 38%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 48%, #06050d);
+      min-height:100vh;
     }
 
-    a{text-decoration:none;color:inherit}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
     img{display:block;max-width:100%}
-    button{font-family:inherit}
 
-    .hero{
-      position:relative;
-      min-height:100svh;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 50% 32%, rgba(241,207,105,.13), transparent 32%),
-        linear-gradient(180deg,rgba(7,5,4,.12),rgba(7,5,4,.82)),
-        var(--hero-bg) center/cover no-repeat;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:96px;
+    .noise{
+      position:fixed;
+      inset:0;
       pointer-events:none;
-      background:linear-gradient(
-        180deg,
-        transparent 0%,
-        rgba(11,7,5,.18) 38%,
-        rgba(11,7,5,.48) 72%,
-        rgba(11,7,5,.88) 100%
-      );
-      z-index:2;
-    }
-
-    .hero > *{
-      position:relative;
-      z-index:3;
-    }
-
-    .underground-wrap{
-      position:relative;
-      overflow:hidden;
-      margin-top:-18px;
-      background:
-        linear-gradient(180deg, rgba(11,7,5,.30) 0%, transparent 260px),
-        var(--underground-bg-3) center bottom/cover no-repeat,
-        var(--bg);
-    }
-
-    .underground-wrap::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:72px;
-      z-index:1;
-      pointer-events:none;
-      background:linear-gradient(
-        180deg,
-        rgba(11,7,5,.72) 0%,
-        rgba(11,7,5,.32) 58%,
-        transparent 100%
-      );
-    }
-
-    .underground-bg-stack{
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      bottom:-380px;
+      opacity:.13;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(180deg, black, transparent 78%);
       z-index:0;
-      pointer-events:none;
-      overflow:hidden;
     }
 
-    .underground-bg-piece{
-      position:absolute;
-      left:0;
-      width:100%;
-      background-position:center top;
-      background-size:cover;
-      background-repeat:no-repeat;
-      opacity:.82;
-      filter:saturate(1.05) contrast(1.05);
-    }
+    .page{position:relative;z-index:1}
 
-    .underground-bg-piece::before,
-    .underground-bg-piece::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      height:115px;
-      pointer-events:none;
-      z-index:1;
-    }
-
-    .underground-bg-piece::before{
-      top:0;
-      background:linear-gradient(
-        180deg,
-        rgba(11,7,5,.72) 0%,
-        rgba(11,7,5,.28) 54%,
-        transparent 100%
-      );
-    }
-
-    .underground-bg-piece::after{
-      bottom:0;
-      background:linear-gradient(
-        0deg,
-        rgba(11,7,5,.72) 0%,
-        rgba(11,7,5,.30) 55%,
-        transparent 100%
-      );
-    }
-
-    .underground-bg-1{
-      top:-10px;
-      height:980px;
-      background-image:var(--underground-bg-1);
-    }
-
-    .underground-bg-2{
-      top:810px;
-      height:1060px;
-      background-image:var(--underground-bg-2);
-    }
-
-    .underground-bg-3{
-      top:1680px;
-      bottom:-380px;
-      min-height:1950px;
-      height:auto;
-      background-image:var(--underground-bg-3);
-      background-position:center top;
-      background-size:cover;
-    }
-
-    .underground-bg-3::after{
-      display:none;
-    }
-
-    .underground-wrap section{
-      position:relative;
-      z-index:2;
+    .shell{
+      width:min(1180px, calc(100% - 34px));
+      margin:0 auto;
     }
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
-      backdrop-filter:blur(12px);
-      background:rgba(21,12,8,.93);
+      z-index:20;
+      backdrop-filter:blur(18px);
+      background:rgba(8,7,17,.72);
       border-bottom:1px solid var(--line);
     }
 
-    .nav-inner,.shell,.section-inner{
-      max-width:1320px;
-      margin:0 auto;
-    }
-
     .nav-inner{
-      padding:15px 24px;
+      min-height:72px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:18px;
+      gap:16px;
     }
 
     .brand{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      font-weight:900;
-      color:var(--gold);
-      font-size:clamp(1.05rem,2vw,1.55rem);
-      text-transform:uppercase;
-      letter-spacing:.02em;
+      font-weight:950;
+      letter-spacing:-.04em;
+      font-size:1.22rem;
       white-space:nowrap;
     }
 
-    .brand img{
-      width:28px;
-      height:28px;
-      object-fit:contain;
+    .brand-mark{
+      width:36px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--gold), #ff9548 58%, var(--pink));
+      color:#251106;
+      box-shadow:0 12px 28px rgba(255,209,102,.2);
+      overflow:hidden;
     }
 
-    .links{
-      display:flex;
-      gap:22px;
-      font-weight:800;
-      color:#f1dfc2;
-      font-size:.96rem;
+    .brand-mark img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      font-weight:800;
+    }
+
+    .nav-links a:hover{color:var(--text)}
 
     .nav-cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:11px 16px;
-      border-radius:14px;
-      background:linear-gradient(180deg,#d7a363,#a66b33);
-      color:#23150d;
-      font-weight:900;
-      white-space:nowrap;
-      box-shadow:0 10px 25px rgba(0,0,0,.24);
+      min-height:42px;
+      padding:0 15px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--gold), #ff9d4d);
+      color:#251106;
+      font-weight:950;
+      box-shadow:0 14px 28px rgba(255,157,77,.18);
     }
 
-    .nav-cta img{
-      width:20px;
-      height:20px;
-      object-fit:contain;
+    .hero{
+      padding:62px 0 32px;
     }
 
-    .shell{
-      padding:0 24px;
-    }
-
-    .hero-center{
-      min-height:calc(100svh - 72px);
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);
+      gap:34px;
       align-items:center;
-      text-align:center;
-      padding:clamp(28px,5vh,58px) 0 36px;
     }
 
     .eyebrow{
       display:inline-flex;
-      padding:8px 14px;
-      border-radius:999px;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
       border:1px solid var(--line);
-      background:rgba(24,13,8,.64);
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
       color:var(--gold);
-      font-weight:900;
-      margin-bottom:16px;
+      font-size:.78rem;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:17px;
     }
 
     h1{
       margin:0;
-      line-height:.94;
-      font-weight:900;
-      font-size:clamp(2.55rem,6.6vw,5.35rem);
+      font-size:clamp(3rem, 7vw, 6.9rem);
+      line-height:.88;
+      letter-spacing:-.08em;
+      font-weight:1000;
       text-transform:uppercase;
-      letter-spacing:-.045em;
-      text-shadow:0 9px 34px rgba(0,0,0,.4);
-      max-width:970px;
+      text-wrap:balance;
     }
 
-    .accent{color:var(--gold-strong)}
-
-    .hero-blindbox{
-      width:min(82vw,360px);
-      margin:16px auto 6px;
-      animation:boxWiggle 3.2s ease-in-out infinite;
-      transform-origin:50% 78%;
-      filter:
-        drop-shadow(0 0 24px rgba(241,207,105,.12))
-        drop-shadow(0 24px 32px rgba(0,0,0,.38));
-      will-change:transform;
+    .gradient-word{
+      color:transparent;
+      background:linear-gradient(100deg, var(--gold), var(--cyan) 45%, var(--pink));
+      -webkit-background-clip:text;
+      background-clip:text;
     }
 
-    .hero-blindbox img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
+    .hero-copy{
+      max-width:670px;
+      margin:22px 0 0;
+      color:var(--muted);
+      font-size:clamp(1rem, 1.5vw, 1.16rem);
+      line-height:1.62;
+      font-weight:650;
     }
 
-    @keyframes boxWiggle{
-      0%,100%{transform:translateY(0) rotate(0deg)}
-      24%{transform:translateY(-7px) rotate(0deg)}
-      34%{transform:translateY(-10px) rotate(-1.4deg)}
-      43%{transform:translateY(-11px) rotate(1.4deg)}
-      52%{transform:translateY(-10px) rotate(-1deg)}
-      61%{transform:translateY(-9px) rotate(.8deg)}
-      72%{transform:translateY(-5px) rotate(0deg)}
-    }
-
-    .hero-text{
-      margin:0 auto;
-      max-width:710px;
-      font-size:clamp(1rem,1.45vw,1.16rem);
-      line-height:1.55;
-      color:#ead6b8;
-      font-weight:500;
-    }
-
-    .actions{
+    .hero-actions{
       display:flex;
+      gap:12px;
       flex-wrap:wrap;
-      justify-content:center;
-      gap:14px;
-      margin-top:22px;
+      margin-top:24px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:56px;
-      padding:0 24px;
+      min-height:54px;
+      padding:0 20px;
       border-radius:17px;
-      font-weight:900;
-      border:1px solid transparent;
-      box-shadow:0 12px 26px rgba(0,0,0,.24);
-      white-space:nowrap;
-    }
-
-    .primary{
-      background:linear-gradient(180deg,#d7a363,#a66b33);
-      color:#23150d;
-    }
-
-    .secondary{
-      background:rgba(29,17,12,.74);
-      border-color:var(--line);
-      color:var(--text);
-    }
-
-    .ca-box{
-      margin-top:20px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:13px;
-      max-width:900px;
-      width:100%;
-      backdrop-filter:blur(8px);
-      background:var(--panel-soft);
       border:1px solid var(--line);
-      border-radius:20px;
-      box-shadow:0 18px 50px rgba(0,0,0,.22);
-    }
-
-    .ca-label{
-      font-size:.78rem;
-      font-weight:900;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      white-space:nowrap;
-    }
-
-    .ca-value,.wallet-address{
-      flex:1;
-      min-width:0;
-      padding:14px 16px;
-      border-radius:14px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.18);
-      color:var(--text);
-      font-weight:800;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      text-align:left;
-    }
-
-    .copy-btn{
-      border:0;
-      min-height:50px;
-      padding:0 18px;
+      font-weight:950;
       cursor:pointer;
-      border-radius:14px;
-      background:linear-gradient(180deg,#d7a363,#a66b33);
-      color:#23150d;
-      font-weight:900;
-      flex:0 0 auto;
-    }
-
-    section{
-      padding:54px 24px;
-    }
-
-    .underground-wrap section:first-of-type{
-      padding-top:34px;
-    }
-
-    #socials{
-      padding-bottom:34px;
-    }
-
-    .section-title{
-      margin:0 0 12px;
-      font-size:clamp(1.9rem,3.2vw,2.75rem);
-      line-height:1;
-      text-transform:uppercase;
-      letter-spacing:-.035em;
-      font-weight:900;
       color:var(--text);
-    }
-
-    .section-sub{
-      max-width:780px;
-      margin:0 0 22px;
-      color:var(--muted);
-      font-size:1rem;
-      line-height:1.62;
-    }
-
-    .panel,.progress-card,.roadmap-card,.footer-note{
-      background:var(--panel-soft);
-      border:1px solid var(--line);
-      border-radius:20px;
-      box-shadow:0 18px 50px rgba(0,0,0,.22);
-    }
-
-    .panel{
-      background:rgba(23,13,9,.88);
-      border-radius:26px;
-      padding:26px;
-      backdrop-filter:blur(4px);
-    }
-
-    .unlock-top{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(220px,290px);
-      gap:16px;
-      align-items:start;
-    }
-
-    .unlock-progress-card{
-      padding:16px;
-      border-radius:20px;
-      background:
-        radial-gradient(circle at 20% 0%,rgba(241,207,105,.12),transparent 42%),
-        rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.18);
-    }
-
-    .unlock-progress-card strong{
-      display:block;
-      font-size:1.5rem;
-      color:var(--gold);
-      line-height:1;
-      margin-top:8px;
-    }
-
-    .unlock-progress-label{
-      display:inline-flex;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(241,207,105,.1);
-      border:1px solid rgba(241,207,105,.18);
-      color:var(--gold);
-      font-size:.68rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .unlock-progress-card span{
-      display:block;
-      margin-top:7px;
-      color:var(--muted);
-      font-size:.8rem;
-      font-weight:800;
-      line-height:1.35;
-    }
-
-    .mini-progress-track{
-      margin-top:12px;
-      height:10px;
-      border-radius:999px;
       background:rgba(255,255,255,.08);
-      border:1px solid rgba(214,171,104,.14);
-      overflow:hidden;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .mini-progress-fill{
-      width:0%;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg,#d7a363,#f1cf69);
-      transition:width .35s ease;
-    }
+    .btn:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+    .btn.primary{background:linear-gradient(135deg, var(--gold), #ff9d4d);color:#241106;border-color:transparent}
+    .btn.pink{background:linear-gradient(135deg, var(--pink), #8758ff);border-color:transparent}
+    .btn.small{min-height:44px;padding:0 14px;border-radius:14px;font-size:.92rem}
 
-    .live-unlock-panel{
-      margin:20px 0 22px;
-      padding:18px;
-      border-radius:24px;
-      background:
-        radial-gradient(circle at 50% 16%, rgba(241,207,105,.1), transparent 38%),
-        rgba(255,255,255,.025);
-      border:1px solid rgba(214,171,104,.18);
-    }
-
-    .live-unlock-top{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      align-items:center;
-      margin-bottom:14px;
-    }
-
-    .live-unlock-top h3{
-      margin:0;
-      font-size:1.08rem;
-      text-transform:uppercase;
-      letter-spacing:-.01em;
-    }
-
-    .unlock-pill{
-      display:inline-flex;
-      padding:9px 13px;
-      border-radius:999px;
-      background:rgba(241,207,105,.14);
-      border:1px solid rgba(241,207,105,.22);
-      color:var(--gold);
-      font-weight:900;
-      white-space:nowrap;
-      font-size:.92rem;
-    }
-
-    .hero-unlock-display{
-      min-height:198px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:20px;
-      background:rgba(255,255,255,.025);
-      border:1px dashed rgba(214,171,104,.18);
-      overflow:hidden;
-      padding:16px;
-    }
-
-    .unlocked-row{
-      width:100%;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:nowrap;
-    }
-
-    .unlocked-plush{
-      width:94px;
-      min-width:0;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-      animation:bob 4s ease-in-out infinite;
-    }
-
-    .unlocked-plush:nth-child(2){animation-delay:.15s}
-    .unlocked-plush:nth-child(3){animation-delay:.3s}
-    .unlocked-plush:nth-child(4){animation-delay:.45s}
-    .unlocked-plush:nth-child(5){animation-delay:.6s}
-    .unlocked-plush:nth-child(6){animation-delay:.75s}
-
-    .unlocked-plush img{
-      width:100%;
-      height:172px;
-      object-fit:contain;
-      object-position:center bottom;
-      filter:
-        drop-shadow(0 0 18px rgba(241,207,105,.18))
-        drop-shadow(0 18px 22px rgba(0,0,0,.34));
-    }
-
-    .locked-preview{
+    .hero-card{
       position:relative;
-      width:155px;
-      height:198px;
-      display:grid;
-      place-items:center;
-    }
-
-    .locked-preview img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      filter:brightness(0) grayscale(1) contrast(1.2) opacity(.72);
-    }
-
-    .locked-preview::after{
-      content:"?";
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      color:var(--gold);
-      font-size:4.25rem;
-      font-weight:900;
-      text-shadow:0 12px 28px rgba(0,0,0,.7);
-    }
-
-    @keyframes bob{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-7px)}
-    }
-
-    .stagegrid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .stage{
-      min-height:240px;
-      border-radius:20px;
-      border:1px solid rgba(214,171,104,.15);
+      min-height:380px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
       background:
-        radial-gradient(circle at 50% 24%,rgba(240,211,153,.07),transparent 40%),
-        rgba(255,255,255,.035);
-      padding:14px;
-      text-align:center;
+        radial-gradient(circle at 50% 20%, rgba(255,209,102,.24), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+      box-shadow:var(--shadow);
       overflow:hidden;
-      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-
-    .stage.active{
-      background:linear-gradient(180deg,rgba(241,211,153,.96),rgba(199,139,70,.96));
-      color:#23150d;
-      transform:translateY(-3px);
-      box-shadow:0 18px 34px rgba(0,0,0,.24);
-    }
-
-    .stage.unlocked{
-      border-color:rgba(241,207,105,.52);
-      box-shadow:0 0 28px rgba(241,207,105,.08);
-    }
-
-    .thumb{
-      position:relative;
-      width:100%;
-      min-height:138px;
       display:grid;
       place-items:center;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px dashed rgba(214,171,104,.18);
-      padding:10px;
-      overflow:hidden;
+      padding:26px;
     }
 
-    .thumb img{
-      width:100%;
-      height:122px;
-      object-fit:contain;
-      object-position:center bottom;
-      filter:drop-shadow(0 12px 20px rgba(0,0,0,.26));
-      transition:filter .2s ease, opacity .2s ease;
-    }
-
-    .thumb.locked img{
-      filter:brightness(0) grayscale(1) contrast(1.15) opacity(.64);
-    }
-
-    .question-mark{
-      display:none;
-      position:absolute;
-      inset:0;
-      place-items:center;
-      color:rgba(248,236,215,.96);
-      font-size:3rem;
-      font-weight:900;
-      text-shadow:0 10px 28px rgba(0,0,0,.58);
-    }
-
-    .thumb.locked .question-mark{
-      display:grid;
-    }
-
-    .thumb.missing-image img{
-      display:none;
-    }
-
-    .thumb.missing-image::before{
+    .hero-card::before{
       content:"";
-      width:80px;
-      height:108px;
-      border-radius:30px;
-      background:linear-gradient(180deg,#24150f,#0f0907);
-      opacity:.78;
-      box-shadow:0 14px 25px rgba(0,0,0,.28);
-    }
-
-    .thumb.missing-image::after{
-      content:"?";
       position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      color:rgba(248,236,215,.95);
-      font-size:2.8rem;
-      font-weight:900;
+      inset:-40%;
+      background:conic-gradient(from 140deg, transparent, rgba(85,240,255,.18), transparent, rgba(255,79,216,.16), transparent);
+      animation:spin 13s linear infinite;
     }
 
-    .stage-label{
-      margin-top:10px;
-      font-size:.74rem;
-      font-weight:900;
-      color:var(--gold);
+    .hero-card-inner{
+      position:relative;
+      z-index:1;
+      text-align:center;
+      padding:26px;
+      border-radius:24px;
+      background:rgba(8,7,17,.66);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-card-title{
+      margin:0 0 8px;
+      font-size:clamp(1.55rem, 3vw, 2.45rem);
+      line-height:1;
+      letter-spacing:-.05em;
+      font-weight:1000;
       text-transform:uppercase;
-      letter-spacing:.08em;
     }
 
-    .stage.active .stage-label{
-      color:rgba(35,21,13,.75);
-    }
-
-    .stage-name{
-      margin-top:7px;
-      font-size:.98rem;
-      font-weight:900;
-      line-height:1.14;
-    }
-
-    .stage-status{
-      margin-top:7px;
-      font-size:.78rem;
+    .hero-card p{
+      margin:0 auto;
+      max-width:350px;
       color:var(--muted);
+      line-height:1.55;
       font-weight:700;
     }
 
-    .stage.active .stage-status{
-      color:rgba(35,21,13,.78);
+    .coin-orb{
+      width:138px;
+      height:138px;
+      margin:0 auto 20px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 35% 30%, #fff3be, transparent 26%),
+        linear-gradient(135deg, #ffd166, #ff9a3d 58%, #ff4fd8);
+      color:#241106;
+      font-size:4rem;
+      box-shadow:0 0 70px rgba(255,209,102,.32);
+      animation:float 4.5s ease-in-out infinite;
     }
 
-    .production-grid{
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+    .contract-card{
+      margin-top:22px;
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);
-      gap:18px;
+      grid-template-columns:auto minmax(0,1fr) auto;
+      gap:10px;
+      align-items:center;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,.07);
+      max-width:760px;
+    }
+
+    .contract-label{
+      color:var(--gold);
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:.74rem;
+    }
+
+    .contract-value{
+      min-width:0;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:850;
+      color:#fff;
+    }
+
+    section{padding:38px 0}
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:18px;
+    }
+
+    .section-kicker{
+      color:var(--gold);
+      text-transform:uppercase;
+      font-size:.78rem;
+      letter-spacing:.1em;
+      font-weight:950;
+      margin-bottom:8px;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(2rem, 4.4vw, 4rem);
+      line-height:.95;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      font-weight:1000;
+    }
+
+    .section-text{
+      color:var(--muted);
+      line-height:1.6;
+      font-weight:650;
+      max-width:680px;
+      margin:10px 0 0;
+    }
+
+    .generator-card{
+      display:grid;
+      grid-template-columns:minmax(320px, 520px) minmax(0, 1fr);
+      gap:20px;
       align-items:start;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:32px;
+      background:rgba(255,255,255,.07);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .preview-wrap{
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(45deg, rgba(255,255,255,.08) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,.08) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,.08) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.08) 75%),
+        rgba(0,0,0,.18);
+      background-size:26px 26px;
+      background-position:0 0, 0 13px, 13px -13px, -13px 0;
+      overflow:hidden;
+      padding:12px;
+    }
+
+    canvas{
+      width:100%;
+      aspect-ratio:1/1;
+      height:auto;
+      border-radius:20px;
+      background:transparent;
+    }
+
+    .preview-footer{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:.9rem;
+      font-weight:750;
+    }
+
+    .controls{
+      display:grid;
+      gap:12px;
+    }
+
+    .control-row{
+      display:grid;
+      grid-template-columns:44px minmax(0,1fr) 44px;
+      gap:10px;
+      align-items:center;
+      padding:12px;
+      border-radius:20px;
+      background:rgba(255,255,255,.065);
+      border:1px solid rgba(255,255,255,.13);
+    }
+
+    .arrow-btn{
+      width:44px;
+      height:44px;
+      border:0;
+      border-radius:14px;
+      background:rgba(255,255,255,.11);
+      color:var(--text);
+      cursor:pointer;
+      font-size:1.35rem;
+      font-weight:950;
+    }
+
+    .arrow-btn:hover{background:rgba(255,255,255,.18)}
+
+    .control-main{
+      min-width:0;
+    }
+
+    .control-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--muted);
+      font-size:.74rem;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      margin-bottom:5px;
+    }
+
+    .control-count{
+      color:rgba(255,255,255,.46);
+      font-size:.72rem;
+      white-space:nowrap;
+    }
+
+    .control-value{
+      min-width:0;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      color:#fff;
+      font-weight:950;
+      font-size:1.05rem;
+    }
+
+    .generator-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:4px;
+    }
+
+    .asset-note{
+      margin-top:12px;
+      padding:13px 14px;
+      border-radius:18px;
+      background:rgba(255,209,102,.09);
+      border:1px solid rgba(255,209,102,.2);
+      color:#ffe7ae;
+      line-height:1.45;
+      font-size:.92rem;
+      font-weight:700;
+    }
+
+    .quick-links{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:12px;
       margin-top:18px;
     }
 
-    .progress-card,.roadmap-card{
-      padding:22px;
-      background:
-        radial-gradient(circle at 20% 10%,rgba(241,207,105,.1),transparent 34%),
-        rgba(23,13,9,.88);
-      backdrop-filter:blur(4px);
-    }
-
-    .progress-kicker{
-      display:inline-flex;
-      padding:7px 12px;
-      border-radius:999px;
-      background:rgba(241,207,105,.11);
-      border:1px solid rgba(241,207,105,.2);
-      color:var(--gold);
-      font-size:.78rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:14px;
-    }
-
-    .progress-head{
+    .quick-link{
+      min-height:74px;
       display:flex;
-      justify-content:space-between;
-      gap:18px;
-      align-items:flex-start;
-      margin-bottom:16px;
-    }
-
-    .progress-title{
-      margin:0;
-      font-size:1.35rem;
-      line-height:1.08;
-      color:var(--text);
-      text-transform:uppercase;
-      letter-spacing:-.02em;
-    }
-
-    .progress-percent{
-      min-width:72px;
+      align-items:center;
+      justify-content:center;
       text-align:center;
-      padding:10px 12px;
-      border-radius:16px;
-      background:rgba(241,207,105,.11);
-      border:1px solid rgba(241,207,105,.2);
-      color:var(--gold);
-      font-weight:900;
-    }
-
-    .progress-money{
-      display:flex;
-      align-items:flex-end;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:12px;
-    }
-
-    .progress-money strong{
-      display:block;
-      color:var(--gold);
-      font-size:clamp(2.35rem,5vw,3.45rem);
-      line-height:.95;
-      letter-spacing:-.04em;
-    }
-
-    .progress-money span{
-      color:var(--muted);
-      font-weight:800;
-      margin-bottom:5px;
-    }
-
-    .progress-track{
-      height:16px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(214,171,104,.15);
-      overflow:hidden;
-    }
-
-    .progress-fill{
-      width:0%;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg,#d7a363,#f1cf69);
-      transition:width .35s ease;
-    }
-
-    .progress-note{
-      margin:14px 0 0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.96rem;
-    }
-
-    .wallet-mini-line{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-top:14px;
-      padding:13px 14px;
-      border-radius:15px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.16);
-    }
-
-    .wallet-mini-line strong{
-      color:var(--gold);
-      font-size:1.08rem;
-    }
-
-    .wallet-mini-line span{
-      color:var(--muted);
-      font-size:.78rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .wallet-details{
-      margin-top:14px;
-      border-radius:16px;
-      border:1px solid rgba(214,171,104,.16);
-      background:rgba(255,255,255,.025);
-      overflow:hidden;
-    }
-
-    .wallet-details summary{
-      cursor:pointer;
-      list-style:none;
-      padding:14px 15px;
-      color:var(--gold);
-      font-weight:900;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-
-    .wallet-details summary::-webkit-details-marker{
-      display:none;
-    }
-
-    .wallet-details summary::after{
-      content:"+";
-      font-size:1.3rem;
-      line-height:1;
-      color:var(--gold);
-    }
-
-    .wallet-details[open] summary::after{
-      content:"–";
-    }
-
-    .wallet-inner{
-      padding:0 15px 15px;
-    }
-
-    .wallet-warning{
-      margin-top:12px;
-      padding:12px 13px;
-      border-radius:14px;
-      background:rgba(241,207,105,.1);
-      border:1px solid rgba(241,207,105,.2);
-      color:var(--gold);
-      font-weight:800;
-      line-height:1.45;
-      font-size:.92rem;
-    }
-
-    .wallet-address-box{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:10px;
-      align-items:center;
-    }
-
-    .roadmap-card h3{
-      margin:0 0 8px;
-      color:var(--gold);
-      font-size:1.22rem;
-      text-transform:uppercase;
-      letter-spacing:.03em;
-    }
-
-    .roadmap-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.96rem;
-    }
-
-    .roadmap-road{
-      position:relative;
-      margin-top:22px;
-      display:grid;
-      gap:18px;
-      padding-left:34px;
-    }
-
-    .roadmap-road::before{
-      content:"";
-      position:absolute;
-      top:10px;
-      bottom:10px;
-      left:13px;
-      width:2px;
-      background:repeating-linear-gradient(
-        to bottom,
-        rgba(241,207,105,.65) 0 10px,
-        transparent 10px 20px
-      );
-      opacity:.7;
-    }
-
-    .road-step{
-      position:relative;
-      padding:15px;
-      border-radius:17px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(214,171,104,.14);
-    }
-
-    .road-step::before{
-      content:attr(data-step);
-      position:absolute;
-      left:-42px;
-      top:15px;
-      width:30px;
-      height:30px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      background:linear-gradient(180deg,#d7a363,#a66b33);
-      color:#23150d;
-      font-weight:900;
-      font-size:.78rem;
-      box-shadow:0 10px 22px rgba(0,0,0,.25);
-    }
-
-    .road-step strong{
-      display:block;
-      color:var(--text);
-      margin-bottom:5px;
-      font-size:1rem;
-    }
-
-    .road-step span{
-      display:block;
-      color:var(--muted);
-      line-height:1.45;
-      font-size:.92rem;
-    }
-
-    .social-strip{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:22px;
-    }
-
-    .social-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:78px;
-      height:78px;
+      padding:12px;
       border-radius:22px;
-      background:linear-gradient(180deg,rgba(47,29,20,.88),rgba(24,13,8,.92));
-      border:1px solid rgba(214,171,104,.28);
-      box-shadow:0 14px 30px rgba(0,0,0,.28);
-      transition:transform .18s ease, border-color .18s ease;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.07);
+      color:#fff;
+      font-weight:950;
+      box-shadow:0 18px 42px rgba(0,0,0,.18);
+      transition:transform .18s ease, background .18s ease;
     }
 
-    .social-btn:hover{
-      transform:translateY(-3px);
-      border-color:rgba(214,171,104,.48);
-    }
+    .quick-link:hover{transform:translateY(-3px);background:rgba(255,255,255,.11)}
 
-    .social-btn svg{
-      width:34px;
-      height:34px;
-      fill:#f1e4d1;
-    }
-
-    .social-btn img{
-      width:42px;
-      height:42px;
-      object-fit:contain;
-    }
-
-    .footer-note{
-      margin-top:28px;
-      padding:18px 20px;
+    .footer{
+      padding:34px 0 46px;
       color:var(--muted);
-      font-size:.9rem;
-      line-height:1.6;
       text-align:center;
-      backdrop-filter:blur(4px);
+      font-size:.93rem;
+      line-height:1.6;
+      font-weight:650;
     }
 
-    @media (max-width:1000px){
-      .unlock-top,
-      .production-grid{
-        grid-template-columns:1fr;
-      }
+    .footer strong{color:var(--gold)}
 
-      .stagegrid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
+    @media (max-width:940px){
+      .hero-grid,.generator-card{grid-template-columns:1fr}
+      .quick-links{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .nav-links{display:none}
     }
 
-    @media (max-width:760px){
-      .hero{
-        min-height:auto;
-      }
-
-      .hero::after{
-        height:72px;
-        background:linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(11,7,5,.16) 35%,
-          rgba(11,7,5,.46) 74%,
-          rgba(11,7,5,.84) 100%
-        );
-      }
-
-      .underground-wrap{
-        margin-top:-14px;
-        background:
-          linear-gradient(180deg, rgba(11,7,5,.24) 0%, transparent 220px),
-          var(--underground-bg-3) center bottom/cover no-repeat,
-          var(--bg);
-      }
-
-      .underground-wrap::before{
-        height:56px;
-        background:linear-gradient(
-          180deg,
-          rgba(11,7,5,.60) 0%,
-          rgba(11,7,5,.24) 58%,
-          transparent 100%
-        );
-      }
-
-      .underground-bg-stack{
-        bottom:-430px;
-      }
-
-      .underground-bg-piece{
-        opacity:.76;
-        background-size:cover;
-      }
-
-      .underground-bg-piece::before,
-      .underground-bg-piece::after{
-        height:82px;
-      }
-
-      .underground-bg-1{
-        top:-8px;
-        height:880px;
-      }
-
-      .underground-bg-2{
-        top:720px;
-        height:930px;
-      }
-
-      .underground-bg-3{
-        top:1430px;
-        bottom:-430px;
-        min-height:2100px;
-        height:auto;
-        background-position:center top;
-      }
-
-      .links{
-        display:none;
-      }
-
-      .nav-inner{
-        padding:14px 16px;
-      }
-
-      .brand{
-        font-size:1rem;
-      }
-
-      .brand img{
-        width:22px;
-        height:22px;
-      }
-
-      .nav-cta{
-        padding:10px 13px;
-        font-size:.9rem;
-      }
-
-      .nav-cta img{
-        width:18px;
-        height:18px;
-      }
-
-      .shell{
-        padding:0 16px;
-      }
-
-      .hero-center{
-        min-height:auto;
-        padding:26px 0 20px;
-      }
-
-      .eyebrow{
-        margin-bottom:13px;
-      }
-
-      h1{
-        font-size:clamp(2.2rem,10.2vw,3.65rem);
-      }
-
-      .hero-blindbox{
-        width:min(80vw,300px);
-        margin:12px auto 6px;
-      }
-
-      .hero-text{
-        font-size:1rem;
-        line-height:1.52;
-      }
-
-      .actions{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-        width:100%;
-        margin-top:20px;
-      }
-
-      .btn{
-        min-height:54px;
-        padding:0 12px;
-        font-size:.9rem;
-      }
-
-      .ca-box{
-        display:grid;
-        grid-template-columns:1fr;
-        margin-top:18px;
-      }
-
-      .ca-label,.ca-value,.copy-btn{
-        width:100%;
-        text-align:center;
-      }
-
-      section{
-        padding:38px 16px;
-      }
-
-      .underground-wrap section:first-of-type{
-        padding-top:24px;
-      }
-
-      #socials{
-        padding-bottom:24px;
-      }
-
-      .section-title{
-        font-size:2rem;
-      }
-
-      .section-sub{
-        font-size:.98rem;
-      }
-
-      .panel{
-        padding:20px;
-        border-radius:24px;
-      }
-
-      .unlock-progress-card{
-        padding:14px;
-      }
-
-      .unlock-progress-card strong{
-        font-size:1.3rem;
-      }
-
-      .live-unlock-panel{
-        padding:16px;
-        border-radius:22px;
-      }
-
-      .live-unlock-top{
-        display:flex;
-        align-items:center;
-        gap:10px;
-      }
-
-      .live-unlock-top h3{
-        font-size:1rem;
-      }
-
-      .unlock-pill{
-        font-size:.86rem;
-        padding:8px 11px;
-      }
-
-      .hero-unlock-display{
-        min-height:180px;
-        padding:14px;
-      }
-
-      .locked-preview{
-        width:130px;
-        height:166px;
-      }
-
-      .locked-preview::after{
-        font-size:3.7rem;
-      }
-
-      .unlocked-row{
-        gap:5px;
-      }
-
-      .unlocked-plush{
-        width:56px;
-      }
-
-      .unlocked-plush img{
-        height:140px;
-      }
-
-      .stagegrid{
-        display:flex;
-        overflow-x:auto;
-        gap:12px;
-        padding-bottom:8px;
-        scroll-snap-type:x proximity;
-      }
-
-      .stage{
-        flex:0 0 160px;
-        min-width:160px;
-        min-height:218px;
-        scroll-snap-align:start;
-      }
-
-      .thumb{
-        min-height:112px;
-      }
-
-      .thumb img{
-        height:92px;
-      }
-
-      .question-mark{
-        font-size:2.65rem;
-      }
-
-      .progress-card,.roadmap-card{
-        padding:18px;
-      }
-
-      .progress-head{
-        display:block;
-      }
-
-      .progress-percent{
-        display:inline-flex;
-        margin-top:12px;
-      }
-
-      .progress-money strong{
-        font-size:2.6rem;
-      }
-
-      .wallet-address-box{
-        grid-template-columns:1fr;
-      }
-
-      .wallet-mini-line{
-        display:block;
-      }
-
-      .wallet-mini-line span{
-        display:block;
-        margin-top:5px;
-      }
-
-      .social-btn{
-        width:64px;
-        height:64px;
-        border-radius:19px;
-      }
-
-      .social-btn svg{
-        width:28px;
-        height:28px;
-      }
-
-      .social-btn img{
-        width:34px;
-        height:34px;
-      }
+    @media (max-width:620px){
+      .shell{width:min(100% - 24px, 1180px)}
+      .hero{padding-top:38px}
+      .hero-card{min-height:300px;padding:16px}
+      .contract-card{grid-template-columns:1fr}
+      .contract-label,.contract-value{text-align:center}
+      .generator-card{padding:12px;border-radius:24px}
+      .generator-actions{grid-template-columns:1fr}
+      .quick-links{grid-template-columns:1fr 1fr}
+      .nav-cta{display:none}
     }
   </style>
 </head>
 
 <body
   data-contract-address="FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump"
-  data-production-wallet="6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd"
-  data-production-goal-usd="10000"
+  data-instagram-url="https://www.instagram.com/babytung_sol"
+  data-x-url="https://x.com/babytcoinsol"
+  data-tiktok-url="https://www.tiktok.com/@mythosmondays"
+  data-telegram-url="https://t.me/BabyTCommunity"
 >
+  <div class="noise" aria-hidden="true"></div>
 
-  <div class="hero">
+  <div class="page">
     <header class="nav">
-      <div class="nav-inner">
+      <div class="shell nav-inner">
         <a class="brand" href="#top" aria-label="BabyT Home">
-          <img src="./favicon-32x32.png" alt="">
+          <span class="brand-mark"><img src="./favicon-32x32.png" alt="" onerror="this.remove(); this.parentElement.textContent='🪵';"></span>
           <span>BabyT</span>
         </a>
 
-        <nav class="links" aria-label="Navigation">
-          <a href="#about">About</a>
-          <a href="#unlocks">Unlocks</a>
-          <a href="#production">Production</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#generator">PFP Generator</a>
+          <a href="#contract">CA</a>
           <a href="#socials">Socials</a>
         </nav>
 
-        <a class="nav-cta buy-link" href="https://pump.fun/coin/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer">
-          <img src="./pumpfun-logo.png" alt="">
-          <span>Pump.fun</span>
-        </a>
+        <a class="nav-cta buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
       </div>
     </header>
 
-    <main class="shell" id="top">
-      <section class="hero-center" id="about">
-        <div class="eyebrow">BabyT Plush Project</div>
+    <main id="top">
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <div class="eyebrow">🪵 Official BabyT Meme Coin</div>
+            <h1>Build your <span class="gradient-word">BabyT</span> PFP.</h1>
+            <p class="hero-copy">
+              From TikTok brainrot to Valhalla. Pick a background, character, shirt, glasses, hand item and hat. Then download your profile picture.
+            </p>
 
-        <h1>
-          BabyT grows into a
-          <span class="accent">collectible plush universe.</span>
-        </h1>
+            <div class="hero-actions">
+              <a class="btn primary" href="#generator">Open Generator</a>
+              <a class="btn" href="#socials">Official Links</a>
+            </div>
 
-        <div class="hero-blindbox">
-          <img src="./blindbox-preview.png" alt="BabyT blind box preview">
+            <div class="contract-card" id="contract">
+              <div class="contract-label">CA</div>
+              <div class="contract-value" id="caValue">FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump</div>
+              <button class="btn small" id="copyCaBtn" type="button">Copy</button>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-label="BabyT meme coin card">
+            <div class="hero-card-inner">
+              <div class="coin-orb">🪵</div>
+              <h2 class="hero-card-title">Tiny wood.<br>Big meme.</h2>
+              <p>Official links only. Community first. Chaos always. NFA.</p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <p class="hero-text">
-          Baby Sahur turning into plushie blind boxes and future community rewards.
-        </p>
+      <section id="generator">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">BabyT Studio</div>
+              <h2>PFP Generator</h2>
+              <p class="section-text">
+                Use the arrows to switch each layer. Your PNG assets can be dropped into the folders listed below and the generator will use them automatically.
+              </p>
+            </div>
+          </div>
 
-        <div class="actions">
-          <a class="btn primary" href="#unlocks">See Unlocks</a>
-          <a class="btn secondary" href="#production">Production Goal</a>
+          <div class="generator-card">
+            <div>
+              <div class="preview-wrap">
+                <canvas id="pfpCanvas" width="1024" height="1024" aria-label="BabyT generated profile picture"></canvas>
+              </div>
+              <div class="preview-footer">
+                <span>Output: 1024 × 1024 PNG</span>
+                <span id="renderStatus">Ready</span>
+              </div>
+            </div>
+
+            <div>
+              <div id="controlStack" class="controls"></div>
+
+              <div class="generator-actions">
+                <button class="btn pink" id="randomBtn" type="button">Generate Random</button>
+                <button class="btn primary" id="downloadBtn" type="button">Download PNG</button>
+              </div>
+
+              <div class="generator-actions">
+                <button class="btn" id="resetBtn" type="button">Reset</button>
+                <button class="btn" id="copyAssetGuideBtn" type="button">Copy File Names</button>
+              </div>
+
+              <div class="asset-note">
+                Layer order: background → full character/shoes → shirt → glasses/mask → hand accessory → hat. Use 1024 × 1024 PNGs. Transparent backgrounds are best for everything except backgrounds.
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="ca-box" id="contract">
-          <div class="ca-label">Contract Address</div>
-          <div id="caValue" class="ca-value">FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump</div>
-          <button id="copyCaBtn" class="copy-btn" type="button">Copy CA</button>
+      <section id="socials">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Official Links</div>
+              <h2>Join BabyT</h2>
+              <p class="section-text">Use only the official links below. The generator is for community PFPs and meme content.</p>
+            </div>
+          </div>
+
+          <div class="quick-links">
+            <a class="quick-link" id="xLink" href="#" target="_blank" rel="noreferrer">X</a>
+            <a class="quick-link" id="instagramLink" href="#" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="quick-link" id="tiktokLink" href="#" target="_blank" rel="noreferrer">TikTok</a>
+            <a class="quick-link" id="telegramLink" href="#" target="_blank" rel="noreferrer">Telegram</a>
+            <a class="quick-link buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
+            <a class="quick-link" id="jupiterLink" href="#" target="_blank" rel="noreferrer">Jupiter</a>
+            <a class="quick-link" id="dexLink" href="#" target="_blank" rel="noreferrer">DEXScreener</a>
+            <a class="quick-link" id="geckoLink" href="#" target="_blank" rel="noreferrer">GeckoTerminal</a>
+            <button class="quick-link" id="copyCaBtn2" type="button">Copy CA</button>
+            <a class="quick-link" href="#generator">Create PFP</a>
+          </div>
         </div>
       </section>
     </main>
-  </div>
 
-  <div class="underground-wrap">
-    <div class="underground-bg-stack" aria-hidden="true">
-      <div class="underground-bg-piece underground-bg-1"></div>
-      <div class="underground-bg-piece underground-bg-2"></div>
-      <div class="underground-bg-piece underground-bg-3"></div>
-    </div>
-
-    <section id="unlocks">
-      <div class="section-inner">
-        <div class="panel">
-          <div class="unlock-top">
-            <div>
-              <h2 class="section-title">Plush Unlocks</h2>
-              <p class="section-sub">
-                Each milestone reveals one new BabyT mystery plush.
-              </p>
-            </div>
-
-            <div class="unlock-progress-card">
-              <div class="unlock-progress-label">Next plush progress</div>
-              <strong id="marketCapValue">$0</strong>
-              <span id="currentProgressText">toward 50K+ unlock</span>
-              <div class="mini-progress-track">
-                <div id="unlockProgressFill" class="mini-progress-fill"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="live-unlock-panel">
-            <div class="live-unlock-top">
-              <h3 id="heroUnlockTitle">Current Reveal</h3>
-              <div id="nextUnlockPill" class="unlock-pill">Next plush: 50K+</div>
-            </div>
-
-            <div id="heroUnlockDisplay" class="hero-unlock-display">
-              <div class="locked-preview">
-                <img src="./unlock-01.png" alt="Locked BabyT plush preview">
-              </div>
-            </div>
-          </div>
-
-          <div id="stageGrid" class="stagegrid"></div>
-        </div>
+    <footer class="footer">
+      <div class="shell">
+        <strong>$BabyT on Solana.</strong> Meme coin community page. Nothing here is financial advice. Always do your own research.
       </div>
-    </section>
-
-    <section id="production">
-      <div class="section-inner">
-        <h2 class="section-title">Production Goal</h2>
-        <p class="section-sub">
-          BabyT is building toward real plush samples, blind box packaging and possible future community giveaways.
-        </p>
-
-        <div class="production-grid">
-          <div class="progress-card">
-            <div class="progress-kicker">First Plush Goal</div>
-
-            <div class="progress-head">
-              <h3 class="progress-title">Sample & Packaging Tracker</h3>
-              <div id="progressPercent" class="progress-percent">0%</div>
-            </div>
-
-            <div class="progress-money">
-              <strong id="walletUsdValue">$--</strong>
-              <span>of <b id="productionGoalText">$10,000</b></span>
-            </div>
-
-            <div class="progress-track">
-              <div id="progressFill" class="progress-fill"></div>
-            </div>
-
-            <p class="progress-note">
-              A transparent tracker for BabyT plush samples, blind box tests and supplier setup.
-            </p>
-
-            <div class="wallet-mini-line">
-              <strong id="walletSolValue">-- SOL</strong>
-              <span>currently tracked</span>
-            </div>
-
-            <details class="wallet-details">
-              <summary>View SOL support wallet</summary>
-
-              <div class="wallet-inner">
-                <div class="wallet-address-box">
-                  <div id="walletValue" class="wallet-address">6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd</div>
-                  <button id="copyWalletBtn" class="copy-btn" type="button">Copy Wallet</button>
-                </div>
-
-                <div class="wallet-warning">
-                  SOL only. This is a Solana wallet. Optional support is not a purchase and does not guarantee rewards.
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <div class="roadmap-card">
-            <h3>Support Roadmap</h3>
-            <p>
-              A simple path from BabyT concept art to real collectible samples.
-            </p>
-
-            <div class="roadmap-road">
-              <div class="road-step" data-step="01">
-                <strong>Plush Samples</strong>
-                <span>Test the first real BabyT plush versions.</span>
-              </div>
-
-              <div class="road-step" data-step="02">
-                <strong>Blind Box Packaging</strong>
-                <span>Create a clean collectible box experience.</span>
-              </div>
-
-              <div class="road-step" data-step="03">
-                <strong>Community Rewards</strong>
-                <span>Prepare future giveaways if production becomes possible.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="socials">
-      <div class="section-inner">
-        <h2 class="section-title" style="text-align:center">Join BabyT</h2>
-        <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">
-          Follow the official channels for unlocks, concepts and community posts.
-        </p>
-
-        <div class="social-strip">
-          <a class="social-btn" href="https://x.com/babytcoinsol" target="_blank" rel="noreferrer" aria-label="X">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18.244 2H21.5l-7.11 8.127L22.75 22h-6.544l-5.123-6.697L5.223 22H1.964l7.604-8.692L1.55 2h6.71l4.63 6.109L18.244 2Zm-1.147 18h1.804L7.278 3.895H5.342L17.097 20Z"/>
-            </svg>
-          </a>
-
-          <a class="social-btn" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16.589 1H13.79v11.313a2.758 2.758 0 1 1-2.758-2.758c.215 0 .425.025.627.072V6.793a5.545 5.545 0 1 0 4.93 5.52V7.005a7.31 7.31 0 0 0 4.275 1.374V5.58A4.537 4.537 0 0 1 16.589 1Z"/>
-            </svg>
-          </a>
-
-          <a class="social-btn" href="https://t.me/BabyTCommunity" target="_blank" rel="noreferrer" aria-label="Telegram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21.944 4.88c.273-1.138-.654-1.6-1.58-1.217L2.93 10.75c-1.19.477-1.174 1.135-.205 1.433l4.47 1.396 1.71 5.24c.22.61.112.854.755.854.496 0 .715-.227.993-.496l2.383-2.318 4.956 3.66c.913.503 1.57.242 1.797-.846L21.944 4.88ZM8.02 12.944l10.22-6.445c.51-.31.978-.143.594.198l-8.75 7.897-.34 3.64-1.724-5.29Z"/>
-            </svg>
-          </a>
-
-          <a class="social-btn buy-link" href="https://pump.fun/coin/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Pump.fun">
-            <img src="./pumpfun-logo.png" alt="">
-          </a>
-
-          <a class="social-btn" id="jupiterLink" href="https://jup.ag/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="Jupiter">
-            <svg viewBox="0 0 64 64" aria-hidden="true">
-              <defs>
-                <linearGradient id="jupGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#bdf56b"/>
-                  <stop offset="48%" stop-color="#55d6c2"/>
-                  <stop offset="100%" stop-color="#7f7cff"/>
-                </linearGradient>
-              </defs>
-              <circle cx="32" cy="32" r="27" fill="rgba(255,255,255,.04)" stroke="url(#jupGradient)" stroke-width="4"/>
-              <path d="M14 24c8-7 20-7 28 0 3 3 6 4 10 4" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
-              <path d="M12 34c9-6 19-6 29 0 4 3 7 4 12 3" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
-              <path d="M16 44c8-4 17-4 25 0 4 2 7 3 11 2" fill="none" stroke="url(#jupGradient)" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-          </a>
-
-          <a class="social-btn" id="dexLink" href="https://dexscreener.com/solana/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="DEXScreener">
-            <img src="./dexscreener-logo.png" alt="">
-          </a>
-
-          <a class="social-btn" id="geckoLink" href="https://www.geckoterminal.com/solana/tokens/FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump" target="_blank" rel="noreferrer" aria-label="GeckoTerminal">
-            <img src="./geckoterminal-logo.png" alt="">
-          </a>
-        </div>
-
-        <div class="footer-note">
-          BabyT is a community meme character project. Plush designs shown are early concept previews only and are not available for sale yet.
-          Optional wallet support is not a purchase and does not guarantee rewards, plushies or financial returns. Always do your own research.
-        </div>
-      </div>
-    </section>
+    </footer>
   </div>
 
   <script>
-    const CONTRACT_ADDRESS = document.body.dataset.contractAddress || "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
-    const PRODUCTION_WALLET = document.body.dataset.productionWallet || "6N3bYgvXDQQw9QNgMAC39JXaA7UCx27w1Rf9h1xH4Tyd";
-    const PRODUCTION_GOAL_USD = Number(document.body.dataset.productionGoalUsd || 10000);
+    const CANVAS_SIZE = 1024;
+    const body = document.body;
+    const CONTRACT_ADDRESS = body.dataset.contractAddress || "FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump";
 
-    const marketCapValue = document.getElementById("marketCapValue");
-    const currentProgressText = document.getElementById("currentProgressText");
-    const unlockProgressFill = document.getElementById("unlockProgressFill");
+    const links = {
+      instagram: body.dataset.instagramUrl || "https://www.instagram.com/babytung_sol",
+      x: body.dataset.xUrl || "https://x.com/babytcoinsol",
+      tiktok: body.dataset.tiktokUrl || "https://www.tiktok.com/@mythosmondays",
+      telegram: body.dataset.telegramUrl || "https://t.me/BabyTCommunity",
+      pump: `https://pump.fun/coin/${CONTRACT_ADDRESS}`,
+      jupiter: `https://jup.ag/tokens/${CONTRACT_ADDRESS}`,
+      dex: `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`,
+      gecko: `https://www.geckoterminal.com/solana/tokens/${CONTRACT_ADDRESS}`
+    };
 
-    const caValue = document.getElementById("caValue");
-    const copyCaBtn = document.getElementById("copyCaBtn");
-
-    const stageGrid = document.getElementById("stageGrid");
-    const nextUnlockPill = document.getElementById("nextUnlockPill");
-    const heroUnlockDisplay = document.getElementById("heroUnlockDisplay");
-    const heroUnlockTitle = document.getElementById("heroUnlockTitle");
-
-    const walletValue = document.getElementById("walletValue");
-    const copyWalletBtn = document.getElementById("copyWalletBtn");
-    const walletSolValue = document.getElementById("walletSolValue");
-    const walletUsdValue = document.getElementById("walletUsdValue");
-    const progressFill = document.getElementById("progressFill");
-    const progressPercent = document.getElementById("progressPercent");
-    const productionGoalText = document.getElementById("productionGoalText");
-
-    const stages = [
+    const layerConfig = [
       {
-        id: "unlock-01",
-        threshold: 50000,
-        label: "50K+",
-        name: "Mystery Plush 01",
-        image: "./unlock-01.png"
+        key: "background",
+        title: "Background",
+        folder: "assets/backgrounds",
+        options: [
+          { name: "Valhalla Gold", src: "./assets/backgrounds/bg-01-valhalla-gold.png", fallback: "background", colors: ["#ffe08a", "#ff8f3f", "#19112a"] },
+          { name: "Solana Blue", src: "./assets/backgrounds/bg-02-solana-blue.png", fallback: "background", colors: ["#13f0ff", "#8758ff", "#070719"] },
+          { name: "Meme Green", src: "./assets/backgrounds/bg-03-meme-green.png", fallback: "background", colors: ["#95ff7a", "#28c76f", "#08160f"] },
+          { name: "Pink Chaos", src: "./assets/backgrounds/bg-04-pink-chaos.png", fallback: "background", colors: ["#ff4fd8", "#ff9d4d", "#170819"] },
+          { name: "Night Mode", src: "./assets/backgrounds/bg-05-night-mode.png", fallback: "background", colors: ["#20224b", "#111827", "#05060f"] },
+          { name: "Clean White", src: "./assets/backgrounds/bg-06-clean-white.png", fallback: "background", colors: ["#ffffff", "#dff7ff", "#f5efe4"] }
+        ]
       },
       {
-        id: "unlock-02",
-        threshold: 150000,
-        label: "150K+",
-        name: "Mystery Plush 02",
-        image: "./unlock-02.png"
+        key: "character",
+        title: "Character / Shoes",
+        folder: "assets/characters",
+        options: [
+          { name: "Blue Sneakers", src: "./assets/characters/character-01-blue-sneakers.png", fallback: "character", shoeColor: "#1e9bff" },
+          { name: "Red Sneakers", src: "./assets/characters/character-02-red-sneakers.png", fallback: "character", shoeColor: "#ff3b30" },
+          { name: "Black Sneakers", src: "./assets/characters/character-03-black-sneakers.png", fallback: "character", shoeColor: "#111111" },
+          { name: "Gold Sneakers", src: "./assets/characters/character-04-gold-sneakers.png", fallback: "character", shoeColor: "#d9a520" }
+        ]
       },
       {
-        id: "unlock-03",
-        threshold: 300000,
-        label: "300K+",
-        name: "Mystery Plush 03",
-        image: "./unlock-03.png"
+        key: "shirt",
+        title: "T-Shirt / Body",
+        folder: "assets/shirts",
+        options: [
+          { name: "None", type: "none" },
+          { name: "BabyT Logo Tee", src: "./assets/shirts/shirt-01-babyt-logo.png", fallback: "shirt", color: "#ffffff", logo: "$T" },
+          { name: "Solana Tee", src: "./assets/shirts/shirt-02-solana.png", fallback: "shirt", color: "#1d1b42", logo: "SOL" },
+          { name: "Valhalla Tee", src: "./assets/shirts/shirt-03-valhalla.png", fallback: "shirt", color: "#7b3f00", logo: "⚔" },
+          { name: "Pink Hoodie", src: "./assets/shirts/shirt-04-pink-hoodie.png", fallback: "shirt", color: "#ff4fd8", logo: "BT" }
+        ]
       },
       {
-        id: "unlock-04",
-        threshold: 500000,
-        label: "500K+",
-        name: "Mystery Plush 04",
-        image: "./unlock-04.png"
+        key: "glasses",
+        title: "Glasses / Mask",
+        folder: "assets/glasses",
+        options: [
+          { name: "None", type: "none" },
+          { name: "Black Shades", src: "./assets/glasses/glasses-01-black-shades.png", fallback: "glasses", style: "black" },
+          { name: "Rainbow Visor", src: "./assets/glasses/glasses-02-rainbow-visor.png", fallback: "glasses", style: "visor" },
+          { name: "Blue Round", src: "./assets/glasses/glasses-03-blue-round.png", fallback: "glasses", style: "round" },
+          { name: "Laser Eyes", src: "./assets/glasses/glasses-04-laser-eyes.png", fallback: "glasses", style: "laser" }
+        ]
       },
       {
-        id: "unlock-05",
-        threshold: 1000000,
-        label: "1M+",
-        name: "Mystery Plush 05",
-        image: "./unlock-05.png"
+        key: "hand",
+        title: "Hand Accessory",
+        folder: "assets/hand-accessories",
+        options: [
+          { name: "None", type: "none" },
+          { name: "Baseball Bat", src: "./assets/hand-accessories/hand-01-baseball-bat.png", fallback: "hand", style: "bat" },
+          { name: "Solana Coin", src: "./assets/hand-accessories/hand-02-solana-coin.png", fallback: "hand", style: "coin" },
+          { name: "BabyT Flag", src: "./assets/hand-accessories/hand-03-babyt-flag.png", fallback: "hand", style: "flag" },
+          { name: "Diamond Hands", src: "./assets/hand-accessories/hand-04-diamond-hands.png", fallback: "hand", style: "diamond" }
+        ]
       },
       {
-        id: "unlock-06",
-        threshold: 5000000,
-        label: "5M+",
-        name: "Mystery Plush 06",
-        image: "./unlock-06.png",
-        fallbackImage: "./unlock-01.png"
+        key: "hat",
+        title: "Hat / Headgear",
+        folder: "assets/hats",
+        options: [
+          { name: "None", type: "none" },
+          { name: "Viking Helmet", src: "./assets/hats/hat-01-viking.png", fallback: "hat", style: "viking" },
+          { name: "Solana Cap", src: "./assets/hats/hat-02-solana-cap.png", fallback: "hat", style: "cap" },
+          { name: "Golden Crown", src: "./assets/hats/hat-03-golden-crown.png", fallback: "hat", style: "crown" },
+          { name: "Halo", src: "./assets/hats/hat-04-halo.png", fallback: "hat", style: "halo" },
+          { name: "Beanie", src: "./assets/hats/hat-05-beanie.png", fallback: "hat", style: "beanie" }
+        ]
       }
     ];
 
-    function formatMarketCap(value){
-      if(value == null || Number.isNaN(value)) return "$0";
-      if(value >= 1000000) return "$" + (value / 1000000).toFixed(2) + "M";
-      if(value >= 1000) return "$" + (value / 1000).toFixed(0) + "K";
-      return "$" + Math.round(value);
+    const state = Object.fromEntries(layerConfig.map(layer => [layer.key, 0]));
+    const canvas = document.getElementById("pfpCanvas");
+    const ctx = canvas.getContext("2d");
+    const controlStack = document.getElementById("controlStack");
+    const renderStatus = document.getElementById("renderStatus");
+    const imageCache = new Map();
+    let renderId = 0;
+
+    function setLinks(){
+      document.querySelectorAll(".buy-link").forEach(link => link.href = links.pump);
+      document.getElementById("xLink").href = links.x;
+      document.getElementById("instagramLink").href = links.instagram;
+      document.getElementById("tiktokLink").href = links.tiktok;
+      document.getElementById("telegramLink").href = links.telegram;
+      document.getElementById("jupiterLink").href = links.jupiter;
+      document.getElementById("dexLink").href = links.dex;
+      document.getElementById("geckoLink").href = links.gecko;
+      document.getElementById("caValue").textContent = CONTRACT_ADDRESS;
     }
 
-    function formatCurrency(value){
-      if(value == null || Number.isNaN(value)) return "$--";
-
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigits: value >= 1000 ? 0 : 2
-      }).format(value);
-    }
-
-    function formatSol(value){
-      if(value == null || Number.isNaN(value)) return "-- SOL";
-
-      return value.toLocaleString("en-US", {
-        minimumFractionDigits: value < 0.01 ? 4 : 2,
-        maximumFractionDigits: value < 0.01 ? 6 : 4
-      }) + " SOL";
-    }
-
-    function withTimeout(promise, ms = 9000){
-      const timeout = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error("Timeout")), ms);
-      });
-
-      return Promise.race([promise, timeout]);
-    }
-
-    function getUnlockedStages(marketCap){
-      return stages.filter(stage => marketCap >= stage.threshold);
-    }
-
-    function getCurrentStage(marketCap){
-      const unlocked = getUnlockedStages(marketCap);
-      return unlocked.length ? unlocked[unlocked.length - 1] : null;
-    }
-
-    function getNextStage(marketCap){
-      return stages.find(stage => marketCap < stage.threshold) || null;
-    }
-
-    function imageOnError(stage){
-      if(stage.fallbackImage){
-        return `this.onerror=null; this.src='${stage.fallbackImage}';`;
-      }
-
-      return "this.parentElement.classList.add('missing-image'); this.remove();";
-    }
-
-    function stageImageHtml(stage, isUnlocked){
-      return `
-        <div class="thumb ${isUnlocked ? "revealed" : "locked"}">
-          <img
-            src="${stage.image}"
-            alt="${stage.name}"
-            onerror="${imageOnError(stage)}"
-          >
-          <div class="question-mark">?</div>
-        </div>
-      `;
-    }
-
-    function updateUnlockProgress(marketCap){
-      const nextStage = getNextStage(marketCap);
-
-      marketCapValue.textContent = formatMarketCap(marketCap);
-
-      if(!nextStage){
-        currentProgressText.textContent = "all mystery plushies unlocked";
-        unlockProgressFill.style.width = "100%";
-        return;
-      }
-
-      const nextIndex = stages.findIndex(stage => stage.id === nextStage.id);
-      const previousThreshold = nextIndex > 0 ? stages[nextIndex - 1].threshold : 0;
-      const progress = Math.max(0, Math.min(100, ((marketCap - previousThreshold) / (nextStage.threshold - previousThreshold)) * 100));
-
-      currentProgressText.textContent = `toward ${nextStage.label} unlock`;
-      unlockProgressFill.style.width = progress.toFixed(2) + "%";
-    }
-
-    function renderHeroUnlocks(marketCap){
-      const unlocked = getUnlockedStages(marketCap);
-      const nextStage = getNextStage(marketCap);
-
-      if(!unlocked.length){
-        heroUnlockDisplay.innerHTML = `
-          <div class="locked-preview">
-            <img src="${stages[0].image}" alt="Locked BabyT plush preview">
-          </div>
-        `;
-
-        heroUnlockTitle.textContent = "Current Reveal";
-      } else {
-        heroUnlockDisplay.innerHTML = `
-          <div class="unlocked-row">
-            ${unlocked.map(stage => `
-              <div class="unlocked-plush">
-                <img
-                  src="${stage.image}"
-                  alt="${stage.name}"
-                  onerror="${stage.fallbackImage ? `this.onerror=null; this.src='${stage.fallbackImage}';` : `this.parentElement.innerHTML='?'`}"
-                >
-              </div>
-            `).join("")}
-          </div>
-        `;
-
-        heroUnlockTitle.textContent = unlocked.length === 1
-          ? "1 Plush Unlocked"
-          : `${unlocked.length} Plushies Unlocked`;
-      }
-
-      if(nextStage){
-        nextUnlockPill.textContent = `Next plush: ${nextStage.label}`;
-      } else {
-        nextUnlockPill.textContent = "All plushies unlocked";
-      }
-    }
-
-    function renderStages(currentId, marketCap){
-      stageGrid.innerHTML = stages.map(stage => {
-        const isUnlocked = marketCap >= stage.threshold;
-        const isActive = isUnlocked && stage.id === currentId;
-
+    function renderControls(){
+      controlStack.innerHTML = layerConfig.map(layer => {
+        const option = layer.options[state[layer.key]];
+        const index = state[layer.key] + 1;
         return `
-          <article class="stage ${isActive ? "active" : ""} ${isUnlocked ? "unlocked" : ""}">
-            ${stageImageHtml(stage, isUnlocked)}
-            <div class="stage-label">${stage.label}</div>
-            <div class="stage-name">${stage.name}</div>
-            <div class="stage-status">${isUnlocked ? "Unlocked" : "Locked"}</div>
-          </article>
+          <div class="control-row" data-layer="${layer.key}">
+            <button class="arrow-btn" type="button" data-dir="-1" aria-label="Previous ${layer.title}">‹</button>
+            <div class="control-main">
+              <div class="control-title">
+                <span>${layer.title}</span>
+                <span class="control-count">${index}/${layer.options.length}</span>
+              </div>
+              <div class="control-value">${option.name}</div>
+            </div>
+            <button class="arrow-btn" type="button" data-dir="1" aria-label="Next ${layer.title}">›</button>
+          </div>
         `;
       }).join("");
+
+      controlStack.querySelectorAll(".control-row").forEach(row => {
+        const key = row.dataset.layer;
+        row.querySelectorAll("button").forEach(button => {
+          button.addEventListener("click", () => changeLayer(key, Number(button.dataset.dir)));
+        });
+      });
     }
 
-    function updateUnlockUi(marketCap){
-      const currentStage = getCurrentStage(marketCap);
-
-      updateUnlockProgress(marketCap);
-      renderStages(currentStage ? currentStage.id : null, marketCap);
-      renderHeroUnlocks(marketCap);
+    function changeLayer(key, direction){
+      const layer = layerConfig.find(item => item.key === key);
+      const total = layer.options.length;
+      state[key] = (state[key] + direction + total) % total;
+      renderControls();
+      drawPfp();
     }
 
-    async function fetchMarketCap(){
-      try{
-        const response = await withTimeout(fetch(`https://api.dexscreener.com/token-pairs/v1/solana/${CONTRACT_ADDRESS}`));
-        if(!response.ok) throw new Error("Request failed");
-
-        const pairs = await response.json();
-        if(!Array.isArray(pairs) || !pairs.length) throw new Error("No pairs found");
-
-        const bestPair = [...pairs].sort((a, b) => (b?.liquidity?.usd || 0) - (a?.liquidity?.usd || 0))[0];
-        const marketCap = Number(bestPair.marketCap || bestPair.fdv || 0);
-
-        updateUnlockUi(marketCap || 0);
-      }catch(error){
-        updateUnlockUi(0);
-      }
+    function randomizePfp(){
+      layerConfig.forEach(layer => {
+        state[layer.key] = Math.floor(Math.random() * layer.options.length);
+      });
+      renderControls();
+      drawPfp();
     }
 
-    async function fetchSolPrice(){
-      const priceFetchers = [
-        async () => {
-          const response = await withTimeout(fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"));
-          const data = await response.json();
-          return Number(data?.price || 0);
-        },
-        async () => {
-          const response = await withTimeout(fetch("https://api.coinbase.com/v2/exchange-rates?currency=SOL"));
-          const data = await response.json();
-          return Number(data?.data?.rates?.USD || 0);
-        },
-        async () => {
-          const response = await withTimeout(fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd"));
-          const data = await response.json();
-          return Number(data?.solana?.usd || 0);
+    function resetPfp(){
+      layerConfig.forEach(layer => state[layer.key] = 0);
+      renderControls();
+      drawPfp();
+    }
+
+    function loadImage(src){
+      if(!src) return Promise.resolve(null);
+      if(imageCache.has(src)) return imageCache.get(src);
+
+      const promise = new Promise(resolve => {
+        const img = new Image();
+        img.decoding = "async";
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        img.src = src;
+      });
+
+      imageCache.set(src, promise);
+      return promise;
+    }
+
+    async function drawPfp(){
+      const currentRender = ++renderId;
+      renderStatus.textContent = "Rendering...";
+      ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+      for(const layer of layerConfig){
+        const option = layer.options[state[layer.key]];
+        if(option.type === "none") continue;
+
+        const img = await loadImage(option.src);
+        if(currentRender !== renderId) return;
+
+        if(img){
+          ctx.drawImage(img, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+        } else {
+          drawFallback(layer, option);
         }
-      ];
-
-      for(const fetchPrice of priceFetchers){
-        try{
-          const price = await fetchPrice();
-          if(price > 0) return price;
-        }catch(error){}
       }
 
-      return null;
+      renderStatus.textContent = "Ready";
     }
 
-    async function fetchWalletSolBalance(){
-      const rpcEndpoints = [
-        "https://api.mainnet-beta.solana.com",
-        "https://solana-rpc.publicnode.com",
-        "https://rpc.ankr.com/solana"
-      ];
+    function drawFallback(layer, option){
+      if(option.fallback === "background") drawBackgroundFallback(option);
+      if(option.fallback === "character") drawCharacterFallback(option);
+      if(option.fallback === "shirt") drawShirtFallback(option);
+      if(option.fallback === "glasses") drawGlassesFallback(option);
+      if(option.fallback === "hand") drawHandFallback(option);
+      if(option.fallback === "hat") drawHatFallback(option);
+    }
 
-      const body = JSON.stringify({
-        jsonrpc: "2.0",
-        id: 1,
-        method: "getBalance",
-        params: [PRODUCTION_WALLET]
-      });
+    function roundedRect(x, y, w, h, r){
+      const radius = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.arcTo(x + w, y, x + w, y + h, radius);
+      ctx.arcTo(x + w, y + h, x, y + h, radius);
+      ctx.arcTo(x, y + h, x, y, radius);
+      ctx.arcTo(x, y, x + w, y, radius);
+      ctx.closePath();
+    }
 
-      for(const endpoint of rpcEndpoints){
-        try{
-          const response = await withTimeout(fetch(endpoint, {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body
-          }));
+    function drawBackgroundFallback(option){
+      const colors = option.colors || ["#ffd166", "#ff4fd8", "#080711"];
+      const gradient = ctx.createRadialGradient(360, 280, 40, 540, 520, 850);
+      gradient.addColorStop(0, colors[0]);
+      gradient.addColorStop(.52, colors[1]);
+      gradient.addColorStop(1, colors[2]);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
-          if(!response.ok) throw new Error("Wallet request failed");
-
-          const data = await response.json();
-          const lamports = Number(data?.result?.value);
-
-          if(!Number.isNaN(lamports)){
-            return lamports / 1000000000;
-          }
-        }catch(error){}
+      ctx.globalAlpha = .28;
+      for(let i = 0; i < 9; i++){
+        ctx.beginPath();
+        ctx.arc(512, 512, 140 + i * 74, 0, Math.PI * 2);
+        ctx.strokeStyle = i % 2 ? "#ffffff" : "#000000";
+        ctx.lineWidth = 6;
+        ctx.stroke();
       }
-
-      return null;
+      ctx.globalAlpha = 1;
     }
 
-    function updateWalletUi(solBalance, solUsdPrice){
-      if(solBalance == null || Number.isNaN(solBalance)){
-        walletSolValue.textContent = "-- SOL";
-        walletUsdValue.textContent = "$--";
-        progressFill.style.width = "0%";
-        progressPercent.textContent = "0%";
+    function woodGradient(){
+      const gradient = ctx.createLinearGradient(315, 240, 725, 830);
+      gradient.addColorStop(0, "#ffd18a");
+      gradient.addColorStop(.42, "#d9832e");
+      gradient.addColorStop(1, "#8e4a1d");
+      return gradient;
+    }
+
+    function drawCharacterFallback(option){
+      ctx.save();
+      ctx.shadowColor = "rgba(0,0,0,.28)";
+      ctx.shadowBlur = 30;
+      ctx.shadowOffsetY = 22;
+
+      ctx.strokeStyle = "rgba(83,41,13,.5)";
+      ctx.lineWidth = 20;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(300, 498);
+      ctx.lineTo(190, 368);
+      ctx.stroke();
+
+      ctx.lineWidth = 42;
+      ctx.beginPath();
+      ctx.moveTo(228, 300);
+      ctx.lineTo(138, 450);
+      ctx.stroke();
+
+      ctx.lineWidth = 34;
+      ctx.beginPath();
+      ctx.moveTo(746, 510);
+      ctx.quadraticCurveTo(833, 575, 768, 650);
+      ctx.stroke();
+
+      roundedRect(322, 188, 390, 548, 84);
+      ctx.fillStyle = woodGradient();
+      ctx.fill();
+      ctx.strokeStyle = "rgba(88,42,14,.28)";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      ctx.globalAlpha = .22;
+      for(let x = 365; x <= 665; x += 48){
+        ctx.beginPath();
+        ctx.moveTo(x, 215);
+        ctx.bezierCurveTo(x - 16, 370, x + 16, 520, x - 5, 720);
+        ctx.strokeStyle = "#6f3511";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      ctx.shadowColor = "transparent";
+      ctx.fillStyle = "#050507";
+      ctx.beginPath(); ctx.ellipse(430, 395, 44, 58, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(600, 395, 44, 58, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath(); ctx.arc(444, 370, 11, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(614, 370, 11, 0, Math.PI * 2); ctx.fill();
+
+      ctx.fillStyle = "#d9832e";
+      ctx.beginPath(); ctx.ellipse(516, 470, 52, 37, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = "#321b11";
+      ctx.lineWidth = 7;
+      ctx.beginPath(); ctx.arc(515, 500, 110, .18 * Math.PI, .82 * Math.PI); ctx.stroke();
+
+      ctx.strokeStyle = "rgba(83,41,13,.55)";
+      ctx.lineWidth = 30;
+      ctx.beginPath(); ctx.moveTo(440, 728); ctx.lineTo(420, 845); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(594, 728); ctx.lineTo(620, 845); ctx.stroke();
+
+      drawShoe(360, 840, option.shoeColor || "#1e9bff", false);
+      drawShoe(565, 840, option.shoeColor || "#1e9bff", true);
+      ctx.restore();
+    }
+
+    function drawShoe(x, y, color, flip){
+      ctx.save();
+      if(flip){ ctx.translate(x + 146, 0); ctx.scale(-1, 1); x = 0; }
+      roundedRect(x, y, 155, 70, 32);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.fillStyle = "#fff7ef";
+      roundedRect(x + 8, y + 40, 158, 34, 18);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(0,0,0,.22)";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.strokeStyle = "#fff7ef";
+      ctx.lineWidth = 8;
+      ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(x + 52, y + 25); ctx.lineTo(x + 98, y + 41); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x + 62, y + 14); ctx.lineTo(x + 112, y + 31); ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawShirtFallback(option){
+      ctx.save();
+      ctx.globalAlpha = .94;
+      ctx.fillStyle = option.color || "#ffffff";
+      roundedRect(348, 540, 338, 190, 38);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(0,0,0,.18)";
+      ctx.lineWidth = 6;
+      ctx.stroke();
+      ctx.fillStyle = option.color === "#ffffff" ? "#111827" : "#ffffff";
+      ctx.font = "900 62px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(option.logo || "BT", 518, 632);
+      ctx.restore();
+    }
+
+    function drawGlassesFallback(option){
+      ctx.save();
+      const style = option.style;
+      if(style === "laser"){
+        const gradient = ctx.createLinearGradient(336, 400, 700, 400);
+        gradient.addColorStop(0, "#ff1744");
+        gradient.addColorStop(1, "#ffea00");
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 18;
+        ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(350, 392); ctx.lineTo(480, 410); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(560, 410); ctx.lineTo(690, 392); ctx.stroke();
+        ctx.restore();
         return;
       }
 
-      walletSolValue.textContent = formatSol(solBalance);
-
-      if(solUsdPrice == null || Number.isNaN(solUsdPrice)){
-        walletUsdValue.textContent = "$--";
-        progressFill.style.width = "0%";
-        progressPercent.textContent = "0%";
+      if(style === "visor"){
+        const gradient = ctx.createLinearGradient(330, 370, 705, 438);
+        gradient.addColorStop(0, "#ffe600");
+        gradient.addColorStop(.45, "#ff7a00");
+        gradient.addColorStop(1, "#00e5ff");
+        roundedRect(332, 350, 372, 118, 44);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        ctx.strokeStyle = "#ff4fd8";
+        ctx.lineWidth = 12;
+        ctx.stroke();
+        ctx.fillStyle = "#ff4fd8";
+        roundedRect(438, 332, 160, 34, 11);
+        ctx.fill();
+        ctx.restore();
         return;
       }
 
-      const usdValue = solBalance * solUsdPrice;
-      const progress = Math.max(0, Math.min(100, (usdValue / PRODUCTION_GOAL_USD) * 100));
-
-      walletUsdValue.textContent = formatCurrency(usdValue);
-      progressFill.style.width = progress.toFixed(2) + "%";
-      progressPercent.textContent = progress.toFixed(1) + "%";
-    }
-
-    async function fetchWalletTracker(){
-      try{
-        const solBalance = await fetchWalletSolBalance();
-        const solUsdPrice = await fetchSolPrice();
-        updateWalletUi(solBalance, solUsdPrice);
-      }catch(error){
-        updateWalletUi(null, null);
+      if(style === "round"){
+        ctx.strokeStyle = "#1e9bff";
+        ctx.lineWidth = 16;
+        ctx.beginPath(); ctx.arc(430, 398, 62, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(600, 398, 62, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(492, 398); ctx.lineTo(538, 398); ctx.stroke();
+        ctx.restore();
+        return;
       }
+
+      ctx.fillStyle = "#050505";
+      roundedRect(355, 360, 145, 86, 28);
+      ctx.fill();
+      roundedRect(535, 360, 145, 86, 28);
+      ctx.fill();
+      ctx.strokeStyle = "#050505";
+      ctx.lineWidth = 18;
+      ctx.beginPath(); ctx.moveTo(500, 394); ctx.lineTo(535, 394); ctx.stroke();
+      ctx.restore();
     }
 
-    function syncLinks(){
-      const pumpUrl = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
-      const jupiterUrl = `https://jup.ag/tokens/${CONTRACT_ADDRESS}`;
-      const dexUrl = `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`;
-      const geckoUrl = `https://www.geckoterminal.com/solana/tokens/${CONTRACT_ADDRESS}`;
+    function drawHandFallback(option){
+      ctx.save();
+      const style = option.style;
+      if(style === "coin"){
+        const gradient = ctx.createRadialGradient(235, 560, 10, 235, 560, 85);
+        gradient.addColorStop(0, "#fff4b2");
+        gradient.addColorStop(1, "#f5a623");
+        ctx.fillStyle = gradient;
+        ctx.beginPath(); ctx.arc(235, 560, 78, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#1b1230";
+        ctx.font = "900 40px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("SOL", 235, 562);
+      } else if(style === "flag"){
+        ctx.strokeStyle = "#3a2418";
+        ctx.lineWidth = 13;
+        ctx.beginPath(); ctx.moveTo(245, 360); ctx.lineTo(245, 660); ctx.stroke();
+        ctx.fillStyle = "#ff4fd8";
+        ctx.beginPath();
+        ctx.moveTo(252, 360);
+        ctx.lineTo(432, 410);
+        ctx.lineTo(252, 470);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = "#fff";
+        ctx.font = "900 32px Arial";
+        ctx.fillText("BT", 314, 420);
+      } else if(style === "diamond"){
+        ctx.fillStyle = "#aaf7ff";
+        ctx.beginPath();
+        ctx.moveTo(215, 560); ctx.lineTo(285, 510); ctx.lineTo(355, 560); ctx.lineTo(285, 650); ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      } else {
+        ctx.strokeStyle = "#9b5c25";
+        ctx.lineWidth = 54;
+        ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(198, 315); ctx.lineTo(118, 620); ctx.stroke();
+      }
+      ctx.restore();
+    }
 
-      document.querySelectorAll(".buy-link").forEach(link => {
-        link.href = pumpUrl;
-      });
+    function drawHatFallback(option){
+      ctx.save();
+      const style = option.style;
+      if(style === "halo"){
+        ctx.strokeStyle = "#ffd166";
+        ctx.lineWidth = 20;
+        ctx.shadowColor = "#ffd166";
+        ctx.shadowBlur = 28;
+        ctx.beginPath(); ctx.ellipse(516, 176, 180, 38, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.restore();
+        return;
+      }
 
-      document.getElementById("jupiterLink").href = jupiterUrl;
-      document.getElementById("dexLink").href = dexUrl;
-      document.getElementById("geckoLink").href = geckoUrl;
+      if(style === "crown"){
+        ctx.fillStyle = "#ffd166";
+        ctx.beginPath();
+        ctx.moveTo(355, 244);
+        ctx.lineTo(388, 128);
+        ctx.lineTo(468, 224);
+        ctx.lineTo(520, 118);
+        ctx.lineTo(576, 224);
+        ctx.lineTo(650, 128);
+        ctx.lineTo(682, 244);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = "#9b5c25";
+        ctx.lineWidth = 8;
+        ctx.stroke();
+        ctx.restore();
+        return;
+      }
+
+      if(style === "viking"){
+        ctx.fillStyle = "#c5c9d3";
+        ctx.beginPath(); ctx.ellipse(518, 235, 210, 82, 0, Math.PI, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#d5a12f";
+        roundedRect(505, 150, 28, 95, 10);
+        ctx.fill();
+        ctx.fillStyle = "#fff6d6";
+        ctx.beginPath(); ctx.ellipse(315, 198, 80, 38, -.42, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(720, 198, 80, 38, .42, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+        return;
+      }
+
+      if(style === "cap"){
+        ctx.fillStyle = "#16224a";
+        ctx.beginPath(); ctx.ellipse(520, 218, 210, 90, 0, Math.PI, Math.PI * 2); ctx.fill();
+        roundedRect(360, 180, 320, 90, 38);
+        ctx.fill();
+        ctx.beginPath(); ctx.ellipse(640, 258, 150, 35, .08, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#55f0ff";
+        ctx.font = "900 50px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("S", 520, 245);
+        ctx.restore();
+        return;
+      }
+
+      ctx.fillStyle = "#4cc9f0";
+      roundedRect(352, 150, 335, 120, 55);
+      ctx.fill();
+      ctx.fillStyle = "#7b2cbf";
+      roundedRect(340, 232, 360, 58, 22);
+      ctx.fill();
+      ctx.beginPath(); ctx.arc(520, 132, 45, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+
+    async function downloadPfp(){
+      await drawPfp();
+      canvas.toBlob(blob => {
+        if(!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "BabyT-PFP.png";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }, "image/png");
     }
 
     async function copyText(value, button, defaultText){
       try{
         await navigator.clipboard.writeText(value);
         button.textContent = "Copied!";
-        setTimeout(() => button.textContent = defaultText, 1400);
-      }catch(error){
-        button.textContent = "Copy failed";
-        setTimeout(() => button.textContent = defaultText, 1400);
+      } catch(error){
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+        button.textContent = "Copied!";
       }
+      setTimeout(() => button.textContent = defaultText, 1300);
     }
 
-    caValue.textContent = CONTRACT_ADDRESS;
-    walletValue.textContent = PRODUCTION_WALLET;
-    productionGoalText.textContent = formatCurrency(PRODUCTION_GOAL_USD);
+    function buildAssetGuide(){
+      return layerConfig.map(layer => {
+        const files = layer.options
+          .filter(option => option.src)
+          .map(option => `${option.name}: ${option.src.replace("./", "")}`)
+          .join("\n");
+        return `${layer.title}\n${files}`;
+      }).join("\n\n");
+    }
 
-    copyCaBtn.addEventListener("click", () => {
-      copyText(CONTRACT_ADDRESS, copyCaBtn, "Copy CA");
-    });
+    setLinks();
+    renderControls();
+    drawPfp();
 
-    copyWalletBtn.addEventListener("click", () => {
-      copyText(PRODUCTION_WALLET, copyWalletBtn, "Copy Wallet");
-    });
-
-    syncLinks();
-    updateUnlockUi(0);
-    fetchMarketCap();
-    fetchWalletTracker();
-
-    setInterval(fetchMarketCap, 120000);
-    setInterval(fetchWalletTracker, 120000);
+    document.getElementById("randomBtn").addEventListener("click", randomizePfp);
+    document.getElementById("resetBtn").addEventListener("click", resetPfp);
+    document.getElementById("downloadBtn").addEventListener("click", downloadPfp);
+    document.getElementById("copyCaBtn").addEventListener("click", event => copyText(CONTRACT_ADDRESS, event.currentTarget, "Copy"));
+    document.getElementById("copyCaBtn2").addEventListener("click", event => copyText(CONTRACT_ADDRESS, event.currentTarget, "Copy CA"));
+    document.getElementById("copyAssetGuideBtn").addEventListener("click", event => copyText(buildAssetGuide(), event.currentTarget, "Copy File Names"));
   </script>
 </body>
 </html>
