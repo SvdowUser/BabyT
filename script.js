@@ -27,7 +27,7 @@ const FALLBACK_MANIFEST = {
   size: 1024,
   layers: [
     { key: 'background', label: 'Background', folder: 'backgrounds', z: 10, options: [{ id: 'none', name: 'No Background', file: null }] },
-    { key: 'character', label: 'Character / Shoes', folder: 'characters', z: 20, options: [{ id: 'none', name: 'Add character', file: null }] },
+    { key: 'character', label: 'Shoes', folder: 'characters', z: 20, options: [{ id: 'none', name: 'Add shoes', file: null }] },
     { key: 'shirt', label: 'Shirt', folder: 'shirts', z: 30, options: [{ id: 'none', name: 'None', file: null }] },
     { key: 'glasses', label: 'Glasses', folder: 'glasses', z: 40, options: [{ id: 'none', name: 'None', file: null }] },
     { key: 'hand', label: 'Hand item', folder: 'hand-accessories', z: 50, options: [{ id: 'none', name: 'None', file: null }] },
@@ -65,6 +65,22 @@ function setLinks() {
   setText('caValue', CONTRACT_ADDRESS);
 }
 
+function preventMobileZoom() {
+  let lastTouchEnd = 0;
+
+  document.addEventListener('touchend', event => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+
+  document.addEventListener('gesturestart', event => {
+    event.preventDefault();
+  }, { passive: false });
+}
+
 function announce(message) {
   if (renderStatus) renderStatus.textContent = message;
 }
@@ -80,7 +96,7 @@ function escapeHtml(value) {
 
 async function loadManifest() {
   try {
-    const response = await fetch('./assets/manifest.json?v=3', { cache: 'no-cache' });
+    const response = await fetch('./assets/manifest.json?v=4', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Manifest not found');
     return await response.json();
   } catch (error) {
@@ -285,6 +301,7 @@ async function copyText(value, button, label) {
 }
 
 async function init() {
+  preventMobileZoom();
   setLinks();
   const manifest = await loadManifest();
   layers = prepareLayers(manifest);
