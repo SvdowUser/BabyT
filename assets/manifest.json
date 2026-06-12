@@ -7,7 +7,12 @@
       "folder": "backgrounds",
       "z": 10,
       "options": [
-        { "id": "none", "name": "No Background", "file": null, "weight": 1 }
+        { "id": "bg-01-city-center", "name": "City Center", "file": "bg-01-city-center.png", "weight": 16 },
+        { "id": "bg-02-beach", "name": "Beach", "file": "bg-02-beach.png", "weight": 16 },
+        { "id": "bg-03-heaven", "name": "Heaven", "file": "bg-03-heaven.png", "weight": 14 },
+        { "id": "bg-04-sky", "name": "Sky", "file": "bg-04-sky.png", "weight": 18 },
+        { "id": "bg-05-studio-room", "name": "Studio Room", "file": "bg-05-studio-room.png", "weight": 18 },
+        { "id": "bg-06-wood-workshop", "name": "Wood Workshop", "file": "bg-06-wood-workshop.png", "weight": 18 }
       ]
     },
     {
