@@ -7,12 +7,21 @@
       "folder": "backgrounds",
       "z": 10,
       "options": [
-        { "id": "bg-01-city-center", "name": "City Center", "file": "bg-01-city-center.png", "weight": 16 },
-        { "id": "bg-02-beach", "name": "Beach", "file": "bg-02-beach.png", "weight": 16 },
-        { "id": "bg-03-heaven", "name": "Heaven", "file": "bg-03-heaven.png", "weight": 14 },
-        { "id": "bg-04-sky", "name": "Sky", "file": "bg-04-sky.png", "weight": 18 },
-        { "id": "bg-05-studio-room", "name": "Studio Room", "file": "bg-05-studio-room.png", "weight": 18 },
-        { "id": "bg-06-wood-workshop", "name": "Wood Workshop", "file": "bg-06-wood-workshop.png", "weight": 18 }
+        { "id": "bg-01-city-center", "name": "City Center", "file": "bg-01-city-center.png", "weight": 10 },
+        { "id": "bg-02-beach", "name": "Beach", "file": "bg-02-beach.png", "weight": 10 },
+        { "id": "bg-03-heaven", "name": "Heaven", "file": "bg-03-heaven.png", "weight": 10 },
+        { "id": "bg-04-sky", "name": "Sky", "file": "bg-04-sky.png", "weight": 10 },
+        { "id": "bg-05-studio-room", "name": "Studio Room", "file": "bg-05-studio-room.png", "weight": 10 },
+        { "id": "bg-06-wood-workshop", "name": "Wood Workshop", "file": "bg-06-wood-workshop.png", "weight": 10 },
+        { "id": "bg-07-comic-splash", "name": "Comic Splash", "file": "bg-07-comic-splash.webp.b64", "weight": 18 },
+        { "id": "bg-08-soft-blue", "name": "Soft Blue", "file": "bg-08-soft-blue.webp.b64", "weight": 16 },
+        { "id": "bg-09-soft-red", "name": "Soft Red", "file": "bg-09-soft-red.webp.b64", "weight": 16 },
+        { "id": "bg-10-soft-orange", "name": "Soft Orange", "file": "bg-10-soft-orange.webp.b64", "weight": 16 },
+        { "id": "bg-11-soft-yellow", "name": "Soft Yellow", "file": "bg-11-soft-yellow.webp.b64", "weight": 16 },
+        { "id": "bg-12-soft-green", "name": "Soft Green", "file": "bg-12-soft-green.webp.b64", "weight": 16 },
+        { "id": "bg-13-soft-purple", "name": "Soft Purple", "file": "bg-13-soft-purple.webp.b64", "weight": 16 },
+        { "id": "bg-14-soft-pink", "name": "Soft Pink", "file": "bg-14-soft-pink.webp.b64", "weight": 16 },
+        { "id": "bg-15-wood-tone", "name": "Wood Tone", "file": "bg-15-wood-tone.webp.b64", "weight": 16 }
       ]
     },
     {
