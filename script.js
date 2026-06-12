@@ -137,8 +137,18 @@ function preventMobileZoom() {
   }, { passive: false });
 }
 
+function statusClass(message) {
+  const normalized = String(message || '').toLowerCase();
+  if (normalized.includes('load') || normalized.includes('render')) return 'status-loading';
+  if (normalized.includes('add')) return 'status-empty';
+  if (normalized.includes('download') || normalized.includes('copied')) return 'status-done';
+  return 'status-ready';
+}
+
 function announce(message) {
-  if (renderStatus) renderStatus.textContent = message;
+  if (!renderStatus) return;
+  renderStatus.textContent = message;
+  renderStatus.className = statusClass(message);
 }
 
 function setPreviewLoading(isLoading) {
@@ -156,7 +166,7 @@ function escapeHtml(value) {
 
 async function loadManifest() {
   try {
-    const response = await fetch('./assets/manifest.json?v=4', { cache: 'no-cache' });
+    const response = await fetch('./assets/manifest.json?v=5', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Manifest not found');
     return await response.json();
   } catch (error) {
@@ -229,7 +239,7 @@ async function initHeroMedia() {
       source = await b64FileToDataUrl(candidate);
       if (!source) continue;
     } else {
-      source = `${candidate}?v=13`;
+      source = `${candidate}?v=14`;
     }
 
     const ok = await testImage(source);
@@ -325,13 +335,6 @@ function randomize() {
   renderPfp();
 }
 
-function reset() {
-  resetState();
-  updateActiveTraitUI();
-  renderLayerTabs();
-  renderPfp();
-}
-
 async function renderPfp() {
   const currentRender = ++renderId;
   let renderedImages = 0;
@@ -418,6 +421,7 @@ async function init() {
   setHeaderScrollState();
   setLinks();
   initHeroMedia();
+
   const manifest = await loadManifest();
   layers = prepareLayers(manifest);
   resetState();
@@ -428,7 +432,6 @@ async function init() {
   document.getElementById('prevTraitBtn')?.addEventListener('click', () => changeActiveTrait(-1));
   document.getElementById('nextTraitBtn')?.addEventListener('click', () => changeActiveTrait(1));
   document.getElementById('randomBtn')?.addEventListener('click', randomize);
-  document.getElementById('resetBtn')?.addEventListener('click', reset);
   document.getElementById('downloadBtn')?.addEventListener('click', downloadPfp);
   document.getElementById('copyCaBtn')?.addEventListener('click', event => copyText(CONTRACT_ADDRESS, event.currentTarget, 'Copy'));
   document.getElementById('copyCaBtn2')?.addEventListener('click', event => copyText(CONTRACT_ADDRESS, event.currentTarget, 'CA'));
