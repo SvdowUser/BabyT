@@ -24,6 +24,83 @@
   <link rel="stylesheet" href="./style.css?v=17">
   <link rel="stylesheet" href="./hero-fix.css?v=5">
   <link rel="stylesheet" href="./mobile-fix.css?v=3">
+  <style id="playful-howto-fix">
+    body #howToBuyTitle,
+    body .buy-guide-section .section-title{
+      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Marker Felt",cursive!important;
+      font-weight:800!important;
+      letter-spacing:.035em!important;
+      line-height:.96!important;
+      text-transform:uppercase!important;
+      transform:rotate(-1.1deg)!important;
+      text-shadow:none!important;
+    }
+
+    body .buy-step-body h3{
+      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Marker Felt",cursive!important;
+      font-weight:800!important;
+      letter-spacing:.01em!important;
+      line-height:1.08!important;
+      text-transform:uppercase!important;
+      transform:rotate(-.55deg)!important;
+      transform-origin:left center!important;
+    }
+
+    body .buy-step-card:nth-of-type(even) .buy-step-body h3{
+      transform:rotate(.35deg)!important;
+    }
+
+    body .buy-step-body p{
+      font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE","Trebuchet MS",system-ui,sans-serif!important;
+      font-weight:500!important;
+      letter-spacing:.002em!important;
+    }
+
+    body .window-dots{
+      border-bottom-width:2px!important;
+    }
+
+    body .buy-step-card{
+      border-width:2px!important;
+    }
+
+    @media(min-width:901px){
+      body #howToBuyTitle,
+      body .buy-guide-section .section-title{
+        font-size:clamp(62px,6.4vw,96px)!important;
+        margin-bottom:46px!important;
+      }
+
+      body .buy-step-body h3{
+        font-size:clamp(21px,1.8vw,28px)!important;
+      }
+
+      body .buy-step-body p{
+        font-size:clamp(14px,1.15vw,16px)!important;
+        line-height:1.48!important;
+      }
+    }
+
+    @media(max-width:640px){
+      body #howToBuyTitle,
+      body .buy-guide-section .section-title{
+        font-size:44px!important;
+        letter-spacing:.025em!important;
+        transform:rotate(-1.4deg)!important;
+      }
+
+      body .buy-step-body h3{
+        font-size:23px!important;
+        line-height:1.08!important;
+        letter-spacing:.005em!important;
+      }
+
+      body .buy-step-body p{
+        font-size:17px!important;
+        line-height:1.48!important;
+      }
+    }
+  </style>
 </head>
 <body
   data-contract-address="4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump"
