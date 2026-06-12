@@ -13,15 +13,27 @@ const TIKTOK_URL = document.body.dataset.tiktokUrl || 'https://vm.tiktok.com/ZGd
 const TIKTOK_HANDLE = document.body.dataset.tiktokHandle || 'BabyT TikTok video';
 
 const links = {
-  x: document.body.dataset.xUrl || 'https://x.com/babytcoinsol',
+  x: document.body.dataset.xUrl || 'https://x.com/babytung_sol',
   instagram: document.body.dataset.instagramUrl || 'https://www.instagram.com/babytung_sol',
   tiktok: TIKTOK_URL,
-  telegram: document.body.dataset.telegramUrl || 'https://t.me/BabyTCommunity',
   pump: `https://pump.fun/coin/${CONTRACT_ADDRESS}`,
   jupiter: `https://jup.ag/tokens/${CONTRACT_ADDRESS}`,
   dex: `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`,
   gecko: `https://www.geckoterminal.com/solana/tokens/${CONTRACT_ADDRESS}`
 };
+
+const HERO_CANDIDATES = [
+  './assets/hero/babyt-hero.gif',
+  './assets/hero/babyt-hero.gif.b64',
+  './assets/hero/hero.gif',
+  './assets/hero/hero.gif.b64',
+  './assets/hero/hero-gif.gif',
+  './assets/hero/Hero-Gif.gif',
+  './assets/hero/baby-t-hero.gif',
+  './assets/hero/babytung-hero.gif',
+  './assets/hero/babyt-hero.webp',
+  './assets/hero/babyt-hero.webp.b64'
+];
 
 const FALLBACK_MANIFEST = {
   size: 1024,
@@ -55,7 +67,6 @@ function setLinks() {
   setHref('xLink', links.x);
   setHref('instagramLink', links.instagram);
   setHref('tiktokLink', links.tiktok);
-  setHref('telegramLink', links.telegram);
   setHref('jupiterLink', links.jupiter);
   setHref('dexLink', links.dex);
   setHref('geckoLink', links.gecko);
@@ -83,6 +94,10 @@ function preventMobileZoom() {
 
 function announce(message) {
   if (renderStatus) renderStatus.textContent = message;
+}
+
+function setPreviewLoading(isLoading) {
+  previewFrame?.classList.toggle('is-loading', Boolean(isLoading));
 }
 
 function escapeHtml(value) {
@@ -133,6 +148,7 @@ function optionPath(layer, option) {
 function mimeFromPath(src) {
   const clean = src.replace(/\.b64$/i, '').toLowerCase();
   if (clean.endsWith('.jpg') || clean.endsWith('.jpeg')) return 'image/jpeg';
+  if (clean.endsWith('.gif')) return 'image/gif';
   if (clean.endsWith('.webp')) return 'image/webp';
   if (clean.endsWith('.svg')) return 'image/svg+xml';
   return 'image/png';
@@ -144,6 +160,44 @@ async function b64FileToDataUrl(src) {
   const b64 = (await response.text()).replace(/\s+/g, '');
   if (!b64) return null;
   return `data:${mimeFromPath(src)};base64,${b64}`;
+}
+
+function testImage(src) {
+  return new Promise(resolve => {
+    const image = new Image();
+    const timer = setTimeout(() => resolve(false), 4500);
+    image.onload = () => { clearTimeout(timer); resolve(true); };
+    image.onerror = () => { clearTimeout(timer); resolve(false); };
+    image.src = src;
+  });
+}
+
+async function initHeroMedia() {
+  const hero = document.querySelector('.hero');
+  const image = document.querySelector('.hero-bg-gif');
+  if (!hero || !image) return;
+
+  for (const candidate of HERO_CANDIDATES) {
+    let source = candidate;
+
+    if (candidate.toLowerCase().endsWith('.b64')) {
+      source = await b64FileToDataUrl(candidate);
+      if (!source) continue;
+    } else {
+      source = `${candidate}?v=11`;
+    }
+
+    const ok = await testImage(source);
+    if (!ok) continue;
+
+    image.src = source;
+    hero.classList.add('has-hero-media');
+    hero.classList.remove('no-hero-media');
+    return;
+  }
+
+  image.removeAttribute('src');
+  hero.classList.add('no-hero-media');
 }
 
 function loadImage(src) {
@@ -237,25 +291,38 @@ async function renderPfp() {
   const currentRender = ++renderId;
   let renderedImages = 0;
 
-  announce('Rendering');
-  ctx.clearRect(0, 0, SIZE, SIZE);
+  announce('Loading');
+  setPreviewLoading(true);
 
-  for (const layer of layers) {
-    const option = selectedOption(layer);
-    const src = optionPath(layer, option);
-    if (!src) continue;
+  const draftCanvas = document.createElement('canvas');
+  draftCanvas.width = SIZE;
+  draftCanvas.height = SIZE;
+  const draftCtx = draftCanvas.getContext('2d', { alpha: true });
 
-    const image = await loadImage(src);
+  try {
+    for (const layer of layers) {
+      const option = selectedOption(layer);
+      const src = optionPath(layer, option);
+      if (!src) continue;
+
+      const image = await loadImage(src);
+      if (currentRender !== renderId) return;
+
+      if (image) {
+        draftCtx.drawImage(image, 0, 0, SIZE, SIZE);
+        renderedImages += 1;
+      }
+    }
+
     if (currentRender !== renderId) return;
 
-    if (image) {
-      ctx.drawImage(image, 0, 0, SIZE, SIZE);
-      renderedImages += 1;
-    }
+    ctx.clearRect(0, 0, SIZE, SIZE);
+    ctx.drawImage(draftCanvas, 0, 0, SIZE, SIZE);
+    previewFrame?.classList.toggle('has-assets', renderedImages > 0);
+    announce(renderedImages ? 'Ready' : 'Add assets');
+  } finally {
+    if (currentRender === renderId) setPreviewLoading(false);
   }
-
-  previewFrame?.classList.toggle('has-assets', renderedImages > 0);
-  announce(renderedImages ? 'Ready' : 'Add assets');
 }
 
 async function downloadPfp() {
@@ -303,6 +370,7 @@ async function copyText(value, button, label) {
 async function init() {
   preventMobileZoom();
   setLinks();
+  initHeroMedia();
   const manifest = await loadManifest();
   layers = prepareLayers(manifest);
   resetState();
