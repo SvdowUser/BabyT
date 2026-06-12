@@ -26,8 +26,8 @@ const links = {
 const FALLBACK_MANIFEST = {
   size: 1024,
   layers: [
-    { key: 'background', label: 'Background', folder: 'backgrounds', z: 10, options: [{ id: 'none', name: 'Add background', file: null }] },
-    { key: 'character', label: 'Character', folder: 'characters', z: 20, options: [{ id: 'none', name: 'Add character', file: null }] },
+    { key: 'background', label: 'Background', folder: 'backgrounds', z: 10, options: [{ id: 'none', name: 'No Background', file: null }] },
+    { key: 'character', label: 'Character / Shoes', folder: 'characters', z: 20, options: [{ id: 'none', name: 'Add character', file: null }] },
     { key: 'shirt', label: 'Shirt', folder: 'shirts', z: 30, options: [{ id: 'none', name: 'None', file: null }] },
     { key: 'glasses', label: 'Glasses', folder: 'glasses', z: 40, options: [{ id: 'none', name: 'None', file: null }] },
     { key: 'hand', label: 'Hand item', folder: 'hand-accessories', z: 50, options: [{ id: 'none', name: 'None', file: null }] },
@@ -80,7 +80,7 @@ function escapeHtml(value) {
 
 async function loadManifest() {
   try {
-    const response = await fetch('./assets/manifest.json?v=2', { cache: 'no-cache' });
+    const response = await fetch('./assets/manifest.json?v=3', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Manifest not found');
     return await response.json();
   } catch (error) {
@@ -114,16 +114,39 @@ function optionPath(layer, option) {
   return `./assets/${layer.folder}/${option.file}`;
 }
 
+function mimeFromPath(src) {
+  const clean = src.replace(/\.b64$/i, '').toLowerCase();
+  if (clean.endsWith('.jpg') || clean.endsWith('.jpeg')) return 'image/jpeg';
+  if (clean.endsWith('.webp')) return 'image/webp';
+  if (clean.endsWith('.svg')) return 'image/svg+xml';
+  return 'image/png';
+}
+
+async function b64FileToDataUrl(src) {
+  const response = await fetch(src, { cache: 'force-cache' });
+  if (!response.ok) return null;
+  const b64 = (await response.text()).replace(/\s+/g, '');
+  if (!b64) return null;
+  return `data:${mimeFromPath(src)};base64,${b64}`;
+}
+
 function loadImage(src) {
   if (!src) return Promise.resolve(null);
   if (imageCache.has(src)) return imageCache.get(src);
 
-  const promise = new Promise(resolve => {
+  const promise = new Promise(async resolve => {
     const image = new Image();
     image.decoding = 'async';
     image.onload = () => resolve(image);
     image.onerror = () => resolve(null);
-    image.src = src;
+
+    if (src.toLowerCase().endsWith('.b64')) {
+      const dataUrl = await b64FileToDataUrl(src);
+      if (!dataUrl) return resolve(null);
+      image.src = dataUrl;
+    } else {
+      image.src = src;
+    }
   });
 
   imageCache.set(src, promise);
@@ -239,9 +262,12 @@ async function downloadPfp() {
 }
 
 async function copyText(value, button, label) {
+  const labelTarget = button.querySelector('em') || button;
+  const originalText = labelTarget.textContent;
+
   try {
     await navigator.clipboard.writeText(value);
-    button.textContent = 'Copied';
+    labelTarget.textContent = 'Copied';
   } catch (error) {
     const area = document.createElement('textarea');
     area.value = value;
@@ -252,10 +278,10 @@ async function copyText(value, button, label) {
     area.select();
     document.execCommand('copy');
     area.remove();
-    button.textContent = 'Copied';
+    labelTarget.textContent = 'Copied';
   }
 
-  setTimeout(() => { button.textContent = label; }, 1200);
+  setTimeout(() => { labelTarget.textContent = originalText || label; }, 1200);
 }
 
 async function init() {
