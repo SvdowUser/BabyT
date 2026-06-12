@@ -110,12 +110,12 @@ Example:
 ### Backgrounds
 
 ```text
-assets/backgrounds/bg-01-valhalla-gold.png
-assets/backgrounds/bg-02-solana-blue.png
-assets/backgrounds/bg-03-meme-green.png
-assets/backgrounds/bg-04-pink-chaos.png
-assets/backgrounds/bg-05-night-mode.png
-assets/backgrounds/bg-06-clean-white.png
+assets/backgrounds/bg-01-city-center.png
+assets/backgrounds/bg-02-beach.png
+assets/backgrounds/bg-03-heaven.png
+assets/backgrounds/bg-04-sky.png
+assets/backgrounds/bg-05-studio-room.png
+assets/backgrounds/bg-06-wood-workshop.png
 ```
 
 ### Character / Shoes
