@@ -4,6 +4,26 @@ The BabyT page is built like a meme-native mobile landing page with a real-asset
 
 Important: the generator does not draw fake placeholder characters. If a file is missing, that layer is skipped. The preview only shows assets that are uploaded into the folders below.
 
+## Hero GIF
+
+The top hero area now has a responsive GIF slot where the old round `BT` coin was.
+
+Upload your 1:1 GIF here:
+
+```text
+assets/hero/babyt-hero.gif
+```
+
+Recommended format:
+
+- 1:1 ratio
+- 1024x1024 px if possible
+- GIF or animated WebP converted to GIF
+- keep the full character inside the square with safe space around the edges
+- the website uses `object-fit: contain`, so the GIF will not be cropped on desktop or mobile
+
+If the GIF is missing, the site automatically falls back to the old `BT` circle.
+
 ## Generator behavior
 
 - The website reads `assets/manifest.json`.
@@ -45,6 +65,7 @@ That means every accessory file must have the same canvas size as the base chara
 ```text
 assets/
   manifest.json
+  hero/
   backgrounds/
   characters/
   shirts/
@@ -81,6 +102,12 @@ Example:
 `weight` controls how often the trait appears when pressing Random.
 
 ## Current production filenames
+
+### Hero GIF
+
+```text
+assets/hero/babyt-hero.gif
+```
 
 ### Backgrounds
 
@@ -159,15 +186,15 @@ assets/hats/hat-05-beanie.png
 
 ## Quality checklist
 
-Before uploading a PNG or B64 asset, check:
+Before uploading a PNG, GIF or B64 asset, check:
 
-- file is exactly 1024x1024 px
+- file is exactly 1024x1024 px when possible
 - transparent space is really transparent where needed
 - no unwanted background color on accessory layers
 - no cropped edges
 - no extra shadows floating outside the object
 - no accidental edits to the BabyT body or face
-- file name matches `manifest.json`
+- file name matches the expected path
 
 ## Current links
 
