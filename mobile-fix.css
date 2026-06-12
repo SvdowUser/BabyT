@@ -100,6 +100,37 @@ body #renderStatus.status-done{
   background:#dff8d5!important;
 }
 
+/* Global How-to-buy polish: less heavy fonts and thinner window lines. */
+body #howToBuyTitle{
+  font-family:"Trebuchet MS","Arial Narrow",Arial,sans-serif!important;
+  font-weight:900!important;
+  letter-spacing:.02em!important;
+}
+
+body .buy-step-card{
+  border-width:2px!important;
+}
+
+body .window-dots{
+  border-bottom-width:2px!important;
+}
+
+body .window-dots i{
+  border-width:2px!important;
+}
+
+body .buy-step-body h3{
+  font-family:"Trebuchet MS","Arial Narrow",Arial,sans-serif!important;
+  font-weight:900!important;
+  letter-spacing:-.012em!important;
+  line-height:1.08!important;
+}
+
+body .buy-step-body p{
+  font-weight:500!important;
+  color:#111!important;
+}
+
 /* Desktop-only: make How to Buy match the Wojak-style layout: cards left/right, character centered. */
 @keyframes floatBabyTDesktop{
   0%,100%{transform:translateY(-10px)}
@@ -114,8 +145,8 @@ body #renderStatus.status-done{
 
   body .buy-guide-section .section-title,
   body #howToBuyTitle{
-    font-size:clamp(64px,7vw,102px)!important;
-    line-height:.9!important;
+    font-size:clamp(58px,6.2vw,92px)!important;
+    line-height:.95!important;
     margin-bottom:48px!important;
     text-shadow:none!important;
   }
@@ -130,12 +161,12 @@ body #renderStatus.status-done{
     margin:0 auto!important;
     display:grid!important;
     grid-template-columns:minmax(270px,1fr) minmax(230px,.82fr) minmax(270px,1fr)!important;
-    grid-template-rows:repeat(2,minmax(180px,auto))!important;
+    grid-template-rows:repeat(2,minmax(174px,auto))!important;
     gap:32px 40px!important;
     align-items:center!important;
     justify-items:stretch!important;
     padding:58px 50px!important;
-    min-height:560px!important;
+    min-height:570px!important;
     border-radius:38px!important;
     overflow:visible!important;
   }
@@ -143,14 +174,14 @@ body #renderStatus.status-done{
   body .buy-step-card{
     width:100%!important;
     max-width:none!important;
-    min-height:178px!important;
+    min-height:168px!important;
     margin:0!important;
     align-self:center!important;
     justify-self:stretch!important;
     position:relative!important;
     z-index:3!important;
-    border-width:3px!important;
-    border-radius:20px!important;
+    border-width:2px!important;
+    border-radius:19px!important;
   }
 
   body .buy-step-card:nth-of-type(1){
@@ -181,9 +212,9 @@ body #renderStatus.status-done{
     place-self:center!important;
     right:auto!important;
     top:auto!important;
-    width:min(292px,23vw)!important;
-    max-width:100%!important;
-    max-height:500px!important;
+    width:min(370px,30vw)!important;
+    max-width:none!important;
+    max-height:540px!important;
     z-index:4!important;
     object-fit:contain!important;
     filter:drop-shadow(9px 12px 0 rgba(0,0,0,.2))!important;
@@ -192,32 +223,32 @@ body #renderStatus.status-done{
   }
 
   body .window-dots{
-    height:46px!important;
-    padding:0 24px!important;
+    height:42px!important;
+    padding:0 22px!important;
     gap:9px!important;
-    border-bottom-width:3px!important;
+    border-bottom-width:2px!important;
   }
 
   body .window-dots i{
-    width:14px!important;
-    height:14px!important;
+    width:13px!important;
+    height:13px!important;
     border-width:2px!important;
   }
 
   body .buy-step-body{
-    padding:25px 26px 28px!important;
+    padding:23px 24px 25px!important;
   }
 
   body .buy-step-body h3{
-    font-size:clamp(23px,2.25vw,31px)!important;
-    line-height:1.05!important;
-    margin-bottom:12px!important;
-    letter-spacing:.01em!important;
+    font-size:clamp(20px,1.85vw,27px)!important;
+    line-height:1.06!important;
+    margin-bottom:11px!important;
+    letter-spacing:-.015em!important;
   }
 
   body .buy-step-body p{
-    font-size:clamp(15px,1.32vw,18px)!important;
-    line-height:1.42!important;
+    font-size:clamp(14px,1.22vw,17px)!important;
+    line-height:1.44!important;
   }
 }
 
@@ -230,19 +261,19 @@ body #renderStatus.status-done{
     grid-template-columns:minmax(245px,1fr) minmax(190px,.7fr) minmax(245px,1fr)!important;
     gap:24px 24px!important;
     padding:46px 36px!important;
-    min-height:510px!important;
+    min-height:520px!important;
   }
 
   body .buy-floating-character{
-    width:min(220px,21vw)!important;
+    width:min(300px,29vw)!important;
   }
 
   body .buy-step-body h3{
-    font-size:22px!important;
+    font-size:20px!important;
   }
 
   body .buy-step-body p{
-    font-size:15px!important;
+    font-size:14px!important;
   }
 }
 
@@ -262,6 +293,12 @@ body #renderStatus.status-done{
   body #aboutTitle,
   body #howToBuyTitle{
     text-shadow:none!important;
+  }
+
+  body #howToBuyTitle{
+    font-size:46px!important;
+    line-height:1!important;
+    letter-spacing:.015em!important;
   }
 
   body .gallery-track{
@@ -307,5 +344,39 @@ body #renderStatus.status-done{
   body #renderStatus.status-empty{
     background:#fff0c8!important;
     color:#3b3420!important;
+  }
+
+  body .buy-step-card{
+    border-width:2px!important;
+    border-radius:20px!important;
+  }
+
+  body .window-dots{
+    height:48px!important;
+    border-bottom-width:2px!important;
+    padding-inline:24px!important;
+  }
+
+  body .window-dots i{
+    width:17px!important;
+    height:17px!important;
+    border-width:2px!important;
+  }
+
+  body .buy-step-body{
+    padding:24px 26px 28px!important;
+  }
+
+  body .buy-step-body h3{
+    font-size:24px!important;
+    line-height:1.08!important;
+    letter-spacing:-.018em!important;
+    margin-bottom:16px!important;
+  }
+
+  body .buy-step-body p{
+    font-size:18px!important;
+    line-height:1.45!important;
+    font-weight:500!important;
   }
 }
