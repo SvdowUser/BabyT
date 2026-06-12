@@ -16,10 +16,10 @@
       "folder": "characters",
       "z": 20,
       "options": [
-        { "id": "character-02-red-sneakers", "name": "Red Sneakers", "file": "character-02-red-sneakers.jpeg", "weight": 25 },
-        { "id": "character-03-black-sneakers", "name": "Black Sneakers", "file": "character-03-black-sneakers.jpeg", "weight": 25 },
-        { "id": "character-04-gold-sneakers", "name": "Gold Sneakers", "file": "character-04-gold-sneakers.jpeg", "weight": 20 },
-        { "id": "character-01-blue-sneakers", "name": "Blue Sneakers", "file": "character-01-blue-sneakers.jpeg", "weight": 30 }
+        { "id": "character-02-red-sneakers", "name": "Red Sneakers", "file": "character-02-red-sneakers.png", "weight": 25 },
+        { "id": "character-03-black-sneakers", "name": "Black Sneakers", "file": "character-03-black-sneakers.png", "weight": 25 },
+        { "id": "character-04-gold-sneakers", "name": "Gold Sneakers", "file": "character-04-gold-sneakers.png", "weight": 20 },
+        { "id": "character-01-blue-sneakers", "name": "Blue Sneakers", "file": "character-01-blue-sneakers.png", "weight": 30 }
       ]
     },
     {
