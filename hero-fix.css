@@ -1,9 +1,9 @@
 :root{
-  --topbar-fixed-height:86px;
+  --topbar-fixed-height:78px;
 }
 
 body{
-  padding-top:var(--topbar-fixed-height);
+  padding-top:0!important;
 }
 
 .topbar{
@@ -14,13 +14,14 @@ body{
   z-index:9999!important;
   height:var(--topbar-fixed-height)!important;
   min-height:var(--topbar-fixed-height)!important;
-  background:#050505!important;
-  background-color:#050505!important;
+  padding:0 max(18px,calc((100vw - 1120px)/2))!important;
+  background:transparent!important;
   color:#fff!important;
   border-bottom:0!important;
   box-shadow:none!important;
   opacity:1!important;
   isolation:isolate;
+  transition:background .22s ease,box-shadow .22s ease,backdrop-filter .22s ease;
 }
 
 .topbar::before{
@@ -28,14 +29,53 @@ body{
   position:absolute;
   inset:0;
   z-index:-1;
+  background:linear-gradient(180deg,rgba(5,5,5,.82),rgba(5,5,5,.42) 68%,rgba(5,5,5,0));
+  transition:background .22s ease,box-shadow .22s ease;
+}
+
+body.header-scrolled .topbar::before,
+body:not(.at-hero-top) .topbar::before{
   background:#050505;
+  box-shadow:0 2px 0 rgba(255,255,255,.05);
+}
+
+.brand{
+  gap:12px!important;
+  font-size:24px!important;
+  letter-spacing:.07em!important;
+}
+
+.brand-icon{
+  width:44px!important;
+  height:44px!important;
+  border-radius:12px!important;
+}
+
+.top-actions{
+  gap:10px!important;
+}
+
+.top-actions a:not(.top-cta){
+  min-height:38px!important;
+  padding:0 14px!important;
+  border-width:2px!important;
+  font-size:14px!important;
+}
+
+.top-actions .top-cta{
+  min-height:46px!important;
+  padding:0 22px!important;
+  border-width:3px!important;
+  font-size:17px!important;
+  border-radius:999px!important;
 }
 
 .hero{
-  min-height:calc(100svh - var(--topbar-fixed-height))!important;
-  min-height:calc(100dvh - var(--topbar-fixed-height))!important;
+  min-height:100svh!important;
+  min-height:100dvh!important;
   display:grid!important;
   align-items:center!important;
+  background:#050505!important;
 }
 
 .hero-bg-gif{
@@ -44,7 +84,7 @@ body{
 }
 
 .hero::after{
-  background:linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.28) 42%,rgba(0,0,0,.16) 100%)!important;
+  background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.26) 36%,rgba(0,0,0,.24) 100%)!important;
 }
 
 .hero.no-hero-media::after{
@@ -53,7 +93,8 @@ body{
 
 .hero-inner{
   padding-block:0!important;
-  transform:translateY(5vh)!important;
+  transform:translateY(6vh)!important;
+  max-width:min(840px,calc(100% - 34px))!important;
 }
 
 .hero-art,
@@ -65,50 +106,159 @@ body{
 }
 
 .hero h1{
+  font-size:clamp(82px,16vw,170px)!important;
+  -webkit-text-stroke:4px #000!important;
   text-shadow:0 0 1px #000!important;
+  letter-spacing:-.02em!important;
 }
 
 .hero-subtitle{
   margin-top:10px!important;
-  max-width:min(760px,92vw)!important;
+  max-width:min(650px,92vw)!important;
+  font-size:clamp(17px,3vw,30px)!important;
+  line-height:1.06!important;
+  letter-spacing:.09em!important;
+  -webkit-text-stroke:.85px #000!important;
+  text-shadow:1.5px 1.5px 0 #000!important;
+}
+
+.hero-buttons{
+  margin-top:22px!important;
+  gap:14px!important;
+}
+
+.hero-buttons .comic-btn{
+  min-height:50px!important;
+  min-width:160px!important;
+  border-width:4px!important;
+  border-radius:20px!important;
+  font-size:18px!important;
+  padding:0 22px!important;
+  box-shadow:4px 5px 0 rgba(0,0,0,.24)!important;
+}
+
+.contract-bar{
+  margin-top:22px!important;
+  min-height:54px!important;
+  background:rgba(255,255,255,.68)!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+
+.marquee,
+.footer-marquee{
+  padding-block:2px!important;
+}
+
+.marquee-track,
+.footer-marquee-track{
+  animation-duration:8s!important;
+}
+
+.marquee-group,
+.footer-marquee-group{
+  font-size:clamp(28px,5.8vw,48px)!important;
+  gap:24px!important;
+}
+
+.panel-head h2,
+.links-panel h2,
+.about-story h2{
+  text-shadow:4px 4px 0 rgba(255,157,46,.9)!important;
+}
+
+.buy-guide-section .section-title{
+  text-shadow:none!important;
+  font-size:clamp(44px,9vw,78px)!important;
+  letter-spacing:.035em!important;
+}
+
+.buy-step-body h3{
+  font-size:clamp(22px,4.6vw,36px)!important;
+  letter-spacing:.015em!important;
+}
+
+.buy-step-body p{
+  font-size:clamp(17px,3.5vw,24px)!important;
+}
+
+.story-actions{
+  margin-top:26px!important;
+}
+
+.social-bubbles{
+  gap:16px!important;
+  align-items:center!important;
+}
+
+.social-bubbles a,
+.social-bubbles button{
+  width:62px!important;
+  height:62px!important;
+  border-radius:50%!important;
+  background:#fff!important;
+  color:#000!important;
+  border:0!important;
+  box-shadow:none!important;
+  display:grid!important;
+  place-items:center!important;
+  font-family:var(--headline)!important;
+  font-size:18px!important;
+  font-weight:950!important;
+  cursor:pointer!important;
+}
+
+.social-bubbles button{
+  padding:0!important;
+}
+
+.social-bubbles a:hover,
+.social-bubbles button:hover{
+  animation:wiggle .32s linear both;
+}
+
+.social-bubbles .bubble-wide{
+  width:auto!important;
+  min-width:62px!important;
+  padding:0 18px!important;
+  border-radius:999px!important;
 }
 
 @media(max-width:640px){
   :root{
-    --topbar-fixed-height:92px;
-  }
-
-  body{
-    padding-top:var(--topbar-fixed-height)!important;
+    --topbar-fixed-height:76px;
   }
 
   .topbar{
     height:var(--topbar-fixed-height)!important;
     min-height:var(--topbar-fixed-height)!important;
-    padding:0 26px!important;
+    padding:0 22px!important;
   }
 
   .brand{
-    gap:14px!important;
-    font-size:28px!important;
+    gap:12px!important;
+    font-size:24px!important;
   }
 
   .brand-icon{
-    width:52px!important;
-    height:52px!important;
-    border-radius:14px!important;
+    width:44px!important;
+    height:44px!important;
+    border-radius:12px!important;
+  }
+
+  .top-actions a:not(.top-cta){
+    display:none!important;
   }
 
   .top-actions .top-cta{
-    min-height:56px!important;
-    padding:0 26px!important;
-    font-size:20px!important;
-    border-radius:999px!important;
+    min-height:44px!important;
+    padding:0 20px!important;
+    font-size:17px!important;
   }
 
   .hero{
-    min-height:calc(100svh - var(--topbar-fixed-height))!important;
-    min-height:calc(100dvh - var(--topbar-fixed-height))!important;
+    min-height:100svh!important;
+    min-height:100dvh!important;
   }
 
   .hero-inner{
@@ -117,28 +267,88 @@ body{
   }
 
   .hero h1{
-    font-size:clamp(88px,24vw,132px)!important;
-    -webkit-text-stroke:5px #000!important;
+    font-size:clamp(82px,22vw,120px)!important;
+    -webkit-text-stroke:4px #000!important;
   }
 
   .hero-subtitle{
-    font-size:clamp(19px,4.9vw,27px)!important;
-    line-height:1.06!important;
-    letter-spacing:.075em!important;
-    max-width:94vw!important;
+    margin-top:8px!important;
+    font-size:clamp(15px,4.1vw,21px)!important;
+    line-height:1.08!important;
+    letter-spacing:.065em!important;
+    max-width:92vw!important;
+    -webkit-text-stroke:.75px #000!important;
   }
 
   .hero-buttons{
-    margin-top:24px!important;
+    margin-top:20px!important;
+    gap:10px!important;
+  }
+
+  .hero-buttons .comic-btn{
+    min-width:132px!important;
+    min-height:48px!important;
+    font-size:17px!important;
+    padding:0 18px!important;
   }
 
   .contract-bar{
-    margin-top:24px!important;
+    margin-top:20px!important;
+    min-height:52px!important;
+  }
+
+  .contract-bar span{
+    font-size:18px!important;
+  }
+
+  .contract-bar strong{
+    font-size:11px!important;
+  }
+
+  .contract-bar em{
+    font-size:11px!important;
+    padding:8px 10px!important;
+  }
+
+  .panel-head h2,
+  .about-story h2{
+    font-size:44px!important;
+  }
+
+  .panel-head p,
+  .black-panel p{
+    font-size:18px!important;
+    line-height:1.48!important;
+  }
+
+  .buy-guide-section .section-title{
+    font-size:46px!important;
+    margin-bottom:32px!important;
+  }
+
+  .buy-step-body h3{
+    font-size:26px!important;
+  }
+
+  .buy-step-body p{
+    font-size:19px!important;
+    line-height:1.42!important;
+  }
+
+  .social-bubbles{
+    gap:14px!important;
+  }
+
+  .social-bubbles a,
+  .social-bubbles button{
+    width:58px!important;
+    height:58px!important;
+    font-size:17px!important;
   }
 }
 
 @media(min-width:641px){
   .hero-inner{
-    transform:translateY(3vh)!important;
+    transform:translateY(4vh)!important;
   }
 }
