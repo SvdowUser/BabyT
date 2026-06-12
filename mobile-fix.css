@@ -1,0 +1,169 @@
+/* Final visual overrides loaded last. This keeps mobile and desktop consistent. */
+
+body .panel-head h2,
+body .links-panel h2,
+body .about-story h2,
+body .section-title,
+body .studio-panel h2,
+body #generatorTitle,
+body #aboutTitle,
+body #howToBuyTitle{
+  text-shadow:none!important;
+}
+
+body .panel-head p{
+  display:none!important;
+}
+
+body .gallery-track{
+  animation-duration:100s!important;
+}
+
+body .gallery-card{
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:24px!important;
+  overflow:hidden!important;
+  cursor:default!important;
+}
+
+body .gallery-card img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:scale(1)!important;
+  transition:transform .25s ease!important;
+  pointer-events:none!important;
+}
+
+body .gallery-card:hover img{
+  transform:scale(1.065)!important;
+}
+
+body .gallery-card.missing{
+  border:0!important;
+  box-shadow:none!important;
+}
+
+body .trait-card{
+  position:relative!important;
+  padding:20px 22px 22px!important;
+  border-radius:24px!important;
+}
+
+body .trait-card span{
+  margin-right:92px!important;
+  line-height:1!important;
+}
+
+body .trait-card strong{
+  display:block!important;
+  margin-top:12px!important;
+  font-size:clamp(16px,1.75vw,20px)!important;
+  font-weight:850!important;
+  line-height:1.25!important;
+  color:#202020!important;
+}
+
+body .trait-card small,
+body #renderStatus{
+  position:absolute!important;
+  top:16px!important;
+  right:16px!important;
+  margin:0!important;
+  padding:5px 9px!important;
+  font-size:10px!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  color:#10220c!important;
+  background:#dff8d5!important;
+  border:2px solid rgba(0,0,0,.12)!important;
+  border-radius:999px!important;
+}
+
+body #renderStatus.status-loading{
+  color:#421818!important;
+  background:#ffe0df!important;
+}
+
+body #renderStatus.status-empty{
+  color:#3b3420!important;
+  background:#fff0c8!important;
+}
+
+body #renderStatus.status-ready,
+body #renderStatus.status-done{
+  color:#10220c!important;
+  background:#dff8d5!important;
+}
+
+body .buy-floating-character{
+  display:block!important;
+}
+
+@media(max-width:900px){
+  body .buy-floating-character{
+    display:none!important;
+  }
+}
+
+@media(max-width:640px){
+  body .panel-head h2,
+  body .links-panel h2,
+  body .about-story h2,
+  body .section-title,
+  body .studio-panel h2,
+  body #generatorTitle,
+  body #aboutTitle,
+  body #howToBuyTitle{
+    text-shadow:none!important;
+  }
+
+  body .gallery-track{
+    animation-duration:90s!important;
+  }
+
+  body .gallery-card{
+    border:0!important;
+    box-shadow:none!important;
+    border-radius:18px!important;
+  }
+
+  body .trait-card{
+    padding:18px!important;
+  }
+
+  body .trait-card span{
+    margin-right:76px!important;
+    font-size:28px!important;
+  }
+
+  body .trait-card strong{
+    font-size:17px!important;
+    margin-top:10px!important;
+  }
+
+  body .trait-card small,
+  body #renderStatus{
+    top:14px!important;
+    right:14px!important;
+    font-size:10px!important;
+    padding:5px 9px!important;
+    background:#dff8d5!important;
+    color:#10220c!important;
+    border:2px solid rgba(0,0,0,.12)!important;
+  }
+
+  body #renderStatus.status-loading{
+    background:#ffe0df!important;
+    color:#421818!important;
+  }
+
+  body #renderStatus.status-empty{
+    background:#fff0c8!important;
+    color:#3b3420!important;
+  }
+}
