@@ -167,10 +167,10 @@ Before uploading a PNG, check:
 The site uses these values inside `index.html`:
 
 ```text
-Contract Address: FDN8ycmEo11HxCssiFZ1nTgdJxyuETvyEc3mD85Hpump
+Contract Address: 4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump
 Instagram: https://www.instagram.com/babytung_sol
 X: https://x.com/babytcoinsol
-TikTok: https://www.tiktok.com/@mythosmondays
+TikTok Video: https://vm.tiktok.com/ZGd9NYLDm/
 Telegram: https://t.me/BabyTCommunity
 ```
 
