@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BabyT | PFP Generator</title>
   <meta name="description" content="Create a BabyT profile picture and follow the official BabyT links.">
-  <meta name="theme-color" content="#0b0d10">
+  <meta name="theme-color" content="#050505">
   <link rel="canonical" href="https://babytungtung.com/">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -14,14 +14,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | PFP Generator">
-  <meta property="og:description" content="Create your BabyT PFP. Pick layers, download, join the meme.">
+  <meta property="og:description" content="Build your BabyT. Pick layers. Download the meme.">
   <meta property="og:url" content="https://babytungtung.com/">
-  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=5">
+  <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=6">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | PFP Generator">
-  <meta name="twitter:description" content="Create your BabyT PFP. Pick layers, download, join the meme.">
-  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=5">
-  <link rel="stylesheet" href="./style.css?v=5">
+  <meta name="twitter:description" content="Build your BabyT. Pick layers. Download the meme.">
+  <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=6">
+  <link rel="stylesheet" href="./style.css?v=6">
 </head>
 <body
   data-contract-address="4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump"
@@ -33,139 +33,151 @@
 >
   <a class="skip-link" href="#generator">Skip to generator</a>
 
-  <header class="nav">
-    <div class="shell nav-inner">
-      <a class="brand" href="#top" aria-label="BabyT Home">
-        <span class="brand-mark"><img src="./favicon-32x32.png" alt=""></span>
-        <span>BabyT</span>
-      </a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="BabyT Home">
+      <span class="brand-icon"><img src="./favicon-32x32.png" alt=""></span>
+      <span>BabyT</span>
+    </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#generator">Generator</a>
-        <a href="#links">Links</a>
-        <a href="#chart">Chart</a>
-      </nav>
-
-      <div class="nav-actions">
-        <a class="btn slim ghost" id="xLinkTop" href="https://x.com/babytcoinsol" target="_blank" rel="noreferrer">X</a>
-        <a class="btn slim ghost" href="#contract">CA</a>
-        <a class="btn slim accent buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
-      </div>
-    </div>
+    <nav class="top-actions" aria-label="Main navigation">
+      <a href="#generator">Studio</a>
+      <a href="#links">Links</a>
+      <a class="top-cta buy-link" href="#" target="_blank" rel="noreferrer">Buy</a>
+    </nav>
   </header>
 
   <main id="top">
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="shell hero-grid">
-        <div>
-          <div class="eyebrow">Community PFP tool</div>
-          <h1 id="heroTitle">BabyT PFP <span class="accent-word">Generator</span></h1>
-          <p class="lead">Pick your background, character, shirt, glasses, hand item and hat. Download a clean 1024x1024 PNG for X, TikTok, Telegram or Instagram.</p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#generator">Create PFP</a>
-            <a class="btn ghost" href="#chart">View Chart</a>
-            <a class="btn ghost" href="#links">Official Links</a>
-          </div>
-
-          <div class="hero-kpis" aria-label="Project notes">
-            <span class="mini-stat"><strong>$BABYT</strong> on Solana</span>
-            <span class="mini-stat">Creator onboard</span>
-            <span class="mini-stat">Official links only</span>
-          </div>
-
-          <div class="ca-panel" id="contract">
-            <div class="ca-label">Contract</div>
-            <div class="ca-value" id="caValue">4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump</div>
-            <button class="btn slim" id="copyCaBtn" type="button">Copy</button>
-          </div>
+    <section class="hero section-pad">
+      <div class="shell hero-inner">
+        <div class="hero-art" aria-hidden="true">
+          <div class="coin-ring">BT</div>
+          <div class="ticker-strip">THE TIKTOK BRAINROT ON SOLANA</div>
         </div>
 
-        <section class="card studio" id="generator" aria-labelledby="studioTitle">
-          <div class="studio-top">
-            <div>
-              <h2 class="studio-title" id="studioTitle">PFP Studio</h2>
-              <p class="studio-sub">Use the arrows or generate a weighted random combo.</p>
-            </div>
-          </div>
+        <h1>BabyT</h1>
+        <p class="hero-sub">Build your own BabyT PFP. Pick the look, download the meme, use it everywhere.</p>
 
-          <div class="studio-grid">
-            <div>
-              <div class="preview">
-                <canvas id="pfpCanvas" width="1024" height="1024" aria-label="Generated BabyT profile picture"></canvas>
-                <div class="preview-meta"><span>1024x1024 PNG</span><span id="renderStatus" aria-live="polite">Ready</span></div>
-              </div>
-            </div>
+        <div class="hero-buttons">
+          <a class="comic-btn green" href="#generator">Create PFP</a>
+          <a class="comic-btn white" id="dexHeroLink" href="#" target="_blank" rel="noreferrer">Chart</a>
+        </div>
 
-            <div>
-              <div id="controlStack" class="controls" aria-label="PFP layer controls"></div>
-              <div class="studio-actions">
-                <button class="btn accent" id="randomBtn" type="button">Random</button>
-                <button class="btn ghost" id="resetBtn" type="button">Reset</button>
-                <button class="btn primary" id="downloadBtn" type="button">Download</button>
-              </div>
-              <p class="note">Assets are loaded from the manifest. Use 1024x1024 transparent PNGs for every overlay layer.</p>
-            </div>
-          </div>
-        </section>
+        <button class="contract-bar" id="copyCaBtn" type="button" aria-label="Copy contract address">
+          <span>CA</span>
+          <strong id="caValue">4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump</strong>
+          <em>Copy</em>
+        </button>
       </div>
     </section>
 
-    <section id="links" aria-labelledby="linksTitle">
+    <section class="marquee" aria-label="BabyT slogan">
+      <div class="marquee-track">
+        <span>FROM TIKTOK</span><b>🪵</b><span>TO SOLANA</span><b>👟</b><span>BUILD YOUR PFP</span><b>⚡</b><span>JOIN THE COMMUNITY</span>
+      </div>
+    </section>
+
+    <section class="section-pad" id="generator" aria-labelledby="generatorTitle">
       <div class="shell">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Official</div>
-            <h2 id="linksTitle">Links</h2>
-            <p class="section-copy">Use these links only. The page keeps the social and chart links compact so the generator stays the focus.</p>
+        <div class="black-panel studio-panel">
+          <div class="panel-head">
+            <span class="mini-label">Community tool</span>
+            <h2 id="generatorTitle">BabyT Studio</h2>
+            <p>No fake placeholder character. The preview only uses your real 1024x1024 PNG assets once you upload them.</p>
           </div>
-        </div>
 
-        <div class="link-grid">
-          <a class="link-card" id="xLink" href="#" target="_blank" rel="noreferrer">X</a>
-          <a class="link-card" id="instagramLink" href="#" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="link-card" id="tiktokLink" href="#" target="_blank" rel="noreferrer">TikTok Video</a>
-          <a class="link-card" id="telegramLink" href="#" target="_blank" rel="noreferrer">Telegram</a>
-          <a class="link-card buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
-          <a class="link-card" id="jupiterLink" href="#" target="_blank" rel="noreferrer">Jupiter</a>
-          <a class="link-card" id="dexLink" href="#" target="_blank" rel="noreferrer">DEXScreener</a>
-          <a class="link-card" id="geckoLink" href="#" target="_blank" rel="noreferrer">GeckoTerminal</a>
-          <button class="link-card" id="copyCaBtn2" type="button">Copy CA</button>
-          <a class="link-card" href="#generator">Create PFP</a>
+          <div class="studio-layout">
+            <div class="pfp-stage">
+              <button class="arrow-control left" id="prevTraitBtn" type="button" aria-label="Previous trait">‹</button>
+
+              <div class="preview-frame">
+                <canvas id="pfpCanvas" width="1024" height="1024" aria-label="Generated BabyT profile picture"></canvas>
+                <div class="empty-hint" id="emptyCanvasHint">
+                  <strong>Upload assets</strong>
+                  <span>1024x1024 PNG layers will appear here.</span>
+                </div>
+              </div>
+
+              <button class="arrow-control right" id="nextTraitBtn" type="button" aria-label="Next trait">›</button>
+            </div>
+
+            <div class="studio-controls">
+              <div class="trait-card">
+                <span id="activeLayerLabel">Background</span>
+                <strong id="activeTraitName">Waiting for assets</strong>
+                <small id="renderStatus" aria-live="polite">Ready</small>
+              </div>
+
+              <div class="layer-tabs" id="layerTabs" aria-label="Choose layer"></div>
+
+              <div class="studio-actions">
+                <button class="comic-btn small white" id="randomBtn" type="button">Random</button>
+                <button class="comic-btn small white" id="resetBtn" type="button">Reset</button>
+                <button class="comic-btn small green" id="downloadBtn" type="button">Download</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="chart" aria-labelledby="chartTitle">
-      <div class="shell bottom-grid">
-        <div class="card info-card">
-          <div class="kicker">From TikTok</div>
-          <h2 class="info-title">To Solana</h2>
-          <p class="info-text">BabyT comes from short-form meme culture. Watch the TikTok video and use the generator to join the community identity.</p>
-          <a class="tiktok-pill" id="tiktokProfileCard" href="#" target="_blank" rel="noreferrer">
-            <span class="tiktok-mark">♬</span>
-            <span class="tiktok-handle"><strong id="tiktokHandle">BabyT TikTok video</strong><span>Open TikTok video</span></span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
+    <section class="section-pad story-section">
+      <div class="shell split-grid">
+        <article class="white-card about-card">
+          <span class="mini-label dark">About</span>
+          <h2>From TikTok to Solana</h2>
+          <p>BabyT is meme culture first. The site is built around a simple idea: give the community a clean way to create matching profile pictures without making the page feel like a generic crypto template.</p>
+          <a class="comic-btn white" id="tiktokProfileCard" href="#" target="_blank" rel="noreferrer">Watch TikTok</a>
+        </article>
 
-        <div class="card chart-card">
-          <div class="chart-head">
-            <div>
-              <div class="kicker">Chart</div>
-              <h2 class="studio-title" id="chartTitle">DEXScreener</h2>
-            </div>
-            <a class="btn ghost" id="openChartBtn" href="#" target="_blank" rel="noreferrer">Open</a>
+        <article class="black-panel token-card" id="chart">
+          <span class="mini-label">Token</span>
+          <h2>$BABYT</h2>
+          <p>Solana token. Official links only. Use the contract below and verify before trading.</p>
+          <div class="token-buttons">
+            <a class="comic-btn white buy-link" href="#" target="_blank" rel="noreferrer">Pump.fun</a>
+            <a class="comic-btn white" id="openChartBtn" href="#" target="_blank" rel="noreferrer">DEXScreener</a>
           </div>
-          <div class="chart-frame" id="chartFrame">
-            <p class="chart-copy">Open the official chart in a new tab. Keeping it as a light card makes the mobile page faster and less cluttered.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-pad how-section">
+      <div class="shell">
+        <h2 class="section-title">How to join</h2>
+        <div class="steps-grid">
+          <div class="step-card"><span>1</span><strong>Create your PFP</strong><p>Use the BabyT Studio and download your final image.</p></div>
+          <div class="step-card"><span>2</span><strong>Follow the meme</strong><p>Open the TikTok video and follow the official socials.</p></div>
+          <div class="step-card"><span>3</span><strong>Check the chart</strong><p>Use the CA and official chart links only. DYOR.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="links" aria-labelledby="linksTitle">
+      <div class="shell">
+        <div class="black-panel links-panel">
+          <span class="mini-label">Community</span>
+          <h2 id="linksTitle">Official links</h2>
+
+          <div class="link-list">
+            <a id="xLink" href="#" target="_blank" rel="noreferrer"><span>X</span><strong>@babytcoinsol</strong></a>
+            <a id="telegramLink" href="#" target="_blank" rel="noreferrer"><span>TG</span><strong>Community</strong></a>
+            <a id="tiktokLink" href="#" target="_blank" rel="noreferrer"><span>♪</span><strong>TikTok Video</strong></a>
+            <a id="instagramLink" href="#" target="_blank" rel="noreferrer"><span>IG</span><strong>@babytung_sol</strong></a>
+            <a class="buy-link" href="#" target="_blank" rel="noreferrer"><span>PF</span><strong>Pump.fun</strong></a>
+            <a id="dexLink" href="#" target="_blank" rel="noreferrer"><span>DX</span><strong>DEXScreener</strong></a>
+            <a id="jupiterLink" href="#" target="_blank" rel="noreferrer"><span>JUP</span><strong>Jupiter</strong></a>
+            <a id="geckoLink" href="#" target="_blank" rel="noreferrer"><span>GT</span><strong>GeckoTerminal</strong></a>
+            <button id="copyCaBtn2" type="button"><span>CA</span><strong>Copy contract</strong></button>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><div class="shell">BabyT is a community meme page. PFP assets are for community identity and entertainment. NFA. DYOR.</div></footer>
-  <script src="./script.js?v=5"></script>
+  <footer class="footer">
+    <div class="shell">BabyT is a community meme page. PFP assets are for community identity and entertainment. Nothing here is financial advice.</div>
+  </footer>
+
+  <script src="./script.js?v=6"></script>
 </body>
 </html>
