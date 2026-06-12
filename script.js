@@ -62,6 +62,32 @@ function setText(id, text) {
   if (element) element.textContent = text;
 }
 
+function setupDesktopNav() {
+  const nav = document.querySelector('.top-actions');
+  if (!nav || nav.dataset.ready === 'true') return;
+
+  const getStarted = nav.querySelector('.top-cta') || document.createElement('a');
+  getStarted.className = 'top-cta';
+  getStarted.href = '#generator';
+  getStarted.textContent = 'Get Started';
+
+  const items = [
+    ['About', '#about'],
+    ['How to Buy', '#how-to-buy'],
+    ['Studio', '#generator']
+  ];
+
+  nav.innerHTML = '';
+  items.forEach(([label, href]) => {
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = label;
+    nav.appendChild(link);
+  });
+  nav.appendChild(getStarted);
+  nav.dataset.ready = 'true';
+}
+
 function setHeaderScrollState() {
   const update = () => {
     const atTop = window.scrollY < 18;
@@ -203,7 +229,7 @@ async function initHeroMedia() {
       source = await b64FileToDataUrl(candidate);
       if (!source) continue;
     } else {
-      source = `${candidate}?v=12`;
+      source = `${candidate}?v=13`;
     }
 
     const ok = await testImage(source);
@@ -388,6 +414,7 @@ async function copyText(value, button, label) {
 
 async function init() {
   preventMobileZoom();
+  setupDesktopNav();
   setHeaderScrollState();
   setLinks();
   initHeroMedia();
