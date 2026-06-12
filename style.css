@@ -90,6 +90,8 @@ h2{margin:0;font-size:clamp(28px,4vw,46px);line-height:.96;letter-spacing:-.055e
 .tiktok-mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#fff;color:#111;font-weight:950;flex:0 0 auto}
 .tiktok-handle{min-width:0;flex:1}.tiktok-handle strong,.metric strong{display:block;color:#fff;font-size:15px;line-height:1.15}.tiktok-handle span,.metric span{display:block;color:var(--soft);font-size:12px;margin-top:3px;font-weight:700}
 .chart-card{padding:12px;min-height:450px}.chart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 2px 12px}.chart-frame{width:100%;height:390px;border:1px solid var(--line);border-radius:14px;background:#0c0c10;overflow:hidden}.chart-frame iframe{width:100%;height:100%;border:0;display:block}
+.chart-frame:empty{display:grid;place-items:center;padding:22px;text-align:center;color:var(--muted)}
+.chart-frame:empty::before{content:"Live chart opens with the Open button above.";max-width:280px;font-size:13px;line-height:1.5}
 .footer{padding:24px 0 36px;color:var(--soft);font-size:12px;line-height:1.6;text-align:center}
 
 @media(max-width:980px){.hero-grid,.studio-grid,.bottom-grid{grid-template-columns:1fr}.studio-grid{gap:12px}.preview{width:min(100%,360px);margin:0 auto}.link-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
