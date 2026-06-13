@@ -71,7 +71,7 @@
   }
 }
 
-/* About section: clean social icon buttons, no CA button. */
+/* About section: clean social icon buttons, PNG-replaceable icons, no CA button. */
 body .story-actions .buy-link,
 body .story-actions .comic-btn.white{
   background: #fff!important;
@@ -79,7 +79,10 @@ body .story-actions .comic-btn.white{
 }
 
 body .social-bubbles{
+  display: flex!important;
   align-items: center!important;
+  justify-content: flex-start!important;
+  flex-wrap: nowrap!important;
   gap: 18px!important;
 }
 
@@ -87,25 +90,45 @@ body .social-bubbles a{
   order: 10;
   overflow: hidden!important;
   padding: 0!important;
-  background: #fff!important;
+  background-color: #fff!important;
+  background-position: center!important;
+  background-repeat: no-repeat!important;
+  background-size: 78% 78%!important;
   color: transparent!important;
   font-size: 0!important;
   line-height: 0!important;
+  flex: 0 0 auto!important;
 }
 
+/* The visible icon is now the PNG background. If a PNG is missing, the old SVG stays as fallback behind it. */
 body .social-bubbles a img{
-  width: 78%!important;
-  height: 78%!important;
-  object-fit: contain!important;
-  pointer-events: none!important;
+  display: none!important;
 }
 
-body #storyPumpLink{ order: 1; }
-body #storyTiktokLink{ order: 2; }
-body #storyXLink{ order: 3; }
-body #storyInstagramLink{ order: 4; }
-body #storyDexLink{ order: 5; }
-body #storyJupiterLink{ order: 6; }
+body #storyPumpLink{
+  order: 1;
+  background-image: url('./assets/social-icons/pumpfun.png'), url('./assets/social-icons/pumpfun-wood.svg')!important;
+}
+body #storyTiktokLink{
+  order: 2;
+  background-image: url('./assets/social-icons/tiktok.png'), url('./assets/social-icons/tiktok-wood.svg')!important;
+}
+body #storyXLink{
+  order: 3;
+  background-image: url('./assets/social-icons/x.png'), url('./assets/social-icons/x-wood.svg')!important;
+}
+body #storyInstagramLink{
+  order: 4;
+  background-image: url('./assets/social-icons/instagram.png'), url('./assets/social-icons/instagram-wood.svg')!important;
+}
+body #storyDexLink{
+  order: 5;
+  background-image: url('./assets/social-icons/dexscreener.png'), url('./assets/social-icons/dexscreener-wood.svg')!important;
+}
+body #storyJupiterLink{
+  order: 6;
+  background-image: url('./assets/social-icons/jupiter.png'), url('./assets/social-icons/jupiter-wood.svg')!important;
+}
 body #copyCaBtn2{ display: none!important; }
 
 @media (min-width: 901px){
@@ -123,11 +146,24 @@ body #copyCaBtn2{ display: none!important; }
 
 @media (max-width: 640px){
   body .social-bubbles{
-    gap: 14px!important;
+    width: 100%!important;
+    justify-content: space-between!important;
+    gap: clamp(6px, 1.8vw, 10px)!important;
   }
 
   body .social-bubbles a{
-    width: 58px!important;
-    height: 58px!important;
+    width: clamp(42px, 11.2vw, 50px)!important;
+    height: clamp(42px, 11.2vw, 50px)!important;
+    border-width: 3px!important;
+    background-size: 76% 76%!important;
+    box-shadow: 4px 5px 0 rgba(0,0,0,.18)!important;
+  }
+}
+
+@media (max-width: 380px){
+  body .social-bubbles a{
+    width: 42px!important;
+    height: 42px!important;
+    background-size: 74% 74%!important;
   }
 }
