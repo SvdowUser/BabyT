@@ -47,7 +47,7 @@
     },
     {
       "key": "glasses",
-      "label": "Glasses / Mask",
+      "label": "Head",
       "folder": "glasses",
       "z": 40,
       "options": [
