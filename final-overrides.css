@@ -199,6 +199,17 @@ body #copyCaBtn2{ display: none!important; }
     font-style: normal!important;
     line-height: 1!important;
   }
+
+  /* Desktop only: Random + Download back to strong comic/block lettering. */
+  body #randomBtn,
+  body #downloadBtn{
+    font-family: var(--headline)!important;
+    font-weight: 950!important;
+    text-transform: uppercase!important;
+    letter-spacing: .035em!important;
+    font-size: clamp(17px, 1.35vw, 21px)!important;
+    line-height: 1!important;
+  }
 }
 
 @media (max-width: 640px){
