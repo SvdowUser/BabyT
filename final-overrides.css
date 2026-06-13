@@ -179,10 +179,12 @@ body #copyCaBtn2{ display: none!important; }
     line-height: 1.05!important;
   }
 
+  /* Desktop only: selected value like "None" should be closer to mobile: readable, a bit bigger, but not too thick. */
   body .studio-panel .trait-card strong{
-    font-size: clamp(16px, 1.45vw, 22px)!important;
-    font-weight: 850!important;
+    font-size: clamp(18px, 1.55vw, 24px)!important;
+    font-weight: 720!important;
     line-height: 1.15!important;
+    letter-spacing: -0.01em!important;
   }
 
   /* Desktop only: layer choice buttons should stay readable, but not thick/bold. */
