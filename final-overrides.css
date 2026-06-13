@@ -51,7 +51,7 @@
   }
 
   body .studio-panel .trait-card span{
-    font-size: clamp(30px, 7.8vw, 36px)!important;
+    font-size: clamp(26px, 6.2vw, 30px)!important;
     max-width: calc(100% - 86px)!important;
     white-space: nowrap!important;
     overflow: hidden!important;
@@ -75,7 +75,7 @@
   }
 
   body .studio-panel .trait-card span{
-    font-size: 30px!important;
+    font-size: 26px!important;
   }
 
   body .studio-panel .layer-tab{
