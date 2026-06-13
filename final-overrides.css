@@ -1,0 +1,94 @@
+/* Final BabyT fixes loaded after all other CSS. */
+
+/* Keep the mobile How-to-Buy heading style like the older mobile version. */
+@media (max-width: 900px){
+  body #howToBuyTitle,
+  body .buy-guide-section .section-title{
+    font-family: var(--headline)!important;
+    font-weight: 950!important;
+    letter-spacing: .035em!important;
+    line-height: .92!important;
+    text-transform: uppercase!important;
+    text-shadow: none!important;
+  }
+
+  body .buy-step-body h3{
+    font-family: var(--headline)!important;
+    font-weight: 950!important;
+    letter-spacing: .02em!important;
+    line-height: 1!important;
+    text-transform: uppercase!important;
+  }
+}
+
+@media (max-width: 640px){
+  body #howToBuyTitle,
+  body .buy-guide-section .section-title{
+    font-size: 48px!important;
+  }
+
+  body .buy-step-body h3{
+    font-size: 26px!important;
+  }
+}
+
+/* About section: clean social icon buttons, no CA button. */
+body .story-actions .buy-link,
+body .story-actions .comic-btn.white{
+  background: #fff!important;
+  color: #000!important;
+}
+
+body .social-bubbles{
+  align-items: center!important;
+  gap: 18px!important;
+}
+
+body .social-bubbles a{
+  order: 10;
+  overflow: hidden!important;
+  padding: 0!important;
+  background: #fff!important;
+  color: transparent!important;
+  font-size: 0!important;
+  line-height: 0!important;
+}
+
+body .social-bubbles a img{
+  width: 78%!important;
+  height: 78%!important;
+  object-fit: contain!important;
+  pointer-events: none!important;
+}
+
+body #storyPumpLink{ order: 1; }
+body #storyTiktokLink{ order: 2; }
+body #storyXLink{ order: 3; }
+body #storyInstagramLink{ order: 4; }
+body #storyDexLink{ order: 5; }
+body #storyJupiterLink{ order: 6; }
+body #copyCaBtn2{ display: none!important; }
+
+@media (min-width: 901px){
+  body .about-story h2,
+  body #aboutTitle{
+    font-size: clamp(34px, 3.7vw, 52px)!important;
+    letter-spacing: .025em!important;
+  }
+
+  body .social-bubbles a{
+    width: 60px!important;
+    height: 60px!important;
+  }
+}
+
+@media (max-width: 640px){
+  body .social-bubbles{
+    gap: 14px!important;
+  }
+
+  body .social-bubbles a{
+    width: 58px!important;
+    height: 58px!important;
+  }
+}
