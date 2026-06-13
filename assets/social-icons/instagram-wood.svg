@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Instagram wooden icon">
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7c676"/><stop offset="0.5" stop-color="#bb6b25"/><stop offset="1" stop-color="#7a3d13"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".22"/></filter>
+    <pattern id="grain" width="82" height="82" patternUnits="userSpaceOnUse"><path d="M8 24C34 8 52 38 78 20M8 58C30 44 52 70 78 54M24 80C38 64 58 88 76 72" fill="none" stroke="#4e260e" stroke-width="5" opacity=".18" stroke-linecap="round"/></pattern>
+  </defs>
+  <rect width="1024" height="1024" fill="#fff"/>
+  <g filter="url(#shadow)">
+    <rect x="182" y="182" width="660" height="660" rx="160" fill="url(#wood)"/>
+    <rect x="182" y="182" width="660" height="660" rx="160" fill="url(#grain)"/>
+    <rect x="182" y="182" width="660" height="660" rx="160" fill="none" stroke="#673311" stroke-width="34"/>
+    <circle cx="512" cy="520" r="154" fill="none" stroke="#6b3512" stroke-width="58"/>
+    <circle cx="512" cy="520" r="112" fill="#fff" opacity=".92"/>
+    <circle cx="681" cy="344" r="39" fill="#6b3512"/>
+    <path d="M284 250c54-36 114-45 184-40" stroke="#ffd28b" stroke-width="18" stroke-linecap="round" opacity=".65"/>
+  </g>
+</svg>
