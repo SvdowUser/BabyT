@@ -32,6 +32,45 @@
   }
 }
 
+/* Restore the old mobile Studio button/title typography only on mobile. Desktop stays cleaner/readable. */
+@media (max-width: 900px){
+  body .studio-panel .trait-card span,
+  body .studio-panel .layer-tab,
+  body .studio-panel .studio-actions .comic-btn,
+  body #randomBtn,
+  body #downloadBtn{
+    font-family: var(--headline)!important;
+    font-weight: 950!important;
+    text-transform: uppercase!important;
+    letter-spacing: .035em!important;
+    line-height: 1!important;
+  }
+
+  body .studio-panel .trait-card span{
+    font-size: 42px!important;
+  }
+
+  body .studio-panel .layer-tab{
+    font-size: 15px!important;
+  }
+
+  body .studio-panel .studio-actions .comic-btn,
+  body #randomBtn,
+  body #downloadBtn{
+    font-size: 22px!important;
+  }
+}
+
+@media (max-width: 380px){
+  body .studio-panel .trait-card span{
+    font-size: 36px!important;
+  }
+
+  body .studio-panel .layer-tab{
+    font-size: 13px!important;
+  }
+}
+
 /* About section: clean social icon buttons, no CA button. */
 body .story-actions .buy-link,
 body .story-actions .comic-btn.white{
