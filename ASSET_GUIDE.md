@@ -196,13 +196,19 @@ Before uploading a PNG, GIF or B64 asset, check:
 - no accidental edits to the BabyT body or face
 - file name matches the expected path
 
-## Current links
+## Current production links
 
-The site uses these values inside `index.html`:
+The live site currently uses:
 
 ```text
-Contract Address: 4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump
-Instagram: https://www.instagram.com/babytung_sol
-X: https://x.com/babytung_sol
-TikTok Video: https://vm.tiktok.com/ZGd9NYLDm/
+Website: https://babytonsol.com/
+Contract Address: Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump
+Project X: https://x.com/BabyTonSol
+Creator X: https://x.com/MythosMondaysOG
+TikTok: https://www.tiktok.com/@mythosmondays
+DEXScreener: https://dexscreener.com/solana/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump
+Jupiter: https://jup.ag/tokens/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump
+Pump.fun: https://pump.fun/coin/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump
 ```
+
+Instagram is intentionally not used on the current site.
