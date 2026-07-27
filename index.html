@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>BabyT | PFP Generator</title>
-  <meta name="description" content="Create a BabyT profile picture and follow the official BabyT links.">
+  <title>BabyT | Official</title>
+  <meta name="description" content="Official BabyT website with the verified contract address, token links and community channels.">
   <meta name="theme-color" content="#050505">
   <link rel="canonical" href="https://babytungtung.com/">
   <link rel="icon" href="./favicon.ico" sizes="any">
@@ -13,13 +13,13 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
-  <meta property="og:title" content="BabyT | PFP Generator">
-  <meta property="og:description" content="Build your BabyT. Pick layers. Download the meme.">
+  <meta property="og:title" content="BabyT | Official">
+  <meta property="og:description" content="BabyT on Solana. Official contract address, chart and community links.">
   <meta property="og:url" content="https://babytungtung.com/">
   <meta property="og:image" content="https://babytungtung.com/apple-touch-icon.png?v=18">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BabyT | PFP Generator">
-  <meta name="twitter:description" content="Build your BabyT. Pick layers. Download the meme.">
+  <meta name="twitter:title" content="BabyT | Official">
+  <meta name="twitter:description" content="BabyT on Solana. Official contract address, chart and community links.">
   <meta name="twitter:image" content="https://babytungtung.com/apple-touch-icon.png?v=18">
   <link rel="stylesheet" href="./style.css?v=17">
   <link rel="stylesheet" href="./hero-fix.css?v=5">
@@ -185,13 +185,12 @@
   <link rel="stylesheet" href="./final-overrides.css?v=1">
 </head>
 <body
-  data-contract-address="4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump"
-  data-instagram-url="https://www.instagram.com/babytung_sol"
-  data-x-url="https://x.com/babytung_sol"
+  data-contract-address="Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump"
+  data-x-url="https://x.com/BabyTonSol"
   data-tiktok-url="https://www.tiktok.com/@mythosmondays"
   data-tiktok-handle="@mythosmondays"
 >
-  <a class="skip-link" href="#generator">Skip to generator</a>
+  <a class="skip-link" href="#about">Skip to content</a>
 
   <header class="topbar">
     <a class="brand" href="#top" aria-label="BabyT Home">
@@ -202,8 +201,7 @@
     <nav class="top-actions" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#how-to-buy">How to Buy</a>
-      <a href="#generator">Studio</a>
-      <a class="top-cta" href="#generator">Get Started</a>
+      <a class="top-cta" href="#how-to-buy">Get Started</a>
     </nav>
   </header>
 
@@ -220,13 +218,12 @@
         <p class="hero-subtitle">BabyT is a cryptocurrency on the Solana blockchain</p>
 
         <div class="hero-buttons">
-          <a class="comic-btn green" href="#generator">Create PFP</a>
           <a class="comic-btn white" id="dexHeroLink" href="#" target="_blank" rel="noreferrer">Chart</a>
         </div>
 
         <button class="contract-bar" id="copyCaBtn" type="button" aria-label="Copy contract address">
           <span>CA</span>
-          <strong id="caValue">4EL7nmuUrAJJmV6pKUWskYQTH3hsmdJQnUCP238Vpump</strong>
+          <strong id="caValue">Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump</strong>
           <em>Copy</em>
         </button>
       </div>
@@ -235,56 +232,10 @@
     <section class="marquee" aria-label="BabyT slogan">
       <div class="marquee-track">
         <div class="marquee-group">
-          <span>From TikTok to Solana</span><span>Build your PFP</span><span>Baby Brainrot on chain</span><span>Join BabyT</span>
+          <span>From TikTok to Solana</span><span>Original Baby Brainrot</span><span>BabyT on chain</span><span>Join BabyT</span>
         </div>
         <div class="marquee-group" aria-hidden="true">
-          <span>From TikTok to Solana</span><span>Build your PFP</span><span>Baby Brainrot on chain</span><span>Join BabyT</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="generator" aria-labelledby="generatorTitle">
-      <div class="shell">
-        <div class="black-panel studio-panel">
-          <div class="panel-head">
-            <span class="mini-label">Community tool</span>
-            <h2 id="generatorTitle">BabyT Studio</h2>
-          </div>
-
-          <div class="studio-layout">
-            <div class="pfp-stage">
-              <button class="arrow-control left" id="prevTraitBtn" type="button" aria-label="Previous trait"></button>
-
-              <div class="preview-frame">
-                <canvas id="pfpCanvas" width="1024" height="1024" aria-label="Generated BabyT profile picture"></canvas>
-                <div class="render-loader" id="renderLoader" aria-hidden="true">
-                  <span></span>
-                  <strong>Loading</strong>
-                </div>
-                <div class="empty-hint" id="emptyCanvasHint">
-                  <strong>Upload assets</strong>
-                  <span>1024x1024 PNG layers will appear here.</span>
-                </div>
-              </div>
-
-              <button class="arrow-control right" id="nextTraitBtn" type="button" aria-label="Next trait"></button>
-            </div>
-
-            <div class="studio-controls">
-              <div class="trait-card">
-                <span id="activeLayerLabel">Background</span>
-                <strong id="activeTraitName">Waiting for assets</strong>
-                <small id="renderStatus" aria-live="polite">Ready</small>
-              </div>
-
-              <div class="layer-tabs" id="layerTabs" aria-label="Choose layer"></div>
-
-              <div class="studio-actions">
-                <button class="comic-btn small white" id="randomBtn" type="button">Random</button>
-                <button class="comic-btn small green" id="downloadBtn" type="button">Download</button>
-              </div>
-            </div>
-          </div>
+          <span>From TikTok to Solana</span><span>Original Baby Brainrot</span><span>BabyT on chain</span><span>Join BabyT</span>
         </div>
       </div>
     </section>
@@ -333,8 +284,7 @@
           <div class="social-bubbles" aria-label="BabyT quick links">
             <a id="storyPumpLink" href="#" target="_blank" rel="noreferrer" aria-label="Pump.fun"><img src="./assets/social-icons/pumpfun-wood.svg" alt=""></a>
             <a id="storyTiktokLink" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok"><img src="./assets/social-icons/tiktok-wood.svg" alt=""></a>
-            <a id="storyXLink" href="https://x.com/babytung_sol" target="_blank" rel="noreferrer" aria-label="X"><img src="./assets/social-icons/x-wood.svg" alt=""></a>
-            <a id="storyInstagramLink" href="https://www.instagram.com/babytung_sol" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="./assets/social-icons/instagram-wood.svg" alt=""></a>
+            <a id="storyXLink" href="https://x.com/BabyTonSol" target="_blank" rel="noreferrer" aria-label="X"><img src="./assets/social-icons/x-wood.svg" alt=""></a>
             <a id="storyDexLink" href="#" target="_blank" rel="noreferrer" aria-label="DEXScreener"><img src="./assets/social-icons/dexscreener-wood.svg" alt=""></a>
             <a id="storyJupiterLink" href="#" target="_blank" rel="noreferrer" aria-label="Jupiter"><img src="./assets/social-icons/jupiter-wood.svg" alt=""></a>
           </div>
@@ -403,6 +353,6 @@
     </div>
   </footer>
 
-  <script src="./script.js?v=19"></script>
+  <script src="./script.js?v=20"></script>
 </body>
 </html>
