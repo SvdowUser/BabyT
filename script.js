@@ -6,8 +6,7 @@ const links = {
   tiktok: TIKTOK_URL,
   pump: `https://pump.fun/coin/${CONTRACT_ADDRESS}`,
   jupiter: `https://jup.ag/tokens/${CONTRACT_ADDRESS}`,
-  dex: `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`,
-  dextools: `https://www.dextools.io/app/en/solana/token/${CONTRACT_ADDRESS}`
+  dex: `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`
 };
 
 const HERO_CANDIDATES = [
@@ -38,7 +37,7 @@ function setLinks() {
     element.href = links.pump;
   });
 
-  setHref('dexHeroLink', links.dextools);
+  setHref('dexHeroLink', links.dex);
   setHref('storyPumpLink', links.pump);
   setHref('storyTiktokLink', links.tiktok);
   setHref('storyXLink', links.x);
