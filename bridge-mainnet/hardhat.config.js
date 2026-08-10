@@ -1,4 +1,4 @@
-require("@nomicfoundation/hardhat-ethers");
+require("@nomiclabs/hardhat-ethers");
 
 module.exports = {
   solidity: {
