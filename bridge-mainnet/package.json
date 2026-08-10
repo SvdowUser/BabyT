@@ -1,0 +1,21 @@
+{
+  "name": "babyt-robinhood-mainnet-preflight",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "hardhat": "2.22.18"
+  },
+  "dependencies": {
+    "@layerzerolabs/lz-evm-messagelib-v2": "3.0.148",
+    "@layerzerolabs/lz-evm-protocol-v2": "3.0.148",
+    "@layerzerolabs/lz-evm-v1-0.7": "3.0.148",
+    "@layerzerolabs/oapp-evm": "0.4.1",
+    "@layerzerolabs/oft-evm": "4.0.1",
+    "@openzeppelin/contracts": "5.0.2"
+  }
+}
