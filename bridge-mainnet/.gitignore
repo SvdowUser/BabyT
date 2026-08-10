@@ -1,0 +1,20 @@
+# Never commit deployer secrets or Solana program keypairs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Solana/Anchor generated secrets and artifacts
+target/
+.anchor/
+**/*-keypair.json
+
+# Hardhat / Node
+node_modules/
+cache/
+artifacts/
+coverage/
+
+# OS/editor
+.DS_Store
