@@ -1,0 +1,38 @@
+{
+  "mode": "preflight-only",
+  "liveDeployAllowed": false,
+  "realTokenMovementAllowed": false,
+  "liquidityPoolCreationAllowed": false,
+  "solana": {
+    "network": "mainnet-beta",
+    "eid": 30168,
+    "canonicalSupply": true,
+    "mint": "Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump",
+    "tokenStandard": "Token-2022",
+    "decimals": 6,
+    "bridgeMechanism": "lock-unlock-oft-adapter"
+  },
+  "robinhood": {
+    "network": "Robinhood Chain Mainnet",
+    "chainId": 4663,
+    "eid": 30416,
+    "rpc": "https://rpc.mainnet.chain.robinhood.com",
+    "nativeGasToken": "ETH",
+    "ownerAndDelegate": "0x562F8899c9b334d2b8c27E2D7320CdE4c30eA82b",
+    "tokenName": "BabyT",
+    "tokenSymbol": "BabyT",
+    "localDecimals": 6,
+    "initialSupply": "0",
+    "publicMint": false,
+    "bridgeMechanism": "burn-mint-oft",
+    "emergencyPause": true
+  },
+  "existingSolanaMarket": {
+    "pumpSwapPool": "5furhzjfb6rbeskctzecyt1t9ueidvcz53yfbwc3xn8n"
+  },
+  "plannedRobinhoodPool": {
+    "pair": "BabyT/ETH",
+    "status": "BLOCKED_UNTIL_BRIDGE_DEPLOYED_WIRED_AND_VERIFIED",
+    "priceRelationship": "arbitrage-not-hard-peg"
+  }
+}
