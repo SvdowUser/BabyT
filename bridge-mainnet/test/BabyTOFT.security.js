@@ -1,6 +1,17 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
+async function expectRevert(promise) {
+  let reverted = false;
+  try {
+    const tx = await promise;
+    if (tx && typeof tx.wait === "function") await tx.wait();
+  } catch (_) {
+    reverted = true;
+  }
+  expect(reverted).to.equal(true);
+}
+
 describe("BabyTOFT mainnet safety preflight", function () {
   let owner, alice, bob, endpoint, token;
   const ONE = 1_000_000n;
@@ -30,39 +41,36 @@ describe("BabyTOFT mainnet safety preflight", function () {
       [alice.address, ONE]
     ).slice(2);
 
-    await expect(
+    await expectRevert(
       owner.sendTransaction({ to: await token.getAddress(), data: selector + args })
-    ).to.be.reverted;
+    );
 
     expect(await token.totalSupply()).to.equal(0n);
   });
 
   it("3/5 emergency pause blocks ordinary ERC20 transfers", async function () {
-    await token.exposedCredit(alice.address, 2n * ONE, 30168);
-    await token.pause();
+    await (await token.exposedCredit(alice.address, 2n * ONE, 30168)).wait();
+    await (await token.pause()).wait();
 
-    await expect(token.connect(alice).transfer(bob.address, ONE)).to.be.reverted;
+    await expectRevert(token.connect(alice).transfer(bob.address, ONE));
     expect(await token.balanceOf(alice.address)).to.equal(2n * ONE);
   });
 
   it("4/5 emergency pause blocks the outbound OFT debit/burn path", async function () {
-    await token.exposedCredit(alice.address, 2n * ONE, 30168);
-    await token.pause();
+    await (await token.exposedCredit(alice.address, 2n * ONE, 30168)).wait();
+    await (await token.pause()).wait();
 
-    await expect(
-      token.exposedDebit(alice.address, ONE, ONE, 30168)
-    ).to.be.reverted;
-
+    await expectRevert(token.exposedDebit(alice.address, ONE, ONE, 30168));
     expect(await token.balanceOf(alice.address)).to.equal(2n * ONE);
   });
 
   it("5/5 emergency pause blocks the inbound OFT credit/mint path and unpause restores transfers", async function () {
-    await token.pause();
-    await expect(token.exposedCredit(alice.address, ONE, 30168)).to.be.reverted;
+    await (await token.pause()).wait();
+    await expectRevert(token.exposedCredit(alice.address, ONE, 30168));
 
-    await token.unpause();
-    await token.exposedCredit(alice.address, ONE, 30168);
-    await token.connect(alice).transfer(bob.address, ONE);
+    await (await token.unpause()).wait();
+    await (await token.exposedCredit(alice.address, ONE, 30168)).wait();
+    await (await token.connect(alice).transfer(bob.address, ONE)).wait();
 
     expect(await token.balanceOf(bob.address)).to.equal(ONE);
   });
