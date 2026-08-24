@@ -4,9 +4,11 @@ const copyValue = document.getElementById('caValue');
 const copyToast = document.getElementById('copyToast');
 const year = document.getElementById('year');
 const header = document.getElementById('siteHeader');
+const chartLink = document.getElementById('chartLink');
 
 if (copyValue) copyValue.textContent = contractAddress;
 if (year) year.textContent = new Date().getFullYear();
+if (chartLink) chartLink.href = `https://dexscreener.com/solana/${contractAddress}`;
 
 const updateHeader = () => {
   if (header) header.classList.toggle('is-scrolled', window.scrollY > 12);
@@ -44,7 +46,7 @@ if (copyButton) {
 
       window.setTimeout(() => {
         copyButton.classList.remove('is-copied');
-        if (label) label.textContent = 'Copy';
+        if (label) label.textContent = 'Copy contract';
         if (copyToast) copyToast.classList.remove('is-visible');
       }, 1600);
     } catch {
