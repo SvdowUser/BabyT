@@ -1,33 +1,21 @@
-const CONTRACT_ADDRESS = document.body.dataset.contractAddress || '';
+const contractAddress = document.body.dataset.contractAddress || '';
+const copyButton = document.getElementById('copyCaBtn');
+const copyValue = document.getElementById('caValue');
+const copyToast = document.getElementById('copyToast');
+const year = document.getElementById('year');
+const header = document.getElementById('siteHeader');
 
-const setText = (id, value) => {
-  const element = document.getElementById(id);
-  if (element) element.textContent = value;
+if (copyValue) copyValue.textContent = contractAddress;
+if (year) year.textContent = new Date().getFullYear();
+
+const updateHeader = () => {
+  if (header) header.classList.toggle('is-scrolled', window.scrollY > 12);
 };
 
-const setHref = (id, value) => {
-  const element = document.getElementById(id);
-  if (element) element.href = value;
-};
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
 
-function setPageDetails() {
-  setText('caValue', CONTRACT_ADDRESS);
-  setText('tokenCaValue', CONTRACT_ADDRESS);
-  setText('year', new Date().getFullYear());
-  setHref('dexLink', `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`);
-  setHref('pumpLink', `https://pump.fun/coin/${CONTRACT_ADDRESS}`);
-}
-
-function setHeaderState() {
-  const header = document.getElementById('siteHeader');
-  if (!header) return;
-
-  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 16);
-  update();
-  window.addEventListener('scroll', update, { passive: true });
-}
-
-async function writeClipboard(value) {
+async function copyText(value) {
   if (navigator.clipboard && window.isSecureContext) {
     await navigator.clipboard.writeText(value);
     return;
@@ -44,31 +32,23 @@ async function writeClipboard(value) {
   area.remove();
 }
 
-function setCopyButton(button) {
-  const label = button.querySelector('[data-copy-label]');
-  if (!label) return;
+if (copyButton) {
+  const label = copyButton.querySelector('[data-copy-label]');
 
-  const defaultLabel = label.textContent;
-  button.addEventListener('click', async () => {
+  copyButton.addEventListener('click', async () => {
     try {
-      await writeClipboard(CONTRACT_ADDRESS);
-      label.textContent = 'Copied';
-      button.classList.add('is-copied');
-    } catch {
-      label.textContent = 'Try again';
-    }
+      await copyText(contractAddress);
+      copyButton.classList.add('is-copied');
+      if (label) label.textContent = 'Copied';
+      if (copyToast) copyToast.classList.add('is-visible');
 
-    window.setTimeout(() => {
-      label.textContent = defaultLabel;
-      button.classList.remove('is-copied');
-    }, 1400);
+      window.setTimeout(() => {
+        copyButton.classList.remove('is-copied');
+        if (label) label.textContent = 'Copy';
+        if (copyToast) copyToast.classList.remove('is-visible');
+      }, 1600);
+    } catch {
+      if (label) label.textContent = 'Try again';
+    }
   });
 }
-
-function init() {
-  setPageDetails();
-  setHeaderState();
-  document.querySelectorAll('#copyCaBtn, #tokenCopyBtn').forEach(setCopyButton);
-}
-
-init();
