@@ -2,7 +2,7 @@
   if (!document.querySelector('link[href*="nav-overlay.css"]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=3';
+    link.href = './nav-overlay.css?v=4';
     document.head.appendChild(link);
   }
 
@@ -18,8 +18,8 @@
   };
   const moreActive = active.whitepaper || active.conduct || active.privacy || active.terms;
 
-  // The play CTA is intentionally not part of the navigation anymore.
-  document.querySelectorAll('.portal-play').forEach(el => el.remove());
+  // No separate play CTA in the top navigation.
+  document.querySelectorAll('.portal-play, .mobile-play').forEach(el => el.remove());
 
   const links = document.querySelector('.portal-links');
   if (links) {
