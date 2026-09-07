@@ -1,78 +1,85 @@
-/* Overlay navigation inspired by polished game portals, tailored for BabyT. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
+
+/* Premium overlay navigation for the BabyT game portal. */
 .portal-header{
   position:fixed;
   inset:0 0 auto;
   z-index:100;
   height:88px;
-  background:linear-gradient(180deg,rgba(5,12,24,.72),rgba(5,12,24,.44) 72%,rgba(5,12,24,0));
-  border-bottom:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(8px) saturate(120%);
-  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  background:rgba(7,13,28,.76);
+  border:0;
+  box-shadow:none;
+  backdrop-filter:blur(7px) saturate(115%);
+  -webkit-backdrop-filter:blur(7px) saturate(115%);
 }
 .portal-nav{height:88px;gap:28px}
-.portal-brand{min-width:190px;margin-right:auto;gap:11px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
-.portal-brand img{width:46px;height:46px;border:0;box-shadow:0 4px 18px rgba(0,0,0,.24)}
-.portal-brand span{font-size:24px;font-weight:900;letter-spacing:-.045em}
-.portal-links{gap:34px;margin:0 auto}
+.portal-brand{min-width:190px;margin-right:auto;gap:11px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.34)}
+.portal-brand img{width:46px;height:46px;border:0;box-shadow:0 4px 18px rgba(0,0,0,.22)}
+.portal-brand span{font-family:"Montserrat",sans-serif;font-size:24px;font-weight:800;letter-spacing:-.045em}
+.portal-links{gap:38px;margin:0 auto}
 .portal-links>a,.nav-drop-trigger{
   position:relative;
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:8px;
   height:88px;
   padding:0;
   border:0;
   background:transparent;
-  color:#f5f3ed;
+  color:#f5f1e8;
+  font-family:"Montserrat",sans-serif;
   font-size:15px;
-  font-weight:850;
-  letter-spacing:.015em;
+  font-weight:800;
+  letter-spacing:-.015em;
   cursor:pointer;
-  text-transform:none;
+  text-transform:uppercase;
+  text-shadow:0 1px 6px rgba(0,0,0,.3);
 }
 .portal-links>a::after,.nav-drop-trigger::after{display:none!important}
-.portal-links>a:hover,.portal-links>a.active,.nav-drop-trigger:hover,.nav-drop[data-open="true"] .nav-drop-trigger{color:#8edfff}
-.nav-caret{width:7px;height:7px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s ease}
+.portal-links>a:hover,.portal-links>a.active,.nav-drop-trigger:hover,.nav-drop[data-open="true"] .nav-drop-trigger{color:#fff}
+.nav-caret{width:7px;height:7px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .16s ease}
 .nav-drop[data-open="true"] .nav-caret,.nav-drop:hover .nav-caret{transform:rotate(225deg) translate(-1px,-1px)}
 .nav-drop{position:relative;height:88px;display:flex;align-items:center}
 .nav-dropdown{
   position:absolute;
-  top:70px;
+  top:72px;
   left:50%;
-  min-width:230px;
-  padding:10px;
-  border:3px solid #71819a;
-  border-radius:9px;
-  background:#f4f3f5;
-  color:#2d211c;
-  box-shadow:0 18px 45px rgba(0,0,0,.30),0 2px 0 rgba(255,255,255,.65) inset;
-  transform:translate(-50%,-8px);
+  min-width:270px;
+  padding:10px 12px 11px;
+  border:4px solid #6f7f97;
+  border-radius:8px;
+  background:#f1f1f3;
+  color:#38251d;
+  box-shadow:0 8px 0 rgba(26,43,69,.22),0 18px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.9);
+  transform:translate(-50%,-7px);
   opacity:0;
   visibility:hidden;
   pointer-events:none;
-  transition:opacity .16s ease,transform .16s ease,visibility .16s;
+  transition:opacity .14s ease,transform .14s ease,visibility .14s;
 }
-.nav-dropdown::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.nav-dropdown::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
 .nav-drop:hover .nav-dropdown,.nav-drop:focus-within .nav-dropdown,.nav-drop[data-open="true"] .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
 .nav-dropdown a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
-  min-height:39px;
-  padding:7px 10px;
-  border-radius:5px;
-  color:#39251e;
+  gap:20px;
+  min-height:36px;
+  padding:7px 5px;
+  border-radius:3px;
+  color:#3a281f;
+  font-family:"Montserrat",sans-serif;
   font-size:14px;
-  font-weight:850;
-  letter-spacing:.01em;
+  font-weight:800;
+  letter-spacing:.005em;
+  text-transform:uppercase;
 }
-.nav-dropdown a:hover{background:#dfe8f4;color:#142743}
-.nav-dropdown small{color:#7a8696;font:700 9px/1 "Space Mono",monospace;text-transform:uppercase;letter-spacing:.09em}
-.portal-play{margin-left:auto;background:#3188f7;border-radius:10px;padding:14px 20px;box-shadow:0 10px 34px rgba(24,107,232,.28);border:1px solid rgba(255,255,255,.13)}
+.nav-dropdown a:hover{background:#e2e5e9;color:#221711}
+.nav-dropdown small{color:#768295;font:800 10px/1 "Montserrat",sans-serif}
+.portal-play{margin-left:auto;background:#3289f5;border-radius:10px;padding:14px 21px;box-shadow:0 8px 26px rgba(24,107,232,.24);border:0;font-family:"Montserrat",sans-serif;font-weight:800}
 .portal-play:hover{transform:translateY(-1px);background:#4797ff}
 
-/* Let the hero artwork/video continue underneath the navigation. */
+/* Artwork/video starts at the absolute top; the navigation sits over it. */
 .portal-hero{padding-top:0!important;min-height:100svh}
 .portal-hero-bg{inset:0!important}
 .portal-hero-video{inset:0!important;width:100%!important;height:100%!important}
@@ -86,7 +93,7 @@
 .eco-card[href="./world.html"]{display:none}
 
 /* Mobile navigation mirrors the desktop information architecture. */
-.mobile-menu{top:88px;background:rgba(6,14,27,.97);border-top:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.mobile-menu{top:88px;background:rgba(7,13,28,.97);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(18px)}
 .mobile-menu .mobile-group{padding:10px 20px 2px;color:#7f97b5;font:700 10px/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
 .mobile-menu a{padding:13px 20px}
 .mobile-menu .mobile-sub{padding-left:32px;color:#b9c9dc}
