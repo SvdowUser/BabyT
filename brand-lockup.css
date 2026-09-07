@@ -1,0 +1,48 @@
+/* Brainrot Games × BabyT partnership lockup in the top navigation. */
+.portal-brand.partnership-brand{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+  margin-right:auto;
+  color:#fff;
+  text-shadow:0 1px 8px rgba(0,0,0,.38);
+}
+.portal-brand.partnership-brand .game-logo{
+  width:82px;
+  height:auto;
+  max-height:46px;
+  object-fit:contain;
+  object-position:center;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  filter:drop-shadow(0 2px 7px rgba(0,0,0,.28));
+}
+.portal-brand.partnership-brand .brand-x{
+  display:inline-block;
+  margin:0 1px;
+  font-family:"Montserrat",sans-serif;
+  font-size:16px;
+  line-height:1;
+  font-weight:700;
+  color:rgba(255,255,255,.68);
+  letter-spacing:0;
+}
+.portal-brand.partnership-brand .brand-babyt{
+  font-family:"Montserrat",sans-serif;
+  font-size:18px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.045em;
+  color:#fff;
+  white-space:nowrap;
+}
+
+@media(max-width:680px){
+  .portal-brand.partnership-brand{gap:5px}
+  .portal-brand.partnership-brand .game-logo{width:68px;max-height:38px}
+  .portal-brand.partnership-brand .brand-x{font-size:13px}
+  .portal-brand.partnership-brand .brand-babyt{font-size:16px}
+}
