@@ -1,0 +1,109 @@
+/* Overlay navigation inspired by polished game portals, tailored for BabyT. */
+.portal-header{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:100;
+  height:88px;
+  background:linear-gradient(180deg,rgba(5,12,24,.72),rgba(5,12,24,.44) 72%,rgba(5,12,24,0));
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(8px) saturate(120%);
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+}
+.portal-nav{height:88px;gap:28px}
+.portal-brand{min-width:190px;margin-right:auto;gap:11px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.portal-brand img{width:46px;height:46px;border:0;box-shadow:0 4px 18px rgba(0,0,0,.24)}
+.portal-brand span{font-size:24px;font-weight:900;letter-spacing:-.045em}
+.portal-links{gap:34px;margin:0 auto}
+.portal-links>a,.nav-drop-trigger{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  height:88px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#f5f3ed;
+  font-size:15px;
+  font-weight:850;
+  letter-spacing:.015em;
+  cursor:pointer;
+  text-transform:none;
+}
+.portal-links>a::after,.nav-drop-trigger::after{display:none!important}
+.portal-links>a:hover,.portal-links>a.active,.nav-drop-trigger:hover,.nav-drop[data-open="true"] .nav-drop-trigger{color:#8edfff}
+.nav-caret{width:7px;height:7px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s ease}
+.nav-drop[data-open="true"] .nav-caret,.nav-drop:hover .nav-caret{transform:rotate(225deg) translate(-1px,-1px)}
+.nav-drop{position:relative;height:88px;display:flex;align-items:center}
+.nav-dropdown{
+  position:absolute;
+  top:70px;
+  left:50%;
+  min-width:230px;
+  padding:10px;
+  border:3px solid #71819a;
+  border-radius:9px;
+  background:#f4f3f5;
+  color:#2d211c;
+  box-shadow:0 18px 45px rgba(0,0,0,.30),0 2px 0 rgba(255,255,255,.65) inset;
+  transform:translate(-50%,-8px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .16s ease,transform .16s ease,visibility .16s;
+}
+.nav-dropdown::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.nav-drop:hover .nav-dropdown,.nav-drop:focus-within .nav-dropdown,.nav-drop[data-open="true"] .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.nav-dropdown a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:39px;
+  padding:7px 10px;
+  border-radius:5px;
+  color:#39251e;
+  font-size:14px;
+  font-weight:850;
+  letter-spacing:.01em;
+}
+.nav-dropdown a:hover{background:#dfe8f4;color:#142743}
+.nav-dropdown small{color:#7a8696;font:700 9px/1 "Space Mono",monospace;text-transform:uppercase;letter-spacing:.09em}
+.portal-play{margin-left:auto;background:#3188f7;border-radius:10px;padding:14px 20px;box-shadow:0 10px 34px rgba(24,107,232,.28);border:1px solid rgba(255,255,255,.13)}
+.portal-play:hover{transform:translateY(-1px);background:#4797ff}
+
+/* Let the hero artwork/video continue underneath the navigation. */
+.portal-hero{padding-top:0!important;min-height:100svh}
+.portal-hero-bg{inset:0!important}
+.portal-hero-video{inset:0!important;width:100%!important;height:100%!important}
+.portal-hero::after{inset:0!important}
+.hero-noise{inset:0!important}
+.hero-content{padding-top:190px!important}
+.page-hero{padding-top:170px}
+
+/* World is no longer a primary section in the portal. */
+.ecosystem-grid{grid-template-columns:repeat(3,1fr)}
+.eco-card[href="./world.html"]{display:none}
+
+/* Mobile navigation mirrors the desktop information architecture. */
+.mobile-menu{top:88px;background:rgba(6,14,27,.97);border-top:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.mobile-menu .mobile-group{padding:10px 20px 2px;color:#7f97b5;font:700 10px/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.mobile-menu a{padding:13px 20px}
+.mobile-menu .mobile-sub{padding-left:32px;color:#b9c9dc}
+
+@media(max-width:1000px){
+  .portal-links{display:none}
+  .portal-brand{min-width:0}
+  .portal-play{margin-left:auto}
+  .nav-toggle{display:block}
+  .ecosystem-grid{grid-template-columns:1fr 1fr}
+  .hero-content{padding-top:170px!important}
+}
+@media(max-width:680px){
+  .portal-header,.portal-nav{height:74px}
+  .portal-brand img{width:40px;height:40px}.portal-brand span{font-size:21px}
+  .portal-play{display:none}
+  .mobile-menu{top:74px}
+  .hero-content{padding-top:145px!important}
+  .ecosystem-grid{grid-template-columns:1fr}
+}
