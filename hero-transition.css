@@ -32,12 +32,13 @@
 .hero-transition{display:none!important}
 .marquee{display:none!important}
 
-/* Paper chapter. The edges deliberately overdraw the viewport so there can never be a left/right gap. */
+/* Paper chapter. Give it a deliberately long, spacious game-site composition instead of ending directly after the copy. */
 .intro{
   position:relative!important;
   z-index:4;
   margin-top:0!important;
-  padding:126px 0 134px!important;
+  min-height:920px!important;
+  padding:142px 0 245px!important;
   overflow:visible!important;
   background-color:#fff3c8!important;
   background-image:url('./assets/ui/babyt-paper-pattern.svg')!important;
@@ -101,7 +102,7 @@
   .hero-lead{font-size:16px!important;margin-top:16px!important}
   .hero-actions{margin-top:20px!important}
   .hero-corner{bottom:28px!important}
-  .intro{padding:106px 0 116px!important;background-size:760px 456px!important}
+  .intro{min-height:820px!important;padding:122px 0 205px!important;background-size:760px 456px!important}
   .intro::before{top:-86px!important;height:88px!important}
   .intro::after{bottom:-94px;height:96px}
   .section-dark{padding-top:158px!important}
@@ -112,7 +113,7 @@
   .hero-content{padding:108px 0 96px!important}
   .hero-title{font-size:clamp(54px,11vw,92px)!important}
   .hero-corner{display:none!important}
-  .intro{padding:108px 0 120px!important;background-size:700px 420px!important}
+  .intro{min-height:auto!important;padding:120px 0 170px!important;background-size:700px 420px!important}
   .intro::before{top:-78px!important;height:80px!important}
   .intro::after{bottom:-84px;height:86px}
   .section-dark{padding-top:148px!important}
@@ -125,7 +126,7 @@
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-title{font-size:clamp(48px,14vw,72px)!important}
   .hero-lead{font-size:16px!important}
-  .intro{padding:92px 0 104px!important;background-size:620px 372px!important}
+  .intro{padding:104px 0 132px!important;background-size:620px 372px!important}
   .intro::before{top:-58px!important;height:60px!important}
   .intro::after{bottom:-62px;height:64px}
   .section-dark{padding-top:124px!important}
