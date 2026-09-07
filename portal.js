@@ -136,6 +136,25 @@
     trailer.play().catch(() => {});
   }
 
+  const heroTitle = document.querySelector('.hero-game-title');
+  if (heroTitle) {
+    heroTitle.style.visibility = 'hidden';
+    heroTitle.removeAttribute('src');
+    Promise.all(
+      [0, 1, 2, 3, 4].map(i =>
+        fetch(`./assets/brand/brainrot-battles-user-${i}.txt?v=5`).then(response => {
+          if (!response.ok) throw new Error(`Brainrot Battles logo part ${i}: ${response.status}`);
+          return response.text();
+        })
+      )
+    ).then(parts => {
+      heroTitle.onload = () => { heroTitle.style.visibility = 'visible'; };
+      heroTitle.src = 'data:image/webp;base64,' + parts.join('');
+    }).catch(error => {
+      console.error('Could not load Brainrot Battles logo', error);
+    });
+  }
+
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.addEventListener('click', async () => {
       const text = button.dataset.copy || '';
