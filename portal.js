@@ -17,7 +17,7 @@
         <button class="nav-drop-trigger" type="button" aria-expanded="false">Games <span class="nav-caret" aria-hidden="true"></span></button>
         <div class="nav-dropdown nav-games-dropdown" role="menu">
           <span class="nav-menu-heading">Brainrot Games</span>
-          <a class="nav-game-link" href="./game.html">
+          <a class="nav-game-link" href="https://brainrotbattle.io/">
             <img class="nav-game-thumb" src="./assets/media/brainrot-games-alpha.jpg" alt="">
             <span>Brainrot Battles</span>
           </a>
@@ -47,7 +47,7 @@
   if (mobileMenu) {
     mobileMenu.innerHTML = `
       <span class="mobile-group">Brainrot Games</span>
-      <a class="mobile-sub" href="./game.html">Brainrot Battles</a>
+      <a class="mobile-sub" href="https://brainrotbattle.io/">Brainrot Battles</a>
       <a href="./merch.html">Merch</a>
       <a href="./token.html">$BabyT</a>
       <span class="mobile-group">Social</span>
