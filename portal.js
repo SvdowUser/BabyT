@@ -1,10 +1,10 @@
 (() => {
   const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
-  if (navStyle) navStyle.href = './nav-overlay.css?v=15';
+  if (navStyle) navStyle.href = './nav-overlay.css?v=16';
   else {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=15';
+    link.href = './nav-overlay.css?v=16';
     document.head.appendChild(link);
   }
 
