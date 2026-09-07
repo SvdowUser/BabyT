@@ -1,8 +1,10 @@
 (() => {
-  if (!document.querySelector('link[href*="nav-overlay.css"]')) {
+  const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
+  if (navStyle) navStyle.href = './nav-overlay.css?v=5';
+  else {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=4';
+    link.href = './nav-overlay.css?v=5';
     document.head.appendChild(link);
   }
 
@@ -18,7 +20,6 @@
   };
   const moreActive = active.whitepaper || active.conduct || active.privacy || active.terms;
 
-  // No separate play CTA in the top navigation.
   document.querySelectorAll('.portal-play, .mobile-play').forEach(el => el.remove());
 
   const links = document.querySelector('.portal-links');
@@ -61,26 +62,50 @@
       <a class="mobile-sub" href="./terms.html">Terms of Use</a>`;
   }
 
-  document.querySelectorAll('.nav-drop').forEach(drop => {
+  const navDrops = [...document.querySelectorAll('.nav-drop')];
+  const canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const closeDrop = drop => {
+    if (!drop) return;
+    drop.dataset.open = 'false';
+    drop.querySelector('.nav-drop-trigger')?.setAttribute('aria-expanded', 'false');
+  };
+  const openDrop = drop => {
+    navDrops.forEach(other => { if (other !== drop) closeDrop(other); });
+    drop.dataset.open = 'true';
+    drop.querySelector('.nav-drop-trigger')?.setAttribute('aria-expanded', 'true');
+  };
+
+  navDrops.forEach(drop => {
     const trigger = drop.querySelector('.nav-drop-trigger');
-    trigger?.addEventListener('click', e => {
-      e.stopPropagation();
-      const open = drop.dataset.open === 'true';
-      document.querySelectorAll('.nav-drop[data-open="true"]').forEach(other => {
-        if (other !== drop) {
-          other.dataset.open = 'false';
-          other.querySelector('.nav-drop-trigger')?.setAttribute('aria-expanded', 'false');
-        }
+    let leaveTimer;
+
+    if (canHover) {
+      drop.addEventListener('mouseenter', () => {
+        clearTimeout(leaveTimer);
+        openDrop(drop);
       });
-      drop.dataset.open = String(!open);
-      trigger.setAttribute('aria-expanded', String(!open));
-    });
+      drop.addEventListener('mouseleave', () => {
+        clearTimeout(leaveTimer);
+        leaveTimer = setTimeout(() => closeDrop(drop), 110);
+      });
+      trigger?.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        openDrop(drop);
+      });
+    } else {
+      trigger?.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = drop.dataset.open === 'true';
+        navDrops.forEach(closeDrop);
+        if (!isOpen) openDrop(drop);
+      });
+    }
   });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.nav-drop[data-open="true"]').forEach(drop => {
-      drop.dataset.open = 'false';
-      drop.querySelector('.nav-drop-trigger')?.setAttribute('aria-expanded', 'false');
-    });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-drop')) navDrops.forEach(closeDrop);
   });
 
   const menuButton = document.querySelector('.nav-toggle');
