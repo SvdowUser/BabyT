@@ -2,384 +2,269 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>BabyT | Official</title>
-  <meta name="description" content="Official BabyT website with the verified Solana contract, wrapped BabyT on BNB Chain, game, chart and community links.">
-  <meta name="theme-color" content="#050505">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BabyT — Game, World & Token</title>
+  <meta name="description" content="The official BabyT site. Enter the Brainrot Battles alpha, explore the BabyT world, see the plush project and verify the official token addresses.">
+  <meta name="theme-color" content="#08111f">
   <link rel="canonical" href="https://svdowuser.github.io/BabyT/">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
-  <meta property="og:title" content="BabyT | Official">
-  <meta property="og:description" content="BabyT on Solana with an official game and wrapped BabyT on BNB Chain.">
+  <meta property="og:title" content="BabyT — Game, World & Token">
+  <meta property="og:description" content="Enter the Brainrot Battles alpha and explore the official BabyT project.">
   <meta property="og:url" content="https://svdowuser.github.io/BabyT/">
-  <meta property="og:image" content="https://svdowuser.github.io/BabyT/apple-touch-icon.png?v=18">
+  <meta property="og:image" content="https://svdowuser.github.io/BabyT/assets/media/brainrot-games-alpha.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BabyT | Official">
-  <meta name="twitter:description" content="BabyT on Solana with an official game and wrapped BabyT on BNB Chain.">
-  <meta name="twitter:image" content="https://svdowuser.github.io/BabyT/apple-touch-icon.png?v=18">
-  <link rel="stylesheet" href="./style.css?v=17">
-  <link rel="stylesheet" href="./hero-fix.css?v=5">
-  <link rel="stylesheet" href="./mobile-fix.css?v=3">
-  <style id="playful-howto-fix">
-    body #howToBuyTitle,
-    body .buy-guide-section .section-title{
-      font-family:var(--headline)!important;
-      font-weight:950!important;
-      letter-spacing:.035em!important;
-      line-height:.92!important;
-      text-transform:uppercase!important;
-      transform:none!important;
-      text-shadow:none!important;
-    }
+  <meta name="twitter:title" content="BabyT — Game, World & Token">
+  <meta name="twitter:description" content="Enter the Brainrot Battles alpha and explore the official BabyT project.">
+  <meta name="twitter:image" content="https://svdowuser.github.io/BabyT/assets/media/brainrot-games-alpha.jpg">
 
-    body .buy-step-body h3{
-      font-family:var(--headline)!important;
-      font-weight:950!important;
-      letter-spacing:.02em!important;
-      line-height:1!important;
-      text-transform:uppercase!important;
-      transform:none!important;
-      transform-origin:left center!important;
-    }
-
-    body .buy-step-card:nth-of-type(even) .buy-step-body h3{
-      transform:none!important;
-    }
-
-    body .buy-step-body p{
-      font-family:var(--body)!important;
-      font-weight:500!important;
-      letter-spacing:0!important;
-    }
-
-    body .window-dots{
-      border-bottom-width:2px!important;
-    }
-
-    body .buy-step-card{
-      border-width:2px!important;
-    }
-
-    body .about-story > .mini-label{
-      display:none!important;
-    }
-
-    body .about-side-character{
-      display:none;
-    }
-
-    @media(min-width:901px){
-      body #howToBuyTitle,
-      body .buy-guide-section .section-title{
-        font-size:clamp(62px,6vw,88px)!important;
-        margin-bottom:46px!important;
-      }
-
-      body .buy-step-body h3{
-        font-size:clamp(20px,1.72vw,26px)!important;
-      }
-
-      body .buy-step-body p{
-        font-size:clamp(14px,1.15vw,16px)!important;
-        line-height:1.48!important;
-      }
-
-      body .panel-head h2{
-        font-size:clamp(44px,7vw,76px)!important;
-      }
-
-      body .about-story h2{
-        font-size:clamp(38px,4.4vw,58px)!important;
-        letter-spacing:.03em!important;
-        line-height:.94!important;
-        text-shadow:none!important;
-      }
-
-      body .story-section .shell{
-        display:grid!important;
-        grid-template-columns:minmax(360px,.9fr) minmax(600px,1.1fr)!important;
-        align-items:center!important;
-        gap:clamp(18px,3vw,54px)!important;
-        max-width:min(1180px,calc(100% - 52px))!important;
-      }
-
-      body .about-side-character{
-        display:block!important;
-        width:min(520px,38vw)!important;
-        max-height:680px!important;
-        justify-self:end!important;
-        align-self:center!important;
-        object-fit:contain!important;
-        transform:translateX(64px)!important;
-        filter:drop-shadow(8px 10px 0 rgba(0,0,0,.16))!important;
-      }
-
-      body .about-story{
-        justify-self:start!important;
-        width:100%!important;
-        max-width:780px!important;
-        transform:translateX(22px)!important;
-      }
-    }
-
-    @media(min-width:901px) and (max-width:1080px){
-      body .story-section .shell{
-        grid-template-columns:minmax(300px,.88fr) minmax(560px,1.12fr)!important;
-        gap:28px!important;
-      }
-
-      body .about-side-character{
-        width:min(440px,40vw)!important;
-        transform:translateX(48px)!important;
-      }
-
-      body .about-story{
-        transform:translateX(12px)!important;
-      }
-    }
-
-    @media(max-width:640px){
-      body #howToBuyTitle,
-      body .buy-guide-section .section-title{
-        font-size:48px!important;
-        letter-spacing:.035em!important;
-        line-height:.92!important;
-        transform:none!important;
-        text-shadow:none!important;
-      }
-
-      body .buy-step-body h3{
-        font-size:26px!important;
-        line-height:1!important;
-        letter-spacing:.02em!important;
-      }
-
-      body .buy-step-body p{
-        font-size:17px!important;
-        line-height:1.48!important;
-      }
-    }
-  </style>
-  <style id="about-character-position-final">
-    @media(min-width:901px){
-      body .about-side-character{
-        width:min(660px,45vw)!important;
-        max-height:760px!important;
-        justify-self:center!important;
-        transform:translateX(-54px)!important;
-      }
-    }
-
-    @media(min-width:901px) and (max-width:1080px){
-      body .about-side-character{
-        width:min(560px,48vw)!important;
-        max-height:720px!important;
-        transform:translateX(-35px)!important;
-      }
-    }
-  </style>
-  <style id="current-site-info">
-    .chain-note{
-      margin-top:16px!important;
-      font-size:14px!important;
-      line-height:1.5!important;
-      opacity:.9;
-    }
-    .chain-note code{
-      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-      font-size:.88em;
-      word-break:break-all;
-    }
-    .story-actions{
-      flex-wrap:wrap;
-    }
-  </style>
-  <link rel="stylesheet" href="./final-overrides.css?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./site-2026.css?v=1">
 </head>
-<body
-  data-contract-address="Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump"
-  data-x-url="https://x.com/BabyTonSol"
-  data-tiktok-url="https://www.tiktok.com/@mythosmondays"
-  data-tiktok-handle="@mythosmondays"
->
-  <a class="skip-link" href="#about">Skip to content</a>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="BabyT Home">
-      <span class="brand-icon"><img src="./favicon-32x32.png" alt=""></span>
-      <span>BabyT</span>
-    </a>
+  <header class="site-header" id="siteHeader">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="BabyT home">
+        <img src="./babyt-logo.png" alt="">
+        <span>BabyT</span>
+        <i aria-hidden="true"></i>
+      </a>
 
-    <nav class="top-actions" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#how-to-buy">How to Buy</a>
-      <a href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Game</a>
-      <a class="top-cta" href="#how-to-buy">Get Started</a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#game">Game</a>
+        <a href="#world">World</a>
+        <a href="#plush">Plushies</a>
+        <a href="#token">$BabyT</a>
+        <a href="#creator">Creator</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-cta" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Enter alpha <span>↗</span></a>
+        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="#game">The game</a>
+      <a href="#world">The world</a>
+      <a href="#plush">Plushies <small>soon</small></a>
+      <a href="#token">$BabyT</a>
+      <a href="#creator">Creator</a>
+      <a class="mobile-alpha" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Enter alpha ↗</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero section-pad">
-      <img class="hero-bg-gif" alt="" aria-hidden="true" loading="eager" decoding="async">
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="kicker"><span></span> Official BabyT project</p>
+          <h1>BabyT,<br><em>now playable.</em></h1>
+          <p class="hero-intro">Brainrot Battles is the browser game being built around BabyT. The alpha is public while the world, modes and progression are still in development.</p>
 
-      <div class="shell hero-inner">
-        <div class="hero-art" aria-hidden="true">
-          <div class="hero-top-space"></div>
-        </div>
-
-        <h1>BabyT</h1>
-        <p class="hero-subtitle">BabyT is a cryptocurrency on Solana with an official game in development</p>
-
-        <div class="hero-buttons">
-          <a class="comic-btn green" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play Game</a>
-          <a class="comic-btn white" id="dexHeroLink" href="#" target="_blank" rel="noreferrer">Chart</a>
-        </div>
-
-        <button class="contract-bar" id="copyCaBtn" type="button" aria-label="Copy contract address">
-          <span>CA</span>
-          <strong id="caValue">Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump</strong>
-          <em>Copy</em>
-        </button>
-      </div>
-    </section>
-
-    <section class="marquee" aria-label="BabyT slogan">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span>From TikTok to Solana</span><span>Original Baby Brainrot</span><span>BabyT on chain</span><span>Join BabyT</span>
-        </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span>From TikTok to Solana</span><span>Original Baby Brainrot</span><span>BabyT on chain</span><span>Join BabyT</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="gallery-section" aria-label="BabyT community image strip">
-      <div class="gallery-fade gallery-fade-left" aria-hidden="true"></div>
-      <div class="gallery-fade gallery-fade-right" aria-hidden="true"></div>
-      <div class="gallery-track">
-        <div class="gallery-set">
-          <div class="gallery-card"><img src="./assets/gallery/01.png" alt="BabyT community image 1" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/02.png" alt="BabyT community image 2" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/03.png" alt="BabyT community image 3" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/04.png" alt="BabyT community image 4" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/05.png" alt="BabyT community image 5" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/06.png" alt="BabyT community image 6" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/07.png" alt="BabyT community image 7" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/08.png" alt="BabyT community image 8" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/09.png" alt="BabyT community image 9" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-        </div>
-        <div class="gallery-set" aria-hidden="true">
-          <div class="gallery-card"><img src="./assets/gallery/01.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/02.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/03.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/04.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/05.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/06.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/07.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/08.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-          <div class="gallery-card"><img src="./assets/gallery/09.png" alt="" onerror="this.parentElement.classList.add('missing');this.remove()"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad story-section" id="about" aria-labelledby="aboutTitle">
-      <div class="shell">
-        <img class="about-side-character" src="./assets/characters/character-01-blue-sneakers.png" alt="" aria-hidden="true">
-        <article class="black-panel about-story">
-          <h2 id="aboutTitle">About BabyT</h2>
-          <p>BabyT is the baby version of Tung Tung Sahur, the wooden TikTok brainrot character that went viral on TikTok.</p>
-          <p>During the brainrot era, BabyT went viral as one of the first baby brainrots.</p>
-          <p>The official BabyT game is currently in development. BabyT is also available as a wrapped token on BNB Chain.</p>
-          <p class="chain-note"><strong>Wrapped BabyT on BNB:</strong> <code>0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda</code></p>
-
-          <div class="story-actions">
-            <a class="comic-btn white buy-link" href="#" target="_blank" rel="noreferrer">Buy Token</a>
-            <a class="comic-btn green" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play Game</a>
-            <a class="comic-btn white" href="https://bscscan.com/token/0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda" target="_blank" rel="noreferrer">BNB Contract</a>
+          <div class="hero-actions">
+            <a class="button primary" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Enter the alpha <span>↗</span></a>
+            <a class="button secondary" href="#token">View $BabyT</a>
           </div>
 
-          <div class="social-bubbles" aria-label="BabyT quick links">
-            <a id="storyPumpLink" href="#" target="_blank" rel="noreferrer" aria-label="Pump.fun"><img src="./assets/social-icons/pumpfun-wood.svg" alt=""></a>
-            <a id="storyTiktokLink" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer" aria-label="TikTok"><img src="./assets/social-icons/tiktok-wood.svg" alt=""></a>
-            <a id="storyXLink" href="https://x.com/BabyTonSol" target="_blank" rel="noreferrer" aria-label="X"><img src="./assets/social-icons/x-wood.svg" alt=""></a>
-            <a id="storyDexLink" href="#" target="_blank" rel="noreferrer" aria-label="DEXScreener"><img src="./assets/social-icons/dexscreener-wood.svg" alt=""></a>
-            <a id="storyJupiterLink" href="#" target="_blank" rel="noreferrer" aria-label="Jupiter"><img src="./assets/social-icons/jupiter-wood.svg" alt=""></a>
+          <div class="hero-meta" aria-label="Project status">
+            <div><strong>Browser</strong><span>No download</span></div>
+            <div><strong>Early alpha</strong><span>Playable now</span></div>
+            <div><strong>Solana + BNB</strong><span>Token access</span></div>
           </div>
-        </article>
+        </div>
+
+        <a class="hero-preview" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer" aria-label="Open Brainrot Battles alpha">
+          <div class="preview-browser-bar" aria-hidden="true">
+            <span class="browser-dots"><i></i><i></i><i></i></span>
+            <span>brainrotbattle.io</span>
+            <strong>↗</strong>
+          </div>
+          <div class="preview-image-wrap">
+            <img src="./assets/media/brainrot-games-alpha.jpg" alt="Brainrot Battles alpha hub preview">
+            <span class="preview-status"><i></i> Live alpha</span>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section class="section-pad buy-guide-section" id="how-to-buy" aria-labelledby="howToBuyTitle">
-      <div class="shell buy-guide-shell">
-        <h2 class="section-title" id="howToBuyTitle">How to Buy</h2>
-
-        <div class="black-panel buy-guide-panel">
-          <img class="buy-floating-character" src="./assets/characters/how-to-buy-babyt-pose.png" alt="" aria-hidden="true">
-
-          <article class="buy-step-card">
-            <div class="window-dots"><i></i><i></i><i></i></div>
-            <div class="buy-step-body">
-              <h3>1- Set up Phantom Wallet</h3>
-              <p>Download Phantom from phantom.app and create your wallet.</p>
-            </div>
-          </article>
-
-          <article class="buy-step-card">
-            <div class="window-dots"><i></i><i></i><i></i></div>
-            <div class="buy-step-body">
-              <h3>2- Buy SOL</h3>
-              <p>Add SOL to your wallet. You can buy it in Phantom or transfer it from an exchange.</p>
-            </div>
-          </article>
-
-          <article class="buy-step-card">
-            <div class="window-dots"><i></i><i></i><i></i></div>
-            <div class="buy-step-body">
-              <h3>3- Swap to BabyT</h3>
-              <p>Open Jupiter or Pump.fun and paste the official BabyT contract address.</p>
-            </div>
-          </article>
-
-          <article class="buy-step-card">
-            <div class="window-dots"><i></i><i></i><i></i></div>
-            <div class="buy-step-body">
-              <h3>4- Verify before trading</h3>
-              <p>Use official links only. Double-check the CA and the chart before doing anything.</p>
-            </div>
-          </article>
+    <section class="image-rail" aria-label="BabyT gallery">
+      <div class="rail-track">
+        <div class="rail-set">
+          <img src="./assets/gallery/01.png" alt="BabyT artwork">
+          <img src="./assets/gallery/03.png" alt="BabyT artwork">
+          <img src="./assets/gallery/05.png" alt="BabyT artwork">
+          <img src="./assets/gallery/07.png" alt="BabyT artwork">
+          <img src="./assets/gallery/09.png" alt="BabyT artwork">
+        </div>
+        <div class="rail-set" aria-hidden="true">
+          <img src="./assets/gallery/01.png" alt="">
+          <img src="./assets/gallery/03.png" alt="">
+          <img src="./assets/gallery/05.png" alt="">
+          <img src="./assets/gallery/07.png" alt="">
+          <img src="./assets/gallery/09.png" alt="">
         </div>
       </div>
     </section>
 
-    <section class="footer-marquee" aria-label="BabyT footer marquee">
-      <div class="footer-marquee-track">
-        <div class="footer-marquee-group">
-          <span>BabyT is for the community</span><span>The meme keeps moving</span><span>Official links only</span><span>DYOR</span>
+    <section class="section game-section" id="game">
+      <div class="section-shell">
+        <div class="section-head">
+          <p class="section-index">01 / THE GAME</p>
+          <div>
+            <h2>A real build,<br>not a roadmap card.</h2>
+            <p>Brainrot Battles already has a playable hub. New areas, game modes and progression are being built from that base instead of being shown as promises on a landing page.</p>
+          </div>
         </div>
-        <div class="footer-marquee-group" aria-hidden="true">
-          <span>BabyT is for the community</span><span>The meme keeps moving</span><span>Official links only</span><span>DYOR</span>
+
+        <div class="game-grid">
+          <article class="game-feature feature-large">
+            <span class="feature-number">01</span>
+            <div>
+              <h3>Enter instantly</h3>
+              <p>The alpha runs in the browser. Open it, load into the hub and see the current build yourself.</p>
+            </div>
+          </article>
+          <article class="game-feature">
+            <span class="feature-number">02</span>
+            <div>
+              <h3>Built around BabyT</h3>
+              <p>The character and community come first. The token sits beside the game — it is not the whole product.</p>
+            </div>
+          </article>
+          <article class="game-feature">
+            <span class="feature-number">03</span>
+            <div>
+              <h3>Still in development</h3>
+              <p>The current alpha is a work in progress. Visuals, systems and playable content will change as development continues.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-cta-row">
+          <a class="text-cta" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Explore the current alpha <span>↗</span></a>
+          <span>Early build · desktop & mobile browser</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section world-section" id="world">
+      <div class="section-shell">
+        <div class="world-copy">
+          <p class="section-index">02 / THE WORLD</p>
+          <h2>From one character<br>to a whole cast.</h2>
+          <p>BabyT started as a short-form character. The website keeps that visual identity instead of hiding it behind generic crypto graphics.</p>
+          <a class="text-cta" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">See the original videos <span>↗</span></a>
+        </div>
+
+        <div class="world-mosaic" aria-label="BabyT character gallery">
+          <figure class="mosaic-a"><img src="./assets/gallery/02.png" alt="BabyT artwork"></figure>
+          <figure class="mosaic-b"><img src="./assets/gallery/06.png" alt="BabyT artwork"></figure>
+          <figure class="mosaic-c"><img src="./assets/gallery/10.png" alt="BabyT artwork"></figure>
+          <img class="world-character" src="./assets/media/babyt-character.webp" alt="BabyT character">
+        </div>
+      </div>
+    </section>
+
+    <section class="section plush-section" id="plush">
+      <div class="section-shell plush-grid">
+        <div class="plush-media">
+          <img src="./assets/media/babyt-plush-sample.jpg" alt="BabyT plush sample">
+          <span>Original sample / work in progress</span>
+        </div>
+
+        <div class="plush-copy">
+          <p class="section-index">03 / PLUSHIES</p>
+          <p class="soon-label"><i></i> Coming later</p>
+          <h2>BabyT,<br>off the screen.</h2>
+          <p>The plush project is still being worked on. This section stays intentionally simple until production, pricing and availability are actually ready.</p>
+          <p class="quiet-note">No preorder is open on this site right now.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section token-section" id="token">
+      <div class="section-shell">
+        <div class="section-head token-head">
+          <p class="section-index">04 / $BABYT</p>
+          <div>
+            <h2>Verify first.<br>Trade second.</h2>
+            <p>Use the addresses below instead of relying on a ticker search. BabyT originated on Solana and also has a wrapped version on BNB Chain.</p>
+          </div>
+        </div>
+
+        <div class="token-grid">
+          <article class="token-card">
+            <div class="token-card-head">
+              <div><span class="chain-dot solana"></span><strong>Solana</strong></div>
+              <span>Original token</span>
+            </div>
+            <button class="contract-copy" type="button" data-copy="Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump">
+              <code>Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump</code>
+              <span data-copy-label>Copy</span>
+            </button>
+            <div class="token-links">
+              <a href="https://pump.fun/coin/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump" target="_blank" rel="noreferrer">Pump.fun ↗</a>
+              <a href="https://jup.ag/tokens/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump" target="_blank" rel="noreferrer">Jupiter ↗</a>
+              <a href="https://dexscreener.com/solana/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump" target="_blank" rel="noreferrer">Chart ↗</a>
+            </div>
+          </article>
+
+          <article class="token-card">
+            <div class="token-card-head">
+              <div><span class="chain-dot bnb"></span><strong>BNB Chain</strong></div>
+              <span>Wrapped BabyT</span>
+            </div>
+            <button class="contract-copy" type="button" data-copy="0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda">
+              <code>0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda</code>
+              <span data-copy-label>Copy</span>
+            </button>
+            <div class="token-links">
+              <a href="https://bscscan.com/token/0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda" target="_blank" rel="noreferrer">BscScan ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="risk-note">BabyT is a meme token. Crypto trading is risky; verify the contract and do your own research before interacting with any token or pool.</p>
+      </div>
+    </section>
+
+    <section class="creator-section" id="creator">
+      <div class="section-shell creator-grid">
+        <div>
+          <p class="section-index">05 / CREATOR</p>
+          <h2>Mythos Mondays.</h2>
+        </div>
+        <div class="creator-copy">
+          <p>BabyT grew out of the character work posted on Mythos Mondays. The same account is where new game clips, character updates and project progress are shared.</p>
+          <div class="creator-links">
+            <a href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">TikTok <span>↗</span></a>
+            <a href="https://x.com/BabyTonSol" target="_blank" rel="noreferrer">X / BabyT <span>↗</span></a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="shell footer-inner">
-      <p>Disclaimer: This token is a meme coin with no intrinsic value or expectation of financial return. It is not an investment vehicle or security. Trading cryptocurrencies involves significant risk and may result in loss of capital. Always do your own research.</p>
-      <p>Website created by <a href="https://x.com/MythosMondaysOG" target="_blank" rel="noreferrer">@MythosMondaysOG</a></p>
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <a class="footer-brand" href="#top"><img src="./babyt-logo.png" alt=""><span>BabyT</span></a>
+      <p>Game in development · Token links are provided for verification.</p>
+      <p>© <span id="year"></span> BabyT</p>
     </div>
   </footer>
 
-  <script>
-    if (window.location.pathname.endsWith('/index.html') || window.location.search) {
-      window.history.replaceState(null, '', '/BabyT/');
-    }
-  </script>
-  <script src="./script.js?v=22"></script>
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">Copied</div>
+  <script src="./site-2026.js?v=1"></script>
 </body>
 </html>
