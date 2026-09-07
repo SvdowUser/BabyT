@@ -29,16 +29,15 @@
 .hero-stats{display:none!important}
 .hero-corner{bottom:34px!important}
 
-/* The old simple wave is replaced by the illustrated paper section below. */
 .hero-transition{display:none!important}
 .marquee{display:none!important}
 
-/* Paper section: subtle custom BabyT motif and full-width illustrated edges. */
+/* Paper chapter. The edges deliberately overdraw the viewport so there can never be a left/right gap. */
 .intro{
   position:relative!important;
   z-index:4;
   margin-top:0!important;
-  padding:126px 0 132px!important;
+  padding:126px 0 134px!important;
   overflow:visible!important;
   background-color:#fff3c8!important;
   background-image:url('./assets/ui/babyt-paper-pattern.svg')!important;
@@ -47,36 +46,37 @@
   background-size:820px 492px!important;
   color:#452b15!important;
 }
+.intro::before,
+.intro::after,
+.works::after{
+  width:calc(100vw + 8px)!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  pointer-events:none!important;
+}
 .intro::before{
   content:""!important;
   position:absolute!important;
-  left:-2px!important;
-  right:-2px!important;
-  top:-78px!important;
+  top:-108px!important;
   bottom:auto!important;
-  height:80px!important;
+  height:110px!important;
   opacity:1!important;
   background:url('./assets/ui/babyt-paper-edge-top.svg') center bottom/100% 100% no-repeat!important;
-  pointer-events:none!important;
   z-index:0!important;
 }
 .intro::after{
   content:"";
   position:absolute;
-  left:-2px;
-  right:-2px;
-  bottom:-90px;
-  height:92px;
+  bottom:-114px;
+  height:116px;
   background:url('./assets/ui/babyt-paper-edge-bottom.svg') center top/100% 100% no-repeat;
-  pointer-events:none;
   z-index:0;
 }
 .intro-grid{position:relative!important;z-index:2!important}
 
-/* Give the next dark chapter enough breathing room for the overhanging paper edge. */
-.section-dark{padding-top:164px!important}
+.section-dark{padding-top:188px!important}
 
-/* Reuse the motif more quietly in the development gallery. */
 .works{
   position:relative;
   background-color:#f6e9bd!important;
@@ -88,15 +88,12 @@
 .works::after{
   content:"";
   position:absolute;
-  left:-2px;
-  right:-2px;
-  bottom:-88px;
-  height:90px;
+  bottom:-112px;
+  height:114px;
   background:url('./assets/ui/babyt-paper-edge-bottom.svg') center top/100% 100% no-repeat;
-  pointer-events:none;
   z-index:1;
 }
-.home-split{padding-top:164px!important}
+.home-split{padding-top:188px!important}
 
 @media(max-height:760px) and (min-width:1001px){
   .hero-content{padding:72px 0 84px!important}
@@ -104,10 +101,10 @@
   .hero-lead{font-size:16px!important;margin-top:16px!important}
   .hero-actions{margin-top:20px!important}
   .hero-corner{bottom:28px!important}
-  .intro{padding:106px 0 112px!important;background-size:760px 456px!important}
-  .intro::before{top:-64px!important;height:66px!important}
-  .intro::after{bottom:-74px;height:76px}
-  .section-dark{padding-top:142px!important}
+  .intro{padding:106px 0 116px!important;background-size:760px 456px!important}
+  .intro::before{top:-86px!important;height:88px!important}
+  .intro::after{bottom:-94px;height:96px}
+  .section-dark{padding-top:158px!important}
 }
 
 @media(max-width:1000px){
@@ -115,24 +112,24 @@
   .hero-content{padding:108px 0 96px!important}
   .hero-title{font-size:clamp(54px,11vw,92px)!important}
   .hero-corner{display:none!important}
-  .intro{padding:108px 0 116px!important;background-size:700px 420px!important}
-  .intro::before{top:-60px!important;height:62px!important}
-  .intro::after{bottom:-68px;height:70px}
-  .section-dark{padding-top:132px!important}
+  .intro{padding:108px 0 120px!important;background-size:700px 420px!important}
+  .intro::before{top:-78px!important;height:80px!important}
+  .intro::after{bottom:-84px;height:86px}
+  .section-dark{padding-top:148px!important}
   .works{background-size:760px 456px!important}
-  .works::after{bottom:-64px;height:66px}
-  .home-split{padding-top:136px!important}
+  .works::after{bottom:-80px;height:82px}
+  .home-split{padding-top:150px!important}
 }
 
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-title{font-size:clamp(48px,14vw,72px)!important}
   .hero-lead{font-size:16px!important}
-  .intro{padding:92px 0 100px!important;background-size:620px 372px!important}
-  .intro::before{top:-46px!important;height:48px!important}
-  .intro::after{bottom:-52px;height:54px}
-  .section-dark{padding-top:112px!important}
+  .intro{padding:92px 0 104px!important;background-size:620px 372px!important}
+  .intro::before{top:-58px!important;height:60px!important}
+  .intro::after{bottom:-62px;height:64px}
+  .section-dark{padding-top:124px!important}
   .works{background-size:650px 390px!important}
-  .works::after{bottom:-50px;height:52px}
-  .home-split{padding-top:116px!important}
+  .works::after{bottom:-60px;height:62px}
+  .home-split{padding-top:126px!important}
 }
