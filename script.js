@@ -1,9 +1,11 @@
 const CONTRACT_ADDRESS = document.body.dataset.contractAddress || 'Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump';
 const TIKTOK_URL = document.body.dataset.tiktokUrl || 'https://www.tiktok.com/@mythosmondays';
+const GAME_URL = 'https://brainrotbattle.io/';
 
 const links = {
   x: document.body.dataset.xUrl || 'https://x.com/BabyTonSol',
   tiktok: TIKTOK_URL,
+  game: GAME_URL,
   pump: `https://pump.fun/coin/${CONTRACT_ADDRESS}`,
   jupiter: `https://jup.ag/tokens/${CONTRACT_ADDRESS}`,
   dex: `https://dexscreener.com/solana/${CONTRACT_ADDRESS}`
@@ -44,6 +46,33 @@ function setLinks() {
   setHref('storyDexLink', links.dex);
   setHref('storyJupiterLink', links.jupiter);
   setText('caValue', CONTRACT_ADDRESS);
+}
+
+function addGameLinks() {
+  const nav = document.querySelector('.top-actions');
+  if (nav && !document.getElementById('gameNavLink')) {
+    const gameLink = document.createElement('a');
+    gameLink.id = 'gameNavLink';
+    gameLink.href = links.game;
+    gameLink.target = '_blank';
+    gameLink.rel = 'noreferrer';
+    gameLink.textContent = 'Game';
+
+    const cta = nav.querySelector('.top-cta');
+    nav.insertBefore(gameLink, cta || null);
+  }
+
+  const heroButtons = document.querySelector('.hero-buttons');
+  if (heroButtons && !document.getElementById('gameHeroLink')) {
+    const gameButton = document.createElement('a');
+    gameButton.id = 'gameHeroLink';
+    gameButton.className = 'comic-btn green';
+    gameButton.href = links.game;
+    gameButton.target = '_blank';
+    gameButton.rel = 'noreferrer';
+    gameButton.textContent = 'Play Game';
+    heroButtons.prepend(gameButton);
+  }
 }
 
 function setHeaderScrollState() {
@@ -164,6 +193,7 @@ function init() {
   preventMobileZoom();
   setHeaderScrollState();
   setLinks();
+  addGameLinks();
   initHeroMedia();
 
   document.getElementById('copyCaBtn')?.addEventListener('click', event => {
