@@ -1,33 +1,21 @@
 (() => {
   const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
-  if (navStyle) navStyle.href = './nav-overlay.css?v=5';
+  if (navStyle) navStyle.href = './nav-overlay.css?v=6';
   else {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=5';
+    link.href = './nav-overlay.css?v=6';
     document.head.appendChild(link);
   }
-
-  const path = location.pathname.toLowerCase();
-  const active = {
-    game: path.endsWith('/game.html'),
-    merch: path.endsWith('/merch.html'),
-    token: path.endsWith('/token.html'),
-    whitepaper: path.endsWith('/whitepaper.html'),
-    conduct: path.endsWith('/code-of-conduct.html'),
-    privacy: path.endsWith('/privacy.html'),
-    terms: path.endsWith('/terms.html')
-  };
-  const moreActive = active.whitepaper || active.conduct || active.privacy || active.terms;
 
   document.querySelectorAll('.portal-play, .mobile-play').forEach(el => el.remove());
 
   const links = document.querySelector('.portal-links');
   if (links) {
     links.innerHTML = `
-      <a ${active.game ? 'class="active"' : ''} href="./game.html">Game</a>
-      <a ${active.merch ? 'class="active"' : ''} href="./merch.html">Merch</a>
-      <a ${active.token ? 'class="active"' : ''} href="./token.html">$BabyT</a>
+      <a href="./game.html">Game</a>
+      <a href="./merch.html">Merch</a>
+      <a href="./token.html">$BabyT</a>
       <div class="nav-drop">
         <button class="nav-drop-trigger" type="button" aria-expanded="false">Social <span class="nav-caret" aria-hidden="true"></span></button>
         <div class="nav-dropdown" role="menu">
@@ -35,13 +23,13 @@
           <a href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">TikTok <small>↗</small></a>
         </div>
       </div>
-      <div class="nav-drop" ${moreActive ? 'data-current="true"' : ''}>
-        <button class="nav-drop-trigger ${moreActive ? 'active' : ''}" type="button" aria-expanded="false">More <span class="nav-caret" aria-hidden="true"></span></button>
+      <div class="nav-drop">
+        <button class="nav-drop-trigger" type="button" aria-expanded="false">More <span class="nav-caret" aria-hidden="true"></span></button>
         <div class="nav-dropdown" role="menu">
-          <a ${active.whitepaper ? 'class="active"' : ''} href="./whitepaper.html">Whitepaper</a>
-          <a ${active.conduct ? 'class="active"' : ''} href="./code-of-conduct.html">Code of Conduct</a>
-          <a ${active.privacy ? 'class="active"' : ''} href="./privacy.html">Privacy Policy</a>
-          <a ${active.terms ? 'class="active"' : ''} href="./terms.html">Terms of Use</a>
+          <a href="./whitepaper.html">Whitepaper</a>
+          <a href="./code-of-conduct.html">Code of Conduct</a>
+          <a href="./privacy.html">Privacy Policy</a>
+          <a href="./terms.html">Terms of Use</a>
         </div>
       </div>`;
   }
@@ -64,30 +52,35 @@
 
   const navDrops = [...document.querySelectorAll('.nav-drop')];
   const canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const timers = new WeakMap();
+
   const closeDrop = drop => {
     if (!drop) return;
+    const timer = timers.get(drop);
+    if (timer) clearTimeout(timer);
     drop.dataset.open = 'false';
     drop.querySelector('.nav-drop-trigger')?.setAttribute('aria-expanded', 'false');
   };
+  const closeOthers = current => navDrops.forEach(drop => { if (drop !== current) closeDrop(drop); });
   const openDrop = drop => {
-    navDrops.forEach(other => { if (other !== drop) closeDrop(other); });
+    closeOthers(drop);
+    const timer = timers.get(drop);
+    if (timer) clearTimeout(timer);
     drop.dataset.open = 'true';
     drop.querySelector('.nav-drop-trigger')?.setAttribute('aria-expanded', 'true');
+  };
+  const scheduleClose = drop => {
+    const old = timers.get(drop);
+    if (old) clearTimeout(old);
+    const timer = setTimeout(() => closeDrop(drop), 140);
+    timers.set(drop, timer);
   };
 
   navDrops.forEach(drop => {
     const trigger = drop.querySelector('.nav-drop-trigger');
-    let leaveTimer;
-
     if (canHover) {
-      drop.addEventListener('mouseenter', () => {
-        clearTimeout(leaveTimer);
-        openDrop(drop);
-      });
-      drop.addEventListener('mouseleave', () => {
-        clearTimeout(leaveTimer);
-        leaveTimer = setTimeout(() => closeDrop(drop), 110);
-      });
+      drop.addEventListener('mouseenter', () => openDrop(drop));
+      drop.addEventListener('mouseleave', () => scheduleClose(drop));
       trigger?.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
@@ -104,6 +97,10 @@
     }
   });
 
+  document.addEventListener('pointermove', e => {
+    const hoveredDrop = e.target.closest?.('.nav-drop');
+    if (hoveredDrop) closeOthers(hoveredDrop);
+  });
   document.addEventListener('click', e => {
     if (!e.target.closest('.nav-drop')) navDrops.forEach(closeDrop);
   });
