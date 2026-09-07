@@ -28,30 +28,107 @@
   </header>
 
   <main>
-    <section class="portal-hero" id="game">
+    <section class="portal-hero">
       <div class="portal-hero-bg"></div>
-      <video class="portal-hero-video" autoplay muted loop playsinline aria-hidden="true"><source src="./assets/media/gameplay-trailer.mp4" type="video/mp4"></video>
+      <video class="portal-hero-video" autoplay muted loop playsinline preload="metadata" poster="./assets/media/brainrot-games-alpha.jpg">
+        <source src="./assets/media/gameplay-trailer.mp4" type="video/mp4">
+      </video>
       <div class="hero-noise"></div>
-      <div class="hero-stars"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="shell hero-content">
-        <p class="hero-kicker eyebrow"><i></i>Live alpha · Official BabyT project</p>
-        <h1 class="hero-title display">Enter the<br><span class="blue">BabyT world.</span></h1>
+        <p class="eyebrow hero-kicker"><i></i>Live alpha · Official BabyT project</p>
+        <h1 class="display hero-title">Enter the<br><span class="blue">BabyT world.</span></h1>
         <p class="hero-lead">Brainrot Battles is already playable in your browser. Jump into the alpha, see what is being built, and follow BabyT beyond the meme.</p>
-        <div class="hero-actions"><a class="action primary" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play the alpha <span>↗</span></a><a class="action ghost" href="./game.html">Explore the game</a></div>
+        <div class="hero-actions">
+          <a class="action primary" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play the alpha <span>↗</span></a>
+          <a class="action ghost" href="./game.html">Explore the game</a>
+        </div>
       </div>
-      <div class="hero-corner">Scroll to explore</div>
+      <span class="hero-corner">Scroll to explore</span>
+      <div class="hero-transition" aria-hidden="true">
+        <svg viewBox="0 0 1600 140" preserveAspectRatio="none" role="presentation">
+          <path fill="#f6e9bd" d="M0,83 C90,54 154,100 242,72 C331,44 392,91 480,66 C567,41 638,90 726,61 C816,32 882,80 969,58 C1057,36 1129,84 1219,55 C1310,26 1392,77 1600,43 L1600,140 L0,140 Z"/>
+          <path fill="#fff3c8" d="M0,101 C105,73 172,118 275,91 C376,65 447,110 548,84 C650,58 720,108 825,80 C927,53 998,100 1101,77 C1205,54 1280,98 1379,74 C1470,52 1537,70 1600,61 L1600,140 L0,140 Z"/>
+        </svg>
+      </div>
     </section>
 
-    <section class="intro" id="about">
+    <section class="intro">
       <div class="shell intro-grid">
-        <div><p class="eyebrow">What is BabyT?</p><h2 class="display">From character<br>to a world.</h2></div>
-        <div><p class="intro-copy">BabyT started on short-form video and grew into a project with its own token, a browser game and a physical merch concept. The game is the part you can already enter today.</p><div class="fact-row"><div class="fact"><strong>500K+</strong><span>Mythos Mondays followers</span></div><div class="fact"><strong>1</strong><span>Playable browser alpha</span></div><div class="fact"><strong>2</strong><span>Chains with BabyT access</span></div></div></div>
+        <div>
+          <p class="eyebrow">What is BabyT?</p>
+          <h2 class="display">From character<br>to a world.</h2>
+        </div>
+        <div>
+          <p class="intro-copy">BabyT started on short-form video and grew into a project with its own token, a browser game and a physical merch concept. The game is the part you can already enter today.</p>
+          <div class="fact-row">
+            <div class="fact"><strong>500K+</strong><span>Mythos Mondays followers</span></div>
+            <div class="fact"><strong>1</strong><span>Playable browser alpha</span></div>
+            <div class="fact"><strong>2</strong><span>Chains with BabyT access</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section-dark" id="ecosystem"><div class="shell"><div class="section-head"><div><p class="eyebrow">Explore</p><h2 class="display">The project.</h2></div><p>One character, one game and a growing set of things around it.</p></div><div class="ecosystem-grid"><a class="eco-card" href="./game.html"><img src="./assets/media/brainrot-games-alpha.jpg" alt="Brainrot Battles alpha"><div class="eco-card-copy"><small>Playable now</small><h3>Brainrot Battles</h3><p>Open the current browser alpha and see what is being built.</p></div></a><a class="eco-card" href="./merch.html"><img src="./babyt-plush-concept.png" alt="BabyT plush concept"><div class="eco-card-copy"><small>Physical</small><h3>Merch</h3><p>See the BabyT plush concept and future physical releases.</p></div></a><a class="eco-card" href="./token.html"><img src="./assets/media/babyt-token-card.jpg" alt="BabyT token"><div class="eco-card-copy"><small>On-chain</small><h3>$BabyT</h3><p>Verify the official token addresses and links.</p></div></a></div></div></section>
+    <section class="section-dark">
+      <div class="shell">
+        <div class="section-head">
+          <div><p class="eyebrow">Explore</p><h2 class="display">The project.</h2></div>
+          <p>Each part now has its own place instead of being squeezed into one long landing page.</p>
+        </div>
+        <div class="ecosystem-grid">
+          <a class="eco-card" href="./game.html"><img src="./assets/media/brainrot-games-alpha.jpg" alt="Brainrot Battles alpha"><div class="eco-card-copy"><small>Play</small><h3>Brainrot Battles</h3><p>Enter the current alpha and see the hub that the game is growing from.</p></div></a>
+          <a class="eco-card" href="./world.html"><img src="./assets/backgrounds/bg-01-city-center.png" alt="BabyT world"><div class="eco-card-copy"><small>Explore</small><h3>The World</h3><p>Characters, visual identity and the places BabyT is being built around.</p></div></a>
+          <a class="eco-card" href="./merch.html"><img src="./assets/media/babyt-plush-sample.jpg" alt="BabyT merch sample"><div class="eco-card-copy"><small>Coming later</small><h3>Merch</h3><p>The physical BabyT sample and future releases live here.</p></div></a>
+          <a class="eco-card" href="./token.html"><img src="./assets/gallery/09.png" alt="BabyT artwork"><div class="eco-card-copy"><small>Verify</small><h3>$BabyT</h3><p>Official addresses, chain information and trusted project links in one place.</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="works">
+      <div class="shell"><p class="eyebrow">Development</p><h2 class="display">In the works…</h2></div>
+      <div class="work-strip" aria-label="BabyT work in progress gallery">
+        <figure class="work-card"><img src="./assets/backgrounds/bg-01-city-center.png" alt="BabyT development artwork"></figure>
+        <figure class="work-card"><img src="./assets/backgrounds/bg-02-beach.png" alt="BabyT development artwork"></figure>
+        <figure class="work-card"><img src="./assets/backgrounds/bg-03-heaven.png" alt="BabyT development artwork"></figure>
+        <figure class="work-card"><img src="./assets/gallery/02.png" alt="BabyT artwork"></figure>
+        <figure class="work-card"><img src="./assets/gallery/06.png" alt="BabyT artwork"></figure>
+        <figure class="work-card"><img src="./assets/backgrounds/bg-01-city-center.png" alt=""></figure>
+        <figure class="work-card"><img src="./assets/backgrounds/bg-02-beach.png" alt=""></figure>
+        <figure class="work-card"><img src="./assets/backgrounds/bg-03-heaven.png" alt=""></figure>
+        <figure class="work-card"><img src="./assets/gallery/02.png" alt=""></figure>
+        <figure class="work-card"><img src="./assets/gallery/06.png" alt=""></figure>
+      </div>
+    </section>
+
+    <section class="home-split">
+      <div class="shell split-grid">
+        <div class="split-art"><img src="./assets/media/babyt-plush-sample.jpg" alt="BabyT merch sample"><img class="float-character" src="./assets/media/babyt-character.webp" alt=""></div>
+        <div class="split-copy">
+          <p class="eyebrow">Beyond the screen</p>
+          <h2 class="display">BabyT<br>in real life.</h2>
+          <p>The merch project gets its own page instead of being treated like another card on the homepage. Final production, pricing and availability are still being worked out.</p>
+          <a class="action ghost" href="./merch.html">See the merch project →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="big-cta">
+      <div class="shell"><h2 class="display">Ready to enter?</h2><a class="action" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play Brainrot Battles ↗</a></div>
+    </section>
   </main>
 
+  <footer class="portal-footer">
+    <div class="shell footer-grid">
+      <div><a class="footer-logo" href="./"><img src="./babyt-logo.png" alt=""><span>BabyT</span></a><p class="footer-intro">A character project growing into a game, physical merch and an on-chain community.</p></div>
+      <div class="footer-col"><strong>Explore</strong><a href="./game.html">Game</a><a href="./merch.html">Merch</a></div>
+      <div class="footer-col"><strong>Token</strong><a href="./token.html">$BabyT</a><a href="https://dexscreener.com/solana/Bo3sVJY52FNDBxT3uDN92FcL277fXriy1Un7dXuQpump" target="_blank" rel="noreferrer">Chart ↗</a></div>
+      <div class="footer-col"><strong>Social</strong><a href="https://x.com/BabyTonSol" target="_blank" rel="noreferrer">X ↗</a><a href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+    </div>
+    <img class="footer-character" src="./assets/media/babyt-character.webp" alt="">
+    <div class="shell footer-bottom"><span>© <span data-year></span> BabyT</span><span>Brainrot Battles is in active development.</span></div>
+  </footer>
+  <div class="toast">Copied</div>
   <script src="./portal.js?v=6"></script>
 </body>
 </html>
