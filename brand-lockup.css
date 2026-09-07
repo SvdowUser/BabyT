@@ -2,9 +2,9 @@
 .portal-brand.partnership-brand{
   display:flex!important;
   align-items:center!important;
-  gap:5px!important;
+  gap:4px!important;
   min-width:0;
-  height:54px!important;
+  height:58px!important;
   margin-right:auto;
   color:#fff;
   text-shadow:0 1px 8px rgba(0,0,0,.38);
@@ -17,18 +17,18 @@
   display:none!important;
 }
 
-/* Keep the game mark compact, close to the visual scale of the Axie nav logo. */
+/* Match the visual footprint of the Axie nav mark without shrinking the nav bar itself. */
 .portal-brand.partnership-brand > img.game-logo{
   display:block!important;
   position:relative!important;
   inset:auto!important;
-  flex:0 0 86px!important;
-  width:86px!important;
-  height:48px!important;
-  min-width:86px!important;
-  max-width:86px!important;
-  min-height:48px!important;
-  max-height:48px!important;
+  flex:0 0 74px!important;
+  width:74px!important;
+  height:42px!important;
+  min-width:74px!important;
+  max-width:74px!important;
+  min-height:42px!important;
+  max-height:42px!important;
   object-fit:contain!important;
   object-position:center!important;
   margin:0!important;
@@ -43,7 +43,7 @@
   transform:none!important;
   opacity:1!important;
   visibility:visible!important;
-  filter:drop-shadow(0 2px 5px rgba(0,0,0,.24));
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.22));
   z-index:2!important;
 }
 
@@ -52,12 +52,12 @@
   align-items:center;
   justify-content:center;
   flex:0 0 auto;
-  margin:0;
+  margin:0 1px;
   font-family:"Montserrat",sans-serif;
-  font-size:12px!important;
+  font-size:11px!important;
   line-height:1;
   font-weight:800;
-  color:rgba(255,255,255,.68);
+  color:rgba(255,255,255,.66);
 }
 
 /* BabyT stays text-only here — no BabyT icon/avatar in the partnership lockup. */
@@ -65,25 +65,25 @@
   display:inline-block!important;
   flex:0 0 auto;
   font-family:"Montserrat",sans-serif;
-  font-size:15px!important;
+  font-size:14px!important;
   line-height:1;
   font-weight:800;
-  letter-spacing:-.035em;
+  letter-spacing:-.03em;
   color:#fff;
   white-space:nowrap;
 }
 
 @media(max-width:680px){
-  .portal-brand.partnership-brand{gap:4px!important;height:50px!important}
+  .portal-brand.partnership-brand{gap:3px!important;height:54px!important}
   .portal-brand.partnership-brand > img.game-logo{
-    flex-basis:72px!important;
-    width:72px!important;
-    min-width:72px!important;
-    max-width:72px!important;
-    height:40px!important;
-    min-height:40px!important;
-    max-height:40px!important;
+    flex-basis:64px!important;
+    width:64px!important;
+    min-width:64px!important;
+    max-width:64px!important;
+    height:36px!important;
+    min-height:36px!important;
+    max-height:36px!important;
   }
-  .portal-brand.partnership-brand .brand-x{font-size:10px!important}
-  .portal-brand.partnership-brand .brand-babyt{font-size:14px!important}
+  .portal-brand.partnership-brand .brand-x{font-size:9px!important}
+  .portal-brand.partnership-brand .brand-babyt{font-size:13px!important}
 }
