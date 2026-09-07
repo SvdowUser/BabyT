@@ -2,6 +2,8 @@
   const menuButton = document.getElementById('menuButton');
   const mobileNav = document.getElementById('mobileNav');
   const toast = document.getElementById('copyToast');
+  const header = document.getElementById('siteHeader');
+  const hero = document.querySelector('.hero');
 
   const closeMenu = () => {
     if (!menuButton || !mobileNav) return;
@@ -45,6 +47,55 @@
       }, 1300);
     });
   });
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (hero && finePointer && !reducedMotion) {
+    let frame = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const paint = () => {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      hero.style.setProperty('--hero-x', `${currentX.toFixed(2)}px`);
+      hero.style.setProperty('--hero-y', `${currentY.toFixed(2)}px`);
+
+      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+        frame = requestAnimationFrame(paint);
+      } else {
+        frame = 0;
+      }
+    };
+
+    const requestPaint = () => {
+      if (!frame) frame = requestAnimationFrame(paint);
+    };
+
+    hero.addEventListener('pointermove', event => {
+      const rect = hero.getBoundingClientRect();
+      const nx = ((event.clientX - rect.left) / rect.width) - 0.5;
+      const ny = ((event.clientY - rect.top) / rect.height) - 0.5;
+      targetX = nx * 24;
+      targetY = ny * 18;
+      requestPaint();
+    }, { passive: true });
+
+    hero.addEventListener('pointerleave', () => {
+      targetX = 0;
+      targetY = 0;
+      requestPaint();
+    }, { passive: true });
+  }
+
+  const updateHeader = () => {
+    header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
