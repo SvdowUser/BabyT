@@ -1,0 +1,72 @@
+/* Homepage hero: one viewport tall, then a soft illustrated transition into the next section. */
+.portal-hero{
+  height:100dvh!important;
+  min-height:0!important;
+  max-height:none!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:hidden!important;
+}
+.portal-hero-bg,
+.portal-hero-video,
+.portal-hero::after,
+.hero-noise{inset:0!important;width:100%!important;height:100%!important}
+
+.hero-content{
+  width:min(1320px,calc(100% - 44px));
+  margin:0 auto;
+  padding:86px 0 142px!important;
+  max-width:none!important;
+}
+.hero-title{
+  max-width:760px;
+  font-size:clamp(58px,6.6vw,108px)!important;
+  line-height:.90!important;
+}
+.hero-lead{max-width:610px!important;font-size:18px!important;line-height:1.5!important;margin-top:22px!important}
+.hero-actions{margin-top:26px!important}
+.hero-stats{display:none!important}
+.hero-corner{bottom:116px!important}
+
+/* Axie-like section handoff: the image/video stops at the viewport and the paper section rises into it. */
+.hero-transition{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:118px;
+  z-index:8;
+  pointer-events:none;
+  overflow:hidden;
+}
+.hero-transition svg{display:block;width:100%;height:100%}
+
+/* The old ticker made the first screen feel longer; the transition now replaces it. */
+.marquee{display:none!important}
+.intro{margin-top:0!important;padding-top:96px!important}
+
+@media(max-height:760px) and (min-width:1001px){
+  .hero-content{padding:72px 0 112px!important}
+  .hero-title{font-size:clamp(54px,6vw,88px)!important}
+  .hero-lead{font-size:16px!important;margin-top:16px!important}
+  .hero-actions{margin-top:20px!important}
+  .hero-transition{height:92px}
+  .hero-corner{bottom:90px!important}
+}
+
+@media(max-width:1000px){
+  .portal-hero{height:100svh!important}
+  .hero-content{padding:108px 0 128px!important}
+  .hero-title{font-size:clamp(54px,11vw,92px)!important}
+  .hero-transition{height:92px}
+  .hero-corner{display:none!important}
+}
+
+@media(max-width:680px){
+  .hero-content{width:min(100% - 30px,1320px);padding:92px 0 106px!important}
+  .hero-title{font-size:clamp(48px,14vw,72px)!important}
+  .hero-lead{font-size:16px!important}
+  .hero-transition{height:72px}
+  .intro{padding-top:78px!important}
+}
