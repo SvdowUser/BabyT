@@ -19,6 +19,21 @@
   padding:86px 0 112px!important;
   max-width:none!important;
 }
+.hero-logo-stage{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:104px 0 116px!important;
+}
+.hero-game-title{
+  display:block;
+  width:clamp(430px,40vw,720px);
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  transform:translateY(-4vh);
+}
 .hero-title{
   max-width:760px;
   font-size:clamp(58px,6.6vw,108px)!important;
@@ -98,6 +113,8 @@
 
 @media(max-height:760px) and (min-width:1001px){
   .hero-content{padding:72px 0 84px!important}
+  .hero-logo-stage{padding:86px 0 90px!important}
+  .hero-game-title{width:clamp(390px,36vw,640px);transform:translateY(-3vh)}
   .hero-title{font-size:clamp(54px,6vw,88px)!important}
   .hero-lead{font-size:16px!important;margin-top:16px!important}
   .hero-actions{margin-top:20px!important}
@@ -111,6 +128,8 @@
 @media(max-width:1000px){
   .portal-hero{height:100svh!important}
   .hero-content{padding:108px 0 96px!important}
+  .hero-logo-stage{padding:118px 0 104px!important}
+  .hero-game-title{width:min(78vw,680px);transform:translateY(-2vh)}
   .hero-title{font-size:clamp(54px,11vw,92px)!important}
   .hero-corner{display:none!important}
   .intro{min-height:auto!important;padding:120px 0 170px!important;background-size:700px 420px!important}
@@ -124,6 +143,8 @@
 
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
+  .hero-logo-stage{padding:104px 0 88px!important}
+  .hero-game-title{width:min(90vw,620px);transform:translateY(-1vh)}
   .hero-title{font-size:clamp(48px,14vw,72px)!important}
   .hero-lead{font-size:16px!important}
   .intro{padding:104px 0 132px!important;background-size:620px 372px!important}
