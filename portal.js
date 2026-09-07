@@ -3,7 +3,7 @@
   if (!document.querySelector('link[href*="nav-overlay.css"]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=1';
+    link.href = './nav-overlay.css?v=2';
     document.head.appendChild(link);
   }
 
