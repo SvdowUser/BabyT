@@ -140,12 +140,13 @@
   if (heroTitle) {
     heroTitle.style.visibility = 'hidden';
     heroTitle.removeAttribute('src');
+    const logoParts = [0, 5, 6, 7, 8, 9, 2, 3, 4];
     Promise.all(
-      [0, 1, 2, 3, 4].map(i =>
-        fetch(`./assets/brand/brainrot-battles-user-${i}.txt?v=5`).then(response => {
+      logoParts.map(i =>
+        fetch(`./assets/brand/brainrot-battles-user-${i}.txt?v=6`).then(response => {
           if (!response.ok) throw new Error(`Brainrot Battles logo part ${i}: ${response.status}`);
           return response.text();
-        })
+        }).then(text => text.trim())
       )
     ).then(parts => {
       heroTitle.onload = () => { heroTitle.style.visibility = 'visible'; };
