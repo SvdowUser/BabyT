@@ -1,4 +1,4 @@
-/* Homepage hero: fill the first screen, with only a very small paper edge visible at the bottom. */
+/* Homepage hero: fill the first screen, then hand off into a BabyT-themed paper section. */
 .portal-hero{
   height:100dvh!important;
   min-height:0!important;
@@ -27,46 +27,110 @@
 .hero-lead{max-width:610px!important;font-size:18px!important;line-height:1.5!important;margin-top:22px!important}
 .hero-actions{margin-top:26px!important}
 .hero-stats{display:none!important}
-.hero-corner{bottom:42px!important}
+.hero-corner{bottom:34px!important}
 
-/* The video/artwork should visually run almost all the way to the viewport edge.
-   Only a thin illustrated crest should peek into the first screen. */
-.hero-transition{
+/* The old simple wave is replaced by the illustrated paper section below. */
+.hero-transition{display:none!important}
+.marquee{display:none!important}
+
+/* Original BabyT paper motif: custom vector pattern + separate top/bottom torn edges.
+   The top edge rises into the hero, while the bottom edge falls over the next dark section. */
+.intro{
+  position:relative!important;
+  z-index:4;
+  margin-top:0!important;
+  padding:128px 0 138px!important;
+  overflow:visible!important;
+  background-color:#fff3c8!important;
+  background-image:url('./assets/ui/babyt-paper-pattern.svg')!important;
+  background-repeat:repeat!important;
+  background-size:520px 520px!important;
+  color:#452b15!important;
+}
+.intro::before{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  top:-92px!important;
+  bottom:auto!important;
+  height:94px!important;
+  opacity:1!important;
+  background:url('./assets/ui/babyt-paper-edge-top.svg') center bottom/100% 100% no-repeat!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+.intro::after{
+  content:"";
   position:absolute;
   left:0;
   right:0;
-  bottom:-88px;
-  height:104px;
-  z-index:8;
+  bottom:-116px;
+  height:118px;
+  background:url('./assets/ui/babyt-paper-edge-bottom.svg') center top/100% 100% no-repeat;
   pointer-events:none;
-  overflow:hidden;
+  z-index:0;
 }
-.hero-transition svg{display:block;width:100%;height:100%}
+.intro-grid{position:relative!important;z-index:2!important}
 
-.marquee{display:none!important}
-.intro{margin-top:0!important;padding-top:96px!important}
+/* Give the next dark chapter enough breathing room for the overhanging paper edge. */
+.section-dark{padding-top:190px!important}
+
+/* Reuse the same subtle motif in the development gallery, so the paper language feels intentional. */
+.works{
+  position:relative;
+  background-color:#f6e9bd!important;
+  background-image:url('./assets/ui/babyt-paper-pattern.svg')!important;
+  background-repeat:repeat!important;
+  background-size:560px 560px!important;
+}
+.works::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-104px;
+  height:106px;
+  background:url('./assets/ui/babyt-paper-edge-bottom.svg') center top/100% 100% no-repeat;
+  pointer-events:none;
+  z-index:1;
+}
+.home-split{padding-top:190px!important}
 
 @media(max-height:760px) and (min-width:1001px){
   .hero-content{padding:72px 0 84px!important}
   .hero-title{font-size:clamp(54px,6vw,88px)!important}
   .hero-lead{font-size:16px!important;margin-top:16px!important}
   .hero-actions{margin-top:20px!important}
-  .hero-transition{height:88px;bottom:-75px}
-  .hero-corner{bottom:34px!important}
+  .hero-corner{bottom:28px!important}
+  .intro{padding:112px 0 122px!important}
+  .intro::before{top:-76px!important;height:78px!important}
+  .intro::after{bottom:-96px;height:98px}
+  .section-dark{padding-top:166px!important}
 }
 
 @media(max-width:1000px){
   .portal-hero{height:100svh!important}
   .hero-content{padding:108px 0 96px!important}
   .hero-title{font-size:clamp(54px,11vw,92px)!important}
-  .hero-transition{height:84px;bottom:-72px}
   .hero-corner{display:none!important}
+  .intro{padding:112px 0 124px!important}
+  .intro::before{top:-72px!important;height:74px!important}
+  .intro::after{bottom:-82px;height:84px}
+  .section-dark{padding-top:152px!important}
+  .works::after{bottom:-76px;height:78px}
+  .home-split{padding-top:156px!important}
 }
 
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-title{font-size:clamp(48px,14vw,72px)!important}
   .hero-lead{font-size:16px!important}
-  .hero-transition{height:66px;bottom:-56px}
-  .intro{padding-top:78px!important}
+  .intro{padding:96px 0 106px!important;background-size:420px 420px!important}
+  .intro::before{top:-54px!important;height:56px!important}
+  .intro::after{bottom:-60px;height:62px}
+  .section-dark{padding-top:126px!important}
+  .works{background-size:440px 440px!important}
+  .works::after{bottom:-56px;height:58px}
+  .home-split{padding-top:130px!important}
 }
