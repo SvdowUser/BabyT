@@ -2,7 +2,7 @@
 .portal-brand.partnership-brand{
   display:flex!important;
   align-items:center!important;
-  gap:6px!important;
+  gap:5px!important;
   min-width:0;
   height:54px!important;
   margin-right:auto;
@@ -52,28 +52,29 @@
   align-items:center;
   justify-content:center;
   flex:0 0 auto;
-  margin:0 1px;
+  margin:0;
   font-family:"Montserrat",sans-serif;
-  font-size:13px!important;
+  font-size:12px!important;
   line-height:1;
   font-weight:800;
-  color:rgba(255,255,255,.70);
+  color:rgba(255,255,255,.68);
 }
 
+/* BabyT stays text-only here — no BabyT icon/avatar in the partnership lockup. */
 .portal-brand.partnership-brand .brand-babyt{
   display:inline-block!important;
   flex:0 0 auto;
   font-family:"Montserrat",sans-serif;
-  font-size:17px!important;
+  font-size:15px!important;
   line-height:1;
   font-weight:800;
-  letter-spacing:-.045em;
+  letter-spacing:-.035em;
   color:#fff;
   white-space:nowrap;
 }
 
 @media(max-width:680px){
-  .portal-brand.partnership-brand{gap:5px!important;height:50px!important}
+  .portal-brand.partnership-brand{gap:4px!important;height:50px!important}
   .portal-brand.partnership-brand > img.game-logo{
     flex-basis:72px!important;
     width:72px!important;
@@ -83,6 +84,6 @@
     min-height:40px!important;
     max-height:40px!important;
   }
-  .portal-brand.partnership-brand .brand-x{font-size:11px!important}
-  .portal-brand.partnership-brand .brand-babyt{font-size:15px!important}
+  .portal-brand.partnership-brand .brand-x{font-size:10px!important}
+  .portal-brand.partnership-brand .brand-babyt{font-size:14px!important}
 }
