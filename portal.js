@@ -1,9 +1,8 @@
 (() => {
-  // Load the shared overlay-nav styling on every page that uses this script.
   if (!document.querySelector('link[href*="nav-overlay.css"]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=2';
+    link.href = './nav-overlay.css?v=3';
     document.head.appendChild(link);
   }
 
@@ -11,8 +10,16 @@
   const active = {
     game: path.endsWith('/game.html'),
     merch: path.endsWith('/merch.html'),
-    token: path.endsWith('/token.html')
+    token: path.endsWith('/token.html'),
+    whitepaper: path.endsWith('/whitepaper.html'),
+    conduct: path.endsWith('/code-of-conduct.html'),
+    privacy: path.endsWith('/privacy.html'),
+    terms: path.endsWith('/terms.html')
   };
+  const moreActive = active.whitepaper || active.conduct || active.privacy || active.terms;
+
+  // The play CTA is intentionally not part of the navigation anymore.
+  document.querySelectorAll('.portal-play').forEach(el => el.remove());
 
   const links = document.querySelector('.portal-links');
   if (links) {
@@ -27,13 +34,13 @@
           <a href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">TikTok <small>↗</small></a>
         </div>
       </div>
-      <div class="nav-drop">
-        <button class="nav-drop-trigger" type="button" aria-expanded="false">More <span class="nav-caret" aria-hidden="true"></span></button>
+      <div class="nav-drop" ${moreActive ? 'data-current="true"' : ''}>
+        <button class="nav-drop-trigger ${moreActive ? 'active' : ''}" type="button" aria-expanded="false">More <span class="nav-caret" aria-hidden="true"></span></button>
         <div class="nav-dropdown" role="menu">
-          <a href="./whitepaper.html">Whitepaper</a>
-          <a href="./code-of-conduct.html">Code of Conduct</a>
-          <a href="./privacy.html">Privacy Policy</a>
-          <a href="./terms.html">Terms of Use</a>
+          <a ${active.whitepaper ? 'class="active"' : ''} href="./whitepaper.html">Whitepaper</a>
+          <a ${active.conduct ? 'class="active"' : ''} href="./code-of-conduct.html">Code of Conduct</a>
+          <a ${active.privacy ? 'class="active"' : ''} href="./privacy.html">Privacy Policy</a>
+          <a ${active.terms ? 'class="active"' : ''} href="./terms.html">Terms of Use</a>
         </div>
       </div>`;
   }
@@ -51,8 +58,7 @@
       <a class="mobile-sub" href="./whitepaper.html">Whitepaper</a>
       <a class="mobile-sub" href="./code-of-conduct.html">Code of Conduct</a>
       <a class="mobile-sub" href="./privacy.html">Privacy Policy</a>
-      <a class="mobile-sub" href="./terms.html">Terms of Use</a>
-      <a class="mobile-play" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play alpha ↗</a>`;
+      <a class="mobile-sub" href="./terms.html">Terms of Use</a>`;
   }
 
   document.querySelectorAll('.nav-drop').forEach(drop => {
@@ -90,7 +96,6 @@
     menuButton?.setAttribute('aria-expanded', 'false');
   }));
 
-  // A future assets/media/gameplay-trailer.mp4 automatically replaces the homepage poster.
   const trailer = document.querySelector('.portal-hero-video');
   if (trailer) {
     const reveal = () => document.documentElement.classList.add('has-trailer');
