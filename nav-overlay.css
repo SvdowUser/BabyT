@@ -67,7 +67,8 @@
   transition:color .18s ease,opacity .18s ease;
   -webkit-tap-highlight-color:transparent;
 }
-.portal-links .nav-games-dropdown a{min-height:36px;font-size:13px}
+.portal-links .nav-games-dropdown a{min-height:40px;font-size:13px;justify-content:flex-start;gap:10px;padding:6px 3px}
+.nav-game-thumb{width:28px;height:28px;flex:0 0 28px;border-radius:7px;object-fit:cover;object-position:center;box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .portal-links .nav-dropdown a::before,
 .portal-links .nav-dropdown a::after{
   content:none!important;
