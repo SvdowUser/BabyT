@@ -1,23 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
   <defs>
     <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="2" seed="17" stitchTiles="stitch"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="2" seed="17" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
-      <feComponentTransfer><feFuncA type="table" tableValues="0 0.065"/></feComponentTransfer>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.038"/></feComponentTransfer>
     </filter>
   </defs>
-  <rect width="760" height="760" fill="#fff3c8"/>
-  <g fill="none" stroke="#d8b66d" stroke-width="10" opacity="0.15" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="150" cy="155" r="62"/>
-    <circle cx="150" cy="155" r="24"/>
-    <path d="M150 63v-34M150 281v-34M58 155H24M276 155h-34M85 90l-24-24M239 244l-24-24M85 220l-24 24M239 66l-24 24"/>
-    <path d="M516 98c55 30 88 83 88 141s-33 111-88 141M500 126c34 25 54 66 54 113s-20 88-54 113M484 154c17 19 27 48 27 85s-10 66-27 85"/>
-    <path d="M518 522l22 47 49 7-36 35 9 50-44-24-44 24 9-50-36-35 49-7z"/>
-    <path d="M157 522c0-45 36-81 81-81s81 36 81 81-36 81-81 81-81-36-81-81zM197 522h82M238 481v82"/>
-    <path d="M623 485c-40 0-73 33-73 73s33 73 73 73 73-33 73-73-33-73-73-73zm0 34c22 0 39 17 39 39s-17 39-39 39-39-17-39-39 17-39 39-39z"/>
+  <rect width="1200" height="720" fill="#fff3c8"/>
+
+  <!-- Small, low-contrast motifs. Kept intentionally sparse so the section reads as textured paper, not a pattern wall. -->
+  <g fill="none" stroke="#b98d46" stroke-width="5" opacity="0.075" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(120 126)">
+      <circle r="34"/>
+      <circle r="13"/>
+      <path d="M0-54v-18M0 54v18M-54 0h-18M54 0h18M-38-38l-13-13M38 38l13 13M-38 38l-13 13M38-38l13-13"/>
+    </g>
+
+    <path d="M356 78c26 14 42 39 42 67s-16 53-42 67M346 94c17 12 28 31 28 51s-11 39-28 51M336 111c9 8 14 20 14 34s-5 26-14 34"/>
+
+    <path d="M605 110l10 21 23 3-17 16 4 23-20-11-20 11 4-23-17-16 23-3z"/>
+
+    <g transform="translate(875 132)">
+      <circle r="31"/>
+      <path d="M-31 0h62M0-31v62"/>
+      <circle r="8"/>
+    </g>
+
+    <g transform="translate(1040 332)">
+      <circle r="27"/>
+      <circle r="11"/>
+      <path d="M0-44v-14M0 44v14M-44 0h-14M44 0h14"/>
+    </g>
+
+    <path d="M236 422c22 12 36 33 36 57s-14 45-36 57M226 438c14 10 23 25 23 41s-9 31-23 41"/>
+
+    <path d="M520 494l8 17 19 3-14 13 3 19-16-9-17 9 4-19-14-13 19-3z"/>
+
+    <g transform="translate(736 494)">
+      <circle r="29"/>
+      <circle r="12"/>
+    </g>
   </g>
-  <g fill="#d8b66d" opacity="0.10">
-    <circle cx="385" cy="92" r="8"/><circle cx="430" cy="140" r="5"/><circle cx="92" cy="394" r="5"/><circle cx="688" cy="344" r="7"/><circle cx="370" cy="660" r="6"/><circle cx="676" cy="688" r="4"/>
+
+  <g fill="#b98d46" opacity="0.055">
+    <circle cx="247" cy="250" r="4"/><circle cx="477" cy="128" r="3"/><circle cx="741" cy="244" r="4"/>
+    <circle cx="968" cy="198" r="3"/><circle cx="1110" cy="564" r="4"/><circle cx="388" cy="590" r="3"/>
+    <circle cx="886" cy="620" r="3"/><circle cx="128" cy="606" r="4"/>
   </g>
-  <rect width="760" height="760" filter="url(#grain)" opacity="0.42"/>
+
+  <rect width="1200" height="720" filter="url(#grain)" opacity="0.32"/>
 </svg>
