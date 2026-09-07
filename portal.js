@@ -1,10 +1,10 @@
 (() => {
   const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
-  if (navStyle) navStyle.href = './nav-overlay.css?v=13';
+  if (navStyle) navStyle.href = './nav-overlay.css?v=14';
   else {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './nav-overlay.css?v=13';
+    link.href = './nav-overlay.css?v=14';
     document.head.appendChild(link);
   }
 
@@ -13,7 +13,14 @@
   const links = document.querySelector('.portal-links');
   if (links) {
     links.innerHTML = `
-      <a href="./game.html">Game</a>
+      <div class="nav-drop nav-games">
+        <button class="nav-drop-trigger" type="button" aria-expanded="false">Games <span class="nav-caret" aria-hidden="true"></span></button>
+        <div class="nav-dropdown nav-games-dropdown" role="menu">
+          <span class="nav-menu-heading">BabyT Games</span>
+          <a href="./world.html"><span>Brainrot World</span></a>
+          <a href="./game.html"><span>Brainrot Battles</span></a>
+        </div>
+      </div>
       <a href="./merch.html">Merch</a>
       <a href="./token.html">$BabyT</a>
       <div class="nav-drop">
@@ -37,7 +44,9 @@
   const mobileMenu = document.querySelector('.mobile-menu');
   if (mobileMenu) {
     mobileMenu.innerHTML = `
-      <a href="./game.html">Game</a>
+      <span class="mobile-group">Games</span>
+      <a class="mobile-sub" href="./world.html">Brainrot World</a>
+      <a class="mobile-sub" href="./game.html">Brainrot Battles</a>
       <a href="./merch.html">Merch</a>
       <a href="./token.html">$BabyT</a>
       <span class="mobile-group">Social</span>
