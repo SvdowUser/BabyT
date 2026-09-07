@@ -2,7 +2,7 @@
 .portal-brand.partnership-brand{
   display:flex!important;
   align-items:center!important;
-  gap:8px!important;
+  gap:7px!important;
   min-width:0;
   height:58px!important;
   margin-right:auto;
@@ -11,37 +11,40 @@
   overflow:visible!important;
 }
 
-/* Do not use a pseudo-element here. Render the actual logo image directly. */
 .portal-brand.partnership-brand::before,
 .portal-brand.partnership-brand::after{
   content:none!important;
   display:none!important;
 }
 
-.portal-brand.partnership-brand img.game-logo{
+/* Hard reset all older generic logo rules and show the real PNG directly. */
+.portal-brand.partnership-brand > img.game-logo{
   display:block!important;
-  position:static!important;
-  flex:0 0 auto!important;
-  width:112px!important;
-  height:52px!important;
-  min-width:112px!important;
-  max-width:112px!important;
-  min-height:52px!important;
-  max-height:52px!important;
+  position:relative!important;
+  inset:auto!important;
+  flex:0 0 100px!important;
+  width:100px!important;
+  height:56px!important;
+  min-width:100px!important;
+  max-width:100px!important;
+  min-height:56px!important;
+  max-height:56px!important;
   object-fit:contain!important;
   object-position:center!important;
   margin:0!important;
   padding:0!important;
   border:0!important;
   border-radius:0!important;
-  background:transparent!important;
+  background:none!important;
   box-shadow:none!important;
+  clip:auto!important;
   clip-path:none!important;
   overflow:visible!important;
   transform:none!important;
   opacity:1!important;
   visibility:visible!important;
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.28));
+  z-index:2!important;
 }
 
 .portal-brand.partnership-brand .brand-x{
@@ -55,11 +58,10 @@
   line-height:1;
   font-weight:800;
   color:rgba(255,255,255,.72);
-  letter-spacing:0;
 }
 
 .portal-brand.partnership-brand .brand-babyt{
-  display:inline-block;
+  display:inline-block!important;
   flex:0 0 auto;
   font-family:"Montserrat",sans-serif;
   font-size:18px!important;
@@ -71,11 +73,12 @@
 }
 
 @media(max-width:680px){
-  .portal-brand.partnership-brand{gap:6px!important;height:54px!important}
-  .portal-brand.partnership-brand img.game-logo{
-    width:92px!important;
-    min-width:92px!important;
-    max-width:92px!important;
+  .portal-brand.partnership-brand{gap:5px!important;height:54px!important}
+  .portal-brand.partnership-brand > img.game-logo{
+    flex-basis:82px!important;
+    width:82px!important;
+    min-width:82px!important;
+    max-width:82px!important;
     height:46px!important;
     min-height:46px!important;
     max-height:46px!important;
