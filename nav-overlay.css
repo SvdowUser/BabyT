@@ -44,6 +44,8 @@
   opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s;
 }
+.nav-games-dropdown{min-width:318px;padding:8px 12px 10px}
+.nav-menu-heading{display:block;padding:4px 3px 8px;color:#8a8a8d;font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-bottom:1px solid rgba(56,37,29,.10);margin-bottom:3px}
 .nav-dropdown::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
 .nav-dropdown::after{content:none!important;display:none!important}
 .nav-drop[data-open="true"] .nav-dropdown{
@@ -65,6 +67,7 @@
   transition:color .18s ease,opacity .18s ease;
   -webkit-tap-highlight-color:transparent;
 }
+.portal-links .nav-games-dropdown a{min-height:36px;font-size:13px}
 .portal-links .nav-dropdown a::before,
 .portal-links .nav-dropdown a::after{
   content:none!important;
