@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>BabyT | Official</title>
-  <meta name="description" content="Official BabyT website with the verified contract address, token links and community channels.">
+  <meta name="description" content="Official BabyT website with the verified Solana contract, wrapped BabyT on BNB Chain, game, chart and community links.">
   <meta name="theme-color" content="#050505">
   <link rel="canonical" href="https://svdowuser.github.io/BabyT/">
   <link rel="icon" href="./favicon.ico" sizes="any">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BabyT">
   <meta property="og:title" content="BabyT | Official">
-  <meta property="og:description" content="BabyT on Solana. Official contract address, chart and community links.">
+  <meta property="og:description" content="BabyT on Solana with an official game and wrapped BabyT on BNB Chain.">
   <meta property="og:url" content="https://svdowuser.github.io/BabyT/">
   <meta property="og:image" content="https://svdowuser.github.io/BabyT/apple-touch-icon.png?v=18">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BabyT | Official">
-  <meta name="twitter:description" content="BabyT on Solana. Official contract address, chart and community links.">
+  <meta name="twitter:description" content="BabyT on Solana with an official game and wrapped BabyT on BNB Chain.">
   <meta name="twitter:image" content="https://svdowuser.github.io/BabyT/apple-touch-icon.png?v=18">
   <link rel="stylesheet" href="./style.css?v=17">
   <link rel="stylesheet" href="./hero-fix.css?v=5">
@@ -182,6 +182,22 @@
       }
     }
   </style>
+  <style id="current-site-info">
+    .chain-note{
+      margin-top:16px!important;
+      font-size:14px!important;
+      line-height:1.5!important;
+      opacity:.9;
+    }
+    .chain-note code{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:.88em;
+      word-break:break-all;
+    }
+    .story-actions{
+      flex-wrap:wrap;
+    }
+  </style>
   <link rel="stylesheet" href="./final-overrides.css?v=1">
 </head>
 <body
@@ -201,6 +217,7 @@
     <nav class="top-actions" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#how-to-buy">How to Buy</a>
+      <a href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Game</a>
       <a class="top-cta" href="#how-to-buy">Get Started</a>
     </nav>
   </header>
@@ -215,9 +232,10 @@
         </div>
 
         <h1>BabyT</h1>
-        <p class="hero-subtitle">BabyT is a cryptocurrency on the Solana blockchain</p>
+        <p class="hero-subtitle">BabyT is a cryptocurrency on Solana with an official game in development</p>
 
         <div class="hero-buttons">
+          <a class="comic-btn green" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play Game</a>
           <a class="comic-btn white" id="dexHeroLink" href="#" target="_blank" rel="noreferrer">Chart</a>
         </div>
 
@@ -276,9 +294,13 @@
           <h2 id="aboutTitle">About BabyT</h2>
           <p>BabyT is the baby version of Tung Tung Sahur, the wooden TikTok brainrot character that went viral on TikTok.</p>
           <p>During the brainrot era, BabyT went viral as one of the first baby brainrots.</p>
+          <p>The official BabyT game is currently in development. BabyT is also available as a wrapped token on BNB Chain.</p>
+          <p class="chain-note"><strong>Wrapped BabyT on BNB:</strong> <code>0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda</code></p>
 
           <div class="story-actions">
             <a class="comic-btn white buy-link" href="#" target="_blank" rel="noreferrer">Buy Token</a>
+            <a class="comic-btn green" href="https://brainrotbattle.io/" target="_blank" rel="noreferrer">Play Game</a>
+            <a class="comic-btn white" href="https://bscscan.com/token/0x3d764657C4bB29fb94f6Cf5de3b2b58E73825Cda" target="_blank" rel="noreferrer">BNB Contract</a>
           </div>
 
           <div class="social-bubbles" aria-label="BabyT quick links">
@@ -358,6 +380,6 @@
       window.history.replaceState(null, '', '/BabyT/');
     }
   </script>
-  <script src="./script.js?v=21"></script>
+  <script src="./script.js?v=22"></script>
 </body>
 </html>
