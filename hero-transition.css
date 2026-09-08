@@ -33,6 +33,7 @@
   height:auto;
   object-fit:contain;
   transform:translateY(-12vh);
+  filter:brightness(1.45) contrast(1.08) saturate(1.08) drop-shadow(0 8px 18px rgba(0,0,0,.24));
 }
 .hero-title{
   max-width:760px;
@@ -43,16 +44,6 @@
 .hero-actions{margin-top:26px!important}
 .hero-stats{display:none!important}
 .hero-corner{bottom:34px!important}
-
-/* Keep the game artwork readable like the Axie reference: dark enough for contrast, but not crushed. */
-.portal-hero-bg,
-.portal-hero-video{filter:brightness(1.07) saturate(1.03)}
-.portal-hero::after{
-  background:
-    linear-gradient(90deg,rgba(5,12,23,.78) 0%,rgba(5,12,23,.64) 30%,rgba(5,12,23,.20) 58%,rgba(5,12,23,.12) 100%),
-    linear-gradient(180deg,rgba(5,12,23,.04) 45%,rgba(5,12,23,.68) 100%)!important;
-}
-.hero-noise{opacity:.08!important}
 
 .hero-transition{display:none!important}
 .marquee{display:none!important}
