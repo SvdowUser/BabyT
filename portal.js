@@ -128,14 +128,6 @@
     menuButton?.setAttribute('aria-expanded', 'false');
   }));
 
-  const trailer = document.querySelector('.portal-hero-video');
-  if (trailer) {
-    const reveal = () => document.documentElement.classList.add('has-trailer');
-    trailer.addEventListener('canplay', reveal, { once: true });
-    trailer.addEventListener('loadeddata', reveal, { once: true });
-    trailer.play().catch(() => {});
-  }
-
   const heroTitle = document.querySelector('.hero-game-title');
   if (heroTitle) {
     heroTitle.src = './Brainrot_Battles_Header.png?v=1';
