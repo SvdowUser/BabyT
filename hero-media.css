@@ -16,6 +16,8 @@
 .trailer-play-icon path{fill:#fff5da}
 .hero-motion-toggle{display:flex;align-items:center;gap:9px;min-height:44px;padding:10px 14px;border:1px solid rgba(255,243,216,.5);border-radius:24px;background:rgba(6,13,24,.7);color:#fff5da;font-size:12px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px)}
 .hero-motion-toggle[hidden]{display:none}
+.hero-motion-toggle{width:44px;height:44px;padding:0;justify-content:center}
+.hero-motion-toggle>span{display:none}
 .hero-motion-toggle svg{width:15px;height:15px;fill:currentColor;flex:none}
 .hero-motion-toggle .motion-play{display:none}
 .hero-motion-toggle[data-paused="true"] .motion-pause{display:none}
