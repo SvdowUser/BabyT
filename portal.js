@@ -138,22 +138,8 @@
 
   const heroTitle = document.querySelector('.hero-game-title');
   if (heroTitle) {
-    heroTitle.style.visibility = 'hidden';
-    heroTitle.removeAttribute('src');
-    const logoParts = [0, 5, 6, 7, 8, 9, 2, 3, 4];
-    Promise.all(
-      logoParts.map(i =>
-        fetch(`./assets/brand/brainrot-battles-user-${i}.txt?v=6`).then(response => {
-          if (!response.ok) throw new Error(`Brainrot Battles logo part ${i}: ${response.status}`);
-          return response.text();
-        }).then(text => text.trim())
-      )
-    ).then(parts => {
-      heroTitle.onload = () => { heroTitle.style.visibility = 'visible'; };
-      heroTitle.src = 'data:image/webp;base64,' + parts.join('');
-    }).catch(error => {
-      console.error('Could not load Brainrot Battles logo', error);
-    });
+    heroTitle.src = './Brainrot_Battles_Header.png?v=1';
+    heroTitle.style.visibility = 'visible';
   }
 
   document.querySelectorAll('[data-copy]').forEach(button => {
