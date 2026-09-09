@@ -107,6 +107,15 @@
   object-fit:cover!important;
 }
 
+/* Concept-board art is meant to be seen in full instead of cropped like screenshots. */
+.works .work-row .work-card--concept{
+  background:#ebe5d7!important;
+}
+.works .work-row .work-card--concept img{
+  object-fit:contain!important;
+  background:#ebe5d7!important;
+}
+
 .works-marquee:hover .work-row-track{
   animation-play-state:paused;
 }
