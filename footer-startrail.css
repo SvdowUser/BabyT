@@ -18,7 +18,7 @@
   filter:none;
 }
 
-/* Real BabyT render from the existing site asset. */
+/* Hand-drawn BabyT sketch used in the footer. */
 .world-home .world-footer::after{
   content:"";
   position:absolute;
@@ -27,9 +27,9 @@
   bottom:10px;
   width:205px;
   height:265px;
-  background:url('./assets/media/babyt-character.webp') center bottom/contain no-repeat;
+  background:url('./assets/media/babyt-character.webp?v=2') center bottom/contain no-repeat;
   opacity:1;
-  filter:drop-shadow(0 20px 26px rgba(0,0,0,.52));
+  filter:none;
   pointer-events:none;
 }
 
