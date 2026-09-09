@@ -2,10 +2,25 @@
   const hero = document.querySelector('.portal-hero');
   const background = hero?.querySelector('.portal-hero-video');
   const toggle = hero?.querySelector('.hero-motion-toggle');
-  const opener = document.querySelector('[data-trailer-open]');
-  const dialog = document.querySelector('#trailer-dialog');
-  const player = dialog?.querySelector('.trailer-player');
-  const error = dialog?.querySelector('.trailer-error');
+  const dock = document.querySelector('.trailer-dock');
+
+  // Keep the trailer reachable below the hero without covering the content with text.
+  if (hero && dock) {
+    let scheduled = false;
+    const updateDock = () => {
+      dock.classList.toggle('is-compact', window.scrollY > Math.min(160, hero.offsetHeight * 0.2));
+      scheduled = false;
+    };
+    const requestDockUpdate = () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(updateDock);
+    };
+    updateDock();
+    window.addEventListener('scroll', requestDockUpdate, { passive: true });
+    window.addEventListener('resize', requestDockUpdate, { passive: true });
+    window.addEventListener('pageshow', requestDockUpdate);
+  }
   if (!hero || !background || !toggle) return;
 
   background.id = 'hero-background-video';
@@ -25,7 +40,7 @@
 
   const syncBackground = () => {
     if (failed) return;
-    if (!wantsMotion || !inView || document.hidden || dialog?.open) {
+    if (!wantsMotion || !inView || document.hidden) {
       background.pause();
       updateToggle();
       return;
@@ -37,8 +52,8 @@
       background.load();
     }
     background.play().then(() => {
-      // A dialog or a hidden tab may have interrupted loading.
-      if (!wantsMotion || !inView || document.hidden || dialog?.open) background.pause();
+      // A hidden tab or scrolling away may have interrupted loading.
+      if (!wantsMotion || !inView || document.hidden) background.pause();
       updateToggle();
     }).catch(updateToggle);
   };
@@ -75,35 +90,5 @@
     }, { threshold: 0.1 }).observe(hero);
   }
 
-  if (opener && dialog && player && typeof dialog.showModal === 'function') {
-    opener.addEventListener('click', event => {
-      event.preventDefault();
-      dialog.showModal();
-      document.body.classList.add('trailer-is-open');
-      background.pause();
-      error.hidden = true;
-      if (!player.getAttribute('src')) player.src = player.dataset.src;
-      player.currentTime = 0;
-      player.muted = false;
-      player.play().then(() => {
-        if (!dialog.open) player.pause();
-      }).catch(() => {
-        // Native controls remain available if the browser requires another tap.
-      });
-    });
-    dialog.querySelector('.trailer-close').addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', event => {
-      if (event.target !== dialog) return;
-      const rect = dialog.getBoundingClientRect();
-      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-    });
-    dialog.addEventListener('close', () => {
-      player.pause();
-      document.body.classList.remove('trailer-is-open');
-      opener.focus({ preventScroll: true });
-      syncBackground();
-    });
-    player.addEventListener('error', () => { error.hidden = false; });
-  }
   syncBackground();
 })();

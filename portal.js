@@ -28,6 +28,7 @@
       <div class="nav-drop">
         <button class="nav-drop-trigger" type="button" aria-expanded="false">Social <span class="nav-caret" aria-hidden="true"></span></button>
         <div class="nav-dropdown" role="menu">
+          <a href="https://www.youtube.com/@PlayBrainrotGames" target="_blank" rel="noopener noreferrer">YouTube <small>↗</small></a>
           <a href="https://x.com/BabyTonSol" target="_blank" rel="noreferrer">X / BabyT <small>↗</small></a>
           <a href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">TikTok <small>↗</small></a>
         </div>
@@ -51,6 +52,7 @@
       <a href="./merch.html">Merch</a>
       <a href="./token.html">$BabyT</a>
       <span class="mobile-group">Social</span>
+      <a class="mobile-sub" href="https://www.youtube.com/@PlayBrainrotGames" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
       <a class="mobile-sub" href="https://x.com/BabyTonSol" target="_blank" rel="noreferrer">X / BabyT ↗</a>
       <a class="mobile-sub" href="https://www.tiktok.com/@mythosmondays" target="_blank" rel="noreferrer">TikTok ↗</a>
       <span class="mobile-group">More</span>
