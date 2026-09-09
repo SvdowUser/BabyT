@@ -1,6 +1,6 @@
 /* Compact Axie-inspired footer layout. Loaded after homepage-world.css and footer-startrail.css. */
 
-/* Desktop target: the reference footer is ~380 CSS px high at the user's 125% display scaling. */
+/* Desktop height matched to the Axie reference. */
 .world-home .world-footer{
   box-sizing:border-box!important;
   height:380px!important;
@@ -9,14 +9,17 @@
 }
 .world-home .world-footer-grid{
   display:grid!important;
-  grid-template-columns:1.45fr .8fr .8fr 1fr;
-  gap:clamp(48px,6vw,110px);
+  grid-template-columns:1.45fr .8fr .8fr 1fr!important;
+  gap:clamp(48px,6vw,110px)!important;
   min-height:0!important;
   height:100%!important;
   align-items:start!important;
 }
 
-/* LEFT BRAND */
+/* LEFT BRAND — use the creator-uploaded white Brainrot Games wordmark.
+   The source artwork has transparent canvas around the lettering, so the
+   image box is intentionally wider. This makes the VISIBLE lettering about
+   85px high, matching the white Axie Infinity footer logo in the reference. */
 .world-home .world-footer-brand{
   min-height:0!important;
   padding-top:0!important;
@@ -27,39 +30,49 @@
 .world-home .world-footer-brand p{display:none!important}
 .world-home .world-wordmark{
   display:block!important;
-  width:185px!important;
-  height:96px!important;
+  width:280px!important;
+  height:187px!important;
   overflow:visible!important;
   margin:0!important;
   padding:0!important;
   background:none!important;
   line-height:0!important;
 }
+.world-home .world-wordmark::before,
 .world-home .world-wordmark::after{content:none!important;display:none!important}
 .world-home .world-wordmark span{display:none!important}
 .world-home .world-wordmark img{
+  /* homepage-world.css previously forced the old coloured Alpha logo via content:url().
+     Override that rule explicitly with the uploaded WHITE footer wordmark. */
+  content:url('./assets/brand/brainrot-games-white-footer.png?v=5')!important;
   display:block!important;
-  width:185px!important;
+  width:280px!important;
   height:auto!important;
-  max-width:100%!important;
+  max-width:none!important;
   object-fit:contain!important;
+  border:0!important;
   border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
   filter:none!important;
   opacity:1!important;
   visibility:visible!important;
-  /* The uploaded wordmark has empty canvas around it; pull the visible lettering up to the Axie-logo position. */
   transform:translateY(-44px)!important;
 }
 
-/* COLUMN RHYTHM — remove the old portal.css margin-top that doubled every link gap. */
+/* COLUMN RHYTHM — remove old pseudo-labels and pill/link styling from homepage-world.css. */
 .world-home .world-footer .footer-col{
   display:flex!important;
   flex-direction:column!important;
   gap:18px!important;
   padding-top:4px!important;
+  align-content:initial!important;
 }
 .world-home .world-footer .footer-col>strong{
+  display:block!important;
+  width:auto!important;
   margin:0!important;
+  padding:0!important;
   color:#8093b0!important;
   font-size:10px!important;
   font-weight:800!important;
@@ -67,33 +80,60 @@
   line-height:1!important;
   text-transform:uppercase!important;
 }
+/* Old homepage CSS appended ECOSYSTEM / PROJECT / SOCIAL MEDIA to these headings.
+   Kill those generated labels so every heading appears only once. */
+.world-home .world-footer .footer-col strong::before,
+.world-home .world-footer .footer-col strong::after{
+  content:none!important;
+  display:none!important;
+}
 .world-home .world-footer .footer-col>a{
   display:block!important;
   width:auto!important;
+  min-width:0!important;
+  height:auto!important;
   margin:0!important;
   padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
   color:#fff8e8!important;
   font-size:13px!important;
   font-weight:700!important;
   line-height:1.45!important;
+  text-align:left!important;
+  justify-content:flex-start!important;
   transform:none!important;
 }
+.world-home .world-footer .footer-col>a::before,
+.world-home .world-footer .footer-col>a::after{
+  content:none!important;
+  display:none!important;
+}
 .world-home .world-footer .footer-col>a:hover{
+  border:0!important;
+  background:none!important;
   color:#ebc987!important;
   transform:translateX(2px)!important;
 }
 
 /* OTHER + SOCIALS */
 .world-home .world-footer-grid>.footer-other{
+  display:flex!important;
+  flex-direction:column!important;
   align-items:flex-start!important;
 }
 .world-home .footer-social-group{
+  display:block!important;
+  width:auto!important;
   margin-top:12px!important;
 }
 .world-home .world-footer-grid>.footer-other .footer-social-title{
   display:block!important;
   width:auto!important;
   margin:0 0 18px!important;
+  padding:0!important;
   color:#8093b0!important;
   font-size:10px!important;
   font-weight:800!important;
@@ -110,6 +150,7 @@
   display:grid!important;
   place-items:center!important;
   width:44px!important;
+  min-width:44px!important;
   height:44px!important;
   margin:0!important;
   padding:0!important;
@@ -131,6 +172,7 @@
   font-weight:800!important;
   line-height:1!important;
 }
+.world-home .world-footer-grid>.footer-other .footer-social-links>a::after{content:none!important;display:none!important}
 .world-home .footer-social-links a[href*="youtube"]::before{content:"▶"!important;font-size:14px!important}
 .world-home .footer-social-links a[href*="mythosmondaysog"]::before{content:"𝕏"!important;font-size:20px!important}
 .world-home .footer-social-links a[href*="tiktok"]::before{content:"♪"!important;font-size:22px!important}
@@ -153,11 +195,12 @@
   }
   .world-home .world-footer-grid{
     height:auto!important;
-    grid-template-columns:1.3fr 1fr 1fr;
+    grid-template-columns:1.3fr 1fr 1fr!important;
     gap:40px!important;
   }
   .world-home .world-footer-grid>.footer-other{grid-column:3}
-  .world-home .world-wordmark,.world-home .world-wordmark img{width:170px!important}
+  .world-home .world-wordmark{width:250px!important;height:167px!important}
+  .world-home .world-wordmark img{width:250px!important}
   .world-home .world-footer::after{
     left:27%!important;
     width:180px!important;
@@ -171,15 +214,15 @@
     min-height:0!important;
     padding:48px 0 24px!important;
   }
-  .world-home .world-footer-grid{grid-template-columns:1fr 1fr;gap:36px 28px!important}
+  .world-home .world-footer-grid{grid-template-columns:1fr 1fr!important;gap:36px 28px!important}
   .world-home .world-footer-brand{grid-column:1/-1;min-height:0!important;padding-bottom:0}
   .world-home .world-footer-grid>.footer-other{grid-column:auto}
-  .world-home .world-wordmark,.world-home .world-wordmark img{width:155px!important}
-  .world-home .world-wordmark img{transform:translateY(-24px)!important}
+  .world-home .world-wordmark{width:220px!important;height:147px!important}
+  .world-home .world-wordmark img{width:220px!important;transform:translateY(-28px)!important}
   .world-home .world-footer::after{display:none!important}
 }
 @media(max-width:520px){
-  .world-home .world-footer-grid{grid-template-columns:1fr;gap:30px!important}
+  .world-home .world-footer-grid{grid-template-columns:1fr!important;gap:30px!important}
   .world-home .world-footer-brand{grid-column:auto}
   .world-home .world-footer-grid>.footer-other{grid-column:auto}
   .world-home .world-footer .footer-col{gap:14px!important}
