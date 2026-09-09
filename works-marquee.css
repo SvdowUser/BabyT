@@ -107,20 +107,15 @@
   object-fit:cover!important;
 }
 
-/* Concept-board art is meant to be seen in full instead of cropped like screenshots. */
-.works .work-row .work-card--concept{
-  background:#ebe5d7!important;
-}
-.works .work-row .work-card--concept img{
-  object-fit:contain!important;
-  background:#ebe5d7!important;
-}
-
-/* Character concept has its yellow page/background and outer white frame removed. */
-.works .work-row .work-card--character-concept{
+/* Concept boards are shown in full instead of cropped like ordinary screenshots. */
+.works .work-row .work-card--concept,
+.works .work-row .work-card--character-concept,
+.works .work-row .work-card--orangutini-concept{
   background:#eeeeef!important;
 }
-.works .work-row .work-card--character-concept img{
+.works .work-row .work-card--concept img,
+.works .work-row .work-card--character-concept img,
+.works .work-row .work-card--orangutini-concept img{
   object-fit:contain!important;
   background:#eeeeef!important;
 }
