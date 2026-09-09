@@ -16,48 +16,43 @@
   align-items:start!important;
 }
 
-/* LEFT BRAND — use the creator-uploaded white Brainrot Games wordmark.
-   The source artwork has transparent canvas around the lettering, so the
-   image box is intentionally wider. This makes the VISIBLE lettering about
-   85px high, matching the white Axie Infinity footer logo in the reference. */
+/* LEFT BRAND — use the creator-uploaded white Brainrot Games artwork directly.
+   The PNG has a large transparent canvas, so crop that empty canvas via the
+   background position instead of relying on CSS content:url() on an <img>. */
 .world-home .world-footer-brand{
   min-height:0!important;
   padding-top:0!important;
   display:flex!important;
   align-items:flex-start!important;
   justify-content:flex-start!important;
+  position:relative!important;
+  z-index:3!important;
 }
 .world-home .world-footer-brand p{display:none!important}
 .world-home .world-wordmark{
   display:block!important;
-  width:280px!important;
-  height:187px!important;
-  overflow:visible!important;
+  width:255px!important;
+  height:92px!important;
+  overflow:hidden!important;
   margin:0!important;
   padding:0!important;
-  background:none!important;
   line-height:0!important;
+  background-color:transparent!important;
+  background-image:url('./assets/brand/brainrot-games-white-footer.png?v=9')!important;
+  background-repeat:no-repeat!important;
+  background-size:255px auto!important;
+  background-position:center -45px!important;
 }
 .world-home .world-wordmark::before,
 .world-home .world-wordmark::after{content:none!important;display:none!important}
 .world-home .world-wordmark span{display:none!important}
 .world-home .world-wordmark img{
-  /* homepage-world.css previously forced the old coloured Alpha logo via content:url().
-     Override that rule explicitly with the uploaded WHITE footer wordmark. */
-  content:url('./assets/brand/brainrot-games-white-footer.png?v=5')!important;
-  display:block!important;
-  width:280px!important;
-  height:auto!important;
-  max-width:none!important;
-  object-fit:contain!important;
-  border:0!important;
-  border-radius:0!important;
-  background:none!important;
-  box-shadow:none!important;
-  filter:none!important;
-  opacity:1!important;
-  visibility:visible!important;
-  transform:translateY(-44px)!important;
+  content:normal!important;
+  display:none!important;
+  width:0!important;
+  height:0!important;
+  opacity:0!important;
+  visibility:hidden!important;
 }
 
 /* COLUMN RHYTHM — remove old pseudo-labels and pill/link styling from homepage-world.css. */
@@ -199,8 +194,12 @@
     gap:40px!important;
   }
   .world-home .world-footer-grid>.footer-other{grid-column:3}
-  .world-home .world-wordmark{width:250px!important;height:167px!important}
-  .world-home .world-wordmark img{width:250px!important}
+  .world-home .world-wordmark{
+    width:235px!important;
+    height:84px!important;
+    background-size:235px auto!important;
+    background-position:center -41px!important;
+  }
   .world-home .world-footer::after{
     left:27%!important;
     width:180px!important;
@@ -217,8 +216,12 @@
   .world-home .world-footer-grid{grid-template-columns:1fr 1fr!important;gap:36px 28px!important}
   .world-home .world-footer-brand{grid-column:1/-1;min-height:0!important;padding-bottom:0}
   .world-home .world-footer-grid>.footer-other{grid-column:auto}
-  .world-home .world-wordmark{width:220px!important;height:147px!important}
-  .world-home .world-wordmark img{width:220px!important;transform:translateY(-28px)!important}
+  .world-home .world-wordmark{
+    width:210px!important;
+    height:76px!important;
+    background-size:210px auto!important;
+    background-position:center -37px!important;
+  }
   .world-home .world-footer::after{display:none!important}
 }
 @media(max-width:520px){
