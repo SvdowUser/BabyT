@@ -1,23 +1,25 @@
-/* Decorative transparent star trail for the premium game footer. */
+/* Exact transparent star trail uploaded by the creator. */
 .world-home .world-footer::before{
   content:"";
   position:absolute;
   z-index:-2;
   left:0;
-  top:0;
+  bottom:0;
   width:min(36vw,520px);
   height:100%;
-  inset:auto auto 0 0;
   pointer-events:none;
-  opacity:.92;
-  background:url('./assets/world/footer-startrail.svg?v=1') left center/contain no-repeat;
-  filter:drop-shadow(0 0 10px rgba(104,207,255,.22));
+  opacity:.96;
+  background-image:var(--footer-startrail-image, none);
+  background-position:left bottom;
+  background-size:contain;
+  background-repeat:no-repeat;
+  filter:drop-shadow(0 0 10px rgba(104,207,255,.20));
 }
 
 @media(max-width:1100px){
   .world-home .world-footer::before{
     width:min(42vw,430px);
-    opacity:.78;
+    opacity:.84;
   }
 }
 
@@ -27,6 +29,6 @@
     height:430px;
     top:auto;
     bottom:0;
-    opacity:.38;
+    opacity:.48;
   }
 }
