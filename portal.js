@@ -136,37 +136,40 @@
     heroTitle.style.visibility = 'visible';
   }
 
-  // The concept artwork is stored as small text chunks so GitHub Pages can
-  // reconstruct a valid WebP client-side without relying on a corrupted binary asset.
-  const conceptImages = [...document.querySelectorAll('.work-card--concept img')];
-  if (conceptImages.length) {
-    const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
-    conceptImages.forEach(img => {
-      img.alt = '';
+  const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+  const loadChunkedArtwork = (selector, prefix, chunkCount) => {
+    const images = [...document.querySelectorAll(selector)];
+    if (!images.length) return;
+
+    images.forEach(img => {
       img.src = transparentPixel;
       img.style.opacity = '0';
       img.style.transition = 'opacity .2s ease';
     });
 
     Promise.all(
-      Array.from({ length: 6 }, (_, i) =>
-        fetch(`./assets/gallery/concept-art-${i}.txt?v=1`, { cache: 'force-cache' })
+      Array.from({ length: chunkCount }, (_, i) =>
+        fetch(`./assets/gallery/${prefix}-${i}.txt?v=1`, { cache: 'force-cache' })
           .then(response => {
-            if (!response.ok) throw new Error(`Concept art chunk ${i} failed: ${response.status}`);
+            if (!response.ok) throw new Error(`${prefix} chunk ${i} failed: ${response.status}`);
             return response.text();
           })
       )
     ).then(parts => {
       const source = `data:image/webp;base64,${parts.join('').replace(/\s+/g, '')}`;
-      conceptImages.forEach(img => {
+      images.forEach(img => {
         img.onload = () => { img.style.opacity = '1'; };
         img.onerror = () => { img.style.opacity = '0'; };
         img.src = source;
       });
     }).catch(() => {
-      conceptImages.forEach(img => { img.style.opacity = '0'; });
+      images.forEach(img => { img.style.opacity = '0'; });
     });
-  }
+  };
+
+  loadChunkedArtwork('.work-card--concept img', 'concept-art', 6);
+  loadChunkedArtwork('.work-card--character-concept img', 'character-concept', 6);
 
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.addEventListener('click', async () => {
