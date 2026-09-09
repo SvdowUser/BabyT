@@ -1,6 +1,6 @@
 /* Compact Axie-inspired footer layout. Loaded after homepage-world.css and footer-startrail.css. */
 
-/* Desktop height already matched to the Axie reference. */
+/* Desktop height matched to the Axie reference. */
 .world-home .world-footer{
   box-sizing:border-box!important;
   height:380px!important;
@@ -11,20 +11,19 @@
 /*
   DESKTOP STRUCTURE
   -----------------
-  Visual layout now follows the Axie footer reference:
-
   [ BRAND ]   [ EXPLORE     ]   [ OTHER        ]
               [ THE PROJECT ]   [ SOCIAL MEDIA ]
 
-  Explore and The Project share ONE middle column. Other and Social Media
-  share ONE right column. This removes the previous three text-column look.
+  The vertical rhythm is intentionally matched to the Axie reference:
+  heading -> first link ~= 29px, link baselines ~= 34px apart, and the
+  second block begins ~= 30px after the first block.
 */
 .world-home .world-footer-grid{
   display:grid!important;
   grid-template-columns:1.42fr .95fr 1fr!important;
   grid-template-rows:auto auto!important;
   column-gap:clamp(78px,8vw,150px)!important;
-  row-gap:22px!important;
+  row-gap:30px!important;
   min-height:0!important;
   height:100%!important;
   align-items:start!important;
@@ -46,8 +45,8 @@
 .world-home .world-footer-brand p{display:none!important}
 .world-home .world-wordmark{
   display:block!important;
-  width:255px!important;
-  height:92px!important;
+  width:225px!important;
+  height:82px!important;
   overflow:hidden!important;
   margin:0!important;
   padding:0!important;
@@ -55,8 +54,8 @@
   background-color:transparent!important;
   background-image:url('./assets/brand/brainrot-games-white-footer.png?v=10')!important;
   background-repeat:no-repeat!important;
-  background-size:255px auto!important;
-  background-position:center -45px!important;
+  background-size:225px auto!important;
+  background-position:center -40px!important;
 }
 .world-home .world-wordmark::before,
 .world-home .world-wordmark::after{content:none!important;display:none!important}
@@ -70,7 +69,7 @@
   visibility:hidden!important;
 }
 
-/* Put Explore and The Project in the SAME middle column. */
+/* Explore + The Project share the centre column. */
 .world-home .world-footer-grid>.footer-col:nth-child(2){
   grid-column:2!important;
   grid-row:1!important;
@@ -80,7 +79,7 @@
   grid-row:2!important;
 }
 
-/* Put Other + Social Media in the right column. */
+/* Other + Social Media share the right column. */
 .world-home .world-footer-grid>.footer-other{
   grid-column:3!important;
   grid-row:1 / span 2!important;
@@ -89,7 +88,7 @@
   align-items:flex-start!important;
 }
 
-/* Axie-like text rhythm: compact headings, roughly 34px baseline spacing. */
+/* Axie-like typography and spacing. */
 .world-home .world-footer .footer-col{
   display:flex!important;
   flex-direction:column!important;
@@ -109,8 +108,6 @@
   line-height:1!important;
   text-transform:uppercase!important;
 }
-
-/* Never allow old homepage pseudo-labels to duplicate footer headings. */
 .world-home .world-footer .footer-col strong::before,
 .world-home .world-footer .footer-col strong::after{
   content:none!important;
@@ -147,7 +144,7 @@
   transform:translateX(2px)!important;
 }
 
-/* OTHER + SOCIALS: Social Media sits directly under the Other links. */
+/* OTHER + SOCIALS */
 .world-home .footer-social-group{
   display:block!important;
   width:auto!important;
@@ -168,26 +165,29 @@
 .world-home .footer-social-links{
   display:flex!important;
   align-items:center!important;
-  gap:12px!important;
+  gap:26px!important;
 }
+/* Axie reference uses free-standing social glyphs, not four outlined circles. */
 .world-home .world-footer-grid>.footer-other .footer-social-links>a{
   display:grid!important;
   place-items:center!important;
-  width:44px!important;
-  min-width:44px!important;
-  height:44px!important;
+  width:22px!important;
+  min-width:22px!important;
+  height:26px!important;
   margin:0!important;
   padding:0!important;
-  border:1px solid rgba(231,239,244,.2)!important;
-  border-radius:50%!important;
-  background:rgba(255,255,255,.02)!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
   color:#fff8e8!important;
   font-size:0!important;
   transform:none!important;
 }
 .world-home .world-footer-grid>.footer-other .footer-social-links>a:hover{
-  border-color:rgba(235,201,135,.7)!important;
-  background:rgba(235,201,135,.06)!important;
+  border:0!important;
+  background:none!important;
+  color:#ebc987!important;
   transform:translateY(-2px)!important;
 }
 .world-home .world-footer-grid>.footer-other .footer-social-links>a::before{
@@ -199,16 +199,19 @@
 .world-home .world-footer-grid>.footer-other .footer-social-links>a::after{content:none!important;display:none!important}
 .world-home .footer-social-links a[href*="youtube"]::before{content:"▶"!important;font-size:14px!important}
 .world-home .footer-social-links a[href*="mythosmondaysog"]::before{content:"𝕏"!important;font-size:20px!important}
-.world-home .footer-social-links a[href*="tiktok"]::before{content:"♪"!important;font-size:22px!important}
+.world-home .footer-social-links a[href*="tiktok"]::before{content:"♪"!important;font-size:21px!important}
 .world-home .footer-social-links a[href*="BabyTonSol"]::before{content:"B"!important;font-size:17px!important}
 .world-home .world-footer-bottom{display:none!important}
 
-/* BabyT occupies the same lower-left/centre visual zone as the Axie character. */
+/* BabyT must sit in the clear space BETWEEN the brand and Explore column.
+   The previous 35vw position pushed the visible character into the Explore/
+   The Project text. This shifts the render roughly 80px left at the current
+   desktop viewport while preserving the Axie-like lower-centre placement. */
 .world-home .world-footer::after{
-  left:clamp(560px,35vw,700px)!important;
+  left:clamp(450px,31vw,500px)!important;
   bottom:10px!important;
-  width:205px!important;
-  height:265px!important;
+  width:195px!important;
+  height:252px!important;
 }
 
 @media(max-width:1100px){
@@ -222,18 +225,18 @@
     grid-template-columns:1.15fr 1fr 1fr!important;
     grid-template-rows:auto auto!important;
     column-gap:38px!important;
-    row-gap:24px!important;
+    row-gap:28px!important;
   }
   .world-home .world-wordmark{
-    width:235px!important;
-    height:84px!important;
-    background-size:235px auto!important;
-    background-position:center -41px!important;
+    width:210px!important;
+    height:77px!important;
+    background-size:210px auto!important;
+    background-position:center -37px!important;
   }
   .world-home .world-footer::after{
-    left:28%!important;
-    width:180px!important;
-    height:240px!important;
+    left:22%!important;
+    width:170px!important;
+    height:228px!important;
     bottom:18px!important;
   }
 }
@@ -261,12 +264,13 @@
     grid-row:auto!important;
   }
   .world-home .world-wordmark{
-    width:210px!important;
-    height:76px!important;
-    background-size:210px auto!important;
-    background-position:center -37px!important;
+    width:195px!important;
+    height:72px!important;
+    background-size:195px auto!important;
+    background-position:center -34px!important;
   }
   .world-home .world-footer::after{display:none!important}
+  .world-home .footer-social-links{gap:20px!important}
 }
 @media(max-width:520px){
   .world-home .world-footer-grid{grid-template-columns:1fr!important;gap:30px!important}
