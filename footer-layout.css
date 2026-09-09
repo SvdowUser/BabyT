@@ -5,7 +5,7 @@
   min-height:335px;
 }
 
-/* LEFT BRAND — direct image from index.html, no CSS image replacement. */
+/* LEFT BRAND — use the user-uploaded white Brainrot Games wordmark. */
 .world-home .world-footer-brand{
   min-height:330px;
   padding-top:2px;
@@ -26,6 +26,7 @@
 .world-home .world-wordmark::after{content:none!important;display:none!important}
 .world-home .world-wordmark span{display:none!important}
 .world-home .world-wordmark img{
+  content:url('./assets/brand/brainrot-games-white-footer.png?v=1')!important;
   display:block!important;
   width:185px!important;
   height:auto!important;
