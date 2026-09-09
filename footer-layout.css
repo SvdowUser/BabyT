@@ -1,25 +1,40 @@
 /* Compact Axie-inspired footer layout. Loaded after homepage-world.css and footer-startrail.css. */
 
-/* Desktop height matched to the Axie reference. */
+/* Desktop height already matched to the Axie reference. */
 .world-home .world-footer{
   box-sizing:border-box!important;
   height:380px!important;
   min-height:380px!important;
   padding:44px 0 10px!important;
 }
+
+/*
+  DESKTOP STRUCTURE
+  -----------------
+  Visual layout now follows the Axie footer reference:
+
+  [ BRAND ]   [ EXPLORE     ]   [ OTHER        ]
+              [ THE PROJECT ]   [ SOCIAL MEDIA ]
+
+  Explore and The Project share ONE middle column. Other and Social Media
+  share ONE right column. This removes the previous three text-column look.
+*/
 .world-home .world-footer-grid{
   display:grid!important;
-  grid-template-columns:1.45fr .8fr .8fr 1fr!important;
-  gap:clamp(48px,6vw,110px)!important;
+  grid-template-columns:1.42fr .95fr 1fr!important;
+  grid-template-rows:auto auto!important;
+  column-gap:clamp(78px,8vw,150px)!important;
+  row-gap:22px!important;
   min-height:0!important;
   height:100%!important;
   align-items:start!important;
+  align-content:start!important;
 }
 
-/* LEFT BRAND — use the creator-uploaded white Brainrot Games artwork directly.
-   The PNG has a large transparent canvas, so crop that empty canvas via the
-   background position instead of relying on CSS content:url() on an <img>. */
+/* LEFT BRAND */
 .world-home .world-footer-brand{
+  grid-column:1!important;
+  grid-row:1 / span 2!important;
   min-height:0!important;
   padding-top:0!important;
   display:flex!important;
@@ -38,7 +53,7 @@
   padding:0!important;
   line-height:0!important;
   background-color:transparent!important;
-  background-image:url('./assets/brand/brainrot-games-white-footer.png?v=9')!important;
+  background-image:url('./assets/brand/brainrot-games-white-footer.png?v=10')!important;
   background-repeat:no-repeat!important;
   background-size:255px auto!important;
   background-position:center -45px!important;
@@ -55,11 +70,30 @@
   visibility:hidden!important;
 }
 
-/* COLUMN RHYTHM — remove old pseudo-labels and pill/link styling from homepage-world.css. */
+/* Put Explore and The Project in the SAME middle column. */
+.world-home .world-footer-grid>.footer-col:nth-child(2){
+  grid-column:2!important;
+  grid-row:1!important;
+}
+.world-home .world-footer-grid>.footer-col:nth-child(3){
+  grid-column:2!important;
+  grid-row:2!important;
+}
+
+/* Put Other + Social Media in the right column. */
+.world-home .world-footer-grid>.footer-other{
+  grid-column:3!important;
+  grid-row:1 / span 2!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+}
+
+/* Axie-like text rhythm: compact headings, roughly 34px baseline spacing. */
 .world-home .world-footer .footer-col{
   display:flex!important;
   flex-direction:column!important;
-  gap:18px!important;
+  gap:15px!important;
   padding-top:4px!important;
   align-content:initial!important;
 }
@@ -75,8 +109,8 @@
   line-height:1!important;
   text-transform:uppercase!important;
 }
-/* Old homepage CSS appended ECOSYSTEM / PROJECT / SOCIAL MEDIA to these headings.
-   Kill those generated labels so every heading appears only once. */
+
+/* Never allow old homepage pseudo-labels to duplicate footer headings. */
 .world-home .world-footer .footer-col strong::before,
 .world-home .world-footer .footer-col strong::after{
   content:none!important;
@@ -113,16 +147,11 @@
   transform:translateX(2px)!important;
 }
 
-/* OTHER + SOCIALS */
-.world-home .world-footer-grid>.footer-other{
-  display:flex!important;
-  flex-direction:column!important;
-  align-items:flex-start!important;
-}
+/* OTHER + SOCIALS: Social Media sits directly under the Other links. */
 .world-home .footer-social-group{
   display:block!important;
   width:auto!important;
-  margin-top:12px!important;
+  margin-top:21px!important;
 }
 .world-home .world-footer-grid>.footer-other .footer-social-title{
   display:block!important;
@@ -174,9 +203,9 @@
 .world-home .footer-social-links a[href*="BabyTonSol"]::before{content:"B"!important;font-size:17px!important}
 .world-home .world-footer-bottom{display:none!important}
 
-/* Put BabyT in the same visual zone as the Axie character: lower-left/centre, clear of the links. */
+/* BabyT occupies the same lower-left/centre visual zone as the Axie character. */
 .world-home .world-footer::after{
-  left:clamp(420px,32vw,520px)!important;
+  left:clamp(560px,35vw,700px)!important;
   bottom:10px!important;
   width:205px!important;
   height:265px!important;
@@ -185,15 +214,16 @@
 @media(max-width:1100px){
   .world-home .world-footer{
     height:auto!important;
-    min-height:400px!important;
+    min-height:430px!important;
     padding:44px 0 20px!important;
   }
   .world-home .world-footer-grid{
     height:auto!important;
-    grid-template-columns:1.3fr 1fr 1fr!important;
-    gap:40px!important;
+    grid-template-columns:1.15fr 1fr 1fr!important;
+    grid-template-rows:auto auto!important;
+    column-gap:38px!important;
+    row-gap:24px!important;
   }
-  .world-home .world-footer-grid>.footer-other{grid-column:3}
   .world-home .world-wordmark{
     width:235px!important;
     height:84px!important;
@@ -201,7 +231,7 @@
     background-position:center -41px!important;
   }
   .world-home .world-footer::after{
-    left:27%!important;
+    left:28%!important;
     width:180px!important;
     height:240px!important;
     bottom:18px!important;
@@ -213,9 +243,23 @@
     min-height:0!important;
     padding:48px 0 24px!important;
   }
-  .world-home .world-footer-grid{grid-template-columns:1fr 1fr!important;gap:36px 28px!important}
-  .world-home .world-footer-brand{grid-column:1/-1;min-height:0!important;padding-bottom:0}
-  .world-home .world-footer-grid>.footer-other{grid-column:auto}
+  .world-home .world-footer-grid{
+    grid-template-columns:1fr 1fr!important;
+    grid-template-rows:auto!important;
+    gap:36px 28px!important;
+  }
+  .world-home .world-footer-brand{
+    grid-column:1/-1!important;
+    grid-row:auto!important;
+    min-height:0!important;
+    padding-bottom:0!important;
+  }
+  .world-home .world-footer-grid>.footer-col:nth-child(2),
+  .world-home .world-footer-grid>.footer-col:nth-child(3),
+  .world-home .world-footer-grid>.footer-other{
+    grid-column:auto!important;
+    grid-row:auto!important;
+  }
   .world-home .world-wordmark{
     width:210px!important;
     height:76px!important;
@@ -226,7 +270,6 @@
 }
 @media(max-width:520px){
   .world-home .world-footer-grid{grid-template-columns:1fr!important;gap:30px!important}
-  .world-home .world-footer-brand{grid-column:auto}
-  .world-home .world-footer-grid>.footer-other{grid-column:auto}
+  .world-home .world-footer-brand{grid-column:auto!important}
   .world-home .world-footer .footer-col{gap:14px!important}
 }
