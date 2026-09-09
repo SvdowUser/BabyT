@@ -1,5 +1,20 @@
 /* Exact transparent star trail uploaded by the creator.
    The image itself is reconstructed in portal.js from the uploaded artwork chunks. */
+
+/* Desktop footer height matched much more closely to the Axie reference. */
+.world-home .world-footer{
+  box-sizing:border-box;
+  height:440px!important;
+  min-height:440px!important;
+  padding:48px 0 18px!important;
+}
+.world-home .world-footer-grid{
+  min-height:300px!important;
+}
+.world-home .world-footer-brand{
+  min-height:300px!important;
+}
+
 .world-home .world-footer::before{
   content:"";
   position:absolute;
@@ -20,9 +35,9 @@
 /* Keep the real BabyT render from the existing site asset, but move it clear of the links. */
 .world-home .world-footer::after{
   left:clamp(300px,21vw,420px)!important;
-  bottom:26px!important;
-  width:230px!important;
-  height:305px!important;
+  bottom:18px!important;
+  width:220px!important;
+  height:285px!important;
   background:url('./assets/media/babyt-character.webp') center bottom/contain no-repeat!important;
   opacity:1!important;
   filter:drop-shadow(0 20px 26px rgba(0,0,0,.52))!important;
@@ -30,6 +45,11 @@
 }
 
 @media(max-width:1100px){
+  .world-home .world-footer{
+    height:auto!important;
+    min-height:440px!important;
+    padding:48px 0 22px!important;
+  }
   .world-home .world-footer::before{
     left:8px;
     bottom:-22px;
@@ -41,11 +61,20 @@
     left:25%!important;
     width:190px!important;
     height:255px!important;
-    bottom:35px!important;
+    bottom:24px!important;
   }
 }
 
 @media(max-width:760px){
+  .world-home .world-footer{
+    height:auto!important;
+    min-height:0!important;
+    padding:54px 0 24px!important;
+  }
+  .world-home .world-footer-grid,
+  .world-home .world-footer-brand{
+    min-height:0!important;
+  }
   .world-home .world-footer::before{
     left:-26px;
     width:260px;
