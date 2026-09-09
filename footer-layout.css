@@ -1,0 +1,128 @@
+/* Footer information architecture: legal links live in the right column, social icons below. */
+.world-home .world-footer-grid{
+  grid-template-columns:1.45fr .8fr .8fr 1fr;
+  gap:clamp(48px,6vw,110px);
+  min-height:335px;
+}
+
+.world-home .world-footer-grid>.footer-other{
+  display:flex!important;
+  flex-direction:column!important;
+  flex-wrap:nowrap!important;
+  align-items:flex-start;
+  gap:0!important;
+  padding-top:7px;
+}
+
+.world-home .world-footer-grid>.footer-other>strong,
+.world-home .world-footer-grid>.footer-other .footer-social-title{
+  display:block;
+  width:auto!important;
+  margin:0 0 22px!important;
+  color:#8093b0;
+  font-size:11px!important;
+  font-weight:800;
+  letter-spacing:.08em;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+.world-home .world-footer-grid>.footer-other strong::after{
+  content:none!important;
+  display:none!important;
+}
+
+.world-home .world-footer-grid>.footer-other>a{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  margin:0 0 17px;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  color:#fff8e8!important;
+  font-size:14px!important;
+  font-weight:700;
+  line-height:1.25;
+  transform:none!important;
+}
+
+.world-home .world-footer-grid>.footer-other>a:hover{
+  color:#ebc987!important;
+  transform:translateX(2px)!important;
+}
+
+.world-home .footer-social-group{
+  margin-top:24px;
+}
+
+.world-home .world-footer-grid>.footer-other .footer-social-title{
+  margin-bottom:18px!important;
+}
+
+.world-home .footer-social-links{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.world-home .world-footer-grid>.footer-other .footer-social-links>a{
+  display:grid!important;
+  place-items:center;
+  width:44px!important;
+  height:44px!important;
+  margin:0!important;
+  padding:0!important;
+  border:1px solid rgba(231,239,244,.2)!important;
+  border-radius:50%!important;
+  background:rgba(255,255,255,.02)!important;
+  color:#fff8e8!important;
+  font-size:0!important;
+  transform:none!important;
+}
+
+.world-home .world-footer-grid>.footer-other .footer-social-links>a:hover{
+  border-color:rgba(235,201,135,.7)!important;
+  background:rgba(235,201,135,.06)!important;
+  transform:translateY(-2px)!important;
+}
+
+.world-home .world-footer-grid>.footer-other .footer-social-links>a::before{
+  display:block!important;
+  font-size:18px!important;
+  font-weight:800;
+  line-height:1;
+}
+.world-home .footer-social-links a[href*="youtube"]::before{content:"▶"!important;font-size:14px!important}
+.world-home .footer-social-links a[href*="mythosmondaysog"]::before{content:"𝕏"!important;font-size:20px!important}
+.world-home .footer-social-links a[href*="tiktok"]::before{content:"♪"!important;font-size:22px!important}
+.world-home .footer-social-links a[href*="BabyTonSol"]::before{content:"B"!important;font-size:17px!important}
+
+/* The old thin legal strip at the very bottom is intentionally gone. */
+.world-home .world-footer-bottom{display:none!important}
+
+@media(max-width:1100px){
+  .world-home .world-footer-grid{
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:45px;
+  }
+  .world-home .world-footer-grid>.footer-other{
+    grid-column:3;
+  }
+}
+
+@media(max-width:760px){
+  .world-home .world-footer-grid{
+    grid-template-columns:1fr 1fr;
+    gap:42px 28px;
+  }
+  .world-home .world-footer-grid>.footer-other{
+    grid-column:auto;
+  }
+}
+
+@media(max-width:520px){
+  .world-home .world-footer-grid{grid-template-columns:1fr}
+  .world-home .world-footer-grid>.footer-other{grid-column:auto}
+}
