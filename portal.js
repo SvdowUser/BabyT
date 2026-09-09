@@ -170,6 +170,7 @@
 
   loadChunkedArtwork('.work-card--concept img', 'concept-art', 6);
   loadChunkedArtwork('.work-card--character-concept img', 'character-concept', 6);
+  loadChunkedArtwork('.work-card--orangutini-concept img', 'orangutini-concept', 6);
 
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.addEventListener('click', async () => {
