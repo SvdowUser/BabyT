@@ -42,6 +42,15 @@
 .gallery-motion{background:transparent;border:0;border-bottom:1px solid #6b80808a;cursor:pointer;color:inherit;padding:3px 0;font-size:11px}
 .gallery-paused .work-row-track{animation-play-state:paused}
 
+/* Preserve the latest three unique concept boards; show complete boards at every size. */
+.world-home .works-marquee{width:min(1180px,calc(100% - 44px));margin:auto;overflow:visible}
+.world-home .work-row-track--single{width:100%;padding:0}
+.world-home .work-row-track--single .work-set{width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.world-home .works .work-row .work-card{width:100%!important;height:auto!important;aspect-ratio:1.55!important;border-radius:12px!important;border-width:7px!important}
+.world-home .work-row--bottom{margin-top:20px}
+.world-home .work-row--bottom .work-set{grid-template-columns:minmax(0,780px);justify-content:center}
+.world-home .works .work-row--bottom .work-card{aspect-ratio:1.8!important}
+
 .world-about{padding-top:80px;padding-bottom:65px}
 .world-about h2{max-width:850px;color:var(--world-light)}
 .world-about h2 span{color:var(--world-gold)}
@@ -132,6 +141,7 @@
   .world-paper-chapter .works{padding-top:70px!important}.world-heading{padding:0 20px;margin-bottom:35px}
   .world-heading>p:last-child{font-size:15px}.works-heading h2{font-size:39px}.works-heading>p:last-child{max-width:250px;margin:16px auto 0!important}
   .works-caption{font-size:10px;gap:15px;flex-wrap:wrap}.gallery-motion{font-size:10px}
+  .world-home .works-marquee{width:calc(100% - 40px)}.world-home .work-row-track--single .work-set{grid-template-columns:1fr;gap:16px}.world-home .work-row--bottom{margin-top:16px}.world-home .works .work-row .work-card{border-width:5px!important;aspect-ratio:1.5!important}
   .world-about{padding-top:45px}.about-copy{grid-template-columns:1fr;gap:12px;margin-top:27px}.about-copy .world-lead{font-size:23px}.about-copy p{font-size:16px}
   .world-section-title{margin-bottom:26px}.section-index{display:none}.world-ecosystem{padding-top:30px}
   .world-ecosystem-grid{grid-template-columns:1fr;gap:16px}.world-game-card{min-height:420px}.world-card-label{left:24px;right:24px;top:25px;font-size:9px}

@@ -1,4 +1,4 @@
-/* Two-row moving development gallery inspired by the reference capture. */
+/* Two-row concept gallery inspired by the reference capture. */
 .works{
   position:relative!important;
   padding:86px 0 76px!important;
@@ -69,6 +69,14 @@
   animation:workMarquee 40s linear infinite;
 }
 
+/* While there are only a few unique concept pieces, keep them static instead of duplicating them. */
+.work-row-track--single{
+  animation:none!important;
+  transform:none!important;
+  will-change:auto;
+  padding-inline:clamp(18px,4vw,72px);
+}
+
 .work-row--bottom .work-row-track{
   animation-duration:42s;
   animation-delay:-9s;
@@ -105,6 +113,19 @@
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
+}
+
+/* Concept boards are shown in full instead of cropped like ordinary screenshots. */
+.works .work-row .work-card--concept,
+.works .work-row .work-card--character-concept,
+.works .work-row .work-card--orangutini-concept{
+  background:#eeeeef!important;
+}
+.works .work-row .work-card--concept img,
+.works .work-row .work-card--character-concept img,
+.works .work-row .work-card--orangutini-concept img{
+  object-fit:contain!important;
+  background:#eeeeef!important;
 }
 
 .works-marquee:hover .work-row-track{

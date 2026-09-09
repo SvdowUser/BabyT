@@ -138,6 +138,42 @@
     heroTitle.style.visibility = 'visible';
   }
 
+  const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+  const loadChunkedArtwork = (selector, prefix, chunkCount) => {
+    const images = [...document.querySelectorAll(selector)];
+    if (!images.length) return;
+
+    images.forEach(img => {
+      img.src = transparentPixel;
+      img.style.opacity = '0';
+      img.style.transition = 'opacity .2s ease';
+    });
+
+    Promise.all(
+      Array.from({ length: chunkCount }, (_, i) =>
+        fetch(`./assets/gallery/${prefix}-${i}.txt?v=1`, { cache: 'force-cache' })
+          .then(response => {
+            if (!response.ok) throw new Error(`${prefix} chunk ${i} failed: ${response.status}`);
+            return response.text();
+          })
+      )
+    ).then(parts => {
+      const source = `data:image/webp;base64,${parts.join('').replace(/\s+/g, '')}`;
+      images.forEach(img => {
+        img.onload = () => { img.style.opacity = '1'; };
+        img.onerror = () => { img.style.opacity = '0'; };
+        img.src = source;
+      });
+    }).catch(() => {
+      images.forEach(img => { img.style.opacity = '0'; });
+    });
+  };
+
+  loadChunkedArtwork('.work-card--concept img', 'concept-art', 6);
+  loadChunkedArtwork('.work-card--character-concept img', 'character-concept', 6);
+  loadChunkedArtwork('.work-card--orangutini-concept img', 'orangutini-v2', 1);
+
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.addEventListener('click', async () => {
       const text = button.dataset.copy || '';
