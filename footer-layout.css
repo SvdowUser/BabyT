@@ -11,18 +11,18 @@
 /*
   DESKTOP STRUCTURE
   -----------------
-  [ BRAND ]   [ EXPLORE     ]   [ OTHER        ]
-              [ THE PROJECT ]   [ SOCIAL MEDIA ]
+  [ BRAND ]          [ EXPLORE     ]   [ OTHER        ]
+                     [ THE PROJECT ]   [ SOCIAL MEDIA ]
 
-  The vertical rhythm is intentionally matched to the Axie reference:
-  heading -> first link ~= 29px, link baselines ~= 34px apart, and the
-  second block begins ~= 30px after the first block.
+  The desktop proportions are tuned against the supplied Axie footer screenshot.
+  The text columns are intentionally grouped closer together instead of being
+  spread evenly across the full footer width.
 */
 .world-home .world-footer-grid{
   display:grid!important;
-  grid-template-columns:1.42fr .95fr 1fr!important;
+  grid-template-columns:1.75fr .80fr .90fr!important;
   grid-template-rows:auto auto!important;
-  column-gap:clamp(78px,8vw,150px)!important;
+  column-gap:clamp(50px,4vw,64px)!important;
   row-gap:30px!important;
   min-height:0!important;
   height:100%!important;
@@ -88,11 +88,11 @@
   align-items:flex-start!important;
 }
 
-/* Axie-like typography and spacing. */
+/* Typography and vertical rhythm matched more closely to the reference. */
 .world-home .world-footer .footer-col{
   display:flex!important;
   flex-direction:column!important;
-  gap:15px!important;
+  gap:17px!important;
   padding-top:4px!important;
   align-content:initial!important;
 }
@@ -102,7 +102,7 @@
   margin:0!important;
   padding:0!important;
   color:#8093b0!important;
-  font-size:10px!important;
+  font-size:11px!important;
   font-weight:800!important;
   letter-spacing:.09em!important;
   line-height:1!important;
@@ -125,7 +125,7 @@
   background:none!important;
   box-shadow:none!important;
   color:#fff8e8!important;
-  font-size:13px!important;
+  font-size:14px!important;
   font-weight:700!important;
   line-height:1.45!important;
   text-align:left!important;
@@ -156,7 +156,7 @@
   margin:0 0 18px!important;
   padding:0!important;
   color:#8093b0!important;
-  font-size:10px!important;
+  font-size:11px!important;
   font-weight:800!important;
   letter-spacing:.09em!important;
   line-height:1!important;
@@ -203,10 +203,7 @@
 .world-home .footer-social-links a[href*="BabyTonSol"]::before{content:"B"!important;font-size:17px!important}
 .world-home .world-footer-bottom{display:none!important}
 
-/* BabyT must sit in the clear space BETWEEN the brand and Explore column.
-   The previous 35vw position pushed the visible character into the Explore/
-   The Project text. This shifts the render roughly 80px left at the current
-   desktop viewport while preserving the Axie-like lower-centre placement. */
+/* BabyT stays in the clear space between the brand and the text columns. */
 .world-home .world-footer::after{
   left:clamp(450px,31vw,500px)!important;
   bottom:10px!important;
