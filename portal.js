@@ -174,6 +174,25 @@
   loadChunkedArtwork('.work-card--character-concept img', 'character-concept', 6);
   loadChunkedArtwork('.work-card--orangutini-concept img', 'orangutini-v2', 1);
 
+  /* Rebuild the creator's exact uploaded transparent footer star trail. */
+  const footer = document.querySelector('.world-footer');
+  if (footer) {
+    Promise.all(
+      Array.from({ length: 5 }, (_, i) =>
+        fetch(`./assets/world/footer-startrail-exact-${i}.txt?v=2`, { cache: 'no-cache' })
+          .then(response => {
+            if (!response.ok) throw new Error(`footer startrail chunk ${i} failed: ${response.status}`);
+            return response.text();
+          })
+      )
+    ).then(parts => {
+      const source = `data:image/webp;base64,${parts.join('').replace(/\s+/g, '')}`;
+      footer.style.setProperty('--footer-startrail-image', `url("${source}")`);
+    }).catch(() => {
+      footer.style.removeProperty('--footer-startrail-image');
+    });
+  }
+
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.addEventListener('click', async () => {
       const text = button.dataset.copy || '';
