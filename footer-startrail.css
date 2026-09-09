@@ -1,34 +1,60 @@
-/* Exact transparent star trail uploaded by the creator. */
+/* Exact transparent star trail uploaded by the creator.
+   The image itself is reconstructed in portal.js from the uploaded artwork chunks. */
 .world-home .world-footer::before{
   content:"";
   position:absolute;
   z-index:-2;
-  left:0;
-  bottom:0;
-  width:min(36vw,520px);
-  height:100%;
+  left:18px;
+  bottom:-34px;
+  width:min(31vw,410px);
+  height:520px;
   pointer-events:none;
-  opacity:.96;
+  opacity:1;
   background-image:var(--footer-startrail-image, none);
   background-position:left bottom;
   background-size:contain;
   background-repeat:no-repeat;
-  filter:drop-shadow(0 0 10px rgba(104,207,255,.20));
+  filter:none;
+}
+
+/* Keep the real BabyT render from the existing site asset, but move it clear of the links. */
+.world-home .world-footer::after{
+  left:clamp(300px,21vw,420px)!important;
+  bottom:26px!important;
+  width:230px!important;
+  height:305px!important;
+  background:url('./assets/media/babyt-character.webp') center bottom/contain no-repeat!important;
+  opacity:1!important;
+  filter:drop-shadow(0 20px 26px rgba(0,0,0,.52))!important;
+  pointer-events:none!important;
 }
 
 @media(max-width:1100px){
   .world-home .world-footer::before{
-    width:min(42vw,430px);
-    opacity:.84;
+    left:8px;
+    bottom:-22px;
+    width:min(39vw,350px);
+    height:455px;
+    opacity:.94;
+  }
+  .world-home .world-footer::after{
+    left:25%!important;
+    width:190px!important;
+    height:255px!important;
+    bottom:35px!important;
   }
 }
 
 @media(max-width:760px){
   .world-home .world-footer::before{
-    width:300px;
-    height:430px;
+    left:-26px;
+    width:260px;
+    height:390px;
     top:auto;
-    bottom:0;
-    opacity:.48;
+    bottom:-28px;
+    opacity:.56;
+  }
+  .world-home .world-footer::after{
+    display:none!important;
   }
 }
