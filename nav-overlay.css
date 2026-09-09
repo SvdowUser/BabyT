@@ -138,6 +138,8 @@
 .mobile-menu a{padding:13px 20px}
 .mobile-menu .mobile-sub{padding-left:32px;color:#b9c9dc}
 .mobile-menu .mobile-play{display:none!important}
+@media(max-width:1000px){.mobile-menu{max-height:calc(100dvh - 82px);overflow-y:auto;overscroll-behavior:contain}}
+@media(max-width:680px){.mobile-menu{max-height:calc(100dvh - 54px)}}
 
 @media(max-width:1000px){
   .portal-links{display:none}.portal-brand{min-width:0}.nav-toggle{display:block;margin-left:auto}

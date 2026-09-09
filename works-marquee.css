@@ -43,12 +43,12 @@
 
 .works-marquee::before{
   left:0;
-  background:linear-gradient(90deg,#f6e9bd 8%,rgba(246,233,189,.88) 34%,rgba(246,233,189,0) 100%);
+  background:linear-gradient(90deg,#e9e8e2 8%,rgba(233,232,226,.88) 34%,rgba(233,232,226,0) 100%);
 }
 
 .works-marquee::after{
   right:0;
-  background:linear-gradient(270deg,#f6e9bd 8%,rgba(246,233,189,.88) 34%,rgba(246,233,189,0) 100%);
+  background:linear-gradient(270deg,#e9e8e2 8%,rgba(233,232,226,.88) 34%,rgba(233,232,226,0) 100%);
 }
 
 .work-row{
@@ -89,9 +89,9 @@
   aspect-ratio:auto!important;
   margin:0!important;
   overflow:hidden!important;
-  border:9px solid rgba(255,249,225,.98)!important;
+  border:9px solid rgba(249,249,244,.98)!important;
   border-radius:24px!important;
-  background:#fff7db!important;
+  background:#efeee8!important;
   box-shadow:0 2px 0 rgba(92,56,27,.10)!important;
 }
 
@@ -165,3 +165,5 @@
   .work-row{overflow-x:auto;scrollbar-width:none}
   .work-row::-webkit-scrollbar{display:none}
 }
+
+.world-paper-chapter .works-marquee::before,.world-paper-chapter .works-marquee::after{display:none}
