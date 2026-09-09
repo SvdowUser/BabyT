@@ -1,14 +1,25 @@
-/* Footer layout and branding. Loaded after homepage-world.css. */
+/* Compact Axie-inspired footer layout. Loaded after homepage-world.css and footer-startrail.css. */
+
+/* Desktop target: the reference footer is ~380 CSS px high at the user's 125% display scaling. */
+.world-home .world-footer{
+  box-sizing:border-box!important;
+  height:380px!important;
+  min-height:380px!important;
+  padding:44px 0 10px!important;
+}
 .world-home .world-footer-grid{
+  display:grid!important;
   grid-template-columns:1.45fr .8fr .8fr 1fr;
   gap:clamp(48px,6vw,110px);
-  min-height:335px;
+  min-height:0!important;
+  height:100%!important;
+  align-items:start!important;
 }
 
-/* LEFT BRAND — use the user-uploaded white Brainrot Games wordmark. */
+/* LEFT BRAND */
 .world-home .world-footer-brand{
-  min-height:330px;
-  padding-top:2px;
+  min-height:0!important;
+  padding-top:0!important;
   display:flex!important;
   align-items:flex-start!important;
   justify-content:flex-start!important;
@@ -17,7 +28,8 @@
 .world-home .world-wordmark{
   display:block!important;
   width:185px!important;
-  height:auto!important;
+  height:96px!important;
+  overflow:visible!important;
   margin:0!important;
   padding:0!important;
   background:none!important;
@@ -26,7 +38,6 @@
 .world-home .world-wordmark::after{content:none!important;display:none!important}
 .world-home .world-wordmark span{display:none!important}
 .world-home .world-wordmark img{
-  content:url('./assets/brand/brainrot-games-white-footer.png?v=1')!important;
   display:block!important;
   width:185px!important;
   height:auto!important;
@@ -36,49 +47,65 @@
   filter:none!important;
   opacity:1!important;
   visibility:visible!important;
+  /* The uploaded wordmark has empty canvas around it; pull the visible lettering up to the Axie-logo position. */
+  transform:translateY(-44px)!important;
 }
 
-/* RIGHT COLUMN: Other + socials. */
-.world-home .world-footer-grid>.footer-other{
+/* COLUMN RHYTHM — remove the old portal.css margin-top that doubled every link gap. */
+.world-home .world-footer .footer-col{
   display:flex!important;
   flex-direction:column!important;
-  flex-wrap:nowrap!important;
-  align-items:flex-start!important;
-  gap:0!important;
-  padding-top:7px!important;
+  gap:18px!important;
+  padding-top:4px!important;
 }
-.world-home .world-footer-grid>.footer-other>strong,
-.world-home .world-footer-grid>.footer-other .footer-social-title{
-  display:block!important;
-  width:auto!important;
-  margin:0 0 22px!important;
+.world-home .world-footer .footer-col>strong{
+  margin:0!important;
   color:#8093b0!important;
-  font-size:11px!important;
+  font-size:10px!important;
   font-weight:800!important;
-  letter-spacing:.08em!important;
+  letter-spacing:.09em!important;
   line-height:1!important;
   text-transform:uppercase!important;
 }
-.world-home .world-footer-grid>.footer-other strong::after{content:none!important;display:none!important}
-.world-home .world-footer-grid>.footer-other>a{
+.world-home .world-footer .footer-col>a{
   display:block!important;
   width:auto!important;
-  height:auto!important;
-  margin:0 0 17px!important;
+  margin:0!important;
   padding:0!important;
-  border:0!important;
-  border-radius:0!important;
-  background:none!important;
   color:#fff8e8!important;
-  font-size:14px!important;
+  font-size:13px!important;
   font-weight:700!important;
-  line-height:1.25!important;
+  line-height:1.45!important;
   transform:none!important;
 }
-.world-home .world-footer-grid>.footer-other>a:hover{color:#ebc987!important;transform:translateX(2px)!important}
-.world-home .footer-social-group{margin-top:24px!important}
-.world-home .world-footer-grid>.footer-other .footer-social-title{margin-bottom:18px!important}
-.world-home .footer-social-links{display:flex!important;align-items:center!important;gap:12px!important}
+.world-home .world-footer .footer-col>a:hover{
+  color:#ebc987!important;
+  transform:translateX(2px)!important;
+}
+
+/* OTHER + SOCIALS */
+.world-home .world-footer-grid>.footer-other{
+  align-items:flex-start!important;
+}
+.world-home .footer-social-group{
+  margin-top:12px!important;
+}
+.world-home .world-footer-grid>.footer-other .footer-social-title{
+  display:block!important;
+  width:auto!important;
+  margin:0 0 18px!important;
+  color:#8093b0!important;
+  font-size:10px!important;
+  font-weight:800!important;
+  letter-spacing:.09em!important;
+  line-height:1!important;
+  text-transform:uppercase!important;
+}
+.world-home .footer-social-links{
+  display:flex!important;
+  align-items:center!important;
+  gap:12px!important;
+}
 .world-home .world-footer-grid>.footer-other .footer-social-links>a{
   display:grid!important;
   place-items:center!important;
@@ -110,19 +137,50 @@
 .world-home .footer-social-links a[href*="BabyTonSol"]::before{content:"B"!important;font-size:17px!important}
 .world-home .world-footer-bottom{display:none!important}
 
+/* Put BabyT in the same visual zone as the Axie character: lower-left/centre, clear of the links. */
+.world-home .world-footer::after{
+  left:clamp(420px,32vw,520px)!important;
+  bottom:10px!important;
+  width:205px!important;
+  height:265px!important;
+}
+
 @media(max-width:1100px){
-  .world-home .world-footer-grid{grid-template-columns:1.3fr 1fr 1fr;gap:45px}
+  .world-home .world-footer{
+    height:auto!important;
+    min-height:400px!important;
+    padding:44px 0 20px!important;
+  }
+  .world-home .world-footer-grid{
+    height:auto!important;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:40px!important;
+  }
   .world-home .world-footer-grid>.footer-other{grid-column:3}
   .world-home .world-wordmark,.world-home .world-wordmark img{width:170px!important}
+  .world-home .world-footer::after{
+    left:27%!important;
+    width:180px!important;
+    height:240px!important;
+    bottom:18px!important;
+  }
 }
 @media(max-width:760px){
-  .world-home .world-footer-grid{grid-template-columns:1fr 1fr;gap:42px 28px}
-  .world-home .world-footer-brand{grid-column:1/-1;min-height:0!important;padding-bottom:8px}
+  .world-home .world-footer{
+    height:auto!important;
+    min-height:0!important;
+    padding:48px 0 24px!important;
+  }
+  .world-home .world-footer-grid{grid-template-columns:1fr 1fr;gap:36px 28px!important}
+  .world-home .world-footer-brand{grid-column:1/-1;min-height:0!important;padding-bottom:0}
   .world-home .world-footer-grid>.footer-other{grid-column:auto}
   .world-home .world-wordmark,.world-home .world-wordmark img{width:155px!important}
+  .world-home .world-wordmark img{transform:translateY(-24px)!important}
+  .world-home .world-footer::after{display:none!important}
 }
 @media(max-width:520px){
-  .world-home .world-footer-grid{grid-template-columns:1fr}
+  .world-home .world-footer-grid{grid-template-columns:1fr;gap:30px!important}
   .world-home .world-footer-brand{grid-column:auto}
   .world-home .world-footer-grid>.footer-other{grid-column:auto}
+  .world-home .world-footer .footer-col{gap:14px!important}
 }
