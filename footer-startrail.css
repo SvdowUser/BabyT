@@ -1,24 +1,10 @@
 /* Exact transparent star trail uploaded by the creator.
-   The image itself is reconstructed in portal.js from the uploaded artwork chunks. */
-
-/* Desktop footer height matched much more closely to the Axie reference. */
-.world-home .world-footer{
-  box-sizing:border-box;
-  height:440px!important;
-  min-height:440px!important;
-  padding:48px 0 18px!important;
-}
-.world-home .world-footer-grid{
-  min-height:300px!important;
-}
-.world-home .world-footer-brand{
-  min-height:300px!important;
-}
+   Layout sizing is controlled only by footer-layout.css. */
 
 .world-home .world-footer::before{
   content:"";
   position:absolute;
-  z-index:-2;
+  z-index:0;
   left:18px;
   bottom:-34px;
   width:min(31vw,410px);
@@ -32,24 +18,24 @@
   filter:none;
 }
 
-/* Keep the real BabyT render from the existing site asset, but move it clear of the links. */
+/* Real BabyT render from the existing site asset. */
 .world-home .world-footer::after{
-  left:clamp(300px,21vw,420px)!important;
-  bottom:18px!important;
-  width:220px!important;
-  height:285px!important;
-  background:url('./assets/media/babyt-character.webp') center bottom/contain no-repeat!important;
-  opacity:1!important;
-  filter:drop-shadow(0 20px 26px rgba(0,0,0,.52))!important;
-  pointer-events:none!important;
+  content:"";
+  position:absolute;
+  z-index:1;
+  left:clamp(420px,32vw,520px);
+  bottom:10px;
+  width:205px;
+  height:265px;
+  background:url('./assets/media/babyt-character.webp') center bottom/contain no-repeat;
+  opacity:1;
+  filter:drop-shadow(0 20px 26px rgba(0,0,0,.52));
+  pointer-events:none;
 }
 
+.world-home .world-footer-grid{position:relative;z-index:2}
+
 @media(max-width:1100px){
-  .world-home .world-footer{
-    height:auto!important;
-    min-height:440px!important;
-    padding:48px 0 22px!important;
-  }
   .world-home .world-footer::before{
     left:8px;
     bottom:-22px;
@@ -58,32 +44,20 @@
     opacity:.94;
   }
   .world-home .world-footer::after{
-    left:25%!important;
-    width:190px!important;
-    height:255px!important;
-    bottom:24px!important;
+    left:27%;
+    width:180px;
+    height:240px;
+    bottom:18px;
   }
 }
 
 @media(max-width:760px){
-  .world-home .world-footer{
-    height:auto!important;
-    min-height:0!important;
-    padding:54px 0 24px!important;
-  }
-  .world-home .world-footer-grid,
-  .world-home .world-footer-brand{
-    min-height:0!important;
-  }
   .world-home .world-footer::before{
     left:-26px;
     width:260px;
     height:390px;
-    top:auto;
     bottom:-28px;
     opacity:.56;
   }
-  .world-home .world-footer::after{
-    display:none!important;
-  }
+  .world-home .world-footer::after{display:none}
 }
