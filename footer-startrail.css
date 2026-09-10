@@ -5,15 +5,15 @@
   content:"";
   position:absolute;
   z-index:0;
-  left:18px;
-  bottom:-34px;
-  width:min(31vw,410px);
-  height:520px;
+  left:-8px;
+  bottom:-22px;
+  width:min(49vw,860px);
+  height:430px;
   pointer-events:none;
-  opacity:1;
+  opacity:.96;
   background-image:var(--footer-startrail-image, none);
   background-position:left bottom;
-  background-size:contain;
+  background-size:100% auto;
   background-repeat:no-repeat;
   filter:none;
 }
@@ -37,11 +37,12 @@
 
 @media(max-width:1100px){
   .world-home .world-footer::before{
-    left:8px;
-    bottom:-22px;
-    width:min(39vw,350px);
-    height:455px;
-    opacity:.94;
+    left:-12px;
+    bottom:-18px;
+    width:min(62vw,650px);
+    height:330px;
+    opacity:.9;
+    background-size:100% auto;
   }
   .world-home .world-footer::after{
     left:27%;
@@ -53,11 +54,12 @@
 
 @media(max-width:760px){
   .world-home .world-footer::before{
-    left:-26px;
-    width:260px;
-    height:390px;
-    bottom:-28px;
-    opacity:.56;
+    left:-80px;
+    width:430px;
+    height:260px;
+    bottom:-20px;
+    opacity:.5;
+    background-size:100% auto;
   }
   .world-home .world-footer::after{display:none}
 }
