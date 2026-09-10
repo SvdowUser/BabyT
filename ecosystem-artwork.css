@@ -47,6 +47,8 @@
   background-position:center center;
   background-size:cover;
   pointer-events:none;
+  opacity:0;
+  transition:opacity .18s ease-out;
 }
 
 /* Only shade the top/left for copy readability.
@@ -69,7 +71,18 @@
       rgba(7,18,29,.28) 28%,
       rgba(7,18,29,.03) 62%,
       rgba(7,18,29,0) 100%);
+  opacity:0;
+  transition:opacity .18s ease-out;
 }
+
+/* Reveal the artwork and its readability shading together only after both large
+   transition artworks are fully downloaded and decoded. This prevents the CSS
+   crossfade from appearing by itself on a slow connection. */
+.world-home.artworks-loaded .world-panorama::before,
+.world-home.artworks-loaded .world-panorama::after{
+  opacity:1;
+}
+
 .world-home .world-panorama .panorama-copy,
 .world-home .world-panorama .panorama-caption{
   position:absolute;
