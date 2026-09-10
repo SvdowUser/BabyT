@@ -40,29 +40,34 @@
 
 .world-home .world-footer-grid{position:relative;z-index:3}
 
-/* Community CTA: use the clean world/starfield artwork as a full-bleed background. */
+/* Community CTA: full-bleed world/starfield artwork uploaded by the creator. */
 .world-home .world-community{
   position:relative;
   isolation:isolate;
+  overflow:visible;
 }
 .world-home .world-community::before{
   content:"";
   position:absolute;
-  z-index:-1;
+  z-index:0;
   top:0;
   bottom:0;
   left:50%;
   width:100vw;
   transform:translateX(-50%);
   background:
-    linear-gradient(180deg,rgba(6,15,29,.28) 0%,rgba(6,15,29,.36) 48%,rgba(6,15,29,.62) 100%),
-    url('./assets/world/community-world-background.webp') center bottom/cover no-repeat;
+    linear-gradient(180deg,rgba(6,15,29,.12) 0%,rgba(6,15,29,.18) 52%,rgba(6,15,29,.34) 100%),
+    url('./assets/world/community-world-background.png?v=1') center bottom/cover no-repeat;
   pointer-events:none;
+}
+.world-home .world-community > *{
+  position:relative;
+  z-index:1;
 }
 .world-home .world-community .world-kicker{color:#89d7e9}
 .world-home .world-community .community-copy{color:#d7e4eb}
 .world-home .world-community .community-links>a{
-  background:rgba(13,35,52,.78);
+  background:rgba(13,35,52,.74);
   border-color:rgba(166,205,219,.24);
   backdrop-filter:blur(4px);
 }
@@ -101,7 +106,7 @@
   .world-home .world-footer::after{display:none}
   .world-home .world-community::before{
     background:
-      linear-gradient(180deg,rgba(6,15,29,.34),rgba(6,15,29,.68)),
-      url('./assets/world/community-world-background.webp') 50% 100%/auto 100% no-repeat;
+      linear-gradient(180deg,rgba(6,15,29,.18),rgba(6,15,29,.42)),
+      url('./assets/world/community-world-background.png?v=1') 50% 100%/cover no-repeat;
   }
 }
