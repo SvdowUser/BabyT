@@ -39,7 +39,8 @@
 
 .world-home .world-footer-grid{position:relative;z-index:3}
 
-/* Community CTA background: full bleed, never stretched. */
+/* Community CTA: overlap the panorama above so the two artworks cross-fade directly.
+   There is intentionally no solid navy spacer between them. */
 .world-home .world-community.shell{
   width:100%!important;
   max-width:none!important;
@@ -49,11 +50,13 @@
 .world-home .world-community{
   position:relative;
   isolation:isolate;
+  z-index:3;
   overflow:hidden;
   min-height:56.25vw;
-  padding-top:clamp(90px,6vw,122px);
+  margin-top:-180px;
+  padding-top:calc(clamp(90px,6vw,122px) + 180px);
   padding-bottom:clamp(150px,11vw,220px);
-  background:#101e2b;
+  background:transparent;
 }
 .world-home .world-community::before{
   content:"";
@@ -67,31 +70,30 @@
   background-position:center center;
   background-size:cover;
   pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,
+    transparent 0,
+    rgba(0,0,0,.16) 42px,
+    rgba(0,0,0,.46) 88px,
+    rgba(0,0,0,.78) 138px,
+    #000 180px);
+  mask-image:linear-gradient(180deg,
+    transparent 0,
+    rgba(0,0,0,.16) 42px,
+    rgba(0,0,0,.46) 88px,
+    rgba(0,0,0,.78) 138px,
+    #000 180px);
 }
-/*
-   Smooth hand-off from the dark panorama above into the purple star field.
-   Unlike the old hard cut, the exact top edge matches #101e2b and then
-   becomes transparent over ~180px, revealing the artwork progressively.
-   The second gradient keeps the existing subtle fade into the footer below.
-*/
+/* Only fade the very bottom into the footer. The top is a real artwork-to-artwork crossfade. */
 .world-home .world-community::after{
   content:"";
   position:absolute;
   z-index:0;
   inset:0;
   pointer-events:none;
-  background:
-    linear-gradient(180deg,
-      #101e2b 0px,
-      rgba(16,30,43,.96) 22px,
-      rgba(16,30,43,.82) 58px,
-      rgba(16,30,43,.52) 105px,
-      rgba(16,30,43,.20) 150px,
-      rgba(16,30,43,0) 190px),
-    linear-gradient(0deg,
-      #070a0f 0px,
-      rgba(7,10,15,.55) 30px,
-      rgba(7,10,15,0) 68px);
+  background:linear-gradient(0deg,
+    #070a0f 0px,
+    rgba(7,10,15,.55) 30px,
+    rgba(7,10,15,0) 68px);
 }
 .world-home .world-community > *{
   position:relative;
@@ -141,7 +143,8 @@
   .world-home .world-footer::after{display:none}
   .world-home .world-community{
     min-height:760px;
-    padding-top:70px;
+    margin-top:-110px;
+    padding-top:180px;
     padding-bottom:105px;
   }
   .world-home .world-community::before{
@@ -151,10 +154,10 @@
     background-repeat:no-repeat;
     background-position:center center;
     background-size:cover;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 38px,rgba(0,0,0,.76) 76px,#000 110px);
+    mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 38px,rgba(0,0,0,.76) 76px,#000 110px);
   }
   .world-home .world-community::after{
-    background:
-      linear-gradient(180deg,#101e2b 0,rgba(16,30,43,.82) 50px,rgba(16,30,43,.28) 105px,rgba(16,30,43,0) 145px),
-      linear-gradient(0deg,#070a0f 0,rgba(7,10,15,.48) 26px,rgba(7,10,15,0) 52px);
+    background:linear-gradient(0deg,#070a0f 0,rgba(7,10,15,.48) 26px,rgba(7,10,15,0) 52px);
   }
 }
