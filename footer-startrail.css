@@ -82,6 +82,8 @@
     rgba(0,0,0,.46) 88px,
     rgba(0,0,0,.78) 138px,
     #000 180px);
+  opacity:0;
+  transition:opacity .18s ease-out;
 }
 /* Only fade the very bottom into the footer. The top is a real artwork-to-artwork crossfade. */
 .world-home .world-community::after{
@@ -94,7 +96,18 @@
     #070a0f 0px,
     rgba(7,10,15,.55) 30px,
     rgba(7,10,15,0) 68px);
+  opacity:0;
+  transition:opacity .18s ease-out;
 }
+
+/* The community artwork, its mask and the bottom fade are revealed in the same
+   frame as the panorama artwork. On slow networks no standalone CSS transition
+   is visible before the actual images arrive. */
+.world-home.artworks-loaded .world-community::before,
+.world-home.artworks-loaded .world-community::after{
+  opacity:1;
+}
+
 .world-home .world-community > *{
   position:relative;
   z-index:1;
