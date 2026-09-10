@@ -109,6 +109,16 @@
   background:transparent!important;
 }
 
+/* Hard reset: legacy cached nth-child rules used background SVGs on this same class. */
+.world-home .world-about .world-about-stats .about-stat:nth-child(1) > img.about-stat-icon,
+.world-home .world-about .world-about-stats .about-stat:nth-child(2) > img.about-stat-icon,
+.world-home .world-about .world-about-stats .about-stat:nth-child(3) > img.about-stat-icon,
+.world-home .world-about .world-about-stats .about-stat:nth-child(4) > img.about-stat-icon{
+  background:none!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
 .world-home .world-about .about-stat strong{
   display:block!important;
   margin:0!important;
