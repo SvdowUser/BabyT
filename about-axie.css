@@ -9,7 +9,7 @@
   width:100%!important;
   max-width:none!important;
   margin:0!important;
-  padding:150px 0 82px!important;
+  padding:150px 0 24px!important;
   box-sizing:border-box!important;
   text-align:center!important;
   background:var(--about-bg)!important;
@@ -141,7 +141,7 @@
 }
 
 @media(max-width:900px){
-  .world-home .world-about{padding:110px 0 68px!important}
+  .world-home .world-about{padding:110px 0 32px!important}
   .world-home .world-about .world-about-inner{width:min(100% - 44px,760px)!important}
   .world-home .world-about h2{font-size:30px!important}
   .world-home .world-about .world-about-description{width:min(680px,100%)!important;margin-top:22px!important;font-size:14px!important}
@@ -154,7 +154,7 @@
 }
 
 @media(max-width:560px){
-  .world-home .world-about{padding:80px 0 58px!important}
+  .world-home .world-about{padding:80px 0 28px!important}
   .world-home .world-about .world-about-inner{width:calc(100% - 28px)!important}
   .world-home .world-about h2{font-size:26px!important}
   .world-home .world-about .world-about-description{font-size:13px!important;line-height:1.5!important}
