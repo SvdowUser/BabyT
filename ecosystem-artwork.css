@@ -27,13 +27,13 @@
 }
 
 /* Use the creator's new artwork in the panorama that previously showed world-hub.webp.
-   This section is deliberately taller than before so less of the illustration is cropped
-   at the top and bottom on wide desktop screens. */
+   The panorama is intentionally tall so the illustration continues well below the
+   seated character before the star-world artwork begins. */
 .world-home .world-panorama{
   position:relative;
   isolation:isolate;
   z-index:1;
-  height:clamp(760px,58vw,1080px);
+  height:clamp(900px,70vw,1320px);
   background:#101e2b;
 }
 .world-home .world-panorama>img{
@@ -47,7 +47,7 @@
   inset:0;
   background-image:url('./assets/world/adventure-panorama-artwork.png?v=2');
   background-repeat:no-repeat;
-  background-position:center center;
+  background-position:center 54%;
   background-size:cover;
   pointer-events:none;
   opacity:0;
@@ -95,15 +95,15 @@
 
 @media(max-width:1000px){
   .world-home .world-ecosystem{padding-top:80px;padding-bottom:80px}
-  .world-home .world-panorama{height:clamp(720px,76vw,900px)}
-  .world-home .world-panorama::before{background-position:center center}
+  .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
+  .world-home .world-panorama::before{background-position:center 54%}
 }
 
 @media(max-width:680px){
   .world-home .world-ecosystem{padding-top:66px;padding-bottom:66px}
-  .world-home .world-panorama{height:760px}
+  .world-home .world-panorama{height:860px}
   .world-home .world-panorama::before{
-    background-position:center center;
+    background-position:center 55%;
     background-size:cover;
   }
   .world-home .world-panorama::after{
