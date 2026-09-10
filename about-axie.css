@@ -163,8 +163,8 @@
   .world-home .world-about .about-stat span{font-size:14px!important;margin-top:5px!important}
 }
 
-/* Artwork icons split from the creator's three-icon sheet. */
-.world-home .world-about .about-stat:nth-child(-n+3) > .about-stat-icon{
+/* Uploaded artwork icons replace the old inline SVG symbols. */
+.world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon{
   display:block!important;
   width:108px!important;
   height:74px!important;
@@ -174,14 +174,15 @@
   background-size:contain!important;
   color:transparent!important;
 }
-.world-home .world-about .about-stat:nth-child(1) > .about-stat-icon{background-image:url('./assets/world/about-icon-controller.svg?v=1')!important}
-.world-home .world-about .about-stat:nth-child(2) > .about-stat-icon{background-image:url('./assets/world/about-icon-friends.svg?v=1')!important}
-.world-home .world-about .about-stat:nth-child(3) > .about-stat-icon{background-image:url('./assets/world/about-icon-browser.svg?v=1')!important}
-.world-home .world-about .about-stat:nth-child(-n+3) > .about-stat-icon svg{display:none!important}
+.world-home .world-about .about-stat:nth-child(1) > .about-stat-icon{background-image:url('./assets/world/about-icon-controller.png?v=1')!important}
+.world-home .world-about .about-stat:nth-child(2) > .about-stat-icon{background-image:url('./assets/world/about-icon-friends.png?v=1')!important}
+.world-home .world-about .about-stat:nth-child(3) > .about-stat-icon{background-image:url('./assets/world/about-icon-browser.png?v=1')!important}
+.world-home .world-about .about-stat:nth-child(4) > .about-stat-icon{background-image:url('./assets/world/about-icon-solana.png?v=1')!important}
+.world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon svg{display:none!important}
 
 @media(max-width:900px){
-  .world-home .world-about .about-stat:nth-child(-n+3) > .about-stat-icon{width:94px!important;height:64px!important;margin-bottom:12px!important}
+  .world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon{width:94px!important;height:64px!important;margin-bottom:12px!important}
 }
 @media(max-width:560px){
-  .world-home .world-about .about-stat:nth-child(-n+3) > .about-stat-icon{width:84px!important;height:58px!important;margin-bottom:10px!important}
+  .world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon{width:84px!important;height:58px!important;margin-bottom:10px!important}
 }
