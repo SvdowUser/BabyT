@@ -1,0 +1,113 @@
+/* Axie-inspired full-bleed artwork treatment for the Our ecosystem section.
+   The artwork remains proportional and is blended into the surrounding navy page instead of ending on a hard edge. */
+.world-home .world-ecosystem{
+  position:relative;
+  isolation:isolate;
+  z-index:1;
+  padding-top:clamp(130px,9vw,180px);
+  padding-bottom:clamp(145px,10vw,205px);
+}
+
+.world-home .world-ecosystem::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  top:-72px;
+  bottom:-86px;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background-image:url('./assets/world/ecosystem-artwork.png?v=1');
+  background-repeat:no-repeat;
+  background-position:center 44%;
+  background-size:cover;
+  pointer-events:none;
+}
+
+.world-home .world-ecosystem::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-72px;
+  bottom:-86px;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,
+      #101e2b 0,
+      rgba(16,30,43,.96) 34px,
+      rgba(16,30,43,.78) 92px,
+      rgba(16,30,43,.40) 170px,
+      rgba(16,30,43,.10) 250px,
+      rgba(16,30,43,0) 320px),
+    linear-gradient(0deg,
+      #101e2b 0,
+      rgba(16,30,43,.94) 42px,
+      rgba(16,30,43,.66) 112px,
+      rgba(16,30,43,.26) 205px,
+      rgba(16,30,43,0) 300px),
+    linear-gradient(90deg,
+      rgba(9,16,35,.20) 0%,
+      rgba(9,16,35,.05) 35%,
+      rgba(9,16,35,.05) 65%,
+      rgba(9,16,35,.20) 100%);
+}
+
+.world-home .world-ecosystem > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Keep the cards readable while allowing the new illustration to remain visible around them. */
+.world-home .world-ecosystem .world-game-card{
+  box-shadow:0 24px 70px rgba(4,8,24,.24);
+}
+.world-home .world-ecosystem .world-community-card{
+  background:rgba(30,55,68,.88);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+.world-home .world-ecosystem .world-token-card{
+  background:rgba(17,39,54,.90);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+
+@media(max-width:1000px){
+  .world-home .world-ecosystem{
+    padding-top:110px;
+    padding-bottom:130px;
+  }
+  .world-home .world-ecosystem::before,
+  .world-home .world-ecosystem::after{
+    top:-52px;
+    bottom:-65px;
+  }
+  .world-home .world-ecosystem::before{
+    background-position:center center;
+  }
+}
+
+@media(max-width:680px){
+  .world-home .world-ecosystem{
+    padding-top:90px;
+    padding-bottom:105px;
+  }
+  .world-home .world-ecosystem::before,
+  .world-home .world-ecosystem::after{
+    top:-38px;
+    bottom:-48px;
+  }
+  .world-home .world-ecosystem::before{
+    background-position:center top;
+    background-size:auto 100%;
+  }
+  .world-home .world-ecosystem::after{
+    background:
+      linear-gradient(180deg,#101e2b 0,rgba(16,30,43,.82) 60px,rgba(16,30,43,.20) 150px,rgba(16,30,43,0) 220px),
+      linear-gradient(0deg,#101e2b 0,rgba(16,30,43,.72) 60px,rgba(16,30,43,0) 170px),
+      linear-gradient(90deg,rgba(9,16,35,.20),rgba(9,16,35,.06),rgba(9,16,35,.20));
+  }
+}
