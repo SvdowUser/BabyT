@@ -1,4 +1,4 @@
-@import url('./about-axie.css?v=1');
+@import url('./about-axie.css?v=2');
 @import url('./about-transition-fix.css?v=2');
 
 /* Final community treatment: loaded last so older homepage/footer rules cannot override it. */
