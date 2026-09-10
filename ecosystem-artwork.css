@@ -6,7 +6,7 @@
   position:relative;
   isolation:isolate;
   z-index:auto;
-  padding-top:105px;
+  padding-top:48px;
   padding-bottom:105px;
 }
 .world-home .world-ecosystem::before{
@@ -32,7 +32,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom:40px;
+  margin-bottom:32px;
   text-align:center;
 }
 .world-home .world-ecosystem .world-section-title>div{
@@ -143,7 +143,7 @@
 }
 
 @media(max-width:1000px){
-  .world-home .world-ecosystem{padding-top:80px;padding-bottom:80px}
+  .world-home .world-ecosystem{padding-top:44px;padding-bottom:80px}
   .world-home .world-ecosystem .world-section-title>div::before{width:72px;height:72px;margin-bottom:9px}
   .world-home .world-ecosystem .world-section-title h2{font-size:34px}
   .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
@@ -151,7 +151,7 @@
 }
 
 @media(max-width:680px){
-  .world-home .world-ecosystem{padding-top:66px;padding-bottom:66px}
+  .world-home .world-ecosystem{padding-top:36px;padding-bottom:66px}
   .world-home .world-ecosystem .world-section-title{margin-bottom:30px}
   .world-home .world-ecosystem .world-section-title>div::before{width:62px;height:62px;margin-bottom:7px}
   .world-home .world-ecosystem .world-section-title h2{font-size:30px}
