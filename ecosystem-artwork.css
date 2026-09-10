@@ -79,8 +79,15 @@
   border-radius:10px!important;
   box-shadow:none!important;
 }
+/* Crop the first ecosystem artwork to the requested framing: keep the left edge,
+   zoom in, and let the right-most characters fall outside the card. */
 .world-home .world-ecosystem .world-game-card>img{
-  object-position:center!important;
+  object-position:left center!important;
+  transform:scale(1.27)!important;
+  transform-origin:left center!important;
+}
+.world-home .world-ecosystem .world-game-card:hover>img{
+  transform:scale(1.29)!important;
 }
 .world-home .world-ecosystem .world-game-card::after,
 .world-home .world-ecosystem .world-card-label,
@@ -160,6 +167,8 @@
   .world-home .world-ecosystem .world-section-title>div::before{width:72px;height:72px;margin-bottom:9px}
   .world-home .world-ecosystem .world-section-title h2{font-size:34px}
   .world-home .world-ecosystem .world-ecosystem-grid{gap:18px!important}
+  .world-home .world-ecosystem .world-game-card>img{transform:scale(1.22)!important}
+  .world-home .world-ecosystem .world-game-card:hover>img{transform:scale(1.24)!important}
   .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
   .world-home .world-panorama::before{background-position:center 54%}
 }
@@ -170,6 +179,8 @@
   .world-home .world-ecosystem .world-section-title>div::before{width:62px;height:62px;margin-bottom:7px}
   .world-home .world-ecosystem .world-section-title h2{font-size:30px}
   .world-home .world-ecosystem .world-ecosystem-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .world-home .world-ecosystem .world-game-card>img{transform:scale(1.15)!important}
+  .world-home .world-ecosystem .world-game-card:hover>img{transform:scale(1.17)!important}
   .world-home .world-panorama{height:860px}
   .world-home .world-panorama::before{
     background-position:center 55%;
