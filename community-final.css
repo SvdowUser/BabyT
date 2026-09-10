@@ -1,7 +1,6 @@
 @import url('./about-axie.css?v=2');
 @import url('./about-transition-fix.css?v=2');
 
-/* Final community treatment: loaded last so older homepage/footer rules cannot override it. */
 .world-home .world-community{
   position:relative!important;
   min-height:56.25vw!important;
@@ -19,37 +18,43 @@
   text-align:center!important;
 }
 
-/* Keep the hierarchy restrained: title first, then a quieter supporting line. */
+/* Cleaner, shorter copy — closer to a real game-site CTA and less slogan-heavy. */
 .world-home .world-community .community-social-block h2{
-  margin:0 auto 8px!important;
+  margin:0 auto 7px!important;
   max-width:560px!important;
-  color:#75d6ff!important;
+  color:transparent!important;
+  font-size:0!important;
+  line-height:1!important;
+  text-shadow:none!important;
+}
+.world-home .world-community .community-social-block h2::after{
+  content:"Follow the build"!important;
+  display:block!important;
+  color:#79d7ff!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
   font-size:clamp(25px,1.65vw,30px)!important;
   font-weight:700!important;
   letter-spacing:-.006em!important;
   line-height:1.05!important;
-  text-shadow:none!important;
-}
-.world-home .world-community .community-social-block h2::after{
-  content:none!important;
-  display:none!important;
 }
 
 .world-home .world-community .community-social-block .community-copy{
   margin:0 auto 15px!important;
-  max-width:540px!important;
-  color:#8fdcff!important;
+  max-width:520px!important;
+  color:transparent!important;
+  font-size:0!important;
+  line-height:1!important;
+  text-shadow:none!important;
+}
+.world-home .world-community .community-social-block .community-copy::after{
+  content:"Updates, first looks and playtests."!important;
+  display:block!important;
+  color:#93ddfb!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
   font-size:clamp(12px,.8vw,14px)!important;
   font-weight:400!important;
   letter-spacing:.003em!important;
   line-height:1.25!important;
-  text-shadow:none!important;
-}
-.world-home .world-community .community-social-block .community-copy::after{
-  content:none!important;
-  display:none!important;
 }
 
 .world-home .world-community .community-social-block .community-links{
@@ -64,10 +69,7 @@
   text-align:center!important;
 }
 
-/*
-  Match the reference geometry: compact rounded rectangle, not a full pill.
-  The blue fill stays inside while the uploaded cyan frame sits just outside it.
-*/
+/* Reference-style rounded rectangle: soft corners, but not a generic capsule. */
 .world-home .world-community .community-social-block .community-links>a,
 .world-home .world-community .community-social-block .community-links>a:nth-child(1),
 .world-home .world-community .community-social-block .community-links>a:nth-child(2),
@@ -85,8 +87,8 @@
   overflow:visible!important;
   border:0!important;
   outline:0!important;
-  border-radius:16px!important;
-  background:linear-gradient(180deg,#4c9cf4 0%,#3895ea 100%)!important;
+  border-radius:17px!important;
+  background:linear-gradient(180deg,#4c9cf4 0%,#3794ea 100%)!important;
   box-shadow:none!important;
   color:#fff!important;
   text-decoration:none!important;
@@ -107,19 +109,19 @@
   display:none!important;
 }
 
-/* The decorative frame is outside the fill, so it no longer cuts through the button. */
+/* The frame sits outside the fill, matching the reference instead of cutting into it. */
 .world-home .world-community .community-social-block .community-links>a::after{
   content:""!important;
   display:block!important;
   position:absolute!important;
   z-index:0!important;
   inset:-4px -5px!important;
-  border-radius:20px!important;
+  border-radius:21px!important;
   background-image:url('./assets/world/community-button-frame.png?v=1')!important;
   background-repeat:no-repeat!important;
   background-position:center!important;
   background-size:100% 100%!important;
-  opacity:.72!important;
+  opacity:.62!important;
   pointer-events:none!important;
 }
 
@@ -127,43 +129,24 @@
   position:relative!important;
   z-index:1!important;
   display:block!important;
-  width:21px!important;
-  height:21px!important;
   fill:#fff!important;
   color:#fff!important;
   overflow:visible!important;
   pointer-events:none!important;
 }
-.world-home .world-community .community-social-block .community-links>a.youtube-link>svg{
-  width:22px!important;
-  height:17px!important;
-}
-.world-home .world-community .community-social-block .community-links>a.x-link>svg{
-  width:18px!important;
-  height:18px!important;
-}
-.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{
-  width:19px!important;
-  height:20px!important;
-}
+.world-home .world-community .community-social-block .community-links>a.youtube-link>svg{width:22px!important;height:17px!important}
+.world-home .world-community .community-social-block .community-links>a.x-link>svg{width:18px!important;height:18px!important}
+.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{width:19px!important;height:20px!important}
 
 @media(max-width:760px){
   .world-home .world-community .community-social-block{
     bottom:108px!important;
     width:calc(100% - 28px)!important;
   }
-  .world-home .world-community .community-social-block h2{
-    font-size:24px!important;
-    margin-bottom:7px!important;
-  }
-  .world-home .world-community .community-social-block .community-copy{
-    max-width:390px!important;
-    font-size:12px!important;
-    margin-bottom:12px!important;
-  }
-  .world-home .world-community .community-social-block .community-links{
-    gap:9px!important;
-  }
+  .world-home .world-community .community-social-block h2::after{font-size:24px!important}
+  .world-home .world-community .community-social-block .community-copy{margin-bottom:12px!important}
+  .world-home .world-community .community-social-block .community-copy::after{font-size:12px!important}
+  .world-home .world-community .community-social-block .community-links{gap:9px!important}
   .world-home .world-community .community-social-block .community-links>a{
     width:auto!important;
     min-width:0!important;
@@ -171,15 +154,11 @@
     max-width:118px!important;
     height:39px!important;
     min-height:39px!important;
-    border:0!important;
-    outline:0!important;
     border-radius:14px!important;
-    box-shadow:none!important;
   }
   .world-home .world-community .community-social-block .community-links>a::after{
     inset:-3px -4px!important;
     border-radius:18px!important;
-    background-size:100% 100%!important;
-    opacity:.68!important;
+    opacity:.60!important;
   }
 }
