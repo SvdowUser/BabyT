@@ -85,12 +85,13 @@
   opacity:1;
 }
 
-.world-home .world-panorama .panorama-copy,
-.world-home .world-panorama .panorama-caption{
+.world-home .world-panorama .panorama-copy{
   position:absolute;
   z-index:2;
 }
-.world-home .world-panorama .panorama-caption{z-index:3}
+.world-home .world-panorama .panorama-caption{
+  display:none!important;
+}
 
 @media(max-width:1000px){
   .world-home .world-ecosystem{padding-top:80px;padding-bottom:80px}
