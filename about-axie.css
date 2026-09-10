@@ -100,19 +100,13 @@
 .world-home .world-about .about-stat:last-child{border-right:0!important}
 
 .world-home .world-about .about-stat-icon{
-  width:54px!important;
-  height:54px!important;
-  margin:0 0 20px!important;
-  display:grid!important;
-  place-items:center!important;
-  color:var(--about-cyan)!important;
-}
-.world-home .world-about .about-stat-icon svg{
   display:block!important;
-  width:100%!important;
-  height:100%!important;
-  fill:currentColor!important;
-  stroke:currentColor!important;
+  width:108px!important;
+  height:74px!important;
+  margin:0 0 14px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
 }
 
 .world-home .world-about .about-stat strong{
@@ -146,7 +140,7 @@
   .world-home .world-about .about-stat:nth-child(2){border-right:0!important}
   .world-home .world-about .about-stat:nth-child(3),
   .world-home .world-about .about-stat:nth-child(4){border-bottom:0!important}
-  .world-home .world-about .about-stat-icon{width:46px!important;height:46px!important;margin-bottom:15px!important}
+  .world-home .world-about .about-stat-icon{width:94px!important;height:64px!important;margin-bottom:12px!important}
 }
 
 @media(max-width:560px){
@@ -158,31 +152,7 @@
   .world-home .world-about .about-stat{min-height:146px!important;border-right:0!important;border-bottom:1px solid rgba(126,216,255,.66)!important;padding:24px 16px 20px!important}
   .world-home .world-about .about-stat:nth-child(3){border-bottom:1px solid rgba(126,216,255,.66)!important}
   .world-home .world-about .about-stat:last-child{border-bottom:0!important}
-  .world-home .world-about .about-stat-icon{width:40px!important;height:40px!important;margin-bottom:12px!important}
+  .world-home .world-about .about-stat-icon{width:84px!important;height:58px!important;margin-bottom:10px!important}
   .world-home .world-about .about-stat strong{font-size:17px!important}
   .world-home .world-about .about-stat span{font-size:14px!important;margin-top:5px!important}
-}
-
-/* Uploaded artwork icons replace the old inline SVG symbols. */
-.world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon{
-  display:block!important;
-  width:108px!important;
-  height:74px!important;
-  margin:0 0 14px!important;
-  background-position:center!important;
-  background-repeat:no-repeat!important;
-  background-size:contain!important;
-  color:transparent!important;
-}
-.world-home .world-about .about-stat:nth-child(1) > .about-stat-icon{background-image:url('./assets/world/about-icon-controller.png?v=1')!important}
-.world-home .world-about .about-stat:nth-child(2) > .about-stat-icon{background-image:url('./assets/world/about-icon-friends.png?v=1')!important}
-.world-home .world-about .about-stat:nth-child(3) > .about-stat-icon{background-image:url('./assets/world/about-icon-browser.png?v=1')!important}
-.world-home .world-about .about-stat:nth-child(4) > .about-stat-icon{background-image:url('./assets/world/about-icon-solana.png?v=1')!important}
-.world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon svg{display:none!important}
-
-@media(max-width:900px){
-  .world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon{width:94px!important;height:64px!important;margin-bottom:12px!important}
-}
-@media(max-width:560px){
-  .world-home .world-about .about-stat:nth-child(-n+4) > .about-stat-icon{width:84px!important;height:58px!important;margin-bottom:10px!important}
 }
