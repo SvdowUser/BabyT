@@ -40,7 +40,15 @@
 
 .world-home .world-footer-grid{position:relative;z-index:3}
 
-/* Community CTA: keep the creator artwork at its natural 16:9 framing instead of cropping/zooming it. */
+/* Community CTA background.
+   Important: this section is intentionally full-bleed even though the HTML also has the .shell class.
+   The artwork keeps its original aspect ratio and is scaled with cover; never stretch it with 100% 100%. */
+.world-home .world-community.shell{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
 .world-home .world-community{
   position:relative;
   isolation:isolate;
@@ -54,12 +62,14 @@
   content:"";
   position:absolute;
   z-index:0;
-  top:0;
-  left:50%;
-  width:100vw;
-  height:56.25vw;
-  transform:translateX(-50%);
-  background:url('./assets/world/community-world-background.png?v=2') center top/100% 100% no-repeat;
+  inset:0;
+  width:100%;
+  height:100%;
+  transform:none;
+  background-image:url('./assets/world/community-world-background.png?v=3');
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:cover;
   pointer-events:none;
 }
 /* Only a very small blend where the artwork meets the next dark section. */
@@ -67,11 +77,12 @@
   content:"";
   position:absolute;
   z-index:0;
-  left:50%;
+  left:0;
+  right:0;
   bottom:0;
-  width:100vw;
+  width:100%;
   height:64px;
-  transform:translateX(-50%);
+  transform:none;
   background:linear-gradient(180deg,rgba(7,10,15,0) 0%,rgba(7,10,15,.22) 55%,#070a0f 100%);
   pointer-events:none;
 }
@@ -109,8 +120,8 @@
     min-height:56.25vw;
   }
   .world-home .world-community::before{
-    height:56.25vw;
-    background-position:center top;
+    background-position:center center;
+    background-size:cover;
   }
 }
 
@@ -129,9 +140,12 @@
     padding-bottom:105px;
   }
   .world-home .world-community::before{
-    width:100vw;
+    width:100%;
     height:100%;
-    background:url('./assets/world/community-world-background.png?v=2') 50% 50%/auto 100% no-repeat;
+    background-image:url('./assets/world/community-world-background.png?v=3');
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
   }
   .world-home .world-community::after{height:48px}
 }
