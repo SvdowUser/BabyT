@@ -52,12 +52,14 @@
   text-align:center!important;
 }
 
-/* Intentionally plain, identical social buttons: no border, no ring, no shadow. */
+/* Identical blue social buttons; the uploaded artwork supplies the subtle decorative edge. */
 .world-home .world-community .community-social-block .community-links>a,
 .world-home .world-community .community-social-block .community-links>a:nth-child(1),
 .world-home .world-community .community-social-block .community-links>a:nth-child(2),
 .world-home .world-community .community-social-block .community-links>a:nth-child(3){
   box-sizing:border-box!important;
+  position:relative!important;
+  isolation:isolate!important;
   display:grid!important;
   place-items:center!important;
   width:150px!important;
@@ -65,7 +67,7 @@
   height:48px!important;
   min-height:48px!important;
   padding:0!important;
-  overflow:hidden!important;
+  overflow:visible!important;
   border:0!important;
   outline:0!important;
   border-radius:11px!important;
@@ -85,13 +87,25 @@
   transform:translateY(-1px)!important;
 }
 
-/* Icons are real inline SVG elements now; pseudo-elements are disabled completely. */
-.world-home .world-community .community-social-block .community-links>a::before,
-.world-home .world-community .community-social-block .community-links>a::after{
+/* No generated icon. The only pseudo-element is the user's transparent frame artwork. */
+.world-home .world-community .community-social-block .community-links>a::before{
   content:none!important;
   display:none!important;
 }
+.world-home .world-community .community-social-block .community-links>a::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:-5px -7px!important;
+  background:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
+  opacity:.46!important;
+  pointer-events:none!important;
+}
+
 .world-home .world-community .community-social-block .community-links>a>svg{
+  position:relative!important;
+  z-index:1!important;
   display:block!important;
   width:21px!important;
   height:21px!important;
@@ -140,5 +154,9 @@
     outline:0!important;
     border-radius:10px!important;
     box-shadow:none!important;
+  }
+  .world-home .world-community .community-social-block .community-links>a::after{
+    inset:-4px -6px!important;
+    opacity:.42!important;
   }
 }
