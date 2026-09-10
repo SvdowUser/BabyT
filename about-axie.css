@@ -1,0 +1,209 @@
+/* Axie-inspired treatment for the "What is Brainrot Games?" section. */
+.world-home .world-about{
+  --about-bg:#0f1d66;
+  --about-bg-deep:#0e1d4b;
+  --about-cyan:#72d8ff;
+  --about-cyan-soft:#86dcff;
+  position:relative!important;
+  isolation:isolate!important;
+  width:min(1640px,calc(100% - 44px))!important;
+  max-width:1640px!important;
+  padding-top:138px!important;
+  padding-bottom:112px!important;
+  text-align:center!important;
+  color:var(--about-cyan)!important;
+}
+
+/* Full-bleed navy/royal-blue field, matching the reference section. */
+.world-home .world-about::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,var(--about-bg-deep) 0%,var(--about-bg) 14%,var(--about-bg) 88%,#0e1d57 100%);
+  pointer-events:none;
+}
+
+/* Sparse cyan dust/stars in the upper corners, kept subtle. */
+.world-home .world-about::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  left:50%;
+  width:100vw;
+  height:230px;
+  transform:translateX(-50%);
+  opacity:.72;
+  background:
+    radial-gradient(circle at 2.7% 9%,#62d9ff 0 2px,transparent 2.6px),
+    radial-gradient(circle at 6.5% 5%,#69dfff 0 1.5px,transparent 2.2px),
+    radial-gradient(circle at 9.3% 15%,#55cff9 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 14.2% 11%,#71e2ff 0 2px,transparent 2.7px),
+    radial-gradient(circle at 97.1% 9%,#62d9ff 0 2px,transparent 2.6px),
+    radial-gradient(circle at 93.6% 5%,#69dfff 0 1.5px,transparent 2.2px),
+    radial-gradient(circle at 90.4% 16%,#55cff9 0 1.2px,transparent 1.8px),
+    radial-gradient(circle at 85.8% 11%,#71e2ff 0 2px,transparent 2.7px),
+    radial-gradient(ellipse at 7% 13%,rgba(48,207,255,.22),transparent 20%),
+    radial-gradient(ellipse at 93% 13%,rgba(48,207,255,.22),transparent 20%);
+  pointer-events:none;
+}
+
+.world-home .world-about>.world-kicker{
+  display:none!important;
+}
+
+.world-home .world-about h2{
+  max-width:none!important;
+  margin:0 auto!important;
+  color:var(--about-cyan)!important;
+  font-family:"Rowdies",system-ui,sans-serif!important;
+  font-size:clamp(36px,3vw,48px)!important;
+  font-weight:700!important;
+  letter-spacing:.01em!important;
+  line-height:1!important;
+  text-transform:uppercase!important;
+  text-align:center!important;
+}
+.world-home .world-about h2 br{display:none!important}
+.world-home .world-about h2 span{color:inherit!important}
+
+/* The concise intro lives under the heading, like the reference. */
+.world-home .world-about h2::after{
+  content:"Brainrot Games is a shared world built around one hub, its characters and the portals leading to different games. Brainrot Battles is the first playable alpha, with more destinations planned as the world grows.";
+  display:block;
+  max-width:920px;
+  margin:34px auto 0;
+  color:var(--about-cyan-soft);
+  font-family:"Nunito",system-ui,sans-serif;
+  font-size:clamp(16px,1.22vw,20px);
+  font-weight:700;
+  letter-spacing:.01em;
+  line-height:1.45;
+  text-transform:none;
+}
+
+/* Reuse the existing four DOM items as the four reference-style information panels. */
+.world-home .world-about .about-copy{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  max-width:1635px!important;
+  margin:66px auto 0!important;
+  border:1px solid rgba(111,217,255,.86)!important;
+  border-radius:10px!important;
+  overflow:hidden!important;
+  background:rgba(7,20,80,.08)!important;
+}
+.world-home .world-about .about-copy>div{display:contents!important}
+
+.world-home .world-about .about-copy>.world-lead,
+.world-home .world-about .about-copy>div>p,
+.world-home .world-about .about-copy>div>.world-text-link{
+  position:relative!important;
+  box-sizing:border-box!important;
+  min-width:0!important;
+  min-height:210px!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:46px 22px 30px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:0!important;
+  border-right:1px solid rgba(111,217,255,.78)!important;
+  border-radius:0!important;
+  color:transparent!important;
+  font-size:0!important;
+  line-height:1!important;
+  text-align:center!important;
+  background:transparent!important;
+  text-decoration:none!important;
+}
+.world-home .world-about .about-copy>div>.world-text-link{border-right:0!important}
+
+.world-home .world-about .about-copy>.world-lead::before,
+.world-home .world-about .about-copy>div>p::before,
+.world-home .world-about .about-copy>div>.world-text-link::before{
+  display:block;
+  margin-bottom:18px;
+  color:var(--about-cyan);
+  font-family:system-ui,sans-serif;
+  font-size:48px;
+  font-weight:800;
+  line-height:1;
+}
+.world-home .world-about .about-copy>.world-lead::after,
+.world-home .world-about .about-copy>div>p::after,
+.world-home .world-about .about-copy>div>.world-text-link::after{
+  display:block;
+  white-space:pre-line;
+  color:var(--about-cyan);
+  font-family:"Rowdies",system-ui,sans-serif;
+  font-size:clamp(16px,1.3vw,22px);
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.01em;
+}
+
+.world-home .world-about .about-copy>.world-lead{order:2!important}
+.world-home .world-about .about-copy>div>p:first-child{order:1!important}
+.world-home .world-about .about-copy>div>p:nth-child(2){order:3!important}
+.world-home .world-about .about-copy>div>.world-text-link{order:4!important}
+
+.world-home .world-about .about-copy>div>p:first-child::before{content:"▶"}
+.world-home .world-about .about-copy>div>p:first-child::after{content:"BRAINROT BATTLES\A First playable game"}
+.world-home .world-about .about-copy>.world-lead::before{content:"●"}
+.world-home .world-about .about-copy>.world-lead::after{content:"SHARED HUB\A Meet & explore"}
+.world-home .world-about .about-copy>div>p:nth-child(2)::before{content:"◇"}
+.world-home .world-about .about-copy>div>p:nth-child(2)::after{content:"BROWSER ALPHA\A Playable now"}
+.world-home .world-about .about-copy>div>.world-text-link::before{content:"✦"}
+.world-home .world-about .about-copy>div>.world-text-link::after{content:"MORE PORTALS\A In development"}
+
+/* Tiny corner marks echo the reference without copying its artwork. */
+.world-home .world-about .about-copy>.world-lead,
+.world-home .world-about .about-copy>div>p,
+.world-home .world-about .about-copy>div>.world-text-link{
+  background-image:
+    linear-gradient(45deg,transparent 42%,rgba(115,222,255,.9) 43% 57%,transparent 58%),
+    linear-gradient(-45deg,transparent 42%,rgba(115,222,255,.9) 43% 57%,transparent 58%);
+  background-size:8px 8px,8px 8px;
+  background-position:8px 8px,8px 8px;
+  background-repeat:no-repeat;
+}
+
+@media(max-width:900px){
+  .world-home .world-about{padding-top:100px!important;padding-bottom:88px!important}
+  .world-home .world-about h2{font-size:34px!important}
+  .world-home .world-about h2::after{margin-top:25px;font-size:16px;max-width:680px}
+  .world-home .world-about .about-copy{grid-template-columns:repeat(2,minmax(0,1fr))!important;margin-top:45px!important}
+  .world-home .world-about .about-copy>.world-lead,
+  .world-home .world-about .about-copy>div>p,
+  .world-home .world-about .about-copy>div>.world-text-link{min-height:180px!important;border-bottom:1px solid rgba(111,217,255,.78)!important}
+  .world-home .world-about .about-copy>div>p:nth-child(2),
+  .world-home .world-about .about-copy>div>.world-text-link{border-bottom:0!important}
+  .world-home .world-about .about-copy>.world-lead,
+  .world-home .world-about .about-copy>div>.world-text-link{border-right:0!important}
+}
+
+@media(max-width:560px){
+  .world-home .world-about{width:calc(100% - 28px)!important;padding-top:78px!important;padding-bottom:70px!important}
+  .world-home .world-about h2{font-size:29px!important}
+  .world-home .world-about h2::after{font-size:14px;line-height:1.5;margin-top:20px}
+  .world-home .world-about .about-copy{grid-template-columns:1fr!important;margin-top:34px!important}
+  .world-home .world-about .about-copy>.world-lead,
+  .world-home .world-about .about-copy>div>p,
+  .world-home .world-about .about-copy>div>.world-text-link{min-height:150px!important;border-right:0!important;border-bottom:1px solid rgba(111,217,255,.72)!important;padding:32px 18px 24px!important}
+  .world-home .world-about .about-copy>div>.world-text-link{border-bottom:0!important}
+  .world-home .world-about .about-copy>.world-lead::before,
+  .world-home .world-about .about-copy>div>p::before,
+  .world-home .world-about .about-copy>div>.world-text-link::before{font-size:38px;margin-bottom:12px}
+  .world-home .world-about .about-copy>.world-lead::after,
+  .world-home .world-about .about-copy>div>p::after,
+  .world-home .world-about .about-copy>div>.world-text-link::after{font-size:17px}
+}
