@@ -19,9 +19,8 @@
   object-fit:contain;
   object-position:left bottom;
   filter:none;
-  /* The source artwork has one isolated sparkle at the far right.
-     Crop only that optional sparkle while keeping the main trail unchanged. */
-  clip-path:inset(0 11.5% 0 0);
+  /* Remove the isolated optional sparkle on the far right of the source artwork. */
+  clip-path:inset(0 22% 0 0);
 }
 
 /* Hand-drawn BabyT sketch used in the footer. */
@@ -47,7 +46,7 @@
     bottom:-18px;
     width:min(62vw,650px);
     opacity:.9;
-    clip-path:inset(0 11.5% 0 0);
+    clip-path:inset(0 22% 0 0);
   }
   .world-home .world-footer::after{
     left:27%;
@@ -63,7 +62,7 @@
     width:430px;
     bottom:-20px;
     opacity:.5;
-    clip-path:inset(0 11.5% 0 0);
+    clip-path:inset(0 22% 0 0);
   }
   .world-home .world-footer::after{display:none}
 }
