@@ -52,7 +52,7 @@
   text-align:center!important;
 }
 
-/* All three buttons are intentionally identical: no border, no outline, no glow ring. */
+/* Intentionally plain, identical social buttons: no border, no ring, no shadow. */
 .world-home .world-community .community-social-block .community-links>a,
 .world-home .world-community .community-social-block .community-links>a:nth-child(1),
 .world-home .world-community .community-social-block .community-links>a:nth-child(2),
@@ -68,8 +68,8 @@
   overflow:hidden!important;
   border:0!important;
   outline:0!important;
-  border-radius:12px!important;
-  background:linear-gradient(180deg,#5298ff 0%,#3198e8 100%)!important;
+  border-radius:11px!important;
+  background:#4095ee!important;
   box-shadow:none!important;
   color:#fff!important;
   text-decoration:none!important;
@@ -85,34 +85,32 @@
   transform:translateY(-1px)!important;
 }
 
-/* Use direct SVG backgrounds for the marks so every browser renders them reliably. */
-.world-home .world-community .community-social-block .community-links>a::before{
-  content:""!important;
-  display:block!important;
-  background-color:transparent!important;
-  background-repeat:no-repeat!important;
-  background-position:center!important;
-  background-size:contain!important;
-  -webkit-mask:none!important;
-  mask:none!important;
+/* Icons are real inline SVG elements now; pseudo-elements are disabled completely. */
+.world-home .world-community .community-social-block .community-links>a::before,
+.world-home .world-community .community-social-block .community-links>a::after{
+  content:none!important;
+  display:none!important;
 }
-
-.world-home .world-community .community-social-block .community-links a[href*="youtube"]::before{
+.world-home .world-community .community-social-block .community-links>a>svg{
+  display:block!important;
+  width:21px!important;
+  height:21px!important;
+  fill:#fff!important;
+  color:#fff!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+}
+.world-home .world-community .community-social-block .community-links>a.youtube-link>svg{
   width:24px!important;
   height:18px!important;
-  background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIzLjQ5OCA2LjE4NmEzLjAxNiAzLjAxNiAwIDAgMC0yLjEyMi0yLjEzNkMxOS41MDUgMy41NDUgMTIgMy41NDUgMTIgMy41NDVzLTcuNTA1IDAtOS4zNzcuNTA1QTMuMDE3IDMuMDE3IDAgMCAwIC41MDIgNi4xODZDMCA4LjA3IDAgMTIgMCAxMnMwIDMuOTMuNTAyIDUuODE0YTMuMDE3IDMuMDE3IDAgMCAwIDIuMTIxIDIuMTM2YzEuODcyLjUwNSA5LjM3Ny41MDUgOS4zNzcuNTA1czcuNTA1IDAgOS4zNzYtLjUwNWEzLjAxNiAzLjAxNiAwIDAgMCAyLjEyMi0yLjEzNkMyNCAxNS45MyAyNCAxMiAyNCAxMnMwLTMuOTMtLjUwMi01LjgxNHpNOS41NDUgMTUuNTY4VjguNDMyTDE1LjgxOCAxMnoiLz48L3N2Zz4=")!important;
 }
-
-.world-home .world-community .community-social-block .community-links a[href*="mythosmondaysog"]::before{
+.world-home .world-community .community-social-block .community-links>a.x-link>svg{
   width:19px!important;
   height:19px!important;
-  background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE4LjI0NCAyLjI1aDMuMzA4bC03LjIyNyA4LjI2IDguNTAyIDExLjI0SDE2LjE3bC01LjIxNC02LjgxN0w0Ljk5IDIxLjc1SDEuNjhsNy43My04LjgzNUwxLjI1NCAyLjI1SDguMDhsNC43MTMgNi4yMzF6bS0xLjE2MSAxNy41MmgxLjgzM0w3LjA4NCA0LjEyNkg1LjExN3oiLz48L3N2Zz4=")!important;
 }
-
-.world-home .world-community .community-social-block .community-links a[href*="tiktok"]::before{
-  width:19px!important;
-  height:20px!important;
-  background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEyLjUyNS4wMmMxLjMxLS4wMiAyLjYxLS4wMSAzLjkxLS4wMi4wOCAxLjUzLjYzIDMuMDkgMS43NSA0LjE3IDEuMTIgMS4xMSAyLjcgMS42MiA0LjI0IDEuNzl2NC4wM2MtMS40NC0uMDUtMi44OS0uMzUtNC4yLS45Ny0uNTctLjI2LTEuMS0uNTktMS42Mi0uOTMtLjAxIDIuOTIuMDEgNS44NC0uMDIgOC43NS0uMDggMS40LS41NCAyLjc5LTEuMzUgMy45NC0xLjMxIDEuOTItMy41OCAzLjE3LTUuOTEgMy4yMS0xLjQzLjA4LTIuODYtLjMxLTQuMDgtMS4wMy0yLjAyLTEuMTktMy40NC0zLjM3LTMuNjUtNS43MS0uMDItLjUtLjAzLTEtLjAxLTEuNDkuMTgtMS45IDEuMTItMy43MiAyLjU4LTQuOTYgMS42Ni0xLjQ1IDMuOTgtMi4xNCA2LjE1LTEuNzQuMDIgMS40OC0uMDQgMi45Ni0uMDQgNC40NC0uOTktLjMyLTIuMTUtLjIzLTMuMDIuMzctLjYzLjQxLTEuMTEgMS4wNC0xLjM2IDEuNzUtLjExLjUyLS4wOCAxLjA4LjEzIDEuNTcuMi41NS41OSAxLjAyIDEuMDYgMS4zMy44NC41NiAxLjk2LjY3IDIuODYuMi41OS0uMzEgMS4wMy0uODQgMS4yNi0xLjQ3LjA3LS4xMi4wNy0uMjUuMDgtLjM4LjAzLTIuNTcuMDItNS4xMy4wMy03LjcuMDEtMi45LS4wMS01LjguMDItOC43eiIvPjwvc3ZnPg==")!important;
+.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{
+  width:20px!important;
+  height:21px!important;
 }
 
 @media(max-width:760px){
@@ -140,7 +138,7 @@
     min-height:40px!important;
     border:0!important;
     outline:0!important;
-    border-radius:11px!important;
+    border-radius:10px!important;
     box-shadow:none!important;
   }
 }
