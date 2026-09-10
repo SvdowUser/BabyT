@@ -22,12 +22,12 @@
     #8995c0 66%,
     #56679a 78%,
     #2c3d73 89%,
-    #0e1d4b 100%
+    #101e52 100%
   )!important;
 }
 
 .world-home .world-about{margin-top:-2px!important}
-.world-home .world-about::before{background:#0e1d4b!important}
+.world-home .world-about::before{background:#101e52!important}
 .world-home .world-about::after{content:none!important;display:none!important}
 
 @media(max-width:900px){
