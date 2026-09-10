@@ -1,18 +1,6 @@
-/*
-  Transition from the paper/concept-art chapter into "What is Brainrot Games?".
-  Important: the large wave is baked into paper-chapter.webp itself. The previous
-  attempts only styled the following blue section, so the raster wave stayed visible.
-  This layer sits above the paper background (but behind its content) and replaces
-  that baked edge with one clean, soft colour transition.
-*/
-.world-home .world-paper-chapter{
-  isolation:isolate!important;
-}
-
-.world-home .world-paper-chapter > *{
-  position:relative;
-  z-index:2;
-}
+/* Transition from the illustrated paper chapter into the compact about section. */
+.world-home .world-paper-chapter{isolation:isolate!important}
+.world-home .world-paper-chapter > *{position:relative;z-index:2}
 
 .world-home .world-paper-chapter::after{
   content:""!important;
@@ -32,46 +20,20 @@
     #d8d9e2 40%,
     #b9bed7 53%,
     #8995c0 66%,
-    #5668a2 78%,
-    #2d4182 89%,
-    #0f1d66 100%
+    #56679a 78%,
+    #2c3d73 89%,
+    #0e1d4b 100%
   )!important;
 }
 
-.world-home .world-about{
-  margin-top:-2px!important;
-  padding-top:138px!important;
-}
-
-/* Keep the destination section a single solid blue. */
-.world-home .world-about::before{
-  top:0!important;
-  bottom:0!important;
-  background:#0f1d66!important;
-}
-
-/* The old generated divider lived here. It is deliberately disabled now. */
-.world-home .world-about::after{
-  content:none!important;
-  display:none!important;
-}
+.world-home .world-about{margin-top:-2px!important}
+.world-home .world-about::before{background:#0e1d4b!important}
+.world-home .world-about::after{content:none!important;display:none!important}
 
 @media(max-width:900px){
-  .world-home .world-paper-chapter::after{
-    height:205px!important;
-  }
-  .world-home .world-about{
-    margin-top:-2px!important;
-    padding-top:110px!important;
-  }
+  .world-home .world-paper-chapter::after{height:205px!important}
 }
 
 @media(max-width:560px){
-  .world-home .world-paper-chapter::after{
-    height:160px!important;
-  }
-  .world-home .world-about{
-    margin-top:-2px!important;
-    padding-top:86px!important;
-  }
+  .world-home .world-paper-chapter::after{height:160px!important}
 }
