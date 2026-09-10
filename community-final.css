@@ -11,41 +11,41 @@
   z-index:4!important;
   left:50%!important;
   bottom:clamp(168px,9.2vw,188px)!important;
-  width:min(720px,calc(100% - 44px))!important;
+  width:min(760px,calc(100% - 44px))!important;
   transform:translateX(-50%)!important;
   text-align:center!important;
 }
 
-/* Compact rounded cyan typography, matching the reference composition rather than a large hero headline. */
+/* Axie's own brand resources identify Rowdies as the Axie font. */
 .world-home .world-community .community-social-block h2{
-  margin:0 auto 6px!important;
-  max-width:620px!important;
-  color:#8edcff!important;
-  font-family:"Nunito",ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif!important;
-  font-size:clamp(25px,1.9vw,32px)!important;
-  font-weight:900!important;
-  letter-spacing:-.025em!important;
-  line-height:1.02!important;
-  text-shadow:0 2px 8px rgba(24,74,176,.24)!important;
+  margin:0 auto 7px!important;
+  max-width:650px!important;
+  color:#78d6ff!important;
+  font-family:"Rowdies",system-ui,sans-serif!important;
+  font-size:clamp(28px,2.05vw,35px)!important;
+  font-weight:700!important;
+  letter-spacing:-.018em!important;
+  line-height:1.03!important;
+  text-shadow:none!important;
 }
 
 .world-home .world-community .community-social-block .community-copy{
-  margin:0 auto 10px!important;
-  max-width:640px!important;
-  color:#86d8ff!important;
-  font-family:"Nunito",ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif!important;
-  font-size:clamp(13px,.95vw,16px)!important;
-  font-weight:900!important;
-  letter-spacing:-.005em!important;
-  line-height:1.18!important;
-  text-shadow:0 2px 7px rgba(17,65,151,.28)!important;
+  margin:0 auto 12px!important;
+  max-width:700px!important;
+  color:#7fd7ff!important;
+  font-family:"Rowdies",system-ui,sans-serif!important;
+  font-size:clamp(14px,1vw,17px)!important;
+  font-weight:700!important;
+  letter-spacing:-.012em!important;
+  line-height:1.12!important;
+  text-shadow:none!important;
 }
 
 .world-home .world-community .community-social-block .community-links{
   display:flex!important;
   justify-content:center!important;
   align-items:center!important;
-  gap:12px!important;
+  gap:14px!important;
   width:auto!important;
   max-width:none!important;
   margin:0 auto!important;
@@ -53,37 +53,45 @@
   text-align:center!important;
 }
 
-/* Icon-only social pills. Their physical proportions now track the smaller Axie reference buttons. */
+/* Reference-style buttons: flatter sides, one clean outline, no halo/double ring. */
 .world-home .world-community .community-social-block .community-links>a{
   box-sizing:border-box!important;
   display:grid!important;
   place-items:center!important;
-  width:122px!important;
-  min-width:122px!important;
-  height:40px!important;
-  min-height:40px!important;
+  width:150px!important;
+  min-width:150px!important;
+  height:48px!important;
+  min-height:48px!important;
   padding:0!important;
   overflow:hidden!important;
-  border:2px solid #79c9ff!important;
-  border-radius:15px!important;
-  background:linear-gradient(180deg,#5c9dff 0%,#4289f6 46%,#3276e7 100%)!important;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.24),
-    inset 0 -2px 0 rgba(37,72,180,.22),
-    0 3px 8px rgba(20,66,190,.18)!important;
+  border:2px solid #82c9ff!important;
+  border-radius:13px!important;
+  background:linear-gradient(180deg,#558eff 0%,#378be9 100%)!important;
+  box-shadow:none!important;
+  outline:none!important;
   color:#fff!important;
   text-decoration:none!important;
   transform:none!important;
+  transition:filter .15s ease,transform .15s ease,border-color .15s ease!important;
+}
+
+/* The first reference button is slightly more violet; keep that visual rhythm with YouTube. */
+.world-home .world-community .community-social-block .community-links>a:nth-child(1){
+  background:linear-gradient(180deg,#6d75ff 0%,#5d66ea 100%)!important;
+  border-color:#8998ff!important;
+}
+.world-home .world-community .community-social-block .community-links>a:nth-child(2),
+.world-home .world-community .community-social-block .community-links>a:nth-child(3){
+  background:linear-gradient(180deg,#5298ff 0%,#3198e8 100%)!important;
+  border-color:#73c9ff!important;
 }
 
 .world-home .world-community .community-social-block .community-links>a:hover{
-  background:linear-gradient(180deg,#68a7ff 0%,#4b91fb 46%,#3b80ed 100%)!important;
-  border-color:#a7dfff!important;
+  filter:brightness(1.07)!important;
   transform:translateY(-1px)!important;
-  filter:brightness(1.035)!important;
 }
 
-/* Exact same vector icon treatment as the footer. */
+/* Use the same clean vector icon treatment as the footer. */
 .world-home .world-community .community-social-block .community-links>a::before{
   content:""!important;
   display:block!important;
@@ -97,22 +105,22 @@
 }
 
 .world-home .world-community .community-social-block .community-links a[href*="youtube"]::before{
-  width:23px!important;
-  height:17px!important;
+  width:24px!important;
+  height:18px!important;
   -webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIzLjQ5OCA2LjE4NmEzLjAxNiAzLjAxNiAwIDAgMC0yLjEyMi0yLjEzNkMxOS41MDUgMy41NDUgMTIgMy41NDUgMTIgMy41NDVzLTcuNTA1IDAtOS4zNzcuNTA1QTMuMDE3IDMuMDE3IDAgMCAwIC41MDIgNi4xODZDMCA4LjA3IDAgMTIgMCAxMnMwIDMuOTMuNTAyIDUuODE0YTMuMDE3IDMuMDE3IDAgMCAwIDIuMTIxIDIuMTM2YzEuODcyLjUwNSA5LjM3Ny41MDUgOS4zNzcuNTA1czcuNTA1IDAgOS4zNzYtLjUwNWEzLjAxNiAzLjAxNiAwIDAgMCAyLjEyMi0yLjEzNkMyNCAxNS45MyAyNCAxMiAyNCAxMnMwLTMuOTMtLjUwMi01LjgxNHpNOS41NDUgMTUuNTY4VjguNDMyTDE1LjgxOCAxMnoiLz48L3N2Zz4=")!important;
-  mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIzLjQ5OCA2LjE4NmEzLjAxNiAzLjAxNiAwIDAgMC0yLjEyMi0yLjEzNkMxOS41MDUgMy41NDUgMTIgMy41NDUgMTIgMy41NDVzLTcuNTA1IDAtOS4zNzcuNTA1QTMuMDE3IDMuMDE3IDAgMCAwIC41MDIgNi4xODZDMCA4LjA3IDAgMTIgMCAxMnMwIDMuOTMuNTAyIDUuODE0YTMuMDE3IDMuMDE3IDAgMCAwIDIuMTIxIDIuMTM2YzEuODcyLjUwNSA5LjM3Ny41MDUgOS4zNzcuNTA1czcuNTA1IDAgOS4zNzYtLjUwNWEzLjAxNiAzLjAxNiAwIDAgMCAyLjEyMi0yLjEzNkMyNCAxNS45MyAyNCAxMiAyNCAxMnMwLTMuOTMtLjUwMi01LjgxNHpNOS41NDUgMTUuNTY4VjguNDMyTDE1LjgxOCAxMnoiLz48L3N2Zz4=")!important;
+  mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIzLjQ5OCA2LjE4NmEzLjAxNiAzLjAxNiAwIDAgMC0yLjEyMi0yLjEzNkMxOS41MDUgMy41NDUgMTIgMy41NDUgMTIgMy41NDVzLTcuNTA1IDAtOS4zNzcuNTA1QTMuMDE3IDMuMDE3IDAgMCAwIC41MDIgNi4xODZDMCA4LjA3IDAgMTIgMCAxMnMwIDMuOTMuNTAyIDUuODE0YTMuMDE3IDMuMDE3IDAgMCAwIDIuMTIxIDIuMTM2YzEuODcyLjUwNSA5LjM3Ny41MDUgOS4zNzYuNTA1czcuNTA1IDAgOS4zNzYtLjUwNWEzLjAxNiAzLjAxNiAwIDAgMCAyLjEyMi0yLjEzNkMyNCAxNS45MyAyNCAxMiAyNCAxMnMwLTMuOTMtLjUwMi01LjgxNHpNOS41NDUgMTUuNTY4VjguNDMyTDE1LjgxOCAxMnoiLz48L3N2Zz4=")!important;
 }
 .world-home .world-community .community-social-block .community-links a[href*="mythosmondaysog"]::before{
-  width:18px!important;
-  height:18px!important;
+  width:19px!important;
+  height:19px!important;
   -webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE4LjI0NCAyLjI1aDMuMzA4bC03LjIyNyA4LjI2IDguNTAyIDExLjI0SDE2LjE3bC01LjIxNC02LjgxN0w0Ljk5IDIxLjc1SDEuNjhsNy43My04LjgzNUwxLjI1NCAyLjI1SDguMDhsNC43MTMgNi4yMzF6bS0xLjE2MSAxNy41MmgxLjgzM0w3LjA4NCA0LjEyNkg1LjExN3oiLz48L3N2Zz4=")!important;
   mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE4LjI0NCAyLjI1aDMuMzA4bC03LjIyNyA4LjI2IDguNTAyIDExLjI0SDE2LjE3bC01LjIxNC02LjgxN0w0Ljk5IDIxLjc1SDEuNjhsNy43My04LjgzNUwxLjI1NCAyLjI1SDguMDhsNC43MTMgNi4yMzF6bS0xLjE2MSAxNy41MmgxLjgzM0w3LjA4NCA0LjEyNkg1LjExN3oiLz48L3N2Zz4=")!important;
 }
 .world-home .world-community .community-social-block .community-links a[href*="tiktok"]::before{
-  width:17px!important;
-  height:18px!important;
-  -webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLjUyNS4wMmMxLjMxLS4wMiAyLjYxLS4wMSAzLjkxLS4wMi4wOCAxLjUzLjYzIDMuMDkgMS43NSA0LjE3IDEuMTIgMS4xMSAyLjcgMS42MiA0LjI0IDEuNzl2NC4wM2MtMS40NC0uMDUtMi44OS0uMzUtNC4yLS45Ny0uNTctLjI2LTEuMS0uNTktMS42Mi0uOTMtLjAxIDIuOTIuMDEgNS44NC0uMDIgOC43NS0uMDggMS40LS41NCAyLjc5LTEuMzUgMy45NC0xLjMxIDEuOTItMy41OCAzLjE3LTUuOTEgMy4yMS0xLjQzLjA4LTIuODYtLjMxLTQuMDgtMS4wMy0yLjAyLTEuMTktMy40NC0zLjM3LTMuNjUtNS43MS0uMDItLjUtLjAzLTEtLjAxLTEuNDkuMTgtMS45IDEuMTItMy43MiAyLjU4LTQuOTYgMS42Ni0xLjQ1IDMuOTgtMi4xNCA2LjE1LTEuNzQuMDIgMS40OC0uMDQgMi45Ni0uMDQgNC40NC0uOTktLjMyLTIuMTUtLjIzLTMuMDIuMzctLjYzLjQxLTEuMTEgMS4wNC0xLjM2IDEuNzUtLjExLjUyLS4wOCAxLjA4LjEzIDEuNTcuMi41NS41OSAxLjAyIDEuMDYgMS4zMy44NC41NiAxLjk2LjY3IDIuODYuMi41OS0uMzEgMS4wMy0uODQgMS4yNi0xLjQ3LjA3LS4xMi4wNy0uMjUuMDgtLjM4LjAzLTIuNTcuMDItNS4xMy4wMy03LjcuMDEtMi45LS4wMS01LjguMDItOC43eiIvPjwvc3ZnPg==")!important;
-  mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLjUyNS4wMmMxLjMxLS4wMiAyLjYxLS4wMSAzLjkxLS4wMi4wOCAxLjUzLjYzIDMuMDkgMS43NSA0LjE3IDEuMTIgMS4xMSAyLjcgMS42MiA0LjI0IDEuNzl2NC4wM2MtMS40NC0uMDUtMi44OS0uMzUtNC4yLS45Ny0uNTctLjI2LTEuMS0uNTktMS42Mi0uOTMtLjAxIDIuOTIuMDEgNS44NC0uMDIgOC43NS0uMDggMS40LS41NCAyLjc5LTEuMzUgMy45NC0xLjMxIDEuOTItMy41OCAzLjE3LTUuOTEgMy4yMS0xLjQzLjA4LTIuODYtLjMxLTQuMDgtMS4wMy0yLjAyLTEuMTktMy40NC0zLjM3LTMuNjUtNS43MS0uMDItLjUtLjAzLTEtLjAxLTEuNDkuMTgtMS45IDEuMTItMy43MiAyLjU4LTQuOTYgMS42Ni0xLjQ1IDMuOTgtMi4xNCA2LjE1LTEuNzQuMDIgMS40OC0uMDQgMi45Ni0uMDQgNC40NC0uOTktLjMyLTIuMTUtLjIzLTMuMDIuMzctLjYzLjQxLTEuMTEgMS4wNC0xLjM2IDEuNzUtLjExLjUyLS4wOCAxLjA4LjEzIDEuNTcuMi41NS41OSAxLjAyIDEuMDYgMS4zMy44NC41NiAxLjk2LjY3IDIuODYuMi41OS0uMzEgMS4wMy0uODQgMS4yNi0xLjQ3LjA3LS4xMi4wNy0uMjUuMDgtLjM4LjAzLTIuNTcuMDItNS4xMy4wMy03LjcuMDEtMi45LS4wMS01LjguMDItOC43eiIvPjwvc3ZnPg==")!important;
+  width:18px!important;
+  height:19px!important;
+  -webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLjUyNS4wMmMxLjMxLS4wMiAyLjYxLS4wMSAzLjkxLS4wMi4wOCAxLjUzLjYzIDMuMDkgMS43NSA0LjE3IDEuMTIgMS4xMSAyLjcgMS42MiA0LjI0IDEuNzl2NC4wM2MtMS40NC0uMDUtMi44OS0uMzUtNC4yLS45Ny0uNTctLjI2LTEuMS0uNTktMS42Mi0uOTNtLS4wMSAyLjkyYy4wMSAyLjkyLjAxIDUuODQtLjAyIDguNzUtLjA4IDEuNC0uNTQgMi43OS0xLjM1IDMuOTQtMS4zMSAxLjkyLTMuNTggMy4xNy01LjkxIDMuMjEtMS40My4wOC0yLjg2LS4zMS00LjA4LTEuMDMtMi4wMi0xLjE5LTMuNDQtMy4zNy0zLjY1LTUuNzEtLjAyLS41LS4wMy0xLS4wMS0xLjQ5LjE4LTEuOSAxLjEyLTMuNzIgMi41OC00Ljk2IDEuNjYtMS40NSAzLjk4LTIuMTQgNi4xNS0xLjc0LjAyIDEuNDgtLjA0IDIuOTYtLjA0IDQuNDQtLjk5LS4zMi0yLjE1LS4yMy0zLjAyLjM3LS42My40MS0xLjExIDEuMDQtMS4zNiAxLjc1LS4xMS41Mi0uMDggMS4wOC4xMyAxLjU3LjIuNTUuNTkgMS4wMiAxLjA2IDEuMzMuODQuNTYgMS45Ni42NyAyLjg2LjIuNTktLjMxIDEuMDMtLjg0IDEuMjYtMS40Ny4wNy0uMTIuMDctLjI1LjA4LS4zOC4wMy0yLjU3LjAyLTUuMTMuMDMtNy43eiIvPjwvc3ZnPg==")!important;
+  mask-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLjUyNS4wMmMxLjMxLS4wMiAyLjYxLS4wMSAzLjkxLS4wMi4wOCAxLjUzLjYzIDMuMDkgMS43NSA0LjE3IDEuMTIgMS4xMSAyLjcgMS42MiA0LjI0IDEuNzl2NC4wM2MtMS40NC0uMDUtMi44OS0uMzUtNC4yLS45Ny0uNTctLjI2LTEuMS0uNTktMS42Mi0uOTNtLS4wMSAyLjkyYy4wMSAyLjkyLjAxIDUuODQtLjAyIDguNzUtLjA4IDEuNC0uNTQgMi43OS0xLjM1IDMuOTQtMS4zMSAxLjkyLTMuNTggMy4xNy01LjkxIDMuMjEtMS40My4wOC0yLjg2LS4zMS00LjA4LTEuMDMtMi4wMi0xLjE5LTMuNDQtMy4zNy0zLjY1LTUuNzEtLjAyLS41LS4wMy0xLS4wMS0xLjQ5LjE4LTEuOSAxLjEyLTMuNzIgMi41OC00Ljk2IDEuNjYtMS40NSAzLjk4LTIuMTQgNi4xNS0xLjc0LjAyIDEuNDgtLjA0IDIuOTYtLjA0IDQuNDQtLjk5LS4zMi0yLjE1LS4yMy0zLjAyLjM3LS42My40MS0xLjExIDEuMDQtMS4zNiAxLjc1LS4xMS41Mi0uMDggMS4wOC4xMyAxLjU3LjIuNTUuNTkgMS4wMiAxLjA2IDEuMzMuODQuNTYgMS45Ni42NyAyLjg2LjIuNTktLjMxIDEuMDMtLjg0IDEuMjYtMS40Ny4wNy0uMTIuMDctLjI1LjA4LS4zOC4wMy0yLjU3LjAyLTUuMTMuMDMtNy43eiIvPjwvc3ZnPg==")!important;
 }
 
 @media(max-width:760px){
@@ -121,12 +129,12 @@
     width:calc(100% - 28px)!important;
   }
   .world-home .world-community .community-social-block h2{
-    font-size:26px!important;
-    margin-bottom:5px!important;
+    font-size:27px!important;
+    margin-bottom:6px!important;
   }
   .world-home .world-community .community-social-block .community-copy{
     font-size:13px!important;
-    margin-bottom:9px!important;
+    margin-bottom:10px!important;
   }
   .world-home .world-community .community-social-block .community-links{
     gap:8px!important;
@@ -135,8 +143,9 @@
     width:auto!important;
     min-width:0!important;
     flex:1 1 0!important;
-    max-width:108px!important;
-    height:38px!important;
-    min-height:38px!important;
+    max-width:118px!important;
+    height:40px!important;
+    min-height:40px!important;
+    border-radius:12px!important;
   }
 }
