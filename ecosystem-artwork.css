@@ -14,6 +14,44 @@
   content:none!important;
   display:none!important;
 }
+
+/* Axie-inspired section heading: custom solar-system mark centered above the title. */
+.world-home .world-ecosystem .world-section-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:40px;
+  text-align:center;
+}
+.world-home .world-ecosystem .world-section-title>div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+}
+.world-home .world-ecosystem .world-section-title>div::before{
+  content:"";
+  display:block;
+  width:82px;
+  height:82px;
+  margin:0 0 10px;
+  background:url('./assets/world/ecosystem-solar-system.svg?v=1') center/contain no-repeat;
+}
+.world-home .world-ecosystem .world-section-title .world-kicker,
+.world-home .world-ecosystem .world-section-title .section-index{
+  display:none!important;
+}
+.world-home .world-ecosystem .world-section-title h2{
+  margin:0;
+  color:#84d6ff;
+  font-family:"Rowdies",system-ui,sans-serif;
+  font-size:clamp(30px,2.35vw,40px);
+  font-weight:700;
+  line-height:1.06;
+  letter-spacing:.012em;
+  text-transform:uppercase;
+}
+
 .world-home .world-ecosystem .world-game-card{box-shadow:none}
 .world-home .world-ecosystem .world-community-card{
   background:#27434c;
@@ -94,12 +132,17 @@
 
 @media(max-width:1000px){
   .world-home .world-ecosystem{padding-top:80px;padding-bottom:80px}
+  .world-home .world-ecosystem .world-section-title>div::before{width:72px;height:72px;margin-bottom:9px}
+  .world-home .world-ecosystem .world-section-title h2{font-size:34px}
   .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
   .world-home .world-panorama::before{background-position:center 54%}
 }
 
 @media(max-width:680px){
   .world-home .world-ecosystem{padding-top:66px;padding-bottom:66px}
+  .world-home .world-ecosystem .world-section-title{margin-bottom:30px}
+  .world-home .world-ecosystem .world-section-title>div::before{width:62px;height:62px;margin-bottom:7px}
+  .world-home .world-ecosystem .world-section-title h2{font-size:30px}
   .world-home .world-panorama{height:860px}
   .world-home .world-panorama::before{
     background-position:center 55%;
