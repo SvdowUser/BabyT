@@ -1,20 +1,23 @@
-/* Exact footer sparkle artwork uploaded by the creator.
-   Use the real PNG directly so the effect cannot disappear if JS/chunk loading fails. */
+/* Footer sparkle artwork uploaded by the creator.
+   The PNG is rendered as a real <img> element so it does not depend on JS or a pseudo-element background. */
 
 .world-home .world-footer::before{
-  content:"";
+  content:none!important;
+  display:none!important;
+}
+
+.world-home .footer-sparkles-art{
   position:absolute;
-  z-index:0;
+  z-index:1;
   left:-8px;
   bottom:-22px;
   width:min(49vw,860px);
-  height:430px;
+  height:auto;
+  max-width:none;
   pointer-events:none;
   opacity:.96;
-  background-image:url('./assets/world/footer-sparkles.png?v=1');
-  background-position:left bottom;
-  background-size:100% auto;
-  background-repeat:no-repeat;
+  object-fit:contain;
+  object-position:left bottom;
   filter:none;
 }
 
@@ -22,7 +25,7 @@
 .world-home .world-footer::after{
   content:"";
   position:absolute;
-  z-index:1;
+  z-index:2;
   left:clamp(420px,32vw,520px);
   bottom:10px;
   width:205px;
@@ -33,16 +36,14 @@
   pointer-events:none;
 }
 
-.world-home .world-footer-grid{position:relative;z-index:2}
+.world-home .world-footer-grid{position:relative;z-index:3}
 
 @media(max-width:1100px){
-  .world-home .world-footer::before{
+  .world-home .footer-sparkles-art{
     left:-12px;
     bottom:-18px;
     width:min(62vw,650px);
-    height:330px;
     opacity:.9;
-    background-size:100% auto;
   }
   .world-home .world-footer::after{
     left:27%;
@@ -53,13 +54,11 @@
 }
 
 @media(max-width:760px){
-  .world-home .world-footer::before{
+  .world-home .footer-sparkles-art{
     left:-80px;
     width:430px;
-    height:260px;
     bottom:-20px;
     opacity:.5;
-    background-size:100% auto;
   }
   .world-home .world-footer::after{display:none}
 }
