@@ -1,16 +1,15 @@
-/* Clean Axie-inspired intro treatment for "What is Brainrot Games?".
-   Typography, spacing and colour are tuned against the supplied Axie reference,
-   while keeping the content and identity specific to Brainrot Battles. */
+/* Compact Axie-inspired treatment for "What is Brainrot Games?". */
 .world-home .world-about{
   --about-bg:#0e1d4b;
   --about-cyan:#84d6ff;
   --about-cyan-body:#79cffb;
+  --about-line:rgba(126,216,255,.82);
   position:relative!important;
   isolation:isolate!important;
   width:100%!important;
   max-width:none!important;
   margin:0!important;
-  padding:76px 22px 68px!important;
+  padding:72px 0 82px!important;
   box-sizing:border-box!important;
   text-align:center!important;
   background:var(--about-bg)!important;
@@ -29,8 +28,8 @@
 .world-home .world-about::after{content:none!important;display:none!important}
 
 .world-home .world-about .world-about-inner{
-  width:min(1040px,calc(100% - 36px))!important;
-  max-width:1040px!important;
+  width:min(1620px,calc(100% - 120px))!important;
+  max-width:1620px!important;
   margin:0 auto!important;
   padding:0!important;
 }
@@ -40,7 +39,7 @@
   margin:0 auto!important;
   color:var(--about-cyan)!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
-  font-size:clamp(32px,3vw,44px)!important;
+  font-size:clamp(30px,2.4vw,40px)!important;
   font-weight:700!important;
   letter-spacing:.012em!important;
   line-height:1.06!important;
@@ -50,21 +49,116 @@
 }
 
 .world-home .world-about .world-about-description{
-  max-width:980px!important;
-  margin:28px auto 0!important;
+  width:min(820px,100%)!important;
+  max-width:820px!important;
+  margin:26px auto 0!important;
   color:var(--about-cyan-body)!important;
   font-family:"Nunito",system-ui,sans-serif!important;
-  font-size:clamp(15px,1.4vw,20px)!important;
+  font-size:clamp(15px,1.22vw,19px)!important;
   font-weight:700!important;
   letter-spacing:.004em!important;
-  line-height:1.5!important;
+  line-height:1.52!important;
   text-align:center!important;
   text-shadow:none!important;
 }
 
-@media(max-width:760px){
-  .world-home .world-about{padding:60px 18px 56px!important}
-  .world-home .world-about .world-about-inner{width:min(100%,680px)!important}
-  .world-home .world-about h2{font-size:clamp(28px,8vw,36px)!important;line-height:1.08!important}
-  .world-home .world-about .world-about-description{margin-top:22px!important;font-size:15px!important;line-height:1.5!important}
+/* Four-panel information strip restored below the intro. */
+.world-home .world-about .world-about-stats{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+  max-width:1620px!important;
+  margin:70px auto 0!important;
+  overflow:hidden!important;
+  border:1px solid var(--about-line)!important;
+  border-radius:12px!important;
+  background:rgba(9,27,83,.22)!important;
+  box-sizing:border-box!important;
+}
+
+.world-home .world-about .about-stat{
+  position:relative!important;
+  min-height:220px!important;
+  padding:32px 22px 27px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-right:1px solid rgba(126,216,255,.66)!important;
+  color:var(--about-cyan)!important;
+  background:
+    linear-gradient(var(--about-line),var(--about-line)) 8px 8px/9px 1px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) 8px 8px/1px 9px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) calc(100% - 8px) 8px/9px 1px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) calc(100% - 8px) 8px/1px 9px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) 8px calc(100% - 8px)/9px 1px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) 8px calc(100% - 8px)/1px 9px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) calc(100% - 8px) calc(100% - 8px)/9px 1px no-repeat,
+    linear-gradient(var(--about-line),var(--about-line)) calc(100% - 8px) calc(100% - 8px)/1px 9px no-repeat!important;
+}
+.world-home .world-about .about-stat:last-child{border-right:0!important}
+
+.world-home .world-about .about-stat-icon{
+  width:54px!important;
+  height:54px!important;
+  margin:0 0 20px!important;
+  display:grid!important;
+  place-items:center!important;
+  color:var(--about-cyan)!important;
+}
+.world-home .world-about .about-stat-icon svg{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  fill:currentColor!important;
+  stroke:currentColor!important;
+}
+
+.world-home .world-about .about-stat strong{
+  display:block!important;
+  margin:0!important;
+  color:var(--about-cyan)!important;
+  font-family:"Rowdies",system-ui,sans-serif!important;
+  font-size:clamp(16px,1.3vw,21px)!important;
+  font-weight:700!important;
+  line-height:1.15!important;
+  letter-spacing:.01em!important;
+  text-transform:uppercase!important;
+}
+.world-home .world-about .about-stat span{
+  display:block!important;
+  margin:8px 0 0!important;
+  color:var(--about-cyan-body)!important;
+  font-family:"Nunito",system-ui,sans-serif!important;
+  font-size:clamp(14px,1vw,17px)!important;
+  font-weight:800!important;
+  line-height:1.25!important;
+}
+
+@media(max-width:900px){
+  .world-home .world-about{padding:64px 0 68px!important}
+  .world-home .world-about .world-about-inner{width:min(100% - 44px,760px)!important}
+  .world-home .world-about h2{font-size:32px!important}
+  .world-home .world-about .world-about-description{width:min(680px,100%)!important;margin-top:22px!important;font-size:15px!important}
+  .world-home .world-about .world-about-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;margin-top:48px!important}
+  .world-home .world-about .about-stat{min-height:180px!important;padding:28px 18px 24px!important;border-bottom:1px solid rgba(126,216,255,.66)!important}
+  .world-home .world-about .about-stat:nth-child(2){border-right:0!important}
+  .world-home .world-about .about-stat:nth-child(3),
+  .world-home .world-about .about-stat:nth-child(4){border-bottom:0!important}
+  .world-home .world-about .about-stat-icon{width:46px!important;height:46px!important;margin-bottom:15px!important}
+}
+
+@media(max-width:560px){
+  .world-home .world-about{padding:56px 0 58px!important}
+  .world-home .world-about .world-about-inner{width:calc(100% - 28px)!important}
+  .world-home .world-about h2{font-size:28px!important}
+  .world-home .world-about .world-about-description{font-size:14px!important;line-height:1.5!important}
+  .world-home .world-about .world-about-stats{grid-template-columns:1fr!important;margin-top:38px!important}
+  .world-home .world-about .about-stat{min-height:146px!important;border-right:0!important;border-bottom:1px solid rgba(126,216,255,.66)!important;padding:24px 16px 20px!important}
+  .world-home .world-about .about-stat:nth-child(3){border-bottom:1px solid rgba(126,216,255,.66)!important}
+  .world-home .world-about .about-stat:last-child{border-bottom:0!important}
+  .world-home .world-about .about-stat-icon{width:40px!important;height:40px!important;margin-bottom:12px!important}
+  .world-home .world-about .about-stat strong{font-size:17px!important}
+  .world-home .world-about .about-stat span{font-size:14px!important;margin-top:5px!important}
 }
