@@ -1,3 +1,5 @@
+@import url('./about-axie.css?v=1');
+
 /* Final community treatment: loaded last so older homepage/footer rules cannot override it. */
 .world-home .world-community{
   position:relative!important;
