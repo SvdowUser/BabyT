@@ -26,11 +26,14 @@
   -webkit-backdrop-filter:none;
 }
 
-/* Use the creator's new artwork in the panorama that previously showed world-hub.webp. */
+/* Use the creator's new artwork in the panorama that previously showed world-hub.webp.
+   This section is deliberately taller than before so less of the illustration is cropped
+   at the top and bottom on wide desktop screens. */
 .world-home .world-panorama{
   position:relative;
   isolation:isolate;
   z-index:1;
+  height:clamp(760px,58vw,1080px);
   background:#101e2b;
 }
 .world-home .world-panorama>img{
@@ -52,7 +55,7 @@
 }
 
 /* Only shade the top/left for copy readability.
-   Do NOT darken the bottom: the next artwork now overlaps and cross-fades over it. */
+   Do NOT darken the bottom: the next artwork overlaps and cross-fades over it. */
 .world-home .world-panorama::after{
   content:"";
   position:absolute;
@@ -76,8 +79,7 @@
 }
 
 /* Reveal the artwork and its readability shading together only after both large
-   transition artworks are fully downloaded and decoded. This prevents the CSS
-   crossfade from appearing by itself on a slow connection. */
+   transition artworks are fully downloaded and decoded. */
 .world-home.artworks-loaded .world-panorama::before,
 .world-home.artworks-loaded .world-panorama::after{
   opacity:1;
@@ -92,11 +94,13 @@
 
 @media(max-width:1000px){
   .world-home .world-ecosystem{padding-top:80px;padding-bottom:80px}
+  .world-home .world-panorama{height:clamp(720px,76vw,900px)}
   .world-home .world-panorama::before{background-position:center center}
 }
 
 @media(max-width:680px){
   .world-home .world-ecosystem{padding-top:66px;padding-bottom:66px}
+  .world-home .world-panorama{height:760px}
   .world-home .world-panorama::before{
     background-position:center center;
     background-size:cover;
