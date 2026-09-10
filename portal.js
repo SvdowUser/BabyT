@@ -1,4 +1,29 @@
 (() => {
+  /* Load and decode both large transition artworks as one visual unit. The CSS
+     keeps the artwork layers hidden until this class is added, so a slow
+     connection never shows the generated crossfade before the images. */
+  const transitionArtworkUrls = [
+    './assets/world/adventure-panorama-artwork.png?v=2',
+    './assets/world/community-world-background.png?v=3'
+  ];
+  const loadTransitionArtwork = src => new Promise(resolve => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'high';
+    image.onload = () => {
+      if (typeof image.decode === 'function') {
+        image.decode().catch(() => {}).finally(resolve);
+      } else {
+        resolve();
+      }
+    };
+    image.onerror = resolve;
+    image.src = src;
+  });
+  Promise.all(transitionArtworkUrls.map(loadTransitionArtwork)).then(() => {
+    requestAnimationFrame(() => document.body?.classList.add('artworks-loaded'));
+  });
+
   const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
   if (navStyle) navStyle.href = './nav-overlay.css?v=18';
   else {
