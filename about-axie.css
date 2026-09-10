@@ -39,7 +39,7 @@
   margin:0 auto!important;
   color:var(--about-cyan)!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
-  font-size:clamp(28px,1.9vw,34px)!important;
+  font-size:clamp(29px,2vw,36px)!important;
   font-weight:700!important;
   letter-spacing:.012em!important;
   line-height:1.06!important;
@@ -68,7 +68,7 @@
   grid-template-columns:repeat(4,minmax(0,1fr))!important;
   width:min(1520px,86.5vw)!important;
   max-width:1520px!important;
-  margin:64px auto 0!important;
+  margin:56px auto 0!important;
   overflow:hidden!important;
   border:1px solid var(--about-line)!important;
   border-radius:12px!important;
