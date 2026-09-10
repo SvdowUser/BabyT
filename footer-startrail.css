@@ -1,5 +1,5 @@
-/* Exact transparent star trail uploaded by the creator.
-   Layout sizing is controlled only by footer-layout.css. */
+/* Exact footer sparkle artwork uploaded by the creator.
+   Use the real PNG directly so the effect cannot disappear if JS/chunk loading fails. */
 
 .world-home .world-footer::before{
   content:"";
@@ -11,7 +11,7 @@
   height:430px;
   pointer-events:none;
   opacity:.96;
-  background-image:var(--footer-startrail-image, none);
+  background-image:url('./assets/world/footer-sparkles.png?v=1');
   background-position:left bottom;
   background-size:100% auto;
   background-repeat:no-repeat;
