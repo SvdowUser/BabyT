@@ -40,24 +40,39 @@
 
 .world-home .world-footer-grid{position:relative;z-index:3}
 
-/* Community CTA: full-bleed world/starfield artwork uploaded by the creator. */
+/* Community CTA: keep the creator artwork at its natural 16:9 framing instead of cropping/zooming it. */
 .world-home .world-community{
   position:relative;
   isolation:isolate;
-  overflow:visible;
+  overflow:hidden;
+  min-height:56.25vw;
+  padding-top:clamp(90px,6vw,122px);
+  padding-bottom:clamp(150px,11vw,220px);
+  background:#09111c;
 }
 .world-home .world-community::before{
   content:"";
   position:absolute;
   z-index:0;
   top:0;
-  bottom:0;
   left:50%;
   width:100vw;
+  height:56.25vw;
   transform:translateX(-50%);
-  background:
-    linear-gradient(180deg,rgba(6,15,29,.12) 0%,rgba(6,15,29,.18) 52%,rgba(6,15,29,.34) 100%),
-    url('./assets/world/community-world-background.png?v=1') center bottom/cover no-repeat;
+  background:url('./assets/world/community-world-background.png?v=2') center top/100% 100% no-repeat;
+  pointer-events:none;
+}
+/* Only a very small blend where the artwork meets the next dark section. */
+.world-home .world-community::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:50%;
+  bottom:0;
+  width:100vw;
+  height:64px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(7,10,15,0) 0%,rgba(7,10,15,.22) 55%,#070a0f 100%);
   pointer-events:none;
 }
 .world-home .world-community > *{
@@ -90,8 +105,12 @@
     height:240px;
     bottom:18px;
   }
+  .world-home .world-community{
+    min-height:56.25vw;
+  }
   .world-home .world-community::before{
-    background-position:center bottom;
+    height:56.25vw;
+    background-position:center top;
   }
 }
 
@@ -104,9 +123,15 @@
     clip-path:inset(0 22% 0 0);
   }
   .world-home .world-footer::after{display:none}
-  .world-home .world-community::before{
-    background:
-      linear-gradient(180deg,rgba(6,15,29,.18),rgba(6,15,29,.42)),
-      url('./assets/world/community-world-background.png?v=1') 50% 100%/cover no-repeat;
+  .world-home .world-community{
+    min-height:760px;
+    padding-top:70px;
+    padding-bottom:105px;
   }
+  .world-home .world-community::before{
+    width:100vw;
+    height:100%;
+    background:url('./assets/world/community-world-background.png?v=2') 50% 50%/auto 100% no-repeat;
+  }
+  .world-home .world-community::after{height:48px}
 }
