@@ -64,16 +64,29 @@
   text-transform:uppercase;
 }
 
-.world-home .world-ecosystem .world-game-card{box-shadow:none}
-.world-home .world-ecosystem .world-community-card{
-  background:#27434c;
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
+/* Keep this section image-first like the Axie reference: two equal image slots.
+   The current Brainrot Battles artwork occupies the first slot; the second slot
+   is ready for the next ecosystem artwork. */
+.world-home .world-ecosystem .world-ecosystem-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:24px!important;
+  align-items:start!important;
 }
-.world-home .world-ecosystem .world-token-card{
-  background:#182d3a;
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
+.world-home .world-ecosystem .world-game-card{
+  min-height:0!important;
+  aspect-ratio:1.72/1!important;
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+.world-home .world-ecosystem .world-game-card>img{
+  object-position:center!important;
+}
+.world-home .world-ecosystem .world-game-card::after,
+.world-home .world-ecosystem .world-card-label,
+.world-home .world-ecosystem .world-game-card-copy,
+.world-home .world-ecosystem .world-side-cards{
+  display:none!important;
 }
 
 /* Use the creator's new artwork in the panorama that previously showed world-hub.webp.
@@ -146,6 +159,7 @@
   .world-home .world-ecosystem{padding-top:36px;padding-bottom:80px}
   .world-home .world-ecosystem .world-section-title>div::before{width:72px;height:72px;margin-bottom:9px}
   .world-home .world-ecosystem .world-section-title h2{font-size:34px}
+  .world-home .world-ecosystem .world-ecosystem-grid{gap:18px!important}
   .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
   .world-home .world-panorama::before{background-position:center 54%}
 }
@@ -155,6 +169,7 @@
   .world-home .world-ecosystem .world-section-title{margin-bottom:30px}
   .world-home .world-ecosystem .world-section-title>div::before{width:62px;height:62px;margin-bottom:7px}
   .world-home .world-ecosystem .world-section-title h2{font-size:30px}
+  .world-home .world-ecosystem .world-ecosystem-grid{grid-template-columns:1fr!important;gap:16px!important}
   .world-home .world-panorama{height:860px}
   .world-home .world-panorama::before{
     background-position:center 55%;
