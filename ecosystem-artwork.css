@@ -1,15 +1,27 @@
 /* The uploaded illustrated artwork belongs to the full-width "A world worth getting lost in" panorama.
    Keep it proportional and blend it directly into the following star-world artwork. */
 
-/* Keep "Our ecosystem" on the regular navy treatment. */
+/* Match the "Our ecosystem" section background to the blue About section above. */
 .world-home .world-ecosystem{
   position:relative;
-  isolation:auto;
+  isolation:isolate;
   z-index:auto;
   padding-top:105px;
   padding-bottom:105px;
 }
-.world-home .world-ecosystem::before,
+.world-home .world-ecosystem::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:-1!important;
+  top:0!important;
+  bottom:0!important;
+  left:50%!important;
+  width:100vw!important;
+  transform:translateX(-50%)!important;
+  background:#0e1d4b!important;
+  pointer-events:none!important;
+}
 .world-home .world-ecosystem::after{
   content:none!important;
   display:none!important;
