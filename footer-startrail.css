@@ -112,7 +112,7 @@
   position:relative;
   z-index:1;
 }
-.world-home .world-community .world-kicker{color:#89d7e9}
+.world-home .world-community > .world-kicker{display:none!important}
 .world-home .world-community .community-copy{color:#d7e4eb}
 .world-home .world-community .community-links>a{
   background:rgba(13,35,52,.74);
