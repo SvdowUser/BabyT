@@ -39,9 +39,8 @@
 
 .world-home .world-footer-grid{position:relative;z-index:3}
 
-/* Community CTA: overlap the panorama above so the two artworks cross-fade directly.
-   The overlap is intentionally shorter now, placing the transition lower and away
-   from the seated character instead of visually cutting through the character. */
+/* Community CTA: overlap only the lower edge of the panorama so the first artwork
+   remains visible farther down before the star-world artwork fades in. */
 .world-home .world-community.shell{
   width:100%!important;
   max-width:none!important;
@@ -54,8 +53,8 @@
   z-index:3;
   overflow:hidden;
   min-height:56.25vw;
-  margin-top:-110px;
-  padding-top:calc(clamp(90px,6vw,122px) + 110px);
+  margin-top:-90px;
+  padding-top:calc(clamp(90px,6vw,122px) + 90px);
   padding-bottom:clamp(150px,11vw,220px);
   background:transparent;
 }
@@ -73,16 +72,16 @@
   pointer-events:none;
   -webkit-mask-image:linear-gradient(180deg,
     transparent 0,
-    rgba(0,0,0,.18) 24px,
-    rgba(0,0,0,.48) 52px,
-    rgba(0,0,0,.80) 82px,
-    #000 110px);
+    rgba(0,0,0,.18) 20px,
+    rgba(0,0,0,.48) 44px,
+    rgba(0,0,0,.80) 68px,
+    #000 90px);
   mask-image:linear-gradient(180deg,
     transparent 0,
-    rgba(0,0,0,.18) 24px,
-    rgba(0,0,0,.48) 52px,
-    rgba(0,0,0,.80) 82px,
-    #000 110px);
+    rgba(0,0,0,.18) 20px,
+    rgba(0,0,0,.48) 44px,
+    rgba(0,0,0,.80) 68px,
+    #000 90px);
   opacity:0;
   transition:opacity .18s ease-out;
 }
@@ -156,8 +155,8 @@
   .world-home .world-footer::after{display:none}
   .world-home .world-community{
     min-height:760px;
-    margin-top:-72px;
-    padding-top:142px;
+    margin-top:-64px;
+    padding-top:134px;
     padding-bottom:105px;
   }
   .world-home .world-community::before{
@@ -167,8 +166,8 @@
     background-repeat:no-repeat;
     background-position:center center;
     background-size:cover;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 24px,rgba(0,0,0,.76) 50px,#000 72px);
-    mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 24px,rgba(0,0,0,.76) 50px,#000 72px);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 22px,rgba(0,0,0,.76) 44px,#000 64px);
+    mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 22px,rgba(0,0,0,.76) 44px,#000 64px);
   }
   .world-home .world-community::after{
     background:linear-gradient(0deg,#070a0f 0,rgba(7,10,15,.48) 26px,rgba(7,10,15,0) 52px);
