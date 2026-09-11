@@ -1,0 +1,24 @@
+/* Final Axie-reference alignment for the welcome-panel title.
+   Keep this tiny override after welcome-axie.css so later legacy rules cannot move it. */
+@media (min-width:1121px){
+  .world-home .welcome-card-bar{
+    top:156px!important;
+    left:6.4%!important;
+    right:39.6%!important;
+    min-height:76px!important;
+    padding:0 40px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    transform:none!important;
+    text-align:center!important;
+  }
+}
+
+@media (min-width:1750px){
+  .world-home .welcome-card-bar{
+    top:164px!important;
+    left:6.4%!important;
+    right:39.6%!important;
+  }
+}
