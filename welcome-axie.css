@@ -33,18 +33,18 @@
     linear-gradient(90deg,transparent 0 7%,rgba(255,255,255,.24) 7.2% 7.7%,transparent 7.9%);
 }
 
-/* BabyT overlaps the frame like the illustrated character in the reference. */
+/* BabyT sketch overlaps the upper-left corner like the illustrated character in the reference. */
 .world-home .welcome-card::after{
   content:"";
   position:absolute;
   z-index:7;
-  left:-84px;
-  top:-73px;
-  width:190px;
-  height:230px;
+  left:-74px;
+  top:-96px;
+  width:224px;
+  height:270px;
   pointer-events:none;
-  background:url('./assets/media/babyt-character.webp') center bottom/contain no-repeat;
-  filter:drop-shadow(0 12px 12px rgba(86,53,20,.24));
+  background:url('./assets/brand/babyt-sketch-corner.webp?v=1') center/contain no-repeat;
+  filter:drop-shadow(0 9px 8px rgba(86,53,20,.16));
 }
 
 .world-home .welcome-card-bar{
@@ -176,7 +176,7 @@
 
 @media(max-width:1120px){
   .world-home .world-paper-chapter .world-welcome{width:min(1040px,calc(100% - 50px))!important}
-  .world-home .welcome-card::after{left:-48px;top:-52px;width:142px;height:178px}
+  .world-home .welcome-card::after{left:-42px;top:-65px;width:162px;height:194px}
   .world-home .welcome-card-bar{right:34%!important;min-height:70px!important;padding:0 42px!important;font-size:clamp(24px,3vw,32px)!important}
   .world-home .welcome-card{min-height:490px!important}
   .world-home .welcome-card-body{min-height:470px!important}
