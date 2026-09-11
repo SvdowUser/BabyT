@@ -2,19 +2,18 @@
 .world-home .world-paper-chapter{isolation:isolate!important}
 .world-home .world-paper-chapter > *{position:relative;z-index:2}
 
-/* The paper now sits underneath the bottom of the hero. The hero media itself
-   fades away above it, so there is no tinted overlay or visible horizontal seam.
-   Extra top padding exactly compensates for the larger overlap, keeping the card
-   and the rest of the page in the same vertical position as before. */
+/* The yellow paper sits BEHIND the hero. The hero/video remains on top and only
+   fades in its final few pixels. Keep the overlap compact so the transition feels
+   like one continuous composition instead of a large tinted band. */
 @media(min-width:1001px){
   .world-home .portal-hero{height:100dvh!important;min-height:0!important}
-  .world-home .world-paper-chapter{margin-top:-180px!important;padding-top:339px!important}
+  .world-home .world-paper-chapter{margin-top:-82px!important;padding-top:181px!important}
 }
 @media(min-width:1800px){
-  .world-home .world-paper-chapter{padding-top:374px!important}
+  .world-home .world-paper-chapter{padding-top:216px!important}
 }
 
-/* Remove the previous semi-transparent yellow wash completely. */
+/* No yellow overlay is painted on top of the video. */
 .world-home .world-paper-chapter::before{
   content:none!important;
   display:none!important;
@@ -49,11 +48,11 @@
 .world-home .world-about::after{content:none!important;display:none!important}
 
 @media(max-width:1000px){
-  .world-home .world-paper-chapter{margin-top:-120px!important;padding-top:205px!important}
+  .world-home .world-paper-chapter{margin-top:-68px!important;padding-top:153px!important}
   .world-home .world-paper-chapter::after{height:205px!important}
 }
 
 @media(max-width:680px){
-  .world-home .world-paper-chapter{margin-top:-80px!important;padding-top:140px!important}
+  .world-home .world-paper-chapter{margin-top:-48px!important;padding-top:108px!important}
   .world-home .world-paper-chapter::after{height:160px!important}
 }
