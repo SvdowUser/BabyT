@@ -163,12 +163,33 @@
   filter:drop-shadow(0 15px 15px rgba(92,56,21,.13))!important;
 }
 
-@media(min-width:1750px){
-  .world-home .world-paper-chapter .world-welcome{max-width:1540px!important}
-  .world-home .welcome-card,.world-home .welcome-card-body{min-height:610px!important}
+/* Desktop composition: match the Axie reference's tighter top gap and visual height.
+   All artwork is enlarged proportionally; no image is stretched. */
+@media(min-width:1121px){
+  .world-home .world-paper-chapter{padding-top:170px!important}
+  .world-home .world-paper-chapter .world-welcome{
+    width:min(1500px,calc(100% - 96px))!important;
+    max-width:1500px!important;
+  }
+  .world-home .welcome-card,
+  .world-home .welcome-card-body{min-height:605px!important}
   .world-home .welcome-card-bar{top:48px!important}
-  .world-home .welcome-copy{padding-top:165px!important}
-  .world-home .welcome-party{width:56%!important;right:-5.5%!important}
+  .world-home .welcome-copy{padding-top:162px!important}
+  .world-home .welcome-party{
+    width:58%!important;
+    right:-4%!important;
+    bottom:-1%!important;
+    height:auto!important;
+  }
+}
+
+@media(min-width:1750px){
+  .world-home .world-paper-chapter{padding-top:205px!important}
+  .world-home .world-paper-chapter .world-welcome{max-width:1500px!important}
+  .world-home .welcome-card,.world-home .welcome-card-body{min-height:640px!important}
+  .world-home .welcome-card-bar{top:51px!important}
+  .world-home .welcome-copy{padding-top:173px!important}
+  .world-home .welcome-party{width:60%!important;right:-3.5%!important;bottom:-1%!important;height:auto!important}
 }
 
 @media(max-width:1120px){
