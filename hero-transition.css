@@ -7,11 +7,47 @@
   display:flex!important;
   align-items:center!important;
   overflow:hidden!important;
+  position:relative!important;
+  z-index:6!important;
+  background:transparent!important;
 }
 .portal-hero-bg,
 .portal-hero-video,
 .portal-hero::after,
 .hero-noise{inset:0!important;width:100%!important;height:100%!important}
+
+/* Fade the actual hero media out instead of laying a yellow translucent wash over it.
+   The paper chapter sits underneath this area, so the handoff stays clean and natural. */
+.portal-hero-bg,
+.portal-hero-video,
+.portal-hero::after,
+.hero-noise,
+.hero-stars{
+  -webkit-mask-image:linear-gradient(to bottom,
+    #000 0%,
+    #000 calc(100% - 180px),
+    rgba(0,0,0,.98) calc(100% - 160px),
+    rgba(0,0,0,.90) calc(100% - 135px),
+    rgba(0,0,0,.72) calc(100% - 105px),
+    rgba(0,0,0,.46) calc(100% - 72px),
+    rgba(0,0,0,.20) calc(100% - 38px),
+    transparent 100%
+  )!important;
+  mask-image:linear-gradient(to bottom,
+    #000 0%,
+    #000 calc(100% - 180px),
+    rgba(0,0,0,.98) calc(100% - 160px),
+    rgba(0,0,0,.90) calc(100% - 135px),
+    rgba(0,0,0,.72) calc(100% - 105px),
+    rgba(0,0,0,.46) calc(100% - 72px),
+    rgba(0,0,0,.20) calc(100% - 38px),
+    transparent 100%
+  )!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+  -webkit-mask-size:100% 100%!important;
+  mask-size:100% 100%!important;
+}
 
 .hero-content{
   width:min(1320px,calc(100% - 44px));
@@ -48,7 +84,7 @@
 .hero-transition{display:none!important}
 .marquee{display:none!important}
 
-/* The seam is handled by the paper chapter's upward fade. Keep the paper itself fully opaque. */
+/* The paper itself stays fully opaque; only the hero artwork/video fades away. */
 .world-paper-chapter{
   -webkit-mask-image:none!important;
   mask-image:none!important;
@@ -61,8 +97,16 @@
 @media(max-width:1000px){
   .portal-hero{height:100svh!important}.hero-content{padding:108px 0 96px!important}
   .hero-logo-stage{padding:118px 0 104px!important}.hero-game-title{width:min(78vw,680px);transform:translateY(-6vh)}
+  .portal-hero-bg,.portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 120px),rgba(0,0,0,.92) calc(100% - 100px),rgba(0,0,0,.68) calc(100% - 72px),rgba(0,0,0,.34) calc(100% - 38px),transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 120px),rgba(0,0,0,.92) calc(100% - 100px),rgba(0,0,0,.68) calc(100% - 72px),rgba(0,0,0,.34) calc(100% - 38px),transparent 100%)!important;
+  }
 }
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-logo-stage{padding:104px 0 88px!important}.hero-game-title{width:min(90vw,620px);transform:translateY(-4vh)}
+  .portal-hero-bg,.portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 80px),rgba(0,0,0,.88) calc(100% - 64px),rgba(0,0,0,.56) calc(100% - 42px),rgba(0,0,0,.24) calc(100% - 20px),transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 80px),rgba(0,0,0,.88) calc(100% - 64px),rgba(0,0,0,.56) calc(100% - 42px),rgba(0,0,0,.24) calc(100% - 20px),transparent 100%)!important;
+  }
 }
