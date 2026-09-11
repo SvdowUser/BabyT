@@ -112,8 +112,14 @@
   transform:translateX(-50%)!important;
 }
 
-/* TikTok creator card: transparent wordmark centered over the lower part of
-   the second artwork, mirroring the branded key-art treatment on the left. */
+/* The TikTok wordmark was much brighter than the Brainrot Battles mark.
+   Tone down its whites and neon accents so both cards have similar visual weight. */
+.world-home .world-ecosystem .world-tiktok-link>.ecosystem-card-logo{
+  opacity:.88!important;
+  filter:brightness(.82) saturate(.72) contrast(.94) drop-shadow(0 3px 5px rgba(0,0,0,.24))!important;
+}
+
+/* Legacy pseudo-element rule retained for older cached markup. */
 .world-home .world-ecosystem .world-tiktok-card::before{
   content:""!important;
   display:block!important;
@@ -126,7 +132,8 @@
   transform:translateX(-50%)!important;
   background:url('./assets/world/tiktok-wordmark.png?v=1') center/contain no-repeat!important;
   pointer-events:none!important;
-  filter:drop-shadow(0 3px 5px rgba(0,0,0,.24));
+  filter:brightness(.82) saturate(.72) contrast(.94) drop-shadow(0 3px 5px rgba(0,0,0,.24))!important;
+  opacity:.88!important;
 }
 
 .world-home .world-ecosystem .world-game-card::after,
