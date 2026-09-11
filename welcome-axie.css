@@ -15,14 +15,17 @@
   box-shadow:none!important;
 }
 
-/* Frame sits above the right-side artwork, while text remains above the frame. */
+/* Keep the uploaded frame in its original proportions; never stretch it. */
 .world-home .welcome-card::before{
   content:"";
   position:absolute;
   z-index:5;
   inset:0;
   pointer-events:none;
-  background:url('./assets/world/brainrot-welcome-panel.png?v=2') center/100% 100% no-repeat;
+  background-image:url('./assets/world/brainrot-welcome-panel.png?v=2');
+  background-repeat:no-repeat;
+  background-position:left top;
+  background-size:auto 100%;
 }
 
 /* BabyT sketch sits above everything at the upper-left edge. */
@@ -185,8 +188,8 @@
     padding:22px 0 0!important;
   }
   .world-home .welcome-card::before{
-    background-size:cover!important;
-    background-position:center top!important;
+    background-size:100% auto!important;
+    background-position:left top!important;
   }
   .world-home .welcome-card::after{display:none!important}
   .world-home .welcome-card-bar{
