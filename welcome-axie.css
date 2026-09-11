@@ -181,11 +181,14 @@
   .world-home .welcome-card-body{min-height:605px!important}
   .world-home .welcome-card::before,
   .world-home .welcome-card::after,
-  .world-home .welcome-card-bar,
   .world-home .welcome-copy{
     transform:translateX(var(--welcome-reference-inset))!important;
   }
-  .world-home .welcome-card-bar{top:48px!important}
+  .world-home .welcome-card-bar{
+    transform:none!important;
+    left:4.4%!important;
+    right:41.6%!important;
+  }
   .world-home .welcome-copy{padding-top:162px!important}
   .world-home .welcome-card-body::after{
     width:clamp(500px,36vw,640px);
@@ -198,7 +201,6 @@
   .world-home .world-paper-chapter{padding-top:205px!important}
   .world-home .world-paper-chapter .world-welcome{max-width:1500px!important}
   .world-home .welcome-card,.world-home .welcome-card-body{min-height:640px!important}
-  .world-home .welcome-card-bar{top:51px!important}
   .world-home .welcome-copy{padding-top:173px!important}
   .world-home .welcome-card-body::after{width:640px;right:11%;bottom:-22%!important}
 }
@@ -262,7 +264,7 @@
    matching the vertical rhythm of the Axie reference instead of floating over the frame. */
 @media(min-width:1121px){
   .world-home .welcome-card-bar{
-    top:100px!important;
+    top:166px!important;
   }
   .world-home .welcome-copy{
     padding:204px 54px 44px 78px!important;
@@ -290,7 +292,7 @@
 
 @media(min-width:1750px){
   .world-home .welcome-card-bar{
-    top:108px!important;
+    top:174px!important;
   }
   .world-home .welcome-copy{
     padding-top:212px!important;
