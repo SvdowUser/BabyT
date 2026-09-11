@@ -1,5 +1,12 @@
 /* Transition from the illustrated paper chapter into the compact about section. */
-.world-home .world-paper-chapter{isolation:isolate!important}
+.world-home .world-paper-chapter{
+  isolation:isolate!important;
+  background-color:#fded8c!important;
+  background-image:url('./assets/world/paper-yellow-texture.webp')!important;
+  background-position:center top!important;
+  background-size:100% auto!important;
+  background-repeat:repeat-y!important;
+}
 .world-home .world-paper-chapter > *{position:relative;z-index:2}
 
 /* The yellow paper sits BEHIND the hero. The hero/video remains on top and only
@@ -19,7 +26,7 @@
   display:none!important;
 }
 
-/* Compact yellow -> normal blue fade. No extra color stops or broad haze. */
+/* Compact paper-texture -> normal blue fade. The solid stop matches the uploaded texture. */
 .world-home .world-paper-chapter::after{
   content:""!important;
   display:block!important;
@@ -33,11 +40,11 @@
   pointer-events:none!important;
   background:
     linear-gradient(180deg,
-      rgba(247,230,160,1) 0%,
-      rgba(247,230,160,.82) 26%,
-      rgba(247,230,160,.42) 58%,
-      rgba(247,230,160,.12) 82%,
-      rgba(247,230,160,0) 100%
+      rgba(253,237,140,1) 0%,
+      rgba(253,237,140,.82) 26%,
+      rgba(253,237,140,.42) 58%,
+      rgba(253,237,140,.12) 82%,
+      rgba(253,237,140,0) 100%
     ),
     #101e52!important;
 }
