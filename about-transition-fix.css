@@ -55,6 +55,11 @@
   mask-size:100% 100%!important;
 }
 
+/* Remove the caption below the concept-art gallery. */
+.world-home .works-caption{
+  display:none!important;
+}
+
 /* Pull the blue section behind the transparent edge, then compensate its top
    padding so the About content stays at the same visual position as before. */
 .world-home .world-about{
