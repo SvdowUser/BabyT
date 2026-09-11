@@ -2,9 +2,9 @@
    Keep this tiny override after welcome-axie.css so later legacy rules cannot move it. */
 @media (min-width:1121px){
   .world-home .welcome-card-bar{
-    top:156px!important;
-    left:6.4%!important;
-    right:39.6%!important;
+    top:86px!important;
+    left:5.2%!important;
+    right:40.8%!important;
     min-height:76px!important;
     padding:0 40px!important;
     display:flex!important;
@@ -17,8 +17,8 @@
 
 @media (min-width:1750px){
   .world-home .welcome-card-bar{
-    top:164px!important;
-    left:6.4%!important;
-    right:39.6%!important;
+    top:92px!important;
+    left:5.2%!important;
+    right:40.8%!important;
   }
 }
