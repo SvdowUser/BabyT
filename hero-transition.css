@@ -48,14 +48,10 @@
 .hero-transition{display:none!important}
 .marquee{display:none!important}
 
-/* Let the overlapping paper chapter fade into the hero instead of starting on a hard horizontal edge. */
+/* The seam is handled by the paper chapter's upward fade. Keep the paper itself fully opaque. */
 .world-paper-chapter{
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 18px,rgba(0,0,0,.68) 58px,#000 96px);
-  mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 18px,rgba(0,0,0,.68) 58px,#000 96px);
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
-  -webkit-mask-size:100% 100%;
-  mask-size:100% 100%;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
 }
 
 @media(max-height:760px) and (min-width:1001px){
@@ -65,10 +61,8 @@
 @media(max-width:1000px){
   .portal-hero{height:100svh!important}.hero-content{padding:108px 0 96px!important}
   .hero-logo-stage{padding:118px 0 104px!important}.hero-game-title{width:min(78vw,680px);transform:translateY(-6vh)}
-  .world-paper-chapter{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.24) 16px,rgba(0,0,0,.72) 44px,#000 70px);mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.24) 16px,rgba(0,0,0,.72) 44px,#000 70px)}
 }
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-logo-stage{padding:104px 0 88px!important}.hero-game-title{width:min(90vw,620px);transform:translateY(-4vh)}
-  .world-paper-chapter{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.38) 10px,rgba(0,0,0,.78) 24px,#000 40px);mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.38) 10px,rgba(0,0,0,.78) 24px,#000 40px)}
 }
