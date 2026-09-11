@@ -120,14 +120,14 @@
 }
 
 /* Use the creator's new artwork in the panorama that previously showed world-hub.webp.
-   The panorama is intentionally tall so the illustration continues well below the
-   seated character before the star-world artwork begins. */
+   Start with the exact ecosystem blue so there is no visible hard seam, then
+   fade that blue smoothly into the panorama artwork below. */
 .world-home .world-panorama{
   position:relative;
   isolation:isolate;
   z-index:1;
   height:clamp(900px,70vw,1320px);
-  background:#101e2b;
+  background:#101e52;
 }
 .world-home .world-panorama>img{
   opacity:0!important;
@@ -147,7 +147,7 @@
   transition:opacity .18s ease-out;
 }
 
-/* Straight, soft fade from the navy section into the artwork — no wave shape. */
+/* Seamless fade from the ecosystem blue into the artwork — no hard horizontal line. */
 .world-home .world-panorama::after{
   content:"";
   position:absolute;
@@ -156,14 +156,15 @@
   pointer-events:none;
   background:
     linear-gradient(180deg,
-      #101e2b 0,
-      rgba(16,30,43,.82) 28px,
-      rgba(16,30,43,.38) 86px,
-      rgba(16,30,43,.08) 145px,
-      rgba(16,30,43,0) 205px),
+      #101e52 0,
+      rgba(16,30,82,.96) 24px,
+      rgba(16,30,82,.78) 70px,
+      rgba(16,30,82,.46) 126px,
+      rgba(16,30,82,.18) 182px,
+      rgba(16,30,82,0) 245px),
     linear-gradient(90deg,
-      rgba(7,18,29,.58) 0%,
-      rgba(7,18,29,.28) 28%,
+      rgba(7,18,29,.44) 0%,
+      rgba(7,18,29,.20) 28%,
       rgba(7,18,29,.03) 62%,
       rgba(7,18,29,0) 100%);
   opacity:0;
@@ -213,7 +214,12 @@
   }
   .world-home .world-panorama::after{
     background:
-      linear-gradient(180deg,#101e2b 0,rgba(16,30,43,.52) 70px,rgba(16,30,43,0) 145px),
-      linear-gradient(90deg,rgba(7,18,29,.45),rgba(7,18,29,.08) 72%,rgba(7,18,29,0));
+      linear-gradient(180deg,
+        #101e52 0,
+        rgba(16,30,82,.88) 46px,
+        rgba(16,30,82,.48) 102px,
+        rgba(16,30,82,.12) 154px,
+        rgba(16,30,82,0) 190px),
+      linear-gradient(90deg,rgba(7,18,29,.36),rgba(7,18,29,.07) 72%,rgba(7,18,29,0));
   }
 }
