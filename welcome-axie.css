@@ -157,7 +157,7 @@
   position:absolute;
   z-index:7;
   right:9%;
-  bottom:-24%!important;
+  bottom:-22%!important;
   width:clamp(470px,36vw,640px);
   aspect-ratio:1086 / 1448;
   pointer-events:none;
@@ -190,7 +190,7 @@
   .world-home .welcome-card-body::after{
     width:clamp(500px,36vw,640px);
     right:10%;
-    bottom:-28%!important;
+    bottom:-26%!important;
   }
 }
 
@@ -200,7 +200,7 @@
   .world-home .welcome-card,.world-home .welcome-card-body{min-height:640px!important}
   .world-home .welcome-card-bar{top:51px!important}
   .world-home .welcome-copy{padding-top:173px!important}
-  .world-home .welcome-card-body::after{width:640px;right:11%;bottom:-30%!important}
+  .world-home .welcome-card-body::after{width:640px;right:11%;bottom:-28%!important}
 }
 
 @media(max-width:1120px){
