@@ -16,6 +16,16 @@
 .portal-hero::after,
 .hero-noise{inset:0!important;width:100%!important;height:100%!important}
 
+/* Show the video's poster from the very first paint. portal.css normally keeps the
+   video layer at opacity:0 until JS fires `playing`, which briefly exposes the
+   yellow paper underneath during page load. The poster is already the intended
+   hero fallback, so keep this layer visible continuously and switch to motion
+   without a delayed opacity fade. */
+.world-home .portal-hero-video{
+  opacity:1!important;
+  transition:none!important;
+}
+
 /* The video itself is the visual source (its poster is the fallback). Hiding the
    separate background layer prevents a second, mismatched frame showing through
    while the video fades at the bottom. */
