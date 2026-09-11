@@ -19,9 +19,7 @@
   display:none!important;
 }
 
-/* Simple paper -> blue handoff. The transition has only two visual sources:
-   the existing yellow paper fading away over the normal About blue. No brown,
-   violet or other hard-coded intermediate colors. */
+/* Compact yellow -> normal blue fade. No extra color stops or broad haze. */
 .world-home .world-paper-chapter::after{
   content:""!important;
   display:block!important;
@@ -30,21 +28,15 @@
   left:50%!important;
   bottom:-2px!important;
   width:100vw!important;
-  height:190px!important;
+  height:88px!important;
   transform:translateX(-50%)!important;
   pointer-events:none!important;
-  background:#101e52!important;
-}
-
-.world-home .world-paper-chapter::after{
   background:
     linear-gradient(180deg,
       rgba(247,230,160,1) 0%,
-      rgba(247,230,160,.98) 14%,
-      rgba(247,230,160,.88) 30%,
-      rgba(247,230,160,.66) 48%,
-      rgba(247,230,160,.38) 66%,
-      rgba(247,230,160,.14) 84%,
+      rgba(247,230,160,.82) 26%,
+      rgba(247,230,160,.42) 58%,
+      rgba(247,230,160,.12) 82%,
       rgba(247,230,160,0) 100%
     ),
     #101e52!important;
@@ -56,10 +48,10 @@
 
 @media(max-width:1000px){
   .world-home .world-paper-chapter{margin-top:-68px!important;padding-top:153px!important}
-  .world-home .world-paper-chapter::after{height:165px!important}
+  .world-home .world-paper-chapter::after{height:72px!important}
 }
 
 @media(max-width:680px){
   .world-home .world-paper-chapter{margin-top:-48px!important;padding-top:108px!important}
-  .world-home .world-paper-chapter::after{height:130px!important}
+  .world-home .world-paper-chapter::after{height:58px!important}
 }
