@@ -190,9 +190,9 @@
 .world-paper-chapter .works-marquee::before,.world-paper-chapter .works-marquee::after{display:none}
 
 /* Axie-inspired warm paper treatment for the concept-art chapter.
-   Keep the existing paper texture, but tint the cold white/grey base to a bright parchment yellow. */
+   Keep the existing paper texture while pushing the base clearly into warm yellow. */
 .world-home .world-paper-chapter{
   background:
-    linear-gradient(rgba(247,230,160,.92),rgba(247,230,160,.92)),
+    linear-gradient(rgba(248,228,145,.97),rgba(248,228,145,.97)),
     url('./assets/world/paper-chapter.webp') center/100% 100% no-repeat!important;
 }
