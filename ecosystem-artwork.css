@@ -112,9 +112,12 @@
   transform:translateX(-50%)!important;
 }
 
-/* The TikTok wordmark was much brighter than the Brainrot Battles mark.
-   Tone down its whites and neon accents so both cards have similar visual weight. */
+/* TikTok is a much denser, brighter wordmark than the detailed Brainrot Battles
+   lockup. Give it a smaller footprint so the two cards feel optically balanced. */
 .world-home .world-ecosystem .world-tiktok-link>.ecosystem-card-logo{
+  width:40%!important;
+  height:30%!important;
+  bottom:7%!important;
   opacity:.88!important;
   filter:brightness(.82) saturate(.72) contrast(.94) drop-shadow(0 3px 5px rgba(0,0,0,.24))!important;
 }
@@ -127,8 +130,8 @@
   z-index:5!important;
   left:50%!important;
   bottom:7%!important;
-  width:36%!important;
-  height:24%!important;
+  width:32%!important;
+  height:22%!important;
   transform:translateX(-50%)!important;
   background:url('./assets/world/tiktok-wordmark.png?v=1') center/contain no-repeat!important;
   pointer-events:none!important;
@@ -218,7 +221,8 @@
   .world-home .world-ecosystem .world-game-card>img:not(.ecosystem-card-logo){transform:scale(1.22)!important}
   .world-home .world-ecosystem .world-game-card:hover>img:not(.ecosystem-card-logo){transform:scale(1.24)!important}
   .world-home .world-ecosystem .world-game-card>.ecosystem-card-logo{width:50%!important;bottom:6%!important}
-  .world-home .world-ecosystem .world-tiktok-card::before{width:38%!important;bottom:7%!important}
+  .world-home .world-ecosystem .world-tiktok-link>.ecosystem-card-logo{width:42%!important;height:30%!important;bottom:7%!important}
+  .world-home .world-ecosystem .world-tiktok-card::before{width:34%!important;bottom:7%!important}
   .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
   .world-home .world-panorama::before{background-position:center 54%}
 }
@@ -232,7 +236,8 @@
   .world-home .world-ecosystem .world-game-card>img:not(.ecosystem-card-logo){transform:scale(1.15)!important}
   .world-home .world-ecosystem .world-game-card:hover>img:not(.ecosystem-card-logo){transform:scale(1.17)!important}
   .world-home .world-ecosystem .world-game-card>.ecosystem-card-logo{width:52%!important;bottom:6%!important}
-  .world-home .world-ecosystem .world-tiktok-card::before{width:40%!important;bottom:7%!important}
+  .world-home .world-ecosystem .world-tiktok-link>.ecosystem-card-logo{width:44%!important;height:30%!important;bottom:7%!important}
+  .world-home .world-ecosystem .world-tiktok-card::before{width:36%!important;bottom:7%!important}
   .world-home .world-panorama{height:860px}
   .world-home .world-panorama::before{
     background-position:center 55%;
