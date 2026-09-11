@@ -15,7 +15,7 @@
   box-shadow:none!important;
 }
 
-/* Keep the uploaded illustrated frame in front of artwork, but behind all readable content. */
+/* Frame sits above the right-side artwork, while text remains above the frame. */
 .world-home .welcome-card::before{
   content:"";
   position:absolute;
@@ -25,7 +25,7 @@
   background:url('./assets/world/brainrot-welcome-panel.png?v=2') center/100% 100% no-repeat;
 }
 
-/* BabyT sketch sits above the frame. */
+/* BabyT sketch sits above everything at the upper-left edge. */
 .world-home .welcome-card::after{
   content:"";
   position:absolute;
@@ -143,9 +143,21 @@
   font-weight:800!important;
 }
 
-/* Dedicated right-side BabyT artwork will be added here. Hide the old party illustration for now. */
+/* Temporary right-side artwork stays behind the illustrated frame. */
 .world-home .welcome-party{
-  display:none!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:1!important;
+  right:-6%!important;
+  bottom:-1%!important;
+  width:55%!important;
+  max-width:none!important;
+  height:auto!important;
+  margin:0!important;
+  object-fit:contain!important;
+  pointer-events:none!important;
+  mix-blend-mode:normal!important;
+  filter:drop-shadow(0 15px 15px rgba(92,56,21,.13))!important;
 }
 
 @media(min-width:1750px){
@@ -153,6 +165,7 @@
   .world-home .welcome-card,.world-home .welcome-card-body{min-height:610px!important}
   .world-home .welcome-card-bar{top:48px!important}
   .world-home .welcome-copy{padding-top:165px!important}
+  .world-home .welcome-party{width:56%!important;right:-5.5%!important}
 }
 
 @media(max-width:1120px){
@@ -162,6 +175,7 @@
   .world-home .welcome-card-bar{top:35px!important;left:7%!important;right:36%!important;min-height:66px!important;font-size:clamp(24px,3vw,32px)!important}
   .world-home .welcome-copy{width:61%!important;padding:125px 36px 40px 48px!important}
   .world-home .welcome-copy h2{font-size:clamp(32px,4vw,44px)!important}
+  .world-home .welcome-party{width:58%!important;right:-9%!important;bottom:0!important}
 }
 
 @media(max-width:760px){
@@ -198,4 +212,14 @@
   .world-home .welcome-copy p:not(.world-kicker){font-size:14px!important;max-width:none!important}
   .world-home .welcome-copy .world-button{width:auto!important;min-width:165px!important;margin-top:16px!important}
   .world-home .welcome-note{text-align:left!important}
+  .world-home .welcome-party{
+    position:relative!important;
+    order:2!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:110%!important;
+    max-width:520px!important;
+    align-self:center!important;
+    margin:-8px -5% 0!important;
+  }
 }
