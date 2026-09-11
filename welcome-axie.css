@@ -257,3 +257,42 @@
     margin:-20px auto -30px;
   }
 }
+
+/* Final desktop text alignment: keep every text block inside the illustrated panel,
+   matching the vertical rhythm of the Axie reference instead of floating over the frame. */
+@media(min-width:1121px){
+  .world-home .welcome-card-bar{
+    top:100px!important;
+  }
+  .world-home .welcome-copy{
+    padding:204px 54px 44px 78px!important;
+  }
+  .world-home .welcome-copy .world-kicker{
+    margin:0 0 12px!important;
+  }
+  .world-home .welcome-copy h2{
+    margin:0 0 12px!important;
+    font-size:clamp(38px,2.75vw,48px)!important;
+  }
+  .world-home .welcome-copy p:not(.world-kicker){
+    margin:6px 0 8px!important;
+    font-size:clamp(14px,.95vw,16px)!important;
+    line-height:1.38!important;
+  }
+  .world-home .welcome-copy .world-button{
+    min-height:56px!important;
+    margin-top:12px!important;
+  }
+  .world-home .welcome-note{
+    display:none!important;
+  }
+}
+
+@media(min-width:1750px){
+  .world-home .welcome-card-bar{
+    top:108px!important;
+  }
+  .world-home .welcome-copy{
+    padding-top:212px!important;
+  }
+}
