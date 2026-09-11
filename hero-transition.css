@@ -24,33 +24,31 @@
   visibility:hidden!important;
 }
 
-/* Keep the hero completely untouched until the very bottom. The paper section
-   already sits behind this overlap, so only the final ~74px of the video/media
-   gently disappear and reveal the yellow paper underneath. */
+/* Keep the hero visually intact almost all the way to the edge. Only a very short,
+   restrained fade remains at the bottom so the yellow paper is revealed without
+   the broad bright/glowing band the previous transition created. */
 .portal-hero-video,
 .portal-hero::after,
 .hero-noise,
 .hero-stars{
   -webkit-mask-image:linear-gradient(to bottom,
     #000 0%,
-    #000 calc(100% - 74px),
-    rgba(0,0,0,.99) calc(100% - 62px),
-    rgba(0,0,0,.94) calc(100% - 50px),
-    rgba(0,0,0,.78) calc(100% - 37px),
-    rgba(0,0,0,.50) calc(100% - 24px),
-    rgba(0,0,0,.20) calc(100% - 11px),
-    transparent calc(100% - 2px),
+    #000 calc(100% - 40px),
+    rgba(0,0,0,.995) calc(100% - 31px),
+    rgba(0,0,0,.97) calc(100% - 23px),
+    rgba(0,0,0,.86) calc(100% - 15px),
+    rgba(0,0,0,.52) calc(100% - 8px),
+    rgba(0,0,0,.18) calc(100% - 3px),
     transparent 100%
   )!important;
   mask-image:linear-gradient(to bottom,
     #000 0%,
-    #000 calc(100% - 74px),
-    rgba(0,0,0,.99) calc(100% - 62px),
-    rgba(0,0,0,.94) calc(100% - 50px),
-    rgba(0,0,0,.78) calc(100% - 37px),
-    rgba(0,0,0,.50) calc(100% - 24px),
-    rgba(0,0,0,.20) calc(100% - 11px),
-    transparent calc(100% - 2px),
+    #000 calc(100% - 40px),
+    rgba(0,0,0,.995) calc(100% - 31px),
+    rgba(0,0,0,.97) calc(100% - 23px),
+    rgba(0,0,0,.86) calc(100% - 15px),
+    rgba(0,0,0,.52) calc(100% - 8px),
+    rgba(0,0,0,.18) calc(100% - 3px),
     transparent 100%
   )!important;
   -webkit-mask-repeat:no-repeat!important;
@@ -108,15 +106,15 @@
   .portal-hero{height:100svh!important}.hero-content{padding:108px 0 96px!important}
   .hero-logo-stage{padding:118px 0 104px!important}.hero-game-title{width:min(78vw,680px);transform:translateY(-6vh)}
   .portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 62px),rgba(0,0,0,.94) calc(100% - 48px),rgba(0,0,0,.70) calc(100% - 31px),rgba(0,0,0,.30) calc(100% - 14px),transparent calc(100% - 2px),transparent 100%)!important;
-    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 62px),rgba(0,0,0,.94) calc(100% - 48px),rgba(0,0,0,.70) calc(100% - 31px),rgba(0,0,0,.30) calc(100% - 14px),transparent calc(100% - 2px),transparent 100%)!important;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 34px),rgba(0,0,0,.98) calc(100% - 25px),rgba(0,0,0,.84) calc(100% - 15px),rgba(0,0,0,.44) calc(100% - 7px),rgba(0,0,0,.14) calc(100% - 2px),transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 34px),rgba(0,0,0,.98) calc(100% - 25px),rgba(0,0,0,.84) calc(100% - 15px),rgba(0,0,0,.44) calc(100% - 7px),rgba(0,0,0,.14) calc(100% - 2px),transparent 100%)!important;
   }
 }
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-logo-stage{padding:104px 0 88px!important}.hero-game-title{width:min(90vw,620px);transform:translateY(-4vh)}
   .portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 48px),rgba(0,0,0,.90) calc(100% - 36px),rgba(0,0,0,.58) calc(100% - 22px),rgba(0,0,0,.22) calc(100% - 9px),transparent calc(100% - 1px),transparent 100%)!important;
-    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 48px),rgba(0,0,0,.90) calc(100% - 36px),rgba(0,0,0,.58) calc(100% - 22px),rgba(0,0,0,.22) calc(100% - 9px),transparent calc(100% - 1px),transparent 100%)!important;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 26px),rgba(0,0,0,.96) calc(100% - 18px),rgba(0,0,0,.76) calc(100% - 10px),rgba(0,0,0,.36) calc(100% - 4px),rgba(0,0,0,.12) calc(100% - 1px),transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 26px),rgba(0,0,0,.96) calc(100% - 18px),rgba(0,0,0,.76) calc(100% - 10px),rgba(0,0,0,.36) calc(100% - 4px),rgba(0,0,0,.12) calc(100% - 1px),transparent 100%)!important;
   }
 }
