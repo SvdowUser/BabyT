@@ -169,15 +169,23 @@
 }
 
 /* Desktop composition: match the Axie reference's tighter top gap and visual height.
-   All artwork is enlarged proportionally; no image is stretched. */
+   The left-side panel cluster is moved inward by the same visual amount as the
+   reference screenshot, while the character composition on the right stays put. */
 @media(min-width:1121px){
   .world-home .world-paper-chapter{padding-top:170px!important}
   .world-home .world-paper-chapter .world-welcome{
     width:min(1500px,calc(100% - 96px))!important;
     max-width:1500px!important;
+    --welcome-reference-inset:clamp(44px,3.2vw,60px);
   }
   .world-home .welcome-card,
   .world-home .welcome-card-body{min-height:605px!important}
+  .world-home .welcome-card::before,
+  .world-home .welcome-card::after,
+  .world-home .welcome-card-bar,
+  .world-home .welcome-copy{
+    transform:translateX(var(--welcome-reference-inset))!important;
+  }
   .world-home .welcome-card-bar{top:48px!important}
   .world-home .welcome-copy{padding-top:162px!important}
   .world-home .welcome-card-body::after{
