@@ -38,8 +38,8 @@
   width:205px;
   height:248px;
   pointer-events:none;
-  background:url('./assets/brand/babyt-sketch-corner.png?v=3') center/contain no-repeat;
-  filter:brightness(1.04) contrast(.88) saturate(.96) drop-shadow(0 5px 5px rgba(86,53,20,.08));
+  background:url('./assets/brand/babyt-sketch-corner.png?v=4') center/contain no-repeat;
+  filter:brightness(1.12) contrast(.72) saturate(.88) drop-shadow(0 4px 4px rgba(86,53,20,.05));
 }
 
 .world-home .welcome-card-bar{
