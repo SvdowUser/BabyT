@@ -64,9 +64,7 @@
   text-transform:uppercase;
 }
 
-/* Keep this section image-first like the Axie reference: two equal image slots.
-   The current Brainrot Battles artwork occupies the first slot; the second slot
-   is ready for the next ecosystem artwork. */
+/* Keep this section image-first like the Axie reference: two equal image slots. */
 .world-home .world-ecosystem .world-ecosystem-grid{
   display:grid!important;
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
@@ -74,13 +72,15 @@
   align-items:start!important;
 }
 .world-home .world-ecosystem .world-game-card{
+  position:relative!important;
+  overflow:hidden!important;
   min-height:0!important;
   aspect-ratio:1.72/1!important;
   border-radius:10px!important;
   box-shadow:none!important;
 }
-/* Crop the first ecosystem artwork to the requested framing: keep the left edge,
-   zoom in, and let the right-most characters fall outside the card. */
+
+/* Crop the ecosystem artwork to the requested framing. */
 .world-home .world-ecosystem .world-game-card>img{
   object-position:left center!important;
   transform:scale(1.27)!important;
@@ -89,6 +89,24 @@
 .world-home .world-ecosystem .world-game-card:hover>img{
   transform:scale(1.29)!important;
 }
+
+/* Brainrot Battles key-art treatment: use the same official logo already used
+   in the hero/trailer, centered over the lower part of the first artwork like
+   the title treatment on Axie Infinity's ecosystem cards. */
+.world-home .world-ecosystem .world-game-card:first-child::before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:7%;
+  width:48%;
+  height:34%;
+  transform:translateX(-50%);
+  background:url('./Brainrot_Battles_Header.png?v=1') center/contain no-repeat;
+  pointer-events:none;
+  filter:drop-shadow(0 3px 5px rgba(0,0,0,.28));
+}
+
 .world-home .world-ecosystem .world-game-card::after,
 .world-home .world-ecosystem .world-card-label,
 .world-home .world-ecosystem .world-game-card-copy,
@@ -169,6 +187,7 @@
   .world-home .world-ecosystem .world-ecosystem-grid{gap:18px!important}
   .world-home .world-ecosystem .world-game-card>img{transform:scale(1.22)!important}
   .world-home .world-ecosystem .world-game-card:hover>img{transform:scale(1.24)!important}
+  .world-home .world-ecosystem .world-game-card:first-child::before{width:50%;bottom:6%}
   .world-home .world-panorama{height:clamp(820px,90vw,1100px)}
   .world-home .world-panorama::before{background-position:center 54%}
 }
@@ -181,6 +200,7 @@
   .world-home .world-ecosystem .world-ecosystem-grid{grid-template-columns:1fr!important;gap:16px!important}
   .world-home .world-ecosystem .world-game-card>img{transform:scale(1.15)!important}
   .world-home .world-ecosystem .world-game-card:hover>img{transform:scale(1.17)!important}
+  .world-home .world-ecosystem .world-game-card:first-child::before{width:52%;bottom:6%}
   .world-home .world-panorama{height:860px}
   .world-home .world-panorama::before{
     background-position:center 55%;
