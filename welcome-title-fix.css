@@ -2,7 +2,7 @@
    Loaded after welcome-axie.css so the title stays centered inside the turquoise band. */
 @media (min-width:1121px){
   .world-home .welcome-card-bar{
-    top:103px!important;
+    top:92px!important;
     left:4.4%!important;
     right:41.6%!important;
     min-height:76px!important;
@@ -17,7 +17,7 @@
 
 @media (min-width:1750px){
   .world-home .welcome-card-bar{
-    top:107px!important;
+    top:96px!important;
     left:4.4%!important;
     right:41.6%!important;
   }
