@@ -189,10 +189,11 @@
 
 .world-paper-chapter .works-marquee::before,.world-paper-chapter .works-marquee::after{display:none}
 
-/* Axie-inspired warm paper treatment for the concept-art chapter.
-   Keep the existing paper texture while pushing the base clearly into warm yellow. */
+/* Use the uploaded paper artwork directly. No flat-color overlay remains. */
 .world-home .world-paper-chapter{
-  background:
-    linear-gradient(rgba(248,228,145,.97),rgba(248,228,145,.97)),
-    url('./assets/world/paper-chapter.webp') center/100% 100% no-repeat!important;
+  background-color:#fded8c!important;
+  background-image:url('./assets/world/paper-yellow-texture.webp')!important;
+  background-position:center top!important;
+  background-size:100% auto!important;
+  background-repeat:repeat-y!important;
 }
