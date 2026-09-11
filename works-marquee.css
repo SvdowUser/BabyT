@@ -69,7 +69,7 @@
   gap:16px;
   width:max-content;
   will-change:transform;
-  animation:workMarquee 34s linear infinite;
+  animation:workMarquee 36s linear infinite;
 }
 
 /* Axie reference moves the second row in the opposite direction at the same visual speed. */
@@ -204,7 +204,7 @@
   .works-title-image{width:min(285px,62vw)!important}
   .work-row-track,.work-set{gap:12px}
   .work-row + .work-row{margin-top:12px}
-  .work-row-track{animation-duration:38s}
+  .work-row-track{animation-duration:40s}
   .world-home .world-paper-chapter .works .work-row .work-card{
     --work-card-h:clamp(180px,28vw,232px);
     border-width:7px!important;
@@ -222,7 +222,7 @@
   .works-title-wrap{margin-bottom:28px!important}
   .works-title-image{width:min(250px,70vw)!important}
   .works-marquee::before,.works-marquee::after{width:18px}
-  .work-row-track{animation-duration:42s}
+  .work-row-track{animation-duration:44s}
   .world-home .world-paper-chapter .works .work-row .work-card{
     --work-card-h:152px;
     border-width:6px!important;
