@@ -55,6 +55,28 @@
   mask-size:100% 100%!important;
 }
 
+/* Restore the original transparent title artwork that was uploaded for this
+   section. The later text heading remains in the markup only for accessibility,
+   but is not rendered visually. */
+.world-home .works-heading{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  margin:0 auto 34px!important;
+  padding:0 20px!important;
+}
+.world-home .works-heading > *{
+  display:none!important;
+}
+.world-home .works-heading::before{
+  content:"";
+  display:block!important;
+  width:clamp(250px,18vw,330px)!important;
+  max-width:72vw!important;
+  aspect-ratio:720 / 316;
+  background:url('./assets/brand/in-the-works-title.png?v=3') center/contain no-repeat!important;
+}
+
 /* Remove the caption below the concept-art gallery. */
 .world-home .works-caption{
   display:none!important;
@@ -76,6 +98,8 @@
     -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 34px),rgba(0,0,0,.98) calc(100% - 25px),rgba(0,0,0,.84) calc(100% - 15px),rgba(0,0,0,.44) calc(100% - 7px),rgba(0,0,0,.14) calc(100% - 2px),transparent 100%)!important;
     mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 34px),rgba(0,0,0,.98) calc(100% - 25px),rgba(0,0,0,.84) calc(100% - 15px),rgba(0,0,0,.44) calc(100% - 7px),rgba(0,0,0,.14) calc(100% - 2px),transparent 100%)!important;
   }
+  .world-home .works-heading{margin-bottom:28px!important}
+  .world-home .works-heading::before{width:min(300px,62vw)!important}
   .world-home .world-about{margin-top:-34px!important;padding-top:184px!important}
 }
 
@@ -89,6 +113,8 @@
     -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 26px),rgba(0,0,0,.96) calc(100% - 18px),rgba(0,0,0,.76) calc(100% - 10px),rgba(0,0,0,.36) calc(100% - 4px),rgba(0,0,0,.12) calc(100% - 1px),transparent 100%)!important;
     mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 26px),rgba(0,0,0,.96) calc(100% - 18px),rgba(0,0,0,.76) calc(100% - 10px),rgba(0,0,0,.36) calc(100% - 4px),rgba(0,0,0,.12) calc(100% - 1px),transparent 100%)!important;
   }
+  .world-home .works-heading{margin-bottom:22px!important}
+  .world-home .works-heading::before{width:min(265px,72vw)!important}
   .world-home .world-about{margin-top:-26px!important;padding-top:136px!important}
 }
 
