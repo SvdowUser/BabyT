@@ -26,17 +26,26 @@
   transition:none!important;
 }
 
-/* The video itself is the visual source (its poster is the fallback). Hiding the
-   separate background layer prevents a second, mismatched frame showing through
-   while the video fades at the bottom. */
+/* Keep a static copy of the same hero poster underneath only while the video is
+   still loading. This avoids an empty/transparent media layer on slow loads. As
+   soon as playback starts, remove the fallback immediately so a different video
+   frame can never ghost through the bottom fade. */
 .portal-hero-bg{
+  opacity:1!important;
+  visibility:visible!important;
+  transition:none!important;
+}
+.has-trailer .portal-hero-bg{
   opacity:0!important;
   visibility:hidden!important;
 }
 
 /* Keep the hero visually intact almost all the way to the edge. Only a very short,
    restrained fade remains at the bottom so the yellow paper is revealed without
-   the broad bright/glowing band the previous transition created. */
+   the broad bright/glowing band the previous transition created. Apply the exact
+   same edge to the loading poster fallback so the composition does not jump once
+   the video begins playing. */
+.portal-hero-bg,
 .portal-hero-video,
 .portal-hero::after,
 .hero-noise,
@@ -115,7 +124,7 @@
 @media(max-width:1000px){
   .portal-hero{height:100svh!important}.hero-content{padding:108px 0 96px!important}
   .hero-logo-stage{padding:118px 0 104px!important}.hero-game-title{width:min(78vw,680px);transform:translateY(-6vh)}
-  .portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
+  .portal-hero-bg,.portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
     -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 34px),rgba(0,0,0,.98) calc(100% - 25px),rgba(0,0,0,.84) calc(100% - 15px),rgba(0,0,0,.44) calc(100% - 7px),rgba(0,0,0,.14) calc(100% - 2px),transparent 100%)!important;
     mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 34px),rgba(0,0,0,.98) calc(100% - 25px),rgba(0,0,0,.84) calc(100% - 15px),rgba(0,0,0,.44) calc(100% - 7px),rgba(0,0,0,.14) calc(100% - 2px),transparent 100%)!important;
   }
@@ -123,7 +132,7 @@
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-logo-stage{padding:104px 0 88px!important}.hero-game-title{width:min(90vw,620px);transform:translateY(-4vh)}
-  .portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
+  .portal-hero-bg,.portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
     -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 26px),rgba(0,0,0,.96) calc(100% - 18px),rgba(0,0,0,.76) calc(100% - 10px),rgba(0,0,0,.36) calc(100% - 4px),rgba(0,0,0,.12) calc(100% - 1px),transparent 100%)!important;
     mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 26px),rgba(0,0,0,.96) calc(100% - 18px),rgba(0,0,0,.76) calc(100% - 10px),rgba(0,0,0,.36) calc(100% - 4px),rgba(0,0,0,.12) calc(100% - 1px),transparent 100%)!important;
   }
