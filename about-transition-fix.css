@@ -2,6 +2,13 @@
 .world-home .world-paper-chapter{isolation:isolate!important}
 .world-home .world-paper-chapter > *{position:relative;z-index:2}
 
+/* Keep the hero at the viewport height. The paper only overlaps slightly so the
+   bottom of the trailer stays visible without making the whole hero too tall. */
+@media(min-width:1001px){
+  .world-home .portal-hero{height:100dvh!important;min-height:0!important}
+  .world-home .world-paper-chapter{margin-top:-36px!important}
+}
+
 .world-home .world-paper-chapter::after{
   content:""!important;
   display:block!important;
