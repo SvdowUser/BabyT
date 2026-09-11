@@ -1,3 +1,5 @@
+@import url('./welcome-axie.css?v=1');
+
 /* Transition from the illustrated paper chapter into the compact about section. */
 .world-home .world-paper-chapter{
   isolation:isolate!important;
