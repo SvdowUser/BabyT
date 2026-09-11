@@ -15,21 +15,21 @@
   box-shadow:none!important;
 }
 
-/* Uploaded empty card artwork forms the complete illustrated frame. */
+/* Keep the uploaded illustrated frame in front of artwork, but behind all readable content. */
 .world-home .welcome-card::before{
   content:"";
   position:absolute;
-  z-index:0;
+  z-index:5;
   inset:0;
   pointer-events:none;
-  background:url('./assets/world/brainrot-welcome-panel.png?v=1') center/100% 100% no-repeat;
+  background:url('./assets/world/brainrot-welcome-panel.png?v=2') center/100% 100% no-repeat;
 }
 
-/* BabyT sketch overlaps the upper-left edge like the character in the Axie reference. */
+/* BabyT sketch sits above the frame. */
 .world-home .welcome-card::after{
   content:"";
   position:absolute;
-  z-index:8;
+  z-index:12;
   left:-56px;
   top:-68px;
   width:205px;
@@ -41,7 +41,7 @@
 
 .world-home .welcome-card-bar{
   position:absolute!important;
-  z-index:6!important;
+  z-index:11!important;
   top:44px!important;
   left:7%!important;
   right:39%!important;
@@ -68,7 +68,7 @@
 
 .world-home .welcome-card-body{
   position:relative!important;
-  z-index:2!important;
+  z-index:auto!important;
   display:block!important;
   min-height:575px!important;
   overflow:visible!important;
@@ -76,7 +76,7 @@
 
 .world-home .welcome-copy{
   position:relative!important;
-  z-index:4!important;
+  z-index:10!important;
   width:59%!important;
   max-width:760px!important;
   padding:154px 54px 56px 78px!important;
