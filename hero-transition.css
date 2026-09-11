@@ -16,31 +16,41 @@
 .portal-hero::after,
 .hero-noise{inset:0!important;width:100%!important;height:100%!important}
 
-/* Fade the actual hero media out instead of laying a yellow translucent wash over it.
-   The paper chapter sits underneath this area, so the handoff stays clean and natural. */
-.portal-hero-bg,
+/* The video itself is the visual source (its poster is the fallback). Hiding the
+   separate background layer prevents a second, mismatched frame showing through
+   while the video fades at the bottom. */
+.portal-hero-bg{
+  opacity:0!important;
+  visibility:hidden!important;
+}
+
+/* Keep the hero completely untouched until the very bottom. The paper section
+   already sits behind this overlap, so only the final ~74px of the video/media
+   gently disappear and reveal the yellow paper underneath. */
 .portal-hero-video,
 .portal-hero::after,
 .hero-noise,
 .hero-stars{
   -webkit-mask-image:linear-gradient(to bottom,
     #000 0%,
-    #000 calc(100% - 180px),
-    rgba(0,0,0,.98) calc(100% - 160px),
-    rgba(0,0,0,.90) calc(100% - 135px),
-    rgba(0,0,0,.72) calc(100% - 105px),
-    rgba(0,0,0,.46) calc(100% - 72px),
-    rgba(0,0,0,.20) calc(100% - 38px),
+    #000 calc(100% - 74px),
+    rgba(0,0,0,.99) calc(100% - 62px),
+    rgba(0,0,0,.94) calc(100% - 50px),
+    rgba(0,0,0,.78) calc(100% - 37px),
+    rgba(0,0,0,.50) calc(100% - 24px),
+    rgba(0,0,0,.20) calc(100% - 11px),
+    transparent calc(100% - 2px),
     transparent 100%
   )!important;
   mask-image:linear-gradient(to bottom,
     #000 0%,
-    #000 calc(100% - 180px),
-    rgba(0,0,0,.98) calc(100% - 160px),
-    rgba(0,0,0,.90) calc(100% - 135px),
-    rgba(0,0,0,.72) calc(100% - 105px),
-    rgba(0,0,0,.46) calc(100% - 72px),
-    rgba(0,0,0,.20) calc(100% - 38px),
+    #000 calc(100% - 74px),
+    rgba(0,0,0,.99) calc(100% - 62px),
+    rgba(0,0,0,.94) calc(100% - 50px),
+    rgba(0,0,0,.78) calc(100% - 37px),
+    rgba(0,0,0,.50) calc(100% - 24px),
+    rgba(0,0,0,.20) calc(100% - 11px),
+    transparent calc(100% - 2px),
     transparent 100%
   )!important;
   -webkit-mask-repeat:no-repeat!important;
@@ -97,16 +107,16 @@
 @media(max-width:1000px){
   .portal-hero{height:100svh!important}.hero-content{padding:108px 0 96px!important}
   .hero-logo-stage{padding:118px 0 104px!important}.hero-game-title{width:min(78vw,680px);transform:translateY(-6vh)}
-  .portal-hero-bg,.portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 120px),rgba(0,0,0,.92) calc(100% - 100px),rgba(0,0,0,.68) calc(100% - 72px),rgba(0,0,0,.34) calc(100% - 38px),transparent 100%)!important;
-    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 120px),rgba(0,0,0,.92) calc(100% - 100px),rgba(0,0,0,.68) calc(100% - 72px),rgba(0,0,0,.34) calc(100% - 38px),transparent 100%)!important;
+  .portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 62px),rgba(0,0,0,.94) calc(100% - 48px),rgba(0,0,0,.70) calc(100% - 31px),rgba(0,0,0,.30) calc(100% - 14px),transparent calc(100% - 2px),transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 62px),rgba(0,0,0,.94) calc(100% - 48px),rgba(0,0,0,.70) calc(100% - 31px),rgba(0,0,0,.30) calc(100% - 14px),transparent calc(100% - 2px),transparent 100%)!important;
   }
 }
 @media(max-width:680px){
   .hero-content{width:min(100% - 30px,1320px);padding:92px 0 82px!important}
   .hero-logo-stage{padding:104px 0 88px!important}.hero-game-title{width:min(90vw,620px);transform:translateY(-4vh)}
-  .portal-hero-bg,.portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 80px),rgba(0,0,0,.88) calc(100% - 64px),rgba(0,0,0,.56) calc(100% - 42px),rgba(0,0,0,.24) calc(100% - 20px),transparent 100%)!important;
-    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 80px),rgba(0,0,0,.88) calc(100% - 64px),rgba(0,0,0,.56) calc(100% - 42px),rgba(0,0,0,.24) calc(100% - 20px),transparent 100%)!important;
+  .portal-hero-video,.portal-hero::after,.hero-noise,.hero-stars{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 48px),rgba(0,0,0,.90) calc(100% - 36px),rgba(0,0,0,.58) calc(100% - 22px),rgba(0,0,0,.22) calc(100% - 9px),transparent calc(100% - 1px),transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 48px),rgba(0,0,0,.90) calc(100% - 36px),rgba(0,0,0,.58) calc(100% - 22px),rgba(0,0,0,.22) calc(100% - 9px),transparent calc(100% - 1px),transparent 100%)!important;
   }
 }
