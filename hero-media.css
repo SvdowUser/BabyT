@@ -50,3 +50,12 @@
 @media(max-width:350px){.hero-watch-trailer .trailer-button-copy{width:132px;margin-right:8px}}
 @media(max-height:560px){.hero-media-actions{bottom:96px}.hero-watch-trailer{min-height:62px;padding:8px}.hero-watch-trailer>img{height:44px}.hero-watch-trailer strong{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.portal-hero-video,.trailer-dock,.hero-watch-trailer,.hero-watch-trailer>img,.hero-watch-trailer .trailer-button-copy,.trailer-play-icon{transition:none}}
+
+/* Keep the navigation visually identical after the trailer dock switches to compact mode. */
+.world-home:has(.trailer-dock.is-compact) .portal-header{
+  background:rgba(17,17,18,.27)!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:blur(2px) saturate(104%)!important;
+  -webkit-backdrop-filter:blur(2px) saturate(104%)!important;
+}
