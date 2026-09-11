@@ -113,12 +113,12 @@
 }
 
 /* TikTok is a much denser, brighter wordmark than the detailed Brainrot Battles
-   lockup. Give it a smaller footprint so the two cards feel optically balanced. */
+   lockup. Keep it fully opaque and only tune its color/brightness and footprint. */
 .world-home .world-ecosystem .world-tiktok-link>.ecosystem-card-logo{
   width:40%!important;
   height:30%!important;
   bottom:7%!important;
-  opacity:.88!important;
+  opacity:1!important;
   filter:brightness(.82) saturate(.72) contrast(.94) drop-shadow(0 3px 5px rgba(0,0,0,.24))!important;
 }
 
@@ -136,7 +136,7 @@
   background:url('./assets/world/tiktok-wordmark.png?v=1') center/contain no-repeat!important;
   pointer-events:none!important;
   filter:brightness(.82) saturate(.72) contrast(.94) drop-shadow(0 3px 5px rgba(0,0,0,.24))!important;
-  opacity:.88!important;
+  opacity:1!important;
 }
 
 .world-home .world-ecosystem .world-game-card::after,
