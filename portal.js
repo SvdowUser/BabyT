@@ -199,6 +199,23 @@
   loadChunkedArtwork('.work-card--character-concept img', 'character-concept', 6);
   loadChunkedArtwork('.work-card--orangutini-concept img', 'orangutini-v2', 1);
 
+  /* Add the latest tree-trunk concept sheet to both marquee sets so the
+     seamless gallery loop stays balanced. */
+  document.querySelectorAll('#in-the-works .work-set').forEach((set, index) => {
+    if (set.querySelector('img[src*="tree-trunk-concept-sheet.png"]')) return;
+    const figure = document.createElement('figure');
+    figure.className = 'work-card work-card--medium';
+    const image = document.createElement('img');
+    image.src = './assets/gallery/tree-trunk-concept-sheet.png?v=1';
+    image.alt = index === 0 ? 'Brainrot Battles tree trunk concept sheet' : '';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.style.objectFit = 'contain';
+    image.style.background = '#f5e1c0';
+    figure.appendChild(image);
+    set.appendChild(figure);
+  });
+
   /* Rebuild the creator's exact uploaded transparent footer star trail. */
   const footer = document.querySelector('.world-footer');
   if (footer) {
