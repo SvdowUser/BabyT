@@ -124,38 +124,37 @@
   .world-home .world-about{padding-top:106px!important}
 }
 
-/* Compact the Works chapter. The old layout stacked the Works section bottom
-   padding on top of the paper chapter padding, which created a large empty yellow
-   area. Keep enough breathing room for the artwork, but tighten the hand-off into
-   the blue About section. */
+/* Compact the Works chapter. Keep the gallery close to both its heading and the
+   blue About section so the page reads as one continuous layout rather than two
+   blocks separated by a large empty yellow band. */
 .world-home .world-paper-chapter{
-  padding-bottom:52px!important;
+  padding-bottom:28px!important;
 }
 .world-home .world-paper-chapter .works{
-  padding-top:68px!important;
-  padding-bottom:42px!important;
+  padding-top:58px!important;
+  padding-bottom:24px!important;
 }
 .world-home .works-title-wrap{
-  margin-bottom:28px!important;
+  margin-bottom:22px!important;
 }
 .world-home .world-about{
-  padding-top:116px!important;
+  padding-top:88px!important;
 }
 
 @media(max-width:1000px){
-  .world-home .world-paper-chapter{padding-bottom:44px!important}
-  .world-home .world-paper-chapter .works{padding-top:58px!important;padding-bottom:36px!important}
-  .world-home .works-title-wrap{margin-bottom:24px!important}
-  .world-home .world-about{padding-top:106px!important}
-}
-
-@media(max-width:680px){
-  .world-home .world-paper-chapter{padding-bottom:34px!important}
-  .world-home .world-paper-chapter .works{padding-top:46px!important;padding-bottom:28px!important}
+  .world-home .world-paper-chapter{padding-bottom:24px!important}
+  .world-home .world-paper-chapter .works{padding-top:50px!important;padding-bottom:22px!important}
   .world-home .works-title-wrap{margin-bottom:20px!important}
   .world-home .world-about{padding-top:86px!important}
 }
 
+@media(max-width:680px){
+  .world-home .world-paper-chapter{padding-bottom:20px!important}
+  .world-home .world-paper-chapter .works{padding-top:40px!important;padding-bottom:18px!important}
+  .world-home .works-title-wrap{margin-bottom:16px!important}
+  .world-home .world-about{padding-top:70px!important}
+}
+
 @media(max-width:560px){
-  .world-home .world-about{padding-top:74px!important}
+  .world-home .world-about{padding-top:62px!important}
 }
