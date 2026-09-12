@@ -24,6 +24,58 @@
     requestAnimationFrame(() => document.body?.classList.add('artworks-loaded'));
   });
 
+  /* The gallery is an auto-moving horizontal marquee. Lazy loading is a bad
+     fit here because an off-screen image can start downloading only when it is
+     already sliding into view, which makes large PNGs appear half-rendered.
+     Warm every current gallery asset up front, decode it, and only then let the
+     marquee move. Duplicate cards reuse the browser cache, so each file is
+     downloaded only once. */
+  const gallery = document.querySelector('#in-the-works');
+  const galleryTracks = gallery ? [...gallery.querySelectorAll('.work-row-track')] : [];
+  galleryTracks.forEach(track => {
+    track.style.animationPlayState = 'paused';
+    track.style.opacity = '0';
+    track.style.transition = 'opacity .22s ease';
+  });
+
+  gallery?.querySelectorAll('img').forEach(img => {
+    img.loading = 'eager';
+    img.fetchPriority = 'auto';
+  });
+
+  const galleryArtworkUrls = [
+    './assets/gallery/tree-trunk-concept-sheet.png?v=1',
+    './assets/gallery/wooden-board-concept-sketch.png?v=2',
+    './assets/gallery/portal-concept-sheet.png?v=1',
+    './assets/gallery/pet-store-concept.png?v=1',
+    './assets/gallery/lobby-room-concept.png?v=1'
+  ];
+
+  const preloadGalleryArtwork = src => new Promise(resolve => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'auto';
+    image.onload = () => {
+      if (typeof image.decode === 'function') {
+        image.decode().catch(() => {}).finally(resolve);
+      } else {
+        resolve();
+      }
+    };
+    image.onerror = resolve;
+    image.src = src;
+  });
+
+  Promise.all(galleryArtworkUrls.map(preloadGalleryArtwork)).then(() => {
+    requestAnimationFrame(() => {
+      galleryTracks.forEach(track => {
+        track.style.opacity = '1';
+        track.style.animationPlayState = 'running';
+      });
+      gallery?.classList.add('gallery-ready');
+    });
+  });
+
   const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
   if (navStyle) navStyle.href = './nav-overlay.css?v=18';
   else {
@@ -208,8 +260,9 @@
     const image = document.createElement('img');
     image.src = './assets/gallery/tree-trunk-concept-sheet.png?v=1';
     image.alt = index === 0 ? 'Brainrot Battles tree trunk concept sheet' : '';
-    image.loading = 'lazy';
+    image.loading = 'eager';
     image.decoding = 'async';
+    image.fetchPriority = 'auto';
     image.style.objectFit = 'contain';
     image.style.background = '#f5e1c0';
     figure.appendChild(image);
