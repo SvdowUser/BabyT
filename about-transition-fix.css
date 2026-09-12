@@ -158,3 +158,74 @@
 @media(max-width:560px){
   .world-home .world-about{padding-top:62px!important}
 }
+
+/* Final paper hand-off: use the uploaded yellow silhouette itself instead of a
+   straight rectangle/fade. The source PNG is wrapped by an SVG that keys its
+   white outside area to transparency, so the hero shows through above and the
+   blue About section shows through below just like the Axie reference. */
+body.world-home main > .world-paper-chapter{
+  position:relative!important;
+  isolation:isolate!important;
+  z-index:7!important;
+  margin-top:clamp(-260px,-14vw,-170px)!important;
+  padding-top:clamp(190px,12vw,245px)!important;
+  padding-bottom:clamp(160px,11vw,235px)!important;
+  background-color:transparent!important;
+  background-image:url('./assets/world/paper-wave-transition.svg?v=1')!important;
+  background-position:center center!important;
+  background-size:100% 100%!important;
+  background-repeat:no-repeat!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+  overflow:visible!important;
+}
+body.world-home main > .world-paper-chapter > *{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Let the actual hero remain visible in the transparent notches of the top wave. */
+body.world-home .portal-hero-bg,
+body.world-home .portal-hero-video,
+body.world-home .portal-hero::after,
+body.world-home .hero-noise,
+body.world-home .hero-stars{
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+
+/* Pull the navy About block underneath the bottom paper edge so every cut-out in
+   the silhouette reveals the section itself rather than the page background. */
+body.world-home main > .world-about{
+  position:relative!important;
+  z-index:1!important;
+  margin-top:clamp(-220px,-10vw,-145px)!important;
+  padding-top:clamp(205px,13vw,280px)!important;
+  background:#101e52!important;
+}
+
+@media(max-width:1000px){
+  body.world-home main > .world-paper-chapter{
+    margin-top:-145px!important;
+    padding-top:165px!important;
+    padding-bottom:165px!important;
+  }
+  body.world-home main > .world-about{
+    margin-top:-145px!important;
+    padding-top:190px!important;
+  }
+}
+
+@media(max-width:680px){
+  body.world-home main > .world-paper-chapter{
+    margin-top:-95px!important;
+    padding-top:120px!important;
+    padding-bottom:125px!important;
+    background-size:150% 100%!important;
+    background-position:48% center!important;
+  }
+  body.world-home main > .world-about{
+    margin-top:-105px!important;
+    padding-top:145px!important;
+  }
+}
