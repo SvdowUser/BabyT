@@ -260,3 +260,11 @@
   height:100%!important;
   object-fit:contain!important;
 }
+
+/* These current concept sheets have a few transparent/blank pixels at the bottom of the source canvas.
+   A tiny uniform zoom removes that internal strip without stretching the artwork. */
+.world-home .world-paper-chapter .works .work-row img[src*="portal-concept-sheet.png"],
+.world-home .world-paper-chapter .works .work-row img[src*="pet-store-concept.png"]{
+  transform:scale(1.018)!important;
+  transform-origin:50% 0!important;
+}
