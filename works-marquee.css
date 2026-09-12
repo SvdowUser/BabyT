@@ -241,3 +241,22 @@
 @media(prefers-reduced-motion:reduce){
   .work-row-track{animation:none!important;transform:none!important}
 }
+
+/* Real artwork cards follow each image's own aspect ratio instead of forcing every image into one fixed-width box. */
+.world-home .world-paper-chapter .works .work-row .work-card:not(.work-card--placeholder){
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  display:flex!important;
+  align-items:stretch!important;
+  background:transparent!important;
+}
+
+.world-home .world-paper-chapter .works .work-row .work-card:not(.work-card--placeholder) img{
+  flex:none!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:100%!important;
+  object-fit:contain!important;
+}
