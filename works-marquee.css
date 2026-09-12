@@ -268,3 +268,42 @@
   transform:scale(1.018)!important;
   transform-origin:50% 0!important;
 }
+
+/* Latest wooden board concept sketch. Generated as a flex item in both duplicated marquee sets so the loop stays seamless. */
+#in-the-works .work-set::after{
+  content:"";
+  display:block;
+  flex:none;
+  height:clamp(230px,16.5vw,316px);
+  width:calc(clamp(230px,16.5vw,316px) * 1.5);
+  box-sizing:border-box;
+  border:8px solid rgba(255,251,232,.98);
+  border-radius:23px;
+  background:#f5e1c0 url('./assets/gallery/wooden-board-concept-sketch.png?v=1') center/contain no-repeat;
+  box-shadow:0 2px 0 rgba(92,56,27,.11),0 8px 18px rgba(73,51,25,.06);
+}
+
+@media(max-height:760px) and (min-width:1001px){
+  #in-the-works .work-set::after{
+    height:clamp(205px,15vw,275px);
+    width:calc(clamp(205px,15vw,275px) * 1.5);
+  }
+}
+
+@media(max-width:1000px){
+  #in-the-works .work-set::after{
+    height:clamp(180px,28vw,232px);
+    width:calc(clamp(180px,28vw,232px) * 1.5);
+    border-width:7px;
+    border-radius:19px;
+  }
+}
+
+@media(max-width:680px){
+  #in-the-works .work-set::after{
+    height:152px;
+    width:228px;
+    border-width:6px;
+    border-radius:16px;
+  }
+}
