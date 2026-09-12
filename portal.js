@@ -44,7 +44,7 @@
   });
 
   const galleryArtworkUrls = [
-    './assets/gallery/tree-trunk-concept-sheet.png?v=1',
+    './assets/gallery/tree-trunk-concept-sheet.png?v=2',
     './assets/gallery/wooden-board-concept-sketch.png?v=2',
     './assets/gallery/portal-concept-sheet.png?v=1',
     './assets/gallery/pet-store-concept.png?v=1',
@@ -258,7 +258,7 @@
     const figure = document.createElement('figure');
     figure.className = 'work-card work-card--medium';
     const image = document.createElement('img');
-    image.src = './assets/gallery/tree-trunk-concept-sheet.png?v=1';
+    image.src = './assets/gallery/tree-trunk-concept-sheet.png?v=2';
     image.alt = index === 0 ? 'Brainrot Battles tree trunk concept sheet' : '';
     image.loading = 'eager';
     image.decoding = 'async';
