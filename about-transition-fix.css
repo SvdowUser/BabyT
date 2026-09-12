@@ -159,10 +159,8 @@
   .world-home .world-about{padding-top:62px!important}
 }
 
-/* Final paper hand-off: use the uploaded yellow silhouette itself instead of a
-   straight rectangle/fade. The source PNG is wrapped by an SVG that keys its
-   white outside area to transparency, so the hero shows through above and the
-   blue About section shows through below just like the Axie reference. */
+/* Final paper hand-off: use the exact uploaded yellow silhouette PNG directly.
+   Transparent areas reveal the hero above and the blue About section below. */
 body.world-home main > .world-paper-chapter{
   position:relative!important;
   isolation:isolate!important;
@@ -171,7 +169,7 @@ body.world-home main > .world-paper-chapter{
   padding-top:clamp(190px,12vw,245px)!important;
   padding-bottom:clamp(160px,11vw,235px)!important;
   background-color:transparent!important;
-  background-image:url('./assets/world/paper-wave-transition.svg?v=1')!important;
+  background-image:url('./assets/world/paper-wave-transition-source.png?v=5')!important;
   background-position:center center!important;
   background-size:100% 100%!important;
   background-repeat:no-repeat!important;
