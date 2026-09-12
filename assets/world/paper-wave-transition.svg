@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" preserveAspectRatio="none">
+  <defs>
+    <filter id="whiteToTransparent" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        4 0 -4 0 0"/>
+    </filter>
+  </defs>
+  <image href="paper-wave-transition-source.png" x="0" y="0" width="1672" height="941" preserveAspectRatio="none" filter="url(#whiteToTransparent)"/>
+</svg>
