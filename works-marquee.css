@@ -284,43 +284,57 @@
   box-shadow:0 2px 0 rgba(92,56,27,.11),0 8px 18px rgba(73,51,25,.06);
 }
 
-/* Triple T guardian character concept. Keep the 3:2 source ratio so the sheet is never stretched. */
+/* Triple T guardian character concept: keep the gallery height identical, but use a wider landscape card.
+   Cover scales uniformly, so the artwork fills the longer frame without being stretched. */
 #in-the-works .work-set::before{
   content:"";
   display:block;
   flex:none;
   height:clamp(230px,16.5vw,316px);
-  width:calc(clamp(230px,16.5vw,316px) * 1.5 - 8px);
+  width:calc(clamp(230px,16.5vw,316px) * 1.75 - 8px);
   box-sizing:border-box;
   border:8px solid rgba(255,251,232,.98);
   border-radius:23px;
-  background:#f3eee5 url('./assets/gallery/triple-t-guardian-character-concept.png?v=1') center/contain no-repeat;
+  background:#f3eee5 url('./assets/gallery/triple-t-guardian-character-concept.png?v=2') center/cover no-repeat;
   box-shadow:0 2px 0 rgba(92,56,27,.11),0 8px 18px rgba(73,51,25,.06);
 }
 
 @media(max-height:760px) and (min-width:1001px){
-  #in-the-works .work-set::after,
-  #in-the-works .work-set::before{
+  #in-the-works .work-set::after{
     height:clamp(205px,15vw,275px);
     width:calc(clamp(205px,15vw,275px) * 1.5 - 8px);
+  }
+  #in-the-works .work-set::before{
+    height:clamp(205px,15vw,275px);
+    width:calc(clamp(205px,15vw,275px) * 1.75 - 8px);
   }
 }
 
 @media(max-width:1000px){
-  #in-the-works .work-set::after,
-  #in-the-works .work-set::before{
+  #in-the-works .work-set::after{
     height:clamp(180px,28vw,232px);
     width:calc(clamp(180px,28vw,232px) * 1.5 - 7px);
+    border-width:7px;
+    border-radius:19px;
+  }
+  #in-the-works .work-set::before{
+    height:clamp(180px,28vw,232px);
+    width:calc(clamp(180px,28vw,232px) * 1.75 - 7px);
     border-width:7px;
     border-radius:19px;
   }
 }
 
 @media(max-width:680px){
-  #in-the-works .work-set::after,
-  #in-the-works .work-set::before{
+  #in-the-works .work-set::after{
     height:152px;
     width:222px;
+    border-width:6px;
+    border-radius:16px;
+  }
+  #in-the-works .work-set::before{
+    height:152px;
+    width:260px;
     border-width:6px;
     border-radius:16px;
   }
