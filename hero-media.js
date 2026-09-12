@@ -3,6 +3,7 @@
   const background = hero?.querySelector('.portal-hero-video');
   const toggle = hero?.querySelector('.hero-motion-toggle');
   const dock = document.querySelector('.trailer-dock');
+  const trailerButton = document.querySelector('.hero-watch-trailer');
 
   // Keep the trailer reachable below the hero without covering the content with text.
   if (hero && dock) {
@@ -21,6 +22,16 @@
     window.addEventListener('resize', requestDockUpdate, { passive: true });
     window.addEventListener('pageshow', requestDockUpdate);
   }
+
+  // Restore the original trailer action. The current markup uses a button, so
+  // explicitly open the trailer link instead of leaving the control inert.
+  if (trailerButton) {
+    trailerButton.addEventListener('click', event => {
+      event.preventDefault();
+      window.open('https://www.youtube.com/watch?v=4iVYylK0Vm4', '_blank', 'noopener,noreferrer');
+    });
+  }
+
   if (!hero || !background || !toggle) return;
 
   background.id = 'hero-background-video';
