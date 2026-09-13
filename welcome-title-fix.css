@@ -23,13 +23,12 @@
   }
 }
 
-/* Paper transition layout pass — keep the uploaded silhouette, but position it
-   like the Axie reference: only a small amount enters the hero, give the yellow
-   chapter more vertical room, and let the blue About section sit directly under
-   the irregular lower edge instead of exposing the dark page background. */
+/* Paper transition layout pass. On desktop the paper starts almost exactly at the
+   fold, like the Axie reference. Use vw for the overlap so browser zoom does not
+   turn a small overlap into a much larger one. */
 @media (min-width:1001px){
   body.world-home main > .world-paper-chapter{
-    margin-top:clamp(-140px,-6vw,-95px)!important;
+    margin-top:-1.02vw!important;
     padding-top:clamp(220px,13vw,270px)!important;
     padding-bottom:clamp(270px,16vw,340px)!important;
     background-size:100% 100%!important;
@@ -103,16 +102,15 @@
   }
 }
 
-/* Use the exact uploaded transparent PNG. The yellow silhouette visible on the
-   page is this image; the remaining dark strip came from the transparent pixels
-   revealing the page background because the hero media stopped at its section.
-   Keep the exact asset and extend the real hero layers underneath those pixels. */
+/* Use the uploaded transparent paper PNG, but keep the hero media at the hero's
+   real viewport height. The earlier +420px media extension changed the video's
+   aspect ratio and made object-fit:cover zoom/crop the footage much more heavily. */
 body.world-home main > .world-paper-chapter{
   background-image:url('./assets/world/paper-wave-transition.png?v=9')!important;
   background-color:transparent!important;
 }
 body.world-home .portal-hero{
-  overflow:visible!important;
+  overflow:hidden!important;
 }
 body.world-home .portal-hero-bg,
 body.world-home .portal-hero-video,
@@ -123,7 +121,7 @@ body.world-home .hero-noise{
   bottom:auto!important;
   left:0!important;
   width:100%!important;
-  height:calc(100% + 420px)!important;
+  height:100%!important;
   max-height:none!important;
   -webkit-mask-image:none!important;
   mask-image:none!important;
@@ -140,7 +138,7 @@ body.world-home .portal-hero-video{
   body.world-home .portal-hero-video,
   body.world-home .portal-hero::after,
   body.world-home .hero-noise{
-    height:calc(100% + 300px)!important;
+    height:100%!important;
   }
 }
 
@@ -149,23 +147,24 @@ body.world-home .portal-hero-video{
   body.world-home .portal-hero-video,
   body.world-home .portal-hero::after,
   body.world-home .hero-noise{
-    height:calc(100% + 220px)!important;
+    height:100%!important;
   }
 }
 
 /* Measured Axie parity pass (desktop).
-   Both comparison screenshots are 1917x1078 at the same 25% browser zoom.
-   The page viewport is y=101..1014. The first matching yellow crest begins at
-   y=1001 on Axie and y=776 on BabyT: BabyT is exactly 225 screen pixels too high.
-   225 / 1917 * 100 = 11.737vw. The previous -11.95vw offset therefore needs to
-   become -0.213vw. Keep the measured 47.42vw image height unchanged because its
-   displayed size already matches the Axie reference; only move the ONE paper layer down. */
+   At 100% browser zoom the Axie reference first exposes the paper only in the
+   final ~10px of the viewport. The paper asset itself is 1799x874 and its first
+   opaque pixels begin about 12px into the source. With the rendered 47.42vw
+   height and the -0.213vw image offset, a -1.02vw chapter overlap places that
+   first crest at essentially the same fold while remaining proportional at other
+   desktop zoom levels. */
 @media (min-width:1001px){
   body.world-home main > .world-paper-chapter{
     position:relative!important;
     isolation:isolate!important;
     z-index:7!important;
     overflow:visible!important;
+    margin-top:-1.02vw!important;
     background-image:none!important;
     background-color:transparent!important;
   }
@@ -178,7 +177,7 @@ body.world-home .portal-hero-video{
     top:-0.213vw!important;
     width:100%!important;
     height:47.42vw!important;
-    background-image:url('./assets/world/paper-wave-transition.png?v=12')!important;
+    background-image:url('./assets/world/paper-wave-transition.png?v=13')!important;
     background-position:center top!important;
     background-size:100% 100%!important;
     background-repeat:no-repeat!important;
