@@ -35,7 +35,11 @@
     background-size:100% auto!important;
     background-position:center -3vw!important;
 
-    filter:brightness(.998) hue-rotate(-1.5deg) saturate(.982)!important;
+    /* Color-matched from the current 100% Chrome screenshot. The upper/original
+       paper is about RGB 248/231/162 in a clean flat area; the continuation was
+       about RGB 238/219/163. This correction lifts the continuation and warms it
+       so both sheets visually merge without changing layout or scale. */
+    filter:brightness(1.046) hue-rotate(2deg) saturate(1.11)!important;
     pointer-events:none!important;
     z-index:0!important;
   }
