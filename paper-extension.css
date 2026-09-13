@@ -8,8 +8,17 @@
     padding-bottom:clamp(420px,24vw,520px)!important;
   }
 
-  /* Original Axie-style wave remains the top layer. */
+  /* The source wave has transparent edge notches at both outer sides. Axie's page
+     crops those notches outside the viewport. Overscan ONLY the top wave horizontally
+     so the dark/navy wedges at the far left and right cannot enter the viewport.
+     Its vertical size/position stays unchanged. */
   body.world-home main > .world-paper-chapter::before{
+    left:-4.25vw!important;
+    right:auto!important;
+    width:108.5vw!important;
+    height:47.42vw!important;
+    background-size:100% 100%!important;
+    background-position:center top!important;
     z-index:1!important;
   }
 
