@@ -45,14 +45,14 @@
     z-index:2!important;
   }
 
-  /* Measured directly from the two 1917px-wide 100% Chrome screenshots:
-     BabyT: deepest paper edge ~y393, heading starts ~y768 => ~375px gap.
-     Axie:  deepest paper edge ~y283, heading starts ~y487 => ~204px gap.
-     The heading-to-description gap is already essentially identical (~46px), so
-     only the top spacing is corrected. Reducing the effective desktop top padding
-     by ~171px gives the same edge-to-heading breathing room as Axie without moving
-     or reshaping the paper artwork itself. */
+  /* Fresh 100% Chrome measurement, both screenshots 1917px wide:
+     BabyT deepest central paper edge ~y503, heading starts ~y804 = ~301px gap.
+     Axie  deepest central paper edge ~y282, heading starts ~y487 = ~205px gap.
+     So the About content is still ~96px too low. 16vw at 1917px is ~307px,
+     exactly ~96px less than the previous 21vw (~403px). Keep the paper artwork
+     untouched and move the complete About content block upward by that measured
+     amount so the edge-to-heading spacing matches Axie. */
   body.world-home main > .world-about{
-    padding-top:clamp(380px,21vw,450px)!important;
+    padding-top:clamp(290px,16vw,350px)!important;
   }
 }
