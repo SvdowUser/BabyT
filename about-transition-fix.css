@@ -159,8 +159,8 @@
   .world-home .world-about{padding-top:62px!important}
 }
 
-/* Final paper hand-off: use the exact paper-wave-transition.png artwork. Transparent areas
-   reveal the hero above and the blue About section below. */
+/* Final paper hand-off: use the exact paper-wave-transition.png artwork without
+   distorting it. Width follows the viewport; height follows the PNG's own aspect ratio. */
 body.world-home main > .world-paper-chapter{
   position:relative!important;
   isolation:isolate!important;
@@ -169,9 +169,9 @@ body.world-home main > .world-paper-chapter{
   padding-top:clamp(190px,12vw,245px)!important;
   padding-bottom:clamp(160px,11vw,235px)!important;
   background-color:transparent!important;
-  background-image:url('./assets/world/paper-wave-transition.png?v=8')!important;
-  background-position:center center!important;
-  background-size:100% 100%!important;
+  background-image:url('./assets/world/paper-wave-transition.png?v=9')!important;
+  background-position:center top!important;
+  background-size:100% auto!important;
   background-repeat:no-repeat!important;
   -webkit-mask-image:none!important;
   mask-image:none!important;
@@ -219,8 +219,8 @@ body.world-home main > .world-about{
     margin-top:-95px!important;
     padding-top:120px!important;
     padding-bottom:125px!important;
-    background-size:150% 100%!important;
-    background-position:48% center!important;
+    background-size:100% auto!important;
+    background-position:center top!important;
   }
   body.world-home main > .world-about{
     margin-top:-105px!important;
