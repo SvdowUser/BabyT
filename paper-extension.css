@@ -18,21 +18,20 @@
     display:block!important;
     position:absolute!important;
 
-    /* Slight overscan removes the thin dark strips that were visible at the sides. */
+    /* Slight overscan removes any remaining edge sliver at the sides. */
     left:-2vw!important;
     right:auto!important;
     width:104vw!important;
 
-    /* The previous 39.5vw start was too low and exposed the navy background.
-       Start much earlier so the straight top of the continuation is completely
-       hidden behind the original paper artwork. */
+    /* The cleaned replacement image has a shorter empty top area. Keep it tucked
+       underneath the original wave so no seam or navy gap can appear. */
     top:29vw!important;
     bottom:-5vw!important;
 
-    background-image:url('./assets/world/paper-continuation.png?v=1')!important;
+    background-image:url('./assets/world/paper-continuation.png?v=2')!important;
     background-repeat:no-repeat!important;
 
-    /* IMPORTANT: preserve the source image ratio. No 100% x 100% stretching. */
+    /* Preserve the source image ratio. No 100% x 100% stretching. */
     background-size:100% auto!important;
     background-position:center -3vw!important;
 
