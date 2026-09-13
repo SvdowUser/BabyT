@@ -103,8 +103,7 @@
 }
 
 /* Use the uploaded transparent paper PNG, but keep the hero media at the hero's
-   real viewport height. The earlier +420px media extension changed the video's
-   aspect ratio and made object-fit:cover zoom/crop the footage much more heavily. */
+   real viewport height. */
 body.world-home main > .world-paper-chapter{
   background-image:url('./assets/world/paper-wave-transition.png?v=9')!important;
   background-color:transparent!important;
@@ -151,13 +150,7 @@ body.world-home .portal-hero-video{
   }
 }
 
-/* Measured Axie parity pass (desktop).
-   At 100% browser zoom the Axie reference first exposes the paper only in the
-   final ~10px of the viewport. The paper asset itself is 1799x874 and its first
-   opaque pixels begin about 12px into the source. With the rendered 47.42vw
-   height and the -0.213vw image offset, a -1.02vw chapter overlap places that
-   first crest at essentially the same fold while remaining proportional at other
-   desktop zoom levels. */
+/* One continuous paper artwork. */
 @media (min-width:1001px){
   body.world-home main > .world-paper-chapter{
     position:relative!important;
@@ -193,5 +186,58 @@ body.world-home .portal-hero-video{
   body.world-home main > .world-paper-chapter > *{
     position:relative!important;
     z-index:2!important;
+  }
+}
+
+/* Final measured desktop fold pass.
+   Reference screenshots at 100% browser zoom are 1916px wide. In Axie the first
+   pale paper pixels appear around y=1002, while the previous BabyT pass exposed
+   them around y=974 and also let the hero media stop around y=969, leaving a flat
+   navy strip underneath. Instead of stretching the video layer independently,
+   make the HERO itself continue behind the paper wave. The added 11.5vw gives the
+   top wave real moving video underneath its transparent notches; the -12.95vw
+   chapter overlap then places only the tiny first paper tip at the viewport fold.
+   Because both values are vw-based, the physical relationship remains stable when
+   the browser is zoomed. The slightly taller cover area also produces the small,
+   intentional video zoom requested without a separate scale transform. */
+@media (min-width:1001px){
+  body.world-home .portal-hero{
+    height:calc(100vh + 11.5vw)!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:hidden!important;
+    z-index:6!important;
+  }
+
+  body.world-home .portal-hero-bg,
+  body.world-home .portal-hero-video,
+  body.world-home .portal-hero::after,
+  body.world-home .hero-noise{
+    width:100%!important;
+    height:100%!important;
+    top:0!important;
+    bottom:auto!important;
+  }
+
+  body.world-home .portal-hero-video{
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+
+  body.world-home main > .world-paper-chapter{
+    margin-top:-12.95vw!important;
+  }
+
+  body.world-home main > .world-paper-chapter::before{
+    top:-0.213vw!important;
+  }
+
+  /* Keep the hero logo and pause control at their old viewport positions even
+     though the media canvas now continues below the fold. */
+  body.world-home .hero-game-title{
+    transform:translateY(calc(-12vh - 5.75vw))!important;
+  }
+  body.world-home .hero-media-actions{
+    bottom:calc(clamp(100px,13vh,150px) + 11.5vw)!important;
   }
 }
