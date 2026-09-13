@@ -24,9 +24,9 @@
   text-shadow:none!important;
 }
 
-/* Warm muted gold instead of pure white so $BabyT belongs to the blue/purple artwork. */
+/* Lighter warm gold so $BabyT stays premium but reads clearly on the blue/purple artwork. */
 .world-home .world-panorama .token-callout-title .token-symbol{
-  color:#f0c75a!important;
+  color:#ffe27a!important;
 }
 
 .world-home .world-panorama .token-callout-copy{
