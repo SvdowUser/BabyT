@@ -87,8 +87,8 @@ body.world-home{overflow-x:hidden}
   body.world-home .world-community .community-social-block .community-links>a{height:40px!important;min-height:40px!important;border-radius:12px!important}
 }
 
-/* Final TikTok cleanup: use a real SVG asset whose top shoulder is part of the glyph,
-   rather than a mask path that produced a 1px vertical spike at small sizes. */
+/* Final TikTok cleanup: keep the original fuller silhouette, crop only the stray top spike,
+   and restore the visual weight it had before the first fix. */
 body.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{
   display:none!important;
 }
@@ -97,10 +97,16 @@ body.world-home .world-community .community-social-block .community-links>a.tikt
   display:block!important;
   position:relative!important;
   z-index:1!important;
-  width:20px!important;
-  height:20px!important;
-  background:transparent url('./assets/icons/tiktok-clean.svg?v=1') center/contain no-repeat!important;
+  width:24px!important;
+  height:24px!important;
+  background:transparent url('./assets/icons/tiktok-clean.svg?v=2') center/contain no-repeat!important;
   -webkit-mask:none!important;
   mask:none!important;
   pointer-events:none!important;
+}
+@media(max-width:760px){
+  body.world-home .world-community .community-social-block .community-links>a.tiktok-link::after{
+    width:22px!important;
+    height:22px!important;
+  }
 }
