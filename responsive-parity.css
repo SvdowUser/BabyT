@@ -86,3 +86,21 @@ body.world-home{overflow-x:hidden}
   body.world-home .world-community .community-social-block .community-copy::after{font-size:clamp(9px,2.5vw,11px)!important}
   body.world-home .world-community .community-social-block .community-links>a{height:40px!important;min-height:40px!important;border-radius:12px!important}
 }
+
+/* Final TikTok cleanup: use a real SVG asset whose top shoulder is part of the glyph,
+   rather than a mask path that produced a 1px vertical spike at small sizes. */
+body.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{
+  display:none!important;
+}
+body.world-home .world-community .community-social-block .community-links>a.tiktok-link::after{
+  content:""!important;
+  display:block!important;
+  position:relative!important;
+  z-index:1!important;
+  width:20px!important;
+  height:20px!important;
+  background:transparent url('./assets/icons/tiktok-clean.svg?v=1') center/contain no-repeat!important;
+  -webkit-mask:none!important;
+  mask:none!important;
+  pointer-events:none!important;
+}
