@@ -26,7 +26,6 @@
   text-shadow:none!important;
 }
 
-/* Keep $BabyT clean and neutral against the blue panorama. */
 .world-home .world-panorama .token-callout-title .token-symbol{
   color:#ffffff!important;
 }
@@ -43,51 +42,86 @@
   text-shadow:none!important;
 }
 
-/* Muted burnished-gold CTA: less saturated than the old orange so it sits
-   naturally against the navy/blue panorama instead of looking like a promo badge. */
+/* Dexscreener CTA now reuses the exact visual language of PLAY THE ALPHA. */
 .world-home .world-panorama .token-dex-link{
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:10px!important;
-  min-height:48px!important;
-  padding:0 25px!important;
-  border:1px solid rgba(239,210,132,.88)!important;
-  border-radius:16px!important;
-  background:linear-gradient(180deg,#d7b04a 0%,#b7832f 54%,#98651f 100%)!important;
-  box-shadow:
-    0 9px 24px rgba(10,18,62,.24),
-    0 2px 8px rgba(74,46,12,.18),
-    inset 0 1px 0 rgba(255,244,204,.42),
-    inset 0 -1px 0 rgba(82,50,10,.28)!important;
+  box-sizing:border-box!important;
+  position:relative!important;
+  isolation:isolate!important;
+  z-index:1!important;
+  display:inline-grid!important;
+  place-items:center!important;
+  overflow:visible!important;
+  width:max-content!important;
+  min-width:0!important;
+  height:46px!important;
+  min-height:46px!important;
+  padding:0 22px!important;
+  gap:0!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:17px!important;
+  background:linear-gradient(180deg,#87521d 0%,#724116 100%)!important;
+  box-shadow:none!important;
   color:#ffffff!important;
-  font-family:"Rowdies",system-ui,sans-serif!important;
-  font-size:15px!important;
+  font-family:"Rowdies","Nunito",system-ui,sans-serif!important;
+  font-size:clamp(15px,.9vw,16px)!important;
   font-weight:700!important;
+  letter-spacing:.004em!important;
   line-height:1!important;
-  letter-spacing:.01em!important;
+  text-transform:uppercase!important;
   text-decoration:none!important;
-  text-shadow:0 1px 1px rgba(70,41,8,.34)!important;
-  transition:transform .15s ease,filter .15s ease,border-color .15s ease,box-shadow .15s ease!important;
+  text-shadow:none!important;
+  transform:none!important;
+  transition:filter .15s ease,transform .15s ease!important;
+}
+
+.world-home .world-panorama .token-dex-link::before{
+  content:none!important;
+  display:none!important;
+}
+
+.world-home .world-panorama .token-dex-link::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:-4px -5px!important;
+  border-radius:21px!important;
+  background:linear-gradient(180deg,#d1a04a 0%,#9b5d1c 100%)!important;
+  -webkit-mask:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
+  mask:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
+  pointer-events:none!important;
+  opacity:.96!important;
+}
+
+/* The reference button has no arrow, so hide the external mark here as well. */
+.world-home .world-panorama .token-dex-link .external-mark{
+  display:none!important;
+}
+
+.world-home .world-panorama .token-dex-link:hover,
+.world-home .world-panorama .token-dex-link:focus,
+.world-home .world-panorama .token-dex-link:focus-visible,
+.world-home .world-panorama .token-dex-link:active{
+  border:0!important;
+  outline:0!important;
+  border-radius:17px!important;
+  box-shadow:none!important;
+  background:linear-gradient(180deg,#87521d 0%,#724116 100%)!important;
 }
 .world-home .world-panorama .token-dex-link:hover{
+  filter:brightness(1.05)!important;
   transform:translateY(-1px)!important;
-  filter:brightness(1.045) saturate(.96)!important;
-  border-color:rgba(255,228,155,.96)!important;
-  box-shadow:
-    0 11px 28px rgba(10,18,62,.28),
-    0 3px 10px rgba(74,46,12,.20),
-    inset 0 1px 0 rgba(255,248,218,.48),
-    inset 0 -1px 0 rgba(82,50,10,.24)!important;
+}
+.world-home .world-panorama .token-dex-link:focus,
+.world-home .world-panorama .token-dex-link:focus-visible,
+.world-home .world-panorama .token-dex-link:active{
+  filter:none!important;
+  transform:none!important;
 }
 .world-home .world-panorama .token-dex-link:focus-visible{
   outline:2px solid #84d6ff!important;
   outline-offset:4px!important;
-}
-.world-home .world-panorama .token-dex-link .external-mark{
-  color:#ffffff!important;
-  font-size:16px!important;
-  line-height:1!important;
 }
 
 @media(max-width:680px){
@@ -104,9 +138,20 @@
     font-size:13px!important;
   }
   .world-home .world-panorama .token-dex-link{
-    min-height:44px!important;
-    padding:0 20px!important;
-    border-radius:15px!important;
+    height:39px!important;
+    min-height:39px!important;
+    padding:0 19px!important;
+    border-radius:14px!important;
     font-size:14px!important;
+  }
+  .world-home .world-panorama .token-dex-link:hover,
+  .world-home .world-panorama .token-dex-link:focus,
+  .world-home .world-panorama .token-dex-link:focus-visible,
+  .world-home .world-panorama .token-dex-link:active{
+    border-radius:14px!important;
+  }
+  .world-home .world-panorama .token-dex-link::after{
+    inset:-3px -4px!important;
+    border-radius:18px!important;
   }
 }
