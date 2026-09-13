@@ -100,8 +100,8 @@
           </a>
         </div>
       </div>
-      <a href="./merch.html">Merch</a>
-      <a href="./token.html">$BabyT</a>
+      <a href="#" data-placeholder-link="merch">Merch</a>
+      <a href="./#babyt-token">$BabyT</a>
       <div class="nav-drop">
         <button class="nav-drop-trigger" type="button" aria-expanded="false">Social <span class="nav-caret" aria-hidden="true"></span></button>
         <div class="nav-dropdown" role="menu">
@@ -127,8 +127,8 @@
     mobileMenu.innerHTML = `
       <span class="mobile-group">Brainrot Games</span>
       <a class="mobile-sub" href="https://brainrotbattle.io/">Brainrot Battles</a>
-      <a href="./merch.html">Merch</a>
-      <a href="./token.html">$BabyT</a>
+      <a href="#" data-placeholder-link="merch">Merch</a>
+      <a href="./#babyt-token">$BabyT</a>
       <span class="mobile-group">Social</span>
       <a class="mobile-sub" href="https://www.youtube.com/@PlayBrainrotGames" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
       <a class="mobile-sub" href="https://x.com/mythosmondaysog" target="_blank" rel="noopener noreferrer">X / Development ↗</a>
@@ -140,6 +140,11 @@
       <a class="mobile-sub" href="./privacy.html">Privacy Policy</a>
       <a class="mobile-sub" href="./terms.html">Terms of Use</a>`;
   }
+
+  /* Merch is intentionally a live-looking placeholder until the presale destination is known. */
+  document.querySelectorAll('[data-placeholder-link="merch"]').forEach(link => {
+    link.addEventListener('click', event => event.preventDefault());
+  });
 
   const navDrops = [...document.querySelectorAll('.nav-drop')];
   const canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
