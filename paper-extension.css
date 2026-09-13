@@ -8,15 +8,16 @@
     padding-bottom:clamp(420px,24vw,520px)!important;
   }
 
-  /* The source wave has transparent edge notches at both outer sides. Axie's page
-     crops those notches outside the viewport. Overscan ONLY the top wave horizontally
-     so the dark/navy wedges at the far left and right cannot enter the viewport.
-     Its vertical size/position stays unchanged. */
+  /* Overscan the top wave horizontally so the source PNG's transparent outer
+     notches stay outside the viewport. Because the image is now 108.5vw wide, its
+     height MUST scale by the same factor. The source artwork is 1778x849, so the
+     matching height is 51.81vw. This restores the complete lower tongue instead of
+     visually chopping/compressing the final part of the paper ending. */
   body.world-home main > .world-paper-chapter::before{
     left:-4.25vw!important;
     right:auto!important;
     width:108.5vw!important;
-    height:47.42vw!important;
+    height:51.81vw!important;
     background-size:100% 100%!important;
     background-position:center top!important;
     z-index:1!important;
@@ -32,17 +33,15 @@
     right:auto!important;
     width:104vw!important;
 
-    /* Raised from 29vw to 12.5vw. At the supplied ~1760px viewport this is about
-       220px, matching the red guide line. The continuation remains behind the
-       original wave, so the upper shape is unchanged while everything below the
-       guide line gets the longer paper continuation. */
+    /* Start the continuation high behind the original artwork so the lower sheet
+       is already present from the requested guide-line area downward. */
     top:12.5vw!important;
     bottom:-5vw!important;
 
     background-image:url('./assets/world/paper-continuation.png?v=2')!important;
     background-repeat:no-repeat!important;
 
-    /* Preserve the source image ratio. No 100% x 100% stretching. */
+    /* Preserve the continuation source image ratio. */
     background-size:100% auto!important;
     background-position:center -3vw!important;
 
@@ -57,11 +56,10 @@
     z-index:2!important;
   }
 
-  /* Keep the paper ending exactly where it is, but start the blue-section content
-     lower. In the supplied 1917px-wide screenshot the title was sitting inside the
-     lowest paper tongue; this adds roughly 75-80px at that viewport so the heading
-     begins clearly below the transition instead of in the middle of it. */
+  /* The restored wave now extends about 4.4vw farther down. Move the blue-section
+     content down by the same visual amount so the heading remains comfortably
+     below the full paper tongue rather than underneath it. */
   body.world-home main > .world-about{
-    padding-top:clamp(440px,24vw,520px)!important;
+    padding-top:clamp(520px,28.5vw,610px)!important;
   }
 }
