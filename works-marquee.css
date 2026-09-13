@@ -96,7 +96,7 @@
   border:8px solid rgba(255,251,232,.98)!important;
   border-radius:23px!important;
   background:#efeee8!important;
-  box-shadow:0 2px 0 rgba(92,56,27,.11),0 8px 18px rgba(73,51,25,.06)!important;
+  box-shadow:none!important;
 }
 
 .world-home .world-paper-chapter .works .work-row .work-card--wide{width:clamp(390px,29vw,560px)!important}
@@ -281,7 +281,7 @@
   border:8px solid rgba(255,251,232,.98);
   border-radius:23px;
   background:transparent url('./assets/gallery/wooden-board-concept-sketch.png?v=2') center/contain no-repeat;
-  box-shadow:0 2px 0 rgba(92,56,27,.11),0 8px 18px rgba(73,51,25,.06);
+  box-shadow:none;
 }
 
 /* Triple T guardian character concept: keep the gallery height identical, but use a wider landscape card.
@@ -296,7 +296,7 @@
   border:8px solid rgba(255,251,232,.98);
   border-radius:23px;
   background:#f3eee5 url('./assets/gallery/triple-t-guardian-character-concept.png?v=2') center/cover no-repeat;
-  box-shadow:0 2px 0 rgba(92,56,27,.11),0 8px 18px rgba(73,51,25,.06);
+  box-shadow:none;
 }
 
 @media(max-height:760px) and (min-width:1001px){
