@@ -1,18 +1,12 @@
-/* Minimal $BabyT token callout over the upper sky of the panorama artwork.
-   The callout lives in the following community section in the HTML, so its
-   vertical position deliberately reaches back over the preceding panorama. */
-.world-home .world-community{
-  overflow:visible!important;
-}
-
-.world-home .world-community .token-callout{
+/* $BabyT token callout lives directly inside the panorama now.
+   This makes its position relative to the artwork itself instead of trying to
+   reach backwards from the following community section. */
+.world-home .world-panorama .token-callout{
   position:absolute!important;
   z-index:6!important;
+  top:clamp(78px,6vw,112px)!important;
   left:50%!important;
   right:auto!important;
-  /* Previous panorama is clamp(590px,48vw,890px) tall. Move back across it,
-     then place the callout around 10vw from the panorama's top edge. */
-  top:calc(0px - clamp(590px,48vw,890px) + clamp(120px,10vw,175px))!important;
   bottom:auto!important;
   width:min(760px,calc(100% - 48px))!important;
   margin:0!important;
@@ -21,7 +15,7 @@
   pointer-events:auto!important;
 }
 
-.world-home .world-community .token-callout-title{
+.world-home .world-panorama .token-callout-title{
   margin:0!important;
   color:#fff8e8!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
@@ -32,11 +26,11 @@
   text-shadow:0 3px 18px rgba(10,16,72,.34)!important;
 }
 
-.world-home .world-community .token-callout-title .token-symbol{
+.world-home .world-panorama .token-callout-title .token-symbol{
   color:#f5bf58!important;
 }
 
-.world-home .world-community .token-callout-copy{
+.world-home .world-panorama .token-callout-copy{
   margin:13px auto 22px!important;
   max-width:610px!important;
   color:#c9dcff!important;
@@ -48,7 +42,7 @@
   text-shadow:0 2px 12px rgba(8,14,62,.30)!important;
 }
 
-.world-home .world-community .token-dex-link{
+.world-home .world-panorama .token-dex-link{
   display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
@@ -67,34 +61,33 @@
   text-decoration:none!important;
   transition:transform .15s ease,filter .15s ease!important;
 }
-.world-home .world-community .token-dex-link:hover{
+.world-home .world-panorama .token-dex-link:hover{
   transform:translateY(-1px)!important;
   filter:brightness(1.04)!important;
 }
-.world-home .world-community .token-dex-link:focus-visible{
+.world-home .world-panorama .token-dex-link:focus-visible{
   outline:2px solid #fff4c7!important;
   outline-offset:4px!important;
 }
-.world-home .world-community .token-dex-link .external-mark{
+.world-home .world-panorama .token-dex-link .external-mark{
   font-size:16px!important;
   line-height:1!important;
 }
 
 @media(max-width:680px){
-  .world-home .world-community .token-callout{
-    /* Mobile panorama becomes a 3:2 image plus 60px bottom padding. */
-    top:calc(-48.667vw - 60px)!important;
+  .world-home .world-panorama .token-callout{
+    top:72px!important;
     width:calc(100% - 30px)!important;
   }
-  .world-home .world-community .token-callout-title{
+  .world-home .world-panorama .token-callout-title{
     font-size:clamp(28px,8.5vw,40px)!important;
   }
-  .world-home .world-community .token-callout-copy{
+  .world-home .world-panorama .token-callout-copy{
     margin:10px auto 17px!important;
     max-width:92%!important;
     font-size:13px!important;
   }
-  .world-home .world-community .token-dex-link{
+  .world-home .world-panorama .token-dex-link{
     min-height:44px!important;
     padding:0 20px!important;
     border-radius:15px!important;
