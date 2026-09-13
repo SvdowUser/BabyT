@@ -22,3 +22,83 @@
     right:41.6%!important;
   }
 }
+
+/* Paper transition layout pass — keep the uploaded silhouette, but position it
+   like the Axie reference: only a small amount enters the hero, give the yellow
+   chapter more vertical room, and let the blue About section sit directly under
+   the irregular lower edge instead of exposing the dark page background. */
+@media (min-width:1001px){
+  body.world-home main > .world-paper-chapter{
+    margin-top:clamp(-140px,-6vw,-95px)!important;
+    padding-top:clamp(220px,13vw,270px)!important;
+    padding-bottom:clamp(270px,16vw,340px)!important;
+    background-size:100% 100%!important;
+    background-position:center center!important;
+  }
+
+  body.world-home main > .world-about{
+    margin-top:clamp(-370px,-17vw,-290px)!important;
+    padding-top:clamp(360px,20vw,430px)!important;
+  }
+
+  body.world-home main > .world-about::before{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    top:-380px!important;
+    height:420px!important;
+    background:#101e52!important;
+    z-index:0!important;
+    pointer-events:none!important;
+  }
+
+  body.world-home main > .world-about > *{
+    position:relative!important;
+    z-index:1!important;
+  }
+}
+
+@media (max-width:1000px){
+  body.world-home main > .world-paper-chapter{
+    margin-top:-78px!important;
+    padding-top:180px!important;
+    padding-bottom:225px!important;
+  }
+  body.world-home main > .world-about{
+    margin-top:-235px!important;
+    padding-top:280px!important;
+  }
+  body.world-home main > .world-about::before{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    top:-255px!important;
+    height:290px!important;
+    background:#101e52!important;
+    z-index:0!important;
+    pointer-events:none!important;
+  }
+  body.world-home main > .world-about > *{position:relative!important;z-index:1!important}
+}
+
+@media (max-width:680px){
+  body.world-home main > .world-paper-chapter{
+    margin-top:-42px!important;
+    padding-top:132px!important;
+    padding-bottom:165px!important;
+    background-size:150% 100%!important;
+    background-position:48% center!important;
+  }
+  body.world-home main > .world-about{
+    margin-top:-178px!important;
+    padding-top:218px!important;
+  }
+  body.world-home main > .world-about::before{
+    top:-195px!important;
+    height:225px!important;
+  }
+}
