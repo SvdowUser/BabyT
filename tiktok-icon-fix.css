@@ -1,0 +1,17 @@
+/* Final TikTok icon override.
+   Use a dedicated SVG asset instead of the old inline path/mask so there is no thin protruding stroke. */
+.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{
+  display:none!important;
+}
+.world-home .world-community .community-social-block .community-links>a.tiktok-link::after{
+  content:""!important;
+  display:block!important;
+  position:relative!important;
+  z-index:1!important;
+  width:20px!important;
+  height:20px!important;
+  background:transparent url('./assets/icons/tiktok-clean.svg?v=1') center/contain no-repeat!important;
+  -webkit-mask:none!important;
+  mask:none!important;
+  pointer-events:none!important;
+}
