@@ -167,7 +167,7 @@
   position:absolute;
   z-index:0;
   inset:0;
-  background-image:url('./assets/world/adventure-panorama-artwork.png?v=2');
+  background-image:none;
   background-repeat:no-repeat;
   background-position:center 54%;
   background-size:cover;
@@ -202,6 +202,9 @@
 
 /* Reveal the artwork and its readability shading together only after both large
    transition artworks are fully downloaded and decoded. */
+.world-home.artworks-loaded .world-panorama::before{
+  background-image:url('./assets/world/adventure-panorama-artwork.png?v=2');
+}
 .world-home.artworks-loaded .world-panorama::before,
 .world-home.artworks-loaded .world-panorama::after{
   opacity:1;
