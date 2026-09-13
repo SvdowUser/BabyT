@@ -1,0 +1,92 @@
+/* Minimal $BabyT token callout placed directly on the community artwork.
+   No card/background image: typography + one Dexscreener link only. */
+.world-home .world-community .token-callout{
+  position:absolute!important;
+  z-index:4!important;
+  left:50%!important;
+  top:clamp(150px,17vw,300px)!important;
+  width:min(760px,calc(100% - 48px))!important;
+  transform:translateX(-50%)!important;
+  text-align:center!important;
+  pointer-events:auto!important;
+}
+
+.world-home .world-community .token-callout-title{
+  margin:0!important;
+  color:#fff8e8!important;
+  font-family:"Rowdies",system-ui,sans-serif!important;
+  font-size:clamp(34px,3.15vw,58px)!important;
+  font-weight:700!important;
+  line-height:.98!important;
+  letter-spacing:-.025em!important;
+  text-shadow:0 3px 18px rgba(10,16,72,.34)!important;
+}
+
+.world-home .world-community .token-callout-title .token-symbol{
+  color:#f5bf58!important;
+}
+
+.world-home .world-community .token-callout-copy{
+  margin:13px auto 22px!important;
+  max-width:610px!important;
+  color:#c9dcff!important;
+  font-family:"Nunito",system-ui,sans-serif!important;
+  font-size:clamp(14px,.98vw,18px)!important;
+  font-weight:800!important;
+  line-height:1.45!important;
+  letter-spacing:.005em!important;
+  text-shadow:0 2px 12px rgba(8,14,62,.30)!important;
+}
+
+.world-home .world-community .token-dex-link{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:9px!important;
+  min-height:48px!important;
+  padding:0 24px!important;
+  border:1px solid rgba(255,215,126,.72)!important;
+  border-radius:16px!important;
+  background:linear-gradient(180deg,#f5bd52 0%,#dda13a 100%)!important;
+  box-shadow:0 8px 24px rgba(41,20,8,.18),inset 0 1px 0 rgba(255,255,255,.35)!important;
+  color:#24180b!important;
+  font-family:"Nunito",system-ui,sans-serif!important;
+  font-size:15px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  text-decoration:none!important;
+  transition:transform .15s ease,filter .15s ease!important;
+}
+.world-home .world-community .token-dex-link:hover{
+  transform:translateY(-1px)!important;
+  filter:brightness(1.04)!important;
+}
+.world-home .world-community .token-dex-link:focus-visible{
+  outline:2px solid #fff4c7!important;
+  outline-offset:4px!important;
+}
+.world-home .world-community .token-dex-link .external-mark{
+  font-size:16px!important;
+  line-height:1!important;
+}
+
+@media(max-width:760px){
+  .world-home .world-community .token-callout{
+    top:clamp(92px,23vw,150px)!important;
+    width:calc(100% - 30px)!important;
+  }
+  .world-home .world-community .token-callout-title{
+    font-size:clamp(28px,8.5vw,40px)!important;
+  }
+  .world-home .world-community .token-callout-copy{
+    margin:10px auto 17px!important;
+    max-width:92%!important;
+    font-size:13px!important;
+  }
+  .world-home .world-community .token-dex-link{
+    min-height:44px!important;
+    padding:0 20px!important;
+    border-radius:15px!important;
+    font-size:14px!important;
+  }
+}
