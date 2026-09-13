@@ -57,8 +57,9 @@
       return;
     }
     if (!background.getAttribute('src')) {
-      background.src = window.matchMedia('(max-width: 680px)').matches
-        ? background.dataset.mobileSrc : background.dataset.desktopSrc;
+      // Visual parity matters more than a separate mobile crop: every device uses
+      // the same source/composition as desktop. CSS handles the responsive crop.
+      background.src = background.dataset.desktopSrc;
       background.muted = true;
       background.load();
     }
