@@ -24,15 +24,10 @@
   text-decoration:none!important;
 }
 
-/* Fine inset line, with the proportions tightened together with the smaller button. */
+/* Remove the old inset rounded ring completely. */
 .world-home .welcome-copy .world-button::before{
-  content:""!important;
-  position:absolute!important;
-  z-index:0!important;
-  inset:6px!important;
-  border:1px solid rgba(211,154,61,.72)!important;
-  border-radius:6px!important;
-  pointer-events:none!important;
+  content:none!important;
+  display:none!important;
 }
 
 /* Same frame asset as the social buttons, recolored only for this CTA. */
@@ -68,13 +63,9 @@
     border-radius:10px!important;
     font-size:14px!important;
   }
-  .world-home .welcome-copy .world-button::before{
-    inset:5px!important;
-    border-radius:6px!important;
-  }
   .world-home .welcome-copy .world-button::after{
     inset:-3px -4px!important;
   }
 }
 
-/* deploy-refresh: v4 */
+/* deploy-refresh: v5 */
