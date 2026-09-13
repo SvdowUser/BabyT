@@ -13,13 +13,15 @@
   pointer-events:auto!important;
 }
 
-/* Uploaded coin emblem, positioned like the solar-system mark above OUR ECOSYSTEM. */
+/* Uploaded coin emblem. Its PNG carries a little more internal empty space than
+   the ecosystem SVG, so the visible gap is compensated here rather than by
+   changing the global heading rhythm. */
 .world-home .world-panorama .token-callout::before{
   content:""!important;
   display:block!important;
   width:82px!important;
   height:82px!important;
-  margin:0 auto 10px!important;
+  margin:0 auto 6px!important;
   background:url('./ChatGPT%20Image%2013.%20Sept.%202026,%2021_24_52.png?v=1') center/contain no-repeat!important;
   pointer-events:none!important;
 }
@@ -125,7 +127,7 @@
   .world-home .world-panorama .token-callout::before{
     width:72px!important;
     height:72px!important;
-    margin-bottom:9px!important;
+    margin-bottom:6px!important;
   }
 }
 
@@ -137,7 +139,7 @@
   .world-home .world-panorama .token-callout::before{
     width:62px!important;
     height:62px!important;
-    margin-bottom:7px!important;
+    margin-bottom:5px!important;
   }
   .world-home .world-panorama .token-callout-title{
     font-size:clamp(28px,8.5vw,40px)!important;
