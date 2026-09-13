@@ -46,7 +46,7 @@
   display:block;
   width:82px;
   height:82px;
-  margin:0 0 10px;
+  margin:0 0 6px;
   background:url('./assets/world/ecosystem-solar-system.svg?v=1') center/contain no-repeat;
 }
 .world-home .world-ecosystem .world-section-title .world-kicker,
@@ -217,7 +217,7 @@
 
 @media(max-width:1000px){
   .world-home .world-ecosystem{padding-top:36px;padding-bottom:80px}
-  .world-home .world-ecosystem .world-section-title>div::before{width:72px;height:72px;margin-bottom:9px}
+  .world-home .world-ecosystem .world-section-title>div::before{width:72px;height:72px;margin-bottom:6px}
   .world-home .world-ecosystem .world-section-title h2{font-size:34px}
   .world-home .world-ecosystem .world-ecosystem-grid{gap:18px!important}
   .world-home .world-ecosystem .world-game-card>img:not(.ecosystem-card-logo){transform:scale(1.22)!important}
@@ -232,7 +232,7 @@
 @media(max-width:680px){
   .world-home .world-ecosystem{padding-top:30px;padding-bottom:66px}
   .world-home .world-ecosystem .world-section-title{margin-bottom:30px}
-  .world-home .world-ecosystem .world-section-title>div::before{width:62px;height:62px;margin-bottom:7px}
+  .world-home .world-ecosystem .world-section-title>div::before{width:62px;height:62px;margin-bottom:5px}
   .world-home .world-ecosystem .world-section-title h2{font-size:30px}
   .world-home .world-ecosystem .world-ecosystem-grid{grid-template-columns:1fr!important;gap:16px!important}
   .world-home .world-ecosystem .world-game-card>img:not(.ecosystem-card-logo){transform:scale(1.15)!important}
