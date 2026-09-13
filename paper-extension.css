@@ -1,14 +1,14 @@
 /* Seamless continuation for the Axie-style paper chapter.
-   The generated continuation sits behind the original wave and fills the rest of
-   the chapter, so the welcome panel and In The Works area stay on one continuous
-   sheet instead of dropping onto the navy background. */
+   The continuation artwork is kept in its ORIGINAL 3:4 aspect ratio. It is never
+   stretched to the chapter box; instead it is oversized slightly left/right and
+   cropped naturally. The large overlap starts well above the old navy seam so the
+   original wave and the continuation read as one continuous sheet. */
 @media (min-width:1001px){
   body.world-home main > .world-paper-chapter{
     padding-bottom:clamp(420px,24vw,520px)!important;
   }
 
-  /* Keep the original irregular wave above the continuation so its straight top
-     edge is hidden inside a generous overlap. */
+  /* Original Axie-style wave remains the top layer. */
   body.world-home main > .world-paper-chapter::before{
     z-index:1!important;
   }
@@ -17,16 +17,25 @@
     content:""!important;
     display:block!important;
     position:absolute!important;
-    left:0!important;
-    right:0!important;
-    top:39.5vw!important;
-    bottom:-2.5vw!important;
+
+    /* Slight overscan removes the thin dark strips that were visible at the sides. */
+    left:-2vw!important;
+    right:auto!important;
+    width:104vw!important;
+
+    /* The previous 39.5vw start was too low and exposed the navy background.
+       Start much earlier so the straight top of the continuation is completely
+       hidden behind the original paper artwork. */
+    top:29vw!important;
+    bottom:-5vw!important;
+
     background-image:url('./assets/world/paper-continuation.png?v=1')!important;
-    background-position:center top!important;
-    background-size:100% 100%!important;
     background-repeat:no-repeat!important;
-    /* The continuation source is a few RGB points darker than the original paper.
-       This compensates for that while keeping the same Axie color treatment. */
+
+    /* IMPORTANT: preserve the source image ratio. No 100% x 100% stretching. */
+    background-size:100% auto!important;
+    background-position:center -3vw!important;
+
     filter:brightness(.998) hue-rotate(-1.5deg) saturate(.982)!important;
     pointer-events:none!important;
     z-index:0!important;
