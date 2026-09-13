@@ -56,3 +56,46 @@
     padding-top:clamp(290px,16vw,350px)!important;
   }
 }
+
+/* responsive-parity.css intentionally replaces the desktop wave geometry below
+   1120px. Keep that layout, but restore the same continuation artwork underneath
+   it so the yellow paper does not end early and expose the navy About background.
+   The duplicated class raises specificity above the later responsive override
+   without changing any spacing or section dimensions. */
+@media (max-width:1120px){
+  body.world-home main > .world-paper-chapter.world-paper-chapter::before{
+    z-index:1!important;
+  }
+  body.world-home main > .world-paper-chapter.world-paper-chapter::after{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    left:-4.25vw!important;
+    right:auto!important;
+    width:108.5vw!important;
+    top:max(90px,12.5vw)!important;
+    bottom:-5vw!important;
+    transform:none!important;
+    background-image:url('./assets/world/paper-continuation.png?v=2')!important;
+    background-repeat:no-repeat!important;
+    background-size:100% auto!important;
+    background-position:center -3vw!important;
+    filter:brightness(1.046) hue-rotate(2deg) saturate(1.11)!important;
+    pointer-events:none!important;
+    z-index:0!important;
+  }
+}
+
+/* On phone widths the chapter becomes much taller relative to its width. Use
+   cover only for this continuation layer so the original 3:4 image keeps its
+   proportions while reaching the lower paper edge; horizontal excess is cropped. */
+@media (max-width:760px){
+  body.world-home main > .world-paper-chapter.world-paper-chapter::after{
+    left:0!important;
+    width:100%!important;
+    top:90px!important;
+    bottom:-5vw!important;
+    background-size:cover!important;
+    background-position:center top!important;
+  }
+}
