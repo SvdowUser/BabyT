@@ -27,7 +27,7 @@
 }
 
 .world-home .world-panorama .token-callout-title .token-symbol{
-  color:#f5bd52!important;
+  color:#d4af37!important;
 }
 
 .world-home .world-panorama .token-callout-copy{
@@ -42,8 +42,8 @@
   text-shadow:none!important;
 }
 
-/* Premium glass treatment: keep the warm BabyT accent, but let the CTA sit in
-   the same blue/cyan visual language as the rest of the page. */
+/* Muted burnished-gold CTA: less saturated than the old orange so it sits
+   naturally against the navy/blue panorama instead of looking like a promo badge. */
 .world-home .world-panorama .token-dex-link{
   display:inline-flex!important;
   align-items:center!important;
@@ -51,38 +51,40 @@
   gap:10px!important;
   min-height:48px!important;
   padding:0 25px!important;
-  border:1px solid rgba(132,214,255,.78)!important;
+  border:1px solid rgba(239,210,132,.88)!important;
   border-radius:16px!important;
-  background:
-    linear-gradient(180deg,rgba(26,62,145,.86) 0%,rgba(11,31,88,.92) 100%)!important;
+  background:linear-gradient(180deg,#d7b04a 0%,#b7832f 54%,#98651f 100%)!important;
   box-shadow:
-    0 10px 28px rgba(4,11,51,.30),
-    inset 0 1px 0 rgba(255,255,255,.16),
-    inset 0 0 0 1px rgba(245,189,82,.055)!important;
-  -webkit-backdrop-filter:blur(7px) saturate(118%)!important;
-  backdrop-filter:blur(7px) saturate(118%)!important;
-  color:#fff8e8!important;
+    0 9px 24px rgba(10,18,62,.24),
+    0 2px 8px rgba(74,46,12,.18),
+    inset 0 1px 0 rgba(255,244,204,.42),
+    inset 0 -1px 0 rgba(82,50,10,.28)!important;
+  color:#fffaf0!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
   font-size:15px!important;
   font-weight:700!important;
   line-height:1!important;
   letter-spacing:.01em!important;
   text-decoration:none!important;
-  text-shadow:0 1px 0 rgba(0,0,0,.16)!important;
-  transition:transform .15s ease,background .15s ease,border-color .15s ease,box-shadow .15s ease!important;
+  text-shadow:0 1px 1px rgba(70,41,8,.34)!important;
+  transition:transform .15s ease,filter .15s ease,border-color .15s ease,box-shadow .15s ease!important;
 }
 .world-home .world-panorama .token-dex-link:hover{
   transform:translateY(-1px)!important;
-  border-color:rgba(245,189,82,.86)!important;
-  background:linear-gradient(180deg,rgba(31,72,160,.9) 0%,rgba(13,37,99,.95) 100%)!important;
-  box-shadow:0 12px 30px rgba(4,11,51,.34),inset 0 1px 0 rgba(255,255,255,.18)!important;
+  filter:brightness(1.045) saturate(.96)!important;
+  border-color:rgba(255,228,155,.96)!important;
+  box-shadow:
+    0 11px 28px rgba(10,18,62,.28),
+    0 3px 10px rgba(74,46,12,.20),
+    inset 0 1px 0 rgba(255,248,218,.48),
+    inset 0 -1px 0 rgba(82,50,10,.24)!important;
 }
 .world-home .world-panorama .token-dex-link:focus-visible{
   outline:2px solid #84d6ff!important;
   outline-offset:4px!important;
 }
 .world-home .world-panorama .token-dex-link .external-mark{
-  color:#f5bd52!important;
+  color:#fffaf0!important;
   font-size:16px!important;
   line-height:1!important;
 }
