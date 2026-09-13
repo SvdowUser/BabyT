@@ -102,10 +102,10 @@
   }
 }
 
-/* Use the uploaded transparent paper PNG, but keep the hero media at the hero's
+/* Use the original uploaded transparent paper PNG, but keep the hero media at the hero's
    real viewport height. */
 body.world-home main > .world-paper-chapter{
-  background-image:url('./assets/world/paper-wave-transition.png?v=9')!important;
+  background-image:url('./assets/world/paper-wave-transition-original-004104.png?v=1')!important;
   background-color:transparent!important;
 }
 body.world-home .portal-hero{
@@ -170,10 +170,15 @@ body.world-home .portal-hero-video{
     top:-0.213vw!important;
     width:100%!important;
     height:47.42vw!important;
-    background-image:url('./assets/world/paper-wave-transition.png?v=13')!important;
+    background-image:url('./assets/world/paper-wave-transition-original-004104.png?v=1')!important;
     background-position:center top!important;
     background-size:100% 100%!important;
     background-repeat:no-repeat!important;
+    /* Measured from the two 100% Chrome screenshots: BabyT's paper averaged about
+       RGB 252/236/162 while Axie averaged about 248/230/160 in the same flat paper
+       region. This tiny correction preserves the artwork while matching Axie's
+       on-page paper tone instead of the brighter yellow rendering. */
+    filter:brightness(.978) hue-rotate(-1.5deg) saturate(.982)!important;
     pointer-events:none!important;
     z-index:0!important;
   }
