@@ -35,6 +35,7 @@
 }
 
 .world-home .world-about h2{
+  position:relative!important;
   max-width:none!important;
   margin:0 auto!important;
   color:var(--about-cyan)!important;
@@ -46,6 +47,19 @@
   text-transform:uppercase!important;
   text-align:center!important;
   text-shadow:none!important;
+}
+
+/* Uploaded question-mark emblem, positioned in the existing empty space above the heading. */
+.world-home .world-about h2::before{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  bottom:calc(100% + 15px)!important;
+  width:112px!important;
+  height:112px!important;
+  transform:translateX(-50%)!important;
+  background:url("./assets/world/about-question-mark.png?v=1") center/contain no-repeat!important;
+  pointer-events:none!important;
 }
 
 .world-home .world-about .world-about-description{
@@ -144,6 +158,7 @@
   .world-home .world-about{padding:110px 0 32px!important}
   .world-home .world-about .world-about-inner{width:min(100% - 44px,760px)!important}
   .world-home .world-about h2{font-size:30px!important}
+  .world-home .world-about h2::before{width:96px!important;height:96px!important;bottom:calc(100% + 13px)!important}
   .world-home .world-about .world-about-description{width:min(680px,100%)!important;margin-top:22px!important;font-size:14px!important}
   .world-home .world-about .world-about-stats{width:100%!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;margin-top:48px!important}
   .world-home .world-about .about-stat{min-height:160px!important;padding:22px 16px 19px!important;border-bottom:1px solid rgba(126,216,255,.66)!important}
@@ -157,6 +172,7 @@
   .world-home .world-about{padding:80px 0 28px!important}
   .world-home .world-about .world-about-inner{width:calc(100% - 28px)!important}
   .world-home .world-about h2{font-size:26px!important}
+  .world-home .world-about h2::before{width:78px!important;height:78px!important;bottom:calc(100% + 10px)!important}
   .world-home .world-about .world-about-description{font-size:13px!important;line-height:1.5!important}
   .world-home .world-about .world-about-stats{grid-template-columns:1fr!important;margin-top:38px!important}
   .world-home .world-about .about-stat{min-height:136px!important;border-right:0!important;border-bottom:1px solid rgba(126,216,255,.66)!important;padding:20px 14px 17px!important}
