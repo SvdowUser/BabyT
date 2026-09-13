@@ -1,0 +1,24 @@
+/* Keep the exact original inline TikTok glyph from index.html.
+   The old 1px spike came from letting the SVG path paint outside its 0 0 24 24 viewBox.
+   Hide only that overflow; do not replace, crop or redraw the logo. */
+html body.world-home section.world-community .community-social-block .community-links > a.tiktok-link.tiktok-link > svg{
+  display:block!important;
+  width:19px!important;
+  height:20px!important;
+  fill:#fff!important;
+  color:#fff!important;
+  overflow:hidden!important;
+  clip-path:inset(1px 0 0 0)!important;
+  transform:none!important;
+  pointer-events:none!important;
+}
+
+html body.world-home section.world-community .community-social-block .community-links > a.tiktok-link.tiktok-link::after{
+  content:none!important;
+  display:none!important;
+  width:0!important;
+  height:0!important;
+  background:none!important;
+  -webkit-mask:none!important;
+  mask:none!important;
+}
