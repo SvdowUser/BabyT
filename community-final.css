@@ -66,8 +66,7 @@
   text-align:center!important;
 }
 
-/* Secondary CTA system: same geometry and polish as the Dexscreener primary,
-   but lighter/translucent so social buttons remain visually secondary. */
+/* Secondary CTA system: same geometry as the primary, but now fully opaque. */
 .world-home .world-community .community-social-block .community-links>a,
 .world-home .world-community .community-social-block .community-links>a:nth-child(1),
 .world-home .world-community .community-social-block .community-links>a:nth-child(2),
@@ -83,11 +82,11 @@
   min-height:48px!important;
   padding:0!important;
   overflow:visible!important;
-  border:1px solid rgba(134,213,245,.52)!important;
+  border:1px solid rgba(134,213,245,.78)!important;
   outline:0!important;
   border-radius:15px!important;
-  background:linear-gradient(180deg,rgba(76,156,244,.72) 0%,rgba(50,137,224,.62) 100%)!important;
-  box-shadow:0 8px 18px rgba(5,12,46,.14),inset 0 1px 0 rgba(255,255,255,.16)!important;
+  background:linear-gradient(180deg,#4c9cf4 0%,#3289e0 100%)!important;
+  box-shadow:0 8px 18px rgba(5,12,46,.14),inset 0 1px 0 rgba(255,255,255,.18)!important;
   color:#f8faff!important;
   text-decoration:none!important;
   transform:none!important;
@@ -95,10 +94,10 @@
 }
 
 .world-home .world-community .community-social-block .community-links>a:hover{
-  background:linear-gradient(180deg,rgba(84,169,247,.82) 0%,rgba(55,148,234,.72) 100%)!important;
-  border-color:rgba(134,213,245,.82)!important;
+  background:linear-gradient(180deg,#54a9f7 0%,#3794ea 100%)!important;
+  border-color:rgba(151,224,255,.96)!important;
   outline:0!important;
-  box-shadow:0 10px 22px rgba(5,12,46,.18),0 0 0 1px rgba(134,213,245,.05),inset 0 1px 0 rgba(255,255,255,.20)!important;
+  box-shadow:0 10px 22px rgba(5,12,46,.18),0 0 0 1px rgba(134,213,245,.06),inset 0 1px 0 rgba(255,255,255,.22)!important;
   transform:translateY(-1px)!important;
 }
 
@@ -113,7 +112,7 @@
   display:block!important;
   position:absolute!important;
   inset:3px!important;
-  border:1px solid rgba(255,255,255,.10)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
   border-radius:11px!important;
   pointer-events:none!important;
 }
