@@ -1,7 +1,7 @@
 (() => {
-  /* Load and decode both large transition artworks as one visual unit. The CSS
-     keeps the artwork layers hidden until this class is added, so a slow
-     connection never shows the generated crossfade before the images. */
+  /* Warm the two large transition artworks shortly before the user reaches them.
+     Their CSS backgrounds stay unset until this finishes, so they no longer
+     compete with the hero and first-screen content on initial load. */
   const transitionArtworkUrls = [
     './assets/world/adventure-panorama-artwork.png?v=2',
     './assets/world/community-world-background.png?v=3'
@@ -9,7 +9,7 @@
   const loadTransitionArtwork = src => new Promise(resolve => {
     const image = new Image();
     image.decoding = 'async';
-    image.fetchPriority = 'high';
+    image.fetchPriority = 'auto';
     image.onload = () => {
       if (typeof image.decode === 'function') {
         image.decode().catch(() => {}).finally(resolve);
@@ -20,16 +20,30 @@
     image.onerror = resolve;
     image.src = src;
   });
-  Promise.all(transitionArtworkUrls.map(loadTransitionArtwork)).then(() => {
-    requestAnimationFrame(() => document.body?.classList.add('artworks-loaded'));
-  });
 
-  /* The gallery is an auto-moving horizontal marquee. Lazy loading is a bad
-     fit here because an off-screen image can start downloading only when it is
-     already sliding into view, which makes large PNGs appear half-rendered.
-     Warm every current gallery asset up front, decode it, and only then let the
-     marquee move. Duplicate cards reuse the browser cache, so each file is
-     downloaded only once. */
+  let transitionArtworkStarted = false;
+  const startTransitionArtworkLoad = () => {
+    if (transitionArtworkStarted) return;
+    transitionArtworkStarted = true;
+    Promise.all(transitionArtworkUrls.map(loadTransitionArtwork)).then(() => {
+      requestAnimationFrame(() => document.body?.classList.add('artworks-loaded'));
+    });
+  };
+
+  const transitionSentinel = document.querySelector('.world-ecosystem') || document.querySelector('.world-panorama');
+  if (transitionSentinel && 'IntersectionObserver' in window) {
+    const transitionObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      transitionObserver.disconnect();
+      startTransitionArtworkLoad();
+    }, { rootMargin: '1400px 0px' });
+    transitionObserver.observe(transitionSentinel);
+  } else {
+    startTransitionArtworkLoad();
+  }
+
+  /* Keep the marquee still until its current artwork is decoded, but do not
+     eagerly download the whole gallery while the visitor is still at the hero. */
   const gallery = document.querySelector('#in-the-works');
   const galleryTracks = gallery ? [...gallery.querySelectorAll('.work-row-track')] : [];
   galleryTracks.forEach(track => {
@@ -37,19 +51,6 @@
     track.style.opacity = '0';
     track.style.transition = 'opacity .22s ease';
   });
-
-  gallery?.querySelectorAll('img').forEach(img => {
-    img.loading = 'eager';
-    img.fetchPriority = 'auto';
-  });
-
-  const galleryArtworkUrls = [
-    './assets/gallery/tree-trunk-concept-sheet.png?v=2',
-    './assets/gallery/wooden-board-concept-sketch.png?v=2',
-    './assets/gallery/portal-concept-sheet.png?v=1',
-    './assets/gallery/pet-store-concept.png?v=1',
-    './assets/gallery/lobby-room-concept.png?v=1'
-  ];
 
   const preloadGalleryArtwork = src => new Promise(resolve => {
     const image = new Image();
@@ -66,15 +67,44 @@
     image.src = src;
   });
 
-  Promise.all(galleryArtworkUrls.map(preloadGalleryArtwork)).then(() => {
-    requestAnimationFrame(() => {
-      galleryTracks.forEach(track => {
-        track.style.opacity = '1';
-        track.style.animationPlayState = 'running';
-      });
-      gallery?.classList.add('gallery-ready');
+  let galleryArtworkStarted = false;
+  const startGalleryArtworkLoad = () => {
+    if (galleryArtworkStarted || !gallery) return;
+    galleryArtworkStarted = true;
+
+    const galleryImages = [...gallery.querySelectorAll('.work-row-track img')];
+    galleryImages.forEach(img => {
+      img.loading = 'eager';
+      img.fetchPriority = 'auto';
     });
-  });
+
+    const galleryArtworkUrls = [...new Set(
+      galleryImages
+        .map(img => img.getAttribute('src'))
+        .filter(Boolean)
+    )];
+
+    Promise.all(galleryArtworkUrls.map(preloadGalleryArtwork)).then(() => {
+      requestAnimationFrame(() => {
+        galleryTracks.forEach(track => {
+          track.style.opacity = '1';
+          track.style.animationPlayState = 'running';
+        });
+        gallery.classList.add('gallery-ready');
+      });
+    });
+  };
+
+  if (gallery && 'IntersectionObserver' in window) {
+    const galleryObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      galleryObserver.disconnect();
+      startGalleryArtworkLoad();
+    }, { rootMargin: '1000px 0px' });
+    galleryObserver.observe(gallery);
+  } else {
+    startGalleryArtworkLoad();
+  }
 
   const navStyle = document.querySelector('link[href*="nav-overlay.css"]');
   if (navStyle) navStyle.href = './nav-overlay.css?v=18';
@@ -265,7 +295,7 @@
     const image = document.createElement('img');
     image.src = './assets/gallery/tree-trunk-concept-sheet.png?v=2';
     image.alt = index === 0 ? 'Brainrot Battles tree trunk concept sheet' : '';
-    image.loading = 'eager';
+    image.loading = 'lazy';
     image.decoding = 'async';
     image.fetchPriority = 'auto';
     image.style.objectFit = 'contain';
@@ -274,12 +304,17 @@
     set.appendChild(figure);
   });
 
-  /* Rebuild the creator's exact uploaded transparent footer star trail. */
+  /* Rebuild the creator's exact uploaded transparent footer star trail only
+     shortly before the footer is needed. The chunks are immutable assets, so
+     allow the browser cache to reuse them on future visits. */
   const footer = document.querySelector('.world-footer');
-  if (footer) {
+  let footerArtworkStarted = false;
+  const loadFooterArtwork = () => {
+    if (footerArtworkStarted || !footer) return;
+    footerArtworkStarted = true;
     Promise.all(
       Array.from({ length: 5 }, (_, i) =>
-        fetch(`./assets/world/footer-startrail-exact-${i}.txt?v=2`, { cache: 'no-cache' })
+        fetch(`./assets/world/footer-startrail-exact-${i}.txt?v=2`, { cache: 'force-cache' })
           .then(response => {
             if (!response.ok) throw new Error(`footer startrail chunk ${i} failed: ${response.status}`);
             return response.text();
@@ -291,6 +326,17 @@
     }).catch(() => {
       footer.style.removeProperty('--footer-startrail-image');
     });
+  };
+
+  if (footer && 'IntersectionObserver' in window) {
+    const footerObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      footerObserver.disconnect();
+      loadFooterArtwork();
+    }, { rootMargin: '900px 0px' });
+    footerObserver.observe(footer);
+  } else {
+    loadFooterArtwork();
   }
 
   document.querySelectorAll('[data-copy]').forEach(button => {
