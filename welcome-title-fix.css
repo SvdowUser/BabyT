@@ -102,3 +102,41 @@
     height:225px!important;
   }
 }
+
+/* Exact uploaded paper-wave PNG. The previous result was not a missing image:
+   its transparent top cut-outs were revealing the dark page background because
+   the hero media ended at the hero box. Keep the exact PNG, force a fresh asset
+   URL, and extend the real hero media underneath the transparent top edge. */
+body.world-home main > .world-paper-chapter{
+  background-image:url('./assets/world/paper-wave-transition.png?v=8')!important;
+  background-color:transparent!important;
+}
+body.world-home .portal-hero{
+  overflow:visible!important;
+}
+body.world-home .portal-hero-bg,
+body.world-home .portal-hero-video,
+body.world-home .portal-hero::after,
+body.world-home .hero-noise{
+  inset:0 0 -260px 0!important;
+  width:100%!important;
+  height:auto!important;
+}
+
+@media(max-width:1000px){
+  body.world-home .portal-hero-bg,
+  body.world-home .portal-hero-video,
+  body.world-home .portal-hero::after,
+  body.world-home .hero-noise{
+    inset:0 0 -190px 0!important;
+  }
+}
+
+@media(max-width:680px){
+  body.world-home .portal-hero-bg,
+  body.world-home .portal-hero-video,
+  body.world-home .portal-hero::after,
+  body.world-home .hero-noise{
+    inset:0 0 -135px 0!important;
+  }
+}
