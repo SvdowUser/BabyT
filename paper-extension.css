@@ -1,8 +1,8 @@
 /* Seamless continuation for the Axie-style paper chapter.
    The continuation artwork is kept in its ORIGINAL 3:4 aspect ratio. It is never
    stretched to the chapter box; instead it is oversized slightly left/right and
-   cropped naturally. The large overlap starts well above the old navy seam so the
-   original wave and the continuation read as one continuous sheet. */
+   cropped naturally. The continuation starts high behind the original artwork so
+   the lower paper is already present from the marked guide line downward. */
 @media (min-width:1001px){
   body.world-home main > .world-paper-chapter{
     padding-bottom:clamp(420px,24vw,520px)!important;
@@ -32,9 +32,11 @@
     right:auto!important;
     width:104vw!important;
 
-    /* The cleaned replacement image has a shorter empty top area. Keep it tucked
-       underneath the original wave so no seam or navy gap can appear. */
-    top:29vw!important;
+    /* Raised from 29vw to 12.5vw. At the supplied ~1760px viewport this is about
+       220px, matching the red guide line. The continuation remains behind the
+       original wave, so the upper shape is unchanged while everything below the
+       guide line gets the longer paper continuation. */
+    top:12.5vw!important;
     bottom:-5vw!important;
 
     background-image:url('./assets/world/paper-continuation.png?v=2')!important;
@@ -44,10 +46,7 @@
     background-size:100% auto!important;
     background-position:center -3vw!important;
 
-    /* Color-matched from the current 100% Chrome screenshot. The upper/original
-       paper is about RGB 248/231/162 in a clean flat area; the continuation was
-       about RGB 238/219/163. This correction lifts the continuation and warms it
-       so both sheets visually merge without changing layout or scale. */
+    /* Color-matched to the warm paper tone of the original top artwork. */
     filter:brightness(1.046) hue-rotate(2deg) saturate(1.11)!important;
     pointer-events:none!important;
     z-index:0!important;
