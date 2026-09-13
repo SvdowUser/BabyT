@@ -4,7 +4,7 @@
   position:absolute!important;
   z-index:4!important;
   left:50%!important;
-  top:clamp(150px,17vw,300px)!important;
+  top:clamp(62px,7.2vw,132px)!important;
   width:min(760px,calc(100% - 48px))!important;
   transform:translateX(-50%)!important;
   text-align:center!important;
@@ -72,7 +72,7 @@
 
 @media(max-width:760px){
   .world-home .world-community .token-callout{
-    top:clamp(92px,23vw,150px)!important;
+    top:clamp(54px,14vw,92px)!important;
     width:calc(100% - 30px)!important;
   }
   .world-home .world-community .token-callout-title{
