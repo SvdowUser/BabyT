@@ -40,6 +40,8 @@
   text-shadow:none!important;
 }
 
+/* Primary CTA uses the same visual language as the social buttons,
+   but stays slightly stronger so it remains the main action. */
 .world-home .world-panorama .token-dex-link{
   box-sizing:border-box!important;
   position:relative!important;
@@ -53,11 +55,11 @@
   height:48px!important;
   min-height:48px!important;
   padding:0 24px!important;
-  border:1px solid rgba(134,213,245,.45)!important;
+  border:1px solid rgba(134,213,245,.68)!important;
   outline:0!important;
   border-radius:15px!important;
-  background:#101e52!important;
-  box-shadow:0 10px 24px rgba(5,12,46,.24),inset 0 1px 0 rgba(255,255,255,.06)!important;
+  background:linear-gradient(180deg,rgba(76,156,244,.86) 0%,rgba(50,137,224,.76) 100%)!important;
+  box-shadow:0 8px 18px rgba(5,12,46,.16),inset 0 1px 0 rgba(255,255,255,.18)!important;
   color:#f8faff!important;
   font-family:"Rowdies","Nunito",system-ui,sans-serif!important;
   font-size:clamp(15px,.9vw,16px)!important;
@@ -75,7 +77,7 @@
   content:""!important;
   position:absolute!important;
   inset:3px!important;
-  border:1px solid rgba(134,213,245,.10)!important;
+  border:1px solid rgba(255,255,255,.12)!important;
   border-radius:11px!important;
   pointer-events:none!important;
 }
@@ -90,9 +92,9 @@
 }
 
 .world-home .world-panorama .token-dex-link:hover{
-  background:#172866!important;
-  border-color:rgba(134,213,245,.78)!important;
-  box-shadow:0 12px 28px rgba(5,12,46,.30),0 0 0 1px rgba(134,213,245,.06),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  background:linear-gradient(180deg,rgba(84,169,247,.95) 0%,rgba(55,148,234,.86) 100%)!important;
+  border-color:rgba(134,213,245,.92)!important;
+  box-shadow:0 10px 22px rgba(5,12,46,.20),0 0 0 1px rgba(134,213,245,.05),inset 0 1px 0 rgba(255,255,255,.22)!important;
   transform:translateY(-1px)!important;
 }
 .world-home .world-panorama .token-dex-link:focus,
