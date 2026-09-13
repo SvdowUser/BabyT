@@ -159,8 +159,7 @@
   .world-home .world-about{padding-top:62px!important}
 }
 
-/* Final paper hand-off: use the exact artwork uploaded as
-   "ChatGPT Image 13. Sept. 2026, 00_41_04 (1).png" directly. Transparent areas
+/* Final paper hand-off: use the exact paper-wave-transition.png artwork. Transparent areas
    reveal the hero above and the blue About section below. */
 body.world-home main > .world-paper-chapter{
   position:relative!important;
@@ -170,7 +169,7 @@ body.world-home main > .world-paper-chapter{
   padding-top:clamp(190px,12vw,245px)!important;
   padding-bottom:clamp(160px,11vw,235px)!important;
   background-color:transparent!important;
-  background-image:url('./assets/world/paper-wave-transition-original-004104.png?v=1')!important;
+  background-image:url('./assets/world/paper-wave-transition.png?v=8')!important;
   background-position:center center!important;
   background-size:100% 100%!important;
   background-repeat:no-repeat!important;
