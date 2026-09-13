@@ -8,18 +8,18 @@
     padding-bottom:clamp(420px,24vw,520px)!important;
   }
 
-  /* Overscan the top wave horizontally so the source PNG's transparent outer
-     notches stay outside the viewport. Because the image is now 108.5vw wide, its
-     height MUST scale by the same factor. The source artwork is 1778x849, so the
-     matching height is 51.81vw. This restores the complete lower tongue instead of
-     visually chopping/compressing the final part of the paper ending. */
+  /* Keep the side overscan, but DO NOT force the source PNG into a guessed height.
+     The previous 100% 100% sizing could still clip/compress the deepest center tongue.
+     Give the pseudo-element extra vertical room and let the PNG calculate its own
+     height from its intrinsic aspect ratio. */
   body.world-home main > .world-paper-chapter::before{
     left:-4.25vw!important;
     right:auto!important;
     width:108.5vw!important;
-    height:51.81vw!important;
-    background-size:100% 100%!important;
+    height:60vw!important;
+    background-size:108.5vw auto!important;
     background-position:center top!important;
+    background-repeat:no-repeat!important;
     z-index:1!important;
   }
 
@@ -56,10 +56,8 @@
     z-index:2!important;
   }
 
-  /* The restored wave now extends about 4.4vw farther down. Move the blue-section
-     content down by the same visual amount so the heading remains comfortably
-     below the full paper tongue rather than underneath it. */
+  /* Keep the About content safely below the full, naturally-sized paper ending. */
   body.world-home main > .world-about{
-    padding-top:clamp(520px,28.5vw,610px)!important;
+    padding-top:clamp(540px,30vw,640px)!important;
   }
 }
