@@ -56,4 +56,12 @@
     position:relative!important;
     z-index:2!important;
   }
+
+  /* Keep the paper ending exactly where it is, but start the blue-section content
+     lower. In the supplied 1917px-wide screenshot the title was sitting inside the
+     lowest paper tongue; this adds roughly 75-80px at that viewport so the heading
+     begins clearly below the transition instead of in the middle of it. */
+  body.world-home main > .world-about{
+    padding-top:clamp(440px,24vw,520px)!important;
+  }
 }
