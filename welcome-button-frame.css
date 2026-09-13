@@ -24,27 +24,27 @@
   text-decoration:none!important;
 }
 
-/* This is the actual brown button face. Keeping it on a pseudo-element removes the
-   extra rounded brown slab that was sitting behind the ornamental frame. */
+/* Actual button face. It is deliberately inset so there is NO second large rounded
+   brown slab behind the ornamental frame. */
 .world-home .welcome-copy .world-button::before{
   content:""!important;
   display:block!important;
   position:absolute!important;
   z-index:-2!important;
-  inset:0!important;
+  inset:5px 6px!important;
   border:1px solid rgba(211,154,61,.72)!important;
-  border-radius:8px!important;
+  border-radius:7px!important;
   background:linear-gradient(180deg,#87521d 0%,#724116 100%)!important;
   pointer-events:none!important;
 }
 
-/* Same decorative frame asset as the social buttons, recolored only for this CTA. */
+/* Decorative social-button frame, recolored only for this CTA. */
 .world-home .welcome-copy .world-button::after{
   content:""!important;
   display:block!important;
   position:absolute!important;
   z-index:-1!important;
-  inset:-3px -4px!important;
+  inset:0!important;
   background:linear-gradient(180deg,#d1a04a 0%,#9b5d1c 100%)!important;
   -webkit-mask:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
   mask:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
@@ -73,11 +73,12 @@
     font-size:14px!important;
   }
   .world-home .welcome-copy .world-button::before{
-    border-radius:7px!important;
+    inset:5px 6px!important;
+    border-radius:6px!important;
   }
   .world-home .welcome-copy .world-button::after{
-    inset:-3px -4px!important;
+    inset:0!important;
   }
 }
 
-/* deploy-refresh: v6 */
+/* deploy-refresh: v7 */
