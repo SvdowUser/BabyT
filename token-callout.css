@@ -1,11 +1,21 @@
-/* Minimal $BabyT token callout placed directly on the community artwork.
-   No card/background image: typography + one Dexscreener link only. */
+/* Minimal $BabyT token callout over the upper sky of the panorama artwork.
+   The callout lives in the following community section in the HTML, so its
+   vertical position deliberately reaches back over the preceding panorama. */
+.world-home .world-community{
+  overflow:visible!important;
+}
+
 .world-home .world-community .token-callout{
   position:absolute!important;
-  z-index:4!important;
+  z-index:6!important;
   left:50%!important;
-  top:clamp(54px,4vw,82px)!important;
+  right:auto!important;
+  /* Previous panorama is clamp(590px,48vw,890px) tall. Move back across it,
+     then place the callout around 10vw from the panorama's top edge. */
+  top:calc(0px - clamp(590px,48vw,890px) + clamp(120px,10vw,175px))!important;
+  bottom:auto!important;
   width:min(760px,calc(100% - 48px))!important;
+  margin:0!important;
   transform:translateX(-50%)!important;
   text-align:center!important;
   pointer-events:auto!important;
@@ -70,9 +80,10 @@
   line-height:1!important;
 }
 
-@media(max-width:760px){
+@media(max-width:680px){
   .world-home .world-community .token-callout{
-    top:clamp(42px,10vw,62px)!important;
+    /* Mobile panorama becomes a 3:2 image plus 60px bottom padding. */
+    top:calc(-48.667vw - 60px)!important;
     width:calc(100% - 30px)!important;
   }
   .world-home .world-community .token-callout-title{
