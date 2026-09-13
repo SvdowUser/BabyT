@@ -57,9 +57,27 @@
   display:none!important;
 }
 
+/* Keep the anchor itself transparent in every interaction state. Older welcome CSS
+   applies a brown background on :hover with !important; without this override it
+   creates the ugly rectangular slab seen in the screenshot. */
+.world-home .welcome-copy .world-button:hover,
+.world-home .welcome-copy .world-button:focus,
+.world-home .welcome-copy .world-button:focus-visible,
+.world-home .welcome-copy .world-button:active{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  outline:0!important;
+  filter:none!important;
+}
 .world-home .welcome-copy .world-button:hover{
   transform:translateY(-1px)!important;
-  filter:none!important;
+}
+.world-home .welcome-copy .world-button:focus,
+.world-home .welcome-copy .world-button:focus-visible,
+.world-home .welcome-copy .world-button:active{
+  transform:none!important;
 }
 .world-home .welcome-copy .world-button:hover::before{
   background:linear-gradient(180deg,#915a21 0%,#79471a 100%)!important;
@@ -81,4 +99,4 @@
   }
 }
 
-/* deploy-refresh: v7 */
+/* deploy-refresh: v8 */
