@@ -154,13 +154,12 @@ body.world-home .portal-hero-video{
 }
 
 /* Measured Axie parity pass (desktop).
-   Screenshot analysis of the exact 1799x874 transparent paper artwork showed:
-   - BabyT current render: about 1897x629 px
-   - Axie reference render: about 1898x908 px
-   The width already matched; only the vertical geometry and stacking were wrong.
-   Render ONE continuous paper image as an overflowing layer instead of squeezing
-   the asset into the chapter box. This also prevents the hero/about layers from
-   cutting the tall top crest and the lower tail into detached pieces. */
+   Both comparison screenshots are 1917x1078 at the same 25% browser zoom.
+   The page viewport is y=101..1014. The first matching yellow crest begins at
+   y=1001 on Axie and y=776 on BabyT: BabyT is exactly 225 screen pixels too high.
+   225 / 1917 * 100 = 11.737vw. The previous -11.95vw offset therefore needs to
+   become -0.213vw. Keep the measured 47.42vw image height unchanged because its
+   displayed size already matches the Axie reference; only move the ONE paper layer down. */
 @media (min-width:1001px){
   body.world-home main > .world-paper-chapter{
     position:relative!important;
@@ -176,10 +175,10 @@ body.world-home .portal-hero-video{
     display:block!important;
     position:absolute!important;
     left:0!important;
-    top:-11.95vw!important;
+    top:-0.213vw!important;
     width:100%!important;
     height:47.42vw!important;
-    background-image:url('./assets/world/paper-wave-transition.png?v=11')!important;
+    background-image:url('./assets/world/paper-wave-transition.png?v=12')!important;
     background-position:center top!important;
     background-size:100% 100%!important;
     background-repeat:no-repeat!important;
