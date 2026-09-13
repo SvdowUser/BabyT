@@ -26,9 +26,9 @@
   text-shadow:none!important;
 }
 
-/* Use the exact cream label color from the PLAY THE ALPHA CTA. */
+/* Keep $BabyT clean and neutral against the blue panorama. */
 .world-home .world-panorama .token-callout-title .token-symbol{
-  color:#fff6dd!important;
+  color:#ffffff!important;
 }
 
 .world-home .world-panorama .token-callout-copy{
@@ -60,7 +60,7 @@
     0 2px 8px rgba(74,46,12,.18),
     inset 0 1px 0 rgba(255,244,204,.42),
     inset 0 -1px 0 rgba(82,50,10,.28)!important;
-  color:#fff6dd!important;
+  color:#ffffff!important;
   font-family:"Rowdies",system-ui,sans-serif!important;
   font-size:15px!important;
   font-weight:700!important;
@@ -85,7 +85,7 @@
   outline-offset:4px!important;
 }
 .world-home .world-panorama .token-dex-link .external-mark{
-  color:#fff6dd!important;
+  color:#ffffff!important;
   font-size:16px!important;
   line-height:1!important;
 }
