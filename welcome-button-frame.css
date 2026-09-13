@@ -6,17 +6,17 @@
   overflow:visible!important;
   width:max-content!important;
   min-width:0!important;
-  min-height:58px!important;
-  margin-top:12px!important;
-  padding:0 28px!important;
+  min-height:52px!important;
+  margin-top:16px!important;
+  padding:0 23px!important;
   gap:0!important;
   border:0!important;
-  border-radius:13px!important;
+  border-radius:11px!important;
   background:linear-gradient(180deg,#87521d 0%,#724116 100%)!important;
   box-shadow:none!important;
   color:#fff6dd!important;
   font-family:Rowdies,Nunito,system-ui,sans-serif!important;
-  font-size:clamp(15px,.95vw,17px)!important;
+  font-size:clamp(15px,.9vw,16px)!important;
   font-weight:700!important;
   letter-spacing:.004em!important;
   line-height:1!important;
@@ -24,26 +24,24 @@
   text-decoration:none!important;
 }
 
-/* Fine inset line: deliberately kept away from the outer edge so the button does
-   not look like one thick rounded capsule. */
+/* Fine inset line, with the proportions tightened together with the smaller button. */
 .world-home .welcome-copy .world-button::before{
   content:""!important;
   position:absolute!important;
   z-index:0!important;
-  inset:7px!important;
+  inset:6px!important;
   border:1px solid rgba(211,154,61,.72)!important;
-  border-radius:8px!important;
+  border-radius:6px!important;
   pointer-events:none!important;
 }
 
-/* Same frame asset and same outside-frame spacing concept as the social buttons,
-   recolored brown/gold only for this CTA. */
+/* Same frame asset as the social buttons, recolored only for this CTA. */
 .world-home .welcome-copy .world-button::after{
   content:""!important;
   display:block!important;
   position:absolute!important;
   z-index:1!important;
-  inset:-4px -5px!important;
+  inset:-3px -4px!important;
   background:linear-gradient(180deg,#d1a04a 0%,#9b5d1c 100%)!important;
   -webkit-mask:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
   mask:url('./assets/world/community-button-frame.png?v=1') center/100% 100% no-repeat!important;
@@ -51,7 +49,7 @@
   opacity:.96!important;
 }
 
-/* Old arrow is intentionally removed from the visual treatment. */
+/* No arrow on this CTA. */
 .world-home .welcome-copy .world-button > span{
   display:none!important;
 }
@@ -64,18 +62,19 @@
 
 @media(max-width:760px){
   .world-home .welcome-copy .world-button{
-    min-height:54px!important;
-    padding:0 24px!important;
-    border-radius:12px!important;
-    font-size:15px!important;
+    min-height:49px!important;
+    margin-top:14px!important;
+    padding:0 21px!important;
+    border-radius:10px!important;
+    font-size:14px!important;
   }
   .world-home .welcome-copy .world-button::before{
-    inset:6px!important;
-    border-radius:7px!important;
+    inset:5px!important;
+    border-radius:6px!important;
   }
   .world-home .welcome-copy .world-button::after{
     inset:-3px -4px!important;
   }
 }
 
-/* deploy-refresh: v3 */
+/* deploy-refresh: v4 */
