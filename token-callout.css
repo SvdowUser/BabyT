@@ -2,7 +2,7 @@
 .world-home .world-panorama .token-callout{
   position:absolute!important;
   z-index:6!important;
-  top:clamp(190px,12.8vw,228px)!important;
+  top:clamp(98px,7.1vw,136px)!important;
   left:50%!important;
   right:auto!important;
   bottom:auto!important;
@@ -11,6 +11,17 @@
   transform:translateX(-50%)!important;
   text-align:center!important;
   pointer-events:auto!important;
+}
+
+/* Uploaded coin emblem, positioned like the solar-system mark above OUR ECOSYSTEM. */
+.world-home .world-panorama .token-callout::before{
+  content:""!important;
+  display:block!important;
+  width:82px!important;
+  height:82px!important;
+  margin:0 auto 10px!important;
+  background:url('./ChatGPT%20Image%2013.%20Sept.%202026,%2021_24_52.png?v=1') center/contain no-repeat!important;
+  pointer-events:none!important;
 }
 
 .world-home .world-panorama .token-callout-title{
@@ -110,10 +121,23 @@
   outline-offset:4px!important;
 }
 
+@media(max-width:1000px){
+  .world-home .world-panorama .token-callout::before{
+    width:72px!important;
+    height:72px!important;
+    margin-bottom:9px!important;
+  }
+}
+
 @media(max-width:680px){
   .world-home .world-panorama .token-callout{
-    top:132px!important;
+    top:63px!important;
     width:calc(100% - 30px)!important;
+  }
+  .world-home .world-panorama .token-callout::before{
+    width:62px!important;
+    height:62px!important;
+    margin-bottom:7px!important;
   }
   .world-home .world-panorama .token-callout-title{
     font-size:clamp(28px,8.5vw,40px)!important;
