@@ -4,7 +4,7 @@
 .world-home .world-panorama .token-callout{
   position:absolute!important;
   z-index:6!important;
-  top:clamp(112px,8vw,150px)!important;
+  top:clamp(178px,12vw,215px)!important;
   left:50%!important;
   right:auto!important;
   bottom:auto!important;
@@ -76,7 +76,7 @@
 
 @media(max-width:680px){
   .world-home .world-panorama .token-callout{
-    top:92px!important;
+    top:125px!important;
     width:calc(100% - 30px)!important;
   }
   .world-home .world-panorama .token-callout-title{
