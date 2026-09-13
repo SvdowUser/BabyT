@@ -87,7 +87,7 @@ body.world-home{overflow-x:hidden}
   body.world-home .world-community .community-social-block .community-links>a{height:40px!important;min-height:40px!important;border-radius:12px!important}
 }
 
-/* Keep the cleaned original TikTok silhouette, but match the visual scale of the X icon. */
+/* Keep the cleaned original TikTok silhouette, but make it just a touch larger than the 18px pass. */
 body.world-home .world-community .community-social-block .community-links>a.tiktok-link>svg{
   display:none!important;
 }
@@ -96,8 +96,8 @@ body.world-home .world-community .community-social-block .community-links>a.tikt
   display:block!important;
   position:relative!important;
   z-index:1!important;
-  width:18px!important;
-  height:18px!important;
+  width:19px!important;
+  height:19px!important;
   background:transparent url('./assets/icons/tiktok-clean.svg?v=2') center/contain no-repeat!important;
   -webkit-mask:none!important;
   mask:none!important;
@@ -105,7 +105,7 @@ body.world-home .world-community .community-social-block .community-links>a.tikt
 }
 @media(max-width:760px){
   body.world-home .world-community .community-social-block .community-links>a.tiktok-link::after{
-    width:18px!important;
-    height:18px!important;
+    width:19px!important;
+    height:19px!important;
   }
 }
