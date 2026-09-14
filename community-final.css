@@ -175,3 +175,38 @@
   mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22black%22%20d%3D%22M14.6%203.2c.4%202.1%201.7%203.5%203.8%203.9v2.4c-1.4-.1-2.7-.5-3.8-1.2v6.1a5%205%200%201%201-4.3-5v2.5a2.6%202.6%200%201%200%201.9%202.5V3.2h2.4Z%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat!important;
   pointer-events:none!important;
 }
+
+/* Some iPhone/in-app browsers report a layout viewport wider than 760px.
+   Keep the social row compact across the whole responsive range so it can never
+   fall back to the 150px desktop buttons and overflow the screen. */
+@media(max-width:1120px){
+  html body.world-home main .world-community .community-social-block{
+    width:min(360px,calc(100vw - 32px))!important;
+    left:50%!important;
+    transform:translateX(-50%)!important;
+  }
+  html body.world-home main .world-community .community-social-block .community-links{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    width:100%!important;
+    max-width:100%!important;
+    gap:8px!important;
+    margin:0 auto!important;
+  }
+  html body.world-home main .world-community .community-social-block .community-links>a,
+  html body.world-home main .world-community .community-social-block .community-links>a:nth-child(1),
+  html body.world-home main .world-community .community-social-block .community-links>a:nth-child(2),
+  html body.world-home main .world-community .community-social-block .community-links>a:nth-child(3){
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:36px!important;
+    min-height:36px!important;
+    flex:none!important;
+    border-radius:11px!important;
+  }
+  html body.world-home main .world-community .community-social-block .community-links>a::before{
+    inset:2px!important;
+    border-radius:8px!important;
+  }
+}
