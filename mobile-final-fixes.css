@@ -1,0 +1,68 @@
+/* Final real-device mobile pass. Desktop/tablet rules are intentionally untouched. */
+@media(max-width:760px){
+  /* Match the visual rhythm above Our Ecosystem: on the 428px iPhone reference,
+     cards -> BabyT emblem was ~100px while stats -> ecosystem emblem was ~52px.
+     Pull only the token callout upward so both gaps read at roughly the same size. */
+  html body.world-home main section.world-panorama#babyt-token .token-callout{
+    top:clamp(30px,8vw,38px)!important;
+  }
+
+  /* True artwork crossfade: overlap the community artwork much farther into the
+     panorama and spread the fade over ~300px instead of completing it in 158px.
+     Extending min-height by the same delta keeps the section's lower composition
+     and CTA position stable. */
+  html body.world-home main section.world-community.world-section{
+    margin-top:-340px!important;
+    min-height:calc(clamp(500px,118vw,620px) + 202px)!important;
+  }
+  html body.world-home main section.world-community.world-section::before{
+    background-position:center center!important;
+    background-size:cover!important;
+    -webkit-mask-image:linear-gradient(180deg,
+      transparent 0,
+      rgba(0,0,0,.04) 40px,
+      rgba(0,0,0,.12) 85px,
+      rgba(0,0,0,.25) 130px,
+      rgba(0,0,0,.43) 175px,
+      rgba(0,0,0,.62) 215px,
+      rgba(0,0,0,.78) 250px,
+      rgba(0,0,0,.90) 278px,
+      rgba(0,0,0,.97) 300px,
+      #000 320px,
+      #000 100%)!important;
+    mask-image:linear-gradient(180deg,
+      transparent 0,
+      rgba(0,0,0,.04) 40px,
+      rgba(0,0,0,.12) 85px,
+      rgba(0,0,0,.25) 130px,
+      rgba(0,0,0,.43) 175px,
+      rgba(0,0,0,.62) 215px,
+      rgba(0,0,0,.78) 250px,
+      rgba(0,0,0,.90) 278px,
+      rgba(0,0,0,.97) 300px,
+      #000 320px,
+      #000 100%)!important;
+    -webkit-mask-repeat:no-repeat!important;
+    mask-repeat:no-repeat!important;
+  }
+
+  /* Bring both artworks through the same dark-blue tone during the crossfade.
+     This removes the bright horizontal brightness jump between the two source images. */
+  html body.world-home main section.world-panorama#babyt-token::after{
+    background:
+      linear-gradient(180deg,
+        #101e52 0,
+        rgba(16,30,82,.98) 58px,
+        rgba(16,30,82,.86) 126px,
+        rgba(16,30,82,.58) 205px,
+        rgba(16,30,82,.26) 292px,
+        rgba(16,30,82,0) 390px),
+      linear-gradient(0deg,
+        rgba(16,30,82,.88) 0,
+        rgba(16,30,82,.72) 70px,
+        rgba(16,30,82,.44) 145px,
+        rgba(16,30,82,.18) 220px,
+        rgba(16,30,82,0) 300px),
+      linear-gradient(90deg,rgba(7,18,29,.32),rgba(7,18,29,.06) 72%,rgba(7,18,29,0))!important;
+  }
+}
