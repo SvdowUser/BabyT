@@ -1,55 +1,63 @@
 /* Mobile-only polish for the $BabyT panorama artwork.
-   Keep the solid token-blue lead-in, but reveal the illustration much sooner on
-   phones so the upper half of the artwork is not visually hidden below the token callout. */
+   Blend the solid token section into the illustration over a much longer range
+   so there is no visible horizontal cut on phones. */
 @media (max-width:760px){
   html body.world-home main section.world-panorama.world-panorama{
-    height:clamp(660px,165vw,860px)!important;
+    height:clamp(700px,172vw,900px)!important;
+    background:#101e52!important;
   }
 
   html body.world-home main section.world-panorama.world-panorama::before{
-    background-position:center 44%!important;
+    background-position:center 50%!important;
     background-size:cover!important;
     -webkit-mask-image:linear-gradient(180deg,
       transparent 0,
-      transparent 165px,
-      rgba(0,0,0,.08) 195px,
-      rgba(0,0,0,.22) 230px,
-      rgba(0,0,0,.42) 270px,
-      rgba(0,0,0,.66) 315px,
-      rgba(0,0,0,.86) 355px,
-      #000 395px,
-      #000 100%);
+      transparent 78px,
+      rgba(0,0,0,.03) 130px,
+      rgba(0,0,0,.10) 185px,
+      rgba(0,0,0,.22) 245px,
+      rgba(0,0,0,.38) 305px,
+      rgba(0,0,0,.56) 365px,
+      rgba(0,0,0,.74) 425px,
+      rgba(0,0,0,.88) 485px,
+      #000 555px,
+      #000 100%)!important;
     mask-image:linear-gradient(180deg,
       transparent 0,
-      transparent 165px,
-      rgba(0,0,0,.08) 195px,
-      rgba(0,0,0,.22) 230px,
-      rgba(0,0,0,.42) 270px,
-      rgba(0,0,0,.66) 315px,
-      rgba(0,0,0,.86) 355px,
-      #000 395px,
-      #000 100%);
-    -webkit-mask-repeat:no-repeat;
-    mask-repeat:no-repeat;
+      transparent 78px,
+      rgba(0,0,0,.03) 130px,
+      rgba(0,0,0,.10) 185px,
+      rgba(0,0,0,.22) 245px,
+      rgba(0,0,0,.38) 305px,
+      rgba(0,0,0,.56) 365px,
+      rgba(0,0,0,.74) 425px,
+      rgba(0,0,0,.88) 485px,
+      #000 555px,
+      #000 100%)!important;
+    -webkit-mask-repeat:no-repeat!important;
+    mask-repeat:no-repeat!important;
   }
 
-  /* Keep the beginning visually continuous with #101e52, then hand off to the
-     illustration earlier so the image is visible behind the lower part of the section. */
+  /* Keep the section blue behind the callout and dissolve it progressively into
+     the artwork rather than ending the blue layer at one visible line. */
   html body.world-home main section.world-panorama.world-panorama::after{
     background:
       linear-gradient(180deg,
         #101e52 0,
-        #101e52 165px,
-        rgba(16,30,82,.96) 210px,
-        rgba(16,30,82,.82) 255px,
-        rgba(16,30,82,.62) 305px,
-        rgba(16,30,82,.38) 355px,
-        rgba(16,30,82,.16) 405px,
-        rgba(16,30,82,.04) 450px,
-        rgba(16,30,82,0) 485px),
+        #101e52 96px,
+        rgba(16,30,82,.99) 145px,
+        rgba(16,30,82,.96) 200px,
+        rgba(16,30,82,.88) 260px,
+        rgba(16,30,82,.75) 325px,
+        rgba(16,30,82,.58) 390px,
+        rgba(16,30,82,.40) 455px,
+        rgba(16,30,82,.24) 520px,
+        rgba(16,30,82,.12) 585px,
+        rgba(16,30,82,.04) 635px,
+        rgba(16,30,82,0) 680px),
       linear-gradient(90deg,
-        rgba(7,18,29,.24) 0%,
-        rgba(7,18,29,.05) 72%,
+        rgba(7,18,29,.18) 0%,
+        rgba(7,18,29,.04) 72%,
         rgba(7,18,29,0) 100%)!important;
   }
 }
