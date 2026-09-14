@@ -98,4 +98,14 @@
     background-size:cover!important;
     background-position:center top!important;
   }
+
+  /* Give the illustrated welcome panel a proper phone gutter instead of letting
+     it sit almost flush with the viewport edges. The duplicated class keeps this
+     tiny spacing fix above the later responsive-parity rule without changing the
+     panel's internal composition. */
+  body.world-home main > .world-paper-chapter .world-welcome.world-welcome{
+    width:calc(100% - 32px)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
 }
