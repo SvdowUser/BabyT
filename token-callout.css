@@ -186,3 +186,12 @@
     mask-repeat:no-repeat!important;
   }
 }
+
+/* Mobile-only rhythm correction measured from the 428 CSS-px iPhone screenshot.
+   The generic responsive rule leaves at least 58px below the ecosystem cards;
+   trim only that spacer while keeping the panorama and token composition intact. */
+@media(max-width:760px){
+  html body.world-home main section.world-ecosystem.world-ecosystem{
+    padding-bottom:clamp(14px,4vw,24px)!important;
+  }
+}
