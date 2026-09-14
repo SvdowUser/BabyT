@@ -109,3 +109,110 @@ body.world-home .world-community .community-social-block .community-links>a.tikt
     height:19px!important;
   }
 }
+
+/* Final mobile polish: keep every welcome element inside the illustrated panel,
+   soften the token artwork handoff, and reduce the oversized social controls. */
+@media(max-width:760px){
+  body.world-home .welcome-card-bar{
+    top:clamp(43px,12vw,57px)!important;
+    left:7%!important;
+    right:39%!important;
+    min-height:clamp(34px,9vw,42px)!important;
+    padding:0 6px 2px!important;
+    font-size:clamp(14px,4.2vw,18px)!important;
+    line-height:.95!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+  body.world-home .welcome-copy{
+    width:57%!important;
+    padding:clamp(101px,28.5vw,130px) 6px 30px clamp(22px,6.4vw,31px)!important;
+  }
+  body.world-home .welcome-copy::before{
+    margin:0 0 5px!important;
+    font-size:clamp(10px,2.95vw,13px)!important;
+    line-height:1.03!important;
+  }
+  body.world-home .welcome-copy p:not(.world-kicker){
+    margin:3px 0 5px!important;
+    font-size:clamp(8.5px,2.4vw,10.5px)!important;
+    line-height:1.27!important;
+  }
+  body.world-home .welcome-copy .world-button{
+    min-height:34px!important;
+    height:34px!important;
+    margin-top:6px!important;
+    padding:0 10px!important;
+    border-width:2px!important;
+    border-radius:10px!important;
+    font-size:9px!important;
+    gap:8px!important;
+  }
+  body.world-home .welcome-card-body::after{
+    right:0!important;
+    bottom:-6%!important;
+    width:clamp(172px,47vw,242px)!important;
+  }
+
+  /* The fixed mobile header used to visually cut into the token emblem. Give the
+     callout a little more breathing room and use a longer top blend over the art. */
+  body.world-home .world-panorama .token-callout{
+    top:clamp(76px,19vw,94px)!important;
+    width:90vw!important;
+  }
+  body.world-home .world-panorama .token-callout::before{
+    width:clamp(50px,13vw,58px)!important;
+    height:clamp(50px,13vw,58px)!important;
+    margin-bottom:1px!important;
+  }
+  body.world-home .world-panorama .token-callout-title{
+    font-size:clamp(24px,6.6vw,31px)!important;
+    line-height:1.02!important;
+  }
+  body.world-home .world-panorama .token-callout-copy{
+    margin:8px auto 14px!important;
+    max-width:78vw!important;
+    font-size:clamp(9.5px,2.5vw,11px)!important;
+    line-height:1.38!important;
+  }
+  body.world-home .world-panorama::after{
+    background:
+      linear-gradient(180deg,
+        #101e52 0,
+        rgba(16,30,82,.98) 58px,
+        rgba(16,30,82,.86) 126px,
+        rgba(16,30,82,.58) 205px,
+        rgba(16,30,82,.26) 292px,
+        rgba(16,30,82,0) 390px),
+      linear-gradient(90deg,rgba(7,18,29,.32),rgba(7,18,29,.06) 72%,rgba(7,18,29,0))!important;
+  }
+
+  body.world-home .world-community .community-social-block{
+    width:min(76vw,420px)!important;
+    bottom:clamp(58px,12vw,78px)!important;
+  }
+  body.world-home .world-community .community-social-block h2::after{
+    font-size:clamp(17px,4.6vw,21px)!important;
+  }
+  body.world-home .world-community .community-social-block .community-copy{
+    margin-bottom:10px!important;
+  }
+  body.world-home .world-community .community-social-block .community-copy::after{
+    font-size:clamp(8.5px,2.25vw,10px)!important;
+  }
+  body.world-home .world-community .community-social-block .community-links{
+    gap:7px!important;
+  }
+  body.world-home .world-community .community-social-block .community-links>a{
+    height:36px!important;
+    min-height:36px!important;
+    border-radius:11px!important;
+  }
+  body.world-home .world-community .community-social-block .community-links>a::before{
+    inset:2px!important;
+    border-radius:8px!important;
+  }
+  body.world-home .world-community .community-social-block .community-links>a.youtube-link>svg{width:19px!important;height:15px!important}
+  body.world-home .world-community .community-social-block .community-links>a.x-link>svg{width:16px!important;height:16px!important}
+  body.world-home .world-community .community-social-block .community-links>a.tiktok-link::after{width:17px!important;height:17px!important}
+}
