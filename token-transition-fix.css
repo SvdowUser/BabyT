@@ -1,0 +1,25 @@
+/* Mobile-only polish for the $BabyT panorama artwork.
+   The source artwork has a visible horizontal handoff on narrow screens; keep
+   the desktop composition untouched and extend the existing blue fade far
+   enough to cover that seam instead of exposing it as a hard line. */
+@media (max-width:760px){
+  html body.world-home main section.world-panorama.world-panorama::after{
+    background:
+      linear-gradient(180deg,
+        #101e52 0,
+        rgba(16,30,82,.99) 64px,
+        rgba(16,30,82,.93) 138px,
+        rgba(16,30,82,.80) 225px,
+        rgba(16,30,82,.64) 315px,
+        rgba(16,30,82,.52) 405px,
+        rgba(16,30,82,.44) 500px,
+        rgba(16,30,82,.34) 555px,
+        rgba(16,30,82,.23) 615px,
+        rgba(16,30,82,.11) 665px,
+        rgba(16,30,82,0) 715px),
+      linear-gradient(90deg,
+        rgba(7,18,29,.30) 0%,
+        rgba(7,18,29,.06) 72%,
+        rgba(7,18,29,0) 100%)!important;
+  }
+}
