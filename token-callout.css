@@ -161,25 +161,28 @@
   }
 }
 
-/* Mobile-only seam fix for the token panorama. Desktop intentionally untouched. */
+/* Mobile-only artwork crossfade fix. The community section overlaps the panorama
+   by 138px on phones; make the incoming artwork fully opaque exactly at that
+   boundary so the panorama ending underneath cannot create a horizontal seam. */
 @media(max-width:760px){
-  html body.world-home main section.world-panorama.world-panorama::after{
-    background:
-      linear-gradient(180deg,
-        #101e52 0,
-        rgba(16,30,82,.99) 64px,
-        rgba(16,30,82,.93) 138px,
-        rgba(16,30,82,.80) 225px,
-        rgba(16,30,82,.64) 315px,
-        rgba(16,30,82,.52) 405px,
-        rgba(16,30,82,.44) 500px,
-        rgba(16,30,82,.34) 555px,
-        rgba(16,30,82,.23) 615px,
-        rgba(16,30,82,.11) 665px,
-        rgba(16,30,82,0) 715px),
-      linear-gradient(90deg,
-        rgba(7,18,29,.30) 0%,
-        rgba(7,18,29,.06) 72%,
-        rgba(7,18,29,0) 100%)!important;
+  html body.world-home main section.world-community.world-community::before{
+    -webkit-mask-image:linear-gradient(180deg,
+      transparent 0,
+      rgba(0,0,0,.05) 18px,
+      rgba(0,0,0,.18) 44px,
+      rgba(0,0,0,.42) 74px,
+      rgba(0,0,0,.70) 101px,
+      rgba(0,0,0,.90) 124px,
+      #000 138px)!important;
+    mask-image:linear-gradient(180deg,
+      transparent 0,
+      rgba(0,0,0,.05) 18px,
+      rgba(0,0,0,.18) 44px,
+      rgba(0,0,0,.42) 74px,
+      rgba(0,0,0,.70) 101px,
+      rgba(0,0,0,.90) 124px,
+      #000 138px)!important;
+    -webkit-mask-repeat:no-repeat!important;
+    mask-repeat:no-repeat!important;
   }
 }
