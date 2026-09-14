@@ -124,10 +124,13 @@
   let inView = true;
   let failed = false;
 
-  /* Force a true centered crop on narrow screens. More importantly, use the
-     dedicated mobile video that already exists instead of cropping the desktop
-     file down to one side. */
-  background.style.setProperty('object-position', '50% 50%', 'important');
+  /* Mobile-only framing: use the same source as desktop so the moving frame
+     matches the centered poster composition, then crop that source from its
+     true center. Desktop keeps its existing source and CSS untouched. */
+  if (isMobile.matches) {
+    background.style.setProperty('object-fit', 'cover', 'important');
+    background.style.setProperty('object-position', '50% 50%', 'important');
+  }
 
   const updateToggle = () => {
     const paused = background.paused;
@@ -144,10 +147,9 @@
       return;
     }
     if (!background.getAttribute('src')) {
-      const source = isMobile.matches && background.dataset.mobileSrc
-        ? background.dataset.mobileSrc
-        : background.dataset.desktopSrc;
-      background.src = source;
+      /* The dedicated mobile encode has a different baked-in crop. Keep the
+         desktop encode on phones and let object-position create the mobile crop. */
+      background.src = background.dataset.desktopSrc;
       background.muted = true;
       background.preload = 'auto';
       background.load();
