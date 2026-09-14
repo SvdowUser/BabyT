@@ -4,6 +4,85 @@
   const toggle = hero?.querySelector('.hero-motion-toggle');
   const dock = document.querySelector('.trailer-dock');
   const trailerButton = document.querySelector('.hero-watch-trailer');
+  const isMobile = window.matchMedia('(max-width:760px)');
+
+  /* Progressive loading fixes. The page used to keep whole sections invisible
+     until every large image in a group had finished downloading and decoding.
+     Instead, warm important below-fold assets gently and reveal each large
+     background as soon as that specific file is ready. */
+  const progressiveStyle = document.createElement('style');
+  progressiveStyle.textContent = `
+    .world-home.panorama-ready .world-panorama::before{
+      background-image:url('./assets/world/adventure-panorama-artwork.png?v=2')!important;
+      opacity:1!important;
+    }
+    .world-home.panorama-ready .world-panorama::after{opacity:1!important}
+    .world-home.community-ready .world-community::before{
+      background-image:url('./assets/world/community-world-background.png?v=3')!important;
+      opacity:1!important;
+    }
+    .world-home.community-ready .world-community::after{opacity:1!important}
+  `;
+  document.head.appendChild(progressiveStyle);
+
+  const warmImage = (src, readyClass) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
+    image.onload = () => requestAnimationFrame(() => document.body?.classList.add(readyClass));
+    image.onerror = () => {};
+    image.src = src;
+  };
+
+  let belowFoldWarmed = false;
+  const warmBelowFold = () => {
+    if (belowFoldWarmed) return;
+    belowFoldWarmed = true;
+
+    /* Ecosystem cards should already be ready when the visitor reaches them.
+       Safari can defer loading="lazy" too aggressively on long pages. */
+    const ecosystemImages = [...document.querySelectorAll('.world-ecosystem .world-game-card>img:not(.ecosystem-card-logo)')];
+    ecosystemImages.forEach(img => {
+      img.loading = 'eager';
+      img.decoding = 'async';
+      img.fetchPriority = 'low';
+      if (isMobile.matches && /\/world-hub\.webp(?:\?|$)/.test(img.getAttribute('src') || '')) {
+        img.src = './assets/world/world-hub-mobile.webp';
+      }
+    });
+
+    /* The two huge transition artworks no longer block one another. */
+    warmImage('./assets/world/community-world-background.png?v=3', 'community-ready');
+    warmImage('./assets/world/adventure-panorama-artwork.png?v=2', 'panorama-ready');
+  };
+
+  /* Make the gallery visible progressively instead of keeping both tracks at
+     opacity:0 until every gallery image has finished decoding. */
+  const gallery = document.querySelector('#in-the-works');
+  if (gallery) {
+    const revealGallery = () => {
+      gallery.querySelectorAll('.work-row-track').forEach(track => {
+        track.style.opacity = '1';
+        track.style.animationPlayState = 'running';
+      });
+      gallery.querySelectorAll('.work-row-track img').forEach(img => {
+        img.loading = 'eager';
+        img.decoding = 'async';
+        img.fetchPriority = 'low';
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const galleryRevealObserver = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        galleryRevealObserver.disconnect();
+        revealGallery();
+      }, { rootMargin: '1800px 0px' });
+      galleryRevealObserver.observe(gallery);
+    } else {
+      revealGallery();
+    }
+  }
 
   // Keep the trailer reachable below the hero without covering the content with text.
   if (hero && dock) {
@@ -32,7 +111,10 @@
     });
   }
 
-  if (!hero || !background || !toggle) return;
+  if (!hero || !background || !toggle) {
+    setTimeout(warmBelowFold, 700);
+    return;
+  }
 
   background.id = 'hero-background-video';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -41,6 +123,11 @@
   let userOverride = false;
   let inView = true;
   let failed = false;
+
+  /* Force a true centered crop on narrow screens. More importantly, use the
+     dedicated mobile video that already exists instead of cropping the desktop
+     file down to one side. */
+  background.style.setProperty('object-position', '50% 50%', 'important');
 
   const updateToggle = () => {
     const paused = background.paused;
@@ -57,10 +144,12 @@
       return;
     }
     if (!background.getAttribute('src')) {
-      // Visual parity matters more than a separate mobile crop: every device uses
-      // the same source/composition as desktop. CSS handles the responsive crop.
-      background.src = background.dataset.desktopSrc;
+      const source = isMobile.matches && background.dataset.mobileSrc
+        ? background.dataset.mobileSrc
+        : background.dataset.desktopSrc;
+      background.src = source;
       background.muted = true;
+      background.preload = 'auto';
       background.load();
     }
     background.play().then(() => {
@@ -70,6 +159,7 @@
     }).catch(updateToggle);
   };
 
+  background.addEventListener('canplay', warmBelowFold, { once: true });
   background.addEventListener('playing', () => {
     document.documentElement.classList.add('has-trailer');
     updateToggle();
@@ -80,6 +170,7 @@
     background.pause();
     document.documentElement.classList.remove('has-trailer');
     toggle.hidden = true;
+    warmBelowFold();
   });
   toggle.hidden = false;
   updateToggle();
@@ -102,5 +193,7 @@
     }, { threshold: 0.1 }).observe(hero);
   }
 
+  /* Never wait indefinitely for video readiness before preparing the rest of the page. */
+  setTimeout(warmBelowFold, isMobile.matches ? 900 : 1300);
   syncBackground();
 })();
