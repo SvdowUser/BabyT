@@ -176,9 +176,9 @@
   pointer-events:none!important;
 }
 
-/* Some iPhone/in-app browsers report a layout viewport wider than 760px.
-   Keep the social row compact across the whole responsive range so it can never
-   fall back to the 150px desktop buttons and overflow the screen. */
+/* Compact social controls across the full responsive range. The previous
+   nth-child width:100% rule won the mobile specificity fight and made each
+   button as wide as the entire 310px row. */
 @media(max-width:1120px){
   html body.world-home main .world-community .community-social-block{
     width:min(360px,calc(100vw - 32px))!important;
@@ -186,8 +186,10 @@
     transform:translateX(-50%)!important;
   }
   html body.world-home main .world-community .community-social-block .community-links{
-    display:grid!important;
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    display:flex!important;
+    grid-template-columns:none!important;
+    justify-content:center!important;
+    align-items:center!important;
     width:100%!important;
     max-width:100%!important;
     gap:8px!important;
@@ -197,16 +199,38 @@
   html body.world-home main .world-community .community-social-block .community-links>a:nth-child(1),
   html body.world-home main .world-community .community-social-block .community-links>a:nth-child(2),
   html body.world-home main .world-community .community-social-block .community-links>a:nth-child(3){
-    width:100%!important;
+    flex:0 0 clamp(88px,9.5vw,104px)!important;
+    width:clamp(88px,9.5vw,104px)!important;
     min-width:0!important;
-    max-width:none!important;
+    max-width:104px!important;
     height:36px!important;
     min-height:36px!important;
-    flex:none!important;
     border-radius:11px!important;
   }
   html body.world-home main .world-community .community-social-block .community-links>a::before{
     inset:2px!important;
     border-radius:8px!important;
+  }
+}
+
+/* Real-device iPhone pass (428 CSS px reference): the screenshot showed a
+   ~310px-wide button (about 512px in the uploaded 710px image). Keep each button
+   to 88px, a 280px total row, and lift the CTA by 56px so it sits above the globe
+   instead of across its bright horizon. */
+@media(max-width:760px){
+  html body.world-home main .world-community .community-social-block.community-social-block{
+    width:min(296px,calc(100vw - 32px))!important;
+    bottom:132px!important;
+  }
+  html body.world-home main .world-community .community-social-block .community-links>a,
+  html body.world-home main .world-community .community-social-block .community-links>a:nth-child(1),
+  html body.world-home main .world-community .community-social-block .community-links>a:nth-child(2),
+  html body.world-home main .world-community .community-social-block .community-links>a:nth-child(3){
+    flex:0 0 clamp(76px,22vw,88px)!important;
+    width:clamp(76px,22vw,88px)!important;
+    max-width:88px!important;
+    height:34px!important;
+    min-height:34px!important;
+    border-radius:10px!important;
   }
 }
