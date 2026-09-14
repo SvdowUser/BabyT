@@ -104,4 +104,11 @@
   }
 }
 
-/* deploy-refresh: v9 */
+/* The browser build is still an in-development preview, not a useful public alpha yet.
+   Keep the CTA out of the landing page until there is meaningful gameplay. */
+.world-home .welcome-copy .world-button,
+.world-home .welcome-copy .welcome-note{
+  display:none!important;
+}
+
+/* deploy-refresh: v10 */
