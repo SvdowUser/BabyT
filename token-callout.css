@@ -161,27 +161,35 @@
   }
 }
 
-/* Mobile-only artwork crossfade fix. The community section overlaps the panorama
-   by 138px on phones; make the incoming artwork fully opaque exactly at that
-   boundary so the panorama ending underneath cannot create a horizontal seam. */
+/* Mobile-only artwork crossfade fix. Move the incoming community artwork 220px
+   over the panorama and finish its fade by 158px. This leaves 62px of fully
+   opaque community artwork before the panorama's lower edge, so the section
+   boundary itself can no longer create a hard horizontal line. The extra 82px
+   of min-height keeps the section bottom and CTA position effectively unchanged. */
 @media(max-width:760px){
+  html body.world-home main section.world-community.world-community{
+    margin-top:-220px!important;
+    min-height:calc(clamp(500px,118vw,620px) + 82px)!important;
+  }
   html body.world-home main section.world-community.world-community::before{
     -webkit-mask-image:linear-gradient(180deg,
       transparent 0,
-      rgba(0,0,0,.05) 18px,
-      rgba(0,0,0,.18) 44px,
-      rgba(0,0,0,.42) 74px,
-      rgba(0,0,0,.70) 101px,
-      rgba(0,0,0,.90) 124px,
-      #000 138px)!important;
+      rgba(0,0,0,.06) 24px,
+      rgba(0,0,0,.18) 50px,
+      rgba(0,0,0,.40) 80px,
+      rgba(0,0,0,.66) 112px,
+      rgba(0,0,0,.86) 140px,
+      #000 158px,
+      #000 100%)!important;
     mask-image:linear-gradient(180deg,
       transparent 0,
-      rgba(0,0,0,.05) 18px,
-      rgba(0,0,0,.18) 44px,
-      rgba(0,0,0,.42) 74px,
-      rgba(0,0,0,.70) 101px,
-      rgba(0,0,0,.90) 124px,
-      #000 138px)!important;
+      rgba(0,0,0,.06) 24px,
+      rgba(0,0,0,.18) 50px,
+      rgba(0,0,0,.40) 80px,
+      rgba(0,0,0,.66) 112px,
+      rgba(0,0,0,.86) 140px,
+      #000 158px,
+      #000 100%)!important;
     -webkit-mask-repeat:no-repeat!important;
     mask-repeat:no-repeat!important;
   }
