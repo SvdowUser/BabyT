@@ -235,27 +235,20 @@
   }
 }
 
-/* Mobile panorama -> community handoff: keep the second artwork fully opaque
-   before the first section actually ends. The previous mask reached 100% only
-   after the 138px overlap, which exposed the page background as a thin line. */
+/* Mobile token section: smooth only the upper blue-to-artwork transition.
+   Keep the lower panorama -> community transition exactly as it was before. */
 @media(max-width:760px){
-  html body.world-home main section.world-community.world-community{
-    background:#101e52!important;
-  }
-  html body.world-home main section.world-community.world-community::before{
-    -webkit-mask-image:linear-gradient(180deg,
-      transparent 0,
-      rgba(0,0,0,.12) 20px,
-      rgba(0,0,0,.42) 52px,
-      rgba(0,0,0,.74) 86px,
-      rgba(0,0,0,.94) 112px,
-      #000 128px)!important;
-    mask-image:linear-gradient(180deg,
-      transparent 0,
-      rgba(0,0,0,.12) 20px,
-      rgba(0,0,0,.42) 52px,
-      rgba(0,0,0,.74) 86px,
-      rgba(0,0,0,.94) 112px,
-      #000 128px)!important;
+  html body.world-home main section.world-panorama.world-panorama::after{
+    background:
+      linear-gradient(180deg,
+        #101e52 0,
+        rgba(16,30,82,.99) 60px,
+        rgba(16,30,82,.92) 130px,
+        rgba(16,30,82,.78) 215px,
+        rgba(16,30,82,.58) 300px,
+        rgba(16,30,82,.36) 375px,
+        rgba(16,30,82,.17) 445px,
+        rgba(16,30,82,0) 520px),
+      linear-gradient(90deg,rgba(7,18,29,.32),rgba(7,18,29,.06) 72%,rgba(7,18,29,0))!important;
   }
 }
