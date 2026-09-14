@@ -90,9 +90,21 @@
    cover only for this continuation layer so the original 3:4 image keeps its
    proportions while reaching the lower paper edge; horizontal excess is cropped. */
 @media (max-width:760px){
+  /* The source wave/continuation PNGs contain visible edge pixels at their exact
+     left/right bounds. On iPhone Safari those became the thin vertical dark seams
+     visible at both sides of the yellow handoff. Overscan both artwork layers a
+     few CSS pixels so those source edges are cropped outside the viewport without
+     changing any vertical geometry. */
+  body.world-home main > .world-paper-chapter.world-paper-chapter::before{
+    left:-12px!important;
+    width:calc(100% + 24px)!important;
+    background-size:100% 100%!important;
+    background-position:center top!important;
+  }
+
   body.world-home main > .world-paper-chapter.world-paper-chapter::after{
-    left:0!important;
-    width:100%!important;
+    left:-12px!important;
+    width:calc(100% + 24px)!important;
     top:90px!important;
     bottom:-5vw!important;
     background-size:cover!important;
