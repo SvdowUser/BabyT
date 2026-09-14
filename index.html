@@ -61,7 +61,7 @@
   <link rel="stylesheet" href="./welcome-title-fix.css?v=8">
   <link rel="stylesheet" href="./welcome-button-frame.css?v=8">
   <link rel="stylesheet" href="./paper-extension.css?v=9">
-  <link rel="stylesheet" href="./responsive-parity.css?v=4">
+  <link rel="stylesheet" href="./responsive-parity.css?v=5">
   <style>
     .world-panorama .panorama-caption,
     .world-community > .world-kicker{display:none!important;visibility:hidden!important;opacity:0!important}
@@ -80,6 +80,13 @@
     .world-home .world-community .community-social-block .community-links>a::before{content:""!important;display:block!important;position:absolute!important;inset:3px!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:11px!important;pointer-events:none!important}
     .world-home .world-community .community-social-block .community-links>a::after{content:none!important;display:none!important}
     .world-home .world-community .community-social-block .community-links>a:hover{background:linear-gradient(180deg,#54a9f7 0%,#3794ea 100%)!important;border-color:rgba(151,224,255,.96)!important;box-shadow:0 10px 22px rgba(5,12,46,.18),0 0 0 1px rgba(134,213,245,.06),inset 0 1px 0 rgba(255,255,255,.22)!important;transform:translateY(-1px)!important}
+    /* Mobile must stay visibly more compact than desktop; these rules sit after the
+       generic fallback above so an inline fallback cannot enlarge the buttons again. */
+    @media(max-width:760px){
+      .world-home .world-community .community-social-block{width:min(76vw,420px)!important}
+      .world-home .world-community .community-social-block .community-links>a{height:36px!important;min-height:36px!important;border-radius:11px!important}
+      .world-home .world-community .community-social-block .community-links>a::before{inset:2px!important;border-radius:8px!important}
+    }
   </style>
 </head>
 <body class="world-home">
