@@ -87,6 +87,25 @@
       .world-home .world-community .community-social-block .community-links>a{height:36px!important;min-height:36px!important;border-radius:11px!important}
       .world-home .world-community .community-social-block .community-links>a::before{inset:2px!important;border-radius:8px!important}
     }
+    /* iPhone Safari can leave a 1–2px compositing seam beside the hero video.
+       Make the first section truly edge-to-edge and slightly overscan only its media layers. */
+    @media(max-width:760px){
+      html,body.world-home{margin:0!important;padding:0!important;max-width:100%!important}
+      body.world-home main>.portal-hero{
+        width:100vw!important;
+        max-width:none!important;
+        margin-left:calc(50% - 50vw)!important;
+        margin-right:calc(50% - 50vw)!important;
+      }
+      body.world-home main>.portal-hero>.portal-hero-bg,
+      body.world-home main>.portal-hero>.portal-hero-video,
+      body.world-home main>.portal-hero::after,
+      body.world-home main>.portal-hero>.hero-noise{
+        inset:0 -2px!important;
+        width:auto!important;
+        max-width:none!important;
+      }
+    }
   </style>
 </head>
 <body class="world-home">
