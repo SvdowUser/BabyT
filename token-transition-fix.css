@@ -1,63 +1,67 @@
 /* Mobile-only polish for the $BabyT panorama artwork.
-   Blend the solid token section into the illustration over a much longer range
-   so there is no visible horizontal cut on phones. */
+   Keep the token header blue, but start the illustration blend directly beneath
+   the CTA so iPhone never shows a hard horizontal handoff. */
 @media (max-width:760px){
   html body.world-home main section.world-panorama.world-panorama{
     height:clamp(700px,172vw,900px)!important;
     background:#101e52!important;
+    overflow:hidden!important;
   }
 
   html body.world-home main section.world-panorama.world-panorama::before{
+    top:0!important;
+    bottom:0!important;
     background-position:center 50%!important;
     background-size:cover!important;
     -webkit-mask-image:linear-gradient(180deg,
       transparent 0,
-      transparent 78px,
-      rgba(0,0,0,.03) 130px,
-      rgba(0,0,0,.10) 185px,
-      rgba(0,0,0,.22) 245px,
-      rgba(0,0,0,.38) 305px,
-      rgba(0,0,0,.56) 365px,
-      rgba(0,0,0,.74) 425px,
-      rgba(0,0,0,.88) 485px,
-      #000 555px,
+      transparent 220px,
+      rgba(0,0,0,.02) 245px,
+      rgba(0,0,0,.08) 275px,
+      rgba(0,0,0,.18) 305px,
+      rgba(0,0,0,.32) 340px,
+      rgba(0,0,0,.48) 375px,
+      rgba(0,0,0,.64) 410px,
+      rgba(0,0,0,.78) 445px,
+      rgba(0,0,0,.90) 480px,
+      #000 525px,
       #000 100%)!important;
     mask-image:linear-gradient(180deg,
       transparent 0,
-      transparent 78px,
-      rgba(0,0,0,.03) 130px,
-      rgba(0,0,0,.10) 185px,
-      rgba(0,0,0,.22) 245px,
-      rgba(0,0,0,.38) 305px,
-      rgba(0,0,0,.56) 365px,
-      rgba(0,0,0,.74) 425px,
-      rgba(0,0,0,.88) 485px,
-      #000 555px,
+      transparent 220px,
+      rgba(0,0,0,.02) 245px,
+      rgba(0,0,0,.08) 275px,
+      rgba(0,0,0,.18) 305px,
+      rgba(0,0,0,.32) 340px,
+      rgba(0,0,0,.48) 375px,
+      rgba(0,0,0,.64) 410px,
+      rgba(0,0,0,.78) 445px,
+      rgba(0,0,0,.90) 480px,
+      #000 525px,
       #000 100%)!important;
     -webkit-mask-repeat:no-repeat!important;
     mask-repeat:no-repeat!important;
   }
 
-  /* Keep the section blue behind the callout and dissolve it progressively into
-     the artwork rather than ending the blue layer at one visible line. */
+  /* Blue overlay fades out over the same range as the artwork fades in. The two
+     layers overlap, so there is no single y-position where one section suddenly
+     ends and the other begins. */
   html body.world-home main section.world-panorama.world-panorama::after{
-    background:
-      linear-gradient(180deg,
-        #101e52 0,
-        #101e52 96px,
-        rgba(16,30,82,.99) 145px,
-        rgba(16,30,82,.96) 200px,
-        rgba(16,30,82,.88) 260px,
-        rgba(16,30,82,.75) 325px,
-        rgba(16,30,82,.58) 390px,
-        rgba(16,30,82,.40) 455px,
-        rgba(16,30,82,.24) 520px,
-        rgba(16,30,82,.12) 585px,
-        rgba(16,30,82,.04) 635px,
-        rgba(16,30,82,0) 680px),
-      linear-gradient(90deg,
-        rgba(7,18,29,.18) 0%,
-        rgba(7,18,29,.04) 72%,
-        rgba(7,18,29,0) 100%)!important;
+    top:0!important;
+    bottom:0!important;
+    background:linear-gradient(180deg,
+      #101e52 0,
+      #101e52 205px,
+      rgba(16,30,82,.995) 235px,
+      rgba(16,30,82,.97) 270px,
+      rgba(16,30,82,.90) 310px,
+      rgba(16,30,82,.78) 350px,
+      rgba(16,30,82,.62) 390px,
+      rgba(16,30,82,.46) 430px,
+      rgba(16,30,82,.30) 470px,
+      rgba(16,30,82,.17) 510px,
+      rgba(16,30,82,.07) 550px,
+      rgba(16,30,82,0) 595px)!important;
+    pointer-events:none!important;
   }
 }
